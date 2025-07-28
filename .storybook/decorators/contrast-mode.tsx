@@ -1,4 +1,4 @@
-import { Decorator } from "@storybook/react";
+import { Decorator } from "@storybook/react-webpack5";
 import { useDarkMode } from "storybook-dark-mode";
 import React, { useEffect } from "react";
 

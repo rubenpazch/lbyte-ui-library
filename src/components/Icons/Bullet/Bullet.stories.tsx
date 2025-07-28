@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { withRouter } from "storybook-addon-react-router-v6";
 
 import Bullet from "./Bullet";
 import React from "react";
@@ -11,7 +10,6 @@ type Story = StoryObj<typeof Bullet>;
  */
 export default {
   component: Bullet,
-  decorators: [withRouter],
   tags: ["autodocs"],
   title: "components/Icons/Bullet",
 } satisfies Meta<typeof Bullet>;

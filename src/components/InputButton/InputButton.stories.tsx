@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { withRouter } from "storybook-addon-react-router-v6";
 
 import InputButton from "./InputButton";
 import React from "react";
@@ -12,7 +11,6 @@ type Story = StoryObj<typeof InputButton>;
  */
 export default {
   component: InputButton,
-  decorators: [withRouter],
   tags: ["autodocs"],
 } satisfies Meta<typeof InputButton>;
 

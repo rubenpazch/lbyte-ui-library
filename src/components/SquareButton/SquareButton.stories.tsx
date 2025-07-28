@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { withRouter } from "storybook-addon-react-router-v6";
 
 import SquareButton from "./SquareButton";
 import { MenuIcon, MenuGridIcon } from "../Icons";
@@ -13,7 +12,6 @@ type Story = StoryObj<typeof SquareButton>;
  */
 export default {
   component: SquareButton,
-  decorators: [withRouter],
   tags: ["autodocs"],
 } satisfies Meta<typeof SquareButton>;
 

@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { withRouter } from "storybook-addon-react-router-v6";
 
 import Colors from "./Colors";
 import React from "react";
@@ -8,7 +7,6 @@ type Story = StoryObj<typeof Colors>;
 
 export default {
   component: Colors,
-  decorators: [withRouter],
   tags: ["autodocs"],
 } satisfies Meta<typeof Colors>;
 

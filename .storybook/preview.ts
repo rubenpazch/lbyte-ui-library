@@ -1,9 +1,9 @@
-//import { Decorator } from "@storybook/react";
-import { Preview } from "@storybook/react";
+//import { Decorator } from "@storybook/react-webpack5";
+import { Preview } from "@storybook/react-webpack5";
 import "../src/index.css";
 //import { decorateWithContrastMode } from "./decorators/contrast-mode";
 import "./styles/preview-setup.css";
-//import { themes } from '@storybook/theming';
+//import { themes } from 'storybook/theming';
 
 //export const decorators = [decorateWithContrastMode];
 

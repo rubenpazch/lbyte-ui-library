@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { withRouter } from "storybook-addon-react-router-v6";
 
 import Close from "./Close";
 import React from "react";
@@ -11,7 +10,6 @@ type Story = StoryObj<typeof Close>;
  */
 export default {
   component: Close,
-  decorators: [withRouter],
   tags: ["autodocs"],
   title: "components/Icons/Close",
 } satisfies Meta<typeof Close>;

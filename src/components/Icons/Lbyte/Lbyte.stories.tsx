@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { withRouter } from "storybook-addon-react-router-v6";
 
 import Lbyte from "./Lbyte";
 import React from "react";
@@ -11,7 +10,6 @@ type Story = StoryObj<typeof Lbyte>;
  */
 export default {
   component: Lbyte,
-  decorators: [withRouter],
   tags: ["autodocs"],
   title: "components/Icons/Lbyte",
 } satisfies Meta<typeof Lbyte>;

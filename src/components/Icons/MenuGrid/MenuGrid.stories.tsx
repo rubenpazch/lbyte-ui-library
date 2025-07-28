@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { withRouter } from "storybook-addon-react-router-v6";
 
 import MenuGrid from "./MenuGrid";
 import React from "react";
@@ -11,7 +10,6 @@ type Story = StoryObj<typeof MenuGrid>;
  */
 export default {
   component: MenuGrid,
-  decorators: [withRouter],
   tags: ["autodocs"],
   title: "components/Icons/MenuGrid",
 } satisfies Meta<typeof MenuGrid>;

@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { withRouter } from "storybook-addon-react-router-v6";
 import { within, userEvent } from "@storybook/test";
 
 import Page from "./Page";
@@ -11,7 +10,6 @@ type Story = StoryObj<typeof Page>;
  */
 export default {
   component: Page,
-  decorators: [withRouter],
   tags: ["autodocs"],
   title: "Page",
 } satisfies Meta<typeof Page>;
