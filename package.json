@@ -6,6 +6,7 @@
   "author": "Ruben Paz Chuspe <rubenpazchuspe@outlook.com>",
   "license": "MIT",
   "scripts": {
+    "build": "rollup -c",
     "rollup": "rollup -c",
     "test": "jest --coverage",
     "test:watch": "jest --watch --coverage",
