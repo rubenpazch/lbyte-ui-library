@@ -29,3 +29,9 @@ dist
 
 #storybook build directory
 storybook-static
+
+apps/storybook/node_modules
+packages/background/node_modules
+packages/*/node_modules
+tooling/eslint-config/node_modules
+.turbo
