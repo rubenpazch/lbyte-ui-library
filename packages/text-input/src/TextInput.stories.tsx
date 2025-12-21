@@ -1,13 +1,15 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import React, { useState } from 'react';
-import { fn } from '@storybook/test';
-import TextInput, { type TextInputProps } from './TextInput';
+import type { Meta, StoryObj } from "@storybook/react";
+import React, { useState } from "react";
+import TextInput, { type TextInputProps } from "./TextInput";
+
+// Mock function for action logging in Storybook
+const fn = () => () => {};
 
 const meta: Meta<TextInputProps> = {
-  title: 'Components/TextInput',
+  title: "Components/TextInput",
   component: TextInput as any,
   parameters: {
-    layout: 'padded',
+    layout: "padded",
     docs: {
       description: {
         component: `
@@ -37,60 +39,60 @@ TextInput is a versatile input component with built-in validation, character cou
       },
     },
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   argTypes: {
     value: {
-      control: 'text',
-      description: 'Current value of the input',
+      control: "text",
+      description: "Current value of the input",
     },
     onChange: {
-      action: 'changed',
-      description: 'Callback when value changes',
+      action: "changed",
+      description: "Callback when value changes",
     },
     label: {
-      control: 'text',
-      description: 'Label text displayed above the input',
+      control: "text",
+      description: "Label text displayed above the input",
     },
     placeholder: {
-      control: 'text',
-      description: 'Placeholder text',
+      control: "text",
+      description: "Placeholder text",
     },
     type: {
-      control: 'select',
-      options: ['text', 'email', 'tel', 'password', 'url'],
-      description: 'Input type',
+      control: "select",
+      options: ["text", "email", "tel", "password", "url"],
+      description: "Input type",
     },
     error: {
-      control: 'text',
-      description: 'Error message to display',
+      control: "text",
+      description: "Error message to display",
     },
     warning: {
-      control: 'text',
-      description: 'Warning message to display',
+      control: "text",
+      description: "Warning message to display",
     },
     hint: {
-      control: 'text',
-      description: 'Hint text displayed below input',
+      control: "text",
+      description: "Hint text displayed below input",
     },
     required: {
-      control: 'boolean',
-      description: 'Shows required asterisk',
+      control: "boolean",
+      description: "Shows required asterisk",
     },
     disabled: {
-      control: 'boolean',
-      description: 'Disables the input',
+      control: "boolean",
+      description: "Disables the input",
     },
     validateEmail: {
-      control: 'boolean',
-      description: 'Enables email validation',
+      control: "boolean",
+      description: "Enables email validation",
     },
     showPasswordStrength: {
-      control: 'boolean',
-      description: 'Shows password strength indicator',
+      control: "boolean",
+      description: "Shows password strength indicator",
     },
     maxLength: {
-      control: 'number',
-      description: 'Maximum character length',
+      control: "number",
+      description: "Maximum character length",
     },
   },
 };
@@ -101,60 +103,60 @@ type Story = StoryObj<TextInputProps>;
 // Default story
 export const Default: Story = {
   args: {
-    value: '',
+    value: "",
     onChange: fn(),
-    placeholder: 'Enter text...',
+    placeholder: "Enter text...",
   },
 };
 
 // With label
 export const WithLabel: Story = {
   args: {
-    label: 'Username',
-    value: '',
+    label: "Username",
+    value: "",
     onChange: fn(),
-    placeholder: 'johndoe',
+    placeholder: "johndoe",
   },
 };
 
 // Required field
 export const Required: Story = {
   args: {
-    label: 'Email Address',
-    value: '',
+    label: "Email Address",
+    value: "",
     onChange: fn(),
-    placeholder: 'john@example.com',
+    placeholder: "john@example.com",
     required: true,
-    type: 'email',
+    type: "email",
   },
 };
 
 // With error
 export const WithError: Story = {
   args: {
-    label: 'Username',
-    value: 'ab',
+    label: "Username",
+    value: "ab",
     onChange: fn(),
-    error: 'Username must be at least 3 characters',
+    error: "Username must be at least 3 characters",
   },
 };
 
 // With hint
 export const WithHint: Story = {
   args: {
-    label: 'Password',
-    value: '',
+    label: "Password",
+    value: "",
     onChange: fn(),
-    type: 'password',
-    hint: 'Password must be at least 8 characters',
+    type: "password",
+    hint: "Password must be at least 8 characters",
   },
 };
 
 // Disabled state
 export const Disabled: Story = {
   args: {
-    label: 'Disabled Field',
-    value: 'Cannot edit this',
+    label: "Disabled Field",
+    value: "Cannot edit this",
     onChange: fn(),
     disabled: true,
   },
@@ -163,7 +165,7 @@ export const Disabled: Story = {
 // Email validation
 export const EmailValidation: Story = {
   render: (args) => {
-    const [email, setEmail] = useState('');
+    const [email, setEmail] = useState("");
 
     return (
       <div className="space-y-4">
@@ -190,7 +192,7 @@ export const EmailValidation: Story = {
     );
   },
   args: {
-    value: '',
+    value: "",
     onChange: fn(),
   },
 };
@@ -198,17 +200,17 @@ export const EmailValidation: Story = {
 // Email with typo suggestion
 export const EmailWithTypoSuggestion: Story = {
   args: {
-    label: 'Email',
-    value: 'user@gmial.com',
+    label: "Email",
+    value: "user@gmial.com",
     onChange: fn(),
-    type: 'email',
+    type: "email",
     validateEmail: true,
   },
   parameters: {
     docs: {
       description: {
         story:
-          'Demonstrates automatic typo detection and correction suggestions for common email domains.',
+          "Demonstrates automatic typo detection and correction suggestions for common email domains.",
       },
     },
   },
@@ -217,10 +219,10 @@ export const EmailWithTypoSuggestion: Story = {
 // Valid email
 export const ValidEmail: Story = {
   args: {
-    label: 'Email',
-    value: 'user@example.com',
+    label: "Email",
+    value: "user@example.com",
     onChange: fn(),
-    type: 'email',
+    type: "email",
     validateEmail: true,
   },
 };
@@ -228,7 +230,7 @@ export const ValidEmail: Story = {
 // Password with strength indicator
 export const PasswordStrength: Story = {
   render: (args) => {
-    const [password, setPassword] = useState('');
+    const [password, setPassword] = useState("");
 
     return (
       <div className="space-y-4">
@@ -256,14 +258,14 @@ export const PasswordStrength: Story = {
     );
   },
   args: {
-    value: '',
+    value: "",
     onChange: fn(),
   },
   parameters: {
     docs: {
       description: {
         story:
-          'Shows real-time password strength evaluation with visual indicators and requirement checklist.',
+          "Shows real-time password strength evaluation with visual indicators and requirement checklist.",
       },
     },
   },
@@ -272,7 +274,7 @@ export const PasswordStrength: Story = {
 // Max length with character counter
 export const WithMaxLength: Story = {
   render: (args) => {
-    const [text, setText] = useState('');
+    const [text, setText] = useState("");
 
     return (
       <TextInput
@@ -287,14 +289,14 @@ export const WithMaxLength: Story = {
     );
   },
   args: {
-    value: '',
+    value: "",
     onChange: fn(),
   },
   parameters: {
     docs: {
       description: {
         story:
-          'Displays character counter with color coding: normal (blue), warning (amber at 80%), error (red at 100%).',
+          "Displays character counter with color coding: normal (blue), warning (amber at 80%), error (red at 100%).",
       },
     },
   },
@@ -303,37 +305,37 @@ export const WithMaxLength: Story = {
 // Different input types
 export const TelephoneNumber: Story = {
   args: {
-    label: 'Phone Number',
-    value: '',
+    label: "Phone Number",
+    value: "",
     onChange: fn(),
-    type: 'tel',
-    placeholder: '+1 (555) 123-4567',
+    type: "tel",
+    placeholder: "+1 (555) 123-4567",
   },
 };
 
 export const Website: Story = {
   args: {
-    label: 'Website URL',
-    value: '',
+    label: "Website URL",
+    value: "",
     onChange: fn(),
-    type: 'url',
-    placeholder: 'https://example.com',
+    type: "url",
+    placeholder: "https://example.com",
   },
 };
 
 // Form example
 export const CompleteForm: Story = {
   args: {
-    value: '',
+    value: "",
     onChange: fn(),
   },
   render: () => {
     const [formData, setFormData] = useState({
-      name: '',
-      email: '',
-      phone: '',
-      password: '',
-      website: '',
+      name: "",
+      email: "",
+      phone: "",
+      password: "",
+      website: "",
     });
 
     const handleChange = (field: string) => (value: string) => {
@@ -343,13 +345,15 @@ export const CompleteForm: Story = {
     return (
       <div className="max-w-2xl mx-auto">
         <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">User Registration</h2>
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">
+            User Registration
+          </h2>
 
           <div className="space-y-6">
             <TextInput
               label="Full Name"
               value={formData.name}
-              onChange={handleChange('name')}
+              onChange={handleChange("name")}
               placeholder="John Doe"
               required
             />
@@ -357,7 +361,7 @@ export const CompleteForm: Story = {
             <TextInput
               label="Email Address"
               value={formData.email}
-              onChange={handleChange('email')}
+              onChange={handleChange("email")}
               type="email"
               validateEmail
               placeholder="john@example.com"
@@ -367,7 +371,7 @@ export const CompleteForm: Story = {
             <TextInput
               label="Phone Number"
               value={formData.phone}
-              onChange={handleChange('phone')}
+              onChange={handleChange("phone")}
               type="tel"
               placeholder="+1 (555) 123-4567"
             />
@@ -375,7 +379,7 @@ export const CompleteForm: Story = {
             <TextInput
               label="Password"
               value={formData.password}
-              onChange={handleChange('password')}
+              onChange={handleChange("password")}
               type="password"
               showPasswordStrength
               required
@@ -385,7 +389,7 @@ export const CompleteForm: Story = {
             <TextInput
               label="Website"
               value={formData.website}
-              onChange={handleChange('website')}
+              onChange={handleChange("website")}
               type="url"
               placeholder="https://yourwebsite.com"
             />
@@ -405,7 +409,7 @@ export const CompleteForm: Story = {
     docs: {
       description: {
         story:
-          'Complete registration form demonstrating various TextInput features working together.',
+          "Complete registration form demonstrating various TextInput features working together.",
       },
     },
   },
@@ -414,7 +418,7 @@ export const CompleteForm: Story = {
 // Interactive playground
 export const Interactive: Story = {
   render: (args) => {
-    const [value, setValue] = useState('');
+    const [value, setValue] = useState("");
 
     return (
       <div className="space-y-4">
@@ -422,15 +426,17 @@ export const Interactive: Story = {
 
         <div className="p-4 bg-gray-100 rounded-lg">
           <h3 className="font-semibold mb-2">Current Value:</h3>
-          <code className="bg-white px-3 py-1 rounded">{value || '(empty)'}</code>
+          <code className="bg-white px-3 py-1 rounded">
+            {value || "(empty)"}
+          </code>
         </div>
       </div>
     );
   },
   args: {
-    value: '',
-    label: 'Interactive Input',
-    placeholder: 'Type something...',
+    value: "",
+    label: "Interactive Input",
+    placeholder: "Type something...",
     onChange: fn(),
   },
 };

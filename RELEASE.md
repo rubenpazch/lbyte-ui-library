@@ -2,6 +2,37 @@
 
 This document outlines the step-by-step process for releasing packages from the Lbyte UI Library monorepo to npm.
 
+## Git Hooks
+
+The repository uses Husky to run automated checks before commits and pushes:
+
+### Pre-commit Hook
+
+Runs automatically before each commit:
+
+- **Lint-staged**: Lints and formats only staged files
+- **ESLint**: Fixes TypeScript/TSX files
+- **Prettier**: Formats code, JSON, Markdown, and YAML files
+
+### Pre-push Hook
+
+Runs automatically before pushing to remote:
+
+- **Tests**: Runs all test suites (`pnpm test`)
+- **Build**: Builds all packages (`pnpm build`)
+
+### Bypass Hooks (Not Recommended)
+
+If you need to bypass hooks (use sparingly):
+
+```bash
+# Skip pre-commit
+git commit --no-verify -m "message"
+
+# Skip pre-push
+git push --no-verify
+```
+
 ## Prerequisites
 
 - [ ] All changes are committed to git
@@ -15,9 +46,11 @@ This document outlines the step-by-step process for releasing packages from the 
 ### First Time Setup
 
 1. **Login to npm:**
+
    ```bash
    npm login
    ```
+
    - Follow the browser authentication flow
    - Enter your 2FA code when prompted
 
@@ -63,6 +96,7 @@ pnpm changeset
 **Interactive prompts:**
 
 1. **Select packages:** Use spacebar to select all packages that have changed
+
    - `@rubenpazch/button`
    - `@rubenpazch/icons`
    - `@rubenpazch/text-input`
@@ -72,6 +106,7 @@ pnpm changeset
    - etc.
 
 2. **Select version bump type:**
+
    - **patch** (x.x.X) - Bug fixes, small changes
    - **minor** (x.X.0) - New features, non-breaking changes
    - **major** (X.0.0) - Breaking changes
@@ -91,6 +126,7 @@ pnpm changeset version
 ```
 
 This will:
+
 - Update package.json versions
 - Update CHANGELOG.md files
 - Remove the changeset file
@@ -117,6 +153,7 @@ pnpm release
 ```
 
 **You will be prompted for:**
+
 1. Your 2FA code from your authenticator app
 2. The code will be requested for each package being published
 
@@ -160,6 +197,7 @@ pnpm changeset
 ### "Access token expired or revoked"
 
 **Solution:** Login again to npm
+
 ```bash
 npm login
 ```
@@ -167,6 +205,7 @@ npm login
 ### "Permission denied" on git push
 
 **Solution:** Switch to HTTPS
+
 ```bash
 git remote set-url origin https://github.com/rubenpazch/lbyte-ui-library.git
 ```
@@ -174,6 +213,7 @@ git remote set-url origin https://github.com/rubenpazch/lbyte-ui-library.git
 ### Package is marked as "private"
 
 **Solution:** Remove `"private": true` from package.json
+
 ```json
 {
   "name": "@rubenpazch/package-name",
@@ -186,6 +226,7 @@ git remote set-url origin https://github.com/rubenpazch/lbyte-ui-library.git
 ### Build fails before publish
 
 **Solution:** Fix build errors and rebuild
+
 ```bash
 # Check errors
 pnpm build
@@ -198,9 +239,11 @@ pnpm build
 ### 2FA code timeout
 
 **Solution:** Re-run the publish command
+
 ```bash
 pnpm release
 ```
+
 The process will resume from where it failed.
 
 ## Package Checklist
@@ -219,18 +262,21 @@ Before publishing, ensure each package has:
 ## Version Guidelines
 
 ### Patch (0.0.X)
+
 - Bug fixes
 - Documentation updates
 - Internal refactoring
 - Dependency updates (non-breaking)
 
 ### Minor (0.X.0)
+
 - New features
 - New components
 - New props/API additions (non-breaking)
 - Deprecations (with migration path)
 
 ### Major (X.0.0)
+
 - Breaking API changes
 - Removing deprecated features
 - Major dependency updates
@@ -244,11 +290,13 @@ The repository is configured with GitHub Actions for automated releases using **
 ### How It Works
 
 1. **Create a changeset** on your feature branch:
+
    ```bash
    pnpm changeset
    ```
 
 2. **Commit and push** your changes including the changeset:
+
    ```bash
    git add .
    git commit -m "feat: add new feature"
@@ -258,6 +306,7 @@ The repository is configured with GitHub Actions for automated releases using **
 3. **Create a Pull Request** to `main`
 
 4. **When merged to main:**
+
    - GitHub Actions automatically creates a "Version Packages" PR
    - This PR updates all package versions and CHANGELOGs
 
@@ -270,6 +319,7 @@ The repository is configured with GitHub Actions for automated releases using **
 This repository uses NPM's Trusted Publishing (no tokens needed!):
 
 **Benefits:**
+
 - ✅ No need to manage NPM tokens
 - ✅ Automatic token rotation
 - ✅ Provenance attestation for published packages
@@ -284,6 +334,7 @@ This repository uses NPM's Trusted Publishing (no tokens needed!):
 5. That's it! No additional setup needed.
 
 **How it works:**
+
 - GitHub Actions uses OpenID Connect (OIDC) to authenticate with npm
 - NPM validates the GitHub workflow identity
 - Packages are published with provenance attestation
@@ -292,10 +343,12 @@ This repository uses NPM's Trusted Publishing (no tokens needed!):
 ### Workflows
 
 **CI Workflow** (`.github/workflows/ci.yml`)
+
 - Runs on all PRs and pushes to main
 - Executes: lint, build, test
 
 **Release Workflow** (`.github/workflows/release.yml`)
+
 - Runs only on pushes to main
 - Uses Trusted Publishing with `id-token: write` permission
 - Creates version PRs or publishes to npm with provenance
@@ -303,11 +356,12 @@ This repository uses NPM's Trusted Publishing (no tokens needed!):
 ### Required Permissions
 
 The release workflow requires these permissions (already configured):
+
 ```yaml
 permissions:
-  contents: write      # Create tags and releases
+  contents: write # Create tags and releases
   pull-requests: write # Create version PRs
-  id-token: write      # OIDC token for npm authentication
+  id-token: write # OIDC token for npm authentication
 ```
 
 ## Post-Release

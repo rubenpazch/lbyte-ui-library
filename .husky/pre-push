@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+
+# Run tests and build before push
+pnpm pre-push

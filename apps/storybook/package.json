@@ -10,21 +10,9 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
-    "@rubenpazch/background": "workspace:*",
     "@rubenpazch/button": "workspace:*",
-    "@rubenpazch/drawer": "workspace:*",
-    "@rubenpazch/drawer-menu-mobile": "workspace:*",
-    "@rubenpazch/icon-button": "workspace:*",
     "@rubenpazch/icons": "workspace:*",
-    "@rubenpazch/input-button": "workspace:*",
-    "@rubenpazch/link": "workspace:*",
-    "@rubenpazch/menu": "workspace:*",
-    "@rubenpazch/menu-mobile": "workspace:*",
-    "@rubenpazch/navbar": "workspace:*",
-    "@rubenpazch/page": "workspace:*",
     "@rubenpazch/shared": "workspace:*",
-    "@rubenpazch/square-button": "workspace:*",
-    "@rubenpazch/text-area": "workspace:*",
     "@rubenpazch/text-input": "workspace:*",
     "react": "^19.2.3",
     "react-dom": "^19.2.3"
