@@ -48,8 +48,8 @@ async function main() {
       test: 'jest --passWithNoTests',
     },
     peerDependencies: {
-      react: '^18.0.0',
-      'react-dom': '^18.0.0'
+      react: '^19.0.0',
+      'react-dom': '^19.0.0'
     },
     devDependencies: {
       "@rubenpazch/typescript-config": "workspace:*"
@@ -58,16 +58,21 @@ async function main() {
 
   const indexTs = `export { default } from './${componentName}';\n`;
 
-  const componentTsx = `import React from 'react';\nimport './${rawName}.css';\n\nexport interface ${componentName}Props {
+  const componentTsx = `import React from 'react';
+
+export interface ${componentName}Props {
   children?: React.ReactNode;
   className?: string;
-}\n\nexport default function ${componentName}({ children, className }: ${componentName}Props) {
+}
+
+export default function ${componentName}({ children, className }: ${componentName}Props) {
   return (
-    <button className={className ? className : '${rawName}'}>
+    <div className={\`p-4 \${className || ''}\`}>
       {children}
-    </button>
+    </div>
   );
-}\n`;
+}
+`;
 
   const css = `.${rawName} {
   display: inline-flex;
@@ -77,14 +82,28 @@ async function main() {
 }
 `;
 
-  const story = `import { Meta, StoryObj } from '@storybook/react';\nimport ${componentName} from './${componentName}';\n\nconst meta: Meta<typeof ${componentName}> = {
+  const story = `import type { Meta, StoryObj } from '@storybook/react';
+import React from 'react';
+import ${componentName}, { type ${componentName}Props } from './${componentName}';
+
+const meta: Meta<${componentName}Props> = {
   title: 'Components/${componentName}',
-  component: ${componentName},
-};\n\nexport default meta;\n\ntype Story = StoryObj<typeof ${componentName}>;\n\nexport const Default: Story = {
-  args: {
-    children: '${componentName}',
+  component: ${componentName} as any,
+  parameters: {
+    layout: 'centered',
   },
-};\n`;
+  tags: ['autodocs'],
+};
+
+export default meta;
+type Story = StoryObj<${componentName}Props>;
+
+export const Default: Story = {
+  args: {
+    children: '${componentName} Component',
+  },
+};
+`;
 
   const test = `import React from 'react';\nimport { render, screen } from '@testing-library/react';\nimport ${componentName} from './${componentName}';\n\ntest('renders ${componentName}', () => {
   render(<${componentName}>Hello</${componentName}>);
@@ -98,7 +117,10 @@ import commonjs from "@rollup/plugin-commonjs";
 import typescript from "rollup-plugin-typescript2";
 import postcss from "rollup-plugin-postcss";
 import dts from "rollup-plugin-dts";
-import packageJson from "./package.json" assert { type: "json" };
+import fs from 'fs';
+import path from 'path';
+
+const packageJson = JSON.parse(fs.readFileSync(path.resolve('./package.json'), 'utf8'));
 
 export default [
   {
@@ -112,7 +134,11 @@ export default [
       resolve(),
       commonjs(),
       typescript({ tsconfig: './tsconfig.json' }),
-      postcss({ extract: false, modules: false }),
+      postcss({
+        extract: false,
+        modules: false,
+        plugins: []
+      }),
     ],
   },
   {
@@ -138,13 +164,22 @@ export default [
   const jestConfig = `module.exports = {
   testEnvironment: "jsdom",
   moduleNameMapper: {
-    ".(css|less|scss)$": "identity-obj-proxy",
+    "\\\\.(css|less|scss)$": "identity-obj-proxy",
   },
   setupFilesAfterEnv: ["../shared/src/setupTests.ts"],
   transform: {
-    "^.+\\.(ts|tsx|js|jsx)$": "babel-jest"
+    "^.+\\\\.(ts|tsx|js|jsx)$": "babel-jest"
   },
   transformIgnorePatterns: ["/node_modules/"],
+};
+`;
+
+  const babelConfig = `module.exports = {
+  presets: [
+    ['@babel/preset-env', { targets: { node: 'current' } }],
+    ['@babel/preset-react', { runtime: 'automatic' }],
+    '@babel/preset-typescript'
+  ]
 };
 `;
 
@@ -152,18 +187,28 @@ export default [
     await write(path.join(pkgDir, 'package.json'), JSON.stringify(pkgJson, null, 2));
     await write(path.join(pkgDir, 'src', `${componentName}.tsx`), componentTsx);
     await write(path.join(pkgDir, 'src', 'index.ts'), indexTs);
-    await write(path.join(pkgDir, 'src', `${rawName}.css`), css);
+    // No CSS file - using Tailwind CSS classes
     // put stories next to the component so Storybook resolves source imports reliably
     await write(path.join(pkgDir, 'src', `${componentName}.stories.tsx`), story);
     await write(path.join(pkgDir, 'src', `${componentName}.test.tsx`), test);
     await write(path.join(pkgDir, 'README.md'), readme);
-    // write rollup, tsconfig and jest config files for build/test
+    // write rollup, tsconfig, jest and babel config files for build/test
     await write(path.join(pkgDir, 'rollup.config.mjs'), rollupConfig);
     await write(path.join(pkgDir, 'tsconfig.json'), JSON.stringify(tsconfig, null, 2));
     await write(path.join(pkgDir, 'jest.config.js'), jestConfig);
-    console.log(`Package scaffolded at packages/${rawName}`);
+    await write(path.join(pkgDir, 'babel.config.js'), babelConfig);
+    console.log(`✅ Package scaffolded at packages/${rawName}`);
+    console.log(`📦 Next steps:
+  1. cd packages/${rawName}
+  2. Update src/${componentName}.tsx with your component logic
+  3. Add Tailwind classes for styling
+  4. Update src/${componentName}.stories.tsx with your stories
+  5. Add tests in src/${componentName}.test.tsx
+  6. Run 'pnpm install' at the root to link dependencies
+  7. Run 'pnpm test' to run tests
+  8. Run 'pnpm build' to build the package`);
   } catch (err) {
-    console.error('Failed to scaffold package', err);
+    console.error('❌ Failed to scaffold package', err);
     process.exit(1);
   }
 }

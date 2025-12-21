@@ -1,175 +1,208 @@
-import type { Meta, StoryObj } from "@storybook/react";
-import { fn } from "@storybook/test";
+import type { Meta, StoryObj } from '@storybook/react';
+import React from 'react';
+import Button, { type ButtonProps } from './Button';
 
-import Button from "./Button";
-import React from "react";
-
-type Story = StoryObj<typeof Button>;
-
-const meta: Meta<typeof Button> = {
+const meta: Meta<ButtonProps> = {
   title: 'Components/Button',
-  component: Button,
+  component: Button as any,
   parameters: {
     layout: 'centered',
-    docs: {
-      description: {
-        component: 'A modern, accessible button component with multiple variants, sizes, and states.',
-      },
-    },
-  },
-  argTypes: {
-    variant: {
-      control: { type: 'select' },
-      options: ['filled', 'outline', 'ghost', 'link'],
-      description: 'Visual style variant of the button',
-    },
-    color: {
-      control: { type: 'select' },
-      options: ['primary', 'secondary', 'success', 'danger', 'warning', 'info', 'light', 'dark'],
-      description: 'Color theme of the button',
-    },
-    size: {
-      control: { type: 'select' },
-      options: ['xs', 'sm', 'md', 'lg', 'xl'],
-      description: 'Size of the button',
-    },
-    disabled: {
-      control: { type: 'boolean' },
-      description: 'Whether the button is disabled',
-    },
-    loading: {
-      control: { type: 'boolean' },
-      description: 'Whether the button is in loading state',
-    },
-    fullWidth: {
-      control: { type: 'boolean' },
-      description: 'Whether the button takes full width',
-    },
-  },
-  args: {
-    onClick: fn(),
   },
   tags: ['autodocs'],
 };
 
 export default meta;
+type Story = StoryObj<ButtonProps>;
 
-export const Default: Story = {
+// Size Stories
+export const SmallDefault: Story = {
+  args: {
+    size: 'sm',
+    variant: 'default',
+    children: 'Small Button',
+  },
+};
+
+export const MediumDefault: Story = {
+  args: {
+    size: 'md',
+    variant: 'default',
+    children: 'Medium Button',
+  },
+};
+
+export const LargeDefault: Story = {
+  args: {
+    size: 'lg',
+    variant: 'default',
+    children: 'Large Button',
+  },
+};
+
+// Variant Stories
+export const Primary: Story = {
+  args: {
+    size: 'md',
+    variant: 'default',
+    children: 'Primary Button',
+  },
+};
+
+export const Secondary: Story = {
+  args: {
+    size: 'md',
+    variant: 'secondary',
+    children: 'Secondary Button',
+  },
+};
+
+export const Black: Story = {
+  args: {
+    size: 'md',
+    variant: 'black',
+    children: 'Black Button',
+  },
+};
+
+export const Blue: Story = {
+  args: {
+    size: 'md',
+    variant: 'blue',
+    children: 'Blue Button',
+  },
+};
+
+export const Pink: Story = {
+  args: {
+    size: 'md',
+    variant: 'pink',
+    children: 'Pink Button',
+  },
+};
+
+export const GradientGreen: Story = {
+  args: {
+    size: 'md',
+    variant: 'gradient-green',
+    children: 'Gradient Green',
+  },
+};
+
+export const SolidGreen: Story = {
+  args: {
+    size: 'md',
+    variant: 'solid-green',
+    children: 'Solid Green',
+  },
+};
+
+export const Warning: Story = {
+  args: {
+    size: 'md',
+    variant: 'warning',
+    children: 'Warning Button',
+  },
+};
+
+// Style Stories
+export const Filled: Story = {
+  args: {
+    size: 'md',
+    variant: 'default',
+    filled: true,
+    children: 'Filled Button',
+  },
+};
+
+export const Outlined: Story = {
+  args: {
+    size: 'md',
+    variant: 'default',
+    filled: false,
+    children: 'Outlined Button',
+  },
+};
+
+export const Quiet: Story = {
+  args: {
+    size: 'md',
+    variant: 'default',
+    quiet: true,
+    children: 'Quiet Button',
+  },
+};
+
+// State Stories
+export const Disabled: Story = {
+  args: {
+    size: 'md',
+    variant: 'default',
+    disabled: true,
+    children: 'Disabled Button',
+  },
+};
+
+export const Loading: Story = {
+  args: {
+    size: 'md',
+    variant: 'default',
+    disabled: true,
+    children: 'Loading Button',
+  },
+};
+
+// Special Stories
+export const Circled: Story = {
+  args: {
+    size: 'md',
+    variant: 'default',
+    circled: true,
+    children: '✓',
+  },
+};
+
+export const Inverted: Story = {
+  args: {
+    size: 'md',
+    variant: 'default',
+    inverted: true,
+    children: 'Inverted Button',
+  },
+};
+
+// Group Story - All Variants
+export const AllVariants: Story = {
+  render: () => (
+    <div className="space-y-4">
+      <div className="space-x-2">
+        <Button variant="default">Default</Button>
+        <Button variant="secondary">Secondary</Button>
+        <Button variant="black">Black</Button>
+        <Button variant="blue">Blue</Button>
+        <Button variant="pink">Pink</Button>
+      </div>
+      <div className="space-x-2">
+        <Button variant="gradient-green">Gradient Green</Button>
+        <Button variant="solid-green">Solid Green</Button>
+        <Button variant="warning">Warning</Button>
+      </div>
+    </div>
+  ),
   args: {
     children: 'Button',
   },
-};
+} as Story;
 
-export const Variants: Story = {
+// Group Story - All Sizes
+export const AllSizes: Story = {
   render: () => (
-    <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-      <Button variant="filled">Filled</Button>
-      <Button variant="outline">Outline</Button>
-      <Button variant="ghost">Ghost</Button>
-      <Button variant="link">Link</Button>
-    </div>
-  ),
-};
-
-export const Colors: Story = {
-  render: () => (
-    <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
-      <Button color="primary">Primary</Button>
-      <Button color="secondary">Secondary</Button>
-      <Button color="success">Success</Button>
-      <Button color="danger">Danger</Button>
-      <Button color="warning">Warning</Button>
-      <Button color="info">Info</Button>
-      <Button color="light">Light</Button>
-      <Button color="dark">Dark</Button>
-    </div>
-  ),
-};
-
-export const Sizes: Story = {
-  render: () => (
-    <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', flexWrap: 'wrap' }}>
-      <Button size="xs">Extra Small</Button>
+    <div className="space-x-2">
       <Button size="sm">Small</Button>
       <Button size="md">Medium</Button>
       <Button size="lg">Large</Button>
-      <Button size="xl">Extra Large</Button>
     </div>
   ),
-};
-
-export const WithIcons: Story = {
-  render: () => (
-    <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-      <Button leftIcon={<span>📧</span>}>Send Email</Button>
-      <Button rightIcon={<span>→</span>}>Continue</Button>
-      <Button leftIcon={<span>💾</span>} rightIcon={<span>✓</span>}>
-        Save Changes
-      </Button>
-    </div>
-  ),
-};
-
-export const States: Story = {
-  render: () => (
-    <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-      <Button>Normal</Button>
-      <Button disabled>Disabled</Button>
-      <Button loading>Loading</Button>
-      <Button loading leftIcon={<span>📧</span>}>
-        Sending...
-      </Button>
-    </div>
-  ),
-};
-
-export const FullWidth: Story = {
-  render: () => (
-    <div style={{ width: '300px' }}>
-      <Button fullWidth>Full Width Button</Button>
-    </div>
-  ),
-};
-
-export const OutlineVariants: Story = {
-  render: () => (
-    <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
-      <Button variant="outline" color="primary">Primary</Button>
-      <Button variant="outline" color="secondary">Secondary</Button>
-      <Button variant="outline" color="success">Success</Button>
-      <Button variant="outline" color="danger">Danger</Button>
-      <Button variant="outline" color="warning">Warning</Button>
-      <Button variant="outline" color="info">Info</Button>
-    </div>
-  ),
-};
-
-export const GhostVariants: Story = {
-  render: () => (
-    <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
-      <Button variant="ghost" color="primary">Primary</Button>
-      <Button variant="ghost" color="secondary">Secondary</Button>
-      <Button variant="ghost" color="success">Success</Button>
-      <Button variant="ghost" color="danger">Danger</Button>
-      <Button variant="ghost" color="warning">Warning</Button>
-      <Button variant="ghost" color="info">Info</Button>
-    </div>
-  ),
-};
-
-// Backward compatibility examples
-export const LegacyProps: Story = {
-  render: () => (
-    <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-      <Button outline color="primary">Legacy Outline</Button>
-      <Button quiet color="secondary">Legacy Quiet</Button>
-    </div>
-  ),
-  parameters: {
-    docs: {
-      description: {
-        story: 'Examples using deprecated props (outline, quiet) that still work for backward compatibility.',
-      },
-    },
+  args: {
+    children: 'Button',
   },
-};
+} as Story;

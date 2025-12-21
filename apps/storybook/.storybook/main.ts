@@ -8,7 +8,6 @@ const __dirname = path.dirname(__filename);
 const config: StorybookConfig = {
   stories: [
     "../../../packages/*/src/**/*.stories.@(js|jsx|ts|tsx)",
-    "../../../packages/*/src/**/*.mdx",
   ],
   addons: [
     "@storybook/addon-links",
@@ -24,9 +23,7 @@ const config: StorybookConfig = {
   core: {
     builder: "@storybook/builder-vite",
   },
-  docs: {
-    autodocs: true,
-  },
+  docs: {},
   typescript: {
     reactDocgen: "react-docgen-typescript",
   },
@@ -35,7 +32,6 @@ const config: StorybookConfig = {
     config.resolve.alias = {
       ...(config.resolve.alias || {}),
       '@rubenpazch/shared': path.resolve(__dirname, '../../../packages/shared/src'),
-      '@rubenpazch/shared/styles': path.resolve(__dirname, '../../../packages/shared/src/styles.css'),
       '@rubenpazch/button': path.resolve(__dirname, '../../../packages/button/src'),
       '@rubenpazch/background': path.resolve(__dirname, '../../../packages/background/src'),
       '@rubenpazch/drawer': path.resolve(__dirname, '../../../packages/drawer/src'),
@@ -47,14 +43,17 @@ const config: StorybookConfig = {
       '@rubenpazch/menu': path.resolve(__dirname, '../../../packages/menu/src'),
       '@rubenpazch/menu-mobile': path.resolve(__dirname, '../../../packages/menu-mobile/src'),
       '@rubenpazch/navbar': path.resolve(__dirname, '../../../packages/navbar/src'),
+      '@rubenpazch/numeric-picker': path.resolve(__dirname, '../../../packages/NumericPicker/src'),
+      '@rubenpazch/numeric-up-picker': path.resolve(__dirname, '../../../packages/NumericUpPicker/src'),
       '@rubenpazch/page': path.resolve(__dirname, '../../../packages/page/src'),
       '@rubenpazch/square-button': path.resolve(__dirname, '../../../packages/square-button/src'),
       '@rubenpazch/text-area': path.resolve(__dirname, '../../../packages/text-area/src'),
       '@rubenpazch/text-input': path.resolve(__dirname, '../../../packages/text-input/src'),
     };
-
     return config;
   }
 };
 
 export default config;
+
+

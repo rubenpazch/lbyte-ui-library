@@ -1,0 +1,33 @@
+{
+  "name": "@rubenpazch/numeric-up-picker",
+  "version": "1.0.0",
+  "private": true,
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "import": "./dist/index.esm.js",
+      "require": "./dist/index.cjs.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "rollup -c",
+    "test": "jest --passWithNoTests"
+  },
+  "peerDependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "dependencies": {
+    "@rubenpazch/icons": "workspace:*"
+  },
+  "devDependencies": {
+    "@rubenpazch/typescript-config": "workspace:*"
+  }
+}

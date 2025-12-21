@@ -1,0 +1,22 @@
+[11:31:54.225] [INFO] storybook v10.1.10
+[11:31:54.487] [DEBUG] Getting package.json info for /Users/rubenpaz/personal/lbyte-ui-library/apps/storybook/package.json...
+[11:31:55.220] [DEBUG] Serving static files from [36mnode_modules/.pnpm/@chromatic-com+storybook@4.1.3_storybook@10.1.10/node_modules/@chromatic-com/storybook/assets[39m at [36m/addon-visual-tests-assets[39m
+[11:31:55.223] [INFO] Starting...
+[11:31:55.602] [DEBUG] Starting preview..
+[11:31:55.685] [ERROR] Failed to build the preview
+[11:31:55.687] [ERROR] [38;2;241;97;97mError: Cannot find module '@vitejs/plugin-react'
+Require stack:
+- ./vite.config.ts
+- /Users/rubenpaz/personal/lbyte-ui-library/node_modules/.pnpm/vite@7.3.0/node_modules/vite/dist/node/chunks/config.js[39m
+    at Function._resolveFilename (node:internal/modules/cjs/loader:1249:15)
+    at Function._load (node:internal/modules/cjs/loader:1075:27)
+    at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:219:24)
+    at Module.require (node:internal/modules/cjs/loader:1340:12)
+    at require (node:internal/modules/helpers:138:16)
+    at Object.<anonymous> (./vite.config.ts:37:35)
+    at Module._compile (node:internal/modules/cjs/loader:1565:14)
+    at _require.extensions.<computed> [as .js] (file:///Users/rubenpaz/personal/lbyte-ui-library/node_modules/.pnpm/vite@7.3.0/node_modules/vite/dist/node/chunks/config.js:35917:44)
+    at Module.load (node:internal/modules/cjs/loader:1318:32)
+[11:31:55.688] [WARN] Broken build, fix the error above.
+You may need to refresh the browser.
