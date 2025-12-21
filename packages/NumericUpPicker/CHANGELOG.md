@@ -1,5 +1,11 @@
 # @rubenpazch/numeric-up-picker
 
+## 2.0.1
+
+### Patch Changes
+
+- 6d66cbb: Update Numeric Up Picker with more stories
+
 ## 2.0.0
 
 ### Major Changes
