@@ -23,16 +23,33 @@
     "release": "changeset publish",
     "generate-package": "node ./scripts/generate-package.js",
     "upgrade:deps": "pnpm -w up --latest",
-    "upgrade:interactive": "pnpm -w up"
+    "upgrade:interactive": "pnpm -w up",
+    "prepare": "husky",
+    "pre-commit": "lint-staged",
+    "pre-push": "pnpm test && pnpm build"
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "prettier --write"
+    ],
+    "*.{json,md,yml,yaml}": [
+      "prettier --write"
+    ]
   },
   "engines": {
-    "node": ">=18.0.0",
+    "node": ">=22.12.0",
     "pnpm": ">=8.0.0"
   },
   "packageManager": "pnpm@8.15.0",
   "devDependencies": {
+    "@babel/preset-env": "^7.28.5",
+    "@babel/preset-react": "^7.28.5",
+    "@babel/preset-typescript": "^7.28.5",
     "@changesets/cli": "^2.29.8",
     "@tailwindcss/postcss": "^4.1.18",
+    "babel-jest": "^30.2.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.7",
     "lodash": "4.17.21",
     "tailwindcss": "^4.1.18",
     "turbo": "^2.7.1"
