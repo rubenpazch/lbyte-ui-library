@@ -1,6 +1,6 @@
-import React from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
-import NumericUpPicker, { type NumericUpPickerProps } from './NumericUpPicker';
+import React from "react";
+import type { Meta, StoryObj } from "@storybook/react";
+import NumericUpPicker, { type NumericUpPickerProps } from "./NumericUpPicker";
 import {
   NumericUpPickerWithState,
   NumericUpPickerWithErrorValidation,
@@ -11,13 +11,13 @@ import {
   NumericUpPickerShowSign,
   NumericUpPickerAlwaysNegative,
   NumericUpPickerIntegerOnly,
-} from './NumericUpPicker.stories.helpers';
+} from "./NumericUpPicker.stories.helpers";
 
 const meta: Meta<NumericUpPickerProps> = {
   component: NumericUpPicker,
-  title: 'Components/NumericUpPicker',
+  title: "Components/NumericUpPicker",
   parameters: {
-    layout: 'padded',
+    layout: "padded",
     docs: {
       description: {
         component: `
@@ -34,93 +34,133 @@ A versatile numeric input component with increment/decrement buttons and compreh
 - ➖ Always negative mode (for cylinder values)
 - 🔢 Integer-only mode (no decimals)
 - 🎯 Use min as default mode (auto-adjust below minimum)
+- ❌ Clearable option with close button
 - ♿ Full accessibility support with ARIA labels
 - 🎨 Disabled state with proper visual feedback
         `,
       },
     },
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   argTypes: {
     value: {
-      control: 'text',
-      description: 'Current numeric value (string or number)',
-      table: { type: { summary: 'string | number' } },
+      control: "text",
+      description: "Current numeric value (string or number)",
+      table: { type: { summary: "string | number" } },
     },
     onChange: {
-      action: 'changed',
-      description: 'Callback fired when value changes',
-      table: { type: { summary: '(value: string) => void' } },
+      action: "changed",
+      description: "Callback fired when value changes",
+      table: { type: { summary: "(value: string) => void" } },
     },
     label: {
-      control: 'text',
-      description: 'Label text displayed above the input',
-      table: { type: { summary: 'string' } },
+      control: "text",
+      description: "Label text displayed above the input",
+      table: { type: { summary: "string" } },
     },
     min: {
-      control: 'number',
-      description: 'Minimum allowed value',
-      table: { type: { summary: 'number' } },
+      control: "number",
+      description: "Minimum allowed value",
+      table: { type: { summary: "number" } },
     },
     max: {
-      control: 'number',
-      description: 'Maximum allowed value',
-      table: { type: { summary: 'number' } },
+      control: "number",
+      description: "Maximum allowed value",
+      table: { type: { summary: "number" } },
     },
     step: {
-      control: 'number',
-      description: 'Step value for increment/decrement',
-      table: { type: { summary: 'number' }, defaultValue: { summary: '0.01' } },
+      control: "number",
+      description: "Step value for increment/decrement",
+      table: { type: { summary: "number" }, defaultValue: { summary: "0.01" } },
     },
     required: {
-      control: 'boolean',
-      description: 'Whether the field is required',
-      table: { type: { summary: 'boolean' }, defaultValue: { summary: 'false' } },
+      control: "boolean",
+      description: "Whether the field is required",
+      table: {
+        type: { summary: "boolean" },
+        defaultValue: { summary: "false" },
+      },
     },
     disabled: {
-      control: 'boolean',
-      description: 'Whether the field is disabled',
-      table: { type: { summary: 'boolean' }, defaultValue: { summary: 'false' } },
+      control: "boolean",
+      description: "Whether the field is disabled",
+      table: {
+        type: { summary: "boolean" },
+        defaultValue: { summary: "false" },
+      },
     },
     integerOnly: {
-      control: 'boolean',
-      description: 'Only allow integer values (no decimals)',
-      table: { type: { summary: 'boolean' }, defaultValue: { summary: 'false' } },
+      control: "boolean",
+      description: "Only allow integer values (no decimals)",
+      table: {
+        type: { summary: "boolean" },
+        defaultValue: { summary: "false" },
+      },
     },
     showSign: {
-      control: 'boolean',
-      description: 'Always show +/- sign for values',
-      table: { type: { summary: 'boolean' }, defaultValue: { summary: 'false' } },
+      control: "boolean",
+      description: "Always show +/- sign for values",
+      table: {
+        type: { summary: "boolean" },
+        defaultValue: { summary: "false" },
+      },
     },
     alwaysNegative: {
-      control: 'boolean',
-      description: 'Always display values as negative (for cylinder)',
-      table: { type: { summary: 'boolean' }, defaultValue: { summary: 'false' } },
+      control: "boolean",
+      description: "Always display values as negative (for cylinder)",
+      table: {
+        type: { summary: "boolean" },
+        defaultValue: { summary: "false" },
+      },
     },
     useMinAsDefault: {
-      control: 'boolean',
-      description: 'Auto-adjust values below min to min value',
-      table: { type: { summary: 'boolean' }, defaultValue: { summary: 'false' } },
+      control: "boolean",
+      description: "Auto-adjust values below min to min value",
+      table: {
+        type: { summary: "boolean" },
+        defaultValue: { summary: "false" },
+      },
     },
     error: {
-      control: 'text',
-      description: 'Error message to display',
-      table: { type: { summary: 'string' } },
+      control: "text",
+      description: "Error message to display",
+      table: { type: { summary: "string" } },
     },
     warning: {
-      control: 'text',
-      description: 'Warning message to display',
-      table: { type: { summary: 'string' } },
+      control: "text",
+      description: "Warning message to display",
+      table: { type: { summary: "string" } },
     },
     hint: {
-      control: 'text',
-      description: 'Hint message to display',
-      table: { type: { summary: 'string' } },
+      control: "text",
+      description: "Hint message to display",
+      table: { type: { summary: "string" } },
     },
     placeholder: {
-      control: 'text',
-      description: 'Placeholder text',
-      table: { type: { summary: 'string' } },
+      control: "text",
+      description: "Placeholder text",
+      table: { type: { summary: "string" } },
+    },
+    clearable: {
+      control: "boolean",
+      description: "Show clear button when value exists",
+      table: {
+        type: { summary: "boolean" },
+        defaultValue: { summary: "false" },
+      },
+    },
+    onClear: {
+      action: "cleared",
+      description: "Callback fired when clear button is clicked",
+      table: { type: { summary: "() => void" } },
+    },
+    defaultToZero: {
+      control: "boolean",
+      description: "Start at 0 instead of min/max when empty",
+      table: {
+        type: { summary: "boolean" },
+        defaultValue: { summary: "false" },
+      },
     },
   },
 };
@@ -139,15 +179,15 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   render: (args) => <NumericUpPickerWithState initialValue="0" {...args} />,
   args: {
-    label: 'Numeric Value',
-    placeholder: '0.00',
+    label: "Numeric Value",
+    placeholder: "0.00",
     step: 0.01,
   },
   parameters: {
     docs: {
       description: {
         story:
-          'Basic numeric input with increment/decrement buttons. Values are formatted to 2 decimal places on blur.',
+          "Basic numeric input with increment/decrement buttons. Values are formatted to 2 decimal places on blur.",
       },
     },
   },
@@ -160,18 +200,18 @@ export const Default: Story = {
 export const WithRange: Story = {
   render: (args) => <NumericUpPickerWithState initialValue="50" {...args} />,
   args: {
-    label: 'Value in Range',
+    label: "Value in Range",
     min: 0,
     max: 100,
     step: 5,
-    placeholder: '0',
-    hint: 'Range: 0 to 100',
+    placeholder: "0",
+    hint: "Range: 0 to 100",
   },
   parameters: {
     docs: {
       description: {
         story:
-          'Demonstrates min/max constraints. Increment button disables at max (100), decrement button disables at min (0).',
+          "Demonstrates min/max constraints. Increment button disables at max (100), decrement button disables at min (0).",
       },
     },
   },
@@ -183,7 +223,7 @@ export const WithRange: Story = {
 export const Required: Story = {
   render: (args) => <NumericUpPickerWithState initialValue="10" {...args} />,
   args: {
-    label: 'Required Value',
+    label: "Required Value",
     required: true,
     min: 0,
     max: 50,
@@ -193,7 +233,7 @@ export const Required: Story = {
     docs: {
       description: {
         story:
-          'Shows required field with red asterisk. Empty values will be reset to minimum on blur.',
+          "Shows required field with red asterisk. Empty values will be reset to minimum on blur.",
       },
     },
   },
@@ -205,11 +245,11 @@ export const Required: Story = {
 export const WithHint: Story = {
   render: (args) => <NumericUpPickerWithState initialValue="60" {...args} />,
   args: {
-    label: 'Distance (mm)',
+    label: "Distance (mm)",
     min: 50,
     max: 70,
     step: 0.1,
-    hint: 'Typical range: 50mm to 70mm',
+    hint: "Typical range: 50mm to 70mm",
   },
 };
 
@@ -225,7 +265,7 @@ export const WithError: Story = {
     />
   ),
   args: {
-    label: 'Invalid Value',
+    label: "Invalid Value",
     min: 0,
     max: 100,
     step: 1,
@@ -245,7 +285,7 @@ export const WithWarning: Story = {
     />
   ),
   args: {
-    label: 'Check Value',
+    label: "Check Value",
     min: 0,
     max: 100,
     step: 5,
@@ -257,8 +297,8 @@ export const WithWarning: Story = {
  */
 export const Disabled: Story = {
   args: {
-    label: 'Disabled Field',
-    value: '42',
+    label: "Disabled Field",
+    value: "42",
     onChange: () => {},
     disabled: true,
     min: 0,
@@ -268,22 +308,45 @@ export const Disabled: Story = {
 };
 
 /**
- * Keyboard Controls - Use arrow keys to increment/decrement
+ * With clearable option - shows close button to clear the value
  */
-export const KeyboardControls: Story = {
-  render: (args) => <NumericUpPickerWithState initialValue="50" {...args} />,
+export const Clearable: Story = {
+  render: (args) => <NumericUpPickerWithState initialValue="25.50" {...args} />,
   args: {
-    label: 'Use Arrow Keys ↑↓',
+    label: "Clearable Value",
     min: 0,
     max: 100,
-    step: 5,
-    hint: 'Focus the input and press arrow up/down keys to adjust the value',
+    step: 0.5,
+    clearable: true,
+    hint: "Click the close icon to clear the value",
   },
   parameters: {
     docs: {
       description: {
         story:
-          'When the input is focused, you can use the **Arrow Up** key to increment and **Arrow Down** key to decrement the value. The step value is respected, and min/max constraints are enforced.',
+          "When `clearable` is true, a close icon appears allowing users to quickly clear the input value. The `onClear` callback is triggered when the close button is clicked.",
+      },
+    },
+  },
+};
+
+/**
+ * Keyboard Controls - Use arrow keys to increment/decrement
+ */
+export const KeyboardControls: Story = {
+  render: (args) => <NumericUpPickerWithState initialValue="50" {...args} />,
+  args: {
+    label: "Use Arrow Keys ↑↓",
+    min: 0,
+    max: 100,
+    step: 5,
+    hint: "Focus the input and press arrow up/down keys to adjust the value",
+  },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "When the input is focused, you can use the **Arrow Up** key to increment and **Arrow Down** key to decrement the value. The step value is respected, and min/max constraints are enforced.",
       },
     },
   },
@@ -295,12 +358,12 @@ export const KeyboardControls: Story = {
 export const UseMinAsDefault: Story = {
   render: (args) => <NumericUpPickerWithState initialValue="0.5" {...args} />,
   args: {
-    label: 'Addition (Near Vision)',
+    label: "Addition (Near Vision)",
     min: 0.5,
     max: 4.0,
     step: 0.25,
     useMinAsDefault: true,
-    hint: 'Values below 0.50 will be adjusted to 0.50',
+    hint: "Values below 0.50 will be adjusted to 0.50",
   },
 };
 
@@ -310,11 +373,11 @@ export const UseMinAsDefault: Story = {
 export const PrescriptionSphere: Story = {
   render: (args) => <NumericUpPickerWithState initialValue="-2.50" {...args} />,
   args: {
-    label: 'Sphere (SPH)',
+    label: "Sphere (SPH)",
     min: -20.0,
     max: 20.0,
     step: 0.25,
-    hint: 'Range: -20.00 D to +20.00 D',
+    hint: "Range: -20.00 D to +20.00 D",
   },
 };
 
@@ -324,11 +387,11 @@ export const PrescriptionSphere: Story = {
 export const PrescriptionCylinder: Story = {
   render: (args) => <NumericUpPickerWithState initialValue="-1.00" {...args} />,
   args: {
-    label: 'Cylinder (CYL)',
+    label: "Cylinder (CYL)",
     min: -6.0,
     max: 6.0,
     step: 0.25,
-    hint: 'Range: -6.00 D to +6.00 D',
+    hint: "Range: -6.00 D to +6.00 D",
   },
 };
 
@@ -338,11 +401,11 @@ export const PrescriptionCylinder: Story = {
 export const PrescriptionAxis: Story = {
   render: (args) => <NumericUpPickerWithState initialValue="90" {...args} />,
   args: {
-    label: 'Axis',
+    label: "Axis",
     min: 0,
     max: 180,
     step: 1,
-    hint: 'Range: 0° to 180°',
+    hint: "Range: 0° to 180°",
   },
 };
 
@@ -352,11 +415,11 @@ export const PrescriptionAxis: Story = {
 export const PrescriptionAdd: Story = {
   render: (args) => <NumericUpPickerWithState initialValue="1.50" {...args} />,
   args: {
-    label: 'Add (Near)',
+    label: "Add (Near)",
     min: 0.5,
     max: 4.0,
     step: 0.25,
-    hint: 'Range: 0.50 D to 4.00 D',
+    hint: "Range: 0.50 D to 4.00 D",
   },
 };
 
@@ -366,11 +429,11 @@ export const PrescriptionAdd: Story = {
 export const PupillaryDistance: Story = {
   render: (args) => <NumericUpPickerWithState initialValue="62" {...args} />,
   args: {
-    label: 'DNP (Pupillary Distance)',
+    label: "DNP (Pupillary Distance)",
     min: 50,
     max: 70,
     step: 0.1,
-    hint: 'Range: 50mm to 70mm',
+    hint: "Range: 50mm to 70mm",
   },
 };
 
@@ -380,11 +443,11 @@ export const PupillaryDistance: Story = {
 export const SmallStep: Story = {
   render: (args) => <NumericUpPickerWithState initialValue="1.5" {...args} />,
   args: {
-    label: 'Precise Value',
+    label: "Precise Value",
     min: 0,
     max: 10,
     step: 0.05,
-    hint: 'Step: 0.05',
+    hint: "Step: 0.05",
   },
 };
 
@@ -394,11 +457,11 @@ export const SmallStep: Story = {
 export const LargeStep: Story = {
   render: (args) => <NumericUpPickerWithState initialValue="50" {...args} />,
   args: {
-    label: 'Coarse Value',
+    label: "Coarse Value",
     min: 0,
     max: 200,
     step: 10,
-    hint: 'Step: 10',
+    hint: "Step: 10",
   },
 };
 
@@ -423,7 +486,14 @@ export const Interactive: Story = {
  * With error and recovery
  */
 export const ErrorRecovery: Story = {
-  render: () => <NumericUpPickerWithErrorRecovery initialValue="150" min={0} max={100} step={10} />,
+  render: () => (
+    <NumericUpPickerWithErrorRecovery
+      initialValue="150"
+      min={0}
+      max={100}
+      step={10}
+    />
+  ),
 };
 
 /**
@@ -439,7 +509,7 @@ export const PrescriptionFields: Story = {
 export const ZeroValue: Story = {
   render: (args) => <NumericUpPickerWithState initialValue="0" {...args} />,
   args: {
-    label: 'Starting at Zero',
+    label: "Starting at Zero",
     min: -10,
     max: 10,
     step: 1,
@@ -452,7 +522,7 @@ export const ZeroValue: Story = {
 export const NegativeValues: Story = {
   render: (args) => <NumericUpPickerWithState initialValue="-5" {...args} />,
   args: {
-    label: 'Negative Range',
+    label: "Negative Range",
     min: -20,
     max: 0,
     step: 1,
@@ -463,9 +533,11 @@ export const NegativeValues: Story = {
  * Very large numbers
  */
 export const LargeNumbers: Story = {
-  render: (args) => <NumericUpPickerWithState initialValue="999999" {...args} />,
+  render: (args) => (
+    <NumericUpPickerWithState initialValue="999999" {...args} />
+  ),
   args: {
-    label: 'Large Value',
+    label: "Large Value",
     min: 0,
     max: 1000000,
     step: 1000,
@@ -476,9 +548,11 @@ export const LargeNumbers: Story = {
  * Decimal precision
  */
 export const DecimalPrecision: Story = {
-  render: (args) => <NumericUpPickerWithState initialValue="3.14159" {...args} />,
+  render: (args) => (
+    <NumericUpPickerWithState initialValue="3.14159" {...args} />
+  ),
   args: {
-    label: 'High Precision',
+    label: "High Precision",
     min: 0,
     max: 10,
     step: 0.00001,

@@ -1,5 +1,11 @@
-import { useState, useMemo, KeyboardEvent, FocusEvent, ChangeEvent } from 'react';
-import { MinusIcon, PlusIcon, CheckIcon, CloseIcon } from '@rubenpazch/icons';
+import {
+  useState,
+  useMemo,
+  KeyboardEvent,
+  FocusEvent,
+  ChangeEvent,
+} from "react";
+import { MinusIcon, PlusIcon, CheckIcon, CloseIcon } from "@rubenpazch/icons";
 
 // CSS to hide native number input spinners
 const hideSpinnersStyle = `
@@ -52,7 +58,7 @@ export default function NumericUpPicker({
   hint,
   warning,
   disabled = false,
-  className = '',
+  className = "",
   required = false,
   useMinAsDefault = false,
   alwaysNegative = false,
@@ -64,16 +70,22 @@ export default function NumericUpPicker({
 }: NumericUpPickerProps) {
   // Track if the field has been touched (user has focused on it)
   const [hasBeenTouched, setHasBeenTouched] = useState(false);
-  const numValue = typeof value === 'string' ? parseFloat(value) || 0 : value;
+  const numValue = typeof value === "string" ? parseFloat(value) || 0 : value;
 
   // Format display value with sign if showSign is true
   const displayValue = useMemo(() => {
-    if (!showSign || value === '' || value === '-' || value === null || value === undefined)
-      return value || '';
+    if (
+      !showSign ||
+      value === "" ||
+      value === "-" ||
+      value === null ||
+      value === undefined
+    )
+      return value || "";
     const strValue = value.toString();
     const numVal = parseFloat(strValue);
     if (isNaN(numVal)) return value;
-    if (numVal > 0 && !strValue.startsWith('+')) {
+    if (numVal > 0 && !strValue.startsWith("+")) {
       return `+${strValue}`;
     }
     return value;
@@ -81,7 +93,12 @@ export default function NumericUpPicker({
 
   const handleIncrement = () => {
     // If value is empty or invalid, start from 0 if defaultToZero, otherwise from min (or 0 if no min)
-    if (value === '' || value === '-' || value === null || value === undefined) {
+    if (
+      value === "" ||
+      value === "-" ||
+      value === null ||
+      value === undefined
+    ) {
       const startValue = defaultToZero ? 0 : min !== undefined ? min : 0;
       if (integerOnly) {
         onChange(Math.round(startValue).toString());
@@ -98,14 +115,23 @@ export default function NumericUpPicker({
       } else {
         const formattedValue = newValue.toFixed(2);
         // If alwaysNegative, ensure the value has a negative sign
-        onChange(alwaysNegative && newValue > 0 ? `-${formattedValue}` : formattedValue);
+        onChange(
+          alwaysNegative && newValue > 0
+            ? `-${formattedValue}`
+            : formattedValue,
+        );
       }
     }
   };
 
   const handleDecrement = () => {
     // If value is empty or invalid, start from 0 if defaultToZero, otherwise from max (or 0 if no max)
-    if (value === '' || value === '-' || value === null || value === undefined) {
+    if (
+      value === "" ||
+      value === "-" ||
+      value === null ||
+      value === undefined
+    ) {
       const startValue = defaultToZero ? 0 : max !== undefined ? max : 0;
       if (integerOnly) {
         onChange(Math.round(startValue).toString());
@@ -131,10 +157,10 @@ export default function NumericUpPicker({
 
   const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
     // Handle arrow up/down keys for incrementing/decrementing
-    if (e.key === 'ArrowUp') {
+    if (e.key === "ArrowUp") {
       e.preventDefault(); // Prevent cursor movement
       handleIncrement();
-    } else if (e.key === 'ArrowDown') {
+    } else if (e.key === "ArrowDown") {
       e.preventDefault(); // Prevent cursor movement
       handleDecrement();
     }
@@ -153,17 +179,17 @@ export default function NumericUpPicker({
 
     // For showSign, remove the plus sign before processing
     if (showSign) {
-      inputValue = inputValue.replace(/^\+/, '');
+      inputValue = inputValue.replace(/^\+/, "");
     }
 
     // For alwaysNegative fields, ensure value always starts with minus sign
     if (alwaysNegative) {
       // Remove any existing minus signs
-      inputValue = inputValue.replace(/-/g, '');
+      inputValue = inputValue.replace(/-/g, "");
 
       // Allow empty input
-      if (inputValue === '') {
-        onChange('-');
+      if (inputValue === "") {
+        onChange("-");
         return;
       }
 
@@ -172,7 +198,7 @@ export default function NumericUpPicker({
     }
 
     // Allow empty input (user deleted content)
-    if (inputValue === '' || inputValue === '-') {
+    if (inputValue === "" || inputValue === "-") {
       onChange(inputValue);
       return;
     }
@@ -182,7 +208,7 @@ export default function NumericUpPicker({
   };
 
   const handleClear = () => {
-    onChange('');
+    onChange("");
     onClear?.();
   };
 
@@ -190,10 +216,10 @@ export default function NumericUpPicker({
     const inputValue = value.toString();
 
     // If empty, handle based on required and useMinAsDefault flags
-    if (inputValue === '' || inputValue === '-') {
+    if (inputValue === "" || inputValue === "-") {
       // For optional fields (!required), allow empty values
       if (!required) {
-        onChange('');
+        onChange("");
         onBlur?.();
         return;
       }
@@ -216,9 +242,9 @@ export default function NumericUpPicker({
         }
       } else if (!hasBeenTouched) {
         // If never touched, keep it empty
-        onChange('');
+        onChange("");
       } else {
-        onChange(integerOnly ? '0' : alwaysNegative ? '-0.00' : '0.00');
+        onChange(integerOnly ? "0" : alwaysNegative ? "-0.00" : "0.00");
       }
       onBlur?.();
       return;
@@ -226,7 +252,7 @@ export default function NumericUpPicker({
 
     // Parse the input value (remove negative sign if present for alwaysNegative fields)
     let numericValue = alwaysNegative
-      ? parseFloat(inputValue.replace(/^-/, ''))
+      ? parseFloat(inputValue.replace(/^-/, ""))
       : parseFloat(inputValue);
 
     // If not a valid number, reset to min or 0
@@ -246,7 +272,7 @@ export default function NumericUpPicker({
           onChange(alwaysNegative ? `-${formattedValue}` : min.toFixed(2));
         }
       } else {
-        onChange(integerOnly ? '0' : alwaysNegative ? '-0.00' : '0.00');
+        onChange(integerOnly ? "0" : alwaysNegative ? "-0.00" : "0.00");
       }
       onBlur?.();
       return;
@@ -299,7 +325,8 @@ export default function NumericUpPicker({
 
   // Disable buttons only if value is not empty and at min/max
   // When value is empty, allow both buttons (they will set to min/max)
-  const isEmpty = value === '' || value === '-' || value === null || value === undefined;
+  const isEmpty =
+    value === "" || value === "-" || value === null || value === undefined;
 
   // For alwaysNegative fields, we compare absolute values
   const isAtMin =
@@ -320,7 +347,7 @@ export default function NumericUpPicker({
       {/* Top Label */}
       {label && (
         <label
-          className={`block text-sm font-medium mb-2 ${error ? 'text-red-700' : 'text-gray-700'}`}
+          className={`block text-sm font-medium mb-2 ${error ? "text-red-700" : "text-gray-700"}`}
         >
           {label}
           {required && <span className="text-red-500 ml-1">*</span>}
@@ -331,10 +358,10 @@ export default function NumericUpPicker({
       <div
         className={`flex items-center justify-between h-12 rounded-lg border-2 transition-all ${
           error
-            ? 'border-red-500 bg-red-50'
+            ? "border-red-500 bg-red-50"
             : disabled
-              ? 'border-gray-300 bg-gray-100 opacity-50 cursor-not-allowed'
-              : 'border-gray-300 bg-gray-50'
+              ? "border-gray-300 bg-gray-100 opacity-50 cursor-not-allowed"
+              : "border-gray-300 bg-gray-50"
         }`}
       >
         {/* Minus Button */}
@@ -344,10 +371,10 @@ export default function NumericUpPicker({
           disabled={disabled || isAtMin}
           className={`flex-shrink-0 w-12 h-full flex items-center justify-center border-r border-gray-300 transition-all ${
             error
-              ? 'text-red-500'
+              ? "text-red-500"
               : disabled || isAtMin
-                ? 'opacity-40 cursor-not-allowed text-gray-400'
-                : 'hover:bg-gray-100 active:bg-gray-200 text-gray-600'
+                ? "opacity-40 cursor-not-allowed text-gray-400"
+                : "hover:bg-gray-100 active:bg-gray-200 text-gray-600"
           }`}
           title="Decrease value"
           aria-label="Decrease"
@@ -356,7 +383,7 @@ export default function NumericUpPicker({
         </button>
 
         {/* Center Display Area */}
-        <div className="flex-1 flex items-center justify-center relative">
+        <div className="flex-1 flex items-center justify-center">
           {/* Value Display Only */}
           <input
             type="text"
@@ -371,28 +398,28 @@ export default function NumericUpPicker({
             placeholder={placeholder}
             disabled={disabled}
             className={`text-center bg-transparent text-lg font-semibold placeholder-gray-400 focus:outline-none border-none ${
-              error ? 'text-red-700' : 'text-gray-900'
-            } ${clearable && !isEmpty ? 'w-20 pr-6' : 'w-16'}`}
+              error ? "text-red-700" : "text-gray-900"
+            } w-full`}
             style={{
-              WebkitAppearance: 'none',
-              MozAppearance: 'textfield',
-              appearance: 'none',
+              WebkitAppearance: "none",
+              MozAppearance: "textfield",
+              appearance: "none",
             }}
           />
-
-          {/* Clear Button - appears when clearable and has value */}
-          {clearable && !isEmpty && !disabled && (
-            <button
-              type="button"
-              onClick={handleClear}
-              className="absolute right-1 top-1/2 -translate-y-1/2 w-5 h-5 flex items-center justify-center rounded-full hover:bg-gray-200 active:bg-gray-300 transition-colors text-gray-500 hover:text-gray-700"
-              title="Clear value"
-              aria-label="Clear"
-            >
-              <CloseIcon size="sm" className="w-3 h-3" />
-            </button>
-          )}
         </div>
+
+        {/* Clear Button - appears when clearable and has value */}
+        {clearable && !isEmpty && !disabled && (
+          <button
+            type="button"
+            onClick={handleClear}
+            className="flex-shrink-0 w-6 h-6 mr-2 flex items-center justify-center rounded-full transition-all hover:bg-gray-200 active:bg-gray-300 text-gray-500 hover:text-gray-700"
+            title="Clear value"
+            aria-label="Clear"
+          >
+            <CloseIcon size="sm" />
+          </button>
+        )}
 
         {/* Plus Button */}
         <button
@@ -401,10 +428,10 @@ export default function NumericUpPicker({
           disabled={disabled || isAtMax}
           className={`flex-shrink-0 w-12 h-full flex items-center justify-center border-l border-gray-300 transition-all ${
             error
-              ? 'text-red-500'
+              ? "text-red-500"
               : disabled || isAtMax
-                ? 'opacity-40 cursor-not-allowed text-gray-400'
-                : 'hover:bg-gray-100 active:bg-gray-200 text-gray-600'
+                ? "opacity-40 cursor-not-allowed text-gray-400"
+                : "hover:bg-gray-100 active:bg-gray-200 text-gray-600"
           }`}
           title="Increase value"
           aria-label="Increase"
@@ -432,7 +459,9 @@ export default function NumericUpPicker({
       )}
 
       {/* Hint message (shows if no error or warning) */}
-      {hint && !error && !warning && <p className="mt-2 text-xs text-gray-500">{hint}</p>}
+      {hint && !error && !warning && (
+        <p className="mt-2 text-xs text-gray-500">{hint}</p>
+      )}
     </div>
   );
 }
