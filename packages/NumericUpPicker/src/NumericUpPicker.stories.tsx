@@ -579,3 +579,169 @@ This story demonstrates the two decimal places formatting requirement:
     },
   },
 };
+
+/**
+ * Clearable with state management
+ * Shows clear button functionality with proper state handling
+ */
+export const ClearableWithState: Story = {
+  render: (args) => <NumericUpPickerWithState initialValue="75.25" {...args} />,
+  args: {
+    label: "Clearable Field",
+    min: 0,
+    max: 100,
+    step: 0.25,
+    clearable: true,
+    hint: "Click the × button to clear the value",
+  },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Demonstrates the clearable feature with a circular close button. When clicked, the value is cleared and the onClear callback is triggered.",
+      },
+    },
+  },
+};
+
+/**
+ * Default to zero mode
+ * When empty and buttons are clicked, starts from 0 instead of min/max
+ */
+export const DefaultToZero: Story = {
+  render: (args) => <NumericUpPickerWithState initialValue="" {...args} />,
+  args: {
+    label: "Default to Zero",
+    min: -10,
+    max: 10,
+    step: 1,
+    defaultToZero: true,
+    hint: "Click + or - when empty to start from 0, not from min/max",
+  },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "With defaultToZero enabled, clicking increment or decrement on an empty field starts from 0 instead of the min or max value.",
+      },
+    },
+  },
+};
+
+/**
+ * Combined features: clearable + integer only
+ */
+export const ClearableInteger: Story = {
+  render: (args) => <NumericUpPickerWithState initialValue="50" {...args} />,
+  args: {
+    label: "Age",
+    min: 0,
+    max: 120,
+    step: 1,
+    clearable: true,
+    integerOnly: true,
+    hint: "Integer only field with clear button",
+  },
+};
+
+/**
+ * Combined features: clearable + show sign
+ */
+export const ClearableWithSign: Story = {
+  render: (args) => <NumericUpPickerWithState initialValue="5.50" {...args} />,
+  args: {
+    label: "Temperature Change (°C)",
+    min: -50,
+    max: 50,
+    step: 0.5,
+    clearable: true,
+    showSign: true,
+    hint: "Shows + or - sign with clearable option",
+  },
+};
+
+/**
+ * Required field with validation
+ */
+export const RequiredField: Story = {
+  render: (args) => <NumericUpPickerWithState initialValue="" {...args} />,
+  args: {
+    label: "Required Amount",
+    min: 1,
+    max: 1000,
+    step: 1,
+    required: true,
+    hint: "This field is required - must have a value",
+  },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Required fields show a red asterisk and enforce validation. When left empty and blurred, the field sets to the minimum value.",
+      },
+    },
+  },
+};
+
+/**
+ * No min/max constraints - free range
+ */
+export const UnconstrainedRange: Story = {
+  render: (args) => <NumericUpPickerWithState initialValue="0" {...args} />,
+  args: {
+    label: "Free Range Value",
+    step: 1,
+    hint: "No min/max constraints - any value allowed",
+  },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "When min and max are not specified, the field allows any numeric value without constraints.",
+      },
+    },
+  },
+};
+
+/**
+ * Multiple fields in a form
+ */
+export const MultipleFields: Story = {
+  render: () => (
+    <div className="space-y-4">
+      <NumericUpPickerWithState
+        initialValue="25"
+        label="Quantity"
+        min={1}
+        max={100}
+        step={1}
+        integerOnly={true}
+      />
+      <NumericUpPickerWithState
+        initialValue="19.99"
+        label="Price ($)"
+        min={0}
+        max={9999.99}
+        step={0.01}
+        clearable={true}
+      />
+      <NumericUpPickerWithState
+        initialValue="15"
+        label="Discount (%)"
+        min={0}
+        max={100}
+        step={5}
+        integerOnly={true}
+        clearable={true}
+      />
+    </div>
+  ),
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Example of multiple NumericUpPicker fields in a form with different configurations.",
+      },
+    },
+  },
+};

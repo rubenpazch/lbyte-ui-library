@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import NumericUpPicker from './NumericUpPicker';
+import { useState } from "react";
+import NumericUpPicker from "./NumericUpPicker";
 
 // Define the props type based on the component's interface
 type NumericUpPickerProps = {
@@ -22,15 +22,18 @@ type NumericUpPickerProps = {
   alwaysNegative?: boolean;
   integerOnly?: boolean;
   showSign?: boolean;
+  defaultToZero?: boolean;
+  clearable?: boolean;
+  onClear?: () => void;
 };
 
 /**
  * Wrapper component that provides state management for NumericUpPicker stories
  */
 export const NumericUpPickerWithState = ({
-  initialValue = '0',
+  initialValue = "0",
   ...props
-}: Omit<NumericUpPickerProps, 'value' | 'onChange'> & {
+}: Omit<NumericUpPickerProps, "value" | "onChange"> & {
   initialValue?: string;
 }) => {
   const [value, setValue] = useState(initialValue);
@@ -42,18 +45,20 @@ export const NumericUpPickerWithState = ({
  * Wrapper for stories with dynamic error validation
  */
 export const NumericUpPickerWithErrorValidation = ({
-  initialValue = '0',
+  initialValue = "0",
   min = 0,
   max = 100,
-  errorMessage = 'Value must be between {min} and {max}',
+  errorMessage = "Value must be between {min} and {max}",
   ...props
-}: Omit<NumericUpPickerProps, 'value' | 'onChange' | 'error'> & {
+}: Omit<NumericUpPickerProps, "value" | "onChange" | "error"> & {
   initialValue?: string;
   errorMessage?: string;
 }) => {
   const [value, setValue] = useState(initialValue);
   const numValue = parseFloat(value) || 0;
-  const hasError = (min !== undefined && numValue < min) || (max !== undefined && numValue > max);
+  const hasError =
+    (min !== undefined && numValue < min) ||
+    (max !== undefined && numValue > max);
 
   return (
     <NumericUpPicker
@@ -63,7 +68,11 @@ export const NumericUpPickerWithErrorValidation = ({
       value={value}
       onChange={setValue}
       error={
-        hasError ? errorMessage.replace('{min}', String(min)).replace('{max}', String(max)) : ''
+        hasError
+          ? errorMessage
+              .replace("{min}", String(min))
+              .replace("{max}", String(max))
+          : ""
       }
     />
   );
@@ -73,11 +82,11 @@ export const NumericUpPickerWithErrorValidation = ({
  * Wrapper for stories with dynamic warning
  */
 export const NumericUpPickerWithWarning = ({
-  initialValue = '0',
+  initialValue = "0",
   warningThreshold = 90,
-  warningMessage = 'This value is near the maximum',
+  warningMessage = "This value is near the maximum",
   ...props
-}: Omit<NumericUpPickerProps, 'value' | 'onChange' | 'warning'> & {
+}: Omit<NumericUpPickerProps, "value" | "onChange" | "warning"> & {
   initialValue?: string;
   warningThreshold?: number;
   warningMessage?: string;
@@ -91,7 +100,7 @@ export const NumericUpPickerWithWarning = ({
       {...props}
       value={value}
       onChange={setValue}
-      warning={showWarning ? warningMessage : ''}
+      warning={showWarning ? warningMessage : ""}
     />
   );
 };
@@ -100,11 +109,11 @@ export const NumericUpPickerWithWarning = ({
  * Wrapper for interactive demo with visual feedback
  */
 export const NumericUpPickerInteractive = ({
-  initialValue = '50',
+  initialValue = "50",
   showFeedback = true,
   feedbackDuration = 2000,
   ...props
-}: Omit<NumericUpPickerProps, 'value' | 'onChange'> & {
+}: Omit<NumericUpPickerProps, "value" | "onChange"> & {
   initialValue?: string;
   showFeedback?: boolean;
   feedbackDuration?: number;
@@ -137,21 +146,23 @@ export const NumericUpPickerInteractive = ({
  */
 export const PrescriptionForm = () => {
   // Right Eye / Ojo Derecho (OD)
-  const [odSphere, setOdSphere] = useState('-2.50');
-  const [odCylinder, setOdCylinder] = useState('-1.00');
-  const [odAxis, setOdAxis] = useState('90');
-  const [odAdd, setOdAdd] = useState('1.50');
+  const [odSphere, setOdSphere] = useState("-2.50");
+  const [odCylinder, setOdCylinder] = useState("-1.00");
+  const [odAxis, setOdAxis] = useState("90");
+  const [odAdd, setOdAdd] = useState("1.50");
 
   // Left Eye / Ojo Izquierdo (OI)
-  const [osSphere, setOsSphere] = useState('-2.75');
-  const [osCylinder, setOsCylinder] = useState('-1.25');
-  const [osAxis, setOsAxis] = useState('85');
-  const [osAdd, setOsAdd] = useState('1.50');
+  const [osSphere, setOsSphere] = useState("-2.75");
+  const [osCylinder, setOsCylinder] = useState("-1.25");
+  const [osAxis, setOsAxis] = useState("85");
+  const [osAdd, setOsAdd] = useState("1.50");
 
   return (
     <div className="space-y-6 max-w-md">
       <div>
-        <h3 className="text-lg font-semibold mb-4">OD (Right Eye / Ojo Derecho)</h3>
+        <h3 className="text-lg font-semibold mb-4">
+          OD (Right Eye / Ojo Derecho)
+        </h3>
         <div className="space-y-4">
           <NumericUpPicker
             label="Sphere"
@@ -189,7 +200,9 @@ export const PrescriptionForm = () => {
       </div>
 
       <div>
-        <h3 className="text-lg font-semibold mb-4">OS (Left Eye / Ojo Izquierdo)</h3>
+        <h3 className="text-lg font-semibold mb-4">
+          OS (Left Eye / Ojo Izquierdo)
+        </h3>
         <div className="space-y-4">
           <NumericUpPicker
             label="Sphere"
@@ -233,7 +246,7 @@ export const PrescriptionForm = () => {
  * Wrapper for error recovery demo
  */
 export const NumericUpPickerWithErrorRecovery = ({
-  initialValue = '150',
+  initialValue = "150",
   min = 0,
   max = 100,
   step = 10,
@@ -255,11 +268,11 @@ export const NumericUpPickerWithErrorRecovery = ({
         min={min}
         max={max}
         step={step}
-        error={hasError ? `Maximum value is ${max}` : ''}
-        hint={!hasError ? `Range: ${min} to ${max}` : ''}
+        error={hasError ? `Maximum value is ${max}` : ""}
+        hint={!hasError ? `Range: ${min} to ${max}` : ""}
       />
       <div className="p-3 bg-blue-50 border border-blue-200 rounded text-blue-700">
-        Current value: {value} {hasError && '(OUT OF RANGE)'}
+        Current value: {value} {hasError && "(OUT OF RANGE)"}
       </div>
     </div>
   );
@@ -269,40 +282,61 @@ export const NumericUpPickerWithErrorRecovery = ({
  * Wrapper for showSign mode
  */
 export const NumericUpPickerShowSign = ({
-  initialValue = '2.50',
+  initialValue = "2.50",
   ...props
-}: Omit<NumericUpPickerProps, 'value' | 'onChange' | 'showSign'> & {
+}: Omit<NumericUpPickerProps, "value" | "onChange" | "showSign"> & {
   initialValue?: string;
 }) => {
   const [value, setValue] = useState(initialValue);
 
-  return <NumericUpPicker {...props} value={value} onChange={setValue} showSign={true} />;
+  return (
+    <NumericUpPicker
+      {...props}
+      value={value}
+      onChange={setValue}
+      showSign={true}
+    />
+  );
 };
 
 /**
  * Wrapper for alwaysNegative mode
  */
 export const NumericUpPickerAlwaysNegative = ({
-  initialValue = '-2.00',
+  initialValue = "-2.00",
   ...props
-}: Omit<NumericUpPickerProps, 'value' | 'onChange' | 'alwaysNegative'> & {
+}: Omit<NumericUpPickerProps, "value" | "onChange" | "alwaysNegative"> & {
   initialValue?: string;
 }) => {
   const [value, setValue] = useState(initialValue);
 
-  return <NumericUpPicker {...props} value={value} onChange={setValue} alwaysNegative={true} />;
+  return (
+    <NumericUpPicker
+      {...props}
+      value={value}
+      onChange={setValue}
+      alwaysNegative={true}
+    />
+  );
 };
 
 /**
  * Wrapper for integerOnly mode
  */
 export const NumericUpPickerIntegerOnly = ({
-  initialValue = '90',
+  initialValue = "90",
   ...props
-}: Omit<NumericUpPickerProps, 'value' | 'onChange' | 'integerOnly'> & {
+}: Omit<NumericUpPickerProps, "value" | "onChange" | "integerOnly"> & {
   initialValue?: string;
 }) => {
   const [value, setValue] = useState(initialValue);
 
-  return <NumericUpPicker {...props} value={value} onChange={setValue} integerOnly={true} />;
+  return (
+    <NumericUpPicker
+      {...props}
+      value={value}
+      onChange={setValue}
+      integerOnly={true}
+    />
+  );
 };
