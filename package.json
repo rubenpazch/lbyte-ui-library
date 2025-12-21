@@ -20,7 +20,10 @@
     "storybook": "turbo storybook",
     "build-storybook": "turbo build-storybook",
     "clean": "turbo clean && rm -rf node_modules",
-    "release": "changeset publish"
+    "release": "changeset publish",
+    "generate-package": "node ./scripts/generate-package.js"
+    ,"upgrade:deps": "pnpm -w up --latest",
+    "upgrade:interactive": "pnpm -w up"
   },
   "engines": {
     "node": ">=18.0.0",
@@ -28,7 +31,8 @@
   },
   "packageManager": "pnpm@8.15.0",
   "devDependencies": {
-    "@changesets/cli": "^2.27.1",
-    "turbo": "^2.3.3"
+    "@changesets/cli": "^2.29.8",
+    "lodash": "4.17.21",
+    "turbo": "^2.7.1"
   }
 }

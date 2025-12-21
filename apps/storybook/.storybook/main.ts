@@ -1,5 +1,9 @@
-import type { StorybookConfig } from "@storybook/react-webpack5";
+import type { StorybookConfig } from "@storybook/react-vite";
 import path from "path";
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const config: StorybookConfig = {
   stories: [
@@ -11,12 +15,14 @@ const config: StorybookConfig = {
     "@storybook/addon-docs",
     "@storybook/addon-a11y",
     "@storybook/addon-themes",
-    "@chromatic-com/storybook",
-    "@storybook/addon-webpack5-compiler-babel",
+    "@chromatic-com/storybook"
   ],
   framework: {
-    name: "@storybook/react-webpack5",
+    name: "@storybook/react-vite",
     options: {},
+  },
+  core: {
+    builder: "@storybook/builder-vite",
   },
   docs: {
     autodocs: true,
@@ -24,35 +30,10 @@ const config: StorybookConfig = {
   typescript: {
     reactDocgen: "react-docgen-typescript",
   },
-  webpackFinal: async (config) => {
-    // Configure Babel to handle TypeScript type imports
-    config.module = config.module || {};
-    config.module.rules = config.module.rules || [];
-
-    // Find the Babel loader rule and update its options
-    const babelLoaderRule = config.module.rules.find((rule) => {
-      if (typeof rule !== 'object' || !rule || !('test' in rule)) return false;
-      return rule.test instanceof RegExp && (rule.test.test('.tsx') || rule.test.test('.ts'));
-    });
-
-    if (babelLoaderRule && typeof babelLoaderRule === 'object' && 'use' in babelLoaderRule) {
-      const useArray = Array.isArray(babelLoaderRule.use) ? babelLoaderRule.use : [babelLoaderRule.use];
-      useArray.forEach((use: any) => {
-        if (use && typeof use === 'object' && use.loader && use.loader.includes('babel-loader')) {
-          use.options = use.options || {};
-          use.options.presets = [
-            '@babel/preset-env',
-            '@babel/preset-react',
-            ['@babel/preset-typescript', { isTSX: true, allExtensions: true }]
-          ];
-        }
-      });
-    }
-
-    // Resolve aliases for workspace packages
-    config.resolve = config.resolve || {};
+  viteFinal: async (config) => {
+    config.resolve = config.resolve || { alias: {} };
     config.resolve.alias = {
-      ...config.resolve.alias,
+      ...(config.resolve.alias || {}),
       '@rubenpazch/shared': path.resolve(__dirname, '../../../packages/shared/src'),
       '@rubenpazch/shared/styles': path.resolve(__dirname, '../../../packages/shared/src/styles.css'),
       '@rubenpazch/button': path.resolve(__dirname, '../../../packages/button/src'),
@@ -73,7 +54,7 @@ const config: StorybookConfig = {
     };
 
     return config;
-  },
+  }
 };
 
 export default config;

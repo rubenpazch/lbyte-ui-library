@@ -19,7 +19,7 @@
     "clean": "rm -rf dist"
   },
   "peerDependencies": {
-    "react": "^18.3.1"
+    "react": "^19.2.3"
   },
   "dependencies": {
     "classnames": "^2.3.2"
@@ -38,6 +38,17 @@
     "rollup-plugin-postcss": "^4.0.2",
     "rollup-plugin-typescript2": "^0.36.0",
     "tslib": "^2.5.2",
-    "typescript": "^5.0.4"
+    "typescript": "^5.0.4",
+    "@rubenpazch/eslint-config": "workspace:*",
+    "@testing-library/react": "^16.1.0",
+    "@types/jest": "^29.5.1",
+    "@types/react-dom": "^19.0.2",
+    "eslint": "^9.16.0",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^29.5.0",
+    "jest-environment-jsdom": "^29.5.0",
+    "prettier": "^3.2.5",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3"
   }
 }
