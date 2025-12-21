@@ -314,16 +314,34 @@ The repository is configured with GitHub Actions for automated releases using **
    - GitHub Actions automatically publishes to npm with provenance
    - Tags are created automatically
 
-### NPM Trusted Publishing Setup
+### NPM Token Setup (GitHub Actions)
 
-This repository uses NPM's Trusted Publishing (no tokens needed!):
+**Required GitHub Secret:**
+
+1. **Create NPM Access Token:**
+
+   ```bash
+   # Login to npm
+   npm login
+
+   # Create an automation token
+   npm token create --type=automation
+
+   # Copy the token
+   ```
+
+2. **Add to GitHub Secrets:**
+   - Go to: https://github.com/rubenpazch/lbyte-ui-library/settings/secrets/actions
+   - Click "New repository secret"
+   - Name: `NPM_TOKEN`
+   - Value: `<paste your token>`
 
 **Benefits:**
 
-- ✅ No need to manage NPM tokens
-- ✅ Automatic token rotation
+- ✅ Automated publishing on merge
 - ✅ Provenance attestation for published packages
-- ✅ Enhanced security with OIDC
+- ✅ Published packages show verified GitHub repository link
+- ✅ Build reproducibility
 
 **One-time Setup on NPM:**
 
@@ -335,8 +353,8 @@ This repository uses NPM's Trusted Publishing (no tokens needed!):
 
 **How it works:**
 
-- GitHub Actions uses OpenID Connect (OIDC) to authenticate with npm
-- NPM validates the GitHub workflow identity
+- GitHub Actions uses npm token to authenticate with npm
+- Provenance attestation is added via `NPM_CONFIG_PROVENANCE=true`
 - Packages are published with provenance attestation
 - Published packages show verified GitHub repository link
 
@@ -350,8 +368,8 @@ This repository uses NPM's Trusted Publishing (no tokens needed!):
 **Release Workflow** (`.github/workflows/release.yml`)
 
 - Runs only on pushes to main
-- Uses Trusted Publishing with `id-token: write` permission
-- Creates version PRs or publishes to npm with provenance
+- Uses npm token with provenance attestation
+- Creates version PRs or publishes to npm with attestation
 
 ### Required Permissions
 
@@ -361,7 +379,7 @@ The release workflow requires these permissions (already configured):
 permissions:
   contents: write # Create tags and releases
   pull-requests: write # Create version PRs
-  id-token: write # OIDC token for npm authentication
+  id-token: write # OIDC token for provenance attestation
 ```
 
 ## Post-Release
