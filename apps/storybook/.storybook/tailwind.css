@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+@source "../../../packages/button/src/**/*.{js,jsx,ts,tsx}";
+@source "../../../packages/background/src/**/*.{js,jsx,ts,tsx}";
+@source "../../../packages/drawer/src/**/*.{js,jsx,ts,tsx}";
+@source "../../../packages/drawer-menu-mobile/src/**/*.{js,jsx,ts,tsx}";
+@source "../../../packages/icon-button/src/**/*.{js,jsx,ts,tsx}";
+@source "../../../packages/icons/src/**/*.{js,jsx,ts,tsx}";
+@source "../../../packages/input-button/src/**/*.{js,jsx,ts,tsx}";
+@source "../../../packages/link/src/**/*.{js,jsx,ts,tsx}";
+@source "../../../packages/menu/src/**/*.{js,jsx,ts,tsx}";
+@source "../../../packages/menu-mobile/src/**/*.{js,jsx,ts,tsx}";
+@source "../../../packages/navbar/src/**/*.{js,jsx,ts,tsx}";
+@source "../../../packages/page/src/**/*.{js,jsx,ts,tsx}";
+@source "../../../packages/square-button/src/**/*.{js,jsx,ts,tsx}";
+@source "../../../packages/text-area/src/**/*.{js,jsx,ts,tsx}";
+@source "../../../packages/text-input/src/**/*.{js,jsx,ts,tsx}";

@@ -492,7 +492,7 @@
     --ds-primary-color-800: #5c52c0;
     --ds-primary-color-900: #564db4;
 
-   
+
 
     --ds-primary-opacity-lighter: #7367f008;
     --ds-primary-opacity-lighter: #7367f016;
@@ -501,3 +501,8 @@
     --ds-primary-opacity-lighter: #7367f038;*/
   }
 }
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+

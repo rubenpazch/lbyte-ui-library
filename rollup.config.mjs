@@ -6,7 +6,12 @@ import dts from "rollup-plugin-dts";
 import terser from "@rollup/plugin-terser";
 import peerDepsExternal from "rollup-plugin-peer-deps-external";
 import autoprefixer from "autoprefixer";
-import packageJson from "./package.json" assert { type: "json" };
+import tailwind from "@tailwindcss/postcss";
+import { readFileSync } from "fs";
+
+const packageJson = JSON.parse(
+  readFileSync(new URL("./package.json", import.meta.url), "utf8")
+);
 import { sizeSnapshot } from "rollup-plugin-size-snapshot";
 import image from "@rollup/plugin-image";
 
@@ -41,7 +46,7 @@ export default [
         writeDefinitions: true,
         modules: true,
         namedExports: true,
-        plugins: [autoprefixer()],
+        plugins: [tailwind(), autoprefixer()],
       }),
       image(),
       sizeSnapshot(),
