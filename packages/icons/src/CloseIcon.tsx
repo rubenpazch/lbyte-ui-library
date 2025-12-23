@@ -1,19 +1,21 @@
+// @ts-ignore - React import needed for Jest transforms
+import * as React from "react";
 
 interface CloseIconProps {
   className?: string;
-  size?: 'sm' | 'md' | 'lg';
+  size?: "sm" | "md" | "lg";
   color?: string;
 }
 
 export default function CloseIcon({
-  className = '',
-  size = 'md',
-  color = 'currentColor',
+  className = "",
+  size = "md",
+  color = "currentColor",
 }: CloseIconProps) {
   const sizeClasses = {
-    sm: 'w-4 h-4',
-    md: 'w-5 h-5',
-    lg: 'w-6 h-6',
+    sm: "w-4 h-4",
+    md: "w-5 h-5",
+    lg: "w-6 h-6",
   };
 
   return (
@@ -29,5 +31,4 @@ export default function CloseIcon({
       <path d="M6 18L18 6M6 6l12 12" />
     </svg>
   );
-};
-
+}
