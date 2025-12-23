@@ -1,0 +1,14 @@
+{
+  "extends": "../../tooling/typescript-config/react.json",
+  "compilerOptions": {
+    "outDir": "dist",
+    "rootDir": "src",
+    "declarationDir": "dist",
+    "baseUrl": ".",
+    "paths": {
+      "@rubenpazch/icons": ["../icons/dist"]
+    }
+  },
+  "include": ["src", "../../css-module.d.ts"],
+  "exclude": ["node_modules", "dist", "**/*.test.*", "**/*.stories.*"]
+}
