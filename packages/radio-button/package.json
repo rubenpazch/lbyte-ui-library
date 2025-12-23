@@ -1,10 +1,18 @@
 {
   "name": "@rubenpazch/radio-button",
   "version": "1.0.0",
+  "description": "Accessible radio button and radio group components with variants and validation",
   "private": false,
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
   "types": "dist/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rubenpazch/lbyte-ui-library.git",
+    "directory": "packages/radio-button"
+  },
+  "author": "Ruben Paz Chuspe <rubenpazchuspe@outlook.com>",
+  "license": "MIT",
   "files": [
     "dist"
   ],
@@ -26,5 +34,8 @@
   },
   "devDependencies": {
     "@rubenpazch/typescript-config": "workspace:*"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
