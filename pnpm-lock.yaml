@@ -404,6 +404,19 @@ importers:
         specifier: ^5.0.4
         version: 5.9.3
 
+  packages/radio-button:
+    dependencies:
+      react:
+        specifier: ^19.0.0
+        version: 19.2.3
+      react-dom:
+        specifier: ^19.0.0
+        version: 19.2.3(react@19.2.3)
+    devDependencies:
+      "@rubenpazch/typescript-config":
+        specifier: workspace:*
+        version: link:../../tooling/typescript-config
+
   packages/shared:
     dependencies:
       classnames:
@@ -485,19 +498,6 @@ importers:
       typescript:
         specifier: ^5.0.4
         version: 5.9.3
-
-  packages/side-bar:
-    dependencies:
-      react:
-        specifier: ^19.0.0
-        version: 19.2.3
-      react-dom:
-        specifier: ^19.0.0
-        version: 19.2.3(react@19.2.3)
-    devDependencies:
-      "@rubenpazch/typescript-config":
-        specifier: workspace:*
-        version: link:../../tooling/typescript-config
 
   packages/text-input:
     dependencies:
