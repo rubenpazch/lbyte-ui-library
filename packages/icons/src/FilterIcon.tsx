@@ -1,8 +1,8 @@
-import React from 'react';
+import React from "react";
 
 interface FilterIconProps {
   className?: string;
-  size?: 'sm' | 'md' | 'lg';
+  size?: "sm" | "md" | "lg";
 }
 
 /**
@@ -15,11 +15,14 @@ interface FilterIconProps {
  * <FilterIcon size="md" />
  * <FilterIcon className="w-6 h-6 text-blue-600" />
  */
-const FilterIcon: React.FC<FilterIconProps> = ({ className = '', size = 'md' }) => {
+const FilterIcon: React.FC<FilterIconProps> = ({
+  className = "",
+  size = "md",
+}) => {
   const sizeClasses = {
-    sm: 'w-4 h-4',
-    md: 'w-5 h-5',
-    lg: 'w-6 h-6',
+    sm: "w-4 h-4",
+    md: "w-5 h-5",
+    lg: "w-6 h-6",
   };
 
   const defaultClasses = `${sizeClasses[size]} ${className}`;

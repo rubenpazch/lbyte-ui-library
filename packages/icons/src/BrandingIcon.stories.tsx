@@ -1,23 +1,23 @@
-import React from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
-import BrandingIcon from './BrandingIcon';
+import React from "react";
+import type { Meta, StoryObj } from "@storybook/react";
+import BrandingIcon from "./BrandingIcon";
 
 const meta = {
-  title: 'Icons/Actions/BrandingIcon',
+  title: "Icons/Actions/BrandingIcon",
   component: BrandingIcon,
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   argTypes: {
     size: {
-      control: 'select',
-      options: ['sm', 'md', 'lg'],
-      description: 'Size of the icon',
+      control: "select",
+      options: ["sm", "md", "lg"],
+      description: "Size of the icon",
     },
     className: {
-      control: 'text',
-      description: 'Additional CSS classes for styling',
+      control: "text",
+      description: "Additional CSS classes for styling",
     },
   },
 } satisfies Meta<typeof BrandingIcon>;
@@ -31,7 +31,7 @@ type Story = StoryObj<typeof meta>;
  */
 export const Default: Story = {
   args: {
-    size: 'md',
+    size: "md",
   },
 };
 
@@ -41,7 +41,7 @@ export const Default: Story = {
  */
 export const Small: Story = {
   args: {
-    size: 'sm',
+    size: "sm",
   },
 };
 
@@ -51,7 +51,7 @@ export const Small: Story = {
  */
 export const Large: Story = {
   args: {
-    size: 'lg',
+    size: "lg",
   },
 };
 
@@ -61,8 +61,8 @@ export const Large: Story = {
  */
 export const PurpleColor: Story = {
   args: {
-    size: 'md',
-    className: 'text-purple-600',
+    size: "md",
+    className: "text-purple-600",
   },
 };
 
@@ -72,8 +72,8 @@ export const PurpleColor: Story = {
  */
 export const PinkColor: Story = {
   args: {
-    size: 'md',
-    className: 'text-pink-600',
+    size: "md",
+    className: "text-pink-600",
   },
 };
 
@@ -82,8 +82,8 @@ export const PinkColor: Story = {
  */
 export const CustomColor: Story = {
   args: {
-    size: 'md',
-    className: 'text-indigo-500',
+    size: "md",
+    className: "text-indigo-500",
   },
 };
 
@@ -173,11 +173,14 @@ export const InSettingsCard: Story = {
         </div>
         <div>
           <h3 className="font-semibold text-gray-900">Branding Settings</h3>
-          <p className="text-sm text-gray-500">Customize your brand appearance</p>
+          <p className="text-sm text-gray-500">
+            Customize your brand appearance
+          </p>
         </div>
       </div>
       <p className="text-sm text-gray-600">
-        Upload your logo and configure your brand colors to match your company identity.
+        Upload your logo and configure your brand colors to match your company
+        identity.
       </p>
     </div>
   ),
@@ -225,8 +228,8 @@ export const InFeatureList: Story = {
       <div>
         <h4 className="font-medium text-gray-900">Custom Branding</h4>
         <p className="text-sm text-gray-600">
-          Upload your company logo and customize colors to match your brand identity across the
-          entire application.
+          Upload your company logo and customize colors to match your brand
+          identity across the entire application.
         </p>
       </div>
     </div>

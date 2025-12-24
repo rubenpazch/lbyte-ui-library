@@ -1,23 +1,23 @@
-import React from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
-import ErrorIcon from './ErrorIcon';
+import React from "react";
+import type { Meta, StoryObj } from "@storybook/react";
+import ErrorIcon from "./ErrorIcon";
 
 const meta = {
-  title: 'Icons/Feedback/ErrorIcon',
+  title: "Icons/Feedback/ErrorIcon",
   component: ErrorIcon,
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   argTypes: {
     size: {
-      control: 'select',
-      options: ['sm', 'md', 'lg'],
-      description: 'Size of the icon',
+      control: "select",
+      options: ["sm", "md", "lg"],
+      description: "Size of the icon",
     },
     className: {
-      control: 'text',
-      description: 'Additional CSS classes for styling',
+      control: "text",
+      description: "Additional CSS classes for styling",
     },
   },
 } satisfies Meta<typeof ErrorIcon>;
@@ -31,7 +31,7 @@ type Story = StoryObj<typeof meta>;
  */
 export const Default: Story = {
   args: {
-    size: 'md',
+    size: "md",
   },
 };
 
@@ -41,7 +41,7 @@ export const Default: Story = {
  */
 export const Small: Story = {
   args: {
-    size: 'sm',
+    size: "sm",
   },
 };
 
@@ -51,7 +51,7 @@ export const Small: Story = {
  */
 export const Large: Story = {
   args: {
-    size: 'lg',
+    size: "lg",
   },
 };
 
@@ -61,8 +61,8 @@ export const Large: Story = {
  */
 export const RedColor: Story = {
   args: {
-    size: 'md',
-    className: 'text-red-600',
+    size: "md",
+    className: "text-red-600",
   },
 };
 
@@ -72,8 +72,8 @@ export const RedColor: Story = {
  */
 export const LightRedColor: Story = {
   args: {
-    size: 'md',
-    className: 'text-red-400',
+    size: "md",
+    className: "text-red-400",
   },
 };
 
@@ -82,8 +82,8 @@ export const LightRedColor: Story = {
  */
 export const CustomColor: Story = {
   args: {
-    size: 'md',
-    className: 'text-orange-500',
+    size: "md",
+    className: "text-orange-500",
   },
 };
 
@@ -198,7 +198,9 @@ export const ErrorList: Story = {
       </div>
       <div className="flex items-start gap-2">
         <ErrorIcon size="sm" className="text-red-500 mt-0.5 flex-shrink-0" />
-        <span className="text-sm text-gray-700">Password must be at least 8 characters</span>
+        <span className="text-sm text-gray-700">
+          Password must be at least 8 characters
+        </span>
       </div>
       <div className="flex items-start gap-2">
         <ErrorIcon size="sm" className="text-red-500 mt-0.5 flex-shrink-0" />

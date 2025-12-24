@@ -1,8 +1,8 @@
-import React from 'react';
+import React from "react";
 
 interface RefreshIconProps {
   className?: string;
-  size?: 'sm' | 'md' | 'lg';
+  size?: "sm" | "md" | "lg";
   color?: string;
 }
 
@@ -17,14 +17,14 @@ interface RefreshIconProps {
  * <RefreshIcon className="w-6 h-6 text-green-600" />
  */
 const RefreshIcon: React.FC<RefreshIconProps> = ({
-  className = '',
-  size = 'md',
-  color = 'currentColor',
+  className = "",
+  size = "md",
+  color = "currentColor",
 }) => {
   const sizeClasses = {
-    sm: 'w-4 h-4',
-    md: 'w-5 h-5',
-    lg: 'w-6 h-6',
+    sm: "w-4 h-4",
+    md: "w-5 h-5",
+    lg: "w-6 h-6",
   };
 
   const defaultClasses = `${sizeClasses[size]} ${className}`;

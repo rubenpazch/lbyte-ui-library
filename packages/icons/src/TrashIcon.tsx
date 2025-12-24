@@ -1,8 +1,8 @@
-import React from 'react';
+import React from "react";
 
 interface TrashIconProps {
   className?: string;
-  size?: 'sm' | 'md' | 'lg';
+  size?: "sm" | "md" | "lg";
   color?: string;
 }
 
@@ -17,14 +17,14 @@ interface TrashIconProps {
  * <TrashIcon className="w-6 h-6 text-red-600" />
  */
 const TrashIcon: React.FC<TrashIconProps> = ({
-  className = '',
-  size = 'md',
-  color = 'currentColor',
+  className = "",
+  size = "md",
+  color = "currentColor",
 }) => {
   const sizeClasses = {
-    sm: 'w-4 h-4',
-    md: 'w-5 h-5',
-    lg: 'w-6 h-6',
+    sm: "w-4 h-4",
+    md: "w-5 h-5",
+    lg: "w-6 h-6",
   };
 
   const defaultClasses = `${sizeClasses[size]} ${className}`;

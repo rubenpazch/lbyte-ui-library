@@ -1,20 +1,20 @@
-import React from 'react';
-import { Meta, StoryObj } from '@storybook/react';
-import UserSelectIcon from './UserSelectIcon';
+import React from "react";
+import { Meta, StoryObj } from "@storybook/react";
+import UserSelectIcon from "./UserSelectIcon";
 
 const meta: Meta<typeof UserSelectIcon> = {
   component: UserSelectIcon,
-  tags: ['autodocs'],
-  title: 'Icons/Users/UserSelectIcon',
+  tags: ["autodocs"],
+  title: "Icons/Users/UserSelectIcon",
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
   argTypes: {
     size: {
-      control: { type: 'select' },
-      options: ['sm', 'md', 'lg'],
+      control: { type: "select" },
+      options: ["sm", "md", "lg"],
     },
-    color: { control: 'color' },
+    color: { control: "color" },
   },
 };
 
@@ -23,20 +23,20 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    size: 'md',
-    color: 'currentColor',
+    size: "md",
+    color: "currentColor",
   },
 };
 
 export const Small: Story = {
   args: {
-    size: 'sm',
+    size: "sm",
   },
 };
 
 export const Large: Story = {
   args: {
-    size: 'lg',
+    size: "lg",
   },
 };
 

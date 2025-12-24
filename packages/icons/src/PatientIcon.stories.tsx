@@ -1,20 +1,20 @@
-import React from 'react';
-import { Meta, StoryObj } from '@storybook/react';
-import PatientIcon from './PatientIcon';
+import React from "react";
+import { Meta, StoryObj } from "@storybook/react";
+import PatientIcon from "./PatientIcon";
 
 const meta: Meta<typeof PatientIcon> = {
   component: PatientIcon,
-  tags: ['autodocs'],
-  title: 'Icons/Users/PatientIcon',
+  tags: ["autodocs"],
+  title: "Icons/Users/PatientIcon",
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
   argTypes: {
     size: {
-      control: { type: 'select' },
-      options: ['sm', 'md', 'lg'],
+      control: { type: "select" },
+      options: ["sm", "md", "lg"],
     },
-    color: { control: 'color' },
+    color: { control: "color" },
   },
 };
 
@@ -23,20 +23,20 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    size: 'md',
-    color: 'currentColor',
+    size: "md",
+    color: "currentColor",
   },
 };
 
 export const Small: Story = {
   args: {
-    size: 'sm',
+    size: "sm",
   },
 };
 
 export const Large: Story = {
   args: {
-    size: 'lg',
+    size: "lg",
   },
 };
 

@@ -9,7 +9,7 @@ import tailwind from "@tailwindcss/postcss";
 import { readFileSync } from "fs";
 
 const packageJson = JSON.parse(
-  readFileSync(new URL("./package.json", import.meta.url), "utf8")
+  readFileSync(new URL("./package.json", import.meta.url), "utf8"),
 );
 
 export default [

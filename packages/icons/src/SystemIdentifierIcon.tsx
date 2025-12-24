@@ -1,8 +1,8 @@
-import React from 'react';
+import React from "react";
 
 interface SystemIdentifierIconProps {
   className?: string;
-  size?: 'sm' | 'md' | 'lg';
+  size?: "sm" | "md" | "lg";
 }
 
 /**
@@ -16,13 +16,13 @@ interface SystemIdentifierIconProps {
  * <SystemIdentifierIcon className="w-6 h-6 text-blue-600" />
  */
 const SystemIdentifierIcon: React.FC<SystemIdentifierIconProps> = ({
-  className = '',
-  size = 'md',
+  className = "",
+  size = "md",
 }) => {
   const sizeClasses = {
-    sm: 'w-4 h-4',
-    md: 'w-5 h-5',
-    lg: 'w-6 h-6',
+    sm: "w-4 h-4",
+    md: "w-5 h-5",
+    lg: "w-6 h-6",
   };
 
   const defaultClasses = `${sizeClasses[size]} ${className}`;
@@ -35,8 +35,24 @@ const SystemIdentifierIcon: React.FC<SystemIdentifierIconProps> = ({
       className={defaultClasses}
       aria-label="System Identifier"
     >
-      <rect x="3" y="3" width="5" height="5" rx="1" stroke="currentColor" strokeWidth="2" />
-      <rect x="3" y="16" width="5" height="5" rx="1" stroke="currentColor" strokeWidth="2" />
+      <rect
+        x="3"
+        y="3"
+        width="5"
+        height="5"
+        rx="1"
+        stroke="currentColor"
+        strokeWidth="2"
+      />
+      <rect
+        x="3"
+        y="16"
+        width="5"
+        height="5"
+        rx="1"
+        stroke="currentColor"
+        strokeWidth="2"
+      />
       <rect
         x="16"
         y="3"

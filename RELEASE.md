@@ -96,7 +96,6 @@ pnpm changeset
 **Interactive prompts:**
 
 1. **Select packages:** Use spacebar to select all packages that have changed
-
    - `@rubenpazch/button`
    - `@rubenpazch/icons`
    - `@rubenpazch/text-input`
@@ -106,7 +105,6 @@ pnpm changeset
    - etc.
 
 2. **Select version bump type:**
-
    - **patch** (x.x.X) - Bug fixes, small changes
    - **minor** (x.X.0) - New features, non-breaking changes
    - **major** (X.0.0) - Breaking changes
@@ -306,7 +304,6 @@ The repository is configured with GitHub Actions for automated releases using **
 3. **Create a Pull Request** to `main`
 
 4. **When merged to main:**
-
    - GitHub Actions automatically creates a "Version Packages" PR
    - This PR updates all package versions and CHANGELOGs
 

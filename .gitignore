@@ -33,5 +33,8 @@ storybook-static
 apps/storybook/node_modules
 packages/background/node_modules
 packages/*/node_modules
+packages/*/coverage
+packages/*/dist
+packages/*/.turbo
 tooling/eslint-config/node_modules
 .turbo

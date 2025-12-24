@@ -1,24 +1,24 @@
-import React from 'react';
-import { Meta, StoryObj } from '@storybook/react';
-import ChevronIcon from './ChevronIcon';
+import React from "react";
+import { Meta, StoryObj } from "@storybook/react";
+import ChevronIcon from "./ChevronIcon";
 
 const meta: Meta<typeof ChevronIcon> = {
   component: ChevronIcon,
-  tags: ['autodocs'],
-  title: 'Icons/Navigation/ChevronIcon',
+  tags: ["autodocs"],
+  title: "Icons/Navigation/ChevronIcon",
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
   argTypes: {
     size: {
-      control: { type: 'select' },
-      options: ['sm', 'md', 'lg'],
+      control: { type: "select" },
+      options: ["sm", "md", "lg"],
     },
     direction: {
-      control: { type: 'select' },
-      options: ['up', 'down', 'left', 'right'],
+      control: { type: "select" },
+      options: ["up", "down", "left", "right"],
     },
-    color: { control: 'color' },
+    color: { control: "color" },
   },
 };
 
@@ -27,33 +27,33 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    size: 'md',
-    direction: 'down',
-    color: 'currentColor',
+    size: "md",
+    direction: "down",
+    color: "currentColor",
   },
 };
 
 export const Down: Story = {
   args: {
-    direction: 'down',
+    direction: "down",
   },
 };
 
 export const Up: Story = {
   args: {
-    direction: 'up',
+    direction: "up",
   },
 };
 
 export const Left: Story = {
   args: {
-    direction: 'left',
+    direction: "left",
   },
 };
 
 export const Right: Story = {
   args: {
-    direction: 'right',
+    direction: "right",
   },
 };
 

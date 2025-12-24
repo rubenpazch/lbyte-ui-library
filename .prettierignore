@@ -1,0 +1,16 @@
+node_modules/
+dist/
+build/
+packages/library-folder/
+coverage/
+packages/*/node_modules
+packages/*/coverage
+storybook-static/
+packages/*/dist/
+packages/*/build/
+apps/*/dist/
+apps/*/build/
+tooling/*/dist/
+tooling/*/build/
+.turbo/
+.turbo

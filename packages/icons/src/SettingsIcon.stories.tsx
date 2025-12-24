@@ -1,20 +1,20 @@
-import React from 'react';
-import { Meta, StoryObj } from '@storybook/react';
-import SettingsIcon from './SettingsIcon';
+import React from "react";
+import { Meta, StoryObj } from "@storybook/react";
+import SettingsIcon from "./SettingsIcon";
 
 const meta: Meta<typeof SettingsIcon> = {
   component: SettingsIcon,
-  tags: ['autodocs'],
-  title: 'Icons/Navigation/SettingsIcon',
+  tags: ["autodocs"],
+  title: "Icons/Navigation/SettingsIcon",
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
   argTypes: {
     size: {
-      control: { type: 'select' },
-      options: ['sm', 'md', 'lg'],
+      control: { type: "select" },
+      options: ["sm", "md", "lg"],
     },
-    color: { control: 'color' },
+    color: { control: "color" },
   },
 };
 
@@ -23,20 +23,20 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    size: 'md',
-    color: 'currentColor',
+    size: "md",
+    color: "currentColor",
   },
 };
 
 export const Small: Story = {
   args: {
-    size: 'sm',
+    size: "sm",
   },
 };
 
 export const Large: Story = {
   args: {
-    size: 'lg',
+    size: "lg",
   },
 };
 

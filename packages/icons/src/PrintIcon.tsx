@@ -1,8 +1,8 @@
-import React from 'react';
+import React from "react";
 
 interface PrintIconProps {
   className?: string;
-  size?: 'sm' | 'md' | 'lg';
+  size?: "sm" | "md" | "lg";
   color?: string;
 }
 
@@ -17,14 +17,14 @@ interface PrintIconProps {
  * <PrintIcon className="w-6 h-6 text-blue-600" />
  */
 const PrintIcon: React.FC<PrintIconProps> = ({
-  className = '',
-  size = 'md',
-  color = 'currentColor',
+  className = "",
+  size = "md",
+  color = "currentColor",
 }) => {
   const sizeClasses = {
-    sm: 'w-4 h-4',
-    md: 'w-5 h-5',
-    lg: 'w-6 h-6',
+    sm: "w-4 h-4",
+    md: "w-5 h-5",
+    lg: "w-6 h-6",
   };
 
   const defaultClasses = `${sizeClasses[size]} ${className}`;

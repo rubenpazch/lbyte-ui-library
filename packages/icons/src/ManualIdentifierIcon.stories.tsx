@@ -1,23 +1,23 @@
-import React from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
-import ManualIdentifierIcon from './ManualIdentifierIcon';
+import React from "react";
+import type { Meta, StoryObj } from "@storybook/react";
+import ManualIdentifierIcon from "./ManualIdentifierIcon";
 
 const meta = {
-  title: 'Icons/System/ManualIdentifierIcon',
+  title: "Icons/System/ManualIdentifierIcon",
   component: ManualIdentifierIcon,
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   argTypes: {
     size: {
-      control: 'select',
-      options: ['sm', 'md', 'lg'],
-      description: 'Size of the icon',
+      control: "select",
+      options: ["sm", "md", "lg"],
+      description: "Size of the icon",
     },
     className: {
-      control: 'text',
-      description: 'Additional CSS classes for styling',
+      control: "text",
+      description: "Additional CSS classes for styling",
     },
   },
 } satisfies Meta<typeof ManualIdentifierIcon>;
@@ -31,7 +31,7 @@ type Story = StoryObj<typeof meta>;
  */
 export const Default: Story = {
   args: {
-    size: 'md',
+    size: "md",
   },
 };
 
@@ -41,7 +41,7 @@ export const Default: Story = {
  */
 export const Small: Story = {
   args: {
-    size: 'sm',
+    size: "sm",
   },
 };
 
@@ -51,7 +51,7 @@ export const Small: Story = {
  */
 export const Large: Story = {
   args: {
-    size: 'lg',
+    size: "lg",
   },
 };
 
@@ -61,8 +61,8 @@ export const Large: Story = {
  */
 export const WithCustomColor: Story = {
   args: {
-    size: 'md',
-    className: 'text-orange-600',
+    size: "md",
+    className: "text-orange-600",
   },
 };
 
@@ -71,8 +71,8 @@ export const WithCustomColor: Story = {
  */
 export const WarningColor: Story = {
   args: {
-    size: 'md',
-    className: 'text-orange-500',
+    size: "md",
+    className: "text-orange-500",
   },
 };
 
@@ -81,8 +81,8 @@ export const WarningColor: Story = {
  */
 export const PurpleColor: Story = {
   args: {
-    size: 'md',
-    className: 'text-purple-500',
+    size: "md",
+    className: "text-purple-500",
   },
 };
 
@@ -91,8 +91,8 @@ export const PurpleColor: Story = {
  */
 export const InfoColor: Story = {
   args: {
-    size: 'md',
-    className: 'text-cyan-500',
+    size: "md",
+    className: "text-cyan-500",
   },
 };
 
@@ -126,9 +126,14 @@ export const AllSizes: Story = {
 export const UsageExample: Story = {
   render: () => (
     <div className="flex items-center gap-3 p-4 bg-orange-50 rounded-lg border border-orange-200 w-full max-w-md">
-      <ManualIdentifierIcon size="md" className="text-orange-600 flex-shrink-0" />
+      <ManualIdentifierIcon
+        size="md"
+        className="text-orange-600 flex-shrink-0"
+      />
       <div className="flex-1">
-        <h3 className="text-sm font-semibold text-gray-900">Manual Identifier</h3>
+        <h3 className="text-sm font-semibold text-gray-900">
+          Manual Identifier
+        </h3>
         <p className="text-xs text-gray-500">Entered manually by user</p>
         <p className="text-sm font-mono text-orange-700 mt-1">3247862837462</p>
       </div>
@@ -142,11 +147,14 @@ export const UsageExample: Story = {
  */
 export const ComparisonWithSystemIcon: Story = {
   render: () => {
-    const { default: SystemIdentifierIcon } = require('./SystemIdentifierIcon');
+    const { default: SystemIdentifierIcon } = require("./SystemIdentifierIcon");
     return (
       <div className="flex gap-8">
         <div className="flex items-center gap-3 p-4 bg-blue-50 rounded-lg border border-blue-200">
-          <SystemIdentifierIcon size="md" className="text-blue-600 flex-shrink-0" />
+          <SystemIdentifierIcon
+            size="md"
+            className="text-blue-600 flex-shrink-0"
+          />
           <div className="flex-1">
             <h3 className="text-sm font-semibold text-gray-900">System</h3>
             <p className="text-xs text-gray-500">Auto-generated</p>
@@ -154,11 +162,16 @@ export const ComparisonWithSystemIcon: Story = {
           </div>
         </div>
         <div className="flex items-center gap-3 p-4 bg-orange-50 rounded-lg border border-orange-200">
-          <ManualIdentifierIcon size="md" className="text-orange-600 flex-shrink-0" />
+          <ManualIdentifierIcon
+            size="md"
+            className="text-orange-600 flex-shrink-0"
+          />
           <div className="flex-1">
             <h3 className="text-sm font-semibold text-gray-900">Manual</h3>
             <p className="text-xs text-gray-500">User entered</p>
-            <p className="text-sm font-mono text-orange-700 mt-1">3247862837462</p>
+            <p className="text-sm font-mono text-orange-700 mt-1">
+              3247862837462
+            </p>
           </div>
         </div>
       </div>

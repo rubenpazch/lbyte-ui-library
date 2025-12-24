@@ -1,14 +1,14 @@
 import { ReactNode } from "react";
 
 export type ButtonVariant = "filled" | "outline" | "ghost" | "link";
-export type ButtonColor = 
-  | "primary" 
-  | "secondary" 
-  | "success" 
-  | "danger" 
-  | "warning" 
-  | "info" 
-  | "light" 
+export type ButtonColor =
+  | "primary"
+  | "secondary"
+  | "success"
+  | "danger"
+  | "warning"
+  | "info"
+  | "light"
   | "dark";
 export type ButtonSize = "xs" | "sm" | "md" | "lg" | "xl";
 

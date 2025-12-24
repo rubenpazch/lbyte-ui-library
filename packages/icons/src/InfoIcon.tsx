@@ -1,8 +1,8 @@
-import React from 'react';
+import React from "react";
 
 interface InfoIconProps {
   className?: string;
-  size?: 'sm' | 'md' | 'lg';
+  size?: "sm" | "md" | "lg";
 }
 
 /**
@@ -15,11 +15,11 @@ interface InfoIconProps {
  * <InfoIcon size="md" />
  * <InfoIcon className="w-6 h-6 text-blue-600" />
  */
-const InfoIcon: React.FC<InfoIconProps> = ({ className = '', size = 'md' }) => {
+const InfoIcon: React.FC<InfoIconProps> = ({ className = "", size = "md" }) => {
   const sizeClasses = {
-    sm: 'w-4 h-4',
-    md: 'w-5 h-5',
-    lg: 'w-6 h-6',
+    sm: "w-4 h-4",
+    md: "w-5 h-5",
+    lg: "w-6 h-6",
   };
 
   const defaultClasses = `${sizeClasses[size]} ${className}`;

@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
-import NumericPicker, { type NumericPickerProps } from './NumericPicker';
+import React, { useState } from "react";
+import type { Meta, StoryObj } from "@storybook/react";
+import NumericPicker, { type NumericPickerProps } from "./NumericPicker";
 
 const meta: Meta<NumericPickerProps> = {
-  title: 'Components/NumericPicker',
+  title: "Components/NumericPicker",
   component: NumericPicker as any,
   parameters: {
-    layout: 'padded',
+    layout: "padded",
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
 };
 
 export default meta;
@@ -19,10 +19,10 @@ type Story = StoryObj<typeof meta>;
  */
 export const Default: Story = {
   args: {
-    value: '0',
+    value: "0",
     onChange: () => {},
-    currency: 'S/.',
-    placeholder: '0.00',
+    currency: "S/.",
+    placeholder: "0.00",
   },
 };
 
@@ -31,10 +31,10 @@ export const Default: Story = {
  */
 export const WithLabel: Story = {
   args: {
-    label: 'Price',
-    value: '100.00',
+    label: "Price",
+    value: "100.00",
     onChange: () => {},
-    currency: 'S/.',
+    currency: "S/.",
   },
 };
 
@@ -43,11 +43,11 @@ export const WithLabel: Story = {
  */
 export const Required: Story = {
   args: {
-    label: 'Total Cost',
-    value: '250.50',
+    label: "Total Cost",
+    value: "250.50",
     onChange: () => {},
     required: true,
-    currency: 'S/.',
+    currency: "S/.",
   },
 };
 
@@ -56,11 +56,11 @@ export const Required: Story = {
  */
 export const Disabled: Story = {
   args: {
-    label: 'Disabled Amount',
-    value: '150.00',
+    label: "Disabled Amount",
+    value: "150.00",
     onChange: () => {},
     disabled: true,
-    currency: 'S/.',
+    currency: "S/.",
   },
 };
 
@@ -69,13 +69,13 @@ export const Disabled: Story = {
  */
 export const WithRange: Story = {
   args: {
-    label: 'Budget Amount',
-    value: '500',
+    label: "Budget Amount",
+    value: "500",
     onChange: () => {},
     min: 0,
     max: 10000,
     step: 100,
-    currency: 'S/.',
+    currency: "S/.",
   },
 };
 
@@ -84,10 +84,10 @@ export const WithRange: Story = {
  */
 export const DollarCurrency: Story = {
   args: {
-    label: 'USD Amount',
-    value: '99.99',
+    label: "USD Amount",
+    value: "99.99",
     onChange: () => {},
-    currency: '$',
+    currency: "$",
     step: 0.5,
   },
 };
@@ -97,10 +97,10 @@ export const DollarCurrency: Story = {
  */
 export const EuroCurrency: Story = {
   args: {
-    label: 'EUR Amount',
-    value: '75.50',
+    label: "EUR Amount",
+    value: "75.50",
     onChange: () => {},
-    currency: '€',
+    currency: "€",
   },
 };
 
@@ -109,10 +109,10 @@ export const EuroCurrency: Story = {
  */
 export const NoCurrency: Story = {
   args: {
-    label: 'Plain Number',
-    value: '42',
+    label: "Plain Number",
+    value: "42",
     onChange: () => {},
-    currency: '',
+    currency: "",
   },
 };
 
@@ -121,11 +121,11 @@ export const NoCurrency: Story = {
  */
 export const SmallStep: Story = {
   args: {
-    label: 'Precise Amount',
-    value: '10.50',
+    label: "Precise Amount",
+    value: "10.50",
     onChange: () => {},
     step: 0.25,
-    currency: 'S/.',
+    currency: "S/.",
   },
 };
 
@@ -134,11 +134,11 @@ export const SmallStep: Story = {
  */
 export const LargeStep: Story = {
   args: {
-    label: 'Bulk Amount',
-    value: '500',
+    label: "Bulk Amount",
+    value: "500",
     onChange: () => {},
     step: 50,
-    currency: 'S/.',
+    currency: "S/.",
   },
 };
 
@@ -147,14 +147,14 @@ export const LargeStep: Story = {
  */
 export const PrescriptionTotalCost: Story = {
   args: {
-    label: 'Total Cost',
-    value: '350.00',
+    label: "Total Cost",
+    value: "350.00",
     onChange: () => {},
     min: 0,
     max: 5000,
     step: 10,
     decimals: 2,
-    currency: 'S/.',
+    currency: "S/.",
     required: true,
   },
 };
@@ -164,14 +164,14 @@ export const PrescriptionTotalCost: Story = {
  */
 export const PrescriptionDepositPaid: Story = {
   args: {
-    label: 'Deposit Paid',
-    value: '175.00',
+    label: "Deposit Paid",
+    value: "175.00",
     onChange: () => {},
     min: 0,
     max: 5000,
     step: 10,
     decimals: 2,
-    currency: 'S/.',
+    currency: "S/.",
     required: true,
   },
 };
@@ -181,13 +181,13 @@ export const PrescriptionDepositPaid: Story = {
  */
 export const Interactive: Story = {
   render: () => {
-    const [value, setValue] = useState('250.00');
-    const [message, setMessage] = useState('');
+    const [value, setValue] = useState("250.00");
+    const [message, setMessage] = useState("");
 
     const handleChange = (newValue: string) => {
       setValue(newValue);
       setMessage(`Updated to S/. ${newValue}`);
-      setTimeout(() => setMessage(''), 3000);
+      setTimeout(() => setMessage(""), 3000);
     };
 
     return (
@@ -217,10 +217,12 @@ export const Interactive: Story = {
  */
 export const BudgetForm: Story = {
   render: () => {
-    const [totalCost, setTotalCost] = useState('1000.00');
-    const [depositPaid, setDepositPaid] = useState('500.00');
+    const [totalCost, setTotalCost] = useState("1000.00");
+    const [depositPaid, setDepositPaid] = useState("500.00");
 
-    const balanceDue = (parseFloat(totalCost) - parseFloat(depositPaid)).toFixed(2);
+    const balanceDue = (
+      parseFloat(totalCost) - parseFloat(depositPaid)
+    ).toFixed(2);
 
     return (
       <div className="space-y-6 max-w-md p-6 bg-white rounded-lg border-2 border-blue-300">
@@ -251,7 +253,9 @@ export const BudgetForm: Story = {
         />
 
         <div className="relative">
-          <label className="block text-sm font-semibold text-gray-700 mb-1">Balance Due</label>
+          <label className="block text-sm font-semibold text-gray-700 mb-1">
+            Balance Due
+          </label>
           <div className="relative">
             <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-600 font-medium">
               S/.
@@ -275,12 +279,12 @@ export const BudgetForm: Story = {
  */
 export const MinimumValue: Story = {
   args: {
-    label: 'Amount (Minimum S/. 10)',
-    value: '5',
+    label: "Amount (Minimum S/. 10)",
+    value: "5",
     onChange: () => {},
     min: 10,
     max: 1000,
-    currency: 'S/.',
+    currency: "S/.",
   },
 };
 
@@ -289,12 +293,12 @@ export const MinimumValue: Story = {
  */
 export const MaximumValue: Story = {
   args: {
-    label: 'Amount (Maximum S/. 500)',
-    value: '600',
+    label: "Amount (Maximum S/. 500)",
+    value: "600",
     onChange: () => {},
     min: 0,
     max: 500,
-    currency: 'S/.',
+    currency: "S/.",
   },
 };
 
@@ -303,11 +307,11 @@ export const MaximumValue: Story = {
  */
 export const OneDecimal: Story = {
   args: {
-    label: 'One Decimal Place',
-    value: '99.9',
+    label: "One Decimal Place",
+    value: "99.9",
     onChange: () => {},
     decimals: 1,
-    currency: 'S/.',
+    currency: "S/.",
   },
 };
 
@@ -316,11 +320,11 @@ export const OneDecimal: Story = {
  */
 export const NoDecimals: Story = {
   args: {
-    label: 'Whole Numbers Only',
-    value: '100',
+    label: "Whole Numbers Only",
+    value: "100",
     onChange: () => {},
     decimals: 0,
-    currency: 'S/.',
+    currency: "S/.",
   },
 };
 
@@ -329,10 +333,10 @@ export const NoDecimals: Story = {
  */
 export const ZeroValue: Story = {
   args: {
-    label: 'Starting Amount',
-    value: '0',
+    label: "Starting Amount",
+    value: "0",
     onChange: () => {},
-    currency: 'S/.',
+    currency: "S/.",
   },
 };
 
@@ -341,13 +345,13 @@ export const ZeroValue: Story = {
  */
 export const LargeAmount: Story = {
   args: {
-    label: 'Large Transaction',
-    value: '999999.99',
+    label: "Large Transaction",
+    value: "999999.99",
     onChange: () => {},
     min: 0,
     max: 999999,
     step: 1000,
-    currency: 'S/.',
+    currency: "S/.",
   },
 };
 
@@ -356,11 +360,11 @@ export const LargeAmount: Story = {
  */
 export const PreciseAmount: Story = {
   args: {
-    label: 'Precise Amount',
-    value: '12.55',
+    label: "Precise Amount",
+    value: "12.55",
     onChange: () => {},
     step: 0.01,
-    currency: 'S/.',
+    currency: "S/.",
   },
 };
 
@@ -370,17 +374,23 @@ export const PreciseAmount: Story = {
 export const InvoiceItems: Story = {
   render: () => {
     const [items, setItems] = useState([
-      { id: 1, name: 'Frames', price: '250.00' },
-      { id: 2, name: 'Lenses OD', price: '300.00' },
-      { id: 3, name: 'Lenses OS', price: '300.00' },
-      { id: 4, name: 'Coatings', price: '100.00' },
+      { id: 1, name: "Frames", price: "250.00" },
+      { id: 2, name: "Lenses OD", price: "300.00" },
+      { id: 3, name: "Lenses OS", price: "300.00" },
+      { id: 4, name: "Coatings", price: "100.00" },
     ]);
 
     const handlePriceChange = (id: number, newPrice: string) => {
-      setItems(items.map((item) => (item.id === id ? { ...item, price: newPrice } : item)));
+      setItems(
+        items.map((item) =>
+          item.id === id ? { ...item, price: newPrice } : item,
+        ),
+      );
     };
 
-    const total = items.reduce((sum, item) => sum + parseFloat(item.price || '0'), 0).toFixed(2);
+    const total = items
+      .reduce((sum, item) => sum + parseFloat(item.price || "0"), 0)
+      .toFixed(2);
 
     return (
       <div className="space-y-4 max-w-2xl">
@@ -389,7 +399,9 @@ export const InvoiceItems: Story = {
         <div className="space-y-3">
           {items.map((item) => (
             <div key={item.id} className="flex items-end gap-4">
-              <label className="flex-1 text-sm font-medium text-gray-700">{item.name}</label>
+              <label className="flex-1 text-sm font-medium text-gray-700">
+                {item.name}
+              </label>
               <div className="w-40">
                 <NumericPicker
                   value={item.price}
@@ -421,10 +433,30 @@ export const InvoiceItems: Story = {
 export const CurrencyComparison: Story = {
   render: () => (
     <div className="space-y-6 max-w-md">
-      <NumericPicker label="Peruvian Soles" value="350.00" onChange={() => {}} currency="S/." />
-      <NumericPicker label="US Dollars" value="95.00" onChange={() => {}} currency="$" />
-      <NumericPicker label="Euros" value="88.00" onChange={() => {}} currency="€" />
-      <NumericPicker label="British Pounds" value="75.00" onChange={() => {}} currency="£" />
+      <NumericPicker
+        label="Peruvian Soles"
+        value="350.00"
+        onChange={() => {}}
+        currency="S/."
+      />
+      <NumericPicker
+        label="US Dollars"
+        value="95.00"
+        onChange={() => {}}
+        currency="$"
+      />
+      <NumericPicker
+        label="Euros"
+        value="88.00"
+        onChange={() => {}}
+        currency="€"
+      />
+      <NumericPicker
+        label="British Pounds"
+        value="75.00"
+        onChange={() => {}}
+        currency="£"
+      />
     </div>
   ),
 };
