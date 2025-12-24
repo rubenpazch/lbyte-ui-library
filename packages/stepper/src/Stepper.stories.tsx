@@ -112,3 +112,84 @@ export const SingleStep: Story = {
     currentStep: 1,
   },
 };
+
+export const ClickableSteps: Story = {
+  args: {
+    steps: [
+      { number: 1, title: "Personal Info", link: "#personal" },
+      { number: 2, title: "Address", onClick: () => alert("Go to Address") },
+      { number: 3, title: "Payment", link: "#payment" },
+      { number: 4, title: "Confirmation" },
+    ],
+    currentStep: 2,
+    stepClickable: true,
+  },
+};
+
+export const SmallSteps: Story = {
+  args: {
+    steps: [
+      { number: 1, title: "Step 1" },
+      { number: 2, title: "Step 2" },
+      { number: 3, title: "Step 3" },
+    ],
+    currentStep: 2,
+    size: "small",
+  },
+};
+
+export const MediumSteps: Story = {
+  args: {
+    steps: [
+      { number: 1, title: "Step 1" },
+      { number: 2, title: "Step 2" },
+      { number: 3, title: "Step 3" },
+    ],
+    currentStep: 2,
+    size: "medium",
+  },
+};
+
+export const LargeSteps: Story = {
+  args: {
+    steps: [
+      { number: 1, title: "Step 1" },
+      { number: 2, title: "Step 2" },
+      { number: 3, title: "Step 3" },
+    ],
+    currentStep: 2,
+    size: "large",
+  },
+};
+
+/**
+ * How to use Stepper with URL updates (React Router example):
+ *
+ * import { useNavigate } from 'react-router-dom';
+ * import { useState } from 'react';
+ *
+ * const steps = [
+ *   { number: 1, title: 'Personal Info' },
+ *   { number: 2, title: 'Address' },
+ *   { number: 3, title: 'Payment' },
+ * ];
+ *
+ * const MyStepper = () => {
+ *   const navigate = useNavigate();
+ *   const [currentStep, setCurrentStep] = useState(1);
+ *
+ *   const handleStepChange = (step) => {
+ *     setCurrentStep(step);
+ *     navigate(`/wizard/step/${step}`);
+ *   };
+ *
+ *   return (
+ *     <Stepper
+ *       steps={steps}
+ *       currentStep={currentStep}
+ *       onStepChange={handleStepChange}
+ *       stepClickable
+ *     />
+ *   );
+ * };
+ */
