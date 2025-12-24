@@ -1,5 +1,0 @@
----
-"@rubenpazch/autocomplete": patch
----
-
-update

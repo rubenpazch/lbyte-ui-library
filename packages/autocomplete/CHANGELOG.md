@@ -1,5 +1,11 @@
 # @rubenpazch/autocomplete
 
+## 2.0.1
+
+### Patch Changes
+
+- 2759cb0: update
+
 ## 2.0.0
 
 ### Major Changes
