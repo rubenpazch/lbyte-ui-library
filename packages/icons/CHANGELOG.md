@@ -1,5 +1,16 @@
 # @rubenpazch/icons
 
+## 3.0.0
+
+### Major Changes
+
+- update compilation file
+
+### Patch Changes
+
+- Updated dependencies
+  - @rubenpazch/shared@3.0.0
+
 ## 2.0.0
 
 ### Major Changes
