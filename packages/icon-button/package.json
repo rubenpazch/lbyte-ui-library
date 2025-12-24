@@ -1,0 +1,41 @@
+{
+  "name": "@rubenpazch/icon-button",
+  "version": "1.0.0",
+  "description": "IconButton component",
+  "private": false,
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rubenpazch/lbyte-ui-library.git",
+    "directory": "packages/icon-button"
+  },
+  "author": "Ruben Paz Chuspe <rubenpazchuspe@outlook.com>",
+  "license": "MIT",
+  "files": [
+    "dist"
+  ],
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "import": "./dist/index.esm.js",
+      "require": "./dist/index.cjs.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "rollup -c",
+    "test": "jest --passWithNoTests"
+  },
+  "peerDependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@rubenpazch/typescript-config": "workspace:*"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

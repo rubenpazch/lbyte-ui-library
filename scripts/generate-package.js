@@ -30,10 +30,18 @@ async function main() {
   const pkgJson = {
     name: pkgName,
     version: '1.0.0',
-    private: true,
+    description: `${componentName} component`,
+    private: false,
     main: 'dist/index.cjs.js',
     module: 'dist/index.esm.js',
     types: 'dist/index.d.ts',
+    repository: {
+      type: 'git',
+      url: 'https://github.com/rubenpazch/lbyte-ui-library.git',
+      directory: `packages/${rawName}`
+    },
+    author: 'Ruben Paz Chuspe <rubenpazchuspe@outlook.com>',
+    license: 'MIT',
     files: ['dist'],
     sideEffects: false,
     exports: {
@@ -54,6 +62,9 @@ async function main() {
     devDependencies: {
       "@rubenpazch/typescript-config": "workspace:*"
     },
+    publishConfig: {
+      access: 'public'
+    }
   };
 
   const indexTs = `export { default } from './${componentName}';\n`;
