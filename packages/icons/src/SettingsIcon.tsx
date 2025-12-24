@@ -1,31 +1,42 @@
-import React from 'react';
+import React from "react";
 
 interface SettingsIconProps {
   className?: string;
-  size?: 'sm' | 'md' | 'lg';
+  size?: "sm" | "md" | "lg";
   color?: string;
 }
 
 const SettingsIcon: React.FC<SettingsIconProps> = ({
-  className = '',
-  size = 'md',
-  color = 'currentColor',
+  className = "",
+  size = "md",
+  color = "currentColor",
 }) => {
   const sizeClasses = {
-    sm: 'w-4 h-4',
-    md: 'w-5 h-5',
-    lg: 'w-6 h-6',
+    sm: "w-4 h-4",
+    md: "w-5 h-5",
+    lg: "w-6 h-6",
   };
 
   return (
-    <svg className={`${sizeClasses[size]} ${className}`} fill={color} viewBox="0 0 24 24">
+    <svg
+      className={`${sizeClasses[size]} ${className}`}
+      fill={color}
+      viewBox="0 0 24 24"
+    >
       {/* Outer gear circle with 12 teeth */}
       <g>
         {/* Center hub */}
         <circle cx="12" cy="12" r="3" fill={color} />
 
         {/* Outer ring */}
-        <circle cx="12" cy="12" r="7" fill="none" stroke={color} strokeWidth="1.5" />
+        <circle
+          cx="12"
+          cy="12"
+          r="7"
+          fill="none"
+          stroke={color}
+          strokeWidth="1.5"
+        />
 
         {/* 12 teeth around the wheel */}
         {/* Top */}
@@ -91,9 +102,23 @@ const SettingsIcon: React.FC<SettingsIconProps> = ({
         {/* Left */}
         <rect x="1" y="11" width="2.5" height="2" fill={color} />
         {/* Left-top 300° */}
-        <rect x="3.5" y="7.2" width="2" height="2.2" fill={color} transform="rotate(300 4.5 8.3)" />
+        <rect
+          x="3.5"
+          y="7.2"
+          width="2"
+          height="2.2"
+          fill={color}
+          transform="rotate(300 4.5 8.3)"
+        />
         {/* Top-left 330° */}
-        <rect x="6.6" y="3.5" width="2.2" height="2" fill={color} transform="rotate(330 7.7 4.5)" />
+        <rect
+          x="6.6"
+          y="3.5"
+          width="2.2"
+          height="2"
+          fill={color}
+          transform="rotate(330 7.7 4.5)"
+        />
       </g>
     </svg>
   );

@@ -1,14 +1,14 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import React from 'react';
-import Button, { type ButtonProps } from './Button';
+import type { Meta, StoryObj } from "@storybook/react";
+import React from "react";
+import Button, { type ButtonProps } from "./Button";
 
 const meta: Meta<ButtonProps> = {
-  title: 'Components/Button',
+  title: "Components/Button",
   component: Button as any,
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
 };
 
 export default meta;
@@ -17,156 +17,156 @@ type Story = StoryObj<ButtonProps>;
 // Size Stories
 export const SmallDefault: Story = {
   args: {
-    size: 'sm',
-    variant: 'default',
-    children: 'Small Button',
+    size: "sm",
+    variant: "default",
+    children: "Small Button",
   },
 };
 
 export const MediumDefault: Story = {
   args: {
-    size: 'md',
-    variant: 'default',
-    children: 'Medium Button',
+    size: "md",
+    variant: "default",
+    children: "Medium Button",
   },
 };
 
 export const LargeDefault: Story = {
   args: {
-    size: 'lg',
-    variant: 'default',
-    children: 'Large Button',
+    size: "lg",
+    variant: "default",
+    children: "Large Button",
   },
 };
 
 // Variant Stories
 export const Primary: Story = {
   args: {
-    size: 'md',
-    variant: 'default',
-    children: 'Primary Button',
+    size: "md",
+    variant: "default",
+    children: "Primary Button",
   },
 };
 
 export const Secondary: Story = {
   args: {
-    size: 'md',
-    variant: 'secondary',
-    children: 'Secondary Button',
+    size: "md",
+    variant: "secondary",
+    children: "Secondary Button",
   },
 };
 
 export const Black: Story = {
   args: {
-    size: 'md',
-    variant: 'black',
-    children: 'Black Button',
+    size: "md",
+    variant: "black",
+    children: "Black Button",
   },
 };
 
 export const Blue: Story = {
   args: {
-    size: 'md',
-    variant: 'blue',
-    children: 'Blue Button',
+    size: "md",
+    variant: "blue",
+    children: "Blue Button",
   },
 };
 
 export const Pink: Story = {
   args: {
-    size: 'md',
-    variant: 'pink',
-    children: 'Pink Button',
+    size: "md",
+    variant: "pink",
+    children: "Pink Button",
   },
 };
 
 export const GradientGreen: Story = {
   args: {
-    size: 'md',
-    variant: 'gradient-green',
-    children: 'Gradient Green',
+    size: "md",
+    variant: "gradient-green",
+    children: "Gradient Green",
   },
 };
 
 export const SolidGreen: Story = {
   args: {
-    size: 'md',
-    variant: 'solid-green',
-    children: 'Solid Green',
+    size: "md",
+    variant: "solid-green",
+    children: "Solid Green",
   },
 };
 
 export const Warning: Story = {
   args: {
-    size: 'md',
-    variant: 'warning',
-    children: 'Warning Button',
+    size: "md",
+    variant: "warning",
+    children: "Warning Button",
   },
 };
 
 // Style Stories
 export const Filled: Story = {
   args: {
-    size: 'md',
-    variant: 'default',
+    size: "md",
+    variant: "default",
     filled: true,
-    children: 'Filled Button',
+    children: "Filled Button",
   },
 };
 
 export const Outlined: Story = {
   args: {
-    size: 'md',
-    variant: 'default',
+    size: "md",
+    variant: "default",
     filled: false,
-    children: 'Outlined Button',
+    children: "Outlined Button",
   },
 };
 
 export const Quiet: Story = {
   args: {
-    size: 'md',
-    variant: 'default',
+    size: "md",
+    variant: "default",
     quiet: true,
-    children: 'Quiet Button',
+    children: "Quiet Button",
   },
 };
 
 // State Stories
 export const Disabled: Story = {
   args: {
-    size: 'md',
-    variant: 'default',
+    size: "md",
+    variant: "default",
     disabled: true,
-    children: 'Disabled Button',
+    children: "Disabled Button",
   },
 };
 
 export const Loading: Story = {
   args: {
-    size: 'md',
-    variant: 'default',
+    size: "md",
+    variant: "default",
     disabled: true,
-    children: 'Loading Button',
+    children: "Loading Button",
   },
 };
 
 // Special Stories
 export const Circled: Story = {
   args: {
-    size: 'md',
-    variant: 'default',
+    size: "md",
+    variant: "default",
     circled: true,
-    children: '✓',
+    children: "✓",
   },
 };
 
 export const Inverted: Story = {
   args: {
-    size: 'md',
-    variant: 'default',
+    size: "md",
+    variant: "default",
     inverted: true,
-    children: 'Inverted Button',
+    children: "Inverted Button",
   },
 };
 
@@ -189,7 +189,7 @@ export const AllVariants: Story = {
     </div>
   ),
   args: {
-    children: 'Button',
+    children: "Button",
   },
 } as Story;
 
@@ -203,6 +203,6 @@ export const AllSizes: Story = {
     </div>
   ),
   args: {
-    children: 'Button',
+    children: "Button",
   },
 } as Story;

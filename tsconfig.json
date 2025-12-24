@@ -9,7 +9,7 @@
     "module": "ESNext",
     "declaration": true,
     "declarationDir": "types",
-    "types" : ["node"],
+    "types": ["node"],
     "sourceMap": true,
     "outDir": "dist",
     "rootDir": "src",

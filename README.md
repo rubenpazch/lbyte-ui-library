@@ -75,6 +75,7 @@ pnpm clean
 ## 📚 Available Packages
 
 ### Core Components
+
 - `@rubenpazch/button` - Modern button with variants
 - `@rubenpazch/link` - Styled link component
 - `@rubenpazch/icon-button` - Icon button
@@ -82,15 +83,18 @@ pnpm clean
 - `@rubenpazch/input-button` - Input button
 
 ### Navigation
+
 - `@rubenpazch/navbar` - Navigation bar
 - `@rubenpazch/menu` / `@rubenpazch/menu-mobile` - Menu components
 - `@rubenpazch/drawer` / `@rubenpazch/drawer-menu-mobile` - Drawer components
 
 ### Form Inputs
+
 - `@rubenpazch/text-input` - Text input
 - `@rubenpazch/text-area` - Text area
 
 ### Icons & Layout
+
 - `@rubenpazch/icons` - Icon library
 - `@rubenpazch/page` - Page wrapper
 - `@rubenpazch/background` - Background component
@@ -107,8 +111,8 @@ pnpm add @rubenpazch/button @rubenpazch/icons
 ### Import and Use
 
 ```tsx
-import Button from '@rubenpazch/button';
-import { MenuIcon } from '@rubenpazch/icons';
+import Button from "@rubenpazch/button";
+import { MenuIcon } from "@rubenpazch/icons";
 
 function App() {
   return (
@@ -140,6 +144,7 @@ pnpm storybook
 ## 🚢 Deployment
 
 Configure `.npmrc` with your tokens:
+
 ```
 registry=https://registry.npmjs.org/
 @rubenpazch:registry=https://npm.pkg.github.com/
@@ -147,6 +152,7 @@ registry=https://registry.npmjs.org/
 ```
 
 Publish with changesets:
+
 ```bash
 pnpm changeset
 pnpm changeset version

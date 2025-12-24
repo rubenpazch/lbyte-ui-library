@@ -6,9 +6,7 @@ module.exports = {
   },
   setupFilesAfterEnv: ["<rootDir>/src/setupTests.ts"],
   transform: {
-    "^.+\\.(ts|tsx|js|jsx)$": "babel-jest"
+    "^.+\\.(ts|tsx|js|jsx)$": "babel-jest",
   },
-  transformIgnorePatterns: [
-    "/node_modules/(?!(@rubenpazch)/)"
-  ],
+  transformIgnorePatterns: ["/node_modules/(?!(@rubenpazch)/)"],
 };

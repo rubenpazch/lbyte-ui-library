@@ -1,20 +1,20 @@
-import React from 'react';
-import { Meta, StoryObj } from '@storybook/react';
-import UserManagementIcon from './UserManagementIcon';
+import React from "react";
+import { Meta, StoryObj } from "@storybook/react";
+import UserManagementIcon from "./UserManagementIcon";
 
 const meta: Meta<typeof UserManagementIcon> = {
   component: UserManagementIcon,
-  tags: ['autodocs'],
-  title: 'Icons/Users/UserManagementIcon',
+  tags: ["autodocs"],
+  title: "Icons/Users/UserManagementIcon",
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
   argTypes: {
     size: {
-      control: { type: 'select' },
-      options: ['sm', 'md', 'lg'],
+      control: { type: "select" },
+      options: ["sm", "md", "lg"],
     },
-    color: { control: 'color' },
+    color: { control: "color" },
   },
 };
 
@@ -23,20 +23,20 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    size: 'md',
-    color: 'currentColor',
+    size: "md",
+    color: "currentColor",
   },
 };
 
 export const Small: Story = {
   args: {
-    size: 'sm',
+    size: "sm",
   },
 };
 
 export const Large: Story = {
   args: {
-    size: 'lg',
+    size: "lg",
   },
 };
 
@@ -103,7 +103,9 @@ export const InMenuContext: Story = {
     <div className="w-64 bg-gray-50 rounded-lg p-3 space-y-2">
       <div className="flex items-center gap-3 p-2 hover:bg-gray-100 rounded cursor-pointer">
         <UserManagementIcon size="md" className="text-gray-600" />
-        <span className="text-sm font-medium text-gray-700">User Management</span>
+        <span className="text-sm font-medium text-gray-700">
+          User Management
+        </span>
       </div>
       <div className="flex items-center gap-3 p-2 hover:bg-gray-100 rounded cursor-pointer pl-8">
         <span className="text-xs text-gray-600">Users</span>

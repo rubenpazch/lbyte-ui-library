@@ -1,1 +1,1 @@
-export { default } from './NumericPicker';
+export { default } from "./NumericPicker";

@@ -1,6 +1,6 @@
-import React from 'react';
+import React from "react";
 
-export type IconSize = 'sm' | 'md' | 'lg' | 'xl';
+export type IconSize = "sm" | "md" | "lg" | "xl";
 
 interface MoreIconProps {
   size?: IconSize;
@@ -8,17 +8,17 @@ interface MoreIconProps {
 }
 
 const sizeMap: Record<IconSize, string> = {
-  sm: 'w-4 h-4',
-  md: 'w-5 h-5',
-  lg: 'w-6 h-6',
-  xl: 'w-8 h-8',
+  sm: "w-4 h-4",
+  md: "w-5 h-5",
+  lg: "w-6 h-6",
+  xl: "w-8 h-8",
 };
 
 /**
  * MoreIcon component
  * Displays a vertical three-dot menu icon for more options/actions
  */
-const MoreIcon: React.FC<MoreIconProps> = ({ size = 'md', className = '' }) => {
+const MoreIcon: React.FC<MoreIconProps> = ({ size = "md", className = "" }) => {
   return (
     <svg
       className={`${sizeMap[size]} ${className}`}

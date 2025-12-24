@@ -1,6 +1,6 @@
-import React from 'react';
+import React from "react";
 
-export type IconSize = 'sm' | 'md' | 'lg' | 'xl';
+export type IconSize = "sm" | "md" | "lg" | "xl";
 
 interface PhoneIconProps {
   size?: IconSize;
@@ -8,17 +8,20 @@ interface PhoneIconProps {
 }
 
 const sizeMap: Record<IconSize, string> = {
-  sm: 'w-4 h-4',
-  md: 'w-5 h-5',
-  lg: 'w-6 h-6',
-  xl: 'w-8 h-8',
+  sm: "w-4 h-4",
+  md: "w-5 h-5",
+  lg: "w-6 h-6",
+  xl: "w-8 h-8",
 };
 
 /**
  * PhoneIcon component
  * Displays a phone icon for contact-related UI elements
  */
-const PhoneIcon: React.FC<PhoneIconProps> = ({ size = 'md', className = '' }) => {
+const PhoneIcon: React.FC<PhoneIconProps> = ({
+  size = "md",
+  className = "",
+}) => {
   return (
     <svg
       className={`${sizeMap[size]} ${className}`}

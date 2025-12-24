@@ -28,6 +28,7 @@ Your UI library has been successfully transformed into a monorepo architecture.
 ## 📦 Packages Created
 
 **Components:**
+
 - @rubenpazch/button
 - @rubenpazch/link
 - @rubenpazch/icon-button
@@ -45,6 +46,7 @@ Your UI library has been successfully transformed into a monorepo architecture.
 - @rubenpazch/icons
 
 **Infrastructure:**
+
 - @rubenpazch/shared
 - @rubenpazch/typescript-config
 - @rubenpazch/eslint-config
@@ -53,16 +55,19 @@ Your UI library has been successfully transformed into a monorepo architecture.
 ## 🚀 Next Steps
 
 ### 1. Test the Build
+
 ```bash
 pnpm build
 ```
 
 ### 2. Run Storybook
+
 ```bash
 pnpm storybook
 ```
 
 ### 3. Publish Packages
+
 ```bash
 # Create a changeset
 pnpm changeset
@@ -75,7 +80,9 @@ pnpm changeset publish
 ```
 
 ### 4. Update CI/CD
+
 Update your GitHub Actions or CI to use:
+
 ```yaml
 - run: pnpm install
 - run: pnpm build
@@ -97,6 +104,7 @@ npm install @rubenpazch/button @rubenpazch/icons
 ## 🔍 Verify Migration
 
 Check that all packages built:
+
 ```bash
 ls packages/*/dist
 ```

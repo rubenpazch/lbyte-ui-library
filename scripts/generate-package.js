@@ -1,58 +1,69 @@
 #!/usr/bin/env node
-const fs = require('fs').promises;
-const path = require('path');
+const fs = require("fs").promises;
+const path = require("path");
 
 async function write(filePath, content) {
   await fs.mkdir(path.dirname(filePath), { recursive: true });
-  await fs.writeFile(filePath, content, { encoding: 'utf8' });
+  await fs.writeFile(filePath, content, { encoding: "utf8" });
 }
 
 function kebabToPascal(name) {
   return name
     .split(/[-_]/)
-    .map(s => s.charAt(0).toUpperCase() + s.slice(1))
-    .join('');
+    .map((s) => s.charAt(0).toUpperCase() + s.slice(1))
+    .join("");
 }
 
 async function main() {
   const args = process.argv.slice(2);
   if (!args[0]) {
-    console.error('Usage: generate-package <package-name> [@scope]');
+    console.error("Usage: generate-package <package-name> [@scope]");
     process.exit(1);
   }
 
   const rawName = args[0];
-  const scope = args[1] || '@rubenpazch';
+  const scope = args[1] || "@rubenpazch";
   const pkgName = `${scope}/${rawName}`;
-  const pkgDir = path.resolve(process.cwd(), 'packages', rawName);
+  const pkgDir = path.resolve(process.cwd(), "packages", rawName);
   const componentName = kebabToPascal(rawName);
 
   const pkgJson = {
     name: pkgName,
-    version: '1.0.0',
-    private: true,
-    main: 'dist/index.cjs.js',
-    module: 'dist/index.esm.js',
-    types: 'dist/index.d.ts',
-    files: ['dist'],
+    version: "1.0.0",
+    description: `${componentName} component`,
+    private: false,
+    main: "dist/index.cjs.js",
+    module: "dist/index.esm.js",
+    types: "dist/index.d.ts",
+    repository: {
+      type: "git",
+      url: "https://github.com/rubenpazch/lbyte-ui-library.git",
+      directory: `packages/${rawName}`,
+    },
+    author: "Ruben Paz Chuspe <rubenpazchuspe@outlook.com>",
+    license: "MIT",
+    files: ["dist"],
     sideEffects: false,
     exports: {
-      '.': {
-        import: './dist/index.esm.js',
-        require: './dist/index.cjs.js',
-        types: './dist/index.d.ts'
-      }
+      ".": {
+        import: "./dist/index.esm.js",
+        require: "./dist/index.cjs.js",
+        types: "./dist/index.d.ts",
+      },
     },
     scripts: {
-      build: 'rollup -c',
-      test: 'jest --passWithNoTests',
+      build: "rollup -c",
+      test: "jest --passWithNoTests",
     },
     peerDependencies: {
-      react: '^19.0.0',
-      'react-dom': '^19.0.0'
+      react: "^19.0.0",
+      "react-dom": "^19.0.0",
     },
     devDependencies: {
-      "@rubenpazch/typescript-config": "workspace:*"
+      "@rubenpazch/typescript-config": "workspace:*",
+    },
+    publishConfig: {
+      access: "public",
     },
   };
 
@@ -151,14 +162,14 @@ export default [
 `;
 
   const tsconfig = {
-    extends: '@rubenpazch/typescript-config/react.json',
+    extends: "@rubenpazch/typescript-config/react.json",
     compilerOptions: {
-      outDir: 'dist',
-      rootDir: 'src',
-      declarationDir: 'dist'
+      outDir: "dist",
+      rootDir: "src",
+      declarationDir: "dist",
     },
-    include: ['src', '../../css-module.d.ts'],
-    exclude: ['node_modules', 'dist', '**/*.stories.*', '**/*.test.*']
+    include: ["src", "../../css-module.d.ts"],
+    exclude: ["node_modules", "dist", "**/*.stories.*", "**/*.test.*"],
   };
 
   const jestConfig = `module.exports = {
@@ -184,19 +195,28 @@ export default [
 `;
 
   try {
-    await write(path.join(pkgDir, 'package.json'), JSON.stringify(pkgJson, null, 2));
-    await write(path.join(pkgDir, 'src', `${componentName}.tsx`), componentTsx);
-    await write(path.join(pkgDir, 'src', 'index.ts'), indexTs);
+    await write(
+      path.join(pkgDir, "package.json"),
+      JSON.stringify(pkgJson, null, 2),
+    );
+    await write(path.join(pkgDir, "src", `${componentName}.tsx`), componentTsx);
+    await write(path.join(pkgDir, "src", "index.ts"), indexTs);
     // No CSS file - using Tailwind CSS classes
     // put stories next to the component so Storybook resolves source imports reliably
-    await write(path.join(pkgDir, 'src', `${componentName}.stories.tsx`), story);
-    await write(path.join(pkgDir, 'src', `${componentName}.test.tsx`), test);
-    await write(path.join(pkgDir, 'README.md'), readme);
+    await write(
+      path.join(pkgDir, "src", `${componentName}.stories.tsx`),
+      story,
+    );
+    await write(path.join(pkgDir, "src", `${componentName}.test.tsx`), test);
+    await write(path.join(pkgDir, "README.md"), readme);
     // write rollup, tsconfig, jest and babel config files for build/test
-    await write(path.join(pkgDir, 'rollup.config.mjs'), rollupConfig);
-    await write(path.join(pkgDir, 'tsconfig.json'), JSON.stringify(tsconfig, null, 2));
-    await write(path.join(pkgDir, 'jest.config.js'), jestConfig);
-    await write(path.join(pkgDir, 'babel.config.js'), babelConfig);
+    await write(path.join(pkgDir, "rollup.config.mjs"), rollupConfig);
+    await write(
+      path.join(pkgDir, "tsconfig.json"),
+      JSON.stringify(tsconfig, null, 2),
+    );
+    await write(path.join(pkgDir, "jest.config.js"), jestConfig);
+    await write(path.join(pkgDir, "babel.config.js"), babelConfig);
     console.log(`✅ Package scaffolded at packages/${rawName}`);
     console.log(`📦 Next steps:
   1. cd packages/${rawName}
@@ -208,7 +228,7 @@ export default [
   7. Run 'pnpm test' to run tests
   8. Run 'pnpm build' to build the package`);
   } catch (err) {
-    console.error('❌ Failed to scaffold package', err);
+    console.error("❌ Failed to scaffold package", err);
     process.exit(1);
   }
 }

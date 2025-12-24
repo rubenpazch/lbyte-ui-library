@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
 export interface NumericPickerProps {
   value: string | number;
@@ -21,26 +21,26 @@ export default function NumericPicker({
   max = 999999,
   step = 1,
   decimals = 2,
-  currency = 'S/.',
+  currency = "S/.",
   label,
   required = false,
   disabled = false,
-  placeholder = '0.00',
+  placeholder = "0.00",
 }: NumericPickerProps) {
-  const [displayValue, setDisplayValue] = useState<string>(String(value || ''));
+  const [displayValue, setDisplayValue] = useState<string>(String(value || ""));
 
   useEffect(() => {
-    setDisplayValue(String(value || ''));
+    setDisplayValue(String(value || ""));
   }, [value]);
 
   const handleInputChange = (newValue: string) => {
     // Remove currency symbol if present
-    let cleanValue = newValue.replace(/[^\d.-]/g, '');
+    let cleanValue = newValue.replace(/[^\d.-]/g, "");
 
     // Validate and format
-    if (cleanValue === '' || cleanValue === '-') {
+    if (cleanValue === "" || cleanValue === "-") {
       setDisplayValue(cleanValue);
-      onChange('');
+      onChange("");
       return;
     }
 
@@ -115,7 +115,7 @@ export default function NumericPicker({
           <button
             type="button"
             onClick={increment}
-            disabled={disabled || parseFloat(displayValue || '0') >= max}
+            disabled={disabled || parseFloat(displayValue || "0") >= max}
             className="px-2 py-1 bg-gray-100 hover:bg-gray-200 disabled:bg-gray-50 disabled:text-gray-300 rounded-sm transition flex items-center justify-center"
             title="Increment"
           >
@@ -130,7 +130,7 @@ export default function NumericPicker({
           <button
             type="button"
             onClick={decrement}
-            disabled={disabled || parseFloat(displayValue || '0') <= min}
+            disabled={disabled || parseFloat(displayValue || "0") <= min}
             className="px-2 py-1 bg-gray-100 hover:bg-gray-200 disabled:bg-gray-50 disabled:text-gray-300 rounded-sm transition flex items-center justify-center"
             title="Decrement"
           >

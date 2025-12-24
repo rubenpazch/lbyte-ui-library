@@ -1,27 +1,27 @@
-import React from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
-import TrashIcon from './TrashIcon';
+import React from "react";
+import type { Meta, StoryObj } from "@storybook/react";
+import TrashIcon from "./TrashIcon";
 
 const meta = {
-  title: 'Icons/Actions/TrashIcon',
+  title: "Icons/Actions/TrashIcon",
   component: TrashIcon,
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   argTypes: {
     size: {
-      control: 'select',
-      options: ['sm', 'md', 'lg'],
-      description: 'Size of the icon',
+      control: "select",
+      options: ["sm", "md", "lg"],
+      description: "Size of the icon",
     },
     className: {
-      control: 'text',
-      description: 'Additional CSS classes for styling',
+      control: "text",
+      description: "Additional CSS classes for styling",
     },
     color: {
-      control: 'color',
-      description: 'Color of the icon',
+      control: "color",
+      description: "Color of the icon",
     },
   },
 } satisfies Meta<typeof TrashIcon>;
@@ -35,7 +35,7 @@ type Story = StoryObj<typeof meta>;
  */
 export const Default: Story = {
   args: {
-    size: 'md',
+    size: "md",
   },
 };
 
@@ -45,7 +45,7 @@ export const Default: Story = {
  */
 export const Small: Story = {
   args: {
-    size: 'sm',
+    size: "sm",
   },
 };
 
@@ -55,7 +55,7 @@ export const Small: Story = {
  */
 export const Large: Story = {
   args: {
-    size: 'lg',
+    size: "lg",
   },
 };
 
@@ -65,8 +65,8 @@ export const Large: Story = {
  */
 export const RedColor: Story = {
   args: {
-    size: 'md',
-    className: 'text-red-600',
+    size: "md",
+    className: "text-red-600",
   },
 };
 
@@ -76,8 +76,8 @@ export const RedColor: Story = {
  */
 export const OrangeColor: Story = {
   args: {
-    size: 'md',
-    className: 'text-orange-600',
+    size: "md",
+    className: "text-orange-600",
   },
 };
 
@@ -87,8 +87,8 @@ export const OrangeColor: Story = {
  */
 export const GrayColor: Story = {
   args: {
-    size: 'md',
-    className: 'text-gray-500',
+    size: "md",
+    className: "text-gray-500",
   },
 };
 

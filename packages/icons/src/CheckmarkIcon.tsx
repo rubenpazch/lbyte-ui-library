@@ -1,8 +1,8 @@
-import React from 'react';
+import React from "react";
 
 interface CheckmarkIconProps {
   className?: string;
-  size?: 'sm' | 'md' | 'lg';
+  size?: "sm" | "md" | "lg";
 }
 
 /**
@@ -15,11 +15,14 @@ interface CheckmarkIconProps {
  * <CheckmarkIcon size="md" />
  * <CheckmarkIcon className="w-5 h-5 text-white" />
  */
-const CheckmarkIcon: React.FC<CheckmarkIconProps> = ({ className = '', size = 'md' }) => {
+const CheckmarkIcon: React.FC<CheckmarkIconProps> = ({
+  className = "",
+  size = "md",
+}) => {
   const sizeClasses = {
-    sm: 'w-4 h-4',
-    md: 'w-5 h-5',
-    lg: 'w-6 h-6',
+    sm: "w-4 h-4",
+    md: "w-5 h-5",
+    lg: "w-6 h-6",
   };
 
   const combinedClasses = `${sizeClasses[size]} ${className}`.trim();
@@ -33,7 +36,11 @@ const CheckmarkIcon: React.FC<CheckmarkIconProps> = ({ className = '', size = 'm
       stroke="currentColor"
       className={combinedClasses}
     >
-      <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M4.5 12.75l6 6 9-13.5"
+      />
     </svg>
   );
 };

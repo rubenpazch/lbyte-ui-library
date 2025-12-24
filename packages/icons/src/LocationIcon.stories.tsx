@@ -1,23 +1,23 @@
-import React from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
-import LocationIcon from './LocationIcon';
+import React from "react";
+import type { Meta, StoryObj } from "@storybook/react";
+import LocationIcon from "./LocationIcon";
 
 const meta: Meta<typeof LocationIcon> = {
-  title: 'Icons/Location/LocationIcon',
+  title: "Icons/Location/LocationIcon",
   component: LocationIcon,
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   argTypes: {
     size: {
-      control: 'select',
-      options: ['sm', 'md', 'lg', 'xl'],
-      description: 'Size of the icon',
+      control: "select",
+      options: ["sm", "md", "lg", "xl"],
+      description: "Size of the icon",
     },
     className: {
-      control: 'text',
-      description: 'Additional CSS classes',
+      control: "text",
+      description: "Additional CSS classes",
     },
   },
 };
@@ -27,32 +27,32 @@ type Story = StoryObj<typeof LocationIcon>;
 
 export const Default: Story = {
   args: {
-    size: 'md',
+    size: "md",
   },
 };
 
 export const Small: Story = {
   args: {
-    size: 'sm',
+    size: "sm",
   },
 };
 
 export const Large: Story = {
   args: {
-    size: 'lg',
+    size: "lg",
   },
 };
 
 export const ExtraLarge: Story = {
   args: {
-    size: 'xl',
+    size: "xl",
   },
 };
 
 export const CustomColor: Story = {
   args: {
-    size: 'md',
-    className: 'text-red-600',
+    size: "md",
+    className: "text-red-600",
   },
 };
 

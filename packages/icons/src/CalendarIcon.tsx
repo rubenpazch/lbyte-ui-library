@@ -1,8 +1,8 @@
-import React from 'react';
+import React from "react";
 
 interface CalendarIconProps {
   className?: string;
-  size?: 'sm' | 'md' | 'lg';
+  size?: "sm" | "md" | "lg";
 }
 
 /**
@@ -15,11 +15,14 @@ interface CalendarIconProps {
  * <CalendarIcon size="md" />
  * <CalendarIcon className="w-5 h-5 text-blue-600" />
  */
-const CalendarIcon: React.FC<CalendarIconProps> = ({ className = '', size = 'md' }) => {
+const CalendarIcon: React.FC<CalendarIconProps> = ({
+  className = "",
+  size = "md",
+}) => {
   const sizeClasses = {
-    sm: 'w-4 h-4',
-    md: 'w-5 h-5',
-    lg: 'w-6 h-6',
+    sm: "w-4 h-4",
+    md: "w-5 h-5",
+    lg: "w-6 h-6",
   };
 
   const defaultClasses = `${sizeClasses[size]} ${className}`;

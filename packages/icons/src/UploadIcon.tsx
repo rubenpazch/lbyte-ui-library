@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 interface UploadIconProps {
   /**
@@ -35,9 +35,9 @@ interface UploadIconProps {
  * <UploadIcon className="text-blue-500" />
  */
 const UploadIcon: React.FC<UploadIconProps> = ({
-  size = 'h-12 w-12',
-  className = 'text-gray-400',
-  ariaLabel = 'Upload',
+  size = "h-12 w-12",
+  className = "text-gray-400",
+  ariaLabel = "Upload",
 }) => {
   return (
     <svg

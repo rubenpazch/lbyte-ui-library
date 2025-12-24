@@ -1,23 +1,23 @@
-import React from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
-import NotificationIcon from './NotificationIcon';
+import React from "react";
+import type { Meta, StoryObj } from "@storybook/react";
+import NotificationIcon from "./NotificationIcon";
 
 const meta = {
-  title: 'Icons/Feedback/NotificationIcon',
+  title: "Icons/Feedback/NotificationIcon",
   component: NotificationIcon,
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   argTypes: {
     size: {
-      control: 'select',
-      options: ['sm', 'md', 'lg'],
-      description: 'Size of the icon',
+      control: "select",
+      options: ["sm", "md", "lg"],
+      description: "Size of the icon",
     },
     className: {
-      control: 'text',
-      description: 'Additional CSS classes for styling',
+      control: "text",
+      description: "Additional CSS classes for styling",
     },
   },
 } satisfies Meta<typeof NotificationIcon>;
@@ -31,7 +31,7 @@ type Story = StoryObj<typeof meta>;
  */
 export const Default: Story = {
   args: {
-    size: 'md',
+    size: "md",
   },
 };
 
@@ -41,7 +41,7 @@ export const Default: Story = {
  */
 export const Small: Story = {
   args: {
-    size: 'sm',
+    size: "sm",
   },
 };
 
@@ -51,7 +51,7 @@ export const Small: Story = {
  */
 export const Large: Story = {
   args: {
-    size: 'lg',
+    size: "lg",
   },
 };
 
@@ -61,8 +61,8 @@ export const Large: Story = {
  */
 export const BlueColor: Story = {
   args: {
-    size: 'md',
-    className: 'text-blue-600',
+    size: "md",
+    className: "text-blue-600",
   },
 };
 
@@ -72,8 +72,8 @@ export const BlueColor: Story = {
  */
 export const RedColor: Story = {
   args: {
-    size: 'md',
-    className: 'text-red-600',
+    size: "md",
+    className: "text-red-600",
   },
 };
 
@@ -82,8 +82,8 @@ export const RedColor: Story = {
  */
 export const CustomColor: Story = {
   args: {
-    size: 'md',
-    className: 'text-purple-500',
+    size: "md",
+    className: "text-purple-500",
   },
 };
 
@@ -186,7 +186,9 @@ export const InButton: Story = {
     <button className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
       <NotificationIcon size="sm" />
       <span>Notifications</span>
-      <span className="ml-1 px-2 py-0.5 text-xs bg-white text-blue-600 rounded-full">5</span>
+      <span className="ml-1 px-2 py-0.5 text-xs bg-white text-blue-600 rounded-full">
+        5
+      </span>
     </button>
   ),
 };

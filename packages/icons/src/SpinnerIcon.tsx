@@ -1,20 +1,20 @@
-import React from 'react';
+import React from "react";
 
 interface SpinnerIconProps {
   className?: string;
-  size?: 'sm' | 'md' | 'lg';
+  size?: "sm" | "md" | "lg";
   color?: string;
 }
 
 const SpinnerIcon: React.FC<SpinnerIconProps> = ({
-  className = '',
-  size = 'md',
-  color = 'currentColor',
+  className = "",
+  size = "md",
+  color = "currentColor",
 }) => {
   const sizeClasses = {
-    sm: 'w-4 h-4',
-    md: 'w-5 h-5',
-    lg: 'w-6 h-6',
+    sm: "w-4 h-4",
+    md: "w-5 h-5",
+    lg: "w-6 h-6",
   };
 
   return (
@@ -24,7 +24,14 @@ const SpinnerIcon: React.FC<SpinnerIconProps> = ({
       stroke={color}
       viewBox="0 0 24 24"
     >
-      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+      <circle
+        className="opacity-25"
+        cx="12"
+        cy="12"
+        r="10"
+        stroke="currentColor"
+        strokeWidth="4"
+      />
       <path
         className="opacity-75"
         fill="currentColor"

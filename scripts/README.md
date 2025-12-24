@@ -76,6 +76,7 @@ packages/<package-name>/
 ### Component File (`<ComponentName>.tsx`)
 
 Generated with:
+
 - Exported TypeScript interface (`<ComponentName>Props`)
 - Functional component with React
 - **Tailwind CSS** ready (no CSS imports needed)
@@ -89,11 +90,7 @@ export interface ComponentProps {
 }
 
 export default function Component({ children, className }: ComponentProps) {
-  return (
-    <div className={`p-4 ${className || ''}`}>
-      {children}
-    </div>
-  );
+  return <div className={`p-4 ${className || ""}`}>{children}</div>;
 }
 ```
 
@@ -119,6 +116,7 @@ export default function Component({ children, className }: ComponentProps) {
 ### `rollup.config.mjs`
 
 Configured with:
+
 - **Dual output:** CommonJS and ES modules
 - **Plugins:**
   - `@rollup/plugin-node-resolve`: Resolves node_modules
@@ -150,6 +148,7 @@ Configured with:
 ### `babel.config.js`
 
 Presets configured for Jest:
+
 - `@babel/preset-env`: Targets current Node version
 - `@babel/preset-react`: JSX with automatic runtime
 - `@babel/preset-typescript`: TypeScript support
@@ -176,11 +175,13 @@ Presets configured for Jest:
 ## 🔄 Workflow After Generation
 
 1. **Generate the package:**
+
    ```bash
    npm run generate my-component
    ```
 
 2. **Install dependencies** (from monorepo root):
+
    ```bash
    pnpm install
    ```
@@ -200,13 +201,14 @@ Presets configured for Jest:
    - Run tests: `pnpm test`
 
 6. **Build the package:**
+
    ```bash
    pnpm -F @rubenpazch/my-component build
    ```
 
 7. **Use in other packages:**
    ```tsx
-   import MyComponent from '@rubenpazch/my-component';
+   import MyComponent from "@rubenpazch/my-component";
    ```
 
 ## 📚 Naming Conventions
@@ -216,6 +218,7 @@ Presets configured for Jest:
 - **File names:** Match component name for `.tsx`, use kebab-case for CSS
 
 The generator automatically converts:
+
 - `button-group` → `ButtonGroup` component
 - `text-input` → `TextInput` component
 
@@ -224,6 +227,7 @@ The generator automatically converts:
 ### Turborepo
 
 All generated packages automatically work with Turborepo tasks:
+
 - `pnpm build` - Builds all packages
 - `pnpm test` - Runs all tests
 - `pnpm -F @rubenpazch/my-component build` - Build specific package
@@ -231,6 +235,7 @@ All generated packages automatically work with Turborepo tasks:
 ### Storybook
 
 Generated stories are automatically discovered by Storybook:
+
 - Story pattern: `packages/*/src/**/*.stories.tsx`
 - Run Storybook: `pnpm storybook`
 - Build Storybook: `pnpm build-storybook`
@@ -254,6 +259,7 @@ Generated stories are automatically discovered by Storybook:
 ### Storybook not showing stories
 
 **Solution:**
+
 1. Check story file is in `src/` directory
 2. Restart Storybook dev server
 3. Verify story file has `.stories.tsx` extension
@@ -265,6 +271,7 @@ Generated stories are automatically discovered by Storybook:
 ### TypeScript errors in generated code
 
 **Solution:**
+
 1. Run `pnpm install` at root
 2. Check `@rubenpazch/typescript-config` is available
 3. Restart TypeScript server in your editor

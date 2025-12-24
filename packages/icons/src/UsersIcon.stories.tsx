@@ -1,23 +1,23 @@
-import React from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
-import UsersIcon from './UsersIcon';
+import React from "react";
+import type { Meta, StoryObj } from "@storybook/react";
+import UsersIcon from "./UsersIcon";
 
 const meta = {
-  title: 'Icons/Users/UsersIcon',
+  title: "Icons/Users/UsersIcon",
   component: UsersIcon,
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   argTypes: {
     size: {
-      control: 'select',
-      options: ['sm', 'md', 'lg'],
-      description: 'Size of the icon',
+      control: "select",
+      options: ["sm", "md", "lg"],
+      description: "Size of the icon",
     },
     className: {
-      control: 'text',
-      description: 'Additional CSS classes for styling',
+      control: "text",
+      description: "Additional CSS classes for styling",
     },
   },
 } satisfies Meta<typeof UsersIcon>;
@@ -31,7 +31,7 @@ type Story = StoryObj<typeof meta>;
  */
 export const Default: Story = {
   args: {
-    size: 'md',
+    size: "md",
   },
 };
 
@@ -41,7 +41,7 @@ export const Default: Story = {
  */
 export const Small: Story = {
   args: {
-    size: 'sm',
+    size: "sm",
   },
 };
 
@@ -51,7 +51,7 @@ export const Small: Story = {
  */
 export const Large: Story = {
   args: {
-    size: 'lg',
+    size: "lg",
   },
 };
 
@@ -61,8 +61,8 @@ export const Large: Story = {
  */
 export const BlueColor: Story = {
   args: {
-    size: 'md',
-    className: 'text-blue-600',
+    size: "md",
+    className: "text-blue-600",
   },
 };
 
@@ -71,8 +71,8 @@ export const BlueColor: Story = {
  */
 export const GreenColor: Story = {
   args: {
-    size: 'md',
-    className: 'text-green-600',
+    size: "md",
+    className: "text-green-600",
   },
 };
 
@@ -81,8 +81,8 @@ export const GreenColor: Story = {
  */
 export const CustomColor: Story = {
   args: {
-    size: 'md',
-    className: 'text-purple-500',
+    size: "md",
+    className: "text-purple-500",
   },
 };
 

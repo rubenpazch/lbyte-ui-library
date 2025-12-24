@@ -1,0 +1,12 @@
+{
+  "extends": "@rubenpazch/typescript-config/react.json",
+  "compilerOptions": {
+    "outDir": "dist",
+    "rootDir": "src",
+    "declaration": true,
+    "declarationDir": "dist",
+    "jsx": "react-jsx"
+  },
+  "include": ["src", "../../css-module.d.ts"],
+  "exclude": ["node_modules", "dist", "**/*.stories.*", "**/*.test.*"]
+}

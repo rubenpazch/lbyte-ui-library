@@ -7,14 +7,6 @@
     "rootDir": "src",
     "declarationDir": "dist"
   },
-  "include": [
-    "src",
-    "../../css-module.d.ts"
-  ],
-  "exclude": [
-    "node_modules",
-    "dist",
-    "**/*.stories.*",
-    "**/*.test.*"
-  ]
+  "include": ["src", "../../css-module.d.ts"],
+  "exclude": ["node_modules", "dist", "**/*.stories.*", "**/*.test.*"]
 }
