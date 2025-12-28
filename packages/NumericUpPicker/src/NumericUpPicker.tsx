@@ -19,6 +19,8 @@ const hideSpinnersStyle = `
   }
 `;
 
+export type NumericUpPickerSize = "small" | "medium" | "large";
+
 export interface NumericUpPickerProps {
   label?: string;
   value: string | number;
@@ -42,6 +44,7 @@ export interface NumericUpPickerProps {
   defaultToZero?: boolean; // Flag to start at 0 instead of min/max when empty
   clearable?: boolean; // Flag to show clear button when value exists
   onClear?: () => void; // Callback when clear button is clicked
+  size?: NumericUpPickerSize; // Size variation: small, medium, large
 }
 
 export default function NumericUpPicker({
@@ -67,10 +70,46 @@ export default function NumericUpPicker({
   defaultToZero = false,
   clearable = false,
   onClear,
+  size = "medium",
 }: NumericUpPickerProps) {
   // Track if the field has been touched (user has focused on it)
   const [hasBeenTouched, setHasBeenTouched] = useState(false);
   const numValue = typeof value === "string" ? parseFloat(value) || 0 : value;
+
+  // Size-based styling
+  const sizeClasses = {
+    container: {
+      small: "h-8",
+      medium: "h-12",
+      large: "h-16",
+    },
+    input: {
+      small: "text-xs",
+      medium: "text-lg",
+      large: "text-2xl",
+    },
+    button: {
+      small: "w-8",
+      medium: "w-12",
+      large: "w-16",
+    },
+    icon: {
+      small: "sm",
+      medium: "md",
+      large: "lg",
+    },
+    label: {
+      small: "text-xs",
+      medium: "text-sm",
+      large: "text-base",
+    },
+  };
+
+  const containerSize = sizeClasses.container[size];
+  const inputSize = sizeClasses.input[size];
+  const buttonSize = sizeClasses.button[size];
+  const iconSize = sizeClasses.icon[size] as "sm" | "md" | "lg";
+  const labelSize = sizeClasses.label[size];
 
   // Format display value with sign if showSign is true
   const displayValue = useMemo(() => {
@@ -347,7 +386,7 @@ export default function NumericUpPicker({
       {/* Top Label */}
       {label && (
         <label
-          className={`block text-sm font-medium mb-2 ${error ? "text-red-700" : "text-gray-700"}`}
+          className={`block font-medium mb-2 ${labelSize} ${error ? "text-red-700" : "text-gray-700"}`}
         >
           {label}
           {required && <span className="text-red-500 ml-1">*</span>}
@@ -356,7 +395,7 @@ export default function NumericUpPicker({
 
       {/* Stepper Container - Compact */}
       <div
-        className={`flex items-center justify-between h-12 rounded-lg border-2 transition-all ${
+        className={`flex items-center justify-between ${containerSize} rounded-lg border-2 transition-all ${
           error
             ? "border-red-500 bg-red-50"
             : disabled
@@ -369,7 +408,7 @@ export default function NumericUpPicker({
           type="button"
           onClick={handleDecrement}
           disabled={disabled || isAtMin}
-          className={`flex-shrink-0 w-12 h-full flex items-center justify-center border-r border-gray-300 transition-all ${
+          className={`flex-shrink-0 ${buttonSize} h-full flex items-center justify-center border-r border-gray-300 transition-all ${
             error
               ? "text-red-500"
               : disabled || isAtMin
@@ -379,7 +418,7 @@ export default function NumericUpPicker({
           title="Decrease value"
           aria-label="Decrease"
         >
-          <MinusIcon size="md" />
+          <MinusIcon size={iconSize} />
         </button>
 
         {/* Center Display Area */}
@@ -397,7 +436,7 @@ export default function NumericUpPicker({
             onKeyDown={handleKeyDown}
             placeholder={placeholder}
             disabled={disabled}
-            className={`text-center bg-transparent text-lg font-semibold placeholder-gray-400 focus:outline-none border-none ${
+            className={`text-center bg-transparent font-semibold placeholder-gray-400 focus:outline-none border-none ${inputSize} ${
               error ? "text-red-700" : "text-gray-900"
             } w-full`}
             style={{
@@ -426,7 +465,7 @@ export default function NumericUpPicker({
           type="button"
           onClick={handleIncrement}
           disabled={disabled || isAtMax}
-          className={`flex-shrink-0 w-12 h-full flex items-center justify-center border-l border-gray-300 transition-all ${
+          className={`flex-shrink-0 ${buttonSize} h-full flex items-center justify-center border-l border-gray-300 transition-all ${
             error
               ? "text-red-500"
               : disabled || isAtMax
@@ -436,7 +475,7 @@ export default function NumericUpPicker({
           title="Increase value"
           aria-label="Increase"
         >
-          <PlusIcon size="md" />
+          <PlusIcon size={iconSize} />
         </button>
       </div>
 

@@ -38,6 +38,8 @@ export { default as SortIcon } from "./SortIcon";
 export { default as SpinnerIcon } from "./SpinnerIcon";
 export { default as SystemIdentifierIcon } from "./SystemIdentifierIcon";
 export { default as TrashIcon } from "./TrashIcon";
+export { default as ArrowLeftIcon } from "./ArrowLeftIcon";
+export { default as ArrowRightIcon } from "./ArrowRightIcon";
 export { default as UploadIcon } from "./UploadIcon";
 export { default as UserManagementIcon } from "./UserManagementIcon";
 export { default as UserSelectIcon } from "./UserSelectIcon";

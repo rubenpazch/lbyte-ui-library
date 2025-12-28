@@ -162,6 +162,15 @@ A versatile numeric input component with increment/decrement buttons and compreh
         defaultValue: { summary: "false" },
       },
     },
+    size: {
+      control: "radio",
+      options: ["small", "medium", "large"],
+      description: "Size variant of the component",
+      table: {
+        type: { summary: "'small' | 'medium' | 'large'" },
+        defaultValue: { summary: "medium" },
+      },
+    },
   },
 };
 
@@ -741,6 +750,217 @@ export const MultipleFields: Story = {
       description: {
         story:
           "Example of multiple NumericUpPicker fields in a form with different configurations.",
+      },
+    },
+  },
+};
+
+/**
+ * Small size variant
+ */
+export const SizeSmall: Story = {
+  render: (args) => <NumericUpPickerWithState initialValue="5" {...args} />,
+  args: {
+    label: "Small Size Input",
+    size: "small",
+    min: 0,
+    max: 20,
+    step: 1,
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: "Compact small size variant for dense layouts and form fields.",
+      },
+    },
+  },
+};
+
+/**
+ * Medium size variant (default)
+ */
+export const SizeMedium: Story = {
+  render: (args) => <NumericUpPickerWithState initialValue="5" {...args} />,
+  args: {
+    label: "Medium Size Input (Default)",
+    size: "medium",
+    min: 0,
+    max: 20,
+    step: 1,
+  },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Standard medium size variant - default and most commonly used size.",
+      },
+    },
+  },
+};
+
+/**
+ * Large size variant
+ */
+export const SizeLarge: Story = {
+  render: (args) => <NumericUpPickerWithState initialValue="5" {...args} />,
+  args: {
+    label: "Large Size Input",
+    size: "large",
+    min: 0,
+    max: 20,
+    step: 1,
+  },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Large prominent size variant for primary actions and important inputs.",
+      },
+    },
+  },
+};
+
+/**
+ * Size comparison - all sizes side by side
+ */
+export const SizeComparison: Story = {
+  render: () => (
+    <div className="space-y-8 p-6">
+      <div>
+        <h3 className="text-lg font-semibold mb-4">All Size Variants</h3>
+        <div className="space-y-6">
+          {/* Small */}
+          <div className="bg-gray-50 p-4 rounded-lg">
+            <p className="text-xs font-medium text-gray-600 mb-2">SMALL</p>
+            <NumericUpPicker
+              label="Small Size"
+              value="5"
+              onChange={() => {}}
+              size="small"
+              min={0}
+              max={20}
+              step={1}
+            />
+          </div>
+
+          {/* Medium */}
+          <div className="bg-gray-50 p-4 rounded-lg">
+            <p className="text-xs font-medium text-gray-600 mb-2">
+              MEDIUM (DEFAULT)
+            </p>
+            <NumericUpPicker
+              label="Medium Size"
+              value="5"
+              onChange={() => {}}
+              size="medium"
+              min={0}
+              max={20}
+              step={1}
+            />
+          </div>
+
+          {/* Large */}
+          <div className="bg-gray-50 p-4 rounded-lg">
+            <p className="text-xs font-medium text-gray-600 mb-2">LARGE</p>
+            <NumericUpPicker
+              label="Large Size"
+              value="5"
+              onChange={() => {}}
+              size="large"
+              min={0}
+              max={20}
+              step={1}
+            />
+          </div>
+        </div>
+      </div>
+
+      {/* States comparison */}
+      <div>
+        <h3 className="text-lg font-semibold mb-4">
+          Size with Different States
+        </h3>
+        <div className="space-y-6">
+          {/* Disabled states */}
+          <div className="bg-blue-50 p-4 rounded-lg">
+            <p className="text-xs font-medium text-gray-600 mb-4">
+              DISABLED STATE
+            </p>
+            <div className="grid grid-cols-3 gap-4">
+              <div>
+                <p className="text-xs mb-2 text-gray-500">Small</p>
+                <NumericUpPicker
+                  value="5"
+                  onChange={() => {}}
+                  disabled
+                  size="small"
+                />
+              </div>
+              <div>
+                <p className="text-xs mb-2 text-gray-500">Medium</p>
+                <NumericUpPicker
+                  value="5"
+                  onChange={() => {}}
+                  disabled
+                  size="medium"
+                />
+              </div>
+              <div>
+                <p className="text-xs mb-2 text-gray-500">Large</p>
+                <NumericUpPicker
+                  value="5"
+                  onChange={() => {}}
+                  disabled
+                  size="large"
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* Error states */}
+          <div className="bg-red-50 p-4 rounded-lg">
+            <p className="text-xs font-medium text-gray-600 mb-4">
+              ERROR STATE
+            </p>
+            <div className="grid grid-cols-3 gap-4">
+              <div>
+                <p className="text-xs mb-2 text-gray-500">Small</p>
+                <NumericUpPicker
+                  value="5"
+                  onChange={() => {}}
+                  error="Invalid value"
+                  size="small"
+                />
+              </div>
+              <div>
+                <p className="text-xs mb-2 text-gray-500">Medium</p>
+                <NumericUpPicker
+                  value="5"
+                  onChange={() => {}}
+                  error="Invalid value"
+                  size="medium"
+                />
+              </div>
+              <div>
+                <p className="text-xs mb-2 text-gray-500">Large</p>
+                <NumericUpPicker
+                  value="5"
+                  onChange={() => {}}
+                  error="Invalid value"
+                  size="large"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  ),
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Side-by-side comparison of all size variants with different states.",
       },
     },
   },

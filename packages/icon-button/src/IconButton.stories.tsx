@@ -544,3 +544,301 @@ export const LinkStyle: Story = {
     </div>
   ),
 } as Story;
+
+// Square Shape Variations
+export const SquareShape: Story = {
+  render: () => (
+    <div className="flex flex-col gap-8">
+      <div>
+        <h3 className="text-sm font-semibold text-gray-600 mb-4">
+          Square Shape - Small Size
+        </h3>
+        <div className="flex flex-wrap gap-4">
+          <IconButton
+            shape="square"
+            size="small"
+            variant="blue"
+            icon={viewIcon}
+            filled
+          />
+          <IconButton
+            shape="square"
+            size="small"
+            variant="secondary"
+            icon={editIcon}
+            filled
+          />
+          <IconButton
+            shape="square"
+            size="small"
+            variant="pink"
+            icon={plusIcon}
+            filled
+          />
+          <IconButton
+            shape="square"
+            size="small"
+            variant="black"
+            icon={viewIcon}
+            filled
+          />
+        </div>
+      </div>
+
+      <div>
+        <h3 className="text-sm font-semibold text-gray-600 mb-4">
+          Square Shape - Medium Size
+        </h3>
+        <div className="flex flex-wrap gap-4">
+          <IconButton
+            shape="square"
+            size="medium"
+            variant="blue"
+            icon={viewIcon}
+            filled
+          />
+          <IconButton
+            shape="square"
+            size="medium"
+            variant="secondary"
+            icon={editIcon}
+            filled
+          />
+          <IconButton
+            shape="square"
+            size="medium"
+            variant="pink"
+            icon={plusIcon}
+            filled
+          />
+          <IconButton
+            shape="square"
+            size="medium"
+            variant="black"
+            icon={viewIcon}
+            filled
+          />
+          <IconButton
+            shape="square"
+            size="medium"
+            variant="warning"
+            icon={editIcon}
+            filled
+          />
+        </div>
+      </div>
+
+      <div>
+        <h3 className="text-sm font-semibold text-gray-600 mb-4">
+          Square Shape - Outlined
+        </h3>
+        <div className="flex flex-wrap gap-4">
+          <IconButton
+            shape="square"
+            size="medium"
+            variant="blue"
+            icon={viewIcon}
+          />
+          <IconButton
+            shape="square"
+            size="medium"
+            variant="secondary"
+            icon={editIcon}
+          />
+          <IconButton
+            shape="square"
+            size="medium"
+            variant="pink"
+            icon={plusIcon}
+          />
+          <IconButton
+            shape="square"
+            size="medium"
+            variant="black"
+            icon={viewIcon}
+          />
+        </div>
+      </div>
+
+      <div>
+        <h3 className="text-sm font-semibold text-gray-600 mb-4">
+          Square Shape - Quiet
+        </h3>
+        <div className="flex flex-wrap gap-4">
+          <IconButton
+            shape="square"
+            size="medium"
+            variant="blue"
+            icon={viewIcon}
+            quiet
+          />
+          <IconButton
+            shape="square"
+            size="medium"
+            variant="secondary"
+            icon={editIcon}
+            quiet
+          />
+          <IconButton
+            shape="square"
+            size="medium"
+            variant="pink"
+            icon={plusIcon}
+            quiet
+          />
+          <IconButton
+            shape="square"
+            size="medium"
+            variant="black"
+            icon={viewIcon}
+            quiet
+          />
+        </div>
+      </div>
+
+      <div>
+        <h3 className="text-sm font-semibold text-gray-600 mb-4">
+          Square Shape - Disabled
+        </h3>
+        <div className="flex flex-wrap gap-4">
+          <IconButton
+            shape="square"
+            size="medium"
+            variant="blue"
+            icon={viewIcon}
+            filled
+            disabled
+          />
+          <IconButton
+            shape="square"
+            size="medium"
+            variant="secondary"
+            icon={editIcon}
+            filled
+            disabled
+          />
+          <IconButton
+            shape="square"
+            size="medium"
+            variant="pink"
+            icon={plusIcon}
+            quiet
+            disabled
+          />
+        </div>
+      </div>
+
+      <div>
+        <h3 className="text-sm font-semibold text-gray-600 mb-4">
+          Square Shape - With Tooltip
+        </h3>
+        <div className="flex flex-wrap gap-4">
+          <IconButton
+            shape="square"
+            size="medium"
+            variant="blue"
+            icon={viewIcon}
+            tooltip="View this item"
+            tooltipPosition="top"
+            filled
+          />
+          <IconButton
+            shape="square"
+            size="medium"
+            variant="secondary"
+            icon={editIcon}
+            tooltip="Edit this item"
+            tooltipPosition="right"
+            filled
+          />
+          <IconButton
+            shape="square"
+            size="medium"
+            variant="pink"
+            icon={plusIcon}
+            tooltip="Add new item"
+            tooltipPosition="bottom"
+            filled
+          />
+        </div>
+      </div>
+    </div>
+  ),
+} as Story;
+
+// Comparison: Rounded vs Square
+export const RoundedVsSquare: Story = {
+  render: () => (
+    <div className="flex flex-col gap-8">
+      <div>
+        <h3 className="text-sm font-semibold text-gray-600 mb-4">
+          Rounded (Default)
+        </h3>
+        <div className="flex flex-wrap gap-4">
+          <IconButton
+            shape="rounded"
+            size="small"
+            variant="blue"
+            icon={viewIcon}
+            filled
+          />
+          <IconButton
+            shape="rounded"
+            size="small"
+            variant="secondary"
+            icon={editIcon}
+            filled
+          />
+          <IconButton
+            shape="rounded"
+            size="medium"
+            variant="pink"
+            icon={plusIcon}
+            filled
+          />
+          <IconButton
+            shape="rounded"
+            size="medium"
+            variant="black"
+            icon={viewIcon}
+            filled
+          />
+        </div>
+      </div>
+
+      <div>
+        <h3 className="text-sm font-semibold text-gray-600 mb-4">Square</h3>
+        <div className="flex flex-wrap gap-4">
+          <IconButton
+            shape="square"
+            size="small"
+            variant="blue"
+            icon={viewIcon}
+            filled
+          />
+          <IconButton
+            shape="square"
+            size="small"
+            variant="secondary"
+            icon={editIcon}
+            filled
+          />
+          <IconButton
+            shape="square"
+            size="medium"
+            variant="pink"
+            icon={plusIcon}
+            filled
+          />
+          <IconButton
+            shape="square"
+            size="medium"
+            variant="black"
+            icon={viewIcon}
+            filled
+          />
+        </div>
+      </div>
+    </div>
+  ),
+} as Story;
