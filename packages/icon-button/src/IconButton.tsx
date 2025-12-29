@@ -10,6 +10,7 @@ export type IconButtonVariant =
   | "pink"
   | "warning";
 export type IconButtonSize = "small" | "medium";
+export type IconButtonShape = "rounded" | "square";
 export type IconButtonFocusStyle = "filled" | "outline" | "underline";
 export type IconButtonFocusTrigger =
   | "self"
@@ -24,6 +25,7 @@ interface IconButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> 
   icon: React.ReactNode;
   variant?: IconButtonVariant;
   size?: IconButtonSize;
+  shape?: IconButtonShape;
   filled?: boolean;
   quiet?: boolean;
   inverted?: boolean;
@@ -44,6 +46,7 @@ const IconButton = React.forwardRef<HTMLButtonElement, IconButtonProps>(
       icon,
       variant = "default",
       size = "medium",
+      shape = "rounded",
       filled = false,
       quiet = false,
       inverted = false,
@@ -69,6 +72,9 @@ const IconButton = React.forwardRef<HTMLButtonElement, IconButtonProps>(
       small: "p-2 w-8 h-8",
       medium: "p-2.5 w-10 h-10",
     };
+
+    // Shape classes for icon-only buttons
+    const shapeClasses = shape === "square" ? "rounded-lg" : "rounded-full";
 
     // Icon size based on button size
     const iconSizeClasses = {
@@ -177,7 +183,7 @@ const IconButton = React.forwardRef<HTMLButtonElement, IconButtonProps>(
     const allClasses = `
       ${sizeClasses[size]}
       ${colorClasses}
-      rounded-full
+      ${shapeClasses}
       ${disabledClasses}
       ${focusClasses}
       ${linkStyleClasses}

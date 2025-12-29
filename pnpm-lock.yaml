@@ -545,6 +545,31 @@ importers:
         specifier: ^5.0.4
         version: 5.9.3
 
+  packages/sidebar:
+    dependencies:
+      "@rubenpazch/button":
+        specifier: workspace:*
+        version: link:../button
+      "@rubenpazch/icon-button":
+        specifier: workspace:*
+        version: link:../icon-button
+      "@rubenpazch/icons":
+        specifier: workspace:*
+        version: link:../icons
+      "@rubenpazch/shared":
+        specifier: workspace:*
+        version: link:../shared
+      react:
+        specifier: ^19.0.0
+        version: 19.2.3
+      react-dom:
+        specifier: ^19.0.0
+        version: 19.2.3(react@19.2.3)
+    devDependencies:
+      "@rubenpazch/typescript-config":
+        specifier: workspace:*
+        version: link:../../tooling/typescript-config
+
   packages/stepper:
     dependencies:
       react:

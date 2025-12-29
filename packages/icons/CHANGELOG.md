@@ -1,5 +1,11 @@
 # @rubenpazch/icons
 
+## 3.0.1
+
+### Patch Changes
+
+- 8157049: updates
+
 ## 3.0.0
 
 ### Major Changes

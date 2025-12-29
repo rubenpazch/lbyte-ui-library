@@ -2283,4 +2283,423 @@ describe("NumericUpPicker Component", () => {
       expect(screen.getByRole("textbox")).toBeInTheDocument();
     });
   });
+
+  describe("Size Variations", () => {
+    describe("Small Size", () => {
+      it("should render with small size class", () => {
+        const { container } = render(
+          <NumericUpPicker value="5" onChange={jest.fn()} size="small" />,
+        );
+
+        const stepper = container.querySelector(".h-8");
+        expect(stepper).toBeInTheDocument();
+      });
+
+      it("should render with small text size", () => {
+        const { container } = render(
+          <NumericUpPicker value="5" onChange={jest.fn()} size="small" />,
+        );
+
+        const input = screen.getByRole("textbox");
+        expect(input).toHaveClass("text-xs");
+      });
+
+      it("should render with small button width", () => {
+        const { container } = render(
+          <NumericUpPicker value="5" onChange={jest.fn()} size="small" />,
+        );
+
+        const buttons = screen.getAllByRole("button");
+        buttons.forEach((button) => {
+          expect(button).toHaveClass("w-8");
+        });
+      });
+
+      it("should render with small label", () => {
+        render(
+          <NumericUpPicker
+            label="Small Input"
+            value="5"
+            onChange={jest.fn()}
+            size="small"
+          />,
+        );
+
+        const label = screen.getByText("Small Input");
+        expect(label).toHaveClass("text-xs");
+      });
+
+      it("should work with increment/decrement in small size", async () => {
+        const handleChange = jest.fn();
+        render(
+          <NumericUpPicker
+            value="5"
+            onChange={handleChange}
+            step={1}
+            size="small"
+          />,
+        );
+
+        const buttons = screen.getAllByRole("button");
+        const incrementButton = buttons[1];
+
+        await userEvent.click(incrementButton);
+
+        expect(handleChange).toHaveBeenCalled();
+      });
+    });
+
+    describe("Medium Size (Default)", () => {
+      it("should render with medium size class by default", () => {
+        const { container } = render(
+          <NumericUpPicker value="5" onChange={jest.fn()} />,
+        );
+
+        const stepper = container.querySelector(".h-12");
+        expect(stepper).toBeInTheDocument();
+      });
+
+      it("should render with medium size class explicitly", () => {
+        const { container } = render(
+          <NumericUpPicker value="5" onChange={jest.fn()} size="medium" />,
+        );
+
+        const stepper = container.querySelector(".h-12");
+        expect(stepper).toBeInTheDocument();
+      });
+
+      it("should render with medium text size", () => {
+        const { container } = render(
+          <NumericUpPicker value="5" onChange={jest.fn()} size="medium" />,
+        );
+
+        const input = screen.getByRole("textbox");
+        expect(input).toHaveClass("text-lg");
+      });
+
+      it("should render with medium button width", () => {
+        const { container } = render(
+          <NumericUpPicker value="5" onChange={jest.fn()} size="medium" />,
+        );
+
+        const buttons = screen.getAllByRole("button");
+        buttons.forEach((button) => {
+          expect(button).toHaveClass("w-12");
+        });
+      });
+
+      it("should render with medium label", () => {
+        render(
+          <NumericUpPicker
+            label="Medium Input"
+            value="5"
+            onChange={jest.fn()}
+            size="medium"
+          />,
+        );
+
+        const label = screen.getByText("Medium Input");
+        expect(label).toHaveClass("text-sm");
+      });
+    });
+
+    describe("Large Size", () => {
+      it("should render with large size class", () => {
+        const { container } = render(
+          <NumericUpPicker value="5" onChange={jest.fn()} size="large" />,
+        );
+
+        const stepper = container.querySelector(".h-16");
+        expect(stepper).toBeInTheDocument();
+      });
+
+      it("should render with large text size", () => {
+        const { container } = render(
+          <NumericUpPicker value="5" onChange={jest.fn()} size="large" />,
+        );
+
+        const input = screen.getByRole("textbox");
+        expect(input).toHaveClass("text-2xl");
+      });
+
+      it("should render with large button width", () => {
+        const { container } = render(
+          <NumericUpPicker value="5" onChange={jest.fn()} size="large" />,
+        );
+
+        const buttons = screen.getAllByRole("button");
+        buttons.forEach((button) => {
+          expect(button).toHaveClass("w-16");
+        });
+      });
+
+      it("should render with large label", () => {
+        render(
+          <NumericUpPicker
+            label="Large Input"
+            value="5"
+            onChange={jest.fn()}
+            size="large"
+          />,
+        );
+
+        const label = screen.getByText("Large Input");
+        expect(label).toHaveClass("text-base");
+      });
+
+      it("should work with increment/decrement in large size", async () => {
+        const handleChange = jest.fn();
+        render(
+          <NumericUpPicker
+            value="5"
+            onChange={handleChange}
+            step={1}
+            size="large"
+          />,
+        );
+
+        const buttons = screen.getAllByRole("button");
+        const decrementButton = buttons[0];
+
+        await userEvent.click(decrementButton);
+
+        expect(handleChange).toHaveBeenCalled();
+      });
+
+      it("should be clickable and responsive in large size", async () => {
+        const handleChange = jest.fn();
+        render(
+          <NumericUpPicker
+            label="Large Number"
+            value="10"
+            onChange={handleChange}
+            min={0}
+            max={20}
+            step={1}
+            size="large"
+          />,
+        );
+
+        const buttons = screen.getAllByRole("button");
+        const incrementButton = buttons[1];
+
+        await userEvent.click(incrementButton);
+
+        expect(handleChange).toHaveBeenCalled();
+      });
+    });
+
+    describe("Size with Different States", () => {
+      it("should render disabled state correctly in small size", () => {
+        render(
+          <NumericUpPicker
+            value="5"
+            onChange={jest.fn()}
+            disabled
+            size="small"
+          />,
+        );
+
+        const input = screen.getByRole("textbox");
+        expect(input).toBeDisabled();
+      });
+
+      it("should render error state correctly in medium size", () => {
+        const { container } = render(
+          <NumericUpPicker
+            value="5"
+            onChange={jest.fn()}
+            error="Invalid"
+            size="medium"
+          />,
+        );
+
+        const stepper = container.querySelector(".border-red-500");
+        expect(stepper).toBeInTheDocument();
+      });
+
+      it("should render with hint in large size", () => {
+        render(
+          <NumericUpPicker
+            label="Amount"
+            value="5"
+            onChange={jest.fn()}
+            hint="Enter a value"
+            size="large"
+          />,
+        );
+
+        expect(screen.getByText("Enter a value")).toBeInTheDocument();
+      });
+
+      it("should work with clearable in small size", async () => {
+        const handleClear = jest.fn();
+        const { container } = render(
+          <NumericUpPicker
+            value="5"
+            onChange={jest.fn()}
+            clearable
+            onClear={handleClear}
+            size="small"
+          />,
+        );
+
+        const clearButton = container.querySelector(".rounded-full");
+        if (clearButton) {
+          await userEvent.click(clearButton);
+          expect(handleClear).toHaveBeenCalled();
+        }
+      });
+    });
+
+    describe("Size with Various Props", () => {
+      it("should handle min/max constraints in small size", async () => {
+        const handleChange = jest.fn();
+        render(
+          <NumericUpPicker
+            value="0"
+            onChange={handleChange}
+            min={0}
+            max={5}
+            step={1}
+            size="small"
+          />,
+        );
+
+        const buttons = screen.getAllByRole("button");
+        const decrementButton = buttons[0];
+
+        await userEvent.click(decrementButton);
+
+        // Should not go below min
+        expect(handleChange).not.toHaveBeenCalledWith("-1");
+      });
+
+      it("should handle required field in medium size", () => {
+        render(
+          <NumericUpPicker
+            label="Required Field"
+            value="5"
+            onChange={jest.fn()}
+            required
+            size="medium"
+          />,
+        );
+
+        const label = screen.getByText("Required Field");
+        expect(label.parentElement).toHaveTextContent("*");
+      });
+
+      it("should handle integerOnly in large size", async () => {
+        const handleChange = jest.fn();
+        render(
+          <NumericUpPicker
+            value="5"
+            onChange={handleChange}
+            step={0.5}
+            integerOnly
+            size="large"
+          />,
+        );
+
+        const buttons = screen.getAllByRole("button");
+        const incrementButton = buttons[1];
+
+        await userEvent.click(incrementButton);
+
+        expect(handleChange).toHaveBeenCalled();
+      });
+
+      it("should handle alwaysNegative in small size", () => {
+        render(
+          <NumericUpPicker
+            value="-5"
+            onChange={jest.fn()}
+            alwaysNegative
+            size="small"
+          />,
+        );
+
+        const input = screen.getByRole("textbox") as HTMLInputElement;
+        expect(input.value).toContain("-");
+      });
+
+      it("should handle showSign in medium size", () => {
+        render(
+          <NumericUpPicker
+            value="5"
+            onChange={jest.fn()}
+            showSign
+            size="medium"
+          />,
+        );
+
+        const input = screen.getByRole("textbox") as HTMLInputElement;
+        expect(input.value).toContain("+");
+      });
+    });
+
+    describe("Size Consistency", () => {
+      it("should maintain functionality across all sizes", async () => {
+        const handleChange = jest.fn();
+
+        const { rerender } = render(
+          <NumericUpPicker
+            value="5"
+            onChange={handleChange}
+            step={1}
+            size="small"
+          />,
+        );
+
+        let buttons = screen.getAllByRole("button");
+        await userEvent.click(buttons[1]); // increment
+
+        rerender(
+          <NumericUpPicker
+            value="5"
+            onChange={handleChange}
+            step={1}
+            size="medium"
+          />,
+        );
+
+        buttons = screen.getAllByRole("button");
+        await userEvent.click(buttons[1]); // increment
+
+        rerender(
+          <NumericUpPicker
+            value="5"
+            onChange={handleChange}
+            step={1}
+            size="large"
+          />,
+        );
+
+        buttons = screen.getAllByRole("button");
+        await userEvent.click(buttons[1]); // increment
+
+        // Should have been called 3 times across different sizes
+        expect(handleChange).toHaveBeenCalledTimes(3);
+      });
+
+      it("should handle keyboard input in all sizes", async () => {
+        const handleChange = jest.fn();
+
+        const { rerender } = render(
+          <NumericUpPicker value="5" onChange={handleChange} size="small" />,
+        );
+
+        const input = screen.getByRole("textbox");
+        await userEvent.type(input, "10");
+
+        rerender(
+          <NumericUpPicker value="5" onChange={handleChange} size="large" />,
+        );
+
+        const newInput = screen.getByRole("textbox");
+        expect(newInput).toBeInTheDocument();
+      });
+    });
+  });
 });

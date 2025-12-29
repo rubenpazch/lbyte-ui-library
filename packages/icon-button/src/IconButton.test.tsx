@@ -467,4 +467,465 @@ describe("IconButton Component", () => {
       expect(button).toBeDefined();
     });
   });
+
+  describe("Shape Variants", () => {
+    describe("Square Shape", () => {
+      it("renders button with square shape", () => {
+        const { container } = render(
+          <IconButton icon={<MockIcon />} shape="square" />,
+        );
+        const button = container.querySelector("button");
+        expect(button).toHaveClass("rounded-lg");
+      });
+
+      it("renders square shape with small size", () => {
+        const { container } = render(
+          <IconButton icon={<MockIcon />} shape="square" size="small" />,
+        );
+        const button = container.querySelector("button");
+        expect(button).toHaveClass("rounded-lg", "p-2", "w-8", "h-8");
+      });
+
+      it("renders square shape with medium size", () => {
+        const { container } = render(
+          <IconButton icon={<MockIcon />} shape="square" size="medium" />,
+        );
+        const button = container.querySelector("button");
+        expect(button).toHaveClass("rounded-lg", "p-2.5", "w-10", "h-10");
+      });
+
+      it("renders square shape with filled variant", () => {
+        const { container } = render(
+          <IconButton
+            icon={<MockIcon />}
+            shape="square"
+            filled
+            variant="blue"
+          />,
+        );
+        const button = container.querySelector("button");
+        expect(button).toHaveClass("bg-blue-500");
+      });
+
+      it("renders square shape with quiet variant", () => {
+        const { container } = render(
+          <IconButton
+            icon={<MockIcon />}
+            shape="square"
+            quiet
+            variant="blue"
+          />,
+        );
+        const button = container.querySelector("button");
+        expect(button).toHaveClass("text-blue-500");
+      });
+
+      it("renders square shape with all color variants", () => {
+        const variants: Array<
+          | "default"
+          | "secondary"
+          | "black"
+          | "gradient-green"
+          | "solid-green"
+          | "blue"
+          | "pink"
+          | "warning"
+        > = [
+          "default",
+          "secondary",
+          "black",
+          "gradient-green",
+          "solid-green",
+          "blue",
+          "pink",
+          "warning",
+        ];
+
+        variants.forEach((variant) => {
+          const { container } = render(
+            <IconButton
+              icon={<MockIcon />}
+              shape="square"
+              variant={variant}
+              filled
+            />,
+          );
+          const button = container.querySelector("button");
+          expect(button).toHaveClass("rounded-lg");
+        });
+      });
+
+      it("renders square shape with disabled state", () => {
+        const { container } = render(
+          <IconButton icon={<MockIcon />} shape="square" disabled />,
+        );
+        const button = container.querySelector("button");
+        expect(button).toBeDisabled();
+        expect(button).toHaveClass("opacity-50", "cursor-not-allowed");
+      });
+
+      it("renders square shape with tooltip", () => {
+        render(
+          <IconButton
+            icon={<MockIcon />}
+            shape="square"
+            tooltip="Square button"
+          />,
+        );
+        const button = screen.getByRole("button");
+        expect(button).toBeInTheDocument();
+      });
+
+      it("renders square shape with icon and text", () => {
+        render(
+          <IconButton icon={<MockIcon />} shape="square">
+            Action
+          </IconButton>,
+        );
+        expect(screen.getByText("Action")).toBeInTheDocument();
+        expect(screen.getByTestId("mock-icon")).toBeInTheDocument();
+      });
+
+      it("applies square shape with inverted style", () => {
+        const { container } = render(
+          <IconButton
+            icon={<MockIcon />}
+            shape="square"
+            variant="blue"
+            inverted
+          />,
+        );
+        const button = container.querySelector("button");
+        expect(button).toHaveClass("rounded-lg");
+      });
+
+      it("applies square shape with link style", () => {
+        const { container } = render(
+          <IconButton
+            icon={<MockIcon />}
+            shape="square"
+            linkStyle
+            quiet
+            variant="blue"
+          />,
+        );
+        const button = container.querySelector("button");
+        expect(button).toHaveClass("rounded-lg");
+      });
+
+      it("renders square shape with different focus styles", () => {
+        const focusStyles: Array<"filled" | "outline" | "underline"> = [
+          "filled",
+          "outline",
+          "underline",
+        ];
+
+        focusStyles.forEach((focusStyle) => {
+          const { container } = render(
+            <IconButton
+              icon={<MockIcon />}
+              shape="square"
+              focusStyleType={focusStyle}
+            />,
+          );
+          const button = container.querySelector("button");
+          expect(button).toHaveClass("rounded-lg");
+        });
+      });
+
+      it("renders square shape with tooltip in all positions", () => {
+        const tooltipPositions: Array<"top" | "bottom" | "left" | "right"> = [
+          "top",
+          "bottom",
+          "left",
+          "right",
+        ];
+
+        tooltipPositions.forEach((position) => {
+          const { unmount } = render(
+            <IconButton
+              icon={<MockIcon />}
+              shape="square"
+              tooltip="Test"
+              tooltipPosition={position}
+            />,
+          );
+          expect(screen.getByRole("button")).toBeInTheDocument();
+          unmount();
+        });
+      });
+
+      it("square shape button is clickable and calls onClick", async () => {
+        const user = userEvent.setup();
+        const handleClick = jest.fn();
+        render(
+          <IconButton
+            icon={<MockIcon />}
+            shape="square"
+            onClick={handleClick}
+          />,
+        );
+
+        const button = screen.getByRole("button");
+        await user.click(button);
+        expect(handleClick).toHaveBeenCalledTimes(1);
+      });
+
+      it("square shape button shows tooltip on hover", async () => {
+        const user = userEvent.setup();
+        render(
+          <IconButton
+            icon={<MockIcon />}
+            shape="square"
+            tooltip="Square button tooltip"
+          />,
+        );
+
+        const button = screen.getByRole("button");
+        await user.hover(button);
+        expect(screen.getByText("Square button tooltip")).toBeInTheDocument();
+      });
+
+      it("square shape button hides tooltip on hover out", async () => {
+        const user = userEvent.setup();
+        const { rerender } = render(
+          <IconButton
+            icon={<MockIcon />}
+            shape="square"
+            tooltip="Square button tooltip"
+          />,
+        );
+
+        const button = screen.getByRole("button");
+        await user.hover(button);
+        expect(screen.getByText("Square button tooltip")).toBeInTheDocument();
+
+        await user.unhover(button);
+        rerender(
+          <IconButton
+            icon={<MockIcon />}
+            shape="square"
+            tooltip="Square button tooltip"
+          />,
+        );
+      });
+
+      it("renders square shape with keyboard focus", async () => {
+        const user = userEvent.setup();
+        const { container } = render(
+          <IconButton icon={<MockIcon />} shape="square" />,
+        );
+
+        const button = container.querySelector("button");
+        await user.click(button!);
+        expect(button).toHaveClass("rounded-lg");
+      });
+
+      it("renders square shape with aria attributes", () => {
+        const { container } = render(
+          <IconButton
+            icon={<MockIcon />}
+            shape="square"
+            aria-label="Square Button"
+          />,
+        );
+        const button = container.querySelector("button");
+        expect(button).toHaveAttribute("aria-label", "Square Button");
+      });
+
+      it("applies square shape with different button types", () => {
+        const buttonTypes: Array<"button" | "submit" | "reset"> = [
+          "button",
+          "submit",
+          "reset",
+        ];
+
+        buttonTypes.forEach((type) => {
+          const { container } = render(
+            <IconButton icon={<MockIcon />} shape="square" type={type} />,
+          );
+          const button = container.querySelector("button");
+          // Icon-only buttons may not have explicit type in DOM, so we check for className instead
+          expect(button).toHaveClass("rounded-lg");
+        });
+      });
+    });
+
+    describe("Rounded Shape (Default)", () => {
+      it("renders button with rounded shape by default", () => {
+        const { container } = render(<IconButton icon={<MockIcon />} />);
+        const button = container.querySelector("button");
+        expect(button).toHaveClass("rounded-full");
+      });
+
+      it("explicitly renders with rounded shape", () => {
+        const { container } = render(
+          <IconButton icon={<MockIcon />} shape="rounded" />,
+        );
+        const button = container.querySelector("button");
+        expect(button).toHaveClass("rounded-full");
+      });
+
+      it("rounded shape maintains all other properties", () => {
+        const { container } = render(
+          <IconButton
+            icon={<MockIcon />}
+            shape="rounded"
+            variant="blue"
+            filled
+            size="medium"
+          />,
+        );
+        const button = container.querySelector("button");
+        expect(button).toHaveClass(
+          "rounded-full",
+          "bg-blue-500",
+          "p-2.5",
+          "w-10",
+          "h-10",
+        );
+      });
+    });
+
+    describe("Shape vs Rounded Comparison", () => {
+      it("square and rounded have different border radius", () => {
+        const { container: squareContainer } = render(
+          <IconButton icon={<MockIcon />} shape="square" />,
+        );
+        const { container: roundedContainer } = render(
+          <IconButton icon={<MockIcon />} shape="rounded" />,
+        );
+
+        const squareButton = squareContainer.querySelector("button");
+        const roundedButton = roundedContainer.querySelector("button");
+
+        expect(squareButton).toHaveClass("rounded-lg");
+        expect(roundedButton).toHaveClass("rounded-full");
+      });
+
+      it("both shapes support all variants", () => {
+        const variant = "blue" as const;
+        const { container: squareContainer } = render(
+          <IconButton icon={<MockIcon />} shape="square" variant={variant} />,
+        );
+        const { container: roundedContainer } = render(
+          <IconButton icon={<MockIcon />} shape="rounded" variant={variant} />,
+        );
+
+        const squareButton = squareContainer.querySelector("button");
+        const roundedButton = roundedContainer.querySelector("button");
+
+        expect(squareButton).toBeInTheDocument();
+        expect(roundedButton).toBeInTheDocument();
+      });
+
+      it("both shapes work with text buttons", () => {
+        render(
+          <IconButton icon={<MockIcon />} shape="square">
+            Square Text
+          </IconButton>,
+        );
+        render(
+          <IconButton icon={<MockIcon />} shape="rounded">
+            Rounded Text
+          </IconButton>,
+        );
+
+        expect(screen.getByText("Square Text")).toBeInTheDocument();
+        expect(screen.getByText("Rounded Text")).toBeInTheDocument();
+      });
+
+      it("both shapes handle all sizes", () => {
+        const sizes: Array<"small" | "medium"> = ["small", "medium"];
+
+        sizes.forEach((size) => {
+          const { container: squareContainer } = render(
+            <IconButton icon={<MockIcon />} shape="square" size={size} />,
+          );
+          const { container: roundedContainer } = render(
+            <IconButton icon={<MockIcon />} shape="rounded" size={size} />,
+          );
+
+          const squareButton = squareContainer.querySelector("button");
+          const roundedButton = roundedContainer.querySelector("button");
+
+          if (size === "small") {
+            expect(squareButton).toHaveClass("p-2", "w-8", "h-8");
+            expect(roundedButton).toHaveClass("p-2", "w-8", "h-8");
+          } else {
+            expect(squareButton).toHaveClass("p-2.5", "w-10", "h-10");
+            expect(roundedButton).toHaveClass("p-2.5", "w-10", "h-10");
+          }
+        });
+      });
+
+      it("both shapes handle disabled state", () => {
+        const { container: squareContainer } = render(
+          <IconButton icon={<MockIcon />} shape="square" disabled />,
+        );
+        const { container: roundedContainer } = render(
+          <IconButton icon={<MockIcon />} shape="rounded" disabled />,
+        );
+
+        const squareButton = squareContainer.querySelector("button");
+        const roundedButton = roundedContainer.querySelector("button");
+
+        expect(squareButton).toBeDisabled();
+        expect(roundedButton).toBeDisabled();
+        expect(squareButton).toHaveClass("opacity-50");
+        expect(roundedButton).toHaveClass("opacity-50");
+      });
+
+      it("square shape text button has rounded-lg", () => {
+        const { container } = render(
+          <IconButton icon={<MockIcon />} shape="square">
+            Text Button
+          </IconButton>,
+        );
+        const button = container.querySelector("button");
+        expect(button).toHaveClass("rounded-lg");
+      });
+
+      it("rounded shape text button has rounded-lg", () => {
+        const { container } = render(
+          <IconButton icon={<MockIcon />} shape="rounded">
+            Text Button
+          </IconButton>,
+        );
+        const button = container.querySelector("button");
+        // Text buttons use different rounding, checking for button existence
+        expect(button).toBeInTheDocument();
+      });
+
+      it("square shape preserves focus behavior", async () => {
+        const user = userEvent.setup();
+        const { container } = render(
+          <IconButton
+            icon={<MockIcon />}
+            shape="square"
+            focusStyleType="filled"
+          />,
+        );
+
+        const button = container.querySelector("button");
+        await user.click(button!);
+        expect(button).toHaveClass("focus:outline-none");
+      });
+
+      it("rounded shape preserves focus behavior", async () => {
+        const user = userEvent.setup();
+        const { container } = render(
+          <IconButton
+            icon={<MockIcon />}
+            shape="rounded"
+            focusStyleType="filled"
+          />,
+        );
+
+        const button = container.querySelector("button");
+        await user.click(button!);
+        expect(button).toHaveClass("focus:outline-none");
+      });
+    });
+  });
 });

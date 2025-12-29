@@ -8,6 +8,8 @@ import CalendarIcon from "./CalendarIcon";
 import CheckIcon from "./CheckIcon";
 import CheckmarkIcon from "./CheckmarkIcon";
 import ChevronIcon from "./ChevronIcon";
+import ArrowLeftIcon from "./ArrowLeftIcon";
+import ArrowRightIcon from "./ArrowRightIcon";
 import CityIcon from "./CityIcon";
 import ClockIcon from "./ClockIcon";
 import CloseIcon from "./CloseIcon";
@@ -56,6 +58,8 @@ interface IconItem {
 
 const allIcons: IconItem[] = [
   // Navigation & Actions
+  { name: "ArrowLeft", component: ArrowLeftIcon, category: "Navigation" },
+  { name: "ArrowRight", component: ArrowRightIcon, category: "Navigation" },
   { name: "ArrowDetails", component: ArrowDetailsIcon, category: "Navigation" },
   { name: "Check", component: CheckIcon, category: "Status" },
   { name: "Checkmark", component: CheckmarkIcon, category: "Status" },
