@@ -1,5 +1,5 @@
 import React from "react";
-import { ExclamationTriangleIcon } from "./ExclamationTriangleIcon";
+import ExclamationTriangleIcon from "./ExclamationTriangleIcon";
 import type { Meta, StoryObj } from "@storybook/react";
 
 const meta: Meta<typeof ExclamationTriangleIcon> = {

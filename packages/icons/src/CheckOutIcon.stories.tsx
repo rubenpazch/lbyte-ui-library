@@ -1,5 +1,5 @@
 import React from "react";
-import { CheckOutIcon } from "./CheckOutIcon";
+import CheckOutIcon from "./CheckOutIcon";
 import type { Meta, StoryObj } from "@storybook/react";
 
 const meta: Meta<typeof CheckOutIcon> = {

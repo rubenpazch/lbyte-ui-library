@@ -1,5 +1,5 @@
 import React from "react";
-import { WalletOpen } from "./WalletOpenIcon";
+import WalletOpen from "./WalletOpenIcon";
 import type { Meta, StoryObj } from "@storybook/react";
 
 const meta: Meta<typeof WalletOpen> = {

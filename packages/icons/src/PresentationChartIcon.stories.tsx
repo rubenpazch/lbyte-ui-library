@@ -1,5 +1,5 @@
 import React from "react";
-import { PresentationChartIcon } from "./PresentationChartIcon";
+import PresentationChartIcon from "./PresentationChartIcon";
 import type { Meta, StoryObj } from "@storybook/react";
 
 const meta: Meta<typeof PresentationChartIcon> = {
