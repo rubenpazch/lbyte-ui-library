@@ -1,6 +1,6 @@
 import * as React from "react";
 
-export interface UploadIconProps extends React.SVGProps<SVGSVGElement> {
+export interface UserPlusIconProps extends React.SVGProps<SVGSVGElement> {
   size?: "sm" | "md" | "lg";
   color?: string;
   className?: string;
@@ -12,7 +12,7 @@ const sizeMap = {
   lg: 32,
 };
 
-const UploadIcon: React.FC<UploadIconProps> = ({
+export const UserPlusIcon: React.FC<UserPlusIconProps> = ({
   size = "md",
   color = "currentColor",
   className = "",
@@ -24,19 +24,22 @@ const UploadIcon: React.FC<UploadIconProps> = ({
       xmlns="http://www.w3.org/2000/svg"
       width={dimension}
       height={dimension}
-      viewBox="0 0 48 48"
+      viewBox="0 0 24 24"
       fill="none"
       stroke={color}
       strokeWidth={2}
       strokeLinecap="round"
       strokeLinejoin="round"
-      className={`icon icon-tabler icon-tabler-upload ${className}`.trim()}
+      className={`icon icon-tabler icons-tabler-outline icon-tabler-user-plus ${className}`.trim()}
       {...props}
     >
-      <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" />
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />
+      <path d="M16 19h6" />
+      <path d="M19 16v6" />
+      <path d="M6 21v-2a4 4 0 0 1 4 -4h4" />
     </svg>
   );
 };
 
-UploadIcon.displayName = "UploadIcon";
-export default UploadIcon;
+UserPlusIcon.displayName = "UserPlusIcon";

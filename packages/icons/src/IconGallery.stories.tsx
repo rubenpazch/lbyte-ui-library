@@ -42,6 +42,7 @@ import SettingsIcon from "./SettingsIcon";
 import SortIcon from "./SortIcon";
 import SpinnerIcon from "./SpinnerIcon";
 import SystemIdentifierIcon from "./SystemIdentifierIcon";
+import TargetIcon from "./TargetIcon";
 import TrashIcon from "./TrashIcon";
 import UploadIcon from "./UploadIcon";
 import UserManagementIcon from "./UserManagementIcon";
@@ -49,6 +50,24 @@ import UserSelectIcon from "./UserSelectIcon";
 import UsersIcon from "./UsersIcon";
 import ZoomInIcon from "./ZoomInIcon";
 import ZoomOutIcon from "./ZoomOutIcon";
+import { RobotIcon } from "./RobotIcon";
+import GlassesIcon from "./GlassesIcon";
+import CoinsHandIcon from "./CoinsHandIcon";
+import WalletOpenIcon from "./WalletOpenIcon";
+import EyeCheckIcon from "./EyeCheckIcon";
+import CheckOutIcon from "./CheckOutIcon";
+import ExclamationTriangleIcon from "./ExclamationTriangleIcon";
+import PresentationChartIcon from "./PresentationChartIcon";
+import { ChecksIcon } from "./ChecksIcon";
+import { GalleryPhotoIcon } from "./GalleryPhotoIcon";
+import { BusinessPlanIcon } from "./BusinessPlanIcon";
+import { ArchiveIcon } from "./ArchiveIcon";
+import { RobotOffIcon } from "./RobotOffIcon";
+import { UserPlusIcon } from "./UserPlusIcon";
+
+// Add RobotIcon to the gallery
+
+// ...existing code...
 
 interface IconItem {
   name: string;
@@ -57,7 +76,30 @@ interface IconItem {
 }
 
 const allIcons: IconItem[] = [
+  // New Icons
+  { name: "Glasses", component: GlassesIcon, category: "Actions" },
+  { name: "CoinsHand", component: CoinsHandIcon, category: "Actions" },
+  { name: "WalletOpen", component: WalletOpenIcon, category: "Actions" },
+  { name: "EyeCheck", component: EyeCheckIcon, category: "System" },
+  { name: "CheckOut", component: CheckOutIcon, category: "Actions" },
+  {
+    name: "ExclamationTriangle",
+    component: ExclamationTriangleIcon,
+    category: "Status",
+  },
+  {
+    name: "PresentationChart",
+    component: PresentationChartIcon,
+    category: "Actions",
+  },
+  { name: "Checks", component: ChecksIcon, category: "Status" },
+  { name: "GalleryPhoto", component: GalleryPhotoIcon, category: "Files" },
+  { name: "BusinessPlan", component: BusinessPlanIcon, category: "Business" },
+  { name: "Archive", component: ArchiveIcon, category: "Files" },
+  { name: "RobotOff", component: RobotOffIcon, category: "Actions" },
+  { name: "UserPlus", component: UserPlusIcon, category: "Users" },
   // Navigation & Actions
+  { name: "Robot", component: RobotIcon, category: "Actions" },
   { name: "ArrowLeft", component: ArrowLeftIcon, category: "Navigation" },
   { name: "ArrowRight", component: ArrowRightIcon, category: "Navigation" },
   { name: "ArrowDetails", component: ArrowDetailsIcon, category: "Navigation" },
@@ -74,6 +116,7 @@ const allIcons: IconItem[] = [
   { name: "Refresh", component: RefreshIcon, category: "Actions" },
   { name: "Search", component: SearchIcon, category: "Actions" },
   { name: "Sort", component: SortIcon, category: "Actions" },
+  { name: "Target", component: TargetIcon, category: "Actions" },
   { name: "Trash", component: TrashIcon, category: "Actions" },
   { name: "ZoomIn", component: ZoomInIcon, category: "Actions" },
   { name: "ZoomOut", component: ZoomOutIcon, category: "Actions" },
