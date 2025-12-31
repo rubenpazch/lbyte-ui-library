@@ -46,3 +46,5 @@ export { default as UserSelectIcon } from "./UserSelectIcon";
 export { default as UsersIcon } from "./UsersIcon";
 export { default as ZoomInIcon } from "./ZoomInIcon";
 export { default as ZoomOutIcon } from "./ZoomOutIcon";
+export { RobotIcon } from "./RobotIcon";
+export { default as TargetIcon } from "./TargetIcon";

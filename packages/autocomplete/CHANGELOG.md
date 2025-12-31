@@ -1,5 +1,12 @@
 # @rubenpazch/autocomplete
 
+## 2.0.3
+
+### Patch Changes
+
+- Updated dependencies
+  - @rubenpazch/icons@3.0.2
+
 ## 2.0.2
 
 ### Patch Changes

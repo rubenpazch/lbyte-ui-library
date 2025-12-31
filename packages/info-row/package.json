@@ -1,7 +1,7 @@
 {
-  "name": "@rubenpazch/drawer",
-  "version": "2.0.2",
-  "description": "Flexible drawer/sidebar component with multiple positions and animations",
+  "name": "@rubenpazch/info-row",
+  "version": "1.0.1",
+  "description": "InfoRow component",
   "private": false,
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -9,7 +9,7 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/rubenpazch/lbyte-ui-library.git",
-    "directory": "packages/drawer"
+    "directory": "packages/info-row"
   },
   "author": "Ruben Paz Chuspe <rubenpazchuspe@outlook.com>",
   "license": "MIT",
@@ -28,13 +28,12 @@
     "build": "rollup -c",
     "test": "jest --passWithNoTests"
   },
-  "dependencies": {
-    "@rubenpazch/icons": "workspace:*"
+  "peerDependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
   },
   "devDependencies": {
-    "@rubenpazch/typescript-config": "workspace:*",
-    "@types/react": "^19.0.2",
-    "@types/react-dom": "^19.0.2"
+    "@rubenpazch/typescript-config": "workspace:*"
   },
   "publishConfig": {
     "access": "public"

@@ -141,6 +141,7 @@ export default [
       { file: packageJson.main || 'dist/index.cjs.js', format: "cjs" },
       { file: packageJson.module || 'dist/index.esm.js', format: "esm" },
     ],
+    // rollup plugins array, not ESLint
     plugins: [
       resolve(),
       commonjs(),
@@ -148,6 +149,7 @@ export default [
       postcss({
         extract: false,
         modules: false,
+        // postcss plugins array, not ESLint
         plugins: []
       }),
     ],
@@ -155,6 +157,7 @@ export default [
   {
     input: "dist/index.d.ts",
     output: [{ file: "dist/index.d.ts", format: "es" }],
+    // rollup plugins array, not ESLint
     plugins: [dts()],
     external: [/\\.css$/],
   },

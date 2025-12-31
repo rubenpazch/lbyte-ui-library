@@ -1,0 +1,3 @@
+# InfoRow
+
+Generated component package.
