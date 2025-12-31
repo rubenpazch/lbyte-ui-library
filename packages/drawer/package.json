@@ -1,6 +1,6 @@
 {
   "name": "@rubenpazch/drawer",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Flexible drawer/sidebar component with multiple positions and animations",
   "private": false,
   "main": "dist/index.cjs.js",

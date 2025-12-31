@@ -1,6 +1,6 @@
 {
   "name": "@rubenpazch/info-row",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "InfoRow component",
   "private": false,
   "main": "dist/index.cjs.js",
