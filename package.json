@@ -27,7 +27,8 @@
     "prepare": "husky",
     "pre-commit": "lint-staged",
     "pre-push": "pnpm test && pnpm build",
-    "format:prettier": "prettier . --write --ignore-path .prettierignore"
+    "format:prettier": "prettier . --write --ignore-path .prettierignore",
+    "chromatic": "npx chromatic --project-token=chpt_998c11915f82eae"
   },
   "lint-staged": {
     "*.{ts,tsx}": [
