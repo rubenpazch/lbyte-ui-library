@@ -12,6 +12,11 @@
       "types": "./dist/index.d.ts"
     }
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rubenpazch/lbyte-ui-library",
+    "directory": "packages/icons"
+  },
   "files": [
     "dist"
   ],
