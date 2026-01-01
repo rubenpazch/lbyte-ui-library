@@ -1,5 +1,11 @@
 # @rubenpazch/icons
 
+## 3.0.3
+
+### Patch Changes
+
+- icons
+
 ## 3.0.2
 
 ### Patch Changes
