@@ -1,6 +1,6 @@
 {
   "name": "@rubenpazch/icons",
-  "version": "3.0.3",
+  "version": "3.0.4",
   "description": "Icon components for Lbyte UI library",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -11,6 +11,11 @@
       "require": "./dist/index.cjs.js",
       "types": "./dist/index.d.ts"
     }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rubenpazch/lbyte-ui-library",
+    "directory": "packages/icons"
   },
   "files": [
     "dist"
