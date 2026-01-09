@@ -13,6 +13,7 @@ export { default as CityIcon } from "./CityIcon";
 export { default as ClockIcon } from "./ClockIcon";
 export { default as CloseIcon } from "./CloseIcon"; // File-based version (sm/md/lg sizes)
 export { default as CoinsHandIcon } from "./CoinsHandIcon";
+export { default as MenuGridIcon } from "./MenuGridIcon";
 export { default as DocumentIcon } from "./DocumentIcon";
 export { default as DownloadIcon } from "./DownloadIcon";
 export { default as DragHandleIcon } from "./DragHandleIcon";
@@ -31,6 +32,7 @@ export { default as LinkIcon } from "./LinkIcon";
 export { default as LocationIcon } from "./LocationIcon";
 export { default as ManualIdentifierIcon } from "./ManualIdentifierIcon";
 export { default as MapIcon } from "./MapIcon";
+export { default as MenuIcon } from "./MenuIcon";
 export { default as MinusIcon } from "./MinusIcon";
 export { default as MoreIcon } from "./MoreIcon";
 export { default as NotificationIcon } from "./NotificationIcon";

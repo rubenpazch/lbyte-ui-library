@@ -64,6 +64,8 @@ import { BusinessPlanIcon } from "./BusinessPlanIcon";
 import { ArchiveIcon } from "./ArchiveIcon";
 import { RobotOffIcon } from "./RobotOffIcon";
 import { UserPlusIcon } from "./UserPlusIcon";
+import MenuIcon from "./MenuIcon";
+import MenuGridIcon from "./MenuGridIcon";
 
 // Add RobotIcon to the gallery
 
@@ -98,6 +100,8 @@ const allIcons: IconItem[] = [
   { name: "Archive", component: ArchiveIcon, category: "Files" },
   { name: "RobotOff", component: RobotOffIcon, category: "Actions" },
   { name: "UserPlus", component: UserPlusIcon, category: "Users" },
+  { name: "Menu", component: MenuIcon, category: "Navigation" },
+  { name: "MenuGrid", component: MenuGridIcon, category: "Navigation" },
   // Navigation & Actions
   { name: "Robot", component: RobotIcon, category: "Actions" },
   { name: "ArrowLeft", component: ArrowLeftIcon, category: "Navigation" },
