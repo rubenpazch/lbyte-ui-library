@@ -1,5 +1,11 @@
 # @rubenpazch/numeric-picker
 
+## 4.0.0
+
+### Major Changes
+
+- css modules
+
 ## 3.0.0
 
 ### Major Changes

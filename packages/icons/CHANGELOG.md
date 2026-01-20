@@ -1,5 +1,16 @@
 # @rubenpazch/icons
 
+## 4.0.0
+
+### Major Changes
+
+- css modules
+
+### Patch Changes
+
+- Updated dependencies
+  - @rubenpazch/shared@4.0.0
+
 ## 3.0.4
 
 ### Patch Changes

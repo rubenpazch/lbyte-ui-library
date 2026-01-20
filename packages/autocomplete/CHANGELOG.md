@@ -1,5 +1,17 @@
 # @rubenpazch/autocomplete
 
+## 3.0.0
+
+### Major Changes
+
+- css modules
+
+### Patch Changes
+
+- Updated dependencies
+  - @rubenpazch/loading-spinner@3.0.0
+  - @rubenpazch/icons@4.0.0
+
 ## 2.0.5
 
 ### Patch Changes

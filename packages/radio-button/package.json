@@ -1,6 +1,6 @@
 {
   "name": "@rubenpazch/radio-button",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "description": "Accessible radio button and radio group components with variants and validation",
   "private": false,
   "main": "dist/index.cjs.js",

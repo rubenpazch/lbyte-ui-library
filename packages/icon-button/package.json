@@ -1,6 +1,6 @@
 {
   "name": "@rubenpazch/icon-button",
-  "version": "2.0.1",
+  "version": "3.0.0",
   "description": "IconButton component",
   "private": false,
   "main": "dist/index.cjs.js",

@@ -1,5 +1,11 @@
 # @rubenpazch/icon-button
 
+## 3.0.0
+
+### Major Changes
+
+- css modules
+
 ## 2.0.1
 
 ### Patch Changes

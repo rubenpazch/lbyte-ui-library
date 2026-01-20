@@ -1,5 +1,16 @@
 # @rubenpazch/drawer
 
+## 3.0.0
+
+### Major Changes
+
+- css modules
+
+### Patch Changes
+
+- Updated dependencies
+  - @rubenpazch/icons@4.0.0
+
 ## 2.0.4
 
 ### Patch Changes
