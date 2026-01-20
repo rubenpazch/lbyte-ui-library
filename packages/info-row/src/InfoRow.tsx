@@ -1,4 +1,5 @@
 import React from "react";
+import styles from "./InfoRow.module.css";
 
 type InfoRowVariant =
   | "default"
@@ -24,6 +25,10 @@ interface InfoRowProps {
   hideLabel?: boolean;
   className?: string;
   action?: React.ReactNode; // Optional action element (link, button, icon button)
+}
+
+function classNames(...classes: (string | boolean | undefined)[]): string {
+  return classes.filter(Boolean).join(" ");
 }
 
 /**
@@ -64,159 +69,51 @@ const InfoRow: React.FC<InfoRowProps> = ({
   className = "",
   action,
 }) => {
-  const variantClasses: Record<
-    InfoRowVariant,
-    { bg: string; border: string; iconColor: string; labelColor: string }
-  > = {
-    default: {
-      bg: "",
-      border: "",
-      iconColor: "text-gray-400",
-      labelColor: "text-gray-500",
-    },
-    blue: {
-      bg: "bg-blue-50",
-      border: "border border-blue-200",
-      iconColor: "text-blue-500",
-      labelColor: "text-blue-700",
-    },
-    yellow: {
-      bg: "bg-yellow-50",
-      border: "border border-yellow-200",
-      iconColor: "text-yellow-600",
-      labelColor: "text-yellow-700",
-    },
-    purple: {
-      bg: "bg-purple-50",
-      border: "border border-purple-200",
-      iconColor: "text-purple-500",
-      labelColor: "text-purple-700",
-    },
-    green: {
-      bg: "bg-green-50",
-      border: "border border-green-200",
-      iconColor: "text-green-500",
-      labelColor: "text-green-700",
-    },
-    red: {
-      bg: "bg-red-50",
-      border: "border border-red-200",
-      iconColor: "text-red-500",
-      labelColor: "text-red-700",
-    },
-    indigo: {
-      bg: "bg-indigo-50",
-      border: "border border-indigo-200",
-      iconColor: "text-indigo-500",
-      labelColor: "text-indigo-700",
-    },
-    gray: {
-      bg: "bg-gray-50",
-      border: "border border-gray-200",
-      iconColor: "text-gray-500",
-      labelColor: "text-gray-700",
-    },
-  };
+  // Get variant classes
+  const variantClass =
+    styles[`variant${variant.charAt(0).toUpperCase() + variant.slice(1)}`];
+  const iconColorClass =
+    styles[`iconColor${variant.charAt(0).toUpperCase() + variant.slice(1)}`];
+  const labelColorClass =
+    styles[`labelColor${variant.charAt(0).toUpperCase() + variant.slice(1)}`];
 
-  const classes = variantClasses[variant];
+  // Get size classes
+  const paddingClass =
+    styles[`padding${size.charAt(0).toUpperCase() + size.slice(1)}`];
+  const spacingClass =
+    styles[`spacing${size.charAt(0).toUpperCase() + size.slice(1)}`];
+  const labelSizeClass =
+    styles[`label${size.charAt(0).toUpperCase() + size.slice(1)}`];
+  const valueSizeClass =
+    styles[`value${size.charAt(0).toUpperCase() + size.slice(1)}`];
 
-  // Size configurations
-  const sizeClasses: Record<
-    InfoRowSize,
-    {
-      padding: string;
-      iconSize: string;
-      labelText: string;
-      valueText: string;
-      spacing: string;
-    }
-  > = {
-    xs: {
-      padding: "p-1",
-      iconSize: "w-3 h-3",
-      labelText: "text-xs",
-      valueText: "text-xs font-medium",
-      spacing: "space-x-1",
-    },
-    sm: {
-      padding: "p-1.5",
-      iconSize: "w-4 h-4",
-      labelText: "text-xs",
-      valueText: "text-sm font-medium",
-      spacing: "space-x-2",
-    },
-    md: {
-      padding: "p-2",
-      iconSize: "w-5 h-5",
-      labelText: "text-sm",
-      valueText: "text-sm font-medium",
-      spacing: "space-x-3",
-    },
-    lg: {
-      padding: "p-3",
-      iconSize: "w-6 h-6",
-      labelText: "text-base",
-      valueText: "text-base font-semibold",
-      spacing: "space-x-4",
-    },
-  };
-
-  const sizeConfig = sizeClasses[size];
-
-  // Layout configurations
-  const getLayoutClasses = () => {
-    switch (layout) {
-      case "horizontal":
-        // All elements in one horizontal line with better spacing
-        return {
-          container: `flex items-center ${sizeConfig.spacing}`,
-          content: "flex items-center gap-3",
-          labelValueWrapper: "flex items-center gap-3",
-        };
-      case "inline":
-        // Compact single line
-        return {
-          container: "flex items-center space-x-1.5",
-          content: "flex items-center space-x-1",
-          labelValueWrapper: "flex items-center space-x-1",
-        };
-      case "compact":
-        // Minimal spacing for dense layouts
-        return {
-          container: "flex items-start space-x-1.5",
-          content: "flex-1 min-w-0",
-          labelValueWrapper: "space-y-0.5",
-        };
-      case "vertical":
-      default:
-        // Traditional vertical layout - label on top, value below
-        return {
-          container: `flex items-start ${sizeConfig.spacing}`,
-          content: "flex-1",
-          labelValueWrapper: "flex flex-col space-y-0.5",
-        };
-    }
-  };
-
-  const layoutClasses = getLayoutClasses();
+  // Get layout classes
+  const layoutClass =
+    styles[`layout${layout.charAt(0).toUpperCase() + layout.slice(1)}`];
 
   // Build container classes
-  const containerClasses = [
-    layoutClasses.container,
-    variant === "default"
-      ? sizeConfig.padding
-      : `${sizeConfig.padding} rounded-lg ${classes.bg} ${classes.border}`,
+  const containerClasses = classNames(
+    styles.container,
+    layoutClass,
+    spacingClass,
+    variant !== "default" ? variantClass : undefined,
+    variant !== "default" ? styles.rounded : undefined,
+    variant !== "default" ? paddingClass : paddingClass,
     className,
-  ]
-    .filter(Boolean)
-    .join(" ");
+  );
 
   // Render icon conditionally
   const renderIcon = () => {
     if (hideIcon) return null;
+    const iconContainerClass =
+      layout === "horizontal" || layout === "inline"
+        ? styles.iconContainerHorizontal
+        : styles.iconContainer;
+
     return (
       <div
-        className={`${classes.iconColor} ${layout === "horizontal" || layout === "inline" ? "flex-shrink-0" : "mt-0.5"}`}
+        className={classNames(iconContainerClass, iconColorClass)}
+        data-testid="info-row-icon"
       >
         {icon}
       </div>
@@ -227,7 +124,10 @@ const InfoRow: React.FC<InfoRowProps> = ({
   const renderLabel = () => {
     if (hideLabel) return null;
     return (
-      <span className={`${sizeConfig.labelText} ${classes.labelColor}`}>
+      <span
+        className={classNames(styles.label, labelSizeClass, labelColorClass)}
+        data-testid="info-row-label"
+      >
         {label}
       </span>
     );
@@ -236,16 +136,20 @@ const InfoRow: React.FC<InfoRowProps> = ({
   // Render value
   const renderValue = () => {
     return (
-      <span className={`${sizeConfig.valueText} text-gray-900`}>{value}</span>
+      <span
+        className={classNames(styles.value, valueSizeClass)}
+        data-testid="info-row-value"
+      >
+        {value}
+      </span>
     );
   };
 
   // Render content based on layout
   const renderContent = () => {
     if (layout === "horizontal") {
-      // Horizontal layout: label and value on same line with better separation
       return (
-        <div className={layoutClasses.content}>
+        <div className={styles.contentHorizontal}>
           {!hideLabel && renderLabel()}
           {renderValue()}
         </div>
@@ -253,20 +157,19 @@ const InfoRow: React.FC<InfoRowProps> = ({
     }
 
     if (layout === "inline") {
-      // Inline layout: compact with colon separator
       return (
-        <div className={layoutClasses.content}>
+        <div className={styles.contentInline}>
           {!hideLabel && renderLabel()}
-          {!hideLabel && <span className="text-gray-400">:</span>}
+          {!hideLabel && <span className={styles.separator}>:</span>}
           {renderValue()}
         </div>
       );
     }
 
-    // Vertical and compact layouts: label on top, value below
+    // Vertical and compact layouts
     return (
-      <div className={layoutClasses.content}>
-        <div className={layoutClasses.labelValueWrapper}>
+      <div className={styles.content}>
+        <div className={styles.labelValueWrapper}>
           {!hideLabel && renderLabel()}
           {renderValue()}
         </div>
@@ -275,10 +178,20 @@ const InfoRow: React.FC<InfoRowProps> = ({
   };
 
   return (
-    <div className={containerClasses}>
+    <div
+      className={containerClasses}
+      data-testid="info-row"
+      data-variant={variant}
+      data-size={size}
+      data-layout={layout}
+    >
       {renderIcon()}
       {renderContent()}
-      {action && <div className="ml-auto flex-shrink-0">{action}</div>}
+      {action && (
+        <div className={styles.action} data-testid="info-row-action">
+          {action}
+        </div>
+      )}
     </div>
   );
 };

@@ -1,5 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
 import { CloseIcon } from "@rubenpazch/icons";
+import styles from "./Drawer.module.css";
+
+const classNames = (...classes: Array<string | false | undefined>) =>
+  classes.filter(Boolean).join(" ");
 
 export type DrawerPosition = "left" | "right" | "top" | "bottom";
 export type DrawerSize = "sm" | "md" | "lg" | "xl" | "full";
@@ -76,57 +80,59 @@ const Drawer: React.FC<DrawerProps> = ({
     }
   }, [isOpen]);
 
-  const getPositionClasses = () => {
-    const base =
-      "fixed bg-white shadow-xl transition-transform duration-300 ease-in-out";
-
-    const sizes = {
-      left: {
-        sm: "w-64",
-        md: "w-80",
-        lg: "w-96",
-        xl: "w-[32rem]",
-        full: "w-full",
-      },
-      right: {
-        sm: "w-64",
-        md: "w-80",
-        lg: "w-96",
-        xl: "w-[32rem]",
-        full: "w-full",
-      },
-      top: {
-        sm: "h-64",
-        md: "h-80",
-        lg: "h-96",
-        xl: "h-[32rem]",
-        full: "h-full",
-      },
-      bottom: {
-        sm: "h-64",
-        md: "h-80",
-        lg: "h-96",
-        xl: "h-[32rem]",
-        full: "h-full",
-      },
-    };
-
-    const positions = {
-      left: "left-0 top-0 h-full",
-      right: "right-0 top-0 h-full",
-      top: "top-0 left-0 w-full",
-      bottom: "bottom-0 left-0 w-full",
-    };
-
-    const transforms = {
-      left: isAnimating ? "translate-x-0" : "-translate-x-full",
-      right: isAnimating ? "translate-x-0" : "translate-x-full",
-      top: isAnimating ? "translate-y-0" : "-translate-y-full",
-      bottom: isAnimating ? "translate-y-0" : "translate-y-full",
-    };
-
-    return `${base} ${positions[position]} ${sizes[position][size]} ${transforms[position]} ${className}`;
+  const positionClasses: Record<DrawerPosition, string> = {
+    left: styles.left,
+    right: styles.right,
+    top: styles.top,
+    bottom: styles.bottom,
   };
+
+  const sizeClasses: Record<DrawerPosition, Record<DrawerSize, string>> = {
+    left: {
+      sm: styles.widthSm,
+      md: styles.widthMd,
+      lg: styles.widthLg,
+      xl: styles.widthXl,
+      full: styles.widthFull,
+    },
+    right: {
+      sm: styles.widthSm,
+      md: styles.widthMd,
+      lg: styles.widthLg,
+      xl: styles.widthXl,
+      full: styles.widthFull,
+    },
+    top: {
+      sm: styles.heightSm,
+      md: styles.heightMd,
+      lg: styles.heightLg,
+      xl: styles.heightXl,
+      full: styles.heightFull,
+    },
+    bottom: {
+      sm: styles.heightSm,
+      md: styles.heightMd,
+      lg: styles.heightLg,
+      xl: styles.heightXl,
+      full: styles.heightFull,
+    },
+  };
+
+  const transformClasses: Record<DrawerPosition, string> = {
+    left: isAnimating ? styles.translateIn : styles.translateLeftOut,
+    right: isAnimating ? styles.translateIn : styles.translateRightOut,
+    top: isAnimating ? styles.translateIn : styles.translateTopOut,
+    bottom: isAnimating ? styles.translateIn : styles.translateBottomOut,
+  };
+
+  const getPositionClasses = () =>
+    classNames(
+      styles.drawer,
+      positionClasses[position],
+      sizeClasses[position][size],
+      transformClasses[position],
+      className,
+    );
 
   useEffect(() => {
     if (!isOpen || !closeOnEscape) return;
@@ -169,24 +175,26 @@ const Drawer: React.FC<DrawerProps> = ({
   if (!shouldRender) return null;
 
   const footerAlignClass = {
-    left: "justify-start",
-    center: "justify-center",
-    right: "justify-end",
-    "space-between": "justify-between",
+    left: styles.footerStart,
+    center: styles.footerCenter,
+    right: styles.footerEnd,
+    "space-between": styles.footerSpaceBetween,
   }[footerAlign];
 
   return (
     <div
-      className="fixed inset-0 z-50"
+      className={styles.root}
       role="dialog"
       aria-modal="true"
       aria-labelledby={title ? "drawer-title" : undefined}
     >
       {showOverlay && (
         <div
-          className={`fixed inset-0 bg-black/50 transition-opacity duration-300 ${
-            isAnimating ? "opacity-100" : "opacity-0"
-          }`}
+          className={classNames(
+            styles.overlay,
+            isAnimating ? styles.overlayVisible : styles.overlayHidden,
+          )}
+          data-testid="drawer-overlay"
           onClick={handleOverlayClick}
           aria-hidden="true"
         />
@@ -195,24 +203,24 @@ const Drawer: React.FC<DrawerProps> = ({
       <div
         ref={drawerRef}
         tabIndex={-1}
-        className={`${getPositionClasses()} flex flex-col`}
+        className={getPositionClasses()}
+        data-position={position}
+        data-size={size}
       >
         {title && (
           <div
-            className={`px-6 py-4 border-b border-gray-200 ${
-              headerAlign === "center" ? "text-center" : ""
-            }`}
+            className={classNames(
+              styles.header,
+              headerAlign === "center" && styles.headerCenter,
+            )}
           >
-            <div className="flex items-center justify-between">
-              <h2
-                id="drawer-title"
-                className="text-lg font-semibold text-gray-900 flex-1"
-              >
+            <div className={styles.headerContent}>
+              <h2 id="drawer-title" className={styles.title}>
                 {title}
               </h2>
               <button
                 onClick={onClose}
-                className="ml-4 p-1 rounded-lg text-gray-400 hover:text-gray-600 hover:bg-gray-100 transition-colors"
+                className={styles.closeButton}
                 aria-label="Close drawer"
               >
                 <CloseIcon size="md" />
@@ -221,20 +229,18 @@ const Drawer: React.FC<DrawerProps> = ({
           </div>
         )}
 
-        <div className="flex-1 overflow-y-auto px-6 py-4">
+        <div className={styles.body}>
           {contentContained ? (
-            <div className="max-w-5xl mx-auto">{children}</div>
+            <div className={styles.contained}>{children}</div>
           ) : (
             children
           )}
         </div>
 
         {footer && (
-          <div
-            className={`px-6 py-4 border-t border-gray-200 bg-gray-50 flex ${footerAlignClass}`}
-          >
+          <div className={classNames(styles.footer, footerAlignClass)}>
             {contentContained ? (
-              <div className="max-w-5xl mx-auto w-full">{footer}</div>
+              <div className={styles.contained}>{footer}</div>
             ) : (
               footer
             )}

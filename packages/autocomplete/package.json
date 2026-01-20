@@ -1,6 +1,6 @@
 {
   "name": "@rubenpazch/autocomplete",
-  "version": "2.0.5",
+  "version": "3.0.0",
   "description": "Autocomplete component",
   "private": false,
   "main": "dist/index.cjs.js",
@@ -16,7 +16,9 @@
   "files": [
     "dist"
   ],
-  "sideEffects": false,
+  "sideEffects": [
+    "**/*.css"
+  ],
   "exports": {
     ".": {
       "import": "./dist/index.esm.js",

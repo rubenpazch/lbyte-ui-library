@@ -1,4 +1,5 @@
 import React from "react";
+import styles from "./Button.module.css";
 
 export type ButtonVariant =
   | "default"
@@ -25,6 +26,59 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   children?: React.ReactNode;
 }
 
+const classNames = (...classes: Array<string | undefined | false>) =>
+  classes.filter(Boolean).join(" ");
+
+const sizeClassMap: Record<ButtonSize, string> = {
+  sm: styles.sizeSm,
+  md: styles.sizeMd,
+  lg: styles.sizeLg,
+};
+
+const focusClassMap: Record<ButtonFocusStyle, string> = {
+  filled: styles.focusFilled,
+  outline: styles.focusOutline,
+  underline: styles.focusUnderline,
+};
+
+const variantClassMap: Record<
+  ButtonVariant,
+  { filled: string; outlined: string }
+> = {
+  default: {
+    filled: styles.variantDefaultFilled,
+    outlined: styles.variantDefaultOutlined,
+  },
+  secondary: {
+    filled: styles.variantSecondaryFilled,
+    outlined: styles.variantSecondaryOutlined,
+  },
+  black: {
+    filled: styles.variantBlackFilled,
+    outlined: styles.variantBlackOutlined,
+  },
+  "gradient-green": {
+    filled: styles.variantGradientGreenFilled,
+    outlined: styles.variantGradientGreenOutlined,
+  },
+  "solid-green": {
+    filled: styles.variantSolidGreenFilled,
+    outlined: styles.variantSolidGreenOutlined,
+  },
+  blue: {
+    filled: styles.variantBlueFilled,
+    outlined: styles.variantBlueOutlined,
+  },
+  pink: {
+    filled: styles.variantPinkFilled,
+    outlined: styles.variantPinkOutlined,
+  },
+  warning: {
+    filled: styles.variantWarningFilled,
+    outlined: styles.variantWarningOutlined,
+  },
+};
+
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (
     {
@@ -43,116 +97,38 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     },
     ref,
   ) => {
-    // Size classes
-    const sizeClasses = {
-      sm: "px-3 py-1.5 text-xs font-medium",
-      md: "px-4 py-2 text-sm font-medium",
-      lg: "px-6 py-3 text-base font-medium",
-    };
-
-    // Base variant colors
-    const variantColors = {
-      default: {
-        outlined: "text-blue-600 border-2 border-blue-600 hover:bg-blue-50",
-        filled: "bg-blue-600 text-white hover:bg-blue-700",
-      },
-      secondary: {
-        outlined: "text-gray-600 border-2 border-gray-600 hover:bg-gray-50",
-        filled: "bg-gray-600 text-white hover:bg-gray-700",
-      },
-      black: {
-        outlined: "text-black border-2 border-black hover:bg-gray-100",
-        filled: "bg-black text-white hover:bg-gray-900",
-      },
-      "gradient-green": {
-        outlined:
-          "text-emerald-400 border-2 border-emerald-400 hover:bg-emerald-50",
-        filled:
-          "bg-gradient-to-r from-emerald-400 to-cyan-400 text-white hover:opacity-90",
-      },
-      "solid-green": {
-        outlined:
-          "text-emerald-500 border-2 border-emerald-500 hover:bg-emerald-50",
-        filled: "bg-emerald-500 text-white hover:bg-emerald-600",
-      },
-      blue: {
-        outlined: "text-blue-500 border-2 border-blue-500 hover:bg-blue-50",
-        filled: "bg-blue-500 text-white hover:bg-blue-600",
-      },
-      pink: {
-        outlined: "text-pink-500 border-2 border-pink-500 hover:bg-pink-50",
-        filled: "bg-pink-500 text-white hover:bg-pink-600",
-      },
-      warning: {
-        outlined:
-          "text-orange-500 border-2 border-orange-500 hover:bg-orange-50",
-        filled: "bg-orange-500 text-white hover:bg-orange-600",
-      },
-    };
-
-    // Quiet variant styling
-    const quietClasses =
-      "text-gray-600 hover:text-gray-800 hover:underline focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500";
-
-    // Disabled state - clear visual indication that button is not interactive
-    const disabledClasses = disabled
-      ? "bg-gray-300 text-gray-500 cursor-not-allowed border-0 hover:bg-gray-300 hover:text-gray-500"
-      : "";
-
-    // Circled border radius
-    const roundedClasses = circled ? "rounded-full" : "rounded-lg";
-
-    // Inverted styles (outline becomes filled and vice versa)
     const isFilledStyle = inverted ? !filled : filled;
+    const styleKey = quiet ? "quiet" : isFilledStyle ? "filled" : "outlined";
 
-    // Get the appropriate color classes - only if not disabled
-    let colorClasses = "";
-    if (disabled) {
-      colorClasses = disabledClasses;
-    } else if (quiet) {
-      colorClasses = quietClasses;
-    } else {
-      const variantStyle = variantColors[variant];
-      colorClasses = isFilledStyle
-        ? variantStyle.filled
-        : variantStyle.outlined;
-    }
+    const variantClass = quiet
+      ? styles.quiet
+      : variantClassMap[variant][styleKey as "filled" | "outlined"];
 
-    // Focus style classes - not applied when disabled
-    const focusClasses = disabled
-      ? ""
-      : {
-          filled:
-            "focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-current",
-          outline:
-            "focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-current",
-          underline: "focus:outline-none focus:underline",
-        }[focusStyleType];
+    const focusClass = disabled ? undefined : focusClassMap[focusStyleType];
 
-    // Combine all classes
-    const allClasses = `
-      ${sizeClasses[size]}
-      ${colorClasses}
-      ${roundedClasses}
-      ${focusClasses}
-      transition-all duration-200
-      font-medium
-      inline-flex
-      items-center
-      justify-center
-      gap-2
-      whitespace-nowrap
-      ${className || ""}
-    `
-      .replace(/\s+/g, " ")
-      .trim();
+    const classes = classNames(
+      styles.root,
+      styles.interactive,
+      sizeClassMap[size],
+      circled ? styles.roundedFull : styles.roundedLg,
+      variantClass,
+      focusClass,
+      disabled ? styles.disabled : undefined,
+      className,
+    );
 
     return (
       <button
         ref={ref}
         disabled={disabled}
-        className={allClasses}
+        className={classes}
+        data-size={size}
+        data-variant={variant}
+        data-style={styleKey}
+        data-shape={circled ? "circle" : "rounded"}
+        data-focus-style={focusStyleType}
         data-focus-trigger={focusTriggerType}
+        data-disabled={disabled ? "true" : "false"}
         {...props}
       >
         {children}

@@ -2,6 +2,7 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import ProgressSteps from "./Stepper";
+import styles from "./Stepper.module.css";
 
 describe("ProgressSteps", () => {
   const twoSteps = [
@@ -24,95 +25,88 @@ describe("ProgressSteps", () => {
     expect(screen.getByText("2")).toBeInTheDocument();
   });
 
-  it("highlights current step with blue background", () => {
+  it("highlights current step with active state", () => {
     render(<ProgressSteps steps={twoSteps} currentStep={1} />);
 
-    const step1 = screen.getByText("1");
-    const step2 = screen.getByText("2");
+    const step1 = screen.getByTestId("step-circle-1");
+    const step2 = screen.getByTestId("step-circle-2");
 
-    expect(step1.className).toContain("bg-blue-600");
-    expect(step1.className).toContain("text-white");
-    expect(step2.className).toContain("bg-gray-300");
-    expect(step2.className).toContain("text-gray-600");
+    expect(step1).toHaveAttribute("data-active", "true");
+    expect(step1.className).toContain(styles.circleActive);
+    expect(step2).toHaveAttribute("data-future", "true");
+    expect(step2.className).toContain(styles.circleFuture);
   });
 
-  it("highlights completed steps with blue-50 background and blue text", () => {
+  it("highlights completed steps correctly", () => {
     render(<ProgressSteps steps={twoSteps} currentStep={2} />);
 
-    const step1 = screen.getByText("1");
-    const step2 = screen.getByText("2");
+    const step1 = screen.getByTestId("step-circle-1");
+    const step2 = screen.getByTestId("step-circle-2");
 
     // Step 1 is completed, step 2 is active
-    expect(step1.className).toContain("bg-blue-50");
-    expect(step1.className).toContain("text-blue-600");
-    expect(step2.className).toContain("bg-blue-600");
-    expect(step2.className).toContain("text-white");
+    expect(step1).toHaveAttribute("data-completed", "true");
+    expect(step1.className).toContain(styles.circleCompleted);
+    expect(step2).toHaveAttribute("data-active", "true");
+    expect(step2.className).toContain(styles.circleActive);
   });
 
   it("applies correct color to current and completed step titles", () => {
     render(<ProgressSteps steps={twoSteps} currentStep={1} />);
 
-    const step1Title = screen.getByText("Basic Information");
-    const step2Title = screen.getByText("Lenses and Frames");
+    const step1Title = screen.getByTestId("step-title-1");
+    const step2Title = screen.getByTestId("step-title-2");
 
-    expect(step1Title.className).toContain("text-blue-700"); // active step title
-    expect(step1Title.className).toContain("font-bold");
-    expect(step2Title.className).toContain("text-gray-500");
+    expect(step1Title.className).toContain(styles.titleActive);
+    expect(step2Title.className).toContain(styles.titleFuture);
   });
 
-  it("applies blue color to completed step titles, bold and blue-700 to active", () => {
+  it("applies correct classes to completed step titles", () => {
     render(<ProgressSteps steps={threeSteps} currentStep={3} />);
 
-    const step1Title = screen.getByText("Step One");
-    const step2Title = screen.getByText("Step Two");
-    const step3Title = screen.getByText("Step Three");
+    const step1Title = screen.getByTestId("step-title-1");
+    const step2Title = screen.getByTestId("step-title-2");
+    const step3Title = screen.getByTestId("step-title-3");
 
-    expect(step1Title.className).toContain("text-blue-600");
-    expect(step2Title.className).toContain("text-blue-600");
-    expect(step3Title.className).toContain("text-blue-700");
-    expect(step3Title.className).toContain("font-bold");
+    expect(step1Title.className).toContain(styles.titleCompleted);
+    expect(step2Title.className).toContain(styles.titleCompleted);
+    expect(step3Title.className).toContain(styles.titleActive);
   });
 
   it("renders connector lines between steps", () => {
-    const { container } = render(
-      <ProgressSteps steps={twoSteps} currentStep={1} />,
-    );
+    render(<ProgressSteps steps={twoSteps} currentStep={1} />);
 
     // Should have 1 connector line for 2 steps
-    const connectors = container.querySelectorAll(".h-1.flex-1");
-    expect(connectors).toHaveLength(1);
+    const connector = screen.getByTestId("connector-1");
+    expect(connector).toBeInTheDocument();
+    expect(connector.className).toContain(styles.connector);
   });
 
   it("highlights connector line when step is completed", () => {
-    const { container } = render(
-      <ProgressSteps steps={twoSteps} currentStep={2} />,
-    );
+    render(<ProgressSteps steps={twoSteps} currentStep={2} />);
 
-    const connector = container.querySelector(".h-1.flex-1");
-    expect(connector?.className).toContain("bg-blue-600");
+    const connector = screen.getByTestId("connector-1");
+    expect(connector.className).toContain(styles.connectorCompleted);
   });
 
   it("does not highlight connector line for incomplete steps", () => {
-    const { container } = render(
-      <ProgressSteps steps={twoSteps} currentStep={1} />,
-    );
+    render(<ProgressSteps steps={twoSteps} currentStep={1} />);
 
-    const connector = container.querySelector(".h-1.flex-1");
-    expect(connector?.className).toContain("bg-gray-300");
+    const connector = screen.getByTestId("connector-1");
+    expect(connector.className).toContain(styles.connectorIncomplete);
   });
 
   it("renders correct number of connectors for multiple steps", () => {
-    const { container } = render(
-      <ProgressSteps steps={threeSteps} currentStep={1} />,
-    );
+    render(<ProgressSteps steps={threeSteps} currentStep={1} />);
 
     // Should have 2 connector lines for 3 steps
-    const connectors = container.querySelectorAll(".h-1.flex-1");
-    expect(connectors).toHaveLength(2);
+    const connector1 = screen.getByTestId("connector-1");
+    const connector2 = screen.getByTestId("connector-2");
+    expect(connector1).toBeInTheDocument();
+    expect(connector2).toBeInTheDocument();
   });
 
   it("applies custom className", () => {
-    const { container } = render(
+    render(
       <ProgressSteps
         steps={twoSteps}
         currentStep={1}
@@ -120,39 +114,37 @@ describe("ProgressSteps", () => {
       />,
     );
 
-    const wrapper = container.querySelector(".custom-class");
-    expect(wrapper).toBeInTheDocument();
+    const container = screen.getByTestId("progress-steps");
+    expect(container.className).toContain("custom-class");
   });
 
   it("handles single step without connector", () => {
-    const { container } = render(
+    render(
       <ProgressSteps
         steps={[{ number: 1, title: "Only Step" }]}
         currentStep={1}
       />,
     );
 
-    const connectors = container.querySelectorAll(".h-1.flex-1");
-    expect(connectors).toHaveLength(0);
+    const connector = screen.queryByTestId("connector-1");
+    expect(connector).not.toBeInTheDocument();
   });
 
   it("handles step numbers greater than current step", () => {
     render(<ProgressSteps steps={threeSteps} currentStep={1} />);
 
-    const step2 = screen.getByText("2");
-    const step3 = screen.getByText("3");
+    const step2 = screen.getByTestId("step-circle-2");
+    const step3 = screen.getByTestId("step-circle-3");
 
-    expect(step2.className).toContain("bg-gray-300");
-    expect(step3.className).toContain("bg-gray-300");
+    expect(step2).toHaveAttribute("data-future", "true");
+    expect(step3).toHaveAttribute("data-future", "true");
   });
 
-  it("renders with default className when not provided", () => {
-    const { container } = render(
-      <ProgressSteps steps={twoSteps} currentStep={1} />,
-    );
+  it("renders with container class", () => {
+    render(<ProgressSteps steps={twoSteps} currentStep={1} />);
 
-    const wrapper = container.querySelector(".mb-8");
-    expect(wrapper).toBeInTheDocument();
+    const container = screen.getByTestId("progress-steps");
+    expect(container.className).toContain(styles.container);
   });
 
   it("renders clickable steps with link and onClick", () => {
@@ -221,7 +213,7 @@ describe("ProgressSteps", () => {
     expect(handleStepChange).toHaveBeenCalledWith(1);
   });
 
-  it("falls back to medium size if invalid size is provided", () => {
+  it("uses medium size by default", () => {
     render(
       <ProgressSteps
         steps={[
@@ -229,13 +221,9 @@ describe("ProgressSteps", () => {
           { number: 2, title: "Step 2" },
         ]}
         currentStep={1}
-        size={"giant" as any}
       />,
     );
-    // Should use medium size classes
-    const stepCircle = screen.getByText("1");
-    expect(stepCircle.className).toContain("w-10");
-    expect(stepCircle.className).toContain("h-10");
-    expect(stepCircle.className).toContain("text-base");
+    const stepCircle = screen.getByTestId("step-circle-1");
+    expect(stepCircle.className).toContain(styles.circleMedium);
   });
 });

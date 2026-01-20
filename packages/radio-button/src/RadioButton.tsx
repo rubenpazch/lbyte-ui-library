@@ -1,4 +1,5 @@
 import React from "react";
+import styles from "./RadioButton.module.css";
 
 export type RadioSize = "sm" | "md" | "lg";
 export type RadioVariant =
@@ -24,51 +25,54 @@ export interface RadioButtonProps {
   variant?: RadioVariant;
 }
 
+const classNames = (...classes: Array<string | undefined | false>) =>
+  classes.filter(Boolean).join(" ");
+
 const sizeClasses: Record<
   RadioSize,
   { radio: string; label: string; description: string; container: string }
 > = {
   sm: {
-    radio: "w-3 h-3",
-    label: "text-xs",
-    description: "text-[10px]",
-    container: "h-4",
+    radio: styles.radioSm,
+    label: styles.labelSm,
+    description: styles.descriptionSm,
+    container: styles.containerSm,
   },
   md: {
-    radio: "w-4 h-4",
-    label: "text-sm",
-    description: "text-xs",
-    container: "h-5",
+    radio: styles.radioMd,
+    label: styles.labelMd,
+    description: styles.descriptionMd,
+    container: styles.containerMd,
   },
   lg: {
-    radio: "w-5 h-5",
-    label: "text-base",
-    description: "text-sm",
-    container: "h-6",
+    radio: styles.radioLg,
+    label: styles.labelLg,
+    description: styles.descriptionLg,
+    container: styles.containerLg,
   },
 };
 
 const variantClasses: Record<RadioVariant, { checked: string; focus: string }> =
   {
     default: {
-      checked: "text-blue-600",
-      focus: "focus:ring-blue-500",
+      checked: styles.radioDefault,
+      focus: styles.radioFocusDefault,
     },
     primary: {
-      checked: "text-indigo-600",
-      focus: "focus:ring-indigo-500",
+      checked: styles.radioPrimary,
+      focus: styles.radioFocusPrimary,
     },
     success: {
-      checked: "text-green-600",
-      focus: "focus:ring-green-500",
+      checked: styles.radioSuccess,
+      focus: styles.radioFocusSuccess,
     },
     warning: {
-      checked: "text-yellow-600",
-      focus: "focus:ring-yellow-500",
+      checked: styles.radioWarning,
+      focus: styles.radioFocusWarning,
     },
     danger: {
-      checked: "text-red-600",
-      focus: "focus:ring-red-500",
+      checked: styles.radioDanger,
+      focus: styles.radioFocusDanger,
     },
   };
 
@@ -97,9 +101,50 @@ const RadioButton: React.FC<RadioButtonProps> = ({
     }
   };
 
+  const radioClasses = classNames(
+    styles.radio,
+    sizes.radio,
+    sizes.container,
+    variants.checked,
+    variants.focus,
+    required && !checked
+      ? styles.radioBorderRequired
+      : styles.radioBorderDefault,
+    disabled && styles.radioDisabled,
+  );
+
+  const labelClasses = classNames(
+    styles.label,
+    sizes.label,
+    disabled
+      ? styles.labelDisabled
+      : required && !checked
+        ? styles.labelRequired
+        : styles.labelDefault,
+  );
+
+  const descriptionClasses = classNames(styles.description, sizes.description);
+
+  const errorClasses = classNames(
+    styles.error,
+    size === "sm"
+      ? styles.errorSm
+      : size === "lg"
+        ? styles.errorLg
+        : styles.errorMd,
+  );
+
   return (
-    <div className={`flex ${className}`}>
-      <div className={`flex items-start ${sizes.container}`}>
+    <div
+      className={classNames(styles.container, className)}
+      data-testid="radio-button-container"
+      data-size={size}
+      data-variant={variant}
+      data-checked={checked}
+      data-disabled={disabled}
+      data-error={!!error}
+    >
+      <div className={classNames(styles.radioWrapper, sizes.container)}>
         <input
           id={radioId}
           name={name}
@@ -109,45 +154,21 @@ const RadioButton: React.FC<RadioButtonProps> = ({
           onChange={handleChange}
           disabled={disabled}
           required={required}
-          className={`
-            ${sizes.radio}
-            ${required && !checked ? "border-red-500" : "border-gray-300"}
-            ${variants.checked}
-            ${variants.focus}
-            focus:ring-2
-            focus:ring-offset-0
-            disabled:opacity-50
-            disabled:cursor-not-allowed
-            cursor-pointer
-            transition-colors
-          `}
+          className={radioClasses}
           aria-describedby={description ? `${radioId}-description` : undefined}
           aria-invalid={!!error}
         />
       </div>
-      <div className="ml-3 flex-1">
-        <label
-          htmlFor={radioId}
-          className={`
-            ${sizes.label}
-            font-medium
-            ${disabled ? "text-gray-400 cursor-not-allowed" : required && !checked ? "text-red-600 cursor-pointer" : "text-gray-700 cursor-pointer"}
-            block
-          `}
-        >
+      <div className={styles.contentWrapper}>
+        <label htmlFor={radioId} className={labelClasses}>
           {label}
         </label>
         {description && (
-          <p
-            id={`${radioId}-description`}
-            className={`${sizes.description} text-gray-500 mt-0.5`}
-          >
+          <p id={`${radioId}-description`} className={descriptionClasses}>
             {description}
           </p>
         )}
-        {error && (
-          <p className={`${sizes.description} text-red-600 mt-0.5`}>{error}</p>
-        )}
+        {error && <p className={errorClasses}>{error}</p>}
       </div>
     </div>
   );

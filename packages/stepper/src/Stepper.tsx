@@ -1,4 +1,5 @@
 import React from "react";
+import styles from "./Stepper.module.css";
 
 export interface Step {
   number: number;
@@ -17,21 +18,24 @@ interface Stepper {
   size?: StepperSize;
 }
 
+const classNames = (...classes: Array<string | undefined | false>) =>
+  classes.filter(Boolean).join(" ");
+
 const sizeMap = {
   small: {
-    circle: "w-6 h-6 text-xs",
-    title: "text-xs",
-    ring: "ring-2",
+    circle: styles.circleSmall,
+    title: styles.titleSmall,
+    ring: styles.circleActiveSmall,
   },
   medium: {
-    circle: "w-10 h-10 text-base",
-    title: "text-sm",
-    ring: "ring-4",
+    circle: styles.circleMedium,
+    title: styles.titleMedium,
+    ring: styles.circleActiveMedium,
   },
   large: {
-    circle: "w-16 h-16 text-xl",
-    title: "text-lg",
-    ring: "ring-8",
+    circle: styles.circleLarge,
+    title: styles.titleLarge,
+    ring: styles.circleActiveLarge,
   },
 };
 
@@ -49,8 +53,11 @@ const ProgressSteps: React.FC<Stepper> = ({
     if (onStepChange) onStepChange(step.number);
   };
   return (
-    <div className={`mb-8 ${className}`}>
-      <div className="flex items-center justify-between">
+    <div
+      className={classNames(styles.container, className)}
+      data-testid="progress-steps"
+    >
+      <div className={styles.stepsContainer}>
         {steps.map((step, index) => {
           const isClickable =
             stepClickable && (step.link || step.onClick || onStepChange);
@@ -58,46 +65,53 @@ const ProgressSteps: React.FC<Stepper> = ({
           const isFuture = step.number > currentStep;
           const isClickableStep = isClickable && !isActive;
           const stepContent = (
-            <div className="flex flex-col items-center">
+            <div className={styles.stepContent}>
               <div
-                className={`rounded-full flex items-center justify-center font-semibold transition-all
-                  ${sizeStyles.circle}
-                  ${isActive ? `bg-blue-600 text-white ${sizeStyles.ring} ring-blue-300 shadow-lg scale-110` : ""}
-                  ${!isActive && !isFuture ? "bg-blue-50 text-blue-600" : ""}
-                  ${isFuture ? "bg-gray-300 text-gray-600" : ""}
-                `}
+                className={classNames(
+                  styles.circle,
+                  sizeStyles.circle,
+                  isActive && styles.circleActive,
+                  isActive && sizeStyles.ring,
+                  !isActive && !isFuture && styles.circleCompleted,
+                  isFuture && styles.circleFuture,
+                )}
+                data-testid={`step-circle-${step.number}`}
+                data-active={isActive}
+                data-completed={!isActive && !isFuture}
+                data-future={isFuture}
               >
                 {step.number}
               </div>
               <span
-                className={`mt-2 font-medium transition-all
-                  ${sizeStyles.title}
-                  ${isActive ? "text-blue-700 font-bold" : ""}
-                  ${isClickableStep ? "text-blue-600 underline cursor-pointer hover:text-blue-800" : ""}
-                  ${!isActive && !isClickableStep && !isFuture ? "text-blue-600" : ""}
-                  ${isFuture ? "text-gray-500" : ""}
-                `}
+                className={classNames(
+                  styles.title,
+                  sizeStyles.title,
+                  isActive && styles.titleActive,
+                  isClickableStep && styles.titleClickable,
+                  !isActive &&
+                    !isClickableStep &&
+                    !isFuture &&
+                    styles.titleCompleted,
+                  isFuture && styles.titleFuture,
+                )}
+                data-testid={`step-title-${step.number}`}
               >
                 {step.title}
               </span>
             </div>
           );
           return (
-            <div key={step.number} className="flex items-center flex-1">
+            <div key={step.number} className={styles.stepWrapper}>
               {isClickable ? (
                 step.link ? (
-                  <a
-                    href={step.link}
-                    className="hover:underline focus:outline-none"
-                    tabIndex={0}
-                  >
+                  <a href={step.link} className={styles.link} tabIndex={0}>
                     {stepContent}
                   </a>
                 ) : (
                   <button
                     type="button"
                     onClick={() => handleStepClick(step)}
-                    className="bg-transparent border-none p-0 m-0 focus:outline-none"
+                    className={styles.button}
                   >
                     {stepContent}
                   </button>
@@ -107,9 +121,13 @@ const ProgressSteps: React.FC<Stepper> = ({
               )}
               {index < steps.length - 1 && (
                 <div
-                  className={`h-1 flex-1 mx-4 mt-[-20px] ${
-                    step.number < currentStep ? "bg-blue-600" : "bg-gray-300"
-                  }`}
+                  className={classNames(
+                    styles.connector,
+                    step.number < currentStep
+                      ? styles.connectorCompleted
+                      : styles.connectorIncomplete,
+                  )}
+                  data-testid={`connector-${step.number}`}
                 ></div>
               )}
             </div>

@@ -1,0 +1,274 @@
+/* Container */
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Label */
+.label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.labelSmall {
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+
+.labelMedium {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.labelLarge {
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+.labelError {
+  color: #b91c1c;
+}
+
+.labelNormal {
+  color: #374151;
+}
+
+.required {
+  color: #ef4444;
+  margin-left: 0.25rem;
+}
+
+/* Stepper container */
+.stepper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 0.5rem;
+  border: 2px solid;
+  transition: all 150ms ease;
+}
+
+.stepperSmall {
+  height: 2rem;
+}
+
+.stepperMedium {
+  height: 3rem;
+}
+
+.stepperLarge {
+  height: 4rem;
+}
+
+.stepperNormal {
+  border-color: #d1d5db;
+  background: #f9fafb;
+}
+
+.stepperError {
+  border-color: #ef4444;
+  background: #fef2f2;
+}
+
+.stepperDisabled {
+  border-color: #d1d5db;
+  background: #f3f4f6;
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Buttons */
+.button {
+  flex-shrink: 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: transparent;
+  transition: all 150ms ease;
+  cursor: pointer;
+}
+
+.buttonSmall {
+  width: 2rem;
+}
+
+.buttonMedium {
+  width: 3rem;
+}
+
+.buttonLarge {
+  width: 4rem;
+}
+
+.buttonLeft {
+  border-right: 1px solid #d1d5db;
+}
+
+.buttonRight {
+  border-left: 1px solid #d1d5db;
+}
+
+.buttonNormal {
+  color: #4b5563;
+}
+
+.buttonNormal:hover:not(:disabled) {
+  background: #f3f4f6;
+}
+
+.buttonNormal:active:not(:disabled) {
+  background: #e5e7eb;
+}
+
+.buttonError {
+  color: #ef4444;
+}
+
+.button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  color: #9ca3af;
+}
+
+/* Input */
+.inputWrapper {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  height: 100%;
+}
+
+.input {
+  width: 100%;
+  min-width: 5.5rem;
+  height: 100%;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  text-align: center;
+  background: transparent;
+  font-weight: 600;
+  border: none;
+  outline: none;
+}
+
+.input::placeholder {
+  color: #9ca3af;
+}
+
+.inputSmall {
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+
+.inputMedium {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+
+.inputLarge {
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
+.inputError {
+  color: #b91c1c;
+}
+
+.inputNormal {
+  color: #111827;
+}
+
+.inputWithClear {
+  padding-right: 2rem;
+}
+
+/* Hide number input spinners */
+.input::-webkit-outer-spin-button,
+.input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: none;
+}
+
+/* Clear button */
+.clearButton {
+  position: absolute;
+  right: 0.25rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1.25rem;
+  height: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  background: transparent;
+  border: none;
+  color: #6b7280;
+  cursor: pointer;
+  transition: all 150ms ease;
+}
+
+.clearButton:hover {
+  background: #e5e7eb;
+  color: #374151;
+}
+
+.clearButton:active {
+  background: #d1d5db;
+}
+
+.clearIcon {
+  width: 0.75rem;
+  height: 0.75rem;
+}
+
+/* Messages */
+.message {
+  margin-top: 0.5rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.375rem;
+}
+
+.messageIcon {
+  flex-shrink: 0;
+  margin-top: 0.125rem;
+}
+
+.messageText {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.errorMessage .messageIcon {
+  color: #ef4444;
+}
+
+.errorMessage .messageText {
+  color: #dc2626;
+  font-weight: 500;
+}
+
+.warningMessage .messageIcon {
+  color: #f59e0b;
+}
+
+.warningMessage .messageText {
+  color: #b45309;
+}
+
+.hintMessage .messageText {
+  font-size: 0.75rem;
+  line-height: 1rem;
+  color: #6b7280;
+}

@@ -1,6 +1,6 @@
 #!/usr/bin/env node
-const fs = require("fs").promises;
-const path = require("path");
+import fs from "fs/promises";
+import path from "path";
 
 async function write(filePath, content) {
   await fs.mkdir(path.dirname(filePath), { recursive: true });
@@ -43,7 +43,7 @@ async function main() {
     author: "Ruben Paz Chuspe <rubenpazchuspe@outlook.com>",
     license: "MIT",
     files: ["dist"],
-    sideEffects: false,
+    sideEffects: ["**/*.css"],
     exports: {
       ".": {
         import: "./dist/index.esm.js",
@@ -70,6 +70,10 @@ async function main() {
   const indexTs = `export { default } from './${componentName}';\n`;
 
   const componentTsx = `import React from 'react';
+import styles from './${componentName}.module.css';
+
+const classNames = (...classes: (string | boolean | undefined)[]) =>
+  classes.filter(Boolean).join(' ');
 
 export interface ${componentName}Props {
   children?: React.ReactNode;
@@ -78,14 +82,14 @@ export interface ${componentName}Props {
 
 export default function ${componentName}({ children, className }: ${componentName}Props) {
   return (
-    <div className={\`p-4 \${className || ''}\`}>
+    <div className={classNames(styles['${rawName}'], className)} data-testid="${rawName}">
       {children}
     </div>
   );
 }
 `;
 
-  const css = `.${rawName} {
+  const cssModule = `.${rawName} {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -116,10 +120,19 @@ export const Default: Story = {
 };
 `;
 
-  const test = `import React from 'react';\nimport { render, screen } from '@testing-library/react';\nimport ${componentName} from './${componentName}';\n\ntest('renders ${componentName}', () => {
+  const test = `import React from 'react';
+import { render, screen } from '@testing-library/react';
+import ${componentName} from './${componentName}';
+import styles from './${componentName}.module.css';
+
+test('renders ${componentName}', () => {
   render(<${componentName}>Hello</${componentName}>);
-  expect(screen.getByText('Hello')).toBeInTheDocument();
-});\n`;
+  const element = screen.getByTestId('${rawName}');
+  expect(element).toBeInTheDocument();
+  expect(element).toHaveTextContent('Hello');
+  expect(element).toHaveClass(styles['${rawName}']);
+});
+`;
 
   const readme = `# ${componentName}\n\nGenerated component package.\n`;
 
@@ -148,7 +161,7 @@ export default [
       typescript({ tsconfig: './tsconfig.json' }),
       postcss({
         extract: false,
-        modules: false,
+        modules: true,
         // postcss plugins array, not ESLint
         plugins: []
       }),
@@ -204,7 +217,10 @@ export default [
     );
     await write(path.join(pkgDir, "src", `${componentName}.tsx`), componentTsx);
     await write(path.join(pkgDir, "src", "index.ts"), indexTs);
-    // No CSS file - using Tailwind CSS classes
+    await write(
+      path.join(pkgDir, "src", `${componentName}.module.css`),
+      cssModule,
+    );
     // put stories next to the component so Storybook resolves source imports reliably
     await write(
       path.join(pkgDir, "src", `${componentName}.stories.tsx`),
@@ -224,7 +240,7 @@ export default [
     console.log(`📦 Next steps:
   1. cd packages/${rawName}
   2. Update src/${componentName}.tsx with your component logic
-  3. Add Tailwind classes for styling
+  3. Add styles to src/${componentName}.module.css
   4. Update src/${componentName}.stories.tsx with your stories
   5. Add tests in src/${componentName}.test.tsx
   6. Run 'pnpm install' at the root to link dependencies

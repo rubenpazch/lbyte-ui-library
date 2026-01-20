@@ -1,7 +1,10 @@
+/// <reference path="./modules.d.ts" />
 import React from "react";
 import { render, screen } from "@testing-library/react";
+import "@testing-library/jest-dom";
 import userEvent from "@testing-library/user-event";
 import IconButton from "./IconButton";
+import styles from "./IconButton.module.css";
 
 // Mock icon component
 const MockIcon = () => (
@@ -44,13 +47,25 @@ describe("IconButton Component", () => {
         <IconButton icon={<MockIcon />} size="small" />,
       );
       const button = container.querySelector("button");
-      expect(button).toHaveClass("p-2", "w-8", "h-8");
+      expect(button).toHaveClass(
+        styles.button,
+        styles.sizeSmall,
+        styles.variantDefaultOutlined,
+        styles.shapeRounded,
+        styles.focusFilled,
+      );
     });
 
     it("renders medium icon-only button (default)", () => {
       const { container } = render(<IconButton icon={<MockIcon />} />);
       const button = container.querySelector("button");
-      expect(button).toHaveClass("p-2.5", "w-10", "h-10");
+      expect(button).toHaveClass(
+        styles.button,
+        styles.sizeMedium,
+        styles.variantDefaultOutlined,
+        styles.shapeRounded,
+        styles.focusFilled,
+      );
     });
   });
 
@@ -62,7 +77,14 @@ describe("IconButton Component", () => {
         </IconButton>,
       );
       const button = container.querySelector("button");
-      expect(button).toHaveClass("px-3", "py-1.5", "text-xs");
+      expect(button).toHaveClass(
+        styles.button,
+        styles.textSmall,
+        styles.variantDefaultOutlined,
+        styles.roundedLg,
+        styles.focusFilled,
+        styles.whitespaceNowrap,
+      );
     });
 
     it("renders medium button with text", () => {
@@ -72,7 +94,14 @@ describe("IconButton Component", () => {
         </IconButton>,
       );
       const button = container.querySelector("button");
-      expect(button).toHaveClass("px-4", "py-2", "text-sm");
+      expect(button).toHaveClass(
+        styles.button,
+        styles.textMedium,
+        styles.variantDefaultOutlined,
+        styles.roundedLg,
+        styles.focusFilled,
+        styles.whitespaceNowrap,
+      );
     });
   });
 
@@ -117,10 +146,7 @@ describe("IconButton Component", () => {
 
     it("disabled button has opacity reduced", () => {
       const { container } = render(<IconButton icon={<MockIcon />} disabled />);
-      expect(container.querySelector("button")).toHaveClass(
-        "opacity-50",
-        "cursor-not-allowed",
-      );
+      expect(container.querySelector("button")).toHaveClass(styles.disabled);
     });
 
     it("handles click events", async () => {
@@ -143,8 +169,7 @@ describe("IconButton Component", () => {
       const { container } = render(<IconButton icon={<MockIcon />} quiet />);
       const button = container.querySelector("button");
       // Default variant is 'default' which maps to blue-600 in quiet mode
-      expect(button).toHaveClass("text-blue-600");
-      expect(button).toHaveClass("hover:text-blue-700");
+      expect(button).toHaveClass(styles.variantDefaultQuiet);
     });
 
     it("quiet button respects variant color", () => {
@@ -153,8 +178,7 @@ describe("IconButton Component", () => {
       );
       const button = container.querySelector("button");
       // Quiet mode now respects variant colors
-      expect(button).toHaveClass("text-pink-500");
-      expect(button).toHaveClass("hover:text-pink-600");
+      expect(button).toHaveClass(styles.variantPinkQuiet);
     });
 
     it("quiet button ignores filled prop", () => {
@@ -163,8 +187,7 @@ describe("IconButton Component", () => {
       );
       const button = container.querySelector("button");
       // Quiet always uses quiet styling regardless of filled prop
-      expect(button).toHaveClass("text-blue-500");
-      expect(button).toHaveClass("hover:text-blue-600");
+      expect(button).toHaveClass(styles.variantBlueQuiet);
     });
   });
 
@@ -201,7 +224,7 @@ describe("IconButton Component", () => {
         </IconButton>,
       );
       const button = container.querySelector("button");
-      expect(button).toHaveClass("bg-blue-500");
+      expect(button).toHaveClass(styles.variantBlueFilled);
     });
 
     it("renders inverted filled button as outline", () => {
@@ -211,28 +234,32 @@ describe("IconButton Component", () => {
         </IconButton>,
       );
       const button = container.querySelector("button");
-      expect(button).toHaveClass("border-2");
+      expect(button).toHaveClass(styles.variantPinkOutlined);
     });
   });
 
   describe("Focus Styles", () => {
     it("renders with filled focus style (default)", () => {
       const { container } = render(<IconButton icon={<MockIcon />} />);
-      expect(container.querySelector("button")).toHaveClass("focus:ring-2");
+      expect(container.querySelector("button")).toHaveClass(styles.focusFilled);
     });
 
     it("renders with outline focus style", () => {
       const { container } = render(
         <IconButton icon={<MockIcon />} focusStyleType="outline" />,
       );
-      expect(container.querySelector("button")).toHaveClass("focus:ring-2");
+      expect(container.querySelector("button")).toHaveClass(
+        styles.focusOutline,
+      );
     });
 
     it("renders with underline focus style", () => {
       const { container } = render(
         <IconButton icon={<MockIcon />} focusStyleType="underline" />,
       );
-      expect(container.querySelector("button")).toHaveClass("focus:underline");
+      expect(container.querySelector("button")).toHaveClass(
+        styles.focusUnderline,
+      );
     });
   });
 
@@ -306,7 +333,7 @@ describe("IconButton Component", () => {
         </IconButton>,
       );
       const button = container.querySelector("button");
-      expect(button).toHaveClass("bg-pink-500");
+      expect(button).toHaveClass(styles.variantPinkFilled);
     });
 
     it("renders small quiet icon button", () => {
@@ -315,7 +342,13 @@ describe("IconButton Component", () => {
       );
       const button = container.querySelector("button");
       // Default variant is 'default' which maps to blue-600 in quiet mode
-      expect(button).toHaveClass("p-2", "text-blue-600");
+      expect(button).toHaveClass(
+        styles.button,
+        styles.sizeSmall,
+        styles.variantDefaultQuiet,
+        styles.shapeRounded,
+        styles.focusFilled,
+      );
     });
 
     it("renders medium inverted gradient-green icon button", () => {
@@ -325,7 +358,7 @@ describe("IconButton Component", () => {
         </IconButton>,
       );
       const button = container.querySelector("button");
-      expect(button).toHaveClass("bg-gradient-to-r", "from-emerald-400");
+      expect(button).toHaveClass(styles.variantGradientGreenFilled);
     });
 
     it("renders disabled icon button with custom class", () => {
@@ -335,7 +368,7 @@ describe("IconButton Component", () => {
         </IconButton>,
       );
       const button = container.querySelector("button");
-      expect(button).toHaveClass("my-custom-class", "opacity-50");
+      expect(button).toHaveClass("my-custom-class", styles.disabled);
     });
   });
 
@@ -365,24 +398,23 @@ describe("IconButton Component", () => {
   describe("Circular Shape", () => {
     it("icon-only button has circular shape", () => {
       const { container } = render(<IconButton icon={<MockIcon />} />);
-      expect(container.querySelector("button")).toHaveClass("rounded-full");
+      expect(container.querySelector("button")).toHaveClass(
+        styles.shapeRounded,
+      );
     });
 
     it("button with text has rounded corners", () => {
       const { container } = render(
         <IconButton icon={<MockIcon />}>Edit</IconButton>,
       );
-      expect(container.querySelector("button")).toHaveClass("rounded-lg");
+      expect(container.querySelector("button")).toHaveClass(styles.roundedLg);
     });
   });
 
   describe("Hover and Transition", () => {
     it("has transition classes for smooth interaction", () => {
       const { container } = render(<IconButton icon={<MockIcon />} />);
-      expect(container.querySelector("button")).toHaveClass(
-        "transition-all",
-        "duration-200",
-      );
+      expect(container.querySelector("button")).toHaveClass(styles.button);
     });
 
     it("applies hover state to outlined button", () => {
@@ -391,7 +423,9 @@ describe("IconButton Component", () => {
           Button
         </IconButton>,
       );
-      expect(container.querySelector("button")).toHaveClass("hover:bg-blue-50");
+      expect(container.querySelector("button")).toHaveClass(
+        styles.variantBlueOutlined,
+      );
     });
 
     it("applies hover state to filled button", () => {
@@ -401,7 +435,7 @@ describe("IconButton Component", () => {
         </IconButton>,
       );
       expect(container.querySelector("button")).toHaveClass(
-        "hover:bg-blue-600",
+        styles.variantBlueFilled,
       );
     });
   });
@@ -417,7 +451,7 @@ describe("IconButton Component", () => {
       );
       const icon = screen.getByTestId("mock-icon");
       const parent = icon.parentElement;
-      expect(parent).toHaveClass("w-4", "h-4");
+      expect(parent).toHaveClass(styles.iconSmall);
     });
 
     it("medium icon button has medium icon size", () => {
@@ -430,7 +464,7 @@ describe("IconButton Component", () => {
       );
       const icon = screen.getByTestId("mock-icon");
       const parent = icon.parentElement;
-      expect(parent).toHaveClass("w-5", "h-5");
+      expect(parent).toHaveClass(styles.iconMedium);
     });
   });
 
@@ -475,7 +509,7 @@ describe("IconButton Component", () => {
           <IconButton icon={<MockIcon />} shape="square" />,
         );
         const button = container.querySelector("button");
-        expect(button).toHaveClass("rounded-lg");
+        expect(button).toHaveClass(styles.shapeSquare);
       });
 
       it("renders square shape with small size", () => {
@@ -483,7 +517,13 @@ describe("IconButton Component", () => {
           <IconButton icon={<MockIcon />} shape="square" size="small" />,
         );
         const button = container.querySelector("button");
-        expect(button).toHaveClass("rounded-lg", "p-2", "w-8", "h-8");
+        expect(button).toHaveClass(
+          styles.button,
+          styles.sizeSmall,
+          styles.variantDefaultOutlined,
+          styles.shapeSquare,
+          styles.focusFilled,
+        );
       });
 
       it("renders square shape with medium size", () => {
@@ -491,7 +531,13 @@ describe("IconButton Component", () => {
           <IconButton icon={<MockIcon />} shape="square" size="medium" />,
         );
         const button = container.querySelector("button");
-        expect(button).toHaveClass("rounded-lg", "p-2.5", "w-10", "h-10");
+        expect(button).toHaveClass(
+          styles.button,
+          styles.sizeMedium,
+          styles.variantDefaultOutlined,
+          styles.shapeSquare,
+          styles.focusFilled,
+        );
       });
 
       it("renders square shape with filled variant", () => {
@@ -504,7 +550,10 @@ describe("IconButton Component", () => {
           />,
         );
         const button = container.querySelector("button");
-        expect(button).toHaveClass("bg-blue-500");
+        expect(button).toHaveClass(
+          styles.variantBlueFilled,
+          styles.shapeSquare,
+        );
       });
 
       it("renders square shape with quiet variant", () => {
@@ -517,7 +566,7 @@ describe("IconButton Component", () => {
           />,
         );
         const button = container.querySelector("button");
-        expect(button).toHaveClass("text-blue-500");
+        expect(button).toHaveClass(styles.variantBlueQuiet, styles.shapeSquare);
       });
 
       it("renders square shape with all color variants", () => {
@@ -551,7 +600,7 @@ describe("IconButton Component", () => {
             />,
           );
           const button = container.querySelector("button");
-          expect(button).toHaveClass("rounded-lg");
+          expect(button).toHaveClass(styles.shapeSquare);
         });
       });
 
@@ -561,7 +610,7 @@ describe("IconButton Component", () => {
         );
         const button = container.querySelector("button");
         expect(button).toBeDisabled();
-        expect(button).toHaveClass("opacity-50", "cursor-not-allowed");
+        expect(button).toHaveClass(styles.disabled);
       });
 
       it("renders square shape with tooltip", () => {
@@ -596,7 +645,7 @@ describe("IconButton Component", () => {
           />,
         );
         const button = container.querySelector("button");
-        expect(button).toHaveClass("rounded-lg");
+        expect(button).toHaveClass(styles.shapeSquare);
       });
 
       it("applies square shape with link style", () => {
@@ -610,7 +659,7 @@ describe("IconButton Component", () => {
           />,
         );
         const button = container.querySelector("button");
-        expect(button).toHaveClass("rounded-lg");
+        expect(button).toHaveClass(styles.shapeSquare, styles.linkStyle);
       });
 
       it("renders square shape with different focus styles", () => {
@@ -629,7 +678,7 @@ describe("IconButton Component", () => {
             />,
           );
           const button = container.querySelector("button");
-          expect(button).toHaveClass("rounded-lg");
+          expect(button).toHaveClass(styles.shapeSquare);
         });
       });
 
@@ -718,7 +767,7 @@ describe("IconButton Component", () => {
 
         const button = container.querySelector("button");
         await user.click(button!);
-        expect(button).toHaveClass("rounded-lg");
+        expect(button).toHaveClass(styles.shapeSquare);
       });
 
       it("renders square shape with aria attributes", () => {
@@ -746,7 +795,7 @@ describe("IconButton Component", () => {
           );
           const button = container.querySelector("button");
           // Icon-only buttons may not have explicit type in DOM, so we check for className instead
-          expect(button).toHaveClass("rounded-lg");
+          expect(button).toHaveClass(styles.shapeSquare);
         });
       });
     });
@@ -755,7 +804,7 @@ describe("IconButton Component", () => {
       it("renders button with rounded shape by default", () => {
         const { container } = render(<IconButton icon={<MockIcon />} />);
         const button = container.querySelector("button");
-        expect(button).toHaveClass("rounded-full");
+        expect(button).toHaveClass(styles.shapeRounded);
       });
 
       it("explicitly renders with rounded shape", () => {
@@ -763,7 +812,7 @@ describe("IconButton Component", () => {
           <IconButton icon={<MockIcon />} shape="rounded" />,
         );
         const button = container.querySelector("button");
-        expect(button).toHaveClass("rounded-full");
+        expect(button).toHaveClass(styles.shapeRounded);
       });
 
       it("rounded shape maintains all other properties", () => {
@@ -778,11 +827,11 @@ describe("IconButton Component", () => {
         );
         const button = container.querySelector("button");
         expect(button).toHaveClass(
-          "rounded-full",
-          "bg-blue-500",
-          "p-2.5",
-          "w-10",
-          "h-10",
+          styles.button,
+          styles.sizeMedium,
+          styles.variantBlueFilled,
+          styles.shapeRounded,
+          styles.focusFilled,
         );
       });
     });
@@ -799,8 +848,8 @@ describe("IconButton Component", () => {
         const squareButton = squareContainer.querySelector("button");
         const roundedButton = roundedContainer.querySelector("button");
 
-        expect(squareButton).toHaveClass("rounded-lg");
-        expect(roundedButton).toHaveClass("rounded-full");
+        expect(squareButton).toHaveClass(styles.shapeSquare);
+        expect(roundedButton).toHaveClass(styles.shapeRounded);
       });
 
       it("both shapes support all variants", () => {
@@ -850,11 +899,27 @@ describe("IconButton Component", () => {
           const roundedButton = roundedContainer.querySelector("button");
 
           if (size === "small") {
-            expect(squareButton).toHaveClass("p-2", "w-8", "h-8");
-            expect(roundedButton).toHaveClass("p-2", "w-8", "h-8");
+            expect(squareButton).toHaveClass(
+              styles.button,
+              styles.sizeSmall,
+              styles.shapeSquare,
+            );
+            expect(roundedButton).toHaveClass(
+              styles.button,
+              styles.sizeSmall,
+              styles.shapeRounded,
+            );
           } else {
-            expect(squareButton).toHaveClass("p-2.5", "w-10", "h-10");
-            expect(roundedButton).toHaveClass("p-2.5", "w-10", "h-10");
+            expect(squareButton).toHaveClass(
+              styles.button,
+              styles.sizeMedium,
+              styles.shapeSquare,
+            );
+            expect(roundedButton).toHaveClass(
+              styles.button,
+              styles.sizeMedium,
+              styles.shapeRounded,
+            );
           }
         });
       });
@@ -872,8 +937,8 @@ describe("IconButton Component", () => {
 
         expect(squareButton).toBeDisabled();
         expect(roundedButton).toBeDisabled();
-        expect(squareButton).toHaveClass("opacity-50");
-        expect(roundedButton).toHaveClass("opacity-50");
+        expect(squareButton).toHaveClass(styles.disabled);
+        expect(roundedButton).toHaveClass(styles.disabled);
       });
 
       it("square shape text button has rounded-lg", () => {
@@ -883,7 +948,7 @@ describe("IconButton Component", () => {
           </IconButton>,
         );
         const button = container.querySelector("button");
-        expect(button).toHaveClass("rounded-lg");
+        expect(button).toHaveClass(styles.roundedLg);
       });
 
       it("rounded shape text button has rounded-lg", () => {
@@ -894,7 +959,7 @@ describe("IconButton Component", () => {
         );
         const button = container.querySelector("button");
         // Text buttons use different rounding, checking for button existence
-        expect(button).toBeInTheDocument();
+        expect(button).toHaveClass(styles.roundedLg);
       });
 
       it("square shape preserves focus behavior", async () => {
@@ -909,7 +974,7 @@ describe("IconButton Component", () => {
 
         const button = container.querySelector("button");
         await user.click(button!);
-        expect(button).toHaveClass("focus:outline-none");
+        expect(button).toHaveClass(styles.focusFilled);
       });
 
       it("rounded shape preserves focus behavior", async () => {
@@ -924,7 +989,7 @@ describe("IconButton Component", () => {
 
         const button = container.querySelector("button");
         await user.click(button!);
-        expect(button).toHaveClass("focus:outline-none");
+        expect(button).toHaveClass(styles.focusFilled);
       });
     });
   });

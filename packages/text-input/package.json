@@ -1,6 +1,6 @@
 {
   "name": "@rubenpazch/text-input",
-  "version": "3.0.0",
+  "version": "4.0.0",
   "description": "TextInput component for Lbyte UI library",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -14,6 +14,9 @@
   },
   "files": [
     "dist"
+  ],
+  "sideEffects": [
+    "**/*.css"
   ],
   "scripts": {
     "build": "rollup -c",
@@ -36,6 +39,7 @@
     "@rollup/plugin-node-resolve": "^16.0.0",
     "@rollup/plugin-terser": "^0.4.3",
     "@rollup/plugin-typescript": "^12.1.2",
+    "@tailwindcss/postcss": "^4.0.0",
     "@testing-library/react": "^16.1.0",
     "@types/jest": "^29.5.1",
     "@types/react": "^19.0.2",

@@ -1,16 +1,47 @@
+# Dependencies
 node_modules/
+packages/*/node_modules/
+apps/*/node_modules/
+tooling/*/node_modules/
+
+# Build outputs
 dist/
 build/
-packages/library-folder/
-coverage/
-packages/*/node_modules
-packages/*/coverage
-storybook-static/
 packages/*/dist/
 packages/*/build/
 apps/*/dist/
 apps/*/build/
 tooling/*/dist/
 tooling/*/build/
+storybook-static/
+
+# Coverage
+coverage/
+packages/*/coverage/
+apps/*/coverage/
+
+# Cache and turbo
 .turbo/
-.turbo
+packages/*/.turbo/
+apps/*/.turbo/
+tooling/*/.turbo/
+
+# Lock files
+pnpm-lock.yaml
+yarn.lock
+package-lock.json
+
+# Generated snapshots and metrics
+.size-snapshot.json
+
+# Logs
+*.log
+build-storybook.log
+
+# Backup/copy files
+**/*copy.ts
+**/*copy.tsx
+**/*.backup.*
+
+# Legacy/deprecated
+packages/library-folder/

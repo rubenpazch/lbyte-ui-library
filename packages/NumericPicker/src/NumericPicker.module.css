@@ -1,0 +1,94 @@
+/* Container */
+.container {
+  width: 100%;
+}
+
+/* Label */
+.label {
+  display: block;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 0.25rem;
+}
+
+.required {
+  color: #dc2626;
+}
+
+/* Input container */
+.inputContainer {
+  position: relative;
+}
+
+/* Currency symbol */
+.currency {
+  position: absolute;
+  left: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #4b5563;
+  font-weight: 500;
+  pointer-events: none;
+}
+
+/* Input field */
+.input {
+  width: 100%;
+  padding: 0.625rem 3rem;
+  border: 2px solid #d1d5db;
+  border-radius: 0.5rem;
+  outline: none;
+  transition: all 150ms ease;
+}
+
+.input:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 1px #3b82f6;
+}
+
+.input:disabled {
+  background: #f9fafb;
+  color: #6b7280;
+  cursor: not-allowed;
+}
+
+/* Button container */
+.buttonContainer {
+  position: absolute;
+  right: 0.25rem;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+}
+
+/* Buttons */
+.button {
+  padding: 0.25rem 0.5rem;
+  background: #f3f4f6;
+  border: none;
+  border-radius: 0.125rem;
+  transition: all 150ms ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.button:hover:not(:disabled) {
+  background: #e5e7eb;
+}
+
+.button:disabled {
+  background: #f9fafb;
+  color: #d1d5db;
+  cursor: not-allowed;
+}
+
+.buttonIcon {
+  width: 0.75rem;
+  height: 0.75rem;
+}

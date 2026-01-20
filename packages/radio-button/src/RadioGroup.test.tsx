@@ -2,6 +2,7 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import RadioGroup from "./RadioGroup";
+import styles from "./RadioButton.module.css";
 
 const mockOptions = [
   { label: "Option 1", value: "option1", description: "First option" },
@@ -348,7 +349,10 @@ describe("RadioGroup Component", () => {
 
       const radios = screen.getAllByRole("radio");
       radios.forEach((radio) => {
-        expect(radio).toHaveClass("text-indigo-600", "focus:ring-indigo-500");
+        expect(radio).toHaveClass(
+          styles.radioPrimary,
+          styles.radioFocusPrimary,
+        );
       });
     });
 
@@ -365,7 +369,7 @@ describe("RadioGroup Component", () => {
 
       const radios = screen.getAllByRole("radio");
       radios.forEach((radio) => {
-        expect(radio).toHaveClass("w-5", "h-5");
+        expect(radio).toHaveClass(styles.radioLg);
       });
     });
   });

@@ -1,5 +1,19 @@
 # @rubenpazch/storybook
 
+## 4.0.0
+
+### Major Changes
+
+- css modules
+
+### Patch Changes
+
+- Updated dependencies
+  - @rubenpazch/text-input@4.0.0
+  - @rubenpazch/button@4.0.0
+  - @rubenpazch/shared@4.0.0
+  - @rubenpazch/icons@4.0.0
+
 ## 3.0.4
 
 ### Patch Changes

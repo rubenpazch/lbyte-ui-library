@@ -5,6 +5,6 @@
     "rootDir": "src",
     "declarationDir": "dist"
   },
-  "include": ["src", "../../css-module.d.ts"],
+  "include": ["src", "../../css-module.d.ts", "src/modules.d.ts"],
   "exclude": ["node_modules", "dist", "**/*.stories.*", "**/*.test.*"]
 }

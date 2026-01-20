@@ -1,0 +1,197 @@
+/* Container */
+.container {
+  display: flex;
+}
+
+/* Radio wrapper */
+.radioWrapper {
+  display: flex;
+  align-items: flex-start;
+}
+
+/* Radio input base styles */
+.radio {
+  cursor: pointer;
+  transition: all 150ms ease;
+  border-width: 1px;
+  border-style: solid;
+}
+
+.radio:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.05);
+  border-color: currentColor;
+}
+
+.radioDisabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.radioDisabled:focus {
+  box-shadow: none;
+}
+
+/* Radio sizes */
+.radioSm {
+  width: 0.75rem;
+  height: 0.75rem;
+}
+
+.radioMd {
+  width: 1rem;
+  height: 1rem;
+}
+
+.radioLg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+/* Container heights for alignment */
+.containerSm {
+  height: 1rem;
+}
+
+.containerMd {
+  height: 1.25rem;
+}
+
+.containerLg {
+  height: 1.5rem;
+}
+
+/* Radio border colors */
+.radioBorderDefault {
+  border-color: #d1d5db;
+}
+
+.radioBorderRequired {
+  border-color: #ef4444;
+}
+
+/* Radio variants - checked state colors */
+.radioDefault {
+  color: #2563eb;
+}
+
+.radioPrimary {
+  color: #4f46e5;
+}
+
+.radioSuccess {
+  color: #16a34a;
+}
+
+.radioWarning {
+  color: #ca8a04;
+}
+
+.radioDanger {
+  color: #dc2626;
+}
+
+/* Radio focus ring colors */
+.radioFocusDefault:focus {
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+}
+
+.radioFocusPrimary:focus {
+  box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.2);
+}
+
+.radioFocusSuccess:focus {
+  box-shadow: 0 0 0 2px rgba(22, 163, 74, 0.2);
+}
+
+.radioFocusWarning:focus {
+  box-shadow: 0 0 0 2px rgba(202, 138, 4, 0.2);
+}
+
+.radioFocusDanger:focus {
+  box-shadow: 0 0 0 2px rgba(220, 38, 38, 0.2);
+}
+
+/* Content wrapper */
+.contentWrapper {
+  margin-left: 0.75rem;
+  flex: 1;
+}
+
+/* Label styles */
+.label {
+  display: block;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.labelSm {
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+
+.labelMd {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.labelLg {
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+.labelDefault {
+  color: #374151;
+}
+
+.labelDisabled {
+  color: #9ca3af;
+  cursor: not-allowed;
+}
+
+.labelRequired {
+  color: #dc2626;
+  cursor: pointer;
+}
+
+/* Description styles */
+.description {
+  margin-top: 0.125rem;
+  color: #6b7280;
+}
+
+.descriptionSm {
+  font-size: 0.625rem;
+  line-height: 0.875rem;
+}
+
+.descriptionMd {
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+
+.descriptionLg {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+/* Error message styles */
+.error {
+  margin-top: 0.125rem;
+  color: #dc2626;
+}
+
+.errorSm {
+  font-size: 0.625rem;
+  line-height: 0.875rem;
+}
+
+.errorMd {
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+
+.errorLg {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
