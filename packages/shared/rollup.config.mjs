@@ -4,8 +4,6 @@ import typescript from "rollup-plugin-typescript2";
 import postcss from "rollup-plugin-postcss";
 import dts from "rollup-plugin-dts";
 import terser from "@rollup/plugin-terser";
-import autoprefixer from "autoprefixer";
-import tailwind from "@tailwindcss/postcss";
 import { readFileSync } from "fs";
 
 const packageJson = JSON.parse(
@@ -35,9 +33,9 @@ export default [
         tsconfig: "./tsconfig.json",
       }),
       postcss({
-        extract: "styles.css",
-        modules: false,
-        plugins: [tailwind(), autoprefixer()],
+        extract: false,
+        modules: true,
+        plugins: [],
       }),
       terser(),
     ],

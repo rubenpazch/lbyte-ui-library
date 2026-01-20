@@ -1,0 +1,210 @@
+/* Container */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.containerInline {
+  display: inline-flex;
+}
+
+/* Inner wrapper */
+.inner {
+  text-align: center;
+}
+
+.innerInline {
+  display: inline-flex;
+}
+
+/* Spinner base */
+.spinner {
+  border-radius: 9999px;
+  border-width: 2px;
+  animation: spin 1s linear infinite;
+}
+
+/* Sizes */
+.sizeSm {
+  height: 1rem;
+  width: 1rem;
+}
+
+.sizeMd {
+  height: 2rem;
+  width: 2rem;
+}
+
+.sizeLg {
+  height: 3rem;
+  width: 3rem;
+}
+
+/* Colors - spinner */
+.colorBlue {
+  border-color: #2563eb;
+}
+
+.colorGray {
+  border-color: #4b5563;
+}
+
+.colorWhite {
+  border-color: #ffffff;
+}
+
+/* Spinner transparent borders */
+.spinnerTransparent {
+  border-top-color: transparent;
+  border-right-color: transparent;
+}
+
+/* Spacing */
+.spacingDefault {
+  margin: 0 auto 1rem auto;
+}
+
+/* Dots container */
+.dotsContainer {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.dotsContainerInline {
+  display: flex;
+  gap: 0.25rem;
+}
+
+/* Dot sizes */
+.dotSizeSm {
+  height: 0.375rem;
+  width: 0.375rem;
+}
+
+.dotSizeMd {
+  height: 0.625rem;
+  width: 0.625rem;
+}
+
+.dotSizeLg {
+  height: 0.875rem;
+  width: 0.875rem;
+}
+
+/* Dot colors */
+.dotColorBlue {
+  background-color: #2563eb;
+}
+
+.dotColorGray {
+  background-color: #4b5563;
+}
+
+.dotColorWhite {
+  background-color: #ffffff;
+}
+
+/* Dot */
+.dot {
+  border-radius: 9999px;
+  animation: bounce 1s ease-in-out infinite;
+}
+
+.dotDelay1 {
+  animation-delay: 0ms;
+}
+
+.dotDelay2 {
+  animation-delay: 150ms;
+}
+
+.dotDelay3 {
+  animation-delay: 300ms;
+}
+
+/* Pulse */
+.pulse {
+  border-radius: 9999px;
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Ring */
+.ringContainer {
+  position: relative;
+}
+
+.ringBackground {
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  border-width: 2px;
+  opacity: 0.25;
+}
+
+.ringSpinner {
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  border-width: 2px;
+  border-color: transparent;
+  animation: spin 1s linear infinite;
+}
+
+.ringSpinnerBlue {
+  border-top-color: #2563eb;
+}
+
+.ringSpinnerGray {
+  border-top-color: #4b5563;
+}
+
+.ringSpinnerWhite {
+  border-top-color: #ffffff;
+}
+
+.ringTransparent {
+  border-right-color: transparent;
+  border-bottom-color: transparent;
+  border-left-color: transparent;
+}
+
+/* Message */
+.message {
+  color: #4b5563;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  margin-top: 0.5rem;
+}
+
+/* Animations */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  }
+  50% {
+    transform: translateY(-25%);
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}

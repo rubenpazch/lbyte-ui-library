@@ -15,6 +15,9 @@
   "files": [
     "dist"
   ],
+  "sideEffects": [
+    "**/*.css"
+  ],
   "scripts": {
     "build": "rollup -c",
     "test": "jest --passWithNoTests",
@@ -36,6 +39,7 @@
     "@rollup/plugin-node-resolve": "^16.0.0",
     "@rollup/plugin-terser": "^0.4.3",
     "@rollup/plugin-typescript": "^12.1.2",
+    "@tailwindcss/postcss": "^4.0.0",
     "@testing-library/react": "^16.1.0",
     "@types/jest": "^29.5.1",
     "@types/react": "^19.0.2",

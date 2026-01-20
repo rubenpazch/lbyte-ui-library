@@ -20,9 +20,31 @@
 /.idea
 /.vscode
 
+# logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+*.log
+build-storybook.log
+
+# lock files (using pnpm)
+yarn.lock
+package-lock.json
+
+# generated files
+.size-snapshot.json
+
+# backup/copy files
+**/*copy.ts
+**/*copy.tsx
+**/*.backup.*
+
+# migration scripts (one-time use)
+apply-package-imports.sh
+apply-package-imports2.sh
+fix-imports.sh
+migrate-components.sh
+
 /dist
 .env
 dist

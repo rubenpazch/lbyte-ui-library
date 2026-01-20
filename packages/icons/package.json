@@ -20,6 +20,9 @@
   "files": [
     "dist"
   ],
+  "sideEffects": [
+    "**/*.css"
+  ],
   "scripts": {
     "build": "rollup -c",
     "lint": "eslint src --ext .ts,.tsx",
@@ -39,9 +42,7 @@
     "@rollup/plugin-terser": "^0.4.3",
     "@rollup/plugin-typescript": "^12.1.2",
     "@types/react": "^19.0.2",
-    "autoprefixer": "^10.4.14",
     "eslint": "^9.16.0",
-    "postcss": "^8.4.23",
     "prettier": "^3.2.5",
     "react": "^19.2.3",
     "rollup": "^4.29.1",

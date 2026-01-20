@@ -1,12 +1,16 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
+import "@testing-library/jest-dom";
 import LoadingSpinner from "./LoadingSpinner";
+import styles from "./LoadingSpinner.module.css";
 
 describe("LoadingSpinner Component", () => {
   describe("Basic Rendering", () => {
     it("renders spinner variant by default", () => {
-      const { container } = render(<LoadingSpinner />);
-      expect(container.querySelector(".animate-spin")).toBeInTheDocument();
+      render(<LoadingSpinner />);
+      const spinner = screen.getByTestId("loading-spinner");
+      expect(spinner).toBeInTheDocument();
+      expect(spinner).toHaveAttribute("data-variant", "spinner");
     });
 
     it("renders with message", () => {
@@ -16,82 +20,80 @@ describe("LoadingSpinner Component", () => {
 
     it("renders without message", () => {
       const { container } = render(<LoadingSpinner />);
-      expect(container.querySelector("p")).not.toBeInTheDocument();
+      expect(
+        container.querySelector(`.${styles.message}`),
+      ).not.toBeInTheDocument();
     });
   });
 
   describe("Size Variants", () => {
     it("renders small size", () => {
-      const { container } = render(<LoadingSpinner size="sm" />);
-      const spinner = container.querySelector(".animate-spin");
-      expect(spinner).toHaveClass("h-4", "w-4");
+      render(<LoadingSpinner size="sm" />);
+      const spinner = screen.getByTestId("loading-spinner");
+      expect(spinner).toHaveAttribute("data-size", "sm");
     });
 
     it("renders medium size", () => {
-      const { container } = render(<LoadingSpinner size="md" />);
-      const spinner = container.querySelector(".animate-spin");
-      expect(spinner).toHaveClass("h-8", "w-8");
+      render(<LoadingSpinner size="md" />);
+      const spinner = screen.getByTestId("loading-spinner");
+      expect(spinner).toHaveAttribute("data-size", "md");
     });
 
     it("renders large size", () => {
-      const { container } = render(<LoadingSpinner size="lg" />);
-      const spinner = container.querySelector(".animate-spin");
-      expect(spinner).toHaveClass("h-12", "w-12");
+      render(<LoadingSpinner size="lg" />);
+      const spinner = screen.getByTestId("loading-spinner");
+      expect(spinner).toHaveAttribute("data-size", "lg");
     });
   });
 
   describe("Visual Variants", () => {
     it("renders spinner variant", () => {
       const { container } = render(<LoadingSpinner variant="spinner" />);
-      expect(container.querySelector(".animate-spin")).toBeInTheDocument();
+      expect(container.querySelector(`.${styles.spinner}`)).toBeInTheDocument();
     });
 
     it("renders dots variant", () => {
       const { container } = render(<LoadingSpinner variant="dots" />);
-      const dots = container.querySelectorAll(".animate-bounce");
+      const dots = container.querySelectorAll(`.${styles.dot}`);
       expect(dots).toHaveLength(3);
     });
 
     it("renders pulse variant", () => {
       const { container } = render(<LoadingSpinner variant="pulse" />);
-      expect(container.querySelector(".animate-pulse")).toBeInTheDocument();
+      expect(container.querySelector(`.${styles.pulse}`)).toBeInTheDocument();
     });
 
     it("renders ring variant", () => {
       const { container } = render(<LoadingSpinner variant="ring" />);
-      const rings = container.querySelectorAll(".rounded-full");
-      expect(rings.length).toBeGreaterThan(0);
+      const ringContainer = container.querySelector(`.${styles.ringContainer}`);
+      expect(ringContainer).toBeInTheDocument();
     });
   });
 
   describe("Color Variants", () => {
     it("renders blue color by default", () => {
-      const { container } = render(<LoadingSpinner variant="spinner" />);
-      const spinner = container.querySelector(".border-blue-600");
-      expect(spinner).toBeInTheDocument();
+      render(<LoadingSpinner variant="spinner" />);
+      const spinner = screen.getByTestId("loading-spinner");
+      expect(spinner).toHaveAttribute("data-color", "blue");
     });
 
     it("renders gray color", () => {
-      const { container } = render(
-        <LoadingSpinner variant="spinner" color="gray" />,
-      );
-      const spinner = container.querySelector(".border-gray-600");
-      expect(spinner).toBeInTheDocument();
+      render(<LoadingSpinner variant="spinner" color="gray" />);
+      const spinner = screen.getByTestId("loading-spinner");
+      expect(spinner).toHaveAttribute("data-color", "gray");
     });
 
     it("renders white color", () => {
-      const { container } = render(
-        <LoadingSpinner variant="spinner" color="white" />,
-      );
-      const spinner = container.querySelector(".border-white");
-      expect(spinner).toBeInTheDocument();
+      render(<LoadingSpinner variant="spinner" color="white" />);
+      const spinner = screen.getByTestId("loading-spinner");
+      expect(spinner).toHaveAttribute("data-color", "white");
     });
 
     it("renders dots with blue color", () => {
       const { container } = render(
         <LoadingSpinner variant="dots" color="blue" />,
       );
-      const dots = container.querySelectorAll(".bg-blue-600");
+      const dots = container.querySelectorAll(`.${styles.dotColorBlue}`);
       expect(dots.length).toBeGreaterThan(0);
     });
 
@@ -99,7 +101,7 @@ describe("LoadingSpinner Component", () => {
       const { container } = render(
         <LoadingSpinner variant="dots" color="gray" />,
       );
-      const dots = container.querySelectorAll(".bg-gray-600");
+      const dots = container.querySelectorAll(`.${styles.dotColorGray}`);
       expect(dots.length).toBeGreaterThan(0);
     });
   });
@@ -107,8 +109,9 @@ describe("LoadingSpinner Component", () => {
   describe("Inline Mode", () => {
     it("renders inline without centering classes", () => {
       const { container } = render(<LoadingSpinner inline />);
-      const wrapper = container.firstChild as HTMLElement;
-      expect(wrapper).not.toHaveClass("flex", "justify-center", "items-center");
+      expect(
+        container.querySelector(`.${styles.containerInline}`),
+      ).toBeInTheDocument();
     });
 
     it("renders inline with custom className", () => {
@@ -120,8 +123,8 @@ describe("LoadingSpinner Component", () => {
 
     it("removes margins when inline", () => {
       const { container } = render(<LoadingSpinner variant="spinner" inline />);
-      const spinner = container.querySelector(".animate-spin");
-      expect(spinner).not.toHaveClass("mx-auto", "mb-4");
+      const spinner = container.querySelector(`.${styles.spinner}`);
+      expect(spinner).not.toHaveClass(styles.spacingDefault);
     });
   });
 
@@ -139,8 +142,7 @@ describe("LoadingSpinner Component", () => {
       );
       expect(container.firstChild).toHaveClass(
         "my-custom-class",
-        "flex",
-        "justify-center",
+        styles.container,
       );
     });
   });
@@ -149,7 +151,7 @@ describe("LoadingSpinner Component", () => {
     it("renders message with correct styling", () => {
       render(<LoadingSpinner message="Test message" />);
       const message = screen.getByText("Test message");
-      expect(message).toHaveClass("text-gray-600", "text-sm", "mt-2");
+      expect(message).toHaveClass(styles.message);
     });
   });
 });

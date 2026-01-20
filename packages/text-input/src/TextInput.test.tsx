@@ -1,7 +1,9 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
+import "@testing-library/jest-dom";
 import userEvent from "@testing-library/user-event";
 import TextInput from "./TextInput";
+import styles from "./TextInput.module.css";
 
 describe("TextInput Component", () => {
   describe("Basic Rendering", () => {
@@ -28,7 +30,7 @@ describe("TextInput Component", () => {
       );
       const requiredMark = screen.getByText("*");
       expect(requiredMark).toBeInTheDocument();
-      expect(requiredMark).toHaveClass("text-red-500");
+      expect(requiredMark).toHaveClass(styles.required);
     });
 
     it("should not display required asterisk when required is false", () => {
@@ -148,13 +150,13 @@ describe("TextInput Component", () => {
     it("should apply error border styling when error exists", () => {
       render(<TextInput value="" onChange={() => {}} error="Error" />);
       const input = screen.getByRole("textbox") as HTMLInputElement;
-      expect(input.className).toContain("border-red-500");
+      expect(input).toHaveClass(styles.inputError);
     });
 
     it("should not apply error styling when no error", () => {
       render(<TextInput value="" onChange={() => {}} />);
       const input = screen.getByRole("textbox") as HTMLInputElement;
-      expect(input.className).toContain("border-gray-300");
+      expect(input).not.toHaveClass(styles.inputError);
     });
 
     it("should display error icon when error is present", () => {
@@ -188,7 +190,8 @@ describe("TextInput Component", () => {
     it("should apply disabled styling", () => {
       render(<TextInput value="" onChange={() => {}} disabled={true} />);
       const input = screen.getByRole("textbox") as HTMLInputElement;
-      expect(input.className).toContain("disabled:bg-gray-100");
+      expect(input).toHaveClass(styles.input);
+      expect(input).toBeDisabled();
     });
   });
 
@@ -240,8 +243,8 @@ describe("TextInput Component", () => {
           type="text"
         />,
       );
-      const charCount = screen.getByText("10/10");
-      expect(charCount.className).toContain("text-red-600");
+      const charCount = screen.getByTestId("char-count");
+      expect(charCount).toHaveClass(styles.charCountLimit);
     });
   });
 
@@ -272,13 +275,13 @@ describe("TextInput Component", () => {
       const input = screen.getByRole("textbox") as HTMLInputElement;
 
       await userEvent.click(input);
-      expect(input.className).toContain("border-blue-500");
+      expect(input).toHaveClass(styles.input);
     });
 
     it("should apply gray border when not focused", () => {
       render(<TextInput value="" onChange={() => {}} />);
       const input = screen.getByRole("textbox") as HTMLInputElement;
-      expect(input.className).toContain("border-gray-300");
+      expect(input).toHaveClass(styles.input);
     });
   });
 
@@ -484,7 +487,7 @@ describe("TextInput Component", () => {
       );
       const input = screen.getByRole("textbox") as HTMLInputElement;
       // Error takes precedence
-      expect(input.className).toContain("border-red-500");
+      expect(input).toHaveClass(styles.inputError);
     });
   });
 

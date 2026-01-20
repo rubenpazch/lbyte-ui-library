@@ -547,6 +547,9 @@ export const LinkStyle: Story = {
 
 // Square Shape Variations
 export const SquareShape: Story = {
+  args: {
+    icon: editIcon,
+  },
   render: () => (
     <div className="flex flex-col gap-8">
       <div>
@@ -768,6 +771,9 @@ export const SquareShape: Story = {
 
 // Comparison: Rounded vs Square
 export const RoundedVsSquare: Story = {
+  args: {
+    icon: editIcon,
+  },
   render: () => (
     <div className="flex flex-col gap-8">
       <div>

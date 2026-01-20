@@ -1,6 +1,7 @@
 /**
  * @jest-environment jsdom
  */
+/// <reference types="@testing-library/jest-dom" />
 import {
   expect,
   describe,
@@ -12,7 +13,18 @@ import {
 import React from "react";
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
+import matchers from "@testing-library/jest-dom/matchers";
 import Drawer from "./Drawer";
+
+expect.extend(matchers);
+
+declare module "expect" {
+  // Augment Jest's matcher typings with the jest-dom matchers we use in this suite.
+  interface Matchers<R = void, T = unknown> {
+    toBeInTheDocument(): R;
+    toHaveAttribute(attr: string, value?: unknown): R;
+  }
+}
 
 // Mock the icons module with proper React element
 jest.mock("@rubenpazch/icons", () => ({
@@ -191,7 +203,7 @@ describe("Drawer Component", () => {
         const drawer = screen
           .getByRole("dialog")
           .querySelector('div[tabindex="-1"]');
-        expect(drawer).toHaveClass("left-0");
+        expect(drawer).toHaveAttribute("data-position", "left");
       });
     });
 
@@ -206,7 +218,7 @@ describe("Drawer Component", () => {
         const drawer = screen
           .getByRole("dialog")
           .querySelector('div[tabindex="-1"]');
-        expect(drawer).toHaveClass("right-0");
+        expect(drawer).toHaveAttribute("data-position", "right");
       });
     });
 
@@ -221,7 +233,7 @@ describe("Drawer Component", () => {
         const drawer = screen
           .getByRole("dialog")
           .querySelector('div[tabindex="-1"]');
-        expect(drawer).toHaveClass("top-0");
+        expect(drawer).toHaveAttribute("data-position", "top");
       });
     });
 
@@ -236,7 +248,7 @@ describe("Drawer Component", () => {
         const drawer = screen
           .getByRole("dialog")
           .querySelector('div[tabindex="-1"]');
-        expect(drawer).toHaveClass("bottom-0");
+        expect(drawer).toHaveAttribute("data-position", "bottom");
       });
     });
   });
@@ -253,7 +265,7 @@ describe("Drawer Component", () => {
         const drawer = screen
           .getByRole("dialog")
           .querySelector('div[tabindex="-1"]');
-        expect(drawer).toHaveClass("w-80");
+        expect(drawer).toHaveAttribute("data-size", "md");
       });
     });
 
@@ -268,7 +280,7 @@ describe("Drawer Component", () => {
         const drawer = screen
           .getByRole("dialog")
           .querySelector('div[tabindex="-1"]');
-        expect(drawer).toHaveClass("w-64");
+        expect(drawer).toHaveAttribute("data-size", "sm");
       });
     });
 
@@ -283,7 +295,7 @@ describe("Drawer Component", () => {
         const drawer = screen
           .getByRole("dialog")
           .querySelector('div[tabindex="-1"]');
-        expect(drawer).toHaveClass("w-96");
+        expect(drawer).toHaveAttribute("data-size", "lg");
       });
     });
   });
@@ -297,8 +309,7 @@ describe("Drawer Component", () => {
       );
 
       await waitFor(() => {
-        const dialog = screen.getByRole("dialog");
-        const overlay = dialog.querySelector(".bg-black\\/50");
+        const overlay = screen.getByTestId("drawer-overlay");
         expect(overlay).toBeInTheDocument();
       });
     });
@@ -311,8 +322,7 @@ describe("Drawer Component", () => {
       );
 
       await waitFor(() => {
-        const dialog = screen.getByRole("dialog");
-        const overlay = dialog.querySelector(".bg-black\\/50");
+        const overlay = screen.queryByTestId("drawer-overlay");
         expect(overlay).not.toBeInTheDocument();
       });
     });

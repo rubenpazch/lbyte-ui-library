@@ -1,4 +1,5 @@
 import * as React from "react";
+import styles from "./LoadingSpinner.module.css";
 
 interface LoadingSpinnerProps {
   message?: string;
@@ -7,6 +8,10 @@ interface LoadingSpinnerProps {
   variant?: "spinner" | "dots" | "pulse" | "ring";
   inline?: boolean;
   color?: "blue" | "gray" | "white";
+}
+
+function classNames(...classes: (string | boolean | undefined)[]): string {
+  return classes.filter(Boolean).join(" ");
 }
 
 /**
@@ -25,47 +30,39 @@ const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({
   inline = false,
   color = "blue",
 }) => {
-  const sizeClasses = {
-    sm: "h-4 w-4",
-    md: "h-8 w-8",
-    lg: "h-12 w-12",
-  };
-
-  const colorClasses = {
-    blue: "border-blue-600",
-    gray: "border-gray-600",
-    white: "border-white",
-  };
-
-  const dotColorClasses = {
-    blue: "bg-blue-600",
-    gray: "bg-gray-600",
-    white: "bg-white",
-  };
-
-  const dotSizeClasses = {
-    sm: "h-1.5 w-1.5",
-    md: "h-2.5 w-2.5",
-    lg: "h-3.5 w-3.5",
-  };
+  const sizeClass =
+    styles[`size${size.charAt(0).toUpperCase() + size.slice(1)}`];
+  const colorClass =
+    styles[`color${color.charAt(0).toUpperCase() + color.slice(1)}`];
+  const dotColorClass =
+    styles[`dotColor${color.charAt(0).toUpperCase() + color.slice(1)}`];
+  const dotSizeClass =
+    styles[`dotSize${size.charAt(0).toUpperCase() + size.slice(1)}`];
 
   // Spinner variant (circular border)
   if (variant === "spinner") {
     return (
       <div
-        className={
-          inline ? className : `flex justify-center items-center ${className}`
-        }
+        className={classNames(
+          inline ? styles.containerInline : styles.container,
+          className,
+        )}
+        data-testid="loading-spinner"
+        data-variant={variant}
+        data-size={size}
+        data-color={color}
       >
-        <div className={inline ? "" : "text-center"}>
+        <div className={inline ? styles.innerInline : styles.inner}>
           <div
-            className={`animate-spin rounded-full border-2 ${colorClasses[color]} ${sizeClasses[size]} ${inline ? "" : "mx-auto mb-4"}`}
-            style={{
-              borderTopColor: "transparent",
-              borderRightColor: "transparent",
-            }}
+            className={classNames(
+              styles.spinner,
+              styles.spinnerTransparent,
+              colorClass,
+              sizeClass,
+              !inline ? styles.spacingDefault : undefined,
+            )}
           ></div>
-          {message && <p className="text-gray-600 text-sm mt-2">{message}</p>}
+          {message && <p className={styles.message}>{message}</p>}
         </div>
       </div>
     );
@@ -75,26 +72,48 @@ const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({
   if (variant === "dots") {
     return (
       <div
-        className={
-          inline ? className : `flex justify-center items-center ${className}`
-        }
+        className={classNames(
+          inline ? styles.containerInline : styles.container,
+          className,
+        )}
+        data-testid="loading-spinner"
+        data-variant={variant}
+        data-size={size}
+        data-color={color}
       >
-        <div className={inline ? "flex gap-1" : "text-center"}>
-          <div className={`flex gap-1 ${inline ? "" : "mx-auto mb-4"}`}>
+        <div className={inline ? styles.innerInline : styles.inner}>
+          <div
+            className={classNames(
+              inline ? styles.dotsContainerInline : styles.dotsContainer,
+              !inline ? styles.spacingDefault : undefined,
+            )}
+          >
             <div
-              className={`${dotSizeClasses[size]} ${dotColorClasses[color]} rounded-full animate-bounce`}
-              style={{ animationDelay: "0ms" }}
+              className={classNames(
+                styles.dot,
+                dotSizeClass,
+                dotColorClass,
+                styles.dotDelay1,
+              )}
             ></div>
             <div
-              className={`${dotSizeClasses[size]} ${dotColorClasses[color]} rounded-full animate-bounce`}
-              style={{ animationDelay: "150ms" }}
+              className={classNames(
+                styles.dot,
+                dotSizeClass,
+                dotColorClass,
+                styles.dotDelay2,
+              )}
             ></div>
             <div
-              className={`${dotSizeClasses[size]} ${dotColorClasses[color]} rounded-full animate-bounce`}
-              style={{ animationDelay: "300ms" }}
+              className={classNames(
+                styles.dot,
+                dotSizeClass,
+                dotColorClass,
+                styles.dotDelay3,
+              )}
             ></div>
           </div>
-          {message && <p className="text-gray-600 text-sm mt-2">{message}</p>}
+          {message && <p className={styles.message}>{message}</p>}
         </div>
       </div>
     );
@@ -104,15 +123,25 @@ const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({
   if (variant === "pulse") {
     return (
       <div
-        className={
-          inline ? className : `flex justify-center items-center ${className}`
-        }
+        className={classNames(
+          inline ? styles.containerInline : styles.container,
+          className,
+        )}
+        data-testid="loading-spinner"
+        data-variant={variant}
+        data-size={size}
+        data-color={color}
       >
-        <div className={inline ? "" : "text-center"}>
+        <div className={inline ? styles.innerInline : styles.inner}>
           <div
-            className={`${sizeClasses[size]} ${dotColorClasses[color]} rounded-full animate-pulse ${inline ? "" : "mx-auto mb-4"}`}
+            className={classNames(
+              styles.pulse,
+              sizeClass,
+              dotColorClass,
+              !inline ? styles.spacingDefault : undefined,
+            )}
           ></div>
-          {message && <p className="text-gray-600 text-sm mt-2">{message}</p>}
+          {message && <p className={styles.message}>{message}</p>}
         </div>
       </div>
     );
@@ -120,36 +149,40 @@ const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({
 
   // Ring variant (rotating ring with gradient)
   if (variant === "ring") {
-    const ringColorMap = {
-      blue: "border-blue-600",
-      gray: "border-gray-600",
-      white: "border-white",
-    };
+    const ringSpinnerColorClass =
+      styles[`ringSpinner${color.charAt(0).toUpperCase() + color.slice(1)}`];
 
     return (
       <div
-        className={
-          inline ? className : `flex justify-center items-center ${className}`
-        }
+        className={classNames(
+          inline ? styles.containerInline : styles.container,
+          className,
+        )}
+        data-testid="loading-spinner"
+        data-variant={variant}
+        data-size={size}
+        data-color={color}
       >
-        <div className={inline ? "" : "text-center"}>
+        <div className={inline ? styles.innerInline : styles.inner}>
           <div
-            className={`relative ${sizeClasses[size]} ${inline ? "" : "mx-auto mb-4"}`}
+            className={classNames(
+              styles.ringContainer,
+              sizeClass,
+              !inline ? styles.spacingDefault : undefined,
+            )}
           >
             <div
-              className={`absolute inset-0 rounded-full border-2 ${colorClasses[color]} opacity-25`}
+              className={classNames(styles.ringBackground, colorClass)}
             ></div>
             <div
-              className={`absolute inset-0 rounded-full border-2 border-transparent ${ringColorMap[color]} animate-spin`}
-              style={{
-                borderTopColor: "currentColor",
-                borderRightColor: "transparent",
-                borderBottomColor: "transparent",
-                borderLeftColor: "transparent",
-              }}
+              className={classNames(
+                styles.ringSpinner,
+                styles.ringTransparent,
+                ringSpinnerColorClass,
+              )}
             ></div>
           </div>
-          {message && <p className="text-gray-600 text-sm mt-2">{message}</p>}
+          {message && <p className={styles.message}>{message}</p>}
         </div>
       </div>
     );

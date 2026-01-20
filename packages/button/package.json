@@ -15,6 +15,9 @@
   "files": [
     "dist"
   ],
+  "sideEffects": [
+    "**/*.css"
+  ],
   "scripts": {
     "build": "rollup -c",
     "test": "jest --passWithNoTests",

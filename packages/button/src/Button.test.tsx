@@ -1,7 +1,22 @@
+/// <reference types="@testing-library/jest-dom" />
 import React from "react";
+import { jest } from "@jest/globals";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import matchers from "@testing-library/jest-dom/matchers";
 import Button from "./Button";
+
+expect.extend(matchers);
+
+declare module "expect" {
+  interface Matchers<R = void, T = unknown> {
+    toBeInTheDocument(): R;
+    toHaveClass(...classNames: string[]): R;
+    toHaveAttribute(attr: string, value?: unknown): R;
+    toBeDisabled(): R;
+    toHaveFocus(): R;
+  }
+}
 
 describe("Button Component", () => {
   describe("Basic Rendering", () => {
@@ -35,19 +50,22 @@ describe("Button Component", () => {
     it("renders small button", () => {
       const { container } = render(<Button size="sm">Small</Button>);
       const button = container.querySelector("button");
-      expect(button).toHaveClass("px-3", "py-1.5", "text-xs");
+      expect(button).toHaveAttribute("data-size", "sm");
+      expect(button).toHaveClass("sizeSm");
     });
 
     it("renders medium button (default)", () => {
       const { container } = render(<Button>Medium</Button>);
       const button = container.querySelector("button");
-      expect(button).toHaveClass("px-4", "py-2", "text-sm");
+      expect(button).toHaveAttribute("data-size", "md");
+      expect(button).toHaveClass("sizeMd");
     });
 
     it("renders large button", () => {
       const { container } = render(<Button size="lg">Large</Button>);
       const button = container.querySelector("button");
-      expect(button).toHaveClass("px-6", "py-3", "text-base");
+      expect(button).toHaveAttribute("data-size", "lg");
+      expect(button).toHaveClass("sizeLg");
     });
   });
 
@@ -63,10 +81,54 @@ describe("Button Component", () => {
       "warning",
     ] as const;
 
+    const variantClassNames: Record<
+      (typeof variants)[number],
+      { outlined: string; filled: string }
+    > = {
+      default: {
+        outlined: "variantDefaultOutlined",
+        filled: "variantDefaultFilled",
+      },
+      secondary: {
+        outlined: "variantSecondaryOutlined",
+        filled: "variantSecondaryFilled",
+      },
+      black: {
+        outlined: "variantBlackOutlined",
+        filled: "variantBlackFilled",
+      },
+      "gradient-green": {
+        outlined: "variantGradientGreenOutlined",
+        filled: "variantGradientGreenFilled",
+      },
+      "solid-green": {
+        outlined: "variantSolidGreenOutlined",
+        filled: "variantSolidGreenFilled",
+      },
+      blue: {
+        outlined: "variantBlueOutlined",
+        filled: "variantBlueFilled",
+      },
+      pink: {
+        outlined: "variantPinkOutlined",
+        filled: "variantPinkFilled",
+      },
+      warning: {
+        outlined: "variantWarningOutlined",
+        filled: "variantWarningFilled",
+      },
+    };
+
     variants.forEach((variant) => {
       it(`renders ${variant} variant outline button`, () => {
         render(<Button variant={variant}>{variant}</Button>);
-        expect(screen.getByRole("button")).toBeInTheDocument();
+        expect(screen.getByRole("button")).toHaveAttribute(
+          "data-style",
+          "outlined",
+        );
+        expect(screen.getByRole("button")).toHaveClass(
+          variantClassNames[variant].outlined,
+        );
       });
 
       it(`renders ${variant} variant filled button`, () => {
@@ -75,7 +137,13 @@ describe("Button Component", () => {
             {variant}
           </Button>,
         );
-        expect(screen.getByRole("button")).toBeInTheDocument();
+        expect(screen.getByRole("button")).toHaveAttribute(
+          "data-style",
+          "filled",
+        );
+        expect(screen.getByRole("button")).toHaveClass(
+          variantClassNames[variant].filled,
+        );
       });
     });
   });
@@ -88,10 +156,10 @@ describe("Button Component", () => {
 
     it("disabled button has opacity reduced", () => {
       const { container } = render(<Button disabled>Disabled</Button>);
-      expect(container.querySelector("button")).toHaveClass(
-        "bg-gray-300",
-        "text-gray-500",
-        "cursor-not-allowed",
+      expect(container.querySelector("button")).toHaveClass("disabled");
+      expect(container.querySelector("button")).toHaveAttribute(
+        "data-disabled",
+        "true",
       );
     });
 
@@ -118,7 +186,8 @@ describe("Button Component", () => {
     it("renders quiet button with reduced styling", () => {
       const { container } = render(<Button quiet>Quiet Button</Button>);
       const button = container.querySelector("button");
-      expect(button).toHaveClass("text-gray-600");
+      expect(button).toHaveClass("quiet");
+      expect(button).toHaveAttribute("data-style", "quiet");
     });
 
     it("quiet button ignores variant", () => {
@@ -128,7 +197,8 @@ describe("Button Component", () => {
         </Button>,
       );
       const button = container.querySelector("button");
-      expect(button).toHaveClass("text-gray-600");
+      expect(button).toHaveClass("quiet");
+      expect(button).toHaveAttribute("data-style", "quiet");
     });
 
     it("quiet button ignores filled prop", () => {
@@ -138,19 +208,28 @@ describe("Button Component", () => {
         </Button>,
       );
       const button = container.querySelector("button");
-      expect(button).toHaveClass("text-gray-600");
+      expect(button).toHaveClass("quiet");
+      expect(button).toHaveAttribute("data-style", "quiet");
     });
   });
 
   describe("Circled Button", () => {
     it("renders circled button with full border radius", () => {
       const { container } = render(<Button circled>O</Button>);
-      expect(container.querySelector("button")).toHaveClass("rounded-full");
+      expect(container.querySelector("button")).toHaveClass("roundedFull");
+      expect(container.querySelector("button")).toHaveAttribute(
+        "data-shape",
+        "circle",
+      );
     });
 
     it("renders regular button with lg border radius", () => {
       const { container } = render(<Button>Regular</Button>);
-      expect(container.querySelector("button")).toHaveClass("rounded-lg");
+      expect(container.querySelector("button")).toHaveClass("roundedLg");
+      expect(container.querySelector("button")).toHaveAttribute(
+        "data-shape",
+        "rounded",
+      );
     });
   });
 
@@ -162,7 +241,8 @@ describe("Button Component", () => {
         </Button>,
       );
       const button = container.querySelector("button");
-      expect(button).toHaveClass("bg-blue-500");
+      expect(button).toHaveClass("variantBlueFilled");
+      expect(button).toHaveAttribute("data-style", "filled");
     });
 
     it("renders inverted filled button as outline", () => {
@@ -172,28 +252,41 @@ describe("Button Component", () => {
         </Button>,
       );
       const button = container.querySelector("button");
-      expect(button).toHaveClass("border-2");
+      expect(button).toHaveClass("variantPinkOutlined");
+      expect(button).toHaveAttribute("data-style", "outlined");
     });
   });
 
   describe("Focus Styles", () => {
     it("renders with filled focus style (default)", () => {
       const { container } = render(<Button>Button</Button>);
-      expect(container.querySelector("button")).toHaveClass("focus:ring-2");
+      expect(container.querySelector("button")).toHaveClass("focusFilled");
+      expect(container.querySelector("button")).toHaveAttribute(
+        "data-focus-style",
+        "filled",
+      );
     });
 
     it("renders with outline focus style", () => {
       const { container } = render(
         <Button focusStyleType="outline">Button</Button>,
       );
-      expect(container.querySelector("button")).toHaveClass("focus:ring-2");
+      expect(container.querySelector("button")).toHaveClass("focusOutline");
+      expect(container.querySelector("button")).toHaveAttribute(
+        "data-focus-style",
+        "outline",
+      );
     });
 
     it("renders with underline focus style", () => {
       const { container } = render(
         <Button focusStyleType="underline">Button</Button>,
       );
-      expect(container.querySelector("button")).toHaveClass("focus:underline");
+      expect(container.querySelector("button")).toHaveClass("focusUnderline");
+      expect(container.querySelector("button")).toHaveAttribute(
+        "data-focus-style",
+        "underline",
+      );
     });
   });
 
@@ -259,7 +352,9 @@ describe("Button Component", () => {
         </Button>,
       );
       const button = container.querySelector("button");
-      expect(button).toHaveClass("px-6", "py-3", "bg-pink-500");
+      expect(button).toHaveClass("sizeLg", "variantPinkFilled");
+      expect(button).toHaveAttribute("data-size", "lg");
+      expect(button).toHaveAttribute("data-style", "filled");
     });
 
     it("renders small circled disabled button", () => {
@@ -269,13 +364,10 @@ describe("Button Component", () => {
         </Button>,
       );
       const button = container.querySelector("button");
-      expect(button).toHaveClass(
-        "px-3",
-        "py-1.5",
-        "rounded-full",
-        "bg-gray-300",
-        "text-gray-500",
-      );
+      expect(button).toHaveClass("sizeSm", "roundedFull", "disabled");
+      expect(button).toHaveAttribute("data-size", "sm");
+      expect(button).toHaveAttribute("data-shape", "circle");
+      expect(button).toHaveAttribute("data-disabled", "true");
     });
 
     it("renders medium quiet button with custom class", () => {
@@ -285,7 +377,8 @@ describe("Button Component", () => {
         </Button>,
       );
       const button = container.querySelector("button");
-      expect(button).toHaveClass("my-custom-class", "text-gray-600");
+      expect(button).toHaveClass("my-custom-class", "quiet");
+      expect(button).toHaveAttribute("data-style", "quiet");
     });
 
     it("renders large inverted gradient-green button", () => {
@@ -295,12 +388,9 @@ describe("Button Component", () => {
         </Button>,
       );
       const button = container.querySelector("button");
-      expect(button).toHaveClass(
-        "px-6",
-        "py-3",
-        "bg-gradient-to-r",
-        "from-emerald-400",
-      );
+      expect(button).toHaveClass("sizeLg", "variantGradientGreenFilled");
+      expect(button).toHaveAttribute("data-style", "filled");
+      expect(button).toHaveAttribute("data-size", "lg");
     });
   });
 
@@ -332,14 +422,16 @@ describe("Button Component", () => {
     it("has transition classes for smooth interaction", () => {
       const { container } = render(<Button>Button</Button>);
       expect(container.querySelector("button")).toHaveClass(
-        "transition-all",
-        "duration-200",
+        "interactive",
+        "root",
       );
     });
 
     it("applies hover state to outlined button", () => {
       const { container } = render(<Button variant="blue">Button</Button>);
-      expect(container.querySelector("button")).toHaveClass("hover:bg-blue-50");
+      expect(container.querySelector("button")).toHaveClass(
+        "variantBlueOutlined",
+      );
     });
 
     it("applies hover state to filled button", () => {
@@ -349,7 +441,7 @@ describe("Button Component", () => {
         </Button>,
       );
       expect(container.querySelector("button")).toHaveClass(
-        "hover:bg-blue-600",
+        "variantBlueFilled",
       );
     });
   });
@@ -373,12 +465,7 @@ describe("Button Component", () => {
           <span>Text</span>
         </Button>,
       );
-      expect(container.querySelector("button")).toHaveClass(
-        "inline-flex",
-        "items-center",
-        "justify-center",
-        "gap-2",
-      );
+      expect(container.querySelector("button")).toHaveClass("root");
     });
   });
 

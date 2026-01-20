@@ -2,6 +2,7 @@ import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import RadioButton from "./RadioButton";
+import styles from "./RadioButton.module.css";
 
 describe("RadioButton Component", () => {
   describe("Rendering", () => {
@@ -106,8 +107,8 @@ describe("RadioButton Component", () => {
       const radio = screen.getByRole("radio");
       const label = screen.getByText("Required Radio");
 
-      expect(radio).toHaveClass("border-red-500");
-      expect(label).toHaveClass("text-red-600");
+      expect(radio).toHaveClass(styles.radioBorderRequired);
+      expect(label).toHaveClass(styles.labelRequired);
     });
 
     it("should not show red border and label when required and checked", () => {
@@ -125,8 +126,8 @@ describe("RadioButton Component", () => {
       const radio = screen.getByRole("radio");
       const label = screen.getByText("Required Radio");
 
-      expect(radio).toHaveClass("border-gray-300");
-      expect(label).toHaveClass("text-gray-700");
+      expect(radio).toHaveClass(styles.radioBorderDefault);
+      expect(label).toHaveClass(styles.labelDefault);
     });
 
     it("should apply custom className", () => {
@@ -332,7 +333,7 @@ describe("RadioButton Component", () => {
       );
 
       const radio = screen.getByRole("radio");
-      expect(radio).toHaveClass("w-3", "h-3");
+      expect(radio).toHaveClass(styles.radioSm);
     });
 
     it("should apply medium size classes by default", () => {
@@ -346,7 +347,7 @@ describe("RadioButton Component", () => {
       );
 
       const radio = screen.getByRole("radio");
-      expect(radio).toHaveClass("w-4", "h-4");
+      expect(radio).toHaveClass(styles.radioMd);
     });
 
     it("should apply large size classes", () => {
@@ -361,7 +362,7 @@ describe("RadioButton Component", () => {
       );
 
       const radio = screen.getByRole("radio");
-      expect(radio).toHaveClass("w-5", "h-5");
+      expect(radio).toHaveClass(styles.radioLg);
     });
   });
 
@@ -378,7 +379,7 @@ describe("RadioButton Component", () => {
       );
 
       const radio = screen.getByRole("radio");
-      expect(radio).toHaveClass("text-blue-600", "focus:ring-blue-500");
+      expect(radio).toHaveClass(styles.radioDefault, styles.radioFocusDefault);
     });
 
     it("should apply primary variant classes", () => {
@@ -393,7 +394,7 @@ describe("RadioButton Component", () => {
       );
 
       const radio = screen.getByRole("radio");
-      expect(radio).toHaveClass("text-indigo-600", "focus:ring-indigo-500");
+      expect(radio).toHaveClass(styles.radioPrimary, styles.radioFocusPrimary);
     });
 
     it("should apply success variant classes", () => {
@@ -408,7 +409,7 @@ describe("RadioButton Component", () => {
       );
 
       const radio = screen.getByRole("radio");
-      expect(radio).toHaveClass("text-green-600", "focus:ring-green-500");
+      expect(radio).toHaveClass(styles.radioSuccess, styles.radioFocusSuccess);
     });
 
     it("should apply warning variant classes", () => {
@@ -423,7 +424,7 @@ describe("RadioButton Component", () => {
       );
 
       const radio = screen.getByRole("radio");
-      expect(radio).toHaveClass("text-yellow-600", "focus:ring-yellow-500");
+      expect(radio).toHaveClass(styles.radioWarning, styles.radioFocusWarning);
     });
 
     it("should apply danger variant classes", () => {
@@ -438,7 +439,7 @@ describe("RadioButton Component", () => {
       );
 
       const radio = screen.getByRole("radio");
-      expect(radio).toHaveClass("text-red-600", "focus:ring-red-500");
+      expect(radio).toHaveClass(styles.radioDanger, styles.radioFocusDanger);
     });
   });
 

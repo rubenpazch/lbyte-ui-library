@@ -1,6 +1,20 @@
+/// <reference types="@testing-library/jest-dom" />
 import React from "react";
+import { jest } from "@jest/globals";
 import { render, screen, fireEvent } from "@testing-library/react";
+import matchers from "@testing-library/jest-dom/matchers";
 import Autocomplete, { AutocompleteOption } from "./Autocomplete";
+
+expect.extend(matchers);
+
+declare module "expect" {
+  interface Matchers<R = void, T = unknown> {
+    toBeInTheDocument(): R;
+    toHaveClass(...classNames: string[]): R;
+    toHaveAttribute(attr: string, value?: unknown): R;
+    toBeDisabled(): R;
+  }
+}
 
 const mockOptions: AutocompleteOption[] = [
   { value: "1", label: "Option One", description: "First option" },
@@ -177,7 +191,8 @@ describe("Autocomplete Component", () => {
 
       expect(screen.getByText("This field is required")).toBeInTheDocument();
       const input = screen.getByTestId("autocomplete-input");
-      expect(input).toHaveClass("border-red-500");
+      expect(input).toHaveAttribute("data-has-error", "true");
+      expect(input).toHaveClass("inputError");
     });
   });
 
@@ -195,7 +210,7 @@ describe("Autocomplete Component", () => {
 
       const input = screen.getByTestId("autocomplete-input");
       expect(input).toBeDisabled();
-      expect(input).toHaveClass("disabled:bg-gray-100");
+      expect(input).toHaveClass("input");
     });
 
     it("makes input readonly when readOnly prop is true", () => {
@@ -359,7 +374,7 @@ describe("Autocomplete Component", () => {
 
       const highlightedElements = screen.getByText("One", { selector: "mark" });
       expect(highlightedElements).toBeInTheDocument();
-      expect(highlightedElements).toHaveClass("bg-yellow-200");
+      expect(highlightedElements).toHaveClass("highlight");
     });
 
     it("shows all options when search is empty", () => {
@@ -464,7 +479,8 @@ describe("Autocomplete Component", () => {
       fireEvent.keyDown(input, { key: "ArrowDown" });
 
       const firstOption = screen.getByTestId("autocomplete-option-1");
-      expect(firstOption).toHaveClass("bg-blue-50");
+      expect(firstOption).toHaveAttribute("data-highlighted", "true");
+      expect(firstOption).toHaveClass("optionHighlighted");
     });
 
     it("selects highlighted option on Enter key", () => {
@@ -538,7 +554,7 @@ describe("Autocomplete Component", () => {
       fireEvent.click(toggleButton);
 
       const chevronIcon = toggleButton.querySelector("svg");
-      expect(chevronIcon).toHaveClass("rotate-180");
+      expect(chevronIcon).toHaveClass("toggleIconOpen");
     });
   });
 

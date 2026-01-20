@@ -1,0 +1,234 @@
+.root {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  border: 2px solid transparent;
+  line-height: 1.25;
+  white-space: nowrap;
+  background: transparent;
+  color: inherit;
+}
+
+.interactive {
+  cursor: pointer;
+  transition:
+    background-color 150ms ease,
+    color 150ms ease,
+    border-color 150ms ease,
+    box-shadow 150ms ease,
+    transform 150ms ease;
+}
+
+.sizeSm {
+  padding: 0.375rem 0.75rem;
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+
+.sizeMd {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.sizeLg {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+.roundedLg {
+  border-radius: 0.5rem;
+}
+
+.roundedFull {
+  border-radius: 9999px;
+}
+
+.disabled {
+  background: #d1d5db;
+  color: #6b7280;
+  border-color: #d1d5db;
+  cursor: not-allowed;
+  pointer-events: none;
+  box-shadow: none;
+}
+
+.quiet {
+  background: transparent;
+  color: #4b5563;
+  border-color: transparent;
+}
+
+.quiet:hover {
+  color: #1f2937;
+  text-decoration: underline;
+}
+
+.focusFilled:focus-visible,
+.focusOutline:focus-visible {
+  outline: none;
+  box-shadow:
+    0 0 0 2px currentColor,
+    0 0 0 4px rgba(59, 130, 246, 0.25);
+}
+
+.focusUnderline:focus-visible {
+  outline: none;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+}
+
+.variantDefaultOutlined {
+  color: #2563eb;
+  border-color: #2563eb;
+}
+
+.variantDefaultOutlined:hover {
+  background: #eff6ff;
+}
+
+.variantDefaultFilled {
+  background: #2563eb;
+  color: #ffffff;
+  border-color: #2563eb;
+}
+
+.variantDefaultFilled:hover {
+  background: #1d4ed8;
+}
+
+.variantSecondaryOutlined {
+  color: #4b5563;
+  border-color: #4b5563;
+}
+
+.variantSecondaryOutlined:hover {
+  background: #f3f4f6;
+}
+
+.variantSecondaryFilled {
+  background: #4b5563;
+  color: #ffffff;
+  border-color: #4b5563;
+}
+
+.variantSecondaryFilled:hover {
+  background: #374151;
+}
+
+.variantBlackOutlined {
+  color: #111827;
+  border-color: #111827;
+}
+
+.variantBlackOutlined:hover {
+  background: #f3f4f6;
+}
+
+.variantBlackFilled {
+  background: #111827;
+  color: #ffffff;
+  border-color: #111827;
+}
+
+.variantBlackFilled:hover {
+  background: #0b1220;
+}
+
+.variantGradientGreenOutlined {
+  color: #10b981;
+  border-color: #10b981;
+}
+
+.variantGradientGreenOutlined:hover {
+  background: #ecfdf3;
+}
+
+.variantGradientGreenFilled {
+  background: linear-gradient(90deg, #34d399, #22d3ee);
+  color: #ffffff;
+  border-color: #22c55e;
+}
+
+.variantGradientGreenFilled:hover {
+  filter: brightness(0.95);
+}
+
+.variantSolidGreenOutlined {
+  color: #10b981;
+  border-color: #10b981;
+}
+
+.variantSolidGreenOutlined:hover {
+  background: #ecfdf3;
+}
+
+.variantSolidGreenFilled {
+  background: #10b981;
+  color: #ffffff;
+  border-color: #10b981;
+}
+
+.variantSolidGreenFilled:hover {
+  background: #0ea472;
+}
+
+.variantBlueOutlined {
+  color: #3b82f6;
+  border-color: #3b82f6;
+}
+
+.variantBlueOutlined:hover {
+  background: #eff6ff;
+}
+
+.variantBlueFilled {
+  background: #3b82f6;
+  color: #ffffff;
+  border-color: #3b82f6;
+}
+
+.variantBlueFilled:hover {
+  background: #2563eb;
+}
+
+.variantPinkOutlined {
+  color: #ec4899;
+  border-color: #ec4899;
+}
+
+.variantPinkOutlined:hover {
+  background: #fdf2f8;
+}
+
+.variantPinkFilled {
+  background: #ec4899;
+  color: #ffffff;
+  border-color: #ec4899;
+}
+
+.variantPinkFilled:hover {
+  background: #db2777;
+}
+
+.variantWarningOutlined {
+  color: #f97316;
+  border-color: #f97316;
+}
+
+.variantWarningOutlined:hover {
+  background: #fff7ed;
+}
+
+.variantWarningFilled {
+  background: #f97316;
+  color: #ffffff;
+  border-color: #f97316;
+}
+
+.variantWarningFilled:hover {
+  background: #ea580c;
+}

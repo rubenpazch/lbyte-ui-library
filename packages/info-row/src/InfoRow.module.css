@@ -1,0 +1,282 @@
+/* Container base */
+.container {
+  display: flex;
+}
+
+/* Layout variants */
+.layoutVertical {
+  align-items: flex-start;
+}
+
+.layoutHorizontal {
+  align-items: center;
+}
+
+.layoutInline {
+  align-items: center;
+  gap: 0.375rem;
+}
+
+.layoutCompact {
+  align-items: flex-start;
+  gap: 0.375rem;
+}
+
+/* Size variants - padding */
+.paddingXs {
+  padding: 0.25rem;
+}
+
+.paddingSm {
+  padding: 0.375rem;
+}
+
+.paddingMd {
+  padding: 0.5rem;
+}
+
+.paddingLg {
+  padding: 0.75rem;
+}
+
+/* Size variants - spacing */
+.spacingXs {
+  gap: 0.25rem;
+}
+
+.spacingSm {
+  gap: 0.5rem;
+}
+
+.spacingMd {
+  gap: 0.75rem;
+}
+
+.spacingLg {
+  gap: 1rem;
+}
+
+/* Rounded */
+.rounded {
+  border-radius: 0.5rem;
+}
+
+/* Variant backgrounds and borders */
+.variantDefault {
+  /* No background */
+}
+
+.variantBlue {
+  background-color: #eff6ff;
+  border: 1px solid #bfdbfe;
+}
+
+.variantYellow {
+  background-color: #fef3c7;
+  border: 1px solid #fde68a;
+}
+
+.variantPurple {
+  background-color: #faf5ff;
+  border: 1px solid #e9d5ff;
+}
+
+.variantGreen {
+  background-color: #ecfdf5;
+  border: 1px solid #a7f3d0;
+}
+
+.variantRed {
+  background-color: #fef2f2;
+  border: 1px solid #fecaca;
+}
+
+.variantIndigo {
+  background-color: #eef2ff;
+  border: 1px solid #c7d2fe;
+}
+
+.variantGray {
+  background-color: #f9fafb;
+  border: 1px solid #e5e7eb;
+}
+
+/* Icon container */
+.iconContainer {
+  flex-shrink: 0;
+  margin-top: 0.125rem;
+}
+
+.iconContainerHorizontal {
+  flex-shrink: 0;
+}
+
+/* Icon colors */
+.iconColorDefault {
+  color: #9ca3af;
+}
+
+.iconColorBlue {
+  color: #3b82f6;
+}
+
+.iconColorYellow {
+  color: #ca8a04;
+}
+
+.iconColorPurple {
+  color: #a855f7;
+}
+
+.iconColorGreen {
+  color: #10b981;
+}
+
+.iconColorRed {
+  color: #ef4444;
+}
+
+.iconColorIndigo {
+  color: #6366f1;
+}
+
+.iconColorGray {
+  color: #6b7280;
+}
+
+/* Content */
+.content {
+  flex: 1;
+  min-width: 0;
+}
+
+.contentHorizontal {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.contentInline {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+/* Label-value wrapper */
+.labelValueWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+}
+
+.labelValueWrapperHorizontal {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.labelValueWrapperInline {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+/* Label */
+.label {
+  font-weight: 400;
+}
+
+/* Label colors */
+.labelColorDefault {
+  color: #6b7280;
+}
+
+.labelColorBlue {
+  color: #1d4ed8;
+}
+
+.labelColorYellow {
+  color: #a16207;
+}
+
+.labelColorPurple {
+  color: #7e22ce;
+}
+
+.labelColorGreen {
+  color: #047857;
+}
+
+.labelColorRed {
+  color: #b91c1c;
+}
+
+.labelColorIndigo {
+  color: #4338ca;
+}
+
+.labelColorGray {
+  color: #374151;
+}
+
+/* Label sizes */
+.labelXs {
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+
+.labelSm {
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+
+.labelMd {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.labelLg {
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+/* Value */
+.value {
+  color: #111827;
+}
+
+/* Value sizes */
+.valueXs {
+  font-size: 0.75rem;
+  line-height: 1rem;
+  font-weight: 500;
+}
+
+.valueSm {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+}
+
+.valueMd {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+}
+
+.valueLg {
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-weight: 600;
+}
+
+/* Separator (colon) */
+.separator {
+  color: #9ca3af;
+}
+
+/* Action */
+.action {
+  margin-left: auto;
+  flex-shrink: 0;
+}

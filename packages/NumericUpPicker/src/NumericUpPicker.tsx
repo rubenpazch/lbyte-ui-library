@@ -6,6 +6,7 @@ import {
   ChangeEvent,
 } from "react";
 import { MinusIcon, PlusIcon, CheckIcon, CloseIcon } from "@rubenpazch/icons";
+import styles from "./NumericUpPicker.module.css";
 
 // CSS to hide native number input spinners
 const hideSpinnersStyle = `
@@ -18,6 +19,9 @@ const hideSpinnersStyle = `
     -moz-appearance: textfield;
   }
 `;
+
+const classNames = (...classes: Array<string | undefined | false>) =>
+  classes.filter(Boolean).join(" ");
 
 export type NumericUpPickerSize = "small" | "medium" | "large";
 
@@ -79,19 +83,19 @@ export default function NumericUpPicker({
   // Size-based styling
   const sizeClasses = {
     container: {
-      small: "h-8",
-      medium: "h-12",
-      large: "h-16",
+      small: styles.stepperSmall,
+      medium: styles.stepperMedium,
+      large: styles.stepperLarge,
     },
     input: {
-      small: "text-xs",
-      medium: "text-lg",
-      large: "text-2xl",
+      small: styles.inputSmall,
+      medium: styles.inputMedium,
+      large: styles.inputLarge,
     },
     button: {
-      small: "w-8",
-      medium: "w-12",
-      large: "w-16",
+      small: styles.buttonSmall,
+      medium: styles.buttonMedium,
+      large: styles.buttonLarge,
     },
     icon: {
       small: "sm",
@@ -99,9 +103,9 @@ export default function NumericUpPicker({
       large: "lg",
     },
     label: {
-      small: "text-xs",
-      medium: "text-sm",
-      large: "text-base",
+      small: styles.labelSmall,
+      medium: styles.labelMedium,
+      large: styles.labelLarge,
     },
   };
 
@@ -381,48 +385,55 @@ export default function NumericUpPicker({
       : max !== undefined && numValue >= max);
 
   return (
-    <div className={className}>
+    <div className={className} data-testid="numeric-up-picker">
       <style>{hideSpinnersStyle}</style>
       {/* Top Label */}
       {label && (
         <label
-          className={`block font-medium mb-2 ${labelSize} ${error ? "text-red-700" : "text-gray-700"}`}
+          className={classNames(
+            styles.label,
+            labelSize,
+            error ? styles.labelError : styles.labelNormal,
+          )}
         >
           {label}
-          {required && <span className="text-red-500 ml-1">*</span>}
+          {required && <span className={styles.required}>*</span>}
         </label>
       )}
 
       {/* Stepper Container - Compact */}
       <div
-        className={`flex items-center justify-between ${containerSize} rounded-lg border-2 transition-all ${
-          error
-            ? "border-red-500 bg-red-50"
-            : disabled
-              ? "border-gray-300 bg-gray-100 opacity-50 cursor-not-allowed"
-              : "border-gray-300 bg-gray-50"
-        }`}
+        className={classNames(
+          styles.stepper,
+          containerSize,
+          error && styles.stepperError,
+          disabled && styles.stepperDisabled,
+          !error && !disabled && styles.stepperNormal,
+        )}
+        data-testid="stepper-container"
+        data-error={!!error}
+        data-disabled={disabled}
       >
         {/* Minus Button */}
         <button
           type="button"
           onClick={handleDecrement}
           disabled={disabled || isAtMin}
-          className={`flex-shrink-0 ${buttonSize} h-full flex items-center justify-center border-r border-gray-300 transition-all ${
-            error
-              ? "text-red-500"
-              : disabled || isAtMin
-                ? "opacity-40 cursor-not-allowed text-gray-400"
-                : "hover:bg-gray-100 active:bg-gray-200 text-gray-600"
-          }`}
+          className={classNames(
+            styles.button,
+            styles.buttonLeft,
+            buttonSize,
+            error ? styles.buttonError : styles.buttonNormal,
+          )}
           title="Decrease value"
           aria-label="Decrease"
+          data-testid="decrement-button"
         >
           <MinusIcon size={iconSize} />
         </button>
 
         {/* Center Display Area */}
-        <div className="flex-1 flex items-center justify-center">
+        <div className={styles.inputWrapper}>
           {/* Value Display Only */}
           <input
             type="text"
@@ -436,44 +447,49 @@ export default function NumericUpPicker({
             onKeyDown={handleKeyDown}
             placeholder={placeholder}
             disabled={disabled}
-            className={`text-center bg-transparent font-semibold placeholder-gray-400 focus:outline-none border-none ${inputSize} ${
-              error ? "text-red-700" : "text-gray-900"
-            } w-full`}
+            className={classNames(
+              styles.input,
+              inputSize,
+              error ? styles.inputError : styles.inputNormal,
+              clearable && !isEmpty && styles.inputWithClear,
+            )}
             style={{
               WebkitAppearance: "none",
               MozAppearance: "textfield",
               appearance: "none",
             }}
+            data-testid="numeric-up-input"
           />
-        </div>
 
-        {/* Clear Button - appears when clearable and has value */}
-        {clearable && !isEmpty && !disabled && (
-          <button
-            type="button"
-            onClick={handleClear}
-            className="flex-shrink-0 w-6 h-6 mr-2 flex items-center justify-center rounded-full transition-all hover:bg-gray-200 active:bg-gray-300 text-gray-500 hover:text-gray-700"
-            title="Clear value"
-            aria-label="Clear"
-          >
-            <CloseIcon size="sm" />
-          </button>
-        )}
+          {/* Clear Button - appears when clearable and has value */}
+          {clearable && !isEmpty && !disabled && (
+            <button
+              type="button"
+              onClick={handleClear}
+              className={styles.clearButton}
+              title="Clear value"
+              aria-label="Clear"
+              data-testid="clear-button"
+            >
+              <CloseIcon size="sm" className={styles.clearIcon} />
+            </button>
+          )}
+        </div>
 
         {/* Plus Button */}
         <button
           type="button"
           onClick={handleIncrement}
           disabled={disabled || isAtMax}
-          className={`flex-shrink-0 ${buttonSize} h-full flex items-center justify-center border-l border-gray-300 transition-all ${
-            error
-              ? "text-red-500"
-              : disabled || isAtMax
-                ? "opacity-40 cursor-not-allowed text-gray-400"
-                : "hover:bg-gray-100 active:bg-gray-200 text-gray-600"
-          }`}
+          className={classNames(
+            styles.button,
+            styles.buttonRight,
+            buttonSize,
+            error ? styles.buttonError : styles.buttonNormal,
+          )}
           title="Increase value"
           aria-label="Increase"
+          data-testid="increment-button"
         >
           <PlusIcon size={iconSize} />
         </button>
@@ -481,25 +497,27 @@ export default function NumericUpPicker({
 
       {/* Bottom Messages: Error has priority */}
       {error && (
-        <div className="mt-2 flex items-start gap-1.5">
-          <CheckIcon size="sm" className="text-red-500 flex-shrink-0 mt-0.5" />
-          <p className="text-sm text-red-600 font-medium">{error}</p>
+        <div className={classNames(styles.message, styles.errorMessage)}>
+          <CheckIcon size="sm" className={styles.messageIcon} />
+          <p className={styles.messageText}>{error}</p>
         </div>
       )}
 
       {/* Warning message (shows if no error) */}
       {warning && !error && (
-        <div className="mt-2 flex items-start gap-1.5">
-          <div className="w-4 h-4 text-amber-500 flex-shrink-0 mt-0.5 flex items-center justify-center">
-            <span className="text-xs font-bold">!</span>
+        <div className={classNames(styles.message, styles.warningMessage)}>
+          <div className={styles.messageIcon}>
+            <span>!</span>
           </div>
-          <p className="text-sm text-amber-700">{warning}</p>
+          <p className={styles.messageText}>{warning}</p>
         </div>
       )}
 
       {/* Hint message (shows if no error or warning) */}
       {hint && !error && !warning && (
-        <p className="mt-2 text-xs text-gray-500">{hint}</p>
+        <div className={classNames(styles.message, styles.hintMessage)}>
+          <p className={styles.messageText}>{hint}</p>
+        </div>
       )}
     </div>
   );

@@ -1,4 +1,5 @@
 import React, { useState, useMemo } from "react";
+import styles from "./TextInput.module.css";
 
 export interface TextInputProps {
   label?: string;
@@ -26,20 +27,12 @@ export interface TextInputProps {
   showPasswordStrength?: boolean;
 }
 
+const classNames = (...classes: Array<string | undefined | false>) =>
+  classes.filter(Boolean).join(" ");
+
 // Email validation regex (más completa)
 const EMAIL_REGEX =
   /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
-
-// Common email domains for suggestions
-// const COMMON_DOMAINS = [
-//   'gmail.com',
-//   'hotmail.com',
-//   'outlook.com',
-//   'yahoo.com',
-//   'icloud.com',
-//   'live.com',
-//   'protonmail.com',
-// ];
 
 // Function to suggest email corrections
 const suggestEmailCorrection = (email: string): string | null => {
@@ -139,14 +132,6 @@ const TextInput: React.FC<TextInputProps> = ({
     return checkPasswordStrength(value);
   }, [type, value, showPasswordStrength]);
 
-  // Number inputs are handled as regular text inputs for now
-  // TODO: Implement NumericUpPicker component
-  // if (type === 'number') {
-  //   return (
-  //     <NumericUpPicker ... />
-  //   );
-  // }
-
   const handleFocus = () => {
     setIsFocused(true);
     onFocus?.();
@@ -165,23 +150,22 @@ const TextInput: React.FC<TextInputProps> = ({
   const isAtLimit = charPercentage >= 100;
 
   return (
-    <div className={`flex flex-col gap-2 ${className}`}>
+    <div
+      className={classNames(styles.container, className)}
+      data-testid="text-input"
+    >
       {/* Label */}
       {label && (
-        <label className="block text-sm font-medium text-gray-700">
+        <label className={styles.label}>
           {label}
-          {required && <span className="text-red-500 ml-1">*</span>}
+          {required && <span className={styles.required}>*</span>}
         </label>
       )}
 
       {/* Input Field */}
-      <div className="relative">
+      <div className={styles.inputContainer}>
         {/* Icon before input */}
-        {icon && !isFocused && (
-          <div className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 pointer-events-none flex items-center">
-            {icon}
-          </div>
-        )}
+        {icon && !isFocused && <div className={styles.icon}>{icon}</div>}
 
         <input
           type={type}
@@ -195,32 +179,35 @@ const TextInput: React.FC<TextInputProps> = ({
           minLength={minLength}
           pattern={pattern}
           autoComplete={autoComplete}
-          className={`
-            w-full px-4 py-2 rounded-lg border-2 transition-all outline-none
-            font-medium text-gray-900 placeholder-gray-400
-            disabled:bg-gray-100 disabled:text-gray-500 disabled:cursor-not-allowed
-            ${icon ? "pl-10" : ""}
-            ${
-              error
-                ? "border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-200"
-                : isFocused
-                  ? "border-blue-500 focus:ring-2 focus:ring-blue-200"
-                  : "border-gray-300 hover:border-gray-400"
-            }
-          `}
+          className={classNames(
+            styles.input,
+            icon ? styles.inputWithIcon : undefined,
+            showCharCount ? styles.inputWithCharCount : undefined,
+            error ? styles.inputError : undefined,
+          )}
+          data-testid="input-field"
+          data-error={!!error}
         />
 
         {/* Character count */}
         {showCharCount && (
-          <div className="absolute right-3 top-1/2 transform -translate-y-1/2 text-xs font-medium flex items-center gap-1">
-            <div
-              className={`${isAtLimit ? "text-red-600" : isNearLimit ? "text-amber-600" : "text-gray-500"}`}
-            >
+          <div
+            className={classNames(
+              styles.charCount,
+              isAtLimit
+                ? styles.charCountLimit
+                : isNearLimit
+                  ? styles.charCountNear
+                  : styles.charCountNormal,
+            )}
+            data-testid="char-count"
+          >
+            <div>
               {charCount}/{maxLength}
             </div>
             {isAtLimit && (
               <svg
-                className="w-4 h-4 text-red-600"
+                className={styles.charCountIcon}
                 fill="currentColor"
                 viewBox="0 0 20 20"
               >
@@ -237,30 +224,31 @@ const TextInput: React.FC<TextInputProps> = ({
 
       {/* Character count bar (for long text) */}
       {showCharCount && maxLength > 20 && (
-        <div className="w-full h-1 bg-gray-200 rounded-full overflow-hidden">
+        <div className={styles.charProgressBar}>
           <div
-            className={`h-full transition-all rounded-full ${
+            className={classNames(
+              styles.charProgress,
               isAtLimit
-                ? "bg-red-500"
+                ? styles.charProgressLimit
                 : isNearLimit
-                  ? "bg-amber-500"
-                  : "bg-blue-500"
-            }`}
+                  ? styles.charProgressNear
+                  : styles.charProgressNormal,
+            )}
             style={{ width: `${Math.min(charPercentage, 100)}%` }}
           />
         </div>
       )}
 
       {/* Hint Text */}
-      {hint && !error && !emailError && (
-        <p className="text-xs text-gray-500 mt-1">{hint}</p>
-      )}
+      {hint && !error && !emailError && <p className={styles.hint}>{hint}</p>}
 
       {/* Email validation info */}
       {validateEmail && value && isValidEmail && (
-        <div className="flex items-center gap-2 mt-1">
+        <div
+          className={classNames(styles.validationMessage, styles.validEmail)}
+        >
           <svg
-            className="w-4 h-4 text-green-500 flex-shrink-0"
+            className={styles.validationIcon}
             fill="currentColor"
             viewBox="0 0 20 20"
           >
@@ -270,15 +258,20 @@ const TextInput: React.FC<TextInputProps> = ({
               clipRule="evenodd"
             />
           </svg>
-          <p className="text-xs text-green-600">Correo válido</p>
+          <p className={styles.validationText}>Correo válido</p>
         </div>
       )}
 
       {/* Email suggestion for typos */}
       {emailSuggestion && !error && (
-        <div className="flex items-center gap-2 mt-1">
+        <div
+          className={classNames(
+            styles.validationMessage,
+            styles.emailSuggestion,
+          )}
+        >
           <svg
-            className="w-4 h-4 text-blue-500 flex-shrink-0"
+            className={styles.validationIcon}
             fill="currentColor"
             viewBox="0 0 20 20"
           >
@@ -288,12 +281,12 @@ const TextInput: React.FC<TextInputProps> = ({
               clipRule="evenodd"
             />
           </svg>
-          <p className="text-xs text-blue-600">
+          <p className={styles.validationText}>
             ¿Quisiste decir{" "}
             <button
               type="button"
               onClick={() => onChange(emailSuggestion)}
-              className="font-semibold underline hover:text-blue-800"
+              className={styles.suggestionButton}
             >
               {emailSuggestion}
             </button>
@@ -304,45 +297,47 @@ const TextInput: React.FC<TextInputProps> = ({
 
       {/* Password strength indicator */}
       {passwordStrength && passwordStrength.score > 0 && (
-        <div className="mt-2 space-y-2">
+        <div className={styles.passwordStrength}>
           {/* Strength bar */}
-          <div className="flex gap-1">
+          <div className={styles.strengthBar}>
             {[0, 1, 2, 3, 4].map((index) => (
               <div
                 key={index}
-                className={`h-1.5 flex-1 rounded-full transition-colors ${
+                className={classNames(
+                  styles.strengthSegment,
                   index < passwordStrength.score
                     ? passwordStrength.strength === "weak"
-                      ? "bg-red-500"
+                      ? styles.strengthSegmentWeak
                       : passwordStrength.strength === "fair"
-                        ? "bg-amber-500"
+                        ? styles.strengthSegmentFair
                         : passwordStrength.strength === "good"
-                          ? "bg-yellow-500"
+                          ? styles.strengthSegmentGood
                           : passwordStrength.strength === "strong"
-                            ? "bg-lime-500"
-                            : "bg-green-500"
-                    : "bg-gray-200"
-                }`}
+                            ? styles.strengthSegmentStrong
+                            : styles.strengthSegmentVeryStrong
+                    : styles.strengthSegmentInactive,
+                )}
               />
             ))}
           </div>
 
           {/* Strength label */}
-          <div className="flex items-center justify-between">
-            <p className="text-xs text-gray-600">
+          <div className={styles.strengthLabel}>
+            <p className={styles.strengthText}>
               Fortaleza:{" "}
               <span
-                className={`font-semibold ${
+                className={classNames(
+                  styles.strengthValue,
                   passwordStrength.strength === "weak"
-                    ? "text-red-600"
+                    ? styles.strengthValueWeak
                     : passwordStrength.strength === "fair"
-                      ? "text-amber-600"
+                      ? styles.strengthValueFair
                       : passwordStrength.strength === "good"
-                        ? "text-yellow-600"
+                        ? styles.strengthValueGood
                         : passwordStrength.strength === "strong"
-                          ? "text-lime-600"
-                          : "text-green-600"
-                }`}
+                          ? styles.strengthValueStrong
+                          : styles.strengthValueVeryStrong,
+                )}
               >
                 {passwordStrength.label}
               </span>
@@ -350,10 +345,15 @@ const TextInput: React.FC<TextInputProps> = ({
           </div>
 
           {/* Requirements checklist */}
-          <div className="text-xs space-y-1 p-2 bg-gray-50 rounded border border-gray-200">
-            <div className="flex items-center gap-2">
+          <div className={styles.requirements}>
+            <div className={styles.requirement}>
               <svg
-                className={`w-3.5 h-3.5 flex-shrink-0 ${/[a-z]/.test(value) ? "text-green-500" : "text-gray-300"}`}
+                className={classNames(
+                  styles.requirementIcon,
+                  /[a-z]/.test(value)
+                    ? styles.requirementIconMet
+                    : styles.requirementIconUnmet,
+                )}
                 fill="currentColor"
                 viewBox="0 0 20 20"
               >
@@ -364,16 +364,22 @@ const TextInput: React.FC<TextInputProps> = ({
                 />
               </svg>
               <span
-                className={
-                  /[a-z]/.test(value) ? "text-gray-700" : "text-gray-500"
-                }
+                className={classNames(
+                  styles.requirementText,
+                  /[a-z]/.test(value) && styles.requirementTextMet,
+                )}
               >
                 Letras minúsculas
               </span>
             </div>
-            <div className="flex items-center gap-2">
+            <div className={styles.requirement}>
               <svg
-                className={`w-3.5 h-3.5 flex-shrink-0 ${/[A-Z]/.test(value) ? "text-green-500" : "text-gray-300"}`}
+                className={classNames(
+                  styles.requirementIcon,
+                  /[A-Z]/.test(value)
+                    ? styles.requirementIconMet
+                    : styles.requirementIconUnmet,
+                )}
                 fill="currentColor"
                 viewBox="0 0 20 20"
               >
@@ -384,16 +390,22 @@ const TextInput: React.FC<TextInputProps> = ({
                 />
               </svg>
               <span
-                className={
-                  /[A-Z]/.test(value) ? "text-gray-700" : "text-gray-500"
-                }
+                className={classNames(
+                  styles.requirementText,
+                  /[A-Z]/.test(value) && styles.requirementTextMet,
+                )}
               >
                 Letras mayúsculas
               </span>
             </div>
-            <div className="flex items-center gap-2">
+            <div className={styles.requirement}>
               <svg
-                className={`w-3.5 h-3.5 flex-shrink-0 ${/\d/.test(value) ? "text-green-500" : "text-gray-300"}`}
+                className={classNames(
+                  styles.requirementIcon,
+                  /\d/.test(value)
+                    ? styles.requirementIconMet
+                    : styles.requirementIconUnmet,
+                )}
                 fill="currentColor"
                 viewBox="0 0 20 20"
               >
@@ -404,14 +416,22 @@ const TextInput: React.FC<TextInputProps> = ({
                 />
               </svg>
               <span
-                className={/\d/.test(value) ? "text-gray-700" : "text-gray-500"}
+                className={classNames(
+                  styles.requirementText,
+                  /\d/.test(value) && styles.requirementTextMet,
+                )}
               >
                 Números
               </span>
             </div>
-            <div className="flex items-center gap-2">
+            <div className={styles.requirement}>
               <svg
-                className={`w-3.5 h-3.5 flex-shrink-0 ${/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(value) ? "text-green-500" : "text-gray-300"}`}
+                className={classNames(
+                  styles.requirementIcon,
+                  /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(value)
+                    ? styles.requirementIconMet
+                    : styles.requirementIconUnmet,
+                )}
                 fill="currentColor"
                 viewBox="0 0 20 20"
               >
@@ -422,18 +442,23 @@ const TextInput: React.FC<TextInputProps> = ({
                 />
               </svg>
               <span
-                className={
-                  /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(value)
-                    ? "text-gray-700"
-                    : "text-gray-500"
-                }
+                className={classNames(
+                  styles.requirementText,
+                  /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(value) &&
+                    styles.requirementTextMet,
+                )}
               >
                 Caracteres especiales
               </span>
             </div>
-            <div className="flex items-center gap-2">
+            <div className={styles.requirement}>
               <svg
-                className={`w-3.5 h-3.5 flex-shrink-0 ${value.length >= 8 ? "text-green-500" : "text-gray-300"}`}
+                className={classNames(
+                  styles.requirementIcon,
+                  value.length >= 8
+                    ? styles.requirementIconMet
+                    : styles.requirementIconUnmet,
+                )}
                 fill="currentColor"
                 viewBox="0 0 20 20"
               >
@@ -444,9 +469,10 @@ const TextInput: React.FC<TextInputProps> = ({
                 />
               </svg>
               <span
-                className={
-                  value.length >= 8 ? "text-gray-700" : "text-gray-500"
-                }
+                className={classNames(
+                  styles.requirementText,
+                  value.length >= 8 && styles.requirementTextMet,
+                )}
               >
                 Mínimo 8 caracteres
               </span>
@@ -457,9 +483,9 @@ const TextInput: React.FC<TextInputProps> = ({
 
       {/* Error Message */}
       {(error || emailError) && (
-        <div className="flex items-start gap-2 mt-1">
+        <div className={styles.error}>
           <svg
-            className="w-4 h-4 text-red-500 flex-shrink-0 mt-0.5"
+            className={styles.errorIcon}
             fill="currentColor"
             viewBox="0 0 20 20"
           >
@@ -469,7 +495,7 @@ const TextInput: React.FC<TextInputProps> = ({
               clipRule="evenodd"
             />
           </svg>
-          <p className="text-sm text-red-600">{error || emailError}</p>
+          <p className={styles.errorText}>{error || emailError}</p>
         </div>
       )}
     </div>
