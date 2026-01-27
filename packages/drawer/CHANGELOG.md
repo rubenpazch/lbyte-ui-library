@@ -1,5 +1,11 @@
 # @rubenpazch/drawer
 
+## 3.0.2
+
+### Patch Changes
+
+- @rubenpazch/icons@4.0.2
+
 ## 3.0.1
 
 ### Patch Changes

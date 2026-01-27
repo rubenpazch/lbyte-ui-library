@@ -1,5 +1,16 @@
 # @rubenpazch/storybook
 
+## 4.0.2
+
+### Patch Changes
+
+- Updated dependencies
+  - @rubenpazch/shared@4.0.2
+  - @rubenpazch/chip@1.0.2
+  - @rubenpazch/button@4.0.2
+  - @rubenpazch/icons@4.0.2
+  - @rubenpazch/text-input@4.0.2
+
 ## 4.0.1
 
 ### Patch Changes

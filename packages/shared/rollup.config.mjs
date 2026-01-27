@@ -4,11 +4,26 @@ import typescript from "rollup-plugin-typescript2";
 import postcss from "rollup-plugin-postcss";
 import dts from "rollup-plugin-dts";
 import terser from "@rollup/plugin-terser";
-import { readFileSync } from "fs";
+import { readFileSync, copyFileSync, mkdirSync } from "fs";
+import { dirname } from "path";
 
 const packageJson = JSON.parse(
   readFileSync(new URL("./package.json", import.meta.url), "utf8"),
 );
+
+// Copy styles.css to dist
+const copyStyles = () => ({
+  name: "copy-styles",
+  writeBundle() {
+    try {
+      mkdirSync(dirname("./dist/styles.css"), { recursive: true });
+      copyFileSync("./src/styles.css", "./dist/styles.css");
+      console.log("✓ Copied styles.css to dist/");
+    } catch (err) {
+      console.error("Failed to copy styles.css:", err);
+    }
+  },
+});
 
 export default [
   {
@@ -38,6 +53,7 @@ export default [
         plugins: [],
       }),
       terser(),
+      copyStyles(),
     ],
   },
   {

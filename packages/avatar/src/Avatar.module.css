@@ -5,7 +5,9 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
+    sans-serif;
   font-weight: 500;
   line-height: 1;
   overflow: hidden;
@@ -79,4 +81,3 @@
 .colorful {
   /* Background color is set inline via style prop */
 }
-

@@ -695,6 +695,15 @@ importers:
 
   packages/shared:
     dependencies:
+      '@fontsource/material-symbols-outlined':
+        specifier: ^5.2.33
+        version: 5.2.33
+      '@fontsource/material-symbols-rounded':
+        specifier: ^5.2.33
+        version: 5.2.33
+      '@fontsource/material-symbols-sharp':
+        specifier: ^5.2.33
+        version: 5.2.33
       classnames:
         specifier: ^2.3.2
         version: 2.5.1
@@ -3112,6 +3121,18 @@ packages:
     dependencies:
       '@eslint/core': 0.17.0
       levn: 0.4.1
+
+  /@fontsource/material-symbols-outlined@5.2.33:
+    resolution: {integrity: sha512-gyGkVbqXxGO5fgsDcn/oKDd38q59rZqYFtnZMzgeXDOWknGqEFqO7uadzPA2mY1SidNXIZpCYWMLANQ036Ze4A==}
+    dev: false
+
+  /@fontsource/material-symbols-rounded@5.2.33:
+    resolution: {integrity: sha512-aBrTR+t41AeVoce2+EHeAFdgGWCYvVYHaT8nDuW+AFRr78Nl/AvbHKYgtHdGzim7KNXEo2pLfT2pj6U5/ACsbw==}
+    dev: false
+
+  /@fontsource/material-symbols-sharp@5.2.33:
+    resolution: {integrity: sha512-zmHUee8rgFc42qUvg29B132es5ARkNTB3YnVX1Pn37BbYH0sVWYpfHKonFrN/GuO1nf8nE970nnzMMk3mDvIRA==}
+    dev: false
 
   /@humanfs/core@0.19.1:
     resolution: {integrity: sha512-5DyQ4+1JEUzejeK1JGICcideyfUbGixgS9jNgex5nqkW+cY7WZhxBigmieN5Qnw9ZosSNVC9KQKyb+GUaGyKUA==}
@@ -5614,24 +5635,6 @@ packages:
       - supports-color
     dev: true
 
-  /babel-jest@29.7.0(@babel/core@7.28.6):
-    resolution: {integrity: sha512-BrvGY3xZSwEcCzKvKsCi2GgHqDqsYkOP4/by5xCgIwGXQxIEh+8ew3gmrE1y7XRR6LHZIj6yLYnUi/mm2KXKBg==}
-    engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
-    peerDependencies:
-      '@babel/core': ^7.8.0
-    dependencies:
-      '@babel/core': 7.28.6
-      '@jest/transform': 29.7.0
-      '@types/babel__core': 7.20.5
-      babel-plugin-istanbul: 6.1.1
-      babel-preset-jest: 29.6.3(@babel/core@7.28.6)
-      chalk: 4.1.2
-      graceful-fs: 4.2.11
-      slash: 3.0.0
-    transitivePeerDependencies:
-      - supports-color
-    dev: true
-
   /babel-jest@30.2.0(@babel/core@7.28.6):
     resolution: {integrity: sha512-0YiBEOxWqKkSQWL9nNGGEgndoeL0ZpWrbLMNL5u/Kaxrli3Eaxlt3ZtIDktEvXt4L/R9r3ODr2zKwGM/2BjxVw==}
     engines: {node: ^18.14.0 || ^20.0.0 || ^22.0.0 || >=24.0.0}
@@ -5784,17 +5787,6 @@ packages:
       '@babel/core': 7.28.5
       babel-plugin-jest-hoist: 29.6.3
       babel-preset-current-node-syntax: 1.2.0(@babel/core@7.28.5)
-    dev: true
-
-  /babel-preset-jest@29.6.3(@babel/core@7.28.6):
-    resolution: {integrity: sha512-0B3bhxR6snWXJZtR/RliHTDPRgn1sNHOR0yVtq/IiQFyuOVjFS+wuio/R4gSNkyYmKmJB4wGZv2NZanmKmTnNA==}
-    engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
-    peerDependencies:
-      '@babel/core': ^7.0.0
-    dependencies:
-      '@babel/core': 7.28.6
-      babel-plugin-jest-hoist: 29.6.3
-      babel-preset-current-node-syntax: 1.2.0(@babel/core@7.28.6)
     dev: true
 
   /babel-preset-jest@30.2.0(@babel/core@7.28.6):
@@ -6108,7 +6100,7 @@ packages:
       chalk: 4.1.2
       exit: 0.1.2
       graceful-fs: 4.2.11
-      jest-config: 29.7.0(@types/node@25.0.9)
+      jest-config: 29.7.0(@types/node@25.0.3)
       jest-util: 29.7.0
       prompts: 2.4.2
     transitivePeerDependencies:
@@ -8048,7 +8040,7 @@ packages:
       create-jest: 29.7.0
       exit: 0.1.2
       import-local: 3.2.0
-      jest-config: 29.7.0(@types/node@25.0.9)
+      jest-config: 29.7.0(@types/node@25.0.3)
       jest-util: 29.7.0
       jest-validate: 29.7.0
       yargs: 17.7.2
@@ -8104,46 +8096,6 @@ packages:
       '@jest/types': 29.6.3
       '@types/node': 25.0.3
       babel-jest: 29.7.0(@babel/core@7.28.5)
-      chalk: 4.1.2
-      ci-info: 3.9.0
-      deepmerge: 4.3.1
-      glob: 7.2.3
-      graceful-fs: 4.2.11
-      jest-circus: 29.7.0
-      jest-environment-node: 29.7.0
-      jest-get-type: 29.6.3
-      jest-regex-util: 29.6.3
-      jest-resolve: 29.7.0
-      jest-runner: 29.7.0
-      jest-util: 29.7.0
-      jest-validate: 29.7.0
-      micromatch: 4.0.8
-      parse-json: 5.2.0
-      pretty-format: 29.7.0
-      slash: 3.0.0
-      strip-json-comments: 3.1.1
-    transitivePeerDependencies:
-      - babel-plugin-macros
-      - supports-color
-    dev: true
-
-  /jest-config@29.7.0(@types/node@25.0.9):
-    resolution: {integrity: sha512-uXbpfeQ7R6TZBqI3/TxCU4q4ttk3u0PJeC+E0zbfSoSjq6bJ7buBPxzQPL0ifrkY4DNu4JUdk0ImlBUYi840eQ==}
-    engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
-    peerDependencies:
-      '@types/node': '*'
-      ts-node: '>=9.0.0'
-    peerDependenciesMeta:
-      '@types/node':
-        optional: true
-      ts-node:
-        optional: true
-    dependencies:
-      '@babel/core': 7.28.6
-      '@jest/test-sequencer': 29.7.0
-      '@jest/types': 29.6.3
-      '@types/node': 25.0.9
-      babel-jest: 29.7.0(@babel/core@7.28.6)
       chalk: 4.1.2
       ci-info: 3.9.0
       deepmerge: 4.3.1

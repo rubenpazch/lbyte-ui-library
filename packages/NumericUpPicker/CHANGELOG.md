@@ -1,5 +1,11 @@
 # @rubenpazch/numeric-up-picker
 
+## 4.0.2
+
+### Patch Changes
+
+- @rubenpazch/icons@4.0.2
+
 ## 4.0.1
 
 ### Patch Changes

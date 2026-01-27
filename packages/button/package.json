@@ -1,6 +1,6 @@
 {
   "name": "@rubenpazch/button",
-  "version": "4.0.1",
+  "version": "4.0.2",
   "description": "Modern, accessible button component with multiple variants",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
