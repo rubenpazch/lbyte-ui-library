@@ -179,7 +179,7 @@ describe("Pagination", () => {
       render(
         <Pagination count={20} page={10} boundaryCount={1} siblingCount={1} />,
       );
-      const ellipses = screen.getAllByText("…");
+      const ellipses = screen.getAllByText("...");
       expect(ellipses.length).toBeGreaterThan(0);
     });
   });
