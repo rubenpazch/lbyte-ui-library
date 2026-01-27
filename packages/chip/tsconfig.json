@@ -1,0 +1,16 @@
+{
+  "extends": "@rubenpazch/typescript-config/react.json",
+  "compilerOptions": {
+    "outDir": "dist",
+    "rootDir": "src",
+    "declarationDir": "dist",
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "jsx": "react-jsx",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true
+  },
+  "include": ["src", "../../css-module.d.ts"],
+  "exclude": ["node_modules", "dist", "**/*.stories.*", "**/*.test.*"]
+}

@@ -1,6 +1,6 @@
 {
   "name": "@rubenpazch/autocomplete",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Autocomplete component",
   "private": false,
   "main": "dist/index.cjs.js",

@@ -8,10 +8,11 @@ export { default as CheckIcon } from "./CheckIcon";
 export { default as CheckOutIcon } from "./CheckOutIcon";
 export { default as CheckmarkIcon } from "./CheckmarkIcon";
 export { ChecksIcon } from "./ChecksIcon";
+export { default as ChevronBarIcon } from "./ChevronBarIcon";
 export { default as ChevronIcon } from "./ChevronIcon";
 export { default as CityIcon } from "./CityIcon";
 export { default as ClockIcon } from "./ClockIcon";
-export { default as CloseIcon } from "./CloseIcon"; // File-based version (sm/md/lg sizes)
+export { default as CloseIcon } from "./CloseIcon";
 export { default as CoinsHandIcon } from "./CoinsHandIcon";
 export { default as MenuGridIcon } from "./MenuGridIcon";
 export { default as DocumentIcon } from "./DocumentIcon";
@@ -63,3 +64,4 @@ export { default as ZoomInIcon } from "./ZoomInIcon";
 export { default as ZoomOutIcon } from "./ZoomOutIcon";
 export { RobotIcon } from "./RobotIcon";
 export { default as TargetIcon } from "./TargetIcon";
+export { default as MaterialIcon } from "./MaterialIcon";

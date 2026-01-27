@@ -1,0 +1,47 @@
+/* AvatarGroup root */
+.root {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+}
+
+/* Individual avatar wrapper */
+.avatar {
+  position: relative;
+  display: inline-flex;
+  border: 2px solid #fff;
+  box-sizing: border-box;
+}
+
+/* Spacing variants */
+.spacingSmall .avatar:not(:first-child) {
+  margin-right: -8px;
+}
+
+.spacingMedium .avatar:not(:first-child) {
+  margin-right: -16px;
+}
+
+.customSpacing .avatar:not(:first-child) {
+  margin-right: var(--avatar-spacing, -16px);
+}
+
+/* Surplus avatar */
+.surplus {
+  background-color: #bdbdbd;
+  color: #fff;
+  font-weight: 500;
+  border-radius: 50%;
+}
+
+.surplusContent {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.875rem;
+  border-radius: 50%;
+  background-color: #bdbdbd;
+  color: #fff;
+}

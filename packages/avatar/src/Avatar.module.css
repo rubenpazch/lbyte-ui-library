@@ -1,0 +1,82 @@
+/* Avatar root */
+.root {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  font-weight: 500;
+  line-height: 1;
+  overflow: hidden;
+  user-select: none;
+  background-color: #bdbdbd;
+  color: #fff;
+}
+
+/* Sizes */
+.sizeXs {
+  width: 24px;
+  height: 24px;
+  font-size: 0.75rem;
+}
+
+.sizeSm {
+  width: 32px;
+  height: 32px;
+  font-size: 0.875rem;
+}
+
+.sizeMd {
+  width: 40px;
+  height: 40px;
+  font-size: 1rem;
+}
+
+.sizeLg {
+  width: 56px;
+  height: 56px;
+  font-size: 1.25rem;
+}
+
+.sizeXl {
+  width: 64px;
+  height: 64px;
+  font-size: 1.5rem;
+}
+
+/* Variants */
+.variantCircular {
+  border-radius: 50%;
+}
+
+.variantRounded {
+  border-radius: 8px;
+}
+
+.variantSquare {
+  border-radius: 0;
+}
+
+/* Image */
+.img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  text-align: center;
+  color: transparent;
+  text-indent: 10000px;
+}
+
+/* Fallback icon */
+.fallbackIcon {
+  width: 75%;
+  height: 75%;
+  color: currentColor;
+}
+
+/* Colorful letter avatars */
+.colorful {
+  /* Background color is set inline via style prop */
+}
+

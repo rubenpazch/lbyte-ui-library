@@ -1,0 +1,3 @@
+# Avatar
+
+Generated component package.
