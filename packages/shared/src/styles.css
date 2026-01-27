@@ -504,10 +504,10 @@
   }
 }
 
-/* Material Symbols: import font families for MaterialIcon */
-@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:FILL,wght,GRAD,opsz@0,400,0,24');
-@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:FILL,wght,GRAD,opsz@0,400,0,24');
-@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:FILL,wght,GRAD,opsz@0,400,0,24');
+/* Material Symbols: self-hosted fonts for MaterialIcon */
+@import "@fontsource/material-symbols-outlined/400.css";
+@import "@fontsource/material-symbols-rounded/400.css";
+@import "@fontsource/material-symbols-sharp/400.css";
 
 .material-symbols-outlined,
 .material-symbols-rounded,
@@ -520,6 +520,6 @@
   text-transform: none;
   white-space: nowrap;
   direction: ltr;
-  -webkit-font-feature-settings: 'liga';
+  -webkit-font-feature-settings: "liga";
   -webkit-font-smoothing: antialiased;
 }

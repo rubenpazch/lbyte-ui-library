@@ -16,8 +16,16 @@ export default [
     input: "src/index.ts",
     external: ["react", "react-dom", "@rubenpazch/shared", "@rubenpazch/icons"],
     output: [
-      { file: packageJson.main || "dist/index.cjs.js", format: "cjs", sourcemap: true },
-      { file: packageJson.module || "dist/index.esm.js", format: "esm", sourcemap: true },
+      {
+        file: packageJson.main || "dist/index.cjs.js",
+        format: "cjs",
+        sourcemap: true,
+      },
+      {
+        file: packageJson.module || "dist/index.esm.js",
+        format: "esm",
+        sourcemap: true,
+      },
     ],
     plugins: [
       resolve(),
