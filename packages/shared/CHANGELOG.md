@@ -1,5 +1,11 @@
 # @rubenpazch/shared
 
+## 4.0.1
+
+### Patch Changes
+
+- updates
+
 ## 4.0.0
 
 ### Major Changes

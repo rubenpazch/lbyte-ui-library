@@ -503,3 +503,23 @@
     --ds-primary-opacity-lighter: #7367f038;*/
   }
 }
+
+/* Material Symbols: import font families for MaterialIcon */
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:FILL,wght,GRAD,opsz@0,400,0,24');
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:FILL,wght,GRAD,opsz@0,400,0,24');
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:FILL,wght,GRAD,opsz@0,400,0,24');
+
+.material-symbols-outlined,
+.material-symbols-rounded,
+.material-symbols-sharp {
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  white-space: nowrap;
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+}

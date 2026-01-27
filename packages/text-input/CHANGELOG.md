@@ -1,5 +1,12 @@
 # @rubenpazch/text-input
 
+## 4.0.1
+
+### Patch Changes
+
+- Updated dependencies
+  - @rubenpazch/shared@4.0.1
+
 ## 4.0.0
 
 ### Major Changes

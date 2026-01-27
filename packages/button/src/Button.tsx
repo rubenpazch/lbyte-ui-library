@@ -1,141 +1,162 @@
 import React from "react";
 import styles from "./Button.module.css";
 
-export type ButtonVariant =
-  | "default"
+export type ButtonVariant = "text" | "contained" | "outlined";
+export type ButtonColor =
+  | "primary"
   | "secondary"
-  | "black"
-  | "gradient-green"
-  | "solid-green"
-  | "blue"
-  | "pink"
-  | "warning";
-export type ButtonSize = "sm" | "md" | "lg";
-export type ButtonFocusStyle = "filled" | "outline" | "underline";
-export type ButtonFocusTrigger = "self" | "sibling" | "parent" | "grandparent";
+  | "success"
+  | "error"
+  | "warning"
+  | "info";
+export type ButtonSize = "small" | "medium" | "large";
 
-export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+type ButtonBaseProps = {
+  /** Button variant style */
   variant?: ButtonVariant;
+  /** Button color theme */
+  color?: ButtonColor;
+  /** Button size */
   size?: ButtonSize;
-  filled?: boolean;
-  quiet?: boolean;
-  circled?: boolean;
-  inverted?: boolean;
-  focusStyleType?: ButtonFocusStyle;
-  focusTriggerType?: ButtonFocusTrigger;
+  /** Disabled state */
+  disabled?: boolean;
+  /** Loading state with spinner */
+  loading?: boolean;
+  /** Icon to display before text */
+  startIcon?: React.ReactNode;
+  /** Icon to display after text */
+  endIcon?: React.ReactNode;
+  /** Whether the button should take full width */
+  fullWidth?: boolean;
+  /** Disable elevation/shadow effects */
+  disableElevation?: boolean;
   children?: React.ReactNode;
-}
+};
+
+type ButtonAsButton = ButtonBaseProps &
+  Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, keyof ButtonBaseProps> & {
+    component?: "button";
+    href?: never;
+  };
+
+type ButtonAsLink = ButtonBaseProps &
+  Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, keyof ButtonBaseProps> & {
+    component?: "a";
+    href?: string;
+  };
+
+export type ButtonProps = ButtonAsButton | ButtonAsLink;
 
 const classNames = (...classes: Array<string | undefined | false>) =>
   classes.filter(Boolean).join(" ");
 
 const sizeClassMap: Record<ButtonSize, string> = {
-  sm: styles.sizeSm,
-  md: styles.sizeMd,
-  lg: styles.sizeLg,
+  small: styles.sizeSmall,
+  medium: styles.sizeMedium,
+  large: styles.sizeLarge,
 };
 
-const focusClassMap: Record<ButtonFocusStyle, string> = {
-  filled: styles.focusFilled,
-  outline: styles.focusOutline,
-  underline: styles.focusUnderline,
+const getColorVariantClass = (
+  color: ButtonColor,
+  variant: ButtonVariant,
+): string => {
+  const key =
+    `${variant}${color.charAt(0).toUpperCase()}${color.slice(1)}` as keyof typeof styles;
+  return styles[key] || "";
 };
 
-const variantClassMap: Record<
-  ButtonVariant,
-  { filled: string; outlined: string }
-> = {
-  default: {
-    filled: styles.variantDefaultFilled,
-    outlined: styles.variantDefaultOutlined,
-  },
-  secondary: {
-    filled: styles.variantSecondaryFilled,
-    outlined: styles.variantSecondaryOutlined,
-  },
-  black: {
-    filled: styles.variantBlackFilled,
-    outlined: styles.variantBlackOutlined,
-  },
-  "gradient-green": {
-    filled: styles.variantGradientGreenFilled,
-    outlined: styles.variantGradientGreenOutlined,
-  },
-  "solid-green": {
-    filled: styles.variantSolidGreenFilled,
-    outlined: styles.variantSolidGreenOutlined,
-  },
-  blue: {
-    filled: styles.variantBlueFilled,
-    outlined: styles.variantBlueOutlined,
-  },
-  pink: {
-    filled: styles.variantPinkFilled,
-    outlined: styles.variantPinkOutlined,
-  },
-  warning: {
-    filled: styles.variantWarningFilled,
-    outlined: styles.variantWarningOutlined,
-  },
+const LoadingSpinner: React.FC<{ size: ButtonSize }> = ({ size }) => {
+  const sizeMap = { small: 14, medium: 18, large: 22 };
+  const spinnerSize = sizeMap[size];
+
+  return (
+    <svg
+      className={styles.spinner}
+      width={spinnerSize}
+      height={spinnerSize}
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <circle
+        className={styles.spinnerCircle}
+        cx="12"
+        cy="12"
+        r="10"
+        stroke="currentColor"
+        strokeWidth="3"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
 };
 
-const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  (
-    {
-      variant = "default",
-      size = "md",
-      filled = false,
-      quiet = false,
-      circled = false,
-      inverted = false,
-      focusStyleType = "filled",
-      focusTriggerType = "self",
-      className,
-      disabled,
-      children,
-      ...props
-    },
-    ref,
-  ) => {
-    const isFilledStyle = inverted ? !filled : filled;
-    const styleKey = quiet ? "quiet" : isFilledStyle ? "filled" : "outlined";
+const Button = React.forwardRef<
+  HTMLButtonElement | HTMLAnchorElement,
+  ButtonProps
+>((props, ref) => {
+  const {
+    variant = "text",
+    color = "primary",
+    size = "medium",
+    component,
+    className,
+    loading = false,
+    startIcon,
+    endIcon,
+    fullWidth = false,
+    disableElevation = false,
+    children,
+    ...rest
+  } = props;
 
-    const variantClass = quiet
-      ? styles.quiet
-      : variantClassMap[variant][styleKey as "filled" | "outlined"];
+  const disabled = "disabled" in props ? props.disabled : false;
+  const href = "href" in props ? props.href : undefined;
+  const Component = component || ((href ? "a" : "button") as any);
+  const isDisabled = disabled || loading;
 
-    const focusClass = disabled ? undefined : focusClassMap[focusStyleType];
+  const classes = classNames(
+    styles.root,
+    styles[variant],
+    getColorVariantClass(color, variant),
+    sizeClassMap[size],
+    isDisabled ? styles.disabled : undefined,
+    fullWidth ? styles.fullWidth : undefined,
+    disableElevation ? styles.noElevation : undefined,
+    loading ? styles.loading : undefined,
+    className,
+  );
 
-    const classes = classNames(
-      styles.root,
-      styles.interactive,
-      sizeClassMap[size],
-      circled ? styles.roundedFull : styles.roundedLg,
-      variantClass,
-      focusClass,
-      disabled ? styles.disabled : undefined,
-      className,
-    );
+  const buttonProps = Component === "button" ? { disabled: isDisabled } : {};
+  const linkProps =
+    Component === "a" ? { href, "aria-disabled": isDisabled } : {};
 
-    return (
-      <button
-        ref={ref}
-        disabled={disabled}
-        className={classes}
-        data-size={size}
-        data-variant={variant}
-        data-style={styleKey}
-        data-shape={circled ? "circle" : "rounded"}
-        data-focus-style={focusStyleType}
-        data-focus-trigger={focusTriggerType}
-        data-disabled={disabled ? "true" : "false"}
-        {...props}
+  return (
+    <Component
+      ref={ref}
+      className={classes}
+      {...buttonProps}
+      {...linkProps}
+      {...rest}
+    >
+      {loading && (
+        <span className={styles.loadingWrapper}>
+          <LoadingSpinner size={size} />
+        </span>
+      )}
+      <span
+        className={classNames(
+          styles.content,
+          loading ? styles.contentHidden : undefined,
+        )}
       >
+        {startIcon && <span className={styles.startIcon}>{startIcon}</span>}
         {children}
-      </button>
-    );
-  },
-);
+        {endIcon && <span className={styles.endIcon}>{endIcon}</span>}
+      </span>
+    </Component>
+  );
+});
 
 Button.displayName = "Button";
 

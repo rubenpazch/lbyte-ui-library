@@ -33,6 +33,7 @@ const config: StorybookConfig = {
         __dirname,
         "../../../packages/shared/src",
       ),
+      "@rubenpazch/chip": path.resolve(__dirname, "../../../packages/chip/src"),
       "@rubenpazch/button": path.resolve(
         __dirname,
         "../../../packages/button/src",
