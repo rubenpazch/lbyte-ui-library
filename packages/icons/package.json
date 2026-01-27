@@ -1,6 +1,6 @@
 {
   "name": "@rubenpazch/icons",
-  "version": "4.0.1",
+  "version": "4.0.2",
   "description": "Icon components for Lbyte UI library",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",

@@ -1,5 +1,14 @@
 # @rubenpazch/chip
 
+## 1.0.2
+
+### Patch Changes
+
+- upgrade
+- Updated dependencies
+  - @rubenpazch/shared@4.0.2
+  - @rubenpazch/icons@4.0.2
+
 ## 1.0.1
 
 ### Patch Changes

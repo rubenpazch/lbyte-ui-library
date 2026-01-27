@@ -1,5 +1,12 @@
 # @rubenpazch/icons
 
+## 4.0.2
+
+### Patch Changes
+
+- Updated dependencies
+  - @rubenpazch/shared@4.0.2
+
 ## 4.0.1
 
 ### Patch Changes
