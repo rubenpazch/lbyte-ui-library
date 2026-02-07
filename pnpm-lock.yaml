@@ -1037,6 +1037,9 @@ importers:
 
   packages/text-input:
     dependencies:
+      '@rubenpazch/icons':
+        specifier: workspace:*
+        version: link:../icons
       '@rubenpazch/shared':
         specifier: workspace:*
         version: link:../shared

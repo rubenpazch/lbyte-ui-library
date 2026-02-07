@@ -30,6 +30,7 @@
     "react-dom": "^19.2.3"
   },
   "dependencies": {
+    "@rubenpazch/icons": "workspace:*",
     "@rubenpazch/shared": "workspace:*"
   },
   "devDependencies": {
