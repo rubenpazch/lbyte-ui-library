@@ -1,0 +1,113 @@
+.card {
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+  border: 1px solid;
+}
+
+.container {
+  background: #ffffff;
+}
+
+.label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 0.25rem;
+}
+
+.labelText {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.value {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.valueText {
+  display: inline-block;
+}
+
+.range {
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
+}
+
+.rangeText {
+  display: block;
+}
+
+.required {
+  color: #ef4444;
+  margin-left: 0.25rem;
+}
+
+.variantDefault {
+  background: #ffffff;
+  border-color: #e5e7eb;
+}
+
+.labelDefault {
+  color: #6b7280;
+}
+
+.valueDefault {
+  color: #111827;
+}
+
+.rangeDefault {
+  color: #9ca3af;
+}
+
+.variantHighlighted {
+  background: #eff6ff;
+  border-color: #bfdbfe;
+}
+
+.labelHighlighted {
+  color: #1d4ed8;
+}
+
+.valueHighlighted {
+  color: #1e3a8a;
+}
+
+.rangeHighlighted {
+  color: #2563eb;
+}
+
+.variantSuccess {
+  background: #ecfdf3;
+  border-color: #bbf7d0;
+}
+
+.labelSuccess {
+  color: #15803d;
+}
+
+.valueSuccess {
+  color: #14532d;
+}
+
+.rangeSuccess {
+  color: #16a34a;
+}
+
+.variantWarning {
+  background: #fffbeb;
+  border-color: #fde68a;
+}
+
+.labelWarning {
+  color: #b45309;
+}
+
+.valueWarning {
+  color: #92400e;
+}
+
+.rangeWarning {
+  color: #d97706;
+}

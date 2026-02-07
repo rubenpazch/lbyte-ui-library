@@ -84,6 +84,15 @@
   box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.2);
 }
 
+.inputSuccess {
+  border-color: #10b981;
+}
+
+.inputSuccess:focus {
+  border-color: #10b981;
+  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2);
+}
+
 /* Character count */
 .charCount {
   position: absolute;
@@ -144,6 +153,13 @@
 
 /* Hint text */
 .hint {
+  font-size: 0.75rem;
+  line-height: 1rem;
+  color: #6b7280;
+  margin-top: 0.25rem;
+}
+
+.requiredHelper {
   font-size: 0.75rem;
   line-height: 1rem;
   color: #6b7280;

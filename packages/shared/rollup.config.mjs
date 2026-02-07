@@ -4,8 +4,14 @@ import typescript from "rollup-plugin-typescript2";
 import postcss from "rollup-plugin-postcss";
 import dts from "rollup-plugin-dts";
 import terser from "@rollup/plugin-terser";
-import { readFileSync, copyFileSync, mkdirSync } from "fs";
-import { dirname } from "path";
+import {
+  readFileSync,
+  copyFileSync,
+  mkdirSync,
+  readdirSync,
+  existsSync,
+} from "fs";
+import { dirname, join } from "path";
 
 const packageJson = JSON.parse(
   readFileSync(new URL("./package.json", import.meta.url), "utf8"),
@@ -25,7 +31,42 @@ const copyStyles = () => ({
   },
 });
 
+// Copy Material Symbols font files
+const copyFonts = () => ({
+  name: "copy-fonts",
+  writeBundle() {
+    try {
+      const distFontsDir = "./dist/files";
+      mkdirSync(distFontsDir, { recursive: true });
+
+      const fontPackages = [
+        "@fontsource/material-symbols-outlined",
+        "@fontsource/material-symbols-rounded",
+        "@fontsource/material-symbols-sharp",
+      ];
+
+      let copiedCount = 0;
+      for (const pkg of fontPackages) {
+        const pkgPath = join("node_modules", pkg, "files");
+        if (existsSync(pkgPath)) {
+          const files = readdirSync(pkgPath);
+          for (const file of files) {
+            if (file.match(/\.(woff2?|ttf)$/)) {
+              copyFileSync(join(pkgPath, file), join(distFontsDir, file));
+              copiedCount++;
+            }
+          }
+        }
+      }
+      console.log(`✓ Copied ${copiedCount} font files to dist/files/`);
+    } catch (err) {
+      console.error("Failed to copy font files:", err);
+    }
+  },
+});
+
 export default [
+  // Main bundle
   {
     input: "src/index.ts",
     external: ["react", "classnames"],
@@ -54,6 +95,23 @@ export default [
       }),
       terser(),
       copyStyles(),
+    ],
+  },
+  // Styles bundle with fonts
+  {
+    input: "src/styles.ts",
+    output: {
+      file: "dist/styles.js",
+      format: "esm",
+    },
+    plugins: [
+      resolve(),
+      postcss({
+        extract: false,
+        inject: true,
+        minimize: false,
+      }),
+      copyFonts(),
     ],
   },
   {

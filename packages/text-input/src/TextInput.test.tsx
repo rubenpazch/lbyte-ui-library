@@ -293,9 +293,10 @@ describe("TextInput Component", () => {
           onChange={() => {}}
           type="email"
           validateEmail={true}
+          emailValidMessage="Email válido"
         />,
       );
-      expect(screen.getByText("Correo válido")).toBeInTheDocument();
+      expect(screen.getByText("Email válido")).toBeInTheDocument();
     });
 
     it("should show invalid email message for incorrect format", () => {
@@ -305,11 +306,10 @@ describe("TextInput Component", () => {
           onChange={() => {}}
           type="email"
           validateEmail={true}
+          emailInvalidMessage="Email inválido"
         />,
       );
-      expect(
-        screen.getByText("Correo electrónico inválido"),
-      ).toBeInTheDocument();
+      expect(screen.getByText("Email inválido")).toBeInTheDocument();
     });
 
     it("should not validate email when validateEmail is false", () => {
@@ -319,9 +319,10 @@ describe("TextInput Component", () => {
           onChange={() => {}}
           type="email"
           validateEmail={false}
+          emailInvalidMessage="Email inválido"
         />,
       );
-      expect(screen.queryByText("Correo inválido")).not.toBeInTheDocument();
+      expect(screen.queryByText("Email inválido")).not.toBeInTheDocument();
     });
 
     it("should not show validation when value is empty", () => {
@@ -331,10 +332,12 @@ describe("TextInput Component", () => {
           onChange={() => {}}
           type="email"
           validateEmail={true}
+          emailValidMessage="Email válido"
+          emailInvalidMessage="Email inválido"
         />,
       );
-      expect(screen.queryByText("Correo válido")).not.toBeInTheDocument();
-      expect(screen.queryByText("Correo inválido")).not.toBeInTheDocument();
+      expect(screen.queryByText("Email válido")).not.toBeInTheDocument();
+      expect(screen.queryByText("Email inválido")).not.toBeInTheDocument();
     });
   });
 
@@ -346,6 +349,8 @@ describe("TextInput Component", () => {
           onChange={() => {}}
           type="password"
           showPasswordStrength={true}
+          strengthLabelPrefix="Fortaleza:"
+          strengthLabels={{ weak: "Débil" }}
         />,
       );
       expect(screen.getByText(/Fortaleza:/)).toBeInTheDocument();
@@ -358,6 +363,8 @@ describe("TextInput Component", () => {
           onChange={() => {}}
           type="password"
           showPasswordStrength={false}
+          strengthLabelPrefix="Fortaleza:"
+          strengthLabels={{ weak: "Débil" }}
         />,
       );
       expect(screen.queryByText(/Fortaleza:/)).not.toBeInTheDocument();
@@ -370,6 +377,8 @@ describe("TextInput Component", () => {
           onChange={() => {}}
           type="password"
           showPasswordStrength={true}
+          strengthLabelPrefix="Fortaleza:"
+          strengthLabels={{ weak: "Débil" }}
         />,
       );
       expect(screen.getByText("Débil")).toBeInTheDocument();
@@ -382,6 +391,8 @@ describe("TextInput Component", () => {
           onChange={() => {}}
           type="password"
           showPasswordStrength={true}
+          strengthLabelPrefix="Fortaleza:"
+          strengthLabels={{ strong: "Fuerte", "very-strong": "Muy fuerte" }}
         />,
       );
       expect(screen.getByText(/Fuerte|Muy fuerte/)).toBeInTheDocument();
@@ -494,21 +505,28 @@ describe("TextInput Component", () => {
   describe("Email Validation", () => {
     it("should validate email format correctly", () => {
       const { rerender } = render(
-        <TextInput value="" onChange={() => {}} validateEmail />,
+        <TextInput
+          value=""
+          onChange={() => {}}
+          validateEmail
+          emailValidMessage="Email válido"
+          emailInvalidMessage="Email inválido"
+        />,
       );
 
       // Empty should not show error
-      expect(
-        screen.queryByText(/Correo electrónico inválido/),
-      ).not.toBeInTheDocument();
+      expect(screen.queryByText(/Email inválido/)).not.toBeInTheDocument();
 
       // Invalid email
       rerender(
-        <TextInput value="invalid-email" onChange={() => {}} validateEmail />,
+        <TextInput
+          value="invalid-email"
+          onChange={() => {}}
+          validateEmail
+          emailInvalidMessage="Email inválido"
+        />,
       );
-      expect(
-        screen.getByText("Correo electrónico inválido"),
-      ).toBeInTheDocument();
+      expect(screen.getByText("Email inválido")).toBeInTheDocument();
 
       // Valid email
       rerender(
@@ -516,12 +534,11 @@ describe("TextInput Component", () => {
           value="test@example.com"
           onChange={() => {}}
           validateEmail
+          emailValidMessage="Email válido"
         />,
       );
-      expect(screen.getByText("Correo válido")).toBeInTheDocument();
-      expect(
-        screen.queryByText(/Correo electrónico inválido/),
-      ).not.toBeInTheDocument();
+      expect(screen.getByText("Email válido")).toBeInTheDocument();
+      expect(screen.queryByText(/Email inválido/)).not.toBeInTheDocument();
     });
 
     it("should accept various valid email formats", () => {
@@ -537,10 +554,15 @@ describe("TextInput Component", () => {
 
       validEmails.forEach((email) => {
         const { unmount } = render(
-          <TextInput value={email} onChange={() => {}} validateEmail />,
+          <TextInput
+            value={email}
+            onChange={() => {}}
+            validateEmail
+            emailValidMessage="Email válido"
+          />,
         );
 
-        expect(screen.getByText("Correo válido")).toBeInTheDocument();
+        expect(screen.getByText("Email válido")).toBeInTheDocument();
         unmount();
       });
     });
@@ -557,19 +579,27 @@ describe("TextInput Component", () => {
 
       invalidEmails.forEach((email) => {
         const { unmount } = render(
-          <TextInput value={email} onChange={() => {}} validateEmail />,
+          <TextInput
+            value={email}
+            onChange={() => {}}
+            validateEmail
+            emailInvalidMessage="Email inválido"
+          />,
         );
 
-        expect(
-          screen.getByText("Correo electrónico inválido"),
-        ).toBeInTheDocument();
+        expect(screen.getByText("Email inválido")).toBeInTheDocument();
         unmount();
       });
     });
 
     it("should suggest correction for common typos", () => {
       render(
-        <TextInput value="test@gmial.com" onChange={() => {}} validateEmail />,
+        <TextInput
+          value="test@gmial.com"
+          onChange={() => {}}
+          validateEmail
+          emailSuggestionMessage="¿Quisiste decir "
+        />,
       );
 
       expect(screen.getByText(/¿Quisiste decir/)).toBeInTheDocument();
@@ -582,6 +612,7 @@ describe("TextInput Component", () => {
           value="user@hotmial.com"
           onChange={() => {}}
           validateEmail
+          emailSuggestionMessage="¿Quisiste decir "
         />,
       );
 
@@ -597,6 +628,7 @@ describe("TextInput Component", () => {
           value="test@gmial.com"
           onChange={handleChange}
           validateEmail
+          emailSuggestionMessage="¿Quisiste decir "
         />,
       );
 
@@ -608,7 +640,12 @@ describe("TextInput Component", () => {
 
     it("should not show suggestion for valid emails", () => {
       render(
-        <TextInput value="test@gmail.com" onChange={() => {}} validateEmail />,
+        <TextInput
+          value="test@gmail.com"
+          onChange={() => {}}
+          validateEmail
+          emailSuggestionMessage="¿Quisiste decir "
+        />,
       );
 
       expect(screen.queryByText(/¿Quisiste decir/)).not.toBeInTheDocument();
@@ -620,6 +657,7 @@ describe("TextInput Component", () => {
           value="test@unknowndomain.com"
           onChange={() => {}}
           validateEmail
+          emailSuggestionMessage="¿Quisiste decir "
         />,
       );
 

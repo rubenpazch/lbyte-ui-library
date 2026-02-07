@@ -1,0 +1,3 @@
+# PatientDetails
+
+Generated component package.

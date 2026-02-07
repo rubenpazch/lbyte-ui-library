@@ -1,0 +1,3 @@
+# PatientSearch
+
+Generated component package.

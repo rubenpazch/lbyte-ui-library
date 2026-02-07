@@ -1,4 +1,5 @@
 import React, { useState, useMemo } from "react";
+import { CheckIcon, ErrorIcon, InfoIcon } from "@rubenpazch/icons";
 import styles from "./TextInput.module.css";
 
 export interface TextInputProps {
@@ -25,6 +26,13 @@ export interface TextInputProps {
   step?: number;
   validateEmail?: boolean;
   showPasswordStrength?: boolean;
+  requiredMessage?: string;
+  emailValidMessage?: string;
+  emailInvalidMessage?: string;
+  emailSuggestionMessage?: string;
+  strengthLabels?: Partial<Record<PasswordStrengthKey, string>>;
+  strengthLabelPrefix?: string;
+  requirementsLabels?: Partial<PasswordRequirementsLabels>;
 }
 
 const classNames = (...classes: Array<string | undefined | false>) =>
@@ -60,9 +68,25 @@ const suggestEmailCorrection = (email: string): string | null => {
   return null;
 };
 
+type PasswordStrengthKey =
+  | "none"
+  | "weak"
+  | "fair"
+  | "good"
+  | "strong"
+  | "very-strong";
+
+type PasswordRequirementsLabels = {
+  lowercase: string;
+  uppercase: string;
+  number: string;
+  special: string;
+  minLength: string;
+};
+
 // Password strength checker
 const checkPasswordStrength = (password: string) => {
-  if (!password) return { score: 0, strength: "none", label: "Sin contraseña" };
+  if (!password) return { score: 0, strength: "none" as PasswordStrengthKey };
 
   let score = 0;
   const hasUpperCase = /[A-Z]/.test(password);
@@ -77,11 +101,11 @@ const checkPasswordStrength = (password: string) => {
   if (hasSpecialChar) score++;
   if (isLongEnough) score++;
 
-  if (score <= 1) return { score, strength: "weak", label: "Débil" };
-  if (score <= 2) return { score, strength: "fair", label: "Regular" };
-  if (score <= 3) return { score, strength: "good", label: "Buena" };
-  if (score === 4) return { score, strength: "strong", label: "Fuerte" };
-  return { score, strength: "very-strong", label: "Muy fuerte" };
+  if (score <= 1) return { score, strength: "weak" as PasswordStrengthKey };
+  if (score <= 2) return { score, strength: "fair" as PasswordStrengthKey };
+  if (score <= 3) return { score, strength: "good" as PasswordStrengthKey };
+  if (score === 4) return { score, strength: "strong" as PasswordStrengthKey };
+  return { score, strength: "very-strong" as PasswordStrengthKey };
 };
 
 const TextInput: React.FC<TextInputProps> = ({
@@ -104,6 +128,13 @@ const TextInput: React.FC<TextInputProps> = ({
   autoComplete,
   validateEmail = false,
   showPasswordStrength = false,
+  requiredMessage,
+  emailValidMessage,
+  emailInvalidMessage,
+  emailSuggestionMessage,
+  strengthLabels,
+  strengthLabelPrefix,
+  requirementsLabels,
 }) => {
   const [isFocused, setIsFocused] = useState(false);
 
@@ -121,10 +152,25 @@ const TextInput: React.FC<TextInputProps> = ({
     return matchesFormat && !hasSuggestion;
   }, [validateEmail, value, emailSuggestion]);
 
-  const emailError =
-    validateEmail && value && !isValidEmail && !emailSuggestion
-      ? "Correo electrónico inválido"
-      : null;
+  const isEmailInvalid =
+    validateEmail && value && !isValidEmail && !emailSuggestion;
+  const emailError = isEmailInvalid ? emailInvalidMessage || null : null;
+
+  const meetsMinLength = minLength ? value.length >= minLength : true;
+  const meetsMaxLength = maxLength ? value.length <= maxLength : true;
+  const matchesPattern = pattern ? new RegExp(pattern).test(value) : true;
+
+  const showSuccess = Boolean(
+    value &&
+    !error &&
+    !isEmailInvalid &&
+    !emailSuggestion &&
+    (!required || value.length > 0) &&
+    (!validateEmail || isValidEmail) &&
+    meetsMinLength &&
+    meetsMaxLength &&
+    matchesPattern,
+  );
 
   // Password strength
   const passwordStrength = useMemo(() => {
@@ -183,10 +229,13 @@ const TextInput: React.FC<TextInputProps> = ({
             styles.input,
             icon ? styles.inputWithIcon : undefined,
             showCharCount ? styles.inputWithCharCount : undefined,
-            error ? styles.inputError : undefined,
+            error || isEmailInvalid ? styles.inputError : undefined,
+            !disabled && !error && !emailError && showSuccess
+              ? styles.inputSuccess
+              : undefined,
           )}
           data-testid="input-field"
-          data-error={!!error}
+          data-error={!!error || !!isEmailInvalid}
         />
 
         {/* Character count */}
@@ -206,17 +255,7 @@ const TextInput: React.FC<TextInputProps> = ({
               {charCount}/{maxLength}
             </div>
             {isAtLimit && (
-              <svg
-                className={styles.charCountIcon}
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
-                  clipRule="evenodd"
-                />
-              </svg>
+              <ErrorIcon className={styles.charCountIcon} size="sm" />
             )}
           </div>
         )}
@@ -240,49 +279,36 @@ const TextInput: React.FC<TextInputProps> = ({
       )}
 
       {/* Hint Text */}
-      {hint && !error && !emailError && <p className={styles.hint}>{hint}</p>}
+      {hint && !error && !isEmailInvalid && (
+        <p className={styles.hint}>{hint}</p>
+      )}
+
+      {/* Required helper */}
+      {required && !value && !error && !isEmailInvalid && requiredMessage && (
+        <p className={styles.requiredHelper}>{requiredMessage}</p>
+      )}
 
       {/* Email validation info */}
-      {validateEmail && value && isValidEmail && (
+      {validateEmail && value && isValidEmail && emailValidMessage && (
         <div
           className={classNames(styles.validationMessage, styles.validEmail)}
         >
-          <svg
-            className={styles.validationIcon}
-            fill="currentColor"
-            viewBox="0 0 20 20"
-          >
-            <path
-              fillRule="evenodd"
-              d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-              clipRule="evenodd"
-            />
-          </svg>
-          <p className={styles.validationText}>Correo válido</p>
+          <CheckIcon className={styles.validationIcon} size="sm" />
+          <p className={styles.validationText}>{emailValidMessage}</p>
         </div>
       )}
 
       {/* Email suggestion for typos */}
-      {emailSuggestion && !error && (
+      {emailSuggestion && !error && emailSuggestionMessage && (
         <div
           className={classNames(
             styles.validationMessage,
             styles.emailSuggestion,
           )}
         >
-          <svg
-            className={styles.validationIcon}
-            fill="currentColor"
-            viewBox="0 0 20 20"
-          >
-            <path
-              fillRule="evenodd"
-              d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
-              clipRule="evenodd"
-            />
-          </svg>
+          <InfoIcon className={styles.validationIcon} size="sm" />
           <p className={styles.validationText}>
-            ¿Quisiste decir{" "}
+            {emailSuggestionMessage.replace("{suggestion}", emailSuggestion)}
             <button
               type="button"
               onClick={() => onChange(emailSuggestion)}
@@ -290,7 +316,6 @@ const TextInput: React.FC<TextInputProps> = ({
             >
               {emailSuggestion}
             </button>
-            ?
           </p>
         </div>
       )}
@@ -322,180 +347,150 @@ const TextInput: React.FC<TextInputProps> = ({
           </div>
 
           {/* Strength label */}
-          <div className={styles.strengthLabel}>
-            <p className={styles.strengthText}>
-              Fortaleza:{" "}
-              <span
-                className={classNames(
-                  styles.strengthValue,
-                  passwordStrength.strength === "weak"
-                    ? styles.strengthValueWeak
-                    : passwordStrength.strength === "fair"
-                      ? styles.strengthValueFair
-                      : passwordStrength.strength === "good"
-                        ? styles.strengthValueGood
-                        : passwordStrength.strength === "strong"
-                          ? styles.strengthValueStrong
-                          : styles.strengthValueVeryStrong,
-                )}
-              >
-                {passwordStrength.label}
-              </span>
-            </p>
-          </div>
+          {(strengthLabelPrefix ||
+            strengthLabels?.[passwordStrength.strength]) && (
+            <div className={styles.strengthLabel}>
+              <p className={styles.strengthText}>
+                {strengthLabelPrefix && `${strengthLabelPrefix} `}
+                <span
+                  className={classNames(
+                    styles.strengthValue,
+                    passwordStrength.strength === "weak"
+                      ? styles.strengthValueWeak
+                      : passwordStrength.strength === "fair"
+                        ? styles.strengthValueFair
+                        : passwordStrength.strength === "good"
+                          ? styles.strengthValueGood
+                          : passwordStrength.strength === "strong"
+                            ? styles.strengthValueStrong
+                            : styles.strengthValueVeryStrong,
+                  )}
+                >
+                  {strengthLabels?.[passwordStrength.strength]}
+                </span>
+              </p>
+            </div>
+          )}
 
           {/* Requirements checklist */}
-          <div className={styles.requirements}>
-            <div className={styles.requirement}>
-              <svg
-                className={classNames(
-                  styles.requirementIcon,
-                  /[a-z]/.test(value)
-                    ? styles.requirementIconMet
-                    : styles.requirementIconUnmet,
-                )}
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                  clipRule="evenodd"
-                />
-              </svg>
-              <span
-                className={classNames(
-                  styles.requirementText,
-                  /[a-z]/.test(value) && styles.requirementTextMet,
-                )}
-              >
-                Letras minúsculas
-              </span>
+          {requirementsLabels && (
+            <div className={styles.requirements}>
+              {requirementsLabels.lowercase && (
+                <div className={styles.requirement}>
+                  <CheckIcon
+                    className={classNames(
+                      styles.requirementIcon,
+                      /[a-z]/.test(value)
+                        ? styles.requirementIconMet
+                        : styles.requirementIconUnmet,
+                    )}
+                    size="sm"
+                  />
+                  <span
+                    className={classNames(
+                      styles.requirementText,
+                      /[a-z]/.test(value) && styles.requirementTextMet,
+                    )}
+                  >
+                    {requirementsLabels.lowercase}
+                  </span>
+                </div>
+              )}
+              {requirementsLabels.uppercase && (
+                <div className={styles.requirement}>
+                  <CheckIcon
+                    className={classNames(
+                      styles.requirementIcon,
+                      /[A-Z]/.test(value)
+                        ? styles.requirementIconMet
+                        : styles.requirementIconUnmet,
+                    )}
+                    size="sm"
+                  />
+                  <span
+                    className={classNames(
+                      styles.requirementText,
+                      /[A-Z]/.test(value) && styles.requirementTextMet,
+                    )}
+                  >
+                    {requirementsLabels.uppercase}
+                  </span>
+                </div>
+              )}
+              {requirementsLabels.number && (
+                <div className={styles.requirement}>
+                  <CheckIcon
+                    className={classNames(
+                      styles.requirementIcon,
+                      /\d/.test(value)
+                        ? styles.requirementIconMet
+                        : styles.requirementIconUnmet,
+                    )}
+                    size="sm"
+                  />
+                  <span
+                    className={classNames(
+                      styles.requirementText,
+                      /\d/.test(value) && styles.requirementTextMet,
+                    )}
+                  >
+                    {requirementsLabels.number}
+                  </span>
+                </div>
+              )}
+              {requirementsLabels.special && (
+                <div className={styles.requirement}>
+                  <CheckIcon
+                    className={classNames(
+                      styles.requirementIcon,
+                      /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(value)
+                        ? styles.requirementIconMet
+                        : styles.requirementIconUnmet,
+                    )}
+                    size="sm"
+                  />
+                  <span
+                    className={classNames(
+                      styles.requirementText,
+                      /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(value) &&
+                        styles.requirementTextMet,
+                    )}
+                  >
+                    {requirementsLabels.special}
+                  </span>
+                </div>
+              )}
+              {requirementsLabels.minLength && (
+                <div className={styles.requirement}>
+                  <CheckIcon
+                    className={classNames(
+                      styles.requirementIcon,
+                      value.length >= 8
+                        ? styles.requirementIconMet
+                        : styles.requirementIconUnmet,
+                    )}
+                    size="sm"
+                  />
+                  <span
+                    className={classNames(
+                      styles.requirementText,
+                      value.length >= 8 && styles.requirementTextMet,
+                    )}
+                  >
+                    {requirementsLabels.minLength}
+                  </span>
+                </div>
+              )}
             </div>
-            <div className={styles.requirement}>
-              <svg
-                className={classNames(
-                  styles.requirementIcon,
-                  /[A-Z]/.test(value)
-                    ? styles.requirementIconMet
-                    : styles.requirementIconUnmet,
-                )}
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                  clipRule="evenodd"
-                />
-              </svg>
-              <span
-                className={classNames(
-                  styles.requirementText,
-                  /[A-Z]/.test(value) && styles.requirementTextMet,
-                )}
-              >
-                Letras mayúsculas
-              </span>
-            </div>
-            <div className={styles.requirement}>
-              <svg
-                className={classNames(
-                  styles.requirementIcon,
-                  /\d/.test(value)
-                    ? styles.requirementIconMet
-                    : styles.requirementIconUnmet,
-                )}
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                  clipRule="evenodd"
-                />
-              </svg>
-              <span
-                className={classNames(
-                  styles.requirementText,
-                  /\d/.test(value) && styles.requirementTextMet,
-                )}
-              >
-                Números
-              </span>
-            </div>
-            <div className={styles.requirement}>
-              <svg
-                className={classNames(
-                  styles.requirementIcon,
-                  /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(value)
-                    ? styles.requirementIconMet
-                    : styles.requirementIconUnmet,
-                )}
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                  clipRule="evenodd"
-                />
-              </svg>
-              <span
-                className={classNames(
-                  styles.requirementText,
-                  /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(value) &&
-                    styles.requirementTextMet,
-                )}
-              >
-                Caracteres especiales
-              </span>
-            </div>
-            <div className={styles.requirement}>
-              <svg
-                className={classNames(
-                  styles.requirementIcon,
-                  value.length >= 8
-                    ? styles.requirementIconMet
-                    : styles.requirementIconUnmet,
-                )}
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                  clipRule="evenodd"
-                />
-              </svg>
-              <span
-                className={classNames(
-                  styles.requirementText,
-                  value.length >= 8 && styles.requirementTextMet,
-                )}
-              >
-                Mínimo 8 caracteres
-              </span>
-            </div>
-          </div>
+          )}
         </div>
       )}
 
       {/* Error Message */}
-      {(error || emailError) && (
+      {(error || (isEmailInvalid && emailInvalidMessage)) && (
         <div className={styles.error}>
-          <svg
-            className={styles.errorIcon}
-            fill="currentColor"
-            viewBox="0 0 20 20"
-          >
-            <path
-              fillRule="evenodd"
-              d="M18.101 12.93a1 1 0 00-1.414-1.414L10 15.586l-6.687-6.687a1 1 0 00-1.414 1.414l8 8a1 1 0 001.414 0l8-8z"
-              clipRule="evenodd"
-            />
-          </svg>
-          <p className={styles.errorText}>{error || emailError}</p>
+          <ErrorIcon className={styles.errorIcon} size="sm" />
+          <p className={styles.errorText}>{error || emailInvalidMessage}</p>
         </div>
       )}
     </div>

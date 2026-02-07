@@ -47,12 +47,25 @@
     "react": "^19.2.3",
     "react-dom": "^19.2.3"
   },
-  "packageManager": "pnpm@8.15.0",
+  "packageManager": "pnpm@10.28.2",
+  "pnpm": {
+    "overrides": {
+      "postcss-svgo": "7.1.0",
+      "test-exclude": "7.0.1"
+    },
+    "onlyBuiltDependencies": [
+      "esbuild",
+      "unrs-resolver"
+    ]
+  },
   "devDependencies": {
     "@babel/preset-env": "^7.28.6",
     "@babel/preset-react": "^7.28.5",
     "@babel/preset-typescript": "^7.28.5",
     "@changesets/cli": "^2.29.8",
+    "@dnd-kit/core": "^6.1.0",
+    "@dnd-kit/sortable": "^8.0.0",
+    "@dnd-kit/utilities": "^3.2.2",
     "@rubenpazch/eslint-config": "workspace:^",
     "@testing-library/jest-dom": "6.9.1",
     "@testing-library/react": "^16.3.2",
@@ -68,7 +81,6 @@
     "jest-environment-jsdom": "^30.2.0",
     "lint-staged": "^16.2.7",
     "lodash": "4.17.21",
-    "ts-jest": "^29.4.6",
     "turbo": "^2.7.5",
     "typescript-eslint": "^8.53.1"
   },

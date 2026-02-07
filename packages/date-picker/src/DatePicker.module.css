@@ -1,0 +1,349 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #374151;
+}
+
+.required {
+  color: #ef4444;
+  margin-left: 0.25rem;
+}
+
+.inputWrapper {
+  position: relative;
+}
+
+.inputContainer {
+  display: flex;
+  align-items: center;
+  border: 2px solid #d1d5db;
+  border-radius: 0.75rem;
+  background: #ffffff;
+  transition:
+    border-color 150ms ease,
+    box-shadow 150ms ease;
+}
+
+.inputFocused {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+}
+
+.inputError {
+  border-color: #ef4444;
+  box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.2);
+}
+
+.inputRequired {
+  border-color: #fca5a5;
+}
+
+.inputDisabled {
+  background: #f3f4f6;
+}
+
+.inputReadOnly {
+  background: #f9fafb;
+}
+
+.input {
+  flex: 1;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #111827;
+  border: none;
+  outline: none;
+  background: transparent;
+}
+
+.input::placeholder {
+  color: #9ca3af;
+}
+
+.inputPointer {
+  cursor: pointer;
+}
+
+.inputReadOnlyText {
+  cursor: default;
+}
+
+.inputDisabledText {
+  color: #6b7280;
+  cursor: not-allowed;
+}
+
+.iconButton {
+  padding: 0.5rem 0.75rem;
+  border: none;
+  background: transparent;
+  color: #6b7280;
+  cursor: pointer;
+  transition:
+    color 150ms ease,
+    opacity 150ms ease;
+}
+
+.iconButton:hover {
+  color: #374151;
+}
+
+.iconButtonDisabled {
+  color: #9ca3af;
+  cursor: not-allowed;
+}
+
+.icon {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.calendar {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  left: 0;
+  z-index: 50;
+  width: min(100%, 25rem);
+  min-width: 20rem;
+  background: #ffffff;
+  border: 2px solid #e5e7eb;
+  border-radius: 0.75rem;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  border-bottom: 2px solid #f3f4f6;
+}
+
+.navButton {
+  padding: 0.5rem;
+  border: none;
+  background: transparent;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 150ms ease;
+}
+
+.navButton:hover {
+  background: #f3f4f6;
+}
+
+.navIconPrev,
+.navIconNext {
+  width: 1.25rem;
+  height: 1.25rem;
+  color: #4b5563;
+}
+
+.navIconPrev {
+  transform: rotate(90deg);
+}
+
+.navIconNext {
+  transform: rotate(-90deg);
+}
+
+.headerCenter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  flex: 1;
+}
+
+.headerButton {
+  padding: 0.25rem 0.75rem;
+  border: none;
+  background: transparent;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #111827;
+  cursor: pointer;
+  transition: background-color 150ms ease;
+  box-shadow: none;
+}
+
+.headerButton:hover {
+  background: #f3f4f6;
+}
+
+.headerTitle {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+.dayNames {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.25rem;
+  padding: 0.75rem 1rem 0.5rem;
+}
+
+.dayName {
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #6b7280;
+}
+
+.dayGrid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.25rem;
+  padding: 0 1rem 0.75rem;
+}
+
+.dayButton {
+  height: 2.5rem;
+  padding: 0;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition:
+    background-color 150ms ease,
+    color 150ms ease,
+    box-shadow 150ms ease;
+  background: transparent;
+  box-shadow: none;
+}
+
+.dayEmpty {
+  background: transparent;
+  cursor: default;
+}
+
+.daySelectable {
+  background: transparent;
+  color: #111827;
+  cursor: pointer;
+}
+
+.daySelectable:hover {
+  background: #f3f4f6;
+}
+
+.daySelected {
+  background: #2563eb;
+  color: #ffffff;
+  box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.4);
+}
+
+.daySelected:hover {
+  background: #1d4ed8;
+}
+
+.dayToday {
+  background: #f3f4f6;
+  color: #2563eb;
+  border: 2px solid #3b82f6;
+}
+
+.dayToday:hover {
+  background: #eff6ff;
+}
+
+.dayDisabled {
+  color: #d1d5db;
+  cursor: not-allowed;
+}
+
+.monthGrid,
+.yearGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+}
+
+.monthButton,
+.yearButton {
+  padding: 0.75rem 0.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  background: transparent;
+  color: #111827;
+  cursor: pointer;
+  transition:
+    background-color 150ms ease,
+    color 150ms ease,
+    box-shadow 150ms ease;
+  box-shadow: none;
+}
+
+.monthButton:hover,
+.yearButton:hover {
+  background: #f3f4f6;
+}
+
+.monthSelected,
+.yearSelected {
+  background: #2563eb;
+  color: #ffffff;
+  box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.4);
+}
+
+.monthCurrent,
+.yearCurrent {
+  background: #f3f4f6;
+  color: #2563eb;
+  border: 2px solid #3b82f6;
+}
+
+.quickActions {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  border-top: 2px solid #f3f4f6;
+}
+
+.quickActionButton {
+  flex: 1;
+}
+
+.hint {
+  font-size: 0.75rem;
+  color: #6b7280;
+}
+
+.errorRow {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.errorIcon {
+  width: 1rem;
+  height: 1rem;
+  color: #ef4444;
+  flex-shrink: 0;
+  margin-top: 0.125rem;
+}
+
+.errorText {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #dc2626;
+}
+
+.requiredHint {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #ef4444;
+}

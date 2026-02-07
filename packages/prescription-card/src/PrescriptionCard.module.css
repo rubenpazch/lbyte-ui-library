@@ -1,0 +1,299 @@
+.card {
+  border-radius: 0.5rem;
+  border-width: 2px;
+  border-style: solid;
+  transition:
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+  overflow: hidden;
+  background: #ffffff;
+}
+
+.card:hover {
+  box-shadow:
+    0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -4px rgba(0, 0, 0, 0.1);
+}
+
+.statusPending {
+  background: #fffbeb;
+  border-color: #fde68a;
+  color: #92400e;
+}
+
+.statusInProgress {
+  background: #eff6ff;
+  border-color: #bfdbfe;
+  color: #1e3a8a;
+}
+
+.statusOpticalInformationComplete {
+  background: #f3e8ff;
+  border-color: #e9d5ff;
+  color: #6b21a8;
+}
+
+.statusElaborationInProgress {
+  background: #fff7ed;
+  border-color: #fed7aa;
+  color: #9a3412;
+}
+
+.statusDeliveryPending {
+  background: #fffbeb;
+  border-color: #fde68a;
+  color: #92400e;
+}
+
+.statusCompleted {
+  background: #ecfdf3;
+  border-color: #bbf7d0;
+  color: #166534;
+}
+
+.statusDelivered {
+  background: #ecfdf3;
+  border-color: #bbf7d0;
+  color: #166534;
+}
+
+.statusCancelled {
+  background: #fef2f2;
+  border-color: #fecaca;
+  color: #991b1b;
+}
+
+.statusArchived {
+  background: #f9fafb;
+  border-color: #e5e7eb;
+  color: #374151;
+}
+
+.header {
+  padding: 1.25rem 1.25rem 0.75rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.headerRow {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.headerChips {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.body {
+  padding: 1rem 1.25rem;
+}
+
+.summarySection {
+  padding: 0.75rem 0;
+  margin-bottom: 1rem;
+}
+
+.summaryRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
+  border-bottom: 1px dashed rgba(0, 0, 0, 0.3);
+}
+
+.summaryLabel {
+  font-size: 0.75rem;
+  font-weight: 500;
+  opacity: 0.6;
+}
+
+.summaryValue {
+  font-size: 0.875rem;
+  font-weight: 700;
+  font-family:
+    "SFMono-Regular", SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+  letter-spacing: 0.05em;
+}
+
+.summaryFooterRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.summaryDate {
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.metaSection {
+  padding-top: 0.75rem;
+}
+
+.metaRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.metaRow + .metaRow {
+  margin-top: 0.25rem;
+}
+
+.metaLabel {
+  font-size: 0.75rem;
+  font-weight: 500;
+  opacity: 0.75;
+}
+
+.metaValue {
+  font-size: 0.75rem;
+  opacity: 0.75;
+}
+
+.metaValueMono {
+  font-size: 0.75rem;
+  opacity: 0.75;
+  font-family:
+    "SFMono-Regular", SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+}
+
+.eyesGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.eyeCard {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 0.25rem;
+  padding: 0.5rem;
+}
+
+.eyeTitle {
+  font-size: 0.75rem;
+  font-weight: 700;
+  margin-bottom: 0.375rem;
+}
+
+.eyeEmpty {
+  font-size: 0.75rem;
+  color: #4b5563;
+  opacity: 0.75;
+  text-align: center;
+  padding: 0.5rem 0;
+}
+
+.eyeValues {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 0.75rem;
+}
+
+.eyeValueRow {
+  display: flex;
+  justify-content: space-between;
+}
+
+.eyeValueLabel {
+  opacity: 0.75;
+}
+
+.eyeValueValue {
+  font-weight: 600;
+}
+
+.eyeFlags {
+  margin-top: 0.5rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.eyeFlagList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+}
+
+.eyeFlag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.125rem 0.5rem;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 0.25rem;
+}
+
+.eyeFlagText {
+  font-weight: 500;
+}
+
+.noOpticalInfo {
+  margin-bottom: 1rem;
+  padding: 0.75rem;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 0.25rem;
+  text-align: center;
+}
+
+.noOpticalInfoText {
+  font-size: 0.75rem;
+  color: #4b5563;
+  opacity: 0.75;
+}
+
+.observations {
+  margin-bottom: 0.75rem;
+  padding: 0.5rem;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
+  opacity: 0.9;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.observationsLabel {
+  font-size: 0.75rem;
+  font-weight: 500;
+  opacity: 0.75;
+  margin-bottom: 0.25rem;
+}
+
+.observationsText {
+  margin: 0;
+}
+
+.printSection {
+  margin-bottom: 0.75rem;
+}
+
+.printRow {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.footer {
+  padding: 0.75rem 1.25rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.footerActions {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}

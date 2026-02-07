@@ -1,0 +1,152 @@
+.wrapper {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.checkboxContainer {
+  display: flex;
+  align-items: center;
+}
+
+.containerSm {
+  height: 1rem;
+}
+
+.containerMd {
+  height: 1.25rem;
+}
+
+.containerLg {
+  height: 1.5rem;
+}
+
+.checkbox {
+  border: 1px solid #d1d5db;
+  border-radius: 0.25rem;
+  background: #ffffff;
+  cursor: pointer;
+  transition: all 150ms ease;
+  accent-color: var(--checkbox-color, #2563eb);
+}
+
+.checkbox:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--focus-ring, rgba(37, 99, 235, 0.3));
+}
+
+.checkboxDisabled {
+  background: #f3f4f6;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.checkboxError {
+  border-color: #ef4444;
+}
+
+.checkboxSm {
+  width: 0.75rem;
+  height: 0.75rem;
+}
+
+.checkboxMd {
+  width: 1rem;
+  height: 1rem;
+}
+
+.checkboxLg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.variantDefault {
+  --checkbox-color: #2563eb;
+  --focus-ring: rgba(37, 99, 235, 0.3);
+}
+
+.variantPrimary {
+  --checkbox-color: #4f46e5;
+  --focus-ring: rgba(79, 70, 229, 0.3);
+}
+
+.variantSuccess {
+  --checkbox-color: #16a34a;
+  --focus-ring: rgba(22, 163, 74, 0.3);
+}
+
+.variantWarning {
+  --checkbox-color: #d97706;
+  --focus-ring: rgba(217, 119, 6, 0.3);
+}
+
+.variantDanger {
+  --checkbox-color: #dc2626;
+  --focus-ring: rgba(220, 38, 38, 0.3);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  font-weight: 500;
+}
+
+.labelSm {
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+
+.labelMd {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.labelLg {
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+.labelNormal {
+  color: #374151;
+  cursor: pointer;
+}
+
+.labelDisabled {
+  color: #6b7280;
+  cursor: not-allowed;
+}
+
+.required {
+  color: #ef4444;
+  margin-left: 0.25rem;
+}
+
+.description {
+  color: #6b7280;
+  margin-top: 0.25rem;
+}
+
+.descriptionSm {
+  font-size: 0.625rem;
+  line-height: 0.875rem;
+}
+
+.descriptionMd {
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+
+.descriptionLg {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.errorText {
+  margin-top: 0.25rem;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  color: #dc2626;
+}

@@ -505,9 +505,7 @@
 }
 
 /* Material Symbols: self-hosted fonts for MaterialIcon */
-@import "@fontsource/material-symbols-outlined/400.css";
-@import "@fontsource/material-symbols-rounded/400.css";
-@import "@fontsource/material-symbols-sharp/400.css";
+/* Note: Fonts are imported via styles.ts entry point */
 
 .material-symbols-outlined,
 .material-symbols-rounded,

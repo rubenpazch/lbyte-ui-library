@@ -1,0 +1,3 @@
+# IdentificationInput
+
+Generated component package.

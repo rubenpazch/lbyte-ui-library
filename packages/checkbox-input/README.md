@@ -1,0 +1,3 @@
+# CheckboxInput
+
+Generated component package.

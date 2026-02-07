@@ -60,3 +60,7 @@ packages/*/dist
 packages/*/.turbo
 tooling/eslint-config/node_modules
 .turbo
+
+
+#Ignore vscode AI rules
+.github/instructions/codacy.instructions.md
