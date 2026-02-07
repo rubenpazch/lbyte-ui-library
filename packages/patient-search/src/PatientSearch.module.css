@@ -1,0 +1,283 @@
+.root {
+  position: relative;
+  width: 100%;
+}
+
+.sizeSM {
+  max-width: 24rem;
+}
+
+.sizeMD {
+  max-width: 42rem;
+}
+
+.sizeLG {
+  max-width: 48rem;
+}
+
+.inputWrapper {
+  position: relative;
+}
+
+.iconWrapper {
+  position: absolute;
+  inset-block: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  padding-left: 0.75rem;
+  pointer-events: none;
+}
+
+.icon {
+  color: #9ca3af;
+}
+
+.iconSM {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.iconMD {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.iconLG {
+  width: 1.75rem;
+  height: 1.75rem;
+}
+
+.input {
+  width: 100%;
+  border: 2px solid #d1d5db;
+  border-radius: 0.5rem;
+  outline: none;
+  background: #ffffff;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  color: #111827;
+}
+
+.input:focus {
+  border-color: transparent;
+  box-shadow: 0 0 0 2px #3b82f6;
+}
+
+.inputSM {
+  padding: 0.5rem 1rem 0.5rem 2.5rem;
+  font-size: 0.875rem;
+}
+
+.inputMD {
+  padding: 0.75rem 1rem 0.75rem 3rem;
+  font-size: 1rem;
+}
+
+.inputLG {
+  padding: 1rem 1rem 1rem 3.5rem;
+  font-size: 1.125rem;
+}
+
+.spinnerWrapper {
+  position: absolute;
+  inset-block: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  padding-right: 1rem;
+}
+
+.spinner {
+  color: #2563eb;
+}
+
+.dropdown {
+  position: absolute;
+  z-index: 50;
+  width: 100%;
+  margin-top: 0.5rem;
+  background: #ffffff;
+  border-radius: 0.75rem;
+  border: 1px solid #e5e7eb;
+  box-shadow:
+    0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  max-height: 24rem;
+  overflow-y: auto;
+}
+
+.resultsHeader {
+  padding: 0.5rem 1rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #6b7280;
+  background: #f9fafb;
+}
+
+.resultButton {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  text-align: left;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #f3f4f6;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.resultButton:hover {
+  background: #eff6ff;
+}
+
+.resultButtonHighlighted {
+  background: #eff6ff;
+}
+
+.resultContent {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.avatar {
+  width: 2.5rem;
+  height: 2.5rem;
+  background: #dbeafe;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.avatarText {
+  color: #2563eb;
+  font-weight: 500;
+  font-size: 0.875rem;
+}
+
+.resultDetails {
+  flex: 1;
+  min-width: 0;
+}
+
+.patientName {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #111827;
+  margin: 0;
+}
+
+.patientEmail {
+  font-size: 0.875rem;
+  color: #6b7280;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin: 0;
+}
+
+.patientDni {
+  font-size: 0.75rem;
+  color: #9ca3af;
+  margin: 0;
+}
+
+.statusBadge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.125rem 0.625rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.statusActive {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.statusInactive {
+  background: #f3f4f6;
+  color: #1f2937;
+}
+
+.noResults {
+  padding: 2rem 1rem;
+  text-align: center;
+}
+
+.noResultsIcon {
+  margin: 0 auto;
+  color: #9ca3af;
+}
+
+.noResultsTitle {
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  color: #4b5563;
+}
+
+.noResultsHint {
+  margin-top: 0.25rem;
+  font-size: 0.75rem;
+  color: #6b7280;
+}
+
+.createButton {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  text-align: left;
+  background: transparent;
+  border: none;
+  border-top: 2px solid #e5e7eb;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.createButton:hover {
+  background: #ecfdf3;
+}
+
+.createButtonHighlighted {
+  background: #ecfdf3;
+}
+
+.createContent {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.createIconWrapper {
+  width: 2.5rem;
+  height: 2.5rem;
+  background: #dcfce7;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.createIcon {
+  color: #16a34a;
+}
+
+.createTitle {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #16a34a;
+  margin: 0;
+}
+
+.createSubtitle {
+  margin-top: 0.125rem;
+  font-size: 0.75rem;
+  color: #6b7280;
+}
+
+.highlight {
+  background: #fde68a;
+  font-weight: 600;
+}

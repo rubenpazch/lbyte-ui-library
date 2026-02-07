@@ -71,6 +71,11 @@
   background: #fef2f2;
 }
 
+.stepperSuccess {
+  border-color: #10b981;
+  background: #ecfdf5;
+}
+
 .stepperDisabled {
   border-color: #d1d5db;
   background: #f3f4f6;
@@ -177,6 +182,10 @@
 
 .inputError {
   color: #b91c1c;
+}
+
+.inputSuccess {
+  color: #047857;
 }
 
 .inputNormal {

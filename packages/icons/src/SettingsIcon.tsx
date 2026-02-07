@@ -19,107 +19,13 @@ const SettingsIcon: React.FC<SettingsIconProps> = ({
 
   return (
     <svg
-      className={`${sizeClasses[size]} ${className}`}
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 -960 960 960"
       fill={color}
-      viewBox="0 0 24 24"
+      className={`${sizeClasses[size]} ${className}`}
+      aria-label="Settings"
     >
-      {/* Outer gear circle with 12 teeth */}
-      <g>
-        {/* Center hub */}
-        <circle cx="12" cy="12" r="3" fill={color} />
-
-        {/* Outer ring */}
-        <circle
-          cx="12"
-          cy="12"
-          r="7"
-          fill="none"
-          stroke={color}
-          strokeWidth="1.5"
-        />
-
-        {/* 12 teeth around the wheel */}
-        {/* Top */}
-        <rect x="11" y="2" width="2" height="2.5" fill={color} />
-        {/* Top-right 30° */}
-        <rect
-          x="15.2"
-          y="3.5"
-          width="2.2"
-          height="2"
-          fill={color}
-          transform="rotate(30 16.3 4.5)"
-        />
-        {/* Right-top 60° */}
-        <rect
-          x="18.5"
-          y="7.2"
-          width="2"
-          height="2.2"
-          fill={color}
-          transform="rotate(60 19.5 8.3)"
-        />
-        {/* Right */}
-        <rect x="20.5" y="11" width="2.5" height="2" fill={color} />
-        {/* Right-bottom 120° */}
-        <rect
-          x="18.5"
-          y="14.8"
-          width="2"
-          height="2.2"
-          fill={color}
-          transform="rotate(120 19.5 15.9)"
-        />
-        {/* Bottom-right 150° */}
-        <rect
-          x="15.2"
-          y="18.5"
-          width="2.2"
-          height="2"
-          fill={color}
-          transform="rotate(150 16.3 19.5)"
-        />
-        {/* Bottom */}
-        <rect x="11" y="20.5" width="2" height="2.5" fill={color} />
-        {/* Bottom-left 210° */}
-        <rect
-          x="6.6"
-          y="18.5"
-          width="2.2"
-          height="2"
-          fill={color}
-          transform="rotate(210 7.7 19.5)"
-        />
-        {/* Left-bottom 240° */}
-        <rect
-          x="3.5"
-          y="14.8"
-          width="2"
-          height="2.2"
-          fill={color}
-          transform="rotate(240 4.5 15.9)"
-        />
-        {/* Left */}
-        <rect x="1" y="11" width="2.5" height="2" fill={color} />
-        {/* Left-top 300° */}
-        <rect
-          x="3.5"
-          y="7.2"
-          width="2"
-          height="2.2"
-          fill={color}
-          transform="rotate(300 4.5 8.3)"
-        />
-        {/* Top-left 330° */}
-        <rect
-          x="6.6"
-          y="3.5"
-          width="2.2"
-          height="2"
-          fill={color}
-          transform="rotate(330 7.7 4.5)"
-        />
-      </g>
+      <path d="m388-80-20-126q-19-7-40-19t-37-25l-118 54-93-164 108-79q-2-9-2.5-20.5T185-480q0-9 .5-20.5T188-521L80-600l93-164 118 54q16-13 37-25t40-18l20-127h184l20 126q19 7 40.5 18.5T669-710l118-54 93 164-108 77q2 10 2.5 21.5t.5 21.5q0 10-.5 21t-2.5 21l108 78-93 164-118-54q-16 13-36.5 25.5T592-206L572-80H388Zm48-60h88l14-112q33-8 62.5-25t53.5-41l106 46 40-72-94-69q4-17 6.5-33.5T715-480q0-17-2-33.5t-7-33.5l94-69-40-72-106 46q-23-26-52-43.5T538-708l-14-112h-88l-14 112q-34 7-63.5 24T306-642l-106-46-40 72 94 69q-4 17-6.5 33.5T245-480q0 17 2.5 33.5T254-413l-94 69 40 72 106-46q24 24 53.5 41t62.5 25l14 112Zm44-210q54 0 92-38t38-92q0-54-38-92t-92-38q-54 0-92 38t-38 92q0 54 38 92t92 38Zm0-130Z" />
     </svg>
   );
 };

@@ -1,0 +1,3 @@
+# PrescriptionCard
+
+Generated component package.

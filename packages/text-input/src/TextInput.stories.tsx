@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import React, { useState } from "react";
+import { EmailIcon, PhoneIcon, UsersIcon } from "@rubenpazch/icons";
 import TextInput, { type TextInputProps } from "./TextInput";
 
 // Mock function for action logging in Storybook
@@ -94,6 +95,10 @@ TextInput is a versatile input component with built-in validation, character cou
       control: "number",
       description: "Maximum character length",
     },
+    requiredMessage: {
+      control: "text",
+      description: "Custom message for required fields",
+    },
   },
 };
 
@@ -127,7 +132,19 @@ export const Required: Story = {
     onChange: fn(),
     placeholder: "john@example.com",
     required: true,
+    requiredMessage: "Este campo es obligatorio",
     type: "email",
+  },
+};
+
+export const RequiredMessage: Story = {
+  args: {
+    label: "Full Name",
+    value: "",
+    onChange: fn(),
+    placeholder: "John Doe",
+    required: true,
+    requiredMessage: "Por favor ingrese su nombre completo",
   },
 };
 
@@ -149,6 +166,17 @@ export const WithHint: Story = {
     onChange: fn(),
     type: "password",
     hint: "Password must be at least 8 characters",
+  },
+};
+
+export const WithIcon: Story = {
+  args: {
+    label: "Email",
+    value: "",
+    onChange: fn(),
+    placeholder: "john@example.com",
+    type: "email",
+    icon: <EmailIcon size="sm" />,
   },
 };
 
@@ -302,6 +330,34 @@ export const WithMaxLength: Story = {
   },
 };
 
+export const WithPattern: Story = {
+  render: (args) => {
+    const [username, setUsername] = useState("");
+    const [touched, setTouched] = useState(false);
+    const pattern = "^[a-zA-Z0-9_]+$";
+    const hasError =
+      touched && username.length > 0 && !new RegExp(pattern).test(username);
+
+    return (
+      <TextInput
+        {...args}
+        value={username}
+        onChange={setUsername}
+        onBlur={() => setTouched(true)}
+        label="Username"
+        placeholder="john_doe"
+        pattern={pattern}
+        error={hasError ? "Solo letras, números y guiones bajos" : ""}
+        hint="Usa solo letras, números y _"
+      />
+    );
+  },
+  args: {
+    value: "",
+    onChange: fn(),
+  },
+};
+
 // Different input types
 export const TelephoneNumber: Story = {
   args: {
@@ -336,10 +392,55 @@ export const CompleteForm: Story = {
       phone: "",
       password: "",
       website: "",
+      bio: "",
+      referral: "REF-2024",
+    });
+    const [touched, setTouched] = useState({
+      name: false,
+      email: false,
+      phone: false,
+      password: false,
+      website: false,
+      bio: false,
     });
 
     const handleChange = (field: string) => (value: string) => {
       setFormData((prev) => ({ ...prev, [field]: value }));
+    };
+
+    const handleBlur = (field: keyof typeof touched) => () => {
+      setTouched((prev) => ({ ...prev, [field]: true }));
+    };
+
+    const errors = {
+      name:
+        touched.name && formData.name.trim().length < 3
+          ? "El nombre debe tener al menos 3 caracteres"
+          : "",
+      email:
+        touched.email && formData.email.trim().length === 0
+          ? "El correo es obligatorio"
+          : "",
+      phone:
+        touched.phone &&
+        formData.phone &&
+        !/^\+?[0-9\s()-]+$/.test(formData.phone)
+          ? "Formato de teléfono inválido"
+          : "",
+      password:
+        touched.password && formData.password.length < 8
+          ? "La contraseña debe tener al menos 8 caracteres"
+          : "",
+      website:
+        touched.website &&
+        formData.website &&
+        !/^https?:\/\/.+/.test(formData.website)
+          ? "La URL debe iniciar con http:// o https://"
+          : "",
+      bio:
+        touched.bio && formData.bio.length > 120
+          ? "La biografía supera el límite"
+          : "",
     };
 
     return (
@@ -354,44 +455,78 @@ export const CompleteForm: Story = {
               label="Full Name"
               value={formData.name}
               onChange={handleChange("name")}
+              onBlur={handleBlur("name")}
               placeholder="John Doe"
               required
+              requiredMessage="El nombre es obligatorio"
+              error={errors.name}
+              icon={<UsersIcon size="sm" />}
             />
 
             <TextInput
               label="Email Address"
               value={formData.email}
               onChange={handleChange("email")}
+              onBlur={handleBlur("email")}
               type="email"
-              validateEmail
+              validateEmail={touched.email}
               placeholder="john@example.com"
               required
+              requiredMessage="El correo es obligatorio"
+              error={errors.email}
+              icon={<EmailIcon size="sm" />}
             />
 
             <TextInput
               label="Phone Number"
               value={formData.phone}
               onChange={handleChange("phone")}
+              onBlur={handleBlur("phone")}
               type="tel"
               placeholder="+1 (555) 123-4567"
+              error={errors.phone}
+              icon={<PhoneIcon size="sm" />}
             />
 
             <TextInput
               label="Password"
               value={formData.password}
               onChange={handleChange("password")}
+              onBlur={handleBlur("password")}
               type="password"
               showPasswordStrength
               required
               hint="Must be at least 8 characters with mixed case, numbers, and symbols"
+              error={errors.password}
             />
 
             <TextInput
               label="Website"
               value={formData.website}
               onChange={handleChange("website")}
+              onBlur={handleBlur("website")}
               type="url"
               placeholder="https://yourwebsite.com"
+              error={errors.website}
+            />
+
+            <TextInput
+              label="Short Bio"
+              value={formData.bio}
+              onChange={handleChange("bio")}
+              onBlur={handleBlur("bio")}
+              placeholder="Tell us about yourself"
+              maxLength={120}
+              hint="Máximo 120 caracteres"
+              error={errors.bio}
+            />
+
+            <TextInput
+              label="Referral Code"
+              value={formData.referral}
+              onChange={handleChange("referral")}
+              disabled
+              hint="Campo deshabilitado"
             />
 
             <button

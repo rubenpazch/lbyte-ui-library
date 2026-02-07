@@ -1,0 +1,137 @@
+.banner {
+  width: 100%;
+  z-index: 40;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.toast {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  animation: toast-in 0.3s ease;
+}
+
+.toastSuccess {
+  background: #ecfdf3;
+  border-bottom: 4px solid #4ade80;
+  color: #14532d;
+}
+
+.toastError {
+  background: #fef2f2;
+  border-bottom: 4px solid #f87171;
+  color: #7f1d1d;
+}
+
+.toastWarning {
+  background: #fffbeb;
+  border-bottom: 4px solid #fbbf24;
+  color: #78350f;
+}
+
+.toastInfo {
+  background: #eff6ff;
+  border-bottom: 4px solid #60a5fa;
+  color: #1e3a8a;
+}
+
+.toastDefault {
+  background: #f9fafb;
+  border-bottom: 4px solid #9ca3af;
+  color: #111827;
+}
+
+.icon {
+  flex-shrink: 0;
+  color: currentColor;
+}
+
+.iconSvg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.content {
+  flex: 1;
+  min-width: 0;
+}
+
+.title {
+  font-weight: 600;
+  font-size: 1rem;
+  margin: 0 0 0.25rem;
+}
+
+.message {
+  font-size: 0.875rem;
+  line-height: 1.4;
+  white-space: pre-line;
+  margin: 0;
+}
+
+.actionButtonBase {
+  flex-shrink: 0;
+  margin-left: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  font-size: 0.875rem;
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease,
+    color 0.2s ease;
+  background: transparent;
+  border: 1px solid transparent;
+  color: currentColor;
+}
+
+.actionButton {
+  background-color: rgba(255, 255, 255, 0.6);
+}
+
+.actionButton:hover {
+  transform: scale(1.02);
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.closeButton {
+  flex-shrink: 0;
+  margin-left: 0.5rem;
+  display: inline-flex;
+  padding: 0.25rem;
+  color: #9ca3af;
+  transition: color 0.2s ease;
+  background: transparent;
+  border: none;
+}
+
+.closeButton:hover {
+  color: #4b5563;
+}
+
+.closeIcon {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .toast {
+    padding: 1rem 1.5rem;
+  }
+}
+
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

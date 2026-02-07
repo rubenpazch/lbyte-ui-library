@@ -8,11 +8,13 @@ import CalendarIcon from "./CalendarIcon";
 import CheckIcon from "./CheckIcon";
 import CheckmarkIcon from "./CheckmarkIcon";
 import ChevronIcon from "./ChevronIcon";
+import ClinicalNotesIcon from "./ClinicalNotesIcon";
 import ArrowLeftIcon from "./ArrowLeftIcon";
 import ArrowRightIcon from "./ArrowRightIcon";
 import CityIcon from "./CityIcon";
 import ClockIcon from "./ClockIcon";
 import CloseIcon from "./CloseIcon";
+import CopyIcon from "./CopyIcon";
 import DocumentIcon from "./DocumentIcon";
 import DownloadIcon from "./DownloadIcon";
 import DragHandleIcon from "./DragHandleIcon";
@@ -21,6 +23,7 @@ import EmailIcon from "./EmailIcon";
 import ErrorIcon from "./ErrorIcon";
 import EyeIcon from "./EyeIcon";
 import FilterIcon from "./FilterIcon";
+import FoldersIcon from "./FoldersIcon";
 import HomeIcon from "./HomeIcon";
 import InfoIcon from "./InfoIcon";
 import LinkIcon from "./LinkIcon";
@@ -31,8 +34,10 @@ import MinusIcon from "./MinusIcon";
 import MoreIcon from "./MoreIcon";
 import NotificationIcon from "./NotificationIcon";
 import PatientIcon from "./PatientIcon";
+import PatientListIcon from "./PatientListIcon";
 import PatientsIcon from "./PatientsIcon";
 import PhoneIcon from "./PhoneIcon";
+import WhatsAppIcon from "./WhatsAppIcon";
 import PlusIcon from "./PlusIcon";
 import PrescriptionIcon from "./PrescriptionIcon";
 import PrintIcon from "./PrintIcon";
@@ -53,6 +58,7 @@ import ZoomOutIcon from "./ZoomOutIcon";
 import { RobotIcon } from "./RobotIcon";
 import GlassesIcon from "./GlassesIcon";
 import CoinsHandIcon from "./CoinsHandIcon";
+import CoinsAcceptedIcon from "./CoinsAcceptedIcon";
 import WalletOpenIcon from "./WalletOpenIcon";
 import EyeCheckIcon from "./EyeCheckIcon";
 import CheckOutIcon from "./CheckOutIcon";
@@ -81,6 +87,11 @@ const allIcons: IconItem[] = [
   // New Icons
   { name: "Glasses", component: GlassesIcon, category: "Actions" },
   { name: "CoinsHand", component: CoinsHandIcon, category: "Actions" },
+  {
+    name: "CoinsAccepted",
+    component: CoinsAcceptedIcon,
+    category: "Business",
+  },
   { name: "WalletOpen", component: WalletOpenIcon, category: "Actions" },
   { name: "EyeCheck", component: EyeCheckIcon, category: "System" },
   { name: "CheckOut", component: CheckOutIcon, category: "Actions" },
@@ -111,6 +122,7 @@ const allIcons: IconItem[] = [
   { name: "Checkmark", component: CheckmarkIcon, category: "Status" },
   { name: "Chevron", component: ChevronIcon, category: "Navigation" },
   { name: "Close", component: CloseIcon, category: "Actions" },
+  { name: "Copy", component: CopyIcon, category: "Actions" },
   { name: "DragHandle", component: DragHandleIcon, category: "Actions" },
   { name: "Edit", component: EditIcon, category: "Actions" },
   { name: "Filter", component: FilterIcon, category: "Actions" },
@@ -134,12 +146,14 @@ const allIcons: IconItem[] = [
   // Files & Documents
   { name: "Document", component: DocumentIcon, category: "Files" },
   { name: "Download", component: DownloadIcon, category: "Files" },
+  { name: "Folders", component: FoldersIcon, category: "Files" },
   { name: "Print", component: PrintIcon, category: "Files" },
   { name: "Upload", component: UploadIcon, category: "Files" },
 
   // Communication
   { name: "Email", component: EmailIcon, category: "Communication" },
   { name: "Phone", component: PhoneIcon, category: "Communication" },
+  { name: "WhatsApp", component: WhatsAppIcon, category: "Communication" },
 
   // Places & Location
   { name: "Branding", component: BrandingIcon, category: "Business" },
@@ -155,6 +169,7 @@ const allIcons: IconItem[] = [
 
   // Users & People
   { name: "Patient", component: PatientIcon, category: "Users" },
+  { name: "PatientList", component: PatientListIcon, category: "Medical" },
   { name: "Patients", component: PatientsIcon, category: "Users" },
   { name: "UserManagement", component: UserManagementIcon, category: "Users" },
   { name: "UserSelect", component: UserSelectIcon, category: "Users" },
@@ -170,6 +185,11 @@ const allIcons: IconItem[] = [
   {
     name: "SystemIdentifier",
     component: SystemIdentifierIcon,
+    category: "Medical",
+  },
+  {
+    name: "ClinicalNotes",
+    component: ClinicalNotesIcon,
     category: "Medical",
   },
 

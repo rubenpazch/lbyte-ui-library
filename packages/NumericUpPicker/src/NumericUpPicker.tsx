@@ -78,6 +78,7 @@ export default function NumericUpPicker({
 }: NumericUpPickerProps) {
   // Track if the field has been touched (user has focused on it)
   const [hasBeenTouched, setHasBeenTouched] = useState(false);
+  const [hasBeenBlurred, setHasBeenBlurred] = useState(false);
   const numValue = typeof value === "string" ? parseFloat(value) || 0 : value;
 
   // Size-based styling
@@ -256,6 +257,7 @@ export default function NumericUpPicker({
   };
 
   const handleBlurWithValidation = () => {
+    setHasBeenBlurred(true);
     const inputValue = value.toString();
 
     // If empty, handle based on required and useMinAsDefault flags
@@ -371,6 +373,32 @@ export default function NumericUpPicker({
   const isEmpty =
     value === "" || value === "-" || value === null || value === undefined;
 
+  const parsedValue =
+    typeof value === "string" ? parseFloat(value.replace(/^\+/, "")) : value;
+  const isNumericValue = !Number.isNaN(parsedValue);
+
+  const isWithinRange = (() => {
+    if (!isNumericValue) return false;
+    if (alwaysNegative) {
+      const absMin = Math.abs(max ?? -0.25);
+      const absMax = Math.abs(min ?? -10.0);
+      const absValue = Math.abs(parsedValue);
+      return absValue >= absMin && absValue <= absMax;
+    }
+    if (min !== undefined && parsedValue < min) return false;
+    if (max !== undefined && parsedValue > max) return false;
+    return true;
+  })();
+
+  const showSuccess =
+    hasBeenBlurred &&
+    !disabled &&
+    !error &&
+    !warning &&
+    !isEmpty &&
+    isNumericValue &&
+    isWithinRange;
+
   // For alwaysNegative fields, we compare absolute values
   const isAtMin =
     !isEmpty &&
@@ -408,7 +436,9 @@ export default function NumericUpPicker({
           containerSize,
           error && styles.stepperError,
           disabled && styles.stepperDisabled,
-          !error && !disabled && styles.stepperNormal,
+          !error &&
+            !disabled &&
+            (showSuccess ? styles.stepperSuccess : styles.stepperNormal),
         )}
         data-testid="stepper-container"
         data-error={!!error}
@@ -450,7 +480,11 @@ export default function NumericUpPicker({
             className={classNames(
               styles.input,
               inputSize,
-              error ? styles.inputError : styles.inputNormal,
+              error
+                ? styles.inputError
+                : showSuccess
+                  ? styles.inputSuccess
+                  : styles.inputNormal,
               clearable && !isEmpty && styles.inputWithClear,
             )}
             style={{
