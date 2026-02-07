@@ -1,6 +1,6 @@
 {
   "name": "@rubenpazch/tabs",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Tabs component",
   "private": false,
   "main": "dist/index.cjs.js",

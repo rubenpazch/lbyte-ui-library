@@ -1,6 +1,6 @@
 {
   "name": "@rubenpazch/shared",
-  "version": "4.0.2",
+  "version": "5.0.0",
   "repository": "https://github.com/rubenpazch/lbyte-ui-library.git",
   "publishConfig": {
     "access": "public"

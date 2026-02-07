@@ -1,6 +1,6 @@
 {
   "name": "@rubenpazch/text-input",
-  "version": "4.0.2",
+  "version": "5.0.0",
   "description": "TextInput component for Lbyte UI library",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",

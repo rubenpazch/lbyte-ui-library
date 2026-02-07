@@ -1,6 +1,6 @@
 {
   "name": "@rubenpazch/confirmation-dialog",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "ConfirmationDialog component",
   "private": false,
   "main": "dist/index.cjs.js",

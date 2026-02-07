@@ -1,5 +1,11 @@
 # @rubenpazch/shared
 
+## 5.0.0
+
+### Major Changes
+
+- dd69442: new components
+
 ## 4.0.2
 
 ### Patch Changes

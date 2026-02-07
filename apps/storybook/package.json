@@ -1,6 +1,6 @@
 {
   "name": "@rubenpazch/storybook",
-  "version": "4.0.2",
+  "version": "5.0.0",
   "private": true,
   "description": "Storybook documentation for Lbyte UI components",
   "scripts": {
