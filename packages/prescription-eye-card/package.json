@@ -35,8 +35,7 @@
     "react-dom": "^19.0.0"
   },
   "dependencies": {
-    "@rubenpazch/checkbox-input": "workspace:^",
-    "@rubenpazch/prescription-field-card": "workspace:^"
+    "@rubenpazch/checkbox-input": "workspace:*"
   },
   "devDependencies": {
     "@rubenpazch/typescript-config": "workspace:*"

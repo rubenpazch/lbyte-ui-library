@@ -697,6 +697,12 @@ importers:
 
   packages/identification-input:
     dependencies:
+      '@rubenpazch/autocomplete':
+        specifier: workspace:^
+        version: link:../autocomplete
+      '@rubenpazch/text-input':
+        specifier: workspace:^
+        version: link:../text-input
       react:
         specifier: ^19.0.0
         version: 19.2.4
@@ -710,6 +716,12 @@ importers:
 
   packages/image-upload:
     dependencies:
+      '@rubenpazch/button':
+        specifier: workspace:^
+        version: link:../button
+      '@rubenpazch/icons':
+        specifier: workspace:^
+        version: link:../icons
       react:
         specifier: ^19.0.0
         version: 19.2.4
@@ -816,6 +828,18 @@ importers:
 
   packages/patient-details:
     dependencies:
+      '@rubenpazch/button':
+        specifier: workspace:^
+        version: link:../button
+      '@rubenpazch/icon-button':
+        specifier: workspace:^
+        version: link:../icon-button
+      '@rubenpazch/icons':
+        specifier: workspace:^
+        version: link:../icons
+      '@rubenpazch/info-row':
+        specifier: workspace:^
+        version: link:../info-row
       react:
         specifier: ^19.0.0
         version: 19.2.4
@@ -842,6 +866,15 @@ importers:
 
   packages/prescription-card:
     dependencies:
+      '@rubenpazch/chip':
+        specifier: workspace:^
+        version: link:../chip
+      '@rubenpazch/icon-button':
+        specifier: workspace:^
+        version: link:../icon-button
+      '@rubenpazch/icons':
+        specifier: workspace:^
+        version: link:../icons
       react:
         specifier: ^19.0.0
         version: 19.2.4
@@ -855,19 +888,9 @@ importers:
 
   packages/prescription-eye-card:
     dependencies:
-      react:
-        specifier: ^19.0.0
-        version: 19.2.4
-      react-dom:
-        specifier: ^19.0.0
-        version: 19.2.4(react@19.2.4)
-    devDependencies:
-      '@rubenpazch/typescript-config':
+      '@rubenpazch/checkbox-input':
         specifier: workspace:*
-        version: link:../../tooling/typescript-config
-
-  packages/prescription-field-card:
-    dependencies:
+        version: link:../checkbox-input
       react:
         specifier: ^19.0.0
         version: 19.2.4
@@ -996,6 +1019,19 @@ importers:
         specifier: workspace:*
         version: link:../../tooling/typescript-config
 
+  packages/tabs:
+    dependencies:
+      react:
+        specifier: ^19.0.0
+        version: 19.2.4
+      react-dom:
+        specifier: ^19.0.0
+        version: 19.2.4(react@19.2.4)
+    devDependencies:
+      '@rubenpazch/typescript-config':
+        specifier: workspace:*
+        version: link:../../tooling/typescript-config
+
   packages/text-input:
     dependencies:
       '@rubenpazch/shared':
@@ -1083,19 +1119,9 @@ importers:
 
   packages/toast:
     dependencies:
-      react:
-        specifier: ^19.0.0
-        version: 19.2.4
-      react-dom:
-        specifier: ^19.0.0
-        version: 19.2.4(react@19.2.4)
-    devDependencies:
-      '@rubenpazch/typescript-config':
+      '@rubenpazch/icons':
         specifier: workspace:*
-        version: link:../../tooling/typescript-config
-
-  packages/tour-card:
-    dependencies:
+        version: link:../icons
       react:
         specifier: ^19.0.0
         version: 19.2.4
