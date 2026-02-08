@@ -357,7 +357,8 @@ const DatePicker: React.FC<DatePickerProps> = ({
   // Check if date is selected
   const isSelected = (day: number): boolean => {
     if (!value) return false;
-    const selectedDate = new Date(value);
+    const selectedDate = parseIsoDate(value);
+    if (!selectedDate) return false;
     return (
       day === selectedDate.getDate() &&
       currentMonth.getMonth() === selectedDate.getMonth() &&
@@ -376,7 +377,8 @@ const DatePicker: React.FC<DatePickerProps> = ({
   // Check if month is selected
   const isSelectedMonth = (monthIndex: number): boolean => {
     if (!value) return false;
-    const selectedDate = new Date(value);
+    const selectedDate = parseIsoDate(value);
+    if (!selectedDate) return false;
     return (
       monthIndex === selectedDate.getMonth() &&
       currentYear === selectedDate.getFullYear()
@@ -392,7 +394,8 @@ const DatePicker: React.FC<DatePickerProps> = ({
   // Check if year is selected
   const isSelectedYear = (year: number): boolean => {
     if (!value) return false;
-    const selectedDate = new Date(value);
+    const selectedDate = parseIsoDate(value);
+    if (!selectedDate) return false;
     return year === selectedDate.getFullYear();
   };
 
@@ -416,8 +419,7 @@ const DatePicker: React.FC<DatePickerProps> = ({
   // Handle today button
   const handleToday = () => {
     const today = new Date();
-    const isoString = today.toISOString().split("T")[0];
-    onChange(isoString);
+    onChange(toIsoDateString(today));
     setInputValue(formatDate(today));
     setCurrentMonth(today);
     setCurrentYear(today.getFullYear());
