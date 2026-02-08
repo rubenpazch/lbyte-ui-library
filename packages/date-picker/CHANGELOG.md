@@ -1,5 +1,11 @@
 # @rubenpazch/date-picker
 
+## 2.0.1
+
+### Patch Changes
+
+- datepciker
+
 ## 2.0.0
 
 ### Major Changes
