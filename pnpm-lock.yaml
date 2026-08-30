@@ -465,6 +465,9 @@ importers:
       '@rubenpazch/shared':
         specifier: workspace:*
         version: link:../shared
+      '@rubenpazch/tokens':
+        specifier: workspace:*
+        version: link:../tokens
       react:
         specifier: 19.2.8
         version: 19.2.8
