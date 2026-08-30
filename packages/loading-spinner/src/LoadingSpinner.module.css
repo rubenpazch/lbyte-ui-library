@@ -43,15 +43,15 @@
 
 /* Colors - spinner */
 .colorBlue {
-  border-color: #2563eb;
+  border-color: var(--lb-color-primary);
 }
 
 .colorGray {
-  border-color: #4b5563;
+  border-color: var(--lb-color-neutral-600);
 }
 
 .colorWhite {
-  border-color: #ffffff;
+  border-color: var(--lb-color-primary-foreground);
 }
 
 /* Spinner transparent borders */
@@ -94,15 +94,15 @@
 
 /* Dot colors */
 .dotColorBlue {
-  background-color: #2563eb;
+  background-color: var(--lb-color-primary);
 }
 
 .dotColorGray {
-  background-color: #4b5563;
+  background-color: var(--lb-color-neutral-600);
 }
 
 .dotColorWhite {
-  background-color: #ffffff;
+  background-color: var(--lb-color-primary-foreground);
 }
 
 /* Dot */
@@ -152,15 +152,15 @@
 }
 
 .ringSpinnerBlue {
-  border-top-color: #2563eb;
+  border-top-color: var(--lb-color-primary);
 }
 
 .ringSpinnerGray {
-  border-top-color: #4b5563;
+  border-top-color: var(--lb-color-neutral-600);
 }
 
 .ringSpinnerWhite {
-  border-top-color: #ffffff;
+  border-top-color: var(--lb-color-primary-foreground);
 }
 
 .ringTransparent {
@@ -171,7 +171,7 @@
 
 /* Message */
 .message {
-  color: #4b5563;
+  color: var(--lb-color-neutral-600);
   font-size: 0.875rem;
   line-height: 1.25rem;
   margin-top: 0.5rem;

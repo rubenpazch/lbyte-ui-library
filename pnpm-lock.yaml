@@ -604,6 +604,9 @@ importers:
       '@dnd-kit/utilities':
         specifier: ^3.2.2
         version: 3.2.2(react@19.2.8)
+      '@rubenpazch/tokens':
+        specifier: workspace:*
+        version: link:../tokens
       react:
         specifier: 19.2.8
         version: 19.2.8
@@ -782,6 +785,9 @@ importers:
 
   packages/loading-spinner:
     dependencies:
+      '@rubenpazch/tokens':
+        specifier: workspace:*
+        version: link:../tokens
       react:
         specifier: 19.2.8
         version: 19.2.8
