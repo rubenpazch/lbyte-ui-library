@@ -8,11 +8,11 @@
   display: block;
   font-size: 0.875rem;
   font-weight: 500;
-  color: #374151;
+  color: var(--lb-color-neutral-700);
 }
 
 .required {
-  color: #ef4444;
+  color: var(--lb-color-red-accent);
   margin-left: 0.25rem;
 }
 
@@ -23,13 +23,13 @@
 .inputContainer {
   display: flex;
   align-items: center;
-  border: 1px solid #d1d5db;
+  border: 1px solid var(--lb-color-neutral-300);
   border-radius: 0.5rem;
   overflow: hidden;
   transition:
     border-color 150ms ease,
     box-shadow 150ms ease;
-  background: #ffffff;
+  background: var(--lb-color-background);
 }
 
 .inputContainer:focus-within {
@@ -38,7 +38,7 @@
 }
 
 .inputError {
-  border-color: #ef4444;
+  border-color: var(--lb-color-red-accent);
 }
 
 .inputError:focus-within {
@@ -46,30 +46,30 @@
 }
 
 .inputDisabled {
-  background: #f3f4f6;
+  background: var(--lb-color-neutral-100);
 }
 
 .input {
   flex: 1;
   padding: 0.5rem 1rem;
   font-size: 0.875rem;
-  color: #111827;
+  color: var(--lb-color-foreground);
   border: none;
   outline: none;
   background: transparent;
 }
 
 .input::placeholder {
-  color: #9ca3af;
+  color: var(--lb-color-neutral-400);
 }
 
 .input:disabled {
-  color: #6b7280;
+  color: var(--lb-color-neutral-500);
 }
 
 .iconButton {
   padding: 0.5rem 0.75rem;
-  color: #6b7280;
+  color: var(--lb-color-neutral-500);
   background: transparent;
   border: none;
   cursor: pointer;
@@ -79,7 +79,7 @@
 }
 
 .iconButton:hover:not(:disabled) {
-  color: #374151;
+  color: var(--lb-color-neutral-700);
 }
 
 .iconButton:disabled {
@@ -98,8 +98,8 @@
   left: 0;
   z-index: 50;
   width: 20rem;
-  background: #ffffff;
-  border: 1px solid #d1d5db;
+  background: var(--lb-color-background);
+  border: 1px solid var(--lb-color-neutral-300);
   border-radius: 0.75rem;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
@@ -109,7 +109,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 1rem;
-  border-bottom: 1px solid #e5e7eb;
+  border-bottom: 1px solid var(--lb-color-neutral-200);
 }
 
 .navButton {
@@ -122,14 +122,14 @@
 }
 
 .navButton:hover {
-  background: #f3f4f6;
+  background: var(--lb-color-neutral-100);
 }
 
 .navIconPrev,
 .navIconNext {
   width: 1.25rem;
   height: 1.25rem;
-  color: #4b5563;
+  color: var(--lb-color-neutral-600);
 }
 
 .navIconPrev {
@@ -145,7 +145,7 @@
   text-align: center;
   font-size: 1rem;
   font-weight: 600;
-  color: #111827;
+  color: var(--lb-color-foreground);
 }
 
 .dayNames {
@@ -153,14 +153,14 @@
   grid-template-columns: repeat(7, 1fr);
   gap: 0.25rem;
   padding: 0.75rem 1rem 0.5rem;
-  border-bottom: 1px solid #e5e7eb;
+  border-bottom: 1px solid var(--lb-color-neutral-200);
 }
 
 .dayName {
   text-align: center;
   font-size: 0.75rem;
   font-weight: 600;
-  color: #6b7280;
+  color: var(--lb-color-neutral-500);
   padding: 0.5rem 0;
 }
 
@@ -191,35 +191,35 @@
 }
 
 .daySelectable {
-  color: #111827;
+  color: var(--lb-color-foreground);
   cursor: pointer;
 }
 
 .daySelectable:hover {
-  background: #f3f4f6;
+  background: var(--lb-color-neutral-100);
 }
 
 .daySelected {
-  background: #2563eb;
-  color: #ffffff;
+  background: var(--lb-color-primary);
+  color: var(--lb-color-background);
 }
 
 .daySelected:hover {
-  background: #1d4ed8;
+  background: var(--lb-color-primary-hover);
 }
 
 .dayToday {
-  background: #eff6ff;
-  color: #2563eb;
-  border: 2px solid #bfdbfe;
+  background: var(--lb-color-blue-subtle);
+  color: var(--lb-color-primary);
+  border: 2px solid var(--lb-color-blue-border);
 }
 
 .dayToday:hover {
-  background: #dbeafe;
+  background: var(--lb-color-blue-subtle);
 }
 
 .dayDisabled {
-  color: #d1d5db;
+  color: var(--lb-color-neutral-300);
   cursor: not-allowed;
 }
 
@@ -228,7 +228,7 @@
   flex-wrap: wrap;
   gap: 0.5rem;
   padding: 1rem;
-  border-top: 1px solid #e5e7eb;
+  border-top: 1px solid var(--lb-color-neutral-200);
 }
 
 .actionButton {
@@ -238,7 +238,7 @@
 .hint {
   margin-top: 0.25rem;
   font-size: 0.75rem;
-  color: #6b7280;
+  color: var(--lb-color-neutral-500);
 }
 
 .errorRow {
@@ -251,12 +251,12 @@
 .errorIcon {
   width: 1rem;
   height: 1rem;
-  color: #ef4444;
+  color: var(--lb-color-red-accent);
   flex-shrink: 0;
   margin-top: 0.125rem;
 }
 
 .errorText {
   font-size: 0.875rem;
-  color: #dc2626;
+  color: var(--lb-color-danger);
 }

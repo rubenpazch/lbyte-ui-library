@@ -240,6 +240,9 @@ importers:
 
   packages/NumericPicker:
     dependencies:
+      '@rubenpazch/tokens':
+        specifier: workspace:*
+        version: link:../tokens
       react:
         specifier: 19.2.8
         version: 19.2.8
@@ -256,6 +259,9 @@ importers:
       '@rubenpazch/icons':
         specifier: workspace:*
         version: link:../icons
+      '@rubenpazch/tokens':
+        specifier: workspace:*
+        version: link:../tokens
       react:
         specifier: 19.2.8
         version: 19.2.8
@@ -275,6 +281,9 @@ importers:
       '@rubenpazch/loading-spinner':
         specifier: workspace:*
         version: link:../loading-spinner
+      '@rubenpazch/tokens':
+        specifier: workspace:*
+        version: link:../tokens
       react:
         specifier: 19.2.8
         version: 19.2.8
@@ -563,6 +572,9 @@ importers:
       '@rubenpazch/icons':
         specifier: workspace:*
         version: link:../icons
+      '@rubenpazch/tokens':
+        specifier: workspace:*
+        version: link:../tokens
       react:
         specifier: 19.2.8
         version: 19.2.8
@@ -585,6 +597,9 @@ importers:
       '@rubenpazch/icons':
         specifier: workspace:*
         version: link:../icons
+      '@rubenpazch/tokens':
+        specifier: workspace:*
+        version: link:../tokens
       react:
         specifier: 19.2.8
         version: 19.2.8
@@ -759,6 +774,9 @@ importers:
       '@rubenpazch/icons':
         specifier: workspace:^
         version: link:../icons
+      '@rubenpazch/tokens':
+        specifier: workspace:*
+        version: link:../tokens
       react:
         specifier: 19.2.8
         version: 19.2.8
@@ -984,6 +1002,9 @@ importers:
       '@rubenpazch/icons':
         specifier: workspace:*
         version: link:../icons
+      '@rubenpazch/tokens':
+        specifier: workspace:*
+        version: link:../tokens
       react:
         specifier: 19.2.8
         version: 19.2.8

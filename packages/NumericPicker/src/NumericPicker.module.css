@@ -9,12 +9,12 @@
   font-size: 0.875rem;
   line-height: 1.25rem;
   font-weight: 600;
-  color: #374151;
+  color: var(--lb-color-neutral-700);
   margin-bottom: 0.25rem;
 }
 
 .required {
-  color: #dc2626;
+  color: var(--lb-color-danger);
 }
 
 /* Input container */
@@ -28,7 +28,7 @@
   left: 0.75rem;
   top: 50%;
   transform: translateY(-50%);
-  color: #4b5563;
+  color: var(--lb-color-neutral-600);
   font-weight: 500;
   pointer-events: none;
 }
@@ -37,20 +37,20 @@
 .input {
   width: 100%;
   padding: 0.625rem 3rem;
-  border: 2px solid #d1d5db;
+  border: 2px solid var(--lb-color-neutral-300);
   border-radius: 0.5rem;
   outline: none;
   transition: all 150ms ease;
 }
 
 .input:focus {
-  border-color: #3b82f6;
-  box-shadow: 0 0 0 1px #3b82f6;
+  border-color: var(--lb-color-blue-accent);
+  box-shadow: 0 0 0 1px var(--lb-color-blue-accent);
 }
 
 .input:disabled {
-  background: #f9fafb;
-  color: #6b7280;
+  background: var(--lb-color-neutral-50);
+  color: var(--lb-color-neutral-500);
   cursor: not-allowed;
 }
 
@@ -68,7 +68,7 @@
 /* Buttons */
 .button {
   padding: 0.25rem 0.5rem;
-  background: #f3f4f6;
+  background: var(--lb-color-neutral-100);
   border: none;
   border-radius: 0.125rem;
   transition: all 150ms ease;
@@ -79,12 +79,12 @@
 }
 
 .button:hover:not(:disabled) {
-  background: #e5e7eb;
+  background: var(--lb-color-neutral-200);
 }
 
 .button:disabled {
-  background: #f9fafb;
-  color: #d1d5db;
+  background: var(--lb-color-neutral-50);
+  color: var(--lb-color-neutral-300);
   cursor: not-allowed;
 }
 

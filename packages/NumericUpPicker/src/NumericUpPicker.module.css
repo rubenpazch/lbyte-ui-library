@@ -27,15 +27,15 @@
 }
 
 .labelError {
-  color: #b91c1c;
+  color: var(--lb-color-red-strong);
 }
 
 .labelNormal {
-  color: #374151;
+  color: var(--lb-color-neutral-700);
 }
 
 .required {
-  color: #ef4444;
+  color: var(--lb-color-red-accent);
   margin-left: 0.25rem;
 }
 
@@ -62,23 +62,23 @@
 }
 
 .stepperNormal {
-  border-color: #d1d5db;
-  background: #f9fafb;
+  border-color: var(--lb-color-neutral-300);
+  background: var(--lb-color-neutral-50);
 }
 
 .stepperError {
-  border-color: #ef4444;
-  background: #fef2f2;
+  border-color: var(--lb-color-red-accent);
+  background: var(--lb-color-red-subtle);
 }
 
 .stepperSuccess {
-  border-color: #10b981;
-  background: #ecfdf5;
+  border-color: var(--lb-color-emerald-accent);
+  background: var(--lb-color-emerald-subtle);
 }
 
 .stepperDisabled {
-  border-color: #d1d5db;
-  background: #f3f4f6;
+  border-color: var(--lb-color-neutral-300);
+  background: var(--lb-color-neutral-100);
   opacity: 0.5;
   cursor: not-allowed;
 }
@@ -109,33 +109,33 @@
 }
 
 .buttonLeft {
-  border-right: 1px solid #d1d5db;
+  border-right: 1px solid var(--lb-color-neutral-300);
 }
 
 .buttonRight {
-  border-left: 1px solid #d1d5db;
+  border-left: 1px solid var(--lb-color-neutral-300);
 }
 
 .buttonNormal {
-  color: #4b5563;
+  color: var(--lb-color-neutral-600);
 }
 
 .buttonNormal:hover:not(:disabled) {
-  background: #f3f4f6;
+  background: var(--lb-color-neutral-100);
 }
 
 .buttonNormal:active:not(:disabled) {
-  background: #e5e7eb;
+  background: var(--lb-color-neutral-200);
 }
 
 .buttonError {
-  color: #ef4444;
+  color: var(--lb-color-red-accent);
 }
 
 .button:disabled {
   opacity: 0.4;
   cursor: not-allowed;
-  color: #9ca3af;
+  color: var(--lb-color-neutral-400);
 }
 
 /* Input */
@@ -162,7 +162,7 @@
 }
 
 .input::placeholder {
-  color: #9ca3af;
+  color: var(--lb-color-neutral-400);
 }
 
 .inputSmall {
@@ -181,15 +181,15 @@
 }
 
 .inputError {
-  color: #b91c1c;
+  color: var(--lb-color-red-strong);
 }
 
 .inputSuccess {
-  color: #047857;
+  color: var(--lb-color-emerald-strong);
 }
 
 .inputNormal {
-  color: #111827;
+  color: var(--lb-color-foreground);
 }
 
 .inputWithClear {
@@ -222,18 +222,18 @@
   border-radius: 9999px;
   background: transparent;
   border: none;
-  color: #6b7280;
+  color: var(--lb-color-neutral-500);
   cursor: pointer;
   transition: all 150ms ease;
 }
 
 .clearButton:hover {
-  background: #e5e7eb;
-  color: #374151;
+  background: var(--lb-color-neutral-200);
+  color: var(--lb-color-neutral-700);
 }
 
 .clearButton:active {
-  background: #d1d5db;
+  background: var(--lb-color-neutral-300);
 }
 
 .clearIcon {
@@ -260,24 +260,24 @@
 }
 
 .errorMessage .messageIcon {
-  color: #ef4444;
+  color: var(--lb-color-red-accent);
 }
 
 .errorMessage .messageText {
-  color: #dc2626;
+  color: var(--lb-color-danger);
   font-weight: 500;
 }
 
 .warningMessage .messageIcon {
-  color: #f59e0b;
+  color: var(--lb-color-warning);
 }
 
 .warningMessage .messageText {
-  color: #b45309;
+  color: var(--lb-color-amber-strong);
 }
 
 .hintMessage .messageText {
   font-size: 0.75rem;
   line-height: 1rem;
-  color: #6b7280;
+  color: var(--lb-color-neutral-500);
 }

@@ -9,7 +9,7 @@
 .label {
   font-size: 0.875rem;
   font-weight: 600;
-  color: #374151;
+  color: var(--lb-color-neutral-700);
 }
 
 .content {
@@ -20,10 +20,10 @@
 
 .dropzone {
   position: relative;
-  border: 2px dashed #d1d5db;
+  border: 2px dashed var(--lb-color-neutral-300);
   border-radius: 0.75rem;
   padding: 1.5rem;
-  background: #ffffff;
+  background: var(--lb-color-background);
   transition:
     border-color 150ms ease,
     background-color 150ms ease;
@@ -31,8 +31,8 @@
 }
 
 .dropzoneActive {
-  border-color: #3b82f6;
-  background: #eff6ff;
+  border-color: var(--lb-color-blue-accent);
+  background: var(--lb-color-blue-subtle);
 }
 
 .dropzoneDisabled {
@@ -41,7 +41,7 @@
 }
 
 .dropzoneFilled {
-  background: #f9fafb;
+  background: var(--lb-color-neutral-50);
 }
 
 .inputHidden {
@@ -54,12 +54,12 @@
 
 .uploadingIcon {
   margin: 0 auto 0.5rem;
-  color: #2563eb;
+  color: var(--lb-color-primary);
 }
 
 .uploadingText {
   font-size: 0.875rem;
-  color: #4b5563;
+  color: var(--lb-color-neutral-600);
 }
 
 .preview {
@@ -91,13 +91,13 @@
 .pdfIcon {
   width: 4rem;
   height: 4rem;
-  color: #dc2626;
+  color: var(--lb-color-danger);
 }
 
 .pdfLabel {
   font-size: 0.875rem;
   font-weight: 600;
-  color: #4b5563;
+  color: var(--lb-color-neutral-600);
 }
 
 .linkGroup {
@@ -107,22 +107,22 @@
 
 .linkPrimary {
   font-size: 0.875rem;
-  color: #2563eb;
+  color: var(--lb-color-primary);
   text-decoration: underline;
 }
 
 .linkPrimary:hover {
-  color: #1d4ed8;
+  color: var(--lb-color-primary-hover);
 }
 
 .linkSecondary {
   font-size: 0.875rem;
-  color: #16a34a;
+  color: var(--lb-color-success);
   text-decoration: underline;
 }
 
 .linkSecondary:hover {
-  color: #15803d;
+  color: var(--lb-color-emerald-strong);
 }
 
 .actions {
@@ -136,41 +136,41 @@
 
 .uploadIcon {
   margin: 0 auto;
-  color: #9ca3af;
+  color: var(--lb-color-neutral-400);
 }
 
 .promptText {
   margin-top: 0.5rem;
   font-size: 0.875rem;
-  color: #4b5563;
+  color: var(--lb-color-neutral-600);
 }
 
 .promptAction {
   font-weight: 600;
-  color: #2563eb;
+  color: var(--lb-color-primary);
 }
 
 .helperText {
   margin-top: 0.25rem;
   font-size: 0.75rem;
-  color: #6b7280;
+  color: var(--lb-color-neutral-500);
 }
 
 .error {
   border-radius: 0.5rem;
-  background: #fef2f2;
+  background: var(--lb-color-red-subtle);
   padding: 1rem;
 }
 
 .errorTitle {
   font-size: 0.875rem;
   font-weight: 600;
-  color: #991b1b;
+  color: var(--lb-color-red-strong);
   margin: 0;
 }
 
 .errorMessage {
   margin-top: 0.5rem;
   font-size: 0.875rem;
-  color: #b91c1c;
+  color: var(--lb-color-red-strong);
 }

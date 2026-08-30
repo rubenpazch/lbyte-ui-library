@@ -30,7 +30,7 @@
 }
 
 .icon {
-  color: #9ca3af;
+  color: var(--lb-color-neutral-400);
 }
 
 .iconSM {
@@ -50,17 +50,17 @@
 
 .input {
   width: 100%;
-  border: 2px solid #d1d5db;
+  border: 2px solid var(--lb-color-neutral-300);
   border-radius: 0.5rem;
   outline: none;
-  background: #ffffff;
+  background: var(--lb-color-background);
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-  color: #111827;
+  color: var(--lb-color-foreground);
 }
 
 .input:focus {
   border-color: transparent;
-  box-shadow: 0 0 0 2px #3b82f6;
+  box-shadow: 0 0 0 2px var(--lb-color-blue-accent);
 }
 
 .inputSM {
@@ -88,7 +88,7 @@
 }
 
 .spinner {
-  color: #2563eb;
+  color: var(--lb-color-primary);
 }
 
 .dropdown {
@@ -96,9 +96,9 @@
   z-index: 50;
   width: 100%;
   margin-top: 0.5rem;
-  background: #ffffff;
+  background: var(--lb-color-background);
   border-radius: 0.75rem;
-  border: 1px solid #e5e7eb;
+  border: 1px solid var(--lb-color-neutral-200);
   box-shadow:
     0 20px 25px -5px rgba(0, 0, 0, 0.1),
     0 10px 10px -5px rgba(0, 0, 0, 0.04);
@@ -111,8 +111,8 @@
   font-size: 0.75rem;
   font-weight: 600;
   text-transform: uppercase;
-  color: #6b7280;
-  background: #f9fafb;
+  color: var(--lb-color-neutral-500);
+  background: var(--lb-color-neutral-50);
 }
 
 .resultButton {
@@ -121,17 +121,17 @@
   text-align: left;
   background: transparent;
   border: none;
-  border-bottom: 1px solid #f3f4f6;
+  border-bottom: 1px solid var(--lb-color-neutral-100);
   cursor: pointer;
   transition: background-color 0.2s ease;
 }
 
 .resultButton:hover {
-  background: #eff6ff;
+  background: var(--lb-color-blue-subtle);
 }
 
 .resultButtonHighlighted {
-  background: #eff6ff;
+  background: var(--lb-color-blue-subtle);
 }
 
 .resultContent {
@@ -143,7 +143,7 @@
 .avatar {
   width: 2.5rem;
   height: 2.5rem;
-  background: #dbeafe;
+  background: var(--lb-color-blue-subtle);
   border-radius: 9999px;
   display: flex;
   align-items: center;
@@ -152,7 +152,7 @@
 }
 
 .avatarText {
-  color: #2563eb;
+  color: var(--lb-color-primary);
   font-weight: 500;
   font-size: 0.875rem;
 }
@@ -165,13 +165,13 @@
 .patientName {
   font-size: 0.875rem;
   font-weight: 500;
-  color: #111827;
+  color: var(--lb-color-foreground);
   margin: 0;
 }
 
 .patientEmail {
   font-size: 0.875rem;
-  color: #6b7280;
+  color: var(--lb-color-neutral-500);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -180,7 +180,7 @@
 
 .patientDni {
   font-size: 0.75rem;
-  color: #9ca3af;
+  color: var(--lb-color-neutral-400);
   margin: 0;
 }
 
@@ -194,13 +194,13 @@
 }
 
 .statusActive {
-  background: #d1fae5;
-  color: #065f46;
+  background: var(--lb-color-emerald-subtle);
+  color: var(--lb-color-emerald-strong);
 }
 
 .statusInactive {
-  background: #f3f4f6;
-  color: #1f2937;
+  background: var(--lb-color-neutral-100);
+  color: var(--lb-color-neutral-800);
 }
 
 .noResults {
@@ -210,19 +210,19 @@
 
 .noResultsIcon {
   margin: 0 auto;
-  color: #9ca3af;
+  color: var(--lb-color-neutral-400);
 }
 
 .noResultsTitle {
   margin-top: 0.5rem;
   font-size: 0.875rem;
-  color: #4b5563;
+  color: var(--lb-color-neutral-600);
 }
 
 .noResultsHint {
   margin-top: 0.25rem;
   font-size: 0.75rem;
-  color: #6b7280;
+  color: var(--lb-color-neutral-500);
 }
 
 .createButton {
@@ -231,17 +231,17 @@
   text-align: left;
   background: transparent;
   border: none;
-  border-top: 2px solid #e5e7eb;
+  border-top: 2px solid var(--lb-color-neutral-200);
   cursor: pointer;
   transition: background-color 0.2s ease;
 }
 
 .createButton:hover {
-  background: #ecfdf3;
+  background: var(--lb-color-emerald-subtle);
 }
 
 .createButtonHighlighted {
-  background: #ecfdf3;
+  background: var(--lb-color-emerald-subtle);
 }
 
 .createContent {
@@ -253,7 +253,7 @@
 .createIconWrapper {
   width: 2.5rem;
   height: 2.5rem;
-  background: #dcfce7;
+  background: var(--lb-color-emerald-subtle);
   border-radius: 9999px;
   display: flex;
   align-items: center;
@@ -261,23 +261,23 @@
 }
 
 .createIcon {
-  color: #16a34a;
+  color: var(--lb-color-success);
 }
 
 .createTitle {
   font-size: 0.875rem;
   font-weight: 500;
-  color: #16a34a;
+  color: var(--lb-color-success);
   margin: 0;
 }
 
 .createSubtitle {
   margin-top: 0.125rem;
   font-size: 0.75rem;
-  color: #6b7280;
+  color: var(--lb-color-neutral-500);
 }
 
 .highlight {
-  background: #fde68a;
+  background: var(--lb-color-amber-border);
   font-weight: 600;
 }
