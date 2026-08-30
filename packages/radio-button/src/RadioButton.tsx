@@ -3,11 +3,7 @@ import styles from "./RadioButton.module.css";
 
 export type RadioSize = "sm" | "md" | "lg";
 export type RadioVariant =
-  | "default"
-  | "primary"
-  | "success"
-  | "warning"
-  | "danger";
+  "default" | "primary" | "success" | "warning" | "danger";
 
 export interface RadioButtonProps {
   id?: string;

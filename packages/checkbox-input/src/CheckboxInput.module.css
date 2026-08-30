@@ -33,7 +33,10 @@
 .checkbox:focus-visible {
   outline: none;
   box-shadow: 0 0 0 2px
-    var(--focus-ring, color-mix(in srgb, var(--lb-color-primary) 30%, transparent));
+    var(
+      --focus-ring,
+      color-mix(in srgb, var(--lb-color-primary) 30%, transparent)
+    );
 }
 
 .checkboxDisabled {

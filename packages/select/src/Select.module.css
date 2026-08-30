@@ -17,7 +17,8 @@
 .select {
   appearance: none;
   width: 100%;
-  padding: var(--lb-space-2) var(--lb-space-8) var(--lb-space-2) var(--lb-space-3);
+  padding: var(--lb-space-2) var(--lb-space-8) var(--lb-space-2)
+    var(--lb-space-3);
   font-family: var(--lb-font-sans);
   font-size: var(--lb-font-size-md);
   font-weight: var(--lb-font-weight-medium);

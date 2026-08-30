@@ -78,12 +78,7 @@ const suggestEmailCorrection = (email: string): string | null => {
 };
 
 type PasswordStrengthKey =
-  | "none"
-  | "weak"
-  | "fair"
-  | "good"
-  | "strong"
-  | "very-strong";
+  "none" | "weak" | "fair" | "good" | "strong" | "very-strong";
 
 type PasswordRequirementsLabels = {
   lowercase: string;

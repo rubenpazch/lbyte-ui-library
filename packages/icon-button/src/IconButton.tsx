@@ -14,10 +14,7 @@ export type IconButtonSize = "small" | "medium";
 export type IconButtonShape = "rounded" | "square";
 export type IconButtonFocusStyle = "filled" | "outline" | "underline";
 export type IconButtonFocusTrigger =
-  | "self"
-  | "sibling"
-  | "parent"
-  | "grandparent";
+  "self" | "sibling" | "parent" | "grandparent";
 export type IconPosition = "start" | "end";
 export type LabelPosition = "start" | "end" | "top" | "bottom";
 export type TooltipPosition = "top" | "bottom" | "left" | "right";

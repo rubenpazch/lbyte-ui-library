@@ -3,12 +3,7 @@ import styles from "./Button.module.css";
 
 export type ButtonVariant = "text" | "contained" | "outlined";
 export type ButtonColor =
-  | "primary"
-  | "secondary"
-  | "success"
-  | "error"
-  | "warning"
-  | "info";
+  "primary" | "secondary" | "success" | "error" | "warning" | "info";
 export type ButtonSize = "small" | "medium" | "large";
 
 type ButtonBaseProps = {

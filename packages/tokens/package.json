@@ -29,15 +29,15 @@
     "clean": "rm -rf dist"
   },
   "devDependencies": {
-    "@rollup/plugin-commonjs": "^28.0.2",
-    "@rollup/plugin-node-resolve": "^16.0.0",
-    "@rollup/plugin-terser": "^0.4.3",
+    "@rollup/plugin-commonjs": "^29.0.3",
+    "@rollup/plugin-node-resolve": "^16.0.3",
+    "@rollup/plugin-terser": "^1.0.0",
     "@rubenpazch/eslint-config": "workspace:*",
     "@rubenpazch/typescript-config": "workspace:*",
-    "rollup": "^4.29.1",
-    "rollup-plugin-dts": "^6.1.0",
-    "rollup-plugin-typescript2": "^0.36.0",
-    "tslib": "^2.5.2",
-    "typescript": "^5.0.4"
+    "rollup": "^4.63.1",
+    "rollup-plugin-dts": "^6.5.1",
+    "rollup-plugin-typescript2": "^0.37.0",
+    "tslib": "^2.8.1",
+    "typescript": "^6.0.3"
   }
 }

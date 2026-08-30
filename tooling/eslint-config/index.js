@@ -35,7 +35,11 @@ export default [
   {
     // Stories and tests use patterns (Storybook render hooks, type shims,
     // triple-slash refs) that are fine in those contexts.
-    files: ["**/*.stories.{ts,tsx}", "**/*.test.{ts,tsx}", "**/*.spec.{ts,tsx}"],
+    files: [
+      "**/*.stories.{ts,tsx}",
+      "**/*.test.{ts,tsx}",
+      "**/*.spec.{ts,tsx}",
+    ],
     rules: {
       "react-hooks/rules-of-hooks": "off",
       "@typescript-eslint/no-unused-vars": "off",

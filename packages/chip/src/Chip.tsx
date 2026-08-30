@@ -4,12 +4,7 @@ import styles from "./Chip.module.css";
 
 export type ChipVariant = "filled" | "outlined" | "soft";
 export type ChipColor =
-  | "default"
-  | "primary"
-  | "success"
-  | "warning"
-  | "error"
-  | "info";
+  "default" | "primary" | "success" | "warning" | "error" | "info";
 export type ChipSize = "sm" | "md";
 
 export interface ChipProps extends React.HTMLAttributes<HTMLElement> {
