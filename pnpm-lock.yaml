@@ -1227,6 +1227,9 @@ importers:
 
   packages/stepper:
     dependencies:
+      '@rubenpazch/tokens':
+        specifier: workspace:*
+        version: link:../tokens
       react:
         specifier: 19.2.8
         version: 19.2.8

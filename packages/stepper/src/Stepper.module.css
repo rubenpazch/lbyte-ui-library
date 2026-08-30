@@ -56,32 +56,32 @@
 
 /* Circle states */
 .circleActive {
-  background: #2563eb;
-  color: white;
+  background: var(--lb-color-primary);
+  color: var(--lb-color-primary-foreground);
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
   transform: scale(1.1);
 }
 
 .circleActiveSmall {
-  box-shadow: 0 0 0 2px #93c5fd;
+  box-shadow: 0 0 0 2px var(--lb-color-blue-border);
 }
 
 .circleActiveMedium {
-  box-shadow: 0 0 0 4px #93c5fd;
+  box-shadow: 0 0 0 4px var(--lb-color-blue-border);
 }
 
 .circleActiveLarge {
-  box-shadow: 0 0 0 8px #93c5fd;
+  box-shadow: 0 0 0 8px var(--lb-color-blue-border);
 }
 
 .circleCompleted {
-  background: #eff6ff;
-  color: #2563eb;
+  background: var(--lb-color-blue-subtle);
+  color: var(--lb-color-primary);
 }
 
 .circleFuture {
-  background: #d1d5db;
-  color: #4b5563;
+  background: var(--lb-color-neutral-300);
+  color: var(--lb-color-neutral-600);
 }
 
 /* Title */
@@ -109,26 +109,26 @@
 
 /* Title states */
 .titleActive {
-  color: #1d4ed8;
+  color: var(--lb-color-primary-hover);
   font-weight: 700;
 }
 
 .titleClickable {
-  color: #2563eb;
+  color: var(--lb-color-primary);
   text-decoration: underline;
   cursor: pointer;
 }
 
 .titleClickable:hover {
-  color: #1e40af;
+  color: var(--lb-color-blue-strong);
 }
 
 .titleCompleted {
-  color: #2563eb;
+  color: var(--lb-color-primary);
 }
 
 .titleFuture {
-  color: #6b7280;
+  color: var(--lb-color-neutral-500);
 }
 
 /* Link and button styles */
@@ -166,9 +166,9 @@
 }
 
 .connectorCompleted {
-  background: #2563eb;
+  background: var(--lb-color-primary);
 }
 
 .connectorIncomplete {
-  background: #d1d5db;
+  background: var(--lb-color-neutral-300);
 }
