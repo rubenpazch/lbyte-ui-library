@@ -538,6 +538,9 @@ importers:
       '@rubenpazch/button':
         specifier: workspace:*
         version: link:../button
+      '@rubenpazch/tokens':
+        specifier: workspace:*
+        version: link:../tokens
       react:
         specifier: 19.2.8
         version: 19.2.8
@@ -1237,6 +1240,9 @@ importers:
 
   packages/tabs:
     dependencies:
+      '@rubenpazch/tokens':
+        specifier: workspace:*
+        version: link:../tokens
       react:
         specifier: 19.2.8
         version: 19.2.8

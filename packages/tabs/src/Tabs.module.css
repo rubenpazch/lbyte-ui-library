@@ -12,11 +12,11 @@
 }
 
 .navContainerHorizontal {
-  border-bottom: 1px solid #e5e7eb;
+  border-bottom: 1px solid var(--lb-color-neutral-200);
 }
 
 .navContainerVertical {
-  border-right: 1px solid #e5e7eb;
+  border-right: 1px solid var(--lb-color-neutral-200);
   padding-right: 1.5rem;
 }
 
@@ -62,34 +62,34 @@
 }
 
 .tabActiveHorizontal {
-  border-color: #3b82f6;
-  color: #2563eb;
+  border-color: var(--lb-color-blue-accent);
+  color: var(--lb-color-primary);
 }
 
 .tabInactiveHorizontal {
   border-color: transparent;
-  color: #6b7280;
+  color: var(--lb-color-neutral-500);
 }
 
 .tabInactiveHorizontal:hover {
-  color: #374151;
-  border-color: #d1d5db;
+  color: var(--lb-color-neutral-700);
+  border-color: var(--lb-color-neutral-300);
 }
 
 .tabActiveVertical {
-  border-color: #3b82f6;
-  background: #eff6ff;
-  color: #2563eb;
+  border-color: var(--lb-color-blue-accent);
+  background: var(--lb-color-blue-subtle);
+  color: var(--lb-color-primary);
 }
 
 .tabInactiveVertical {
   border-color: transparent;
-  color: #6b7280;
+  color: var(--lb-color-neutral-500);
 }
 
 .tabInactiveVertical:hover {
-  color: #374151;
-  background: #f9fafb;
+  color: var(--lb-color-neutral-700);
+  background: var(--lb-color-neutral-50);
 }
 
 .tabDisabled {
@@ -125,8 +125,8 @@
   font-size: 0.75rem;
   font-weight: 600;
   border-radius: 9999px;
-  background: #dbeafe;
-  color: #2563eb;
+  background: var(--lb-color-blue-subtle);
+  color: var(--lb-color-primary);
 }
 
 .content {
@@ -152,7 +152,7 @@
   width: 2rem;
   height: 2rem;
   border-radius: 9999px;
-  border-bottom: 2px solid #2563eb;
+  border-bottom: 2px solid var(--lb-color-primary);
   border-left: 2px solid transparent;
   border-right: 2px solid transparent;
   border-top: 2px solid transparent;

@@ -10,7 +10,7 @@
 }
 
 .dialog {
-  background: #ffffff;
+  background: var(--lb-color-background);
   border-radius: 0.75rem;
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
   width: min(100%, 28rem);
@@ -44,17 +44,17 @@
 
 .header {
   padding: 1rem 1.5rem;
-  border-bottom: 1px solid #e5e7eb;
+  border-bottom: 1px solid var(--lb-color-neutral-200);
 }
 
 .headerNormal {
-  background: #eff6ff;
-  border-color: #bfdbfe;
+  background: var(--lb-color-blue-subtle);
+  border-color: var(--lb-color-blue-border);
 }
 
 .headerDanger {
-  background: #fef2f2;
-  border-color: #fecaca;
+  background: var(--lb-color-red-subtle);
+  border-color: var(--lb-color-red-border);
 }
 
 .title {
@@ -64,11 +64,11 @@
 }
 
 .titleNormal {
-  color: #1e3a8a;
+  color: var(--lb-color-blue-strong);
 }
 
 .titleDanger {
-  color: #7f1d1d;
+  color: var(--lb-color-red-strong);
 }
 
 .body {
@@ -76,7 +76,7 @@
 }
 
 .message {
-  color: #4b5563;
+  color: var(--lb-color-neutral-600);
   font-size: 1rem;
   line-height: 1.5rem;
 }
@@ -86,8 +86,8 @@
   justify-content: flex-end;
   gap: 0.75rem;
   padding: 1rem 1.5rem;
-  background: #f9fafb;
-  border-top: 1px solid #e5e7eb;
+  background: var(--lb-color-neutral-50);
+  border-top: 1px solid var(--lb-color-neutral-200);
 }
 
 .storyStack {
@@ -104,8 +104,8 @@
 
 .storyButton {
   padding: 0.5rem 1rem;
-  background: #2563eb;
-  color: #ffffff;
+  background: var(--lb-color-primary);
+  color: var(--lb-color-primary-foreground);
   border-radius: 0.5rem;
   border: none;
   font-weight: 600;
@@ -114,13 +114,13 @@
 }
 
 .storyButton:hover {
-  background: #1d4ed8;
+  background: var(--lb-color-primary-hover);
 }
 
 .storyDangerButton {
   padding: 0.5rem 1rem;
-  background: #dc2626;
-  color: #ffffff;
+  background: var(--lb-color-danger);
+  color: var(--lb-color-danger-foreground);
   border-radius: 0.5rem;
   border: none;
   font-weight: 600;
@@ -129,11 +129,11 @@
 }
 
 .storyDangerButton:hover {
-  background: #b91c1c;
+  background: var(--lb-color-red-strong);
 }
 
 .storyHeading {
   margin-bottom: 1rem;
   font-weight: 600;
-  color: #374151;
+  color: var(--lb-color-neutral-700);
 }
