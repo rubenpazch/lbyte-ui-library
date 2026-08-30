@@ -1,6 +1,6 @@
 {
   "name": "@rubenpazch/chip",
-  "version": "3.0.0",
+  "version": "4.0.0",
   "description": "Chip component inspired by MUI's Chip with variants, icons, and delete actions",
   "private": false,
   "main": "dist/index.cjs.js",

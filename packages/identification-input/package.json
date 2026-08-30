@@ -1,6 +1,6 @@
 {
   "name": "@rubenpazch/identification-input",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "IdentificationInput component",
   "private": false,
   "main": "dist/index.cjs.js",

@@ -1,5 +1,13 @@
 # @rubenpazch/identification-input
 
+## 2.0.2
+
+### Patch Changes
+
+- Updated dependencies
+  - @rubenpazch/autocomplete@5.0.0
+  - @rubenpazch/text-input@6.1.0
+
 ## 2.0.1
 
 ### Patch Changes

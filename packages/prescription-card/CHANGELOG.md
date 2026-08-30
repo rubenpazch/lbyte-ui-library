@@ -1,5 +1,15 @@
 # @rubenpazch/prescription-card
 
+## 3.0.1
+
+### Patch Changes
+
+- Updated dependencies
+  - @rubenpazch/chip@4.0.0
+  - @rubenpazch/icon-button@4.1.0
+  - @rubenpazch/icons@6.1.0
+  - @rubenpazch/tokens@0.2.0
+
 ## 3.0.0
 
 ### Major Changes

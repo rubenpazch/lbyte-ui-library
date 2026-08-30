@@ -1,6 +1,6 @@
 {
   "name": "@rubenpazch/tokens",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "repository": "https://github.com/rubenpazch/lbyte-ui-library.git",
   "publishConfig": {
     "access": "public"

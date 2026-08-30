@@ -1,6 +1,6 @@
 {
   "name": "@rubenpazch/overlay-loader",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Loading indicators for Lbyte UI library: a full-screen OverlayLoader and a contained InlineLoader",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
