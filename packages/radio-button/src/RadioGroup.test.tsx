@@ -111,7 +111,7 @@ describe("RadioGroup Component", () => {
       );
 
       const radioGroup = screen.getByRole("radiogroup");
-      expect(radioGroup).toHaveClass("flex", "flex-col", "space-y-3");
+      expect(radioGroup).toHaveClass("groupVertical");
     });
 
     it("should apply horizontal orientation classes when specified", () => {
@@ -126,7 +126,7 @@ describe("RadioGroup Component", () => {
       );
 
       const radioGroup = screen.getByRole("radiogroup");
-      expect(radioGroup).toHaveClass("flex", "flex-row", "flex-wrap", "gap-4");
+      expect(radioGroup).toHaveClass("groupHorizontal");
     });
   });
 
@@ -405,7 +405,7 @@ describe("RadioGroup Component", () => {
       );
 
       const groupLabel = screen.getByText("Select an option");
-      expect(groupLabel).toHaveClass("text-red-600");
+      expect(groupLabel).toHaveClass("groupLabel", "groupLabelInvalid");
     });
 
     it("should show normal groupLabel when required and value is selected", () => {
@@ -422,7 +422,8 @@ describe("RadioGroup Component", () => {
       );
 
       const groupLabel = screen.getByText("Select an option");
-      expect(groupLabel).toHaveClass("text-gray-900");
+      expect(groupLabel).toHaveClass("groupLabel");
+      expect(groupLabel).not.toHaveClass("groupLabelInvalid");
     });
 
     it("should show red border on fieldset when bordered, required, and no value", () => {
@@ -438,7 +439,7 @@ describe("RadioGroup Component", () => {
       );
 
       const fieldset = container.querySelector("fieldset");
-      expect(fieldset).toHaveClass("border-2", "border-red-500");
+      expect(fieldset).toHaveClass("fieldset", "fieldsetInvalid");
     });
 
     it("should show normal border on fieldset when bordered, required, and value selected", () => {
@@ -455,7 +456,8 @@ describe("RadioGroup Component", () => {
       );
 
       const fieldset = container.querySelector("fieldset");
-      expect(fieldset).toHaveClass("border", "border-gray-300");
+      expect(fieldset).toHaveClass("fieldset");
+      expect(fieldset).not.toHaveClass("fieldsetInvalid");
     });
 
     it("should show red borderLabel when bordered, required, and no value", () => {
@@ -472,7 +474,7 @@ describe("RadioGroup Component", () => {
       );
 
       const legend = screen.getByText("Choose option");
-      expect(legend).toHaveClass("text-red-600");
+      expect(legend).toHaveClass("legend", "legendInvalid");
     });
 
     it("should show normal borderLabel when bordered, required, and value selected", () => {
@@ -490,7 +492,8 @@ describe("RadioGroup Component", () => {
       );
 
       const legend = screen.getByText("Choose option");
-      expect(legend).toHaveClass("text-gray-700");
+      expect(legend).toHaveClass("legend");
+      expect(legend).not.toHaveClass("legendInvalid");
     });
   });
 
@@ -526,7 +529,7 @@ describe("RadioGroup Component", () => {
 
       const fieldset = container.querySelector("fieldset");
       expect(fieldset).toBeInTheDocument();
-      expect(fieldset).toHaveClass("rounded-lg", "p-4");
+      expect(fieldset).toHaveClass("fieldset");
     });
 
     it("should not render fieldset when bordered is false", () => {
