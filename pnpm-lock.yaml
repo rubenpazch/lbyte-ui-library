@@ -112,6 +112,9 @@ importers:
       '@rubenpazch/text-input':
         specifier: workspace:*
         version: link:../../packages/text-input
+      '@rubenpazch/tokens':
+        specifier: workspace:*
+        version: link:../../packages/tokens
       react:
         specifier: ^19.2.3
         version: 19.2.4
@@ -275,6 +278,9 @@ importers:
 
   packages/avatar:
     dependencies:
+      '@rubenpazch/tokens':
+        specifier: workspace:*
+        version: link:../tokens
       react:
         specifier: ^19.0.0
         version: 19.2.4
@@ -342,6 +348,9 @@ importers:
       '@rubenpazch/shared':
         specifier: workspace:*
         version: link:../shared
+      '@rubenpazch/tokens':
+        specifier: workspace:*
+        version: link:../tokens
     devDependencies:
       '@rollup/plugin-commonjs':
         specifier: ^28.0.2
@@ -424,6 +433,9 @@ importers:
       '@rubenpazch/button':
         specifier: workspace:*
         version: link:../button
+      '@rubenpazch/tokens':
+        specifier: workspace:*
+        version: link:../tokens
       react:
         specifier: ^19.0.0
         version: 19.2.4
@@ -595,6 +607,9 @@ importers:
       '@rubenpazch/icons':
         specifier: workspace:*
         version: link:../icons
+      '@rubenpazch/tokens':
+        specifier: workspace:*
+        version: link:../tokens
     devDependencies:
       '@rubenpazch/typescript-config':
         specifier: workspace:*
@@ -608,6 +623,9 @@ importers:
 
   packages/icon-button:
     dependencies:
+      '@rubenpazch/tokens':
+        specifier: workspace:*
+        version: link:../tokens
       react:
         specifier: ^19.0.0
         version: 19.2.4
@@ -735,6 +753,9 @@ importers:
 
   packages/info-row:
     dependencies:
+      '@rubenpazch/tokens':
+        specifier: workspace:*
+        version: link:../tokens
       react:
         specifier: ^19.0.0
         version: 19.2.4
@@ -759,11 +780,93 @@ importers:
         specifier: workspace:*
         version: link:../../tooling/typescript-config
 
+  packages/overlay-loader:
+    dependencies:
+      '@rubenpazch/tokens':
+        specifier: workspace:*
+        version: link:../tokens
+    devDependencies:
+      '@rollup/plugin-commonjs':
+        specifier: ^28.0.2
+        version: 28.0.9(rollup@4.57.1)
+      '@rollup/plugin-node-resolve':
+        specifier: ^16.0.0
+        version: 16.0.3(rollup@4.57.1)
+      '@rollup/plugin-terser':
+        specifier: ^0.4.3
+        version: 0.4.4(rollup@4.57.1)
+      '@rollup/plugin-typescript':
+        specifier: ^12.1.2
+        version: 12.3.0(rollup@4.57.1)(tslib@2.8.1)(typescript@5.9.3)
+      '@rubenpazch/eslint-config':
+        specifier: workspace:*
+        version: link:../../tooling/eslint-config
+      '@rubenpazch/typescript-config':
+        specifier: workspace:*
+        version: link:../../tooling/typescript-config
+      '@testing-library/react':
+        specifier: ^16.1.0
+        version: 16.3.2(@testing-library/dom@10.4.1)(@types/react-dom@19.2.3(@types/react@19.2.13))(@types/react@19.2.13)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
+      '@types/jest':
+        specifier: ^30.0.0
+        version: 30.0.0
+      '@types/react':
+        specifier: ^19.0.2
+        version: 19.2.13
+      '@types/react-dom':
+        specifier: ^19.0.2
+        version: 19.2.3(@types/react@19.2.13)
+      eslint:
+        specifier: ^9.16.0
+        version: 9.39.2(jiti@2.6.1)
+      identity-obj-proxy:
+        specifier: ^3.0.0
+        version: 3.0.0
+      jest:
+        specifier: ^30.2.0
+        version: 30.2.0(@types/node@25.2.1)
+      jest-environment-jsdom:
+        specifier: ^30.2.0
+        version: 30.2.0
+      postcss:
+        specifier: ^8.4.23
+        version: 8.5.6
+      prettier:
+        specifier: ^3.2.5
+        version: 3.8.1
+      react:
+        specifier: ^19.2.3
+        version: 19.2.4
+      react-dom:
+        specifier: ^19.2.3
+        version: 19.2.4(react@19.2.4)
+      rollup:
+        specifier: ^4.29.1
+        version: 4.57.1
+      rollup-plugin-dts:
+        specifier: ^6.1.0
+        version: 6.3.0(rollup@4.57.1)(typescript@5.9.3)
+      rollup-plugin-postcss:
+        specifier: ^4.0.2
+        version: 4.0.2(postcss@8.5.6)
+      rollup-plugin-typescript2:
+        specifier: ^0.36.0
+        version: 0.36.0(rollup@4.57.1)(typescript@5.9.3)
+      tslib:
+        specifier: ^2.5.2
+        version: 2.8.1
+      typescript:
+        specifier: ^5.0.4
+        version: 5.9.3
+
   packages/pagination:
     dependencies:
       '@rubenpazch/icons':
         specifier: workspace:*
         version: link:../icons
+      '@rubenpazch/tokens':
+        specifier: workspace:*
+        version: link:../tokens
       react:
         specifier: ^19.0.0
         version: 19.2.4
@@ -840,6 +943,9 @@ importers:
       '@rubenpazch/info-row':
         specifier: workspace:^
         version: link:../info-row
+      '@rubenpazch/tokens':
+        specifier: workspace:*
+        version: link:../tokens
       react:
         specifier: ^19.0.0
         version: 19.2.4
@@ -878,6 +984,9 @@ importers:
       '@rubenpazch/icons':
         specifier: workspace:^
         version: link:../icons
+      '@rubenpazch/tokens':
+        specifier: workspace:*
+        version: link:../tokens
       react:
         specifier: ^19.0.0
         version: 19.2.4
@@ -894,6 +1003,9 @@ importers:
       '@rubenpazch/checkbox-input':
         specifier: workspace:*
         version: link:../checkbox-input
+      '@rubenpazch/tokens':
+        specifier: workspace:*
+        version: link:../tokens
       react:
         specifier: ^19.0.0
         version: 19.2.4
@@ -907,6 +1019,9 @@ importers:
 
   packages/radio-button:
     dependencies:
+      '@rubenpazch/tokens':
+        specifier: workspace:*
+        version: link:../tokens
       react:
         specifier: ^19.0.0
         version: 19.2.4
@@ -917,6 +1032,85 @@ importers:
       '@rubenpazch/typescript-config':
         specifier: workspace:*
         version: link:../../tooling/typescript-config
+
+  packages/select:
+    dependencies:
+      '@rubenpazch/tokens':
+        specifier: workspace:*
+        version: link:../tokens
+    devDependencies:
+      '@rollup/plugin-commonjs':
+        specifier: ^28.0.2
+        version: 28.0.9(rollup@4.57.1)
+      '@rollup/plugin-node-resolve':
+        specifier: ^16.0.0
+        version: 16.0.3(rollup@4.57.1)
+      '@rollup/plugin-terser':
+        specifier: ^0.4.3
+        version: 0.4.4(rollup@4.57.1)
+      '@rollup/plugin-typescript':
+        specifier: ^12.1.2
+        version: 12.3.0(rollup@4.57.1)(tslib@2.8.1)(typescript@5.9.3)
+      '@rubenpazch/eslint-config':
+        specifier: workspace:*
+        version: link:../../tooling/eslint-config
+      '@rubenpazch/typescript-config':
+        specifier: workspace:*
+        version: link:../../tooling/typescript-config
+      '@testing-library/react':
+        specifier: ^16.1.0
+        version: 16.3.2(@testing-library/dom@10.4.1)(@types/react-dom@19.2.3(@types/react@19.2.13))(@types/react@19.2.13)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
+      '@types/jest':
+        specifier: ^30.0.0
+        version: 30.0.0
+      '@types/react':
+        specifier: ^19.0.2
+        version: 19.2.13
+      '@types/react-dom':
+        specifier: ^19.0.2
+        version: 19.2.3(@types/react@19.2.13)
+      eslint:
+        specifier: ^9.16.0
+        version: 9.39.2(jiti@2.6.1)
+      identity-obj-proxy:
+        specifier: ^3.0.0
+        version: 3.0.0
+      jest:
+        specifier: ^30.2.0
+        version: 30.2.0(@types/node@25.2.1)
+      jest-environment-jsdom:
+        specifier: ^30.2.0
+        version: 30.2.0
+      postcss:
+        specifier: ^8.4.23
+        version: 8.5.6
+      prettier:
+        specifier: ^3.2.5
+        version: 3.8.1
+      react:
+        specifier: ^19.2.3
+        version: 19.2.4
+      react-dom:
+        specifier: ^19.2.3
+        version: 19.2.4(react@19.2.4)
+      rollup:
+        specifier: ^4.29.1
+        version: 4.57.1
+      rollup-plugin-dts:
+        specifier: ^6.1.0
+        version: 6.3.0(rollup@4.57.1)(typescript@5.9.3)
+      rollup-plugin-postcss:
+        specifier: ^4.0.2
+        version: 4.0.2(postcss@8.5.6)
+      rollup-plugin-typescript2:
+        specifier: ^0.36.0
+        version: 0.36.0(rollup@4.57.1)(typescript@5.9.3)
+      tslib:
+        specifier: ^2.5.2
+        version: 2.8.1
+      typescript:
+        specifier: ^5.0.4
+        version: 5.9.3
 
   packages/shared:
     dependencies:
@@ -1043,6 +1237,9 @@ importers:
       '@rubenpazch/shared':
         specifier: workspace:*
         version: link:../shared
+      '@rubenpazch/tokens':
+        specifier: workspace:*
+        version: link:../tokens
     devDependencies:
       '@rollup/plugin-commonjs':
         specifier: ^28.0.2
@@ -1138,6 +1335,39 @@ importers:
       '@rubenpazch/typescript-config':
         specifier: workspace:*
         version: link:../../tooling/typescript-config
+
+  packages/tokens:
+    devDependencies:
+      '@rollup/plugin-commonjs':
+        specifier: ^28.0.2
+        version: 28.0.9(rollup@4.57.1)
+      '@rollup/plugin-node-resolve':
+        specifier: ^16.0.0
+        version: 16.0.3(rollup@4.57.1)
+      '@rollup/plugin-terser':
+        specifier: ^0.4.3
+        version: 0.4.4(rollup@4.57.1)
+      '@rubenpazch/eslint-config':
+        specifier: workspace:*
+        version: link:../../tooling/eslint-config
+      '@rubenpazch/typescript-config':
+        specifier: workspace:*
+        version: link:../../tooling/typescript-config
+      rollup:
+        specifier: ^4.29.1
+        version: 4.57.1
+      rollup-plugin-dts:
+        specifier: ^6.1.0
+        version: 6.3.0(rollup@4.57.1)(typescript@5.9.3)
+      rollup-plugin-typescript2:
+        specifier: ^0.36.0
+        version: 0.36.0(rollup@4.57.1)(typescript@5.9.3)
+      tslib:
+        specifier: ^2.5.2
+        version: 2.8.1
+      typescript:
+        specifier: ^5.0.4
+        version: 5.9.3
 
   tooling/eslint-config:
     dependencies:

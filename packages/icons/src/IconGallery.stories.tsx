@@ -310,7 +310,7 @@ const IconGallery = () => {
       {filteredIcons.length === 0 && (
         <div className="text-center py-12 text-gray-500">
           <SearchIcon className="mx-auto mb-4 text-gray-300" size="lg" />
-          <p>No icons found matching "{searchTerm}"</p>
+          <p>No icons found matching &ldquo;{searchTerm}&rdquo;</p>
         </div>
       )}
     </div>

@@ -6,67 +6,65 @@
     box-shadow 0.2s ease,
     transform 0.2s ease;
   overflow: hidden;
-  background: #ffffff;
+  background: var(--lb-color-background);
 }
 
 .card:hover {
-  box-shadow:
-    0 10px 15px -3px rgba(0, 0, 0, 0.1),
-    0 4px 6px -4px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--lb-shadow-md);
 }
 
 .statusPending {
-  background: #fffbeb;
-  border-color: #fde68a;
-  color: #92400e;
+  background: var(--lb-color-amber-subtle);
+  border-color: var(--lb-color-amber-border);
+  color: var(--lb-color-amber-strong);
 }
 
 .statusInProgress {
-  background: #eff6ff;
-  border-color: #bfdbfe;
-  color: #1e3a8a;
+  background: var(--lb-color-blue-subtle);
+  border-color: var(--lb-color-blue-border);
+  color: var(--lb-color-blue-strong);
 }
 
 .statusOpticalInformationComplete {
-  background: #f3e8ff;
-  border-color: #e9d5ff;
-  color: #6b21a8;
+  background: var(--lb-color-violet-subtle);
+  border-color: var(--lb-color-violet-border);
+  color: var(--lb-color-violet-strong);
 }
 
 .statusElaborationInProgress {
-  background: #fff7ed;
-  border-color: #fed7aa;
-  color: #9a3412;
+  background: var(--lb-color-orange-subtle);
+  border-color: var(--lb-color-orange-border);
+  color: var(--lb-color-orange-strong);
 }
 
 .statusDeliveryPending {
-  background: #fffbeb;
-  border-color: #fde68a;
-  color: #92400e;
+  background: var(--lb-color-amber-subtle);
+  border-color: var(--lb-color-amber-border);
+  color: var(--lb-color-amber-strong);
 }
 
 .statusCompleted {
-  background: #ecfdf3;
-  border-color: #bbf7d0;
-  color: #166534;
+  background: var(--lb-color-emerald-subtle);
+  border-color: var(--lb-color-emerald-border);
+  color: var(--lb-color-emerald-strong);
 }
 
 .statusDelivered {
-  background: #ecfdf3;
-  border-color: #bbf7d0;
-  color: #166534;
+  background: var(--lb-color-emerald-subtle);
+  border-color: var(--lb-color-emerald-border);
+  color: var(--lb-color-emerald-strong);
 }
 
 .statusCancelled {
-  background: #fef2f2;
-  border-color: #fecaca;
-  color: #991b1b;
+  background: var(--lb-color-red-subtle);
+  border-color: var(--lb-color-red-border);
+  color: var(--lb-color-red-strong);
 }
 
 .statusArchived {
-  background: #f9fafb;
-  border-color: #e5e7eb;
-  color: #374151;
+  background: var(--lb-color-neutral-50);
+  border-color: var(--lb-color-neutral-200);
+  color: var(--lb-color-neutral-700);
 }
 
 .header {
@@ -187,7 +185,7 @@
 
 .eyeEmpty {
   font-size: 0.75rem;
-  color: #4b5563;
+  color: var(--lb-color-neutral-600);
   opacity: 0.75;
   text-align: center;
   padding: 0.5rem 0;
@@ -249,7 +247,7 @@
 
 .noOpticalInfoText {
   font-size: 0.75rem;
-  color: #4b5563;
+  color: var(--lb-color-neutral-600);
   opacity: 0.75;
 }
 

@@ -1,6 +1,6 @@
 {
   "name": "@rubenpazch/icon-button",
-  "version": "3.0.0",
+  "version": "4.0.0",
   "description": "IconButton component",
   "private": false,
   "main": "dist/index.cjs.js",
@@ -31,6 +31,7 @@
     "test": "jest --passWithNoTests"
   },
   "peerDependencies": {
+    "@rubenpazch/tokens": "workspace:*",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },

@@ -17,7 +17,7 @@
   border: none;
   background: transparent;
   cursor: pointer;
-  color: rgba(0, 0, 0, 0.87);
+  color: var(--lb-color-foreground);
   margin: 0;
 }
 
@@ -26,12 +26,12 @@
 }
 
 .button:focus-visible {
-  outline: 2px solid #1976d2;
+  outline: 2px solid var(--lb-color-ring);
   outline-offset: 2px;
 }
 
 .ellipsis {
-  color: rgba(0, 0, 0, 0.54);
+  color: var(--lb-color-muted-foreground);
   pointer-events: none;
 }
 
@@ -87,8 +87,8 @@
 
 /* Variants */
 .variant-text.selected {
-  background-color: rgba(25, 118, 210, 0.12);
-  color: #1976d2;
+  background-color: color-mix(in srgb, var(--lb-color-primary) 12%, transparent);
+  color: var(--lb-color-primary);
   font-weight: 600;
 }
 
@@ -102,9 +102,9 @@
 }
 
 .variant-outlined.selected {
-  background-color: rgba(25, 118, 210, 0.12);
-  color: #1976d2;
-  border-color: #1976d2;
+  background-color: color-mix(in srgb, var(--lb-color-primary) 12%, transparent);
+  color: var(--lb-color-primary);
+  border-color: var(--lb-color-primary);
   font-weight: 600;
 }
 

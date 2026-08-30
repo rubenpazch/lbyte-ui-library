@@ -1,0 +1,43 @@
+{
+  "name": "@rubenpazch/tokens",
+  "version": "0.1.0",
+  "repository": "https://github.com/rubenpazch/lbyte-ui-library.git",
+  "publishConfig": {
+    "access": "public"
+  },
+  "description": "Design tokens (colors, typography, spacing, radii) — single source of truth for all Lbyte projects",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
+  "sideEffects": [
+    "*.css"
+  ],
+  "exports": {
+    ".": {
+      "import": "./dist/index.esm.js",
+      "require": "./dist/index.cjs.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./tokens.css": "./dist/tokens.css",
+    "./base.css": "./dist/base.css"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "rollup -c",
+    "clean": "rm -rf dist"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^28.0.2",
+    "@rollup/plugin-node-resolve": "^16.0.0",
+    "@rollup/plugin-terser": "^0.4.3",
+    "@rubenpazch/eslint-config": "workspace:*",
+    "@rubenpazch/typescript-config": "workspace:*",
+    "rollup": "^4.29.1",
+    "rollup-plugin-dts": "^6.1.0",
+    "rollup-plugin-typescript2": "^0.36.0",
+    "tslib": "^2.5.2",
+    "typescript": "^5.0.4"
+  }
+}

@@ -1,5 +1,13 @@
 # @rubenpazch/image-upload
 
+## 2.0.1
+
+### Patch Changes
+
+- Updated dependencies
+  - @rubenpazch/button@6.0.0
+  - @rubenpazch/icons@6.0.0
+
 ## 2.0.0
 
 ### Major Changes

@@ -1,5 +1,6 @@
 import React from "react";
 import RadioButton, { RadioSize, RadioVariant } from "./RadioButton";
+import styles from "./RadioGroup.module.css";
 
 export type RadioGroupOrientation = "vertical" | "horizontal";
 
@@ -48,8 +49,8 @@ const RadioGroup: React.FC<RadioGroupProps> = ({
   borderLabel,
 }) => {
   const orientationClasses = {
-    vertical: "flex flex-col space-y-3",
-    horizontal: "flex flex-row flex-wrap gap-4",
+    vertical: styles.groupVertical,
+    horizontal: styles.groupHorizontal,
   };
 
   const selectedOption = options.find((option) => option.value === value);
@@ -78,18 +79,24 @@ const RadioGroup: React.FC<RadioGroupProps> = ({
     <div className={className}>
       {groupLabel && (
         <div
-          className={`font-semibold mb-3 ${required && !value ? "text-red-600" : "text-gray-900"}`}
+          className={`${styles.groupLabel} ${
+            required && !value ? styles.groupLabelInvalid : ""
+          }`}
         >
           {groupLabel}
         </div>
       )}
       {bordered ? (
         <fieldset
-          className={`rounded-lg p-4 ${required && !value ? "border-2 border-red-500" : "border border-gray-300"}`}
+          className={`${styles.fieldset} ${
+            required && !value ? styles.fieldsetInvalid : ""
+          }`}
         >
           {borderLabel && (
             <legend
-              className={`px-2 text-sm font-medium ${required && !value ? "text-red-600" : "text-gray-700"}`}
+              className={`${styles.legend} ${
+                required && !value ? styles.legendInvalid : ""
+              }`}
             >
               {borderLabel}
             </legend>
@@ -99,9 +106,9 @@ const RadioGroup: React.FC<RadioGroupProps> = ({
       ) : (
         radioGroupContent
       )}
-      {error && <p className="text-sm text-red-600 mt-2">{error}</p>}
+      {error && <p className={styles.error}>{error}</p>}
       {showSelectedLabel && (
-        <div className="mt-4 p-3 bg-gray-100 rounded">
+        <div className={styles.selectedLabel}>
           <strong>{selectedLabelText}</strong>{" "}
           {selectedOption?.label || value || "None"}
         </div>

@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import { CheckIcon, ErrorIcon, InfoIcon } from "@rubenpazch/icons";
 import styles from "./TextInput.module.css";
 
@@ -16,10 +16,19 @@ export interface TextInputProps {
   hint?: string;
   maxLength?: number;
   minLength?: number;
+  /** Inline error shown when the value is non-empty but shorter than `minLength`. */
+  minLengthMessage?: string;
   pattern?: string;
   icon?: React.ReactNode;
   onBlur?: () => void;
   onFocus?: () => void;
+  /**
+   * Fires whenever the field's overall validity changes (respecting `required`,
+   * `validateEmail`, `minLength`, `maxLength`, `pattern` and `error`). Lets the
+   * parent gate a submit button on the component's own validation, without
+   * duplicating the rules.
+   */
+  onValidityChange?: (isValid: boolean) => void;
   autoComplete?: string;
   min?: number;
   max?: number;
@@ -92,7 +101,7 @@ const checkPasswordStrength = (password: string) => {
   const hasUpperCase = /[A-Z]/.test(password);
   const hasLowerCase = /[a-z]/.test(password);
   const hasNumbers = /\d/.test(password);
-  const hasSpecialChar = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(password);
+  const hasSpecialChar = /[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]/.test(password);
   const isLongEnough = password.length >= 8;
 
   if (hasLowerCase) score++;
@@ -121,10 +130,12 @@ const TextInput: React.FC<TextInputProps> = ({
   hint,
   maxLength,
   minLength,
+  minLengthMessage,
   pattern,
   icon,
   onBlur,
   onFocus,
+  onValidityChange,
   autoComplete,
   validateEmail = false,
   showPasswordStrength = false,
@@ -156,6 +167,12 @@ const TextInput: React.FC<TextInputProps> = ({
     validateEmail && value && !isValidEmail && !emailSuggestion;
   const emailError = isEmailInvalid ? emailInvalidMessage || null : null;
 
+  // Inline min-length error (shown once the user has typed something), so a
+  // password field can surface "too short" the same way email surfaces format.
+  const isMinLengthInvalid = Boolean(
+    minLength && value.length > 0 && value.length < minLength,
+  );
+
   const meetsMinLength = minLength ? value.length >= minLength : true;
   const meetsMaxLength = maxLength ? value.length <= maxLength : true;
   const matchesPattern = pattern ? new RegExp(pattern).test(value) : true;
@@ -177,6 +194,22 @@ const TextInput: React.FC<TextInputProps> = ({
     if (type !== "password" || !showPasswordStrength) return null;
     return checkPasswordStrength(value);
   }, [type, value, showPasswordStrength]);
+
+  // Overall field validity, exposed to the parent so it can gate a submit
+  // button on the component's own rules (no need to re-implement them).
+  const isFieldValid = Boolean(
+    !disabled &&
+    !error &&
+    (!required || value.trim().length > 0) &&
+    (!validateEmail || isValidEmail) &&
+    meetsMinLength &&
+    meetsMaxLength &&
+    matchesPattern,
+  );
+
+  useEffect(() => {
+    onValidityChange?.(isFieldValid);
+  }, [isFieldValid, onValidityChange]);
 
   const handleFocus = () => {
     setIsFocused(true);
@@ -214,7 +247,8 @@ const TextInput: React.FC<TextInputProps> = ({
         {icon && !isFocused && <div className={styles.icon}>{icon}</div>}
 
         <input
-          type={type}
+          type={validateEmail ? "text" : type}
+          inputMode={validateEmail ? "email" : undefined}
           value={value}
           onChange={(e) => onChange(e.target.value)}
           onFocus={handleFocus}
@@ -229,13 +263,15 @@ const TextInput: React.FC<TextInputProps> = ({
             styles.input,
             icon ? styles.inputWithIcon : undefined,
             showCharCount ? styles.inputWithCharCount : undefined,
-            error || isEmailInvalid ? styles.inputError : undefined,
+            error || isEmailInvalid || isMinLengthInvalid
+              ? styles.inputError
+              : undefined,
             !disabled && !error && !emailError && showSuccess
               ? styles.inputSuccess
               : undefined,
           )}
           data-testid="input-field"
-          data-error={!!error || !!isEmailInvalid}
+          data-error={!!error || !!isEmailInvalid || isMinLengthInvalid}
         />
 
         {/* Character count */}
@@ -443,7 +479,7 @@ const TextInput: React.FC<TextInputProps> = ({
                   <CheckIcon
                     className={classNames(
                       styles.requirementIcon,
-                      /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(value)
+                      /[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]/.test(value)
                         ? styles.requirementIconMet
                         : styles.requirementIconUnmet,
                     )}
@@ -452,7 +488,7 @@ const TextInput: React.FC<TextInputProps> = ({
                   <span
                     className={classNames(
                       styles.requirementText,
-                      /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(value) &&
+                      /[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]/.test(value) &&
                         styles.requirementTextMet,
                     )}
                   >
@@ -487,10 +523,14 @@ const TextInput: React.FC<TextInputProps> = ({
       )}
 
       {/* Error Message */}
-      {(error || (isEmailInvalid && emailInvalidMessage)) && (
+      {(error ||
+        (isEmailInvalid && emailInvalidMessage) ||
+        (isMinLengthInvalid && minLengthMessage)) && (
         <div className={styles.error}>
           <ErrorIcon className={styles.errorIcon} size="sm" />
-          <p className={styles.errorText}>{error || emailInvalidMessage}</p>
+          <p className={styles.errorText}>
+            {error || (isEmailInvalid ? emailInvalidMessage : minLengthMessage)}
+          </p>
         </div>
       )}
     </div>

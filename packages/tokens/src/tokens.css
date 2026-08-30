@@ -1,0 +1,165 @@
+/**
+ * Lbyte design tokens — single source of truth as CSS custom properties.
+ *
+ * All values are namespaced with `--lb-` so they never clash with existing
+ * variables in @rubenpazch/shared or Bootstrap. Import this file once per app:
+ *
+ *   import "@rubenpazch/tokens/tokens.css";
+ *
+ * Then reference tokens anywhere: `color: var(--lb-color-primary);`.
+ */
+:root {
+  /* ----- Typography: families ----- */
+  --lb-font-sans:
+    ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif;
+  --lb-font-mono:
+    ui-monospace, "SFMono-Regular", "Menlo", "Consolas", monospace;
+
+  /* ----- Typography: modular scale (base 1rem / 16px) ----- */
+  --lb-font-size-xs: 0.75rem;
+  --lb-font-size-sm: 0.875rem;
+  --lb-font-size-md: 1rem;
+  --lb-font-size-lg: 1.125rem;
+  --lb-font-size-xl: 1.25rem;
+  --lb-font-size-2xl: 1.5rem;
+  --lb-font-size-3xl: 1.875rem;
+  --lb-font-size-4xl: 2.25rem;
+  --lb-font-size-5xl: 3rem;
+
+  /* ----- Typography: heading scale (semantic aliases) ----- */
+  --lb-font-size-h1: var(--lb-font-size-4xl);
+  --lb-font-size-h2: var(--lb-font-size-3xl);
+  --lb-font-size-h3: var(--lb-font-size-2xl);
+  --lb-font-size-h4: var(--lb-font-size-xl);
+  --lb-font-size-h5: var(--lb-font-size-lg);
+  --lb-font-size-h6: var(--lb-font-size-md);
+  --lb-font-size-body: var(--lb-font-size-md);
+  --lb-font-size-small: var(--lb-font-size-sm);
+
+  /* ----- Typography: weights & line heights ----- */
+  --lb-font-weight-regular: 400;
+  --lb-font-weight-medium: 500;
+  --lb-font-weight-semibold: 600;
+  --lb-font-weight-bold: 700;
+
+  --lb-line-height-tight: 1.15;
+  --lb-line-height-snug: 1.3;
+  --lb-line-height-normal: 1.5;
+  --lb-line-height-relaxed: 1.7;
+
+  --lb-letter-spacing-tight: -0.01em;
+  --lb-letter-spacing-normal: 0;
+  --lb-letter-spacing-wide: 0.04em;
+
+  /* ----- Color: neutral scale ----- */
+  --lb-color-neutral-50: #f8fafc;
+  --lb-color-neutral-100: #f1f5f9;
+  --lb-color-neutral-200: #e2e8f0;
+  --lb-color-neutral-300: #cbd5e1;
+  --lb-color-neutral-400: #94a3b8;
+  --lb-color-neutral-500: #64748b;
+  --lb-color-neutral-600: #475569;
+  --lb-color-neutral-700: #334155;
+  --lb-color-neutral-800: #1e293b;
+  --lb-color-neutral-900: #0f172a;
+
+  /* ----- Color: brand & status ----- */
+  --lb-color-primary: #2563eb;
+  --lb-color-primary-hover: #1d4ed8;
+  --lb-color-primary-foreground: #ffffff;
+
+  --lb-color-success: #16a34a;
+  --lb-color-success-foreground: #ffffff;
+
+  --lb-color-warning: #d97706;
+  --lb-color-warning-foreground: #ffffff;
+
+  --lb-color-danger: #dc2626;
+  --lb-color-danger-foreground: #ffffff;
+
+  --lb-color-info: #0ea5e9;
+  --lb-color-info-foreground: #ffffff;
+
+  /* ----- Color: accent palettes (subtle bg / border / accent / strong text) ----- */
+  --lb-color-blue-subtle: #eff6ff;
+  --lb-color-blue-border: #bfdbfe;
+  --lb-color-blue-accent: #3b82f6;
+  --lb-color-blue-strong: #1d4ed8;
+
+  --lb-color-amber-subtle: #fef3c7;
+  --lb-color-amber-border: #fde68a;
+  --lb-color-amber-accent: #ca8a04;
+  --lb-color-amber-strong: #a16207;
+
+  --lb-color-emerald-subtle: #ecfdf5;
+  --lb-color-emerald-border: #a7f3d0;
+  --lb-color-emerald-accent: #10b981;
+  --lb-color-emerald-strong: #047857;
+
+  --lb-color-red-subtle: #fef2f2;
+  --lb-color-red-border: #fecaca;
+  --lb-color-red-accent: #ef4444;
+  --lb-color-red-strong: #b91c1c;
+
+  --lb-color-violet-subtle: #faf5ff;
+  --lb-color-violet-border: #e9d5ff;
+  --lb-color-violet-accent: #a855f7;
+  --lb-color-violet-strong: #7e22ce;
+
+  --lb-color-indigo-subtle: #eef2ff;
+  --lb-color-indigo-border: #c7d2fe;
+  --lb-color-indigo-accent: #6366f1;
+  --lb-color-indigo-strong: #4338ca;
+
+  --lb-color-orange-subtle: #fff7ed;
+  --lb-color-orange-border: #fed7aa;
+  --lb-color-orange-accent: #f97316;
+  --lb-color-orange-strong: #9a3412;
+
+  /* ----- Color: semantic surface roles ----- */
+  --lb-color-background: #ffffff;
+  --lb-color-foreground: var(--lb-color-neutral-900);
+  --lb-color-muted: var(--lb-color-neutral-100);
+  --lb-color-muted-foreground: var(--lb-color-neutral-500);
+  --lb-color-border: var(--lb-color-neutral-200);
+  --lb-color-ring: var(--lb-color-primary);
+  --lb-color-link: var(--lb-color-primary);
+  --lb-color-link-hover: var(--lb-color-primary-hover);
+
+  /* ----- Spacing scale (4px step) ----- */
+  --lb-space-0: 0;
+  --lb-space-1: 0.25rem;
+  --lb-space-2: 0.5rem;
+  --lb-space-3: 0.75rem;
+  --lb-space-4: 1rem;
+  --lb-space-5: 1.25rem;
+  --lb-space-6: 1.5rem;
+  --lb-space-8: 2rem;
+  --lb-space-10: 2.5rem;
+  --lb-space-12: 3rem;
+  --lb-space-16: 4rem;
+
+  /* ----- Radii ----- */
+  --lb-radius-sm: 0.25rem;
+  --lb-radius-md: 0.5rem;
+  --lb-radius-lg: 0.75rem;
+  --lb-radius-xl: 1rem;
+  --lb-radius-2xl: 1.5rem;
+  --lb-radius-full: 9999px;
+
+  /* ----- Elevation ----- */
+  --lb-shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.08);
+  --lb-shadow-md: 0 8px 20px rgba(15, 23, 42, 0.08);
+  --lb-shadow-lg: 0 12px 30px rgba(15, 23, 42, 0.12);
+}
+
+/* Optional dark theme: apply `data-theme="dark"` on <html> or a container. */
+[data-theme="dark"] {
+  --lb-color-background: var(--lb-color-neutral-900);
+  --lb-color-foreground: var(--lb-color-neutral-50);
+  --lb-color-muted: var(--lb-color-neutral-800);
+  --lb-color-muted-foreground: var(--lb-color-neutral-400);
+  --lb-color-border: var(--lb-color-neutral-700);
+  --lb-color-primary-foreground: #ffffff;
+}

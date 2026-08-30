@@ -21,10 +21,8 @@
 
 .drawer {
   position: fixed;
-  background: #fff;
-  box-shadow:
-    0 10px 15px -3px rgba(0, 0, 0, 0.1),
-    0 4px 6px -4px rgba(0, 0, 0, 0.1);
+  background: var(--lb-color-background);
+  box-shadow: var(--lb-shadow-lg);
   transition: transform 300ms ease-in-out;
   display: flex;
   flex-direction: column;

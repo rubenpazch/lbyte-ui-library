@@ -38,6 +38,7 @@ package-lock.json
 **/*copy.ts
 **/*copy.tsx
 **/*.backup.*
+**/*.bak
 
 # migration scripts (one-time use)
 apply-package-imports.sh

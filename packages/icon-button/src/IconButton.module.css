@@ -102,58 +102,58 @@
 
 /* Variants - Default */
 .variantDefaultOutlined {
-  color: #2563eb;
-  border: 2px solid #2563eb;
+  color: var(--lb-color-primary);
+  border: 2px solid var(--lb-color-primary);
 }
 
 .variantDefaultOutlined:hover:not(:disabled) {
-  background-color: #eff6ff;
+  background-color: color-mix(in srgb, var(--lb-color-primary) 8%, white);
 }
 
 .variantDefaultFilled {
-  background-color: #2563eb;
-  color: white;
+  background-color: var(--lb-color-primary);
+  color: var(--lb-color-primary-foreground);
 }
 
 .variantDefaultFilled:hover:not(:disabled) {
-  background-color: #1d4ed8;
+  background-color: var(--lb-color-primary-hover);
 }
 
 .variantDefaultQuiet {
-  color: #2563eb;
+  color: var(--lb-color-primary);
 }
 
 .variantDefaultQuiet:hover:not(:disabled) {
-  color: #1d4ed8;
-  background-color: #eff6ff;
+  color: var(--lb-color-primary-hover);
+  background-color: color-mix(in srgb, var(--lb-color-primary) 8%, white);
 }
 
 /* Variants - Secondary */
 .variantSecondaryOutlined {
-  color: #4b5563;
-  border: 2px solid #4b5563;
+  color: var(--lb-color-neutral-600);
+  border: 2px solid var(--lb-color-neutral-600);
 }
 
 .variantSecondaryOutlined:hover:not(:disabled) {
-  background-color: #f9fafb;
+  background-color: var(--lb-color-neutral-50);
 }
 
 .variantSecondaryFilled {
-  background-color: #4b5563;
-  color: white;
+  background-color: var(--lb-color-neutral-600);
+  color: var(--lb-color-primary-foreground);
 }
 
 .variantSecondaryFilled:hover:not(:disabled) {
-  background-color: #374151;
+  background-color: var(--lb-color-neutral-700);
 }
 
 .variantSecondaryQuiet {
-  color: #4b5563;
+  color: var(--lb-color-neutral-600);
 }
 
 .variantSecondaryQuiet:hover:not(:disabled) {
-  color: #1f2937;
-  background-color: #f9fafb;
+  color: var(--lb-color-neutral-800);
+  background-color: var(--lb-color-neutral-50);
 }
 
 /* Variants - Black */
@@ -298,35 +298,35 @@
 
 /* Variants - Warning */
 .variantWarningOutlined {
-  color: #f97316;
-  border: 2px solid #f97316;
+  color: var(--lb-color-warning);
+  border: 2px solid var(--lb-color-warning);
 }
 
 .variantWarningOutlined:hover:not(:disabled) {
-  background-color: #fff7ed;
+  background-color: color-mix(in srgb, var(--lb-color-warning) 10%, white);
 }
 
 .variantWarningFilled {
-  background-color: #f97316;
-  color: white;
+  background-color: var(--lb-color-warning);
+  color: var(--lb-color-warning-foreground);
 }
 
 .variantWarningFilled:hover:not(:disabled) {
-  background-color: #ea580c;
+  background-color: color-mix(in srgb, var(--lb-color-warning), black 12%);
 }
 
 .variantWarningQuiet {
-  color: #f97316;
+  color: var(--lb-color-warning);
 }
 
 .variantWarningQuiet:hover:not(:disabled) {
-  color: #ea580c;
-  background-color: #fff7ed;
+  color: color-mix(in srgb, var(--lb-color-warning), black 12%);
+  background-color: color-mix(in srgb, var(--lb-color-warning) 10%, white);
 }
 
 /* Disabled quiet */
 .disabledQuiet {
-  color: #4b5563;
+  color: var(--lb-color-neutral-600);
 }
 
 .disabledQuiet:focus {
@@ -340,7 +340,7 @@
   padding: 0.25rem 0.5rem;
   font-size: 0.75rem;
   color: white;
-  background-color: #111827;
+  background-color: var(--lb-color-neutral-900);
   border-radius: 0.25rem;
   white-space: nowrap;
   pointer-events: none;
@@ -360,7 +360,7 @@
   left: 50%;
   transform: translateX(-50%);
   border: 4px solid transparent;
-  border-top-color: #111827;
+  border-top-color: var(--lb-color-neutral-900);
 }
 
 .tooltipBottom {
@@ -377,7 +377,7 @@
   left: 50%;
   transform: translateX(-50%);
   border: 4px solid transparent;
-  border-bottom-color: #111827;
+  border-bottom-color: var(--lb-color-neutral-900);
 }
 
 .tooltipLeft {
@@ -394,7 +394,7 @@
   top: 50%;
   transform: translateY(-50%);
   border: 4px solid transparent;
-  border-left-color: #111827;
+  border-left-color: var(--lb-color-neutral-900);
 }
 
 .tooltipRight {
@@ -411,7 +411,7 @@
   top: 50%;
   transform: translateY(-50%);
   border: 4px solid transparent;
-  border-right-color: #111827;
+  border-right-color: var(--lb-color-neutral-900);
 }
 
 /* Whitespace */

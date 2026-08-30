@@ -1,5 +1,12 @@
 # @rubenpazch/numeric-up-picker
 
+## 5.0.1
+
+### Patch Changes
+
+- Updated dependencies
+  - @rubenpazch/icons@6.0.0
+
 ## 5.0.0
 
 ### Major Changes

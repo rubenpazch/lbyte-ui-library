@@ -12,7 +12,7 @@
   line-height: 1;
   overflow: hidden;
   user-select: none;
-  background-color: #bdbdbd;
+  background-color: var(--lb-color-neutral-300);
   color: #fff;
 }
 

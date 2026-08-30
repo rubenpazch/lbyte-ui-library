@@ -1,4 +1,6 @@
 import { Preview } from "@storybook/react";
+import "@rubenpazch/tokens/tokens.css";
+import "@rubenpazch/tokens/base.css";
 import "./tailwind.css";
 
 const preview: Preview = {

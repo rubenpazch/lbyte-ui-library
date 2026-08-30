@@ -2,31 +2,26 @@ import js from "@eslint/js";
 import tseslint from "typescript-eslint";
 import reactPlugin from "eslint-plugin-react";
 import reactHooksPlugin from "eslint-plugin-react-hooks";
-import prettierPlugin from "eslint-plugin-prettier";
+import prettierRecommended from "eslint-plugin-prettier/recommended";
 
 /** @type {import('eslint').Linter.FlatConfig[]} */
 export default [
   js.configs.recommended,
   ...tseslint.configs.recommended,
-  ...tseslint.configs.recommendedTypeChecked,
-  reactPlugin.configs.recommended,
-  reactHooksPlugin.configs.recommended,
-  prettierPlugin.configs.recommended,
+  reactPlugin.configs.flat.recommended,
+  prettierRecommended,
   {
     files: ["**/*.ts", "**/*.tsx"],
     languageOptions: {
       parser: tseslint.parser,
-      parserOptions: {
-        project: true,
-      },
     },
     plugins: {
-      react: reactPlugin,
       "react-hooks": reactHooksPlugin,
-      prettier: prettierPlugin,
     },
     rules: {
-      "prettier/prettier": "error",
+      ...reactHooksPlugin.configs.recommended.rules,
+      // TypeScript already checks for undefined references.
+      "no-undef": "off",
       "react/react-in-jsx-scope": "off",
       "react/prop-types": "off",
       "@typescript-eslint/no-explicit-any": "warn",
@@ -36,10 +31,15 @@ export default [
         version: "detect",
       },
     },
-    env: {
-      jest: true,
-      browser: true,
-      node: true,
+  },
+  {
+    // Stories and tests use patterns (Storybook render hooks, type shims,
+    // triple-slash refs) that are fine in those contexts.
+    files: ["**/*.stories.{ts,tsx}", "**/*.test.{ts,tsx}", "**/*.spec.{ts,tsx}"],
+    rules: {
+      "react-hooks/rules-of-hooks": "off",
+      "@typescript-eslint/no-unused-vars": "off",
+      "@typescript-eslint/triple-slash-reference": "off",
     },
   },
 ];

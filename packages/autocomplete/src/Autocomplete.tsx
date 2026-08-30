@@ -359,7 +359,7 @@ const Autocomplete: React.FC<AutocompleteProps> = ({
               data-testid="autocomplete-clear"
               aria-label="Clear selection"
             >
-              <CloseIcon className="w-4 h-4" />
+              <CloseIcon className={styles.clearIcon} />
             </button>
           )}
 

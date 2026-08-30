@@ -22,27 +22,28 @@
 }
 
 .checkbox {
-  border: 1px solid #d1d5db;
+  border: 1px solid var(--lb-color-neutral-300);
   border-radius: 0.25rem;
-  background: #ffffff;
+  background: var(--lb-color-background);
   cursor: pointer;
   transition: all 150ms ease;
-  accent-color: var(--checkbox-color, #2563eb);
+  accent-color: var(--checkbox-color, var(--lb-color-primary));
 }
 
 .checkbox:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 2px var(--focus-ring, rgba(37, 99, 235, 0.3));
+  box-shadow: 0 0 0 2px
+    var(--focus-ring, color-mix(in srgb, var(--lb-color-primary) 30%, transparent));
 }
 
 .checkboxDisabled {
-  background: #f3f4f6;
+  background: var(--lb-color-muted);
   cursor: not-allowed;
   opacity: 0.6;
 }
 
 .checkboxError {
-  border-color: #ef4444;
+  border-color: var(--lb-color-danger);
 }
 
 .checkboxSm {
@@ -61,8 +62,8 @@
 }
 
 .variantDefault {
-  --checkbox-color: #2563eb;
-  --focus-ring: rgba(37, 99, 235, 0.3);
+  --checkbox-color: var(--lb-color-primary);
+  --focus-ring: color-mix(in srgb, var(--lb-color-primary) 30%, transparent);
 }
 
 .variantPrimary {
@@ -71,18 +72,18 @@
 }
 
 .variantSuccess {
-  --checkbox-color: #16a34a;
-  --focus-ring: rgba(22, 163, 74, 0.3);
+  --checkbox-color: var(--lb-color-success);
+  --focus-ring: color-mix(in srgb, var(--lb-color-success) 30%, transparent);
 }
 
 .variantWarning {
-  --checkbox-color: #d97706;
-  --focus-ring: rgba(217, 119, 6, 0.3);
+  --checkbox-color: var(--lb-color-warning);
+  --focus-ring: color-mix(in srgb, var(--lb-color-warning) 30%, transparent);
 }
 
 .variantDanger {
-  --checkbox-color: #dc2626;
-  --focus-ring: rgba(220, 38, 38, 0.3);
+  --checkbox-color: var(--lb-color-danger);
+  --focus-ring: color-mix(in srgb, var(--lb-color-danger) 30%, transparent);
 }
 
 .content {
@@ -110,12 +111,12 @@
 }
 
 .labelNormal {
-  color: #374151;
+  color: var(--lb-color-neutral-700);
   cursor: pointer;
 }
 
 .labelDisabled {
-  color: #6b7280;
+  color: var(--lb-color-muted-foreground);
   cursor: not-allowed;
 }
 

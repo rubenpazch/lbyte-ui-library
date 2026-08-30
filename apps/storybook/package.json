@@ -1,6 +1,6 @@
 {
   "name": "@rubenpazch/storybook",
-  "version": "5.0.0",
+  "version": "5.0.1",
   "private": true,
   "description": "Storybook documentation for Lbyte UI components",
   "scripts": {
@@ -15,6 +15,7 @@
     "@rubenpazch/icons": "workspace:*",
     "@rubenpazch/shared": "workspace:*",
     "@rubenpazch/text-input": "workspace:*",
+    "@rubenpazch/tokens": "workspace:*",
     "react": "^19.2.3",
     "react-dom": "^19.2.3"
   },

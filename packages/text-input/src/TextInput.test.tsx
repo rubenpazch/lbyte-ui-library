@@ -130,7 +130,7 @@ describe("TextInput Component", () => {
 
     it("should update input when value prop changes", () => {
       render(<TextInput value="Initial" onChange={() => {}} />);
-      let input = screen.getByRole("textbox") as HTMLInputElement;
+      const input = screen.getByRole("textbox") as HTMLInputElement;
       expect(input.value).toBe("Initial");
     });
   });
@@ -338,6 +338,81 @@ describe("TextInput Component", () => {
       );
       expect(screen.queryByText("Email válido")).not.toBeInTheDocument();
       expect(screen.queryByText("Email inválido")).not.toBeInTheDocument();
+    });
+
+    it("suppresses native validation (type=text + inputMode) when validateEmail is on", () => {
+      render(
+        <TextInput
+          value=""
+          onChange={() => {}}
+          type="email"
+          validateEmail={true}
+        />,
+      );
+      const input = screen.getByRole("textbox") as HTMLInputElement;
+      expect(input.type).toBe("text");
+      expect(input).toHaveAttribute("inputmode", "email");
+    });
+
+    it("reports validity through onValidityChange", () => {
+      const onValidityChange = jest.fn();
+      const { rerender } = render(
+        <TextInput
+          value="bad"
+          onChange={() => {}}
+          type="email"
+          validateEmail={true}
+          onValidityChange={onValidityChange}
+        />,
+      );
+      expect(onValidityChange).toHaveBeenLastCalledWith(false);
+
+      rerender(
+        <TextInput
+          value="ana@acme.com"
+          onChange={() => {}}
+          type="email"
+          validateEmail={true}
+          onValidityChange={onValidityChange}
+        />,
+      );
+      expect(onValidityChange).toHaveBeenLastCalledWith(true);
+    });
+  });
+
+  describe("Min Length Validation", () => {
+    it("shows a min-length error when the value is too short", () => {
+      render(
+        <TextInput
+          value="ab"
+          onChange={() => {}}
+          minLength={4}
+          minLengthMessage="Muy corto"
+        />,
+      );
+      expect(screen.getByText("Muy corto")).toBeInTheDocument();
+    });
+
+    it("hides the min-length error when empty or long enough", () => {
+      const { rerender } = render(
+        <TextInput
+          value=""
+          onChange={() => {}}
+          minLength={4}
+          minLengthMessage="Muy corto"
+        />,
+      );
+      expect(screen.queryByText("Muy corto")).not.toBeInTheDocument();
+
+      rerender(
+        <TextInput
+          value="abcd"
+          onChange={() => {}}
+          minLength={4}
+          minLengthMessage="Muy corto"
+        />,
+      );
+      expect(screen.queryByText("Muy corto")).not.toBeInTheDocument();
     });
   });
 

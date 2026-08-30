@@ -5,7 +5,7 @@
 }
 
 .container {
-  background: #ffffff;
+  background: var(--lb-color-background);
 }
 
 .label {
@@ -40,74 +40,74 @@
 }
 
 .required {
-  color: #ef4444;
+  color: var(--lb-color-danger);
   margin-left: 0.25rem;
 }
 
 .variantDefault {
-  background: #ffffff;
-  border-color: #e5e7eb;
+  background: var(--lb-color-background);
+  border-color: var(--lb-color-border);
 }
 
 .labelDefault {
-  color: #6b7280;
+  color: var(--lb-color-muted-foreground);
 }
 
 .valueDefault {
-  color: #111827;
+  color: var(--lb-color-foreground);
 }
 
 .rangeDefault {
-  color: #9ca3af;
+  color: var(--lb-color-neutral-400);
 }
 
 .variantHighlighted {
-  background: #eff6ff;
-  border-color: #bfdbfe;
+  background: var(--lb-color-blue-subtle);
+  border-color: var(--lb-color-blue-border);
 }
 
 .labelHighlighted {
-  color: #1d4ed8;
+  color: var(--lb-color-blue-strong);
 }
 
 .valueHighlighted {
-  color: #1e3a8a;
+  color: var(--lb-color-blue-strong);
 }
 
 .rangeHighlighted {
-  color: #2563eb;
+  color: var(--lb-color-primary);
 }
 
 .variantSuccess {
-  background: #ecfdf3;
-  border-color: #bbf7d0;
+  background: var(--lb-color-emerald-subtle);
+  border-color: var(--lb-color-emerald-border);
 }
 
 .labelSuccess {
-  color: #15803d;
+  color: var(--lb-color-emerald-strong);
 }
 
 .valueSuccess {
-  color: #14532d;
+  color: var(--lb-color-emerald-strong);
 }
 
 .rangeSuccess {
-  color: #16a34a;
+  color: var(--lb-color-success);
 }
 
 .variantWarning {
-  background: #fffbeb;
-  border-color: #fde68a;
+  background: var(--lb-color-amber-subtle);
+  border-color: var(--lb-color-amber-border);
 }
 
 .labelWarning {
-  color: #b45309;
+  color: var(--lb-color-amber-strong);
 }
 
 .valueWarning {
-  color: #92400e;
+  color: var(--lb-color-amber-strong);
 }
 
 .rangeWarning {
-  color: #d97706;
+  color: var(--lb-color-warning);
 }

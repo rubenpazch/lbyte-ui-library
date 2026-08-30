@@ -1,4 +1,3 @@
-// @ts-ignore - React import needed for Jest transforms
 import * as React from "react";
 
 /**

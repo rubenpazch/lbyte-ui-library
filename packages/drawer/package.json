@@ -1,6 +1,6 @@
 {
   "name": "@rubenpazch/drawer",
-  "version": "3.0.3",
+  "version": "4.0.0",
   "description": "Flexible drawer/sidebar component with multiple positions and animations",
   "private": false,
   "main": "dist/index.cjs.js",
@@ -29,6 +29,9 @@
   "scripts": {
     "build": "rollup -c",
     "test": "jest --passWithNoTests"
+  },
+  "peerDependencies": {
+    "@rubenpazch/tokens": "workspace:*"
   },
   "dependencies": {
     "@rubenpazch/icons": "workspace:*"

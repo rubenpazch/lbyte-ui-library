@@ -1,4 +1,4 @@
-// @ts-ignore - React import needed for Jest transforms
+// @ts-expect-error React import needed for Jest transforms
 import * as React from "react";
 
 interface CloseIconProps {

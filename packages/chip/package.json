@@ -1,6 +1,6 @@
 {
   "name": "@rubenpazch/chip",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "description": "Chip component inspired by MUI's Chip with variants, icons, and delete actions",
   "private": false,
   "main": "dist/index.cjs.js",
@@ -30,7 +30,7 @@
     "build": "rollup -c",
     "test": "jest --passWithNoTests",
     "test:watch": "jest --watch",
-    "lint": "eslint src --ext .ts,.tsx",
+    "lint": "eslint src",
     "clean": "rm -rf dist"
   },
   "peerDependencies": {

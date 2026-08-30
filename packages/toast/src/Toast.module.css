@@ -1,49 +1,58 @@
+/**
+ * Toast styles — CSS Modules + Lbyte design tokens.
+ *
+ * Colours, spacing, typography, radii and elevation all resolve from the
+ * `--lb-*` custom properties defined in `@rubenpazch/tokens` (imported once by
+ * the host app). No hard-coded values, no Tailwind.
+ */
 .banner {
   width: 100%;
   z-index: 40;
   display: flex;
   flex-direction: column;
-  gap: 0;
+  gap: var(--lb-space-2);
 }
 
 .toast {
   width: 100%;
-  padding: 0.75rem 1rem;
+  padding: var(--lb-space-3) var(--lb-space-4);
   display: flex;
   align-items: center;
-  gap: 1rem;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  gap: var(--lb-space-4);
+  font-family: var(--lb-font-sans);
+  border-radius: var(--lb-radius-lg);
+  box-shadow: var(--lb-shadow-sm);
   animation: toast-in 0.3s ease;
 }
 
 .toastSuccess {
-  background: #ecfdf3;
-  border-bottom: 4px solid #4ade80;
-  color: #14532d;
+  background: var(--lb-color-emerald-subtle);
+  border-bottom: 4px solid var(--lb-color-emerald-accent);
+  color: var(--lb-color-emerald-strong);
 }
 
 .toastError {
-  background: #fef2f2;
-  border-bottom: 4px solid #f87171;
-  color: #7f1d1d;
+  background: var(--lb-color-red-subtle);
+  border-bottom: 4px solid var(--lb-color-red-accent);
+  color: var(--lb-color-red-strong);
 }
 
 .toastWarning {
-  background: #fffbeb;
-  border-bottom: 4px solid #fbbf24;
-  color: #78350f;
+  background: var(--lb-color-amber-subtle);
+  border-bottom: 4px solid var(--lb-color-amber-accent);
+  color: var(--lb-color-amber-strong);
 }
 
 .toastInfo {
-  background: #eff6ff;
-  border-bottom: 4px solid #60a5fa;
-  color: #1e3a8a;
+  background: var(--lb-color-blue-subtle);
+  border-bottom: 4px solid var(--lb-color-blue-accent);
+  color: var(--lb-color-blue-strong);
 }
 
 .toastDefault {
-  background: #f9fafb;
-  border-bottom: 4px solid #9ca3af;
-  color: #111827;
+  background: var(--lb-color-neutral-50);
+  border-bottom: 4px solid var(--lb-color-neutral-400);
+  color: var(--lb-color-neutral-900);
 }
 
 .icon {
@@ -52,8 +61,8 @@
 }
 
 .iconSvg {
-  width: 1.5rem;
-  height: 1.5rem;
+  width: var(--lb-space-6);
+  height: var(--lb-space-6);
 }
 
 .content {
@@ -62,25 +71,25 @@
 }
 
 .title {
-  font-weight: 600;
-  font-size: 1rem;
-  margin: 0 0 0.25rem;
+  font-weight: var(--lb-font-weight-semibold);
+  font-size: var(--lb-font-size-md);
+  margin: 0 0 var(--lb-space-1);
 }
 
 .message {
-  font-size: 0.875rem;
-  line-height: 1.4;
+  font-size: var(--lb-font-size-sm);
+  line-height: var(--lb-line-height-snug);
   white-space: pre-line;
   margin: 0;
 }
 
 .actionButtonBase {
   flex-shrink: 0;
-  margin-left: 1rem;
-  padding: 0.5rem 1rem;
-  border-radius: 0.5rem;
-  font-weight: 500;
-  font-size: 0.875rem;
+  margin-left: var(--lb-space-4);
+  padding: var(--lb-space-2) var(--lb-space-4);
+  border-radius: var(--lb-radius-md);
+  font-weight: var(--lb-font-weight-medium);
+  font-size: var(--lb-font-size-sm);
   transition:
     transform 0.2s ease,
     background-color 0.2s ease,
@@ -101,27 +110,27 @@
 
 .closeButton {
   flex-shrink: 0;
-  margin-left: 0.5rem;
+  margin-left: var(--lb-space-2);
   display: inline-flex;
-  padding: 0.25rem;
-  color: #9ca3af;
+  padding: var(--lb-space-1);
+  color: var(--lb-color-neutral-400);
   transition: color 0.2s ease;
   background: transparent;
   border: none;
 }
 
 .closeButton:hover {
-  color: #4b5563;
+  color: var(--lb-color-neutral-600);
 }
 
 .closeIcon {
-  width: 1.5rem;
-  height: 1.5rem;
+  width: var(--lb-space-6);
+  height: var(--lb-space-6);
 }
 
 @media (min-width: 640px) {
   .toast {
-    padding: 1rem 1.5rem;
+    padding: var(--lb-space-4) var(--lb-space-6);
   }
 }
 

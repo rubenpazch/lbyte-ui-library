@@ -1,0 +1,97 @@
+/**
+ * Lbyte base element styles — apply the design tokens to raw HTML elements so
+ * typography and colors are consistent across every project without extra
+ * classes. Import AFTER tokens.css:
+ *
+ *   import "@rubenpazch/tokens/tokens.css";
+ *   import "@rubenpazch/tokens/base.css";
+ *
+ * Selectors use :where() so their specificity is 0 — any app or component
+ * style overrides them effortlessly.
+ */
+
+:where(body) {
+  margin: 0;
+  font-family: var(--lb-font-sans);
+  font-size: var(--lb-font-size-body);
+  font-weight: var(--lb-font-weight-regular);
+  line-height: var(--lb-line-height-normal);
+  color: var(--lb-color-foreground);
+  background-color: var(--lb-color-background);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+:where(h1, h2, h3, h4, h5, h6) {
+  margin: 0 0 var(--lb-space-4);
+  font-family: var(--lb-font-sans);
+  font-weight: var(--lb-font-weight-bold);
+  line-height: var(--lb-line-height-tight);
+  letter-spacing: var(--lb-letter-spacing-tight);
+  color: var(--lb-color-foreground);
+}
+
+:where(h1) {
+  font-size: var(--lb-font-size-h1);
+}
+
+:where(h2) {
+  font-size: var(--lb-font-size-h2);
+}
+
+:where(h3) {
+  font-size: var(--lb-font-size-h3);
+  font-weight: var(--lb-font-weight-semibold);
+}
+
+:where(h4) {
+  font-size: var(--lb-font-size-h4);
+  font-weight: var(--lb-font-weight-semibold);
+}
+
+:where(h5) {
+  font-size: var(--lb-font-size-h5);
+  font-weight: var(--lb-font-weight-semibold);
+  line-height: var(--lb-line-height-snug);
+}
+
+:where(h6) {
+  font-size: var(--lb-font-size-h6);
+  font-weight: var(--lb-font-weight-semibold);
+  line-height: var(--lb-line-height-snug);
+}
+
+:where(p) {
+  margin: 0 0 var(--lb-space-4);
+}
+
+:where(small) {
+  font-size: var(--lb-font-size-small);
+}
+
+:where(a) {
+  color: var(--lb-color-link);
+  text-decoration: none;
+}
+
+:where(a:hover) {
+  color: var(--lb-color-link-hover);
+  text-decoration: underline;
+}
+
+:where(code, pre, kbd, samp) {
+  font-family: var(--lb-font-mono);
+  font-size: 0.9em;
+}
+
+:where(hr) {
+  border: none;
+  border-top: 1px solid var(--lb-color-border);
+  margin: var(--lb-space-6) 0;
+}
+
+:where(:focus-visible) {
+  outline: 2px solid var(--lb-color-ring);
+  outline-offset: 2px;
+}

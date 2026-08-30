@@ -1,5 +1,15 @@
 # @rubenpazch/storybook
 
+## 5.0.1
+
+### Patch Changes
+
+- Updated dependencies
+  - @rubenpazch/button@6.0.0
+  - @rubenpazch/chip@3.0.0
+  - @rubenpazch/icons@6.0.0
+  - @rubenpazch/text-input@6.0.0
+
 ## 5.0.0
 
 ### Major Changes

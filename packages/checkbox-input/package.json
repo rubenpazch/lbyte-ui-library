@@ -1,6 +1,6 @@
 {
   "name": "@rubenpazch/checkbox-input",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "description": "CheckboxInput component",
   "private": false,
   "main": "dist/index.cjs.js",
@@ -31,6 +31,7 @@
     "test": "jest --passWithNoTests"
   },
   "peerDependencies": {
+    "@rubenpazch/tokens": "workspace:*",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },

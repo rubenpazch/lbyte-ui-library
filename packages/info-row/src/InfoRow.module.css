@@ -67,38 +67,38 @@
 }
 
 .variantBlue {
-  background-color: #eff6ff;
-  border: 1px solid #bfdbfe;
+  background-color: var(--lb-color-blue-subtle);
+  border: 1px solid var(--lb-color-blue-border);
 }
 
 .variantYellow {
-  background-color: #fef3c7;
-  border: 1px solid #fde68a;
+  background-color: var(--lb-color-amber-subtle);
+  border: 1px solid var(--lb-color-amber-border);
 }
 
 .variantPurple {
-  background-color: #faf5ff;
-  border: 1px solid #e9d5ff;
+  background-color: var(--lb-color-violet-subtle);
+  border: 1px solid var(--lb-color-violet-border);
 }
 
 .variantGreen {
-  background-color: #ecfdf5;
-  border: 1px solid #a7f3d0;
+  background-color: var(--lb-color-emerald-subtle);
+  border: 1px solid var(--lb-color-emerald-border);
 }
 
 .variantRed {
-  background-color: #fef2f2;
-  border: 1px solid #fecaca;
+  background-color: var(--lb-color-red-subtle);
+  border: 1px solid var(--lb-color-red-border);
 }
 
 .variantIndigo {
-  background-color: #eef2ff;
-  border: 1px solid #c7d2fe;
+  background-color: var(--lb-color-indigo-subtle);
+  border: 1px solid var(--lb-color-indigo-border);
 }
 
 .variantGray {
-  background-color: #f9fafb;
-  border: 1px solid #e5e7eb;
+  background-color: var(--lb-color-neutral-50);
+  border: 1px solid var(--lb-color-neutral-200);
 }
 
 /* Icon container */
@@ -113,35 +113,35 @@
 
 /* Icon colors */
 .iconColorDefault {
-  color: #9ca3af;
+  color: var(--lb-color-neutral-400);
 }
 
 .iconColorBlue {
-  color: #3b82f6;
+  color: var(--lb-color-blue-accent);
 }
 
 .iconColorYellow {
-  color: #ca8a04;
+  color: var(--lb-color-amber-accent);
 }
 
 .iconColorPurple {
-  color: #a855f7;
+  color: var(--lb-color-violet-accent);
 }
 
 .iconColorGreen {
-  color: #10b981;
+  color: var(--lb-color-emerald-accent);
 }
 
 .iconColorRed {
-  color: #ef4444;
+  color: var(--lb-color-red-accent);
 }
 
 .iconColorIndigo {
-  color: #6366f1;
+  color: var(--lb-color-indigo-accent);
 }
 
 .iconColorGray {
-  color: #6b7280;
+  color: var(--lb-color-neutral-500);
 }
 
 /* Content */
@@ -188,35 +188,35 @@
 
 /* Label colors */
 .labelColorDefault {
-  color: #6b7280;
+  color: var(--lb-color-muted-foreground);
 }
 
 .labelColorBlue {
-  color: #1d4ed8;
+  color: var(--lb-color-blue-strong);
 }
 
 .labelColorYellow {
-  color: #a16207;
+  color: var(--lb-color-amber-strong);
 }
 
 .labelColorPurple {
-  color: #7e22ce;
+  color: var(--lb-color-violet-strong);
 }
 
 .labelColorGreen {
-  color: #047857;
+  color: var(--lb-color-emerald-strong);
 }
 
 .labelColorRed {
-  color: #b91c1c;
+  color: var(--lb-color-red-strong);
 }
 
 .labelColorIndigo {
-  color: #4338ca;
+  color: var(--lb-color-indigo-strong);
 }
 
 .labelColorGray {
-  color: #374151;
+  color: var(--lb-color-neutral-700);
 }
 
 /* Label sizes */
@@ -242,7 +242,7 @@
 
 /* Value */
 .value {
-  color: #111827;
+  color: var(--lb-color-foreground);
 }
 
 /* Value sizes */
@@ -272,7 +272,7 @@
 
 /* Separator (colon) */
 .separator {
-  color: #9ca3af;
+  color: var(--lb-color-neutral-400);
 }
 
 /* Action */

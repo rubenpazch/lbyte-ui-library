@@ -1,0 +1,73 @@
+.loader {
+  display: flex;
+  align-items: center;
+  gap: var(--lb-space-3, 12px);
+  padding: var(--lb-space-4, 16px);
+  border-radius: var(--lb-radius-lg, 12px);
+  background: var(--lb-color-background, #ffffff);
+  border: 1px solid var(--lb-color-border, #e2e8f0);
+  color: var(--lb-color-neutral-600, #475569);
+  font-family: var(
+    --lb-font-family-sans,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    Roboto,
+    Helvetica,
+    Arial,
+    sans-serif
+  );
+  font-size: 0.875rem;
+}
+
+/* Fill the available content area and center the spinner/message, dropping the
+   compact card chrome. Handy when the loader owns a whole region (route slot).
+   `flex: 1` fills when the parent is a flex column; the viewport min-height is a
+   robust fallback for normal block containers. */
+.fill {
+  flex: 1 1 auto;
+  align-self: stretch;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  min-height: 60vh;
+  padding: var(--lb-space-6, 24px);
+  border: none;
+  background: transparent;
+  text-align: center;
+}
+
+.spinner {
+  width: 20px;
+  height: 20px;
+  border-radius: var(--lb-radius-full, 9999px);
+  border: 3px solid var(--lb-color-neutral-300, #cbd5e1);
+  border-top-color: var(--lb-color-accent-blue-accent, #2563eb);
+  animation: inline-loader-spin 0.8s linear infinite;
+  flex-shrink: 0;
+}
+
+.success .spinner {
+  border-top-color: var(--lb-color-accent-emerald-accent, #059669);
+}
+
+.danger .spinner {
+  border-top-color: var(--lb-color-accent-red-accent, #dc2626);
+}
+
+.message {
+  margin: 0;
+}
+
+@keyframes inline-loader-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spinner {
+    animation-duration: 1.6s;
+  }
+}
