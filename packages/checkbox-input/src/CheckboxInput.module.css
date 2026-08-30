@@ -70,7 +70,7 @@
 }
 
 .variantPrimary {
-  --checkbox-color: #4f46e5;
+  --checkbox-color: var(--lb-color-indigo-accent);
   --focus-ring: rgba(79, 70, 229, 0.3);
 }
 
@@ -124,12 +124,12 @@
 }
 
 .required {
-  color: #ef4444;
+  color: var(--lb-color-red-accent);
   margin-left: 0.25rem;
 }
 
 .description {
-  color: #6b7280;
+  color: var(--lb-color-neutral-500);
   margin-top: 0.25rem;
 }
 
@@ -152,5 +152,5 @@
   margin-top: 0.25rem;
   font-size: 0.75rem;
   line-height: 1rem;
-  color: #dc2626;
+  color: var(--lb-color-danger);
 }

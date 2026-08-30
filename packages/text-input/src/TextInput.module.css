@@ -275,7 +275,7 @@
 }
 
 .strengthSegmentGood {
-  background: #eab308;
+  background: var(--lb-color-warning);
 }
 
 .strengthSegmentStrong {
@@ -311,7 +311,7 @@
 }
 
 .strengthValueGood {
-  color: #ca8a04;
+  color: var(--lb-color-amber-accent);
 }
 
 .strengthValueStrong {
@@ -348,17 +348,17 @@
 }
 
 .requirementIconMet {
-  color: #10b981;
+  color: var(--lb-color-emerald-accent);
 }
 
 .requirementIconUnmet {
-  color: #d1d5db;
+  color: var(--lb-color-neutral-300);
 }
 
 .requirementText {
-  color: #6b7280;
+  color: var(--lb-color-neutral-500);
 }
 
 .requirementTextMet {
-  color: #374151;
+  color: var(--lb-color-neutral-700);
 }

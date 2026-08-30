@@ -13,7 +13,7 @@
   overflow: hidden;
   user-select: none;
   background-color: var(--lb-color-neutral-300);
-  color: #fff;
+  color: var(--lb-color-primary-foreground);
 }
 
 /* Sizes */

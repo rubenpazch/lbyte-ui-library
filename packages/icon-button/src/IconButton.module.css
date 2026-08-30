@@ -163,7 +163,7 @@
 }
 
 .variantBlackOutlined:hover:not(:disabled) {
-  background-color: #f3f4f6;
+  background-color: var(--lb-color-neutral-100);
 }
 
 .variantBlackFilled {
@@ -172,7 +172,7 @@
 }
 
 .variantBlackFilled:hover:not(:disabled) {
-  background-color: #111827;
+  background-color: var(--lb-color-foreground);
 }
 
 .variantBlackQuiet {
@@ -180,22 +180,26 @@
 }
 
 .variantBlackQuiet:hover:not(:disabled) {
-  color: #111827;
-  background-color: #f3f4f6;
+  color: var(--lb-color-foreground);
+  background-color: var(--lb-color-neutral-100);
 }
 
 /* Variants - Gradient Green */
 .variantGradientGreenOutlined {
-  color: #34d399;
-  border: 2px solid #34d399;
+  color: var(--lb-color-emerald-accent);
+  border: 2px solid var(--lb-color-emerald-accent);
 }
 
 .variantGradientGreenOutlined:hover:not(:disabled) {
-  background-color: #ecfdf5;
+  background-color: var(--lb-color-emerald-subtle);
 }
 
 .variantGradientGreenFilled {
-  background: linear-gradient(to right, #34d399, #22d3ee);
+  background: linear-gradient(
+    to right,
+    var(--lb-color-emerald-accent),
+    #22d3ee
+  );
   color: white;
 }
 
@@ -204,68 +208,68 @@
 }
 
 .variantGradientGreenQuiet {
-  color: #10b981;
+  color: var(--lb-color-emerald-accent);
 }
 
 .variantGradientGreenQuiet:hover:not(:disabled) {
-  color: #059669;
-  background-color: #ecfdf5;
+  color: var(--lb-color-emerald-strong);
+  background-color: var(--lb-color-emerald-subtle);
 }
 
 /* Variants - Solid Green */
 .variantSolidGreenOutlined {
-  color: #10b981;
-  border: 2px solid #10b981;
+  color: var(--lb-color-emerald-accent);
+  border: 2px solid var(--lb-color-emerald-accent);
 }
 
 .variantSolidGreenOutlined:hover:not(:disabled) {
-  background-color: #ecfdf5;
+  background-color: var(--lb-color-emerald-subtle);
 }
 
 .variantSolidGreenFilled {
-  background-color: #10b981;
+  background-color: var(--lb-color-emerald-accent);
   color: white;
 }
 
 .variantSolidGreenFilled:hover:not(:disabled) {
-  background-color: #059669;
+  background-color: var(--lb-color-emerald-strong);
 }
 
 .variantSolidGreenQuiet {
-  color: #10b981;
+  color: var(--lb-color-emerald-accent);
 }
 
 .variantSolidGreenQuiet:hover:not(:disabled) {
-  color: #059669;
-  background-color: #ecfdf5;
+  color: var(--lb-color-emerald-strong);
+  background-color: var(--lb-color-emerald-subtle);
 }
 
 /* Variants - Blue */
 .variantBlueOutlined {
-  color: #3b82f6;
-  border: 2px solid #3b82f6;
+  color: var(--lb-color-blue-accent);
+  border: 2px solid var(--lb-color-blue-accent);
 }
 
 .variantBlueOutlined:hover:not(:disabled) {
-  background-color: #eff6ff;
+  background-color: var(--lb-color-blue-subtle);
 }
 
 .variantBlueFilled {
-  background-color: #3b82f6;
+  background-color: var(--lb-color-blue-accent);
   color: white;
 }
 
 .variantBlueFilled:hover:not(:disabled) {
-  background-color: #2563eb;
+  background-color: var(--lb-color-primary);
 }
 
 .variantBlueQuiet {
-  color: #3b82f6;
+  color: var(--lb-color-blue-accent);
 }
 
 .variantBlueQuiet:hover:not(:disabled) {
-  color: #2563eb;
-  background-color: #eff6ff;
+  color: var(--lb-color-primary);
+  background-color: var(--lb-color-blue-subtle);
 }
 
 /* Variants - Pink */

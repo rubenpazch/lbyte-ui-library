@@ -63,32 +63,32 @@
 
 /* Radio border colors */
 .radioBorderDefault {
-  border-color: #d1d5db;
+  border-color: var(--lb-color-neutral-300);
 }
 
 .radioBorderRequired {
-  border-color: #ef4444;
+  border-color: var(--lb-color-red-accent);
 }
 
 /* Radio variants - checked state colors */
 .radioDefault {
-  color: #2563eb;
+  color: var(--lb-color-primary);
 }
 
 .radioPrimary {
-  color: #4f46e5;
+  color: var(--lb-color-indigo-accent);
 }
 
 .radioSuccess {
-  color: #16a34a;
+  color: var(--lb-color-success);
 }
 
 .radioWarning {
-  color: #ca8a04;
+  color: var(--lb-color-amber-accent);
 }
 
 .radioDanger {
-  color: #dc2626;
+  color: var(--lb-color-danger);
 }
 
 /* Radio focus ring colors */
@@ -141,23 +141,23 @@
 }
 
 .labelDefault {
-  color: #374151;
+  color: var(--lb-color-neutral-700);
 }
 
 .labelDisabled {
-  color: #9ca3af;
+  color: var(--lb-color-neutral-400);
   cursor: not-allowed;
 }
 
 .labelRequired {
-  color: #dc2626;
+  color: var(--lb-color-danger);
   cursor: pointer;
 }
 
 /* Description styles */
 .description {
   margin-top: 0.125rem;
-  color: #6b7280;
+  color: var(--lb-color-neutral-500);
 }
 
 .descriptionSm {
@@ -178,7 +178,7 @@
 /* Error message styles */
 .error {
   margin-top: 0.125rem;
-  color: #dc2626;
+  color: var(--lb-color-danger);
 }
 
 .errorSm {
