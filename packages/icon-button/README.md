@@ -30,7 +30,7 @@ npm install @rubenpazch/icon-button
 | `linkStyle`        | `boolean`                                                                                                   |      | `false`     |             |
 | `quiet`            | `boolean`                                                                                                   |      | `false`     |             |
 | `shape`            | `"rounded" \| "square"`                                                                                     |      | `rounded`   |             |
-| `size`             | `"small" \| "medium"`                                                                                       |      | `medium`    |             |
+| `size`             | `"small" \| "medium" \| "sm" \| "md"`                                                                       |      | `medium`    |             |
 | `tooltip`          | `ReactNode`                                                                                                 |      |             |             |
 | `tooltipPosition`  | `"top" \| "bottom" \| "left" \| "right"`                                                                    |      | `top`       |             |
 | `variant`          | `"default" \| "secondary" \| "black" \| "gradient-green" \| "solid-green" \| "blue" \| "pink" \| "warning"` |      | `default`   |             |

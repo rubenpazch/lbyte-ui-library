@@ -17,20 +17,25 @@ npm install @rubenpazch/date-picker
 
 ## DatePicker
 
-| Prop          | Tipo                     | Req. | Por defecto | Descripción |
-| ------------- | ------------------------ | ---- | ----------- | ----------- |
-| `onChange`    | `(date: string) => void` | sí   |             |             |
-| `value`       | `string`                 | sí   |             |             |
-| `className`   | `string`                 |      | ``          |             |
-| `disabled`    | `boolean`                |      | `false`     |             |
-| `error`       | `string`                 |      |             |             |
-| `hint`        | `string`                 |      |             |             |
-| `label`       | `string`                 |      |             |             |
-| `locale`      | `string`                 |      | `en`        |             |
-| `maxDate`     | `string`                 |      |             |             |
-| `minDate`     | `string`                 |      |             |             |
-| `placeholder` | `string`                 |      |             |             |
-| `readOnly`    | `boolean`                |      | `false`     |             |
-| `required`    | `boolean`                |      | `false`     |             |
+Selector de fecha con calendario (días, meses y años). Devuelve ISO `AAAA-MM-DD` en hora local.
+
+| Prop                | Tipo                     | Req. | Por defecto | Descripción                                                             |
+| ------------------- | ------------------------ | ---- | ----------- | ----------------------------------------------------------------------- |
+| `onChange`          | `(date: string) => void` | sí   |             |                                                                         |
+| `value`             | `string`                 | sí   |             |                                                                         |
+| `className`         | `string`                 |      | ``          |                                                                         |
+| `disabled`          | `boolean`                |      | `false`     |                                                                         |
+| `error`             | `string`                 |      |             |                                                                         |
+| `hint`              | `string`                 |      |             |                                                                         |
+| `id`                | `string`                 |      |             | id del input; si no se pasa se genera uno (la etiqueta se asocia sola). |
+| `label`             | `string`                 |      |             |                                                                         |
+| `locale`            | `string`                 |      | `es`        |                                                                         |
+| `maxDate`           | `string`                 |      |             |                                                                         |
+| `minDate`           | `string`                 |      |             |                                                                         |
+| `name`              | `string`                 |      |             | name del input.                                                         |
+| `openCalendarLabel` | `string`                 |      |             | Texto del botón que abre el calendario (accesibilidad).                 |
+| `placeholder`       | `string`                 |      |             |                                                                         |
+| `readOnly`          | `boolean`                |      | `false`     |                                                                         |
+| `required`          | `boolean`                |      | `false`     |                                                                         |
 
 <!-- catalogo:fin -->

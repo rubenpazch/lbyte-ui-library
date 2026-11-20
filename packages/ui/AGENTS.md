@@ -78,6 +78,60 @@ rutas internas (`dist/…`).
 - Para Tailwind puro (layout, grid, flex) usa las utilidades normales; para color, tipografía,
   radios, sombras y espacios del sistema, las `lb-*`.
 
+## Qué usar para cada cosa
+
+| Necesito…                                                 | Usa                                                                                                                                     |
+| --------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+| El layout de un panel (menú lateral, cabecera, contenido) | `AppShell` (o solo `Sidebar`) en `app/(panel)/layout.tsx`, con `currentPath={usePathname()}` y `linkComponent={Link}`                   |
+| La cabecera de cada página                                | `PageHeader` (migas, título h1, acciones)                                                                                               |
+| Un listado de registros                                   | `DataTable` + `Pagination` (`onPageChange`) + `EmptyState`                                                                              |
+| Un formulario                                             | `FormRow` (columnas) + campos (`TextInput`, `Textarea`, `Select`, `Autocomplete`, `DateInput`, `MoneyInput`, `Switch`…) + `FormActions` |
+| Montos de dinero                                          | `MoneyInput` para editar, `formatMoney()` para mostrar                                                                                  |
+| Elegir el mes de trabajo                                  | `MonthNavigator`                                                                                                                        |
+| Mostrar un estado                                         | `Badge`                                                                                                                                 |
+| Agrupar información                                       | `Card` + `CardHeader` / `CardBody` / `CardFooter`                                                                                       |
+| Avisos en la página / pasajeros                           | `Alert` / `Toast`                                                                                                                       |
+| Confirmar / editar en ventana                             | `ConfirmationDialog` / `Modal`                                                                                                          |
+| Acciones de una fila                                      | `Menu` (⋮)                                                                                                                              |
+| Cargando                                                  | `Skeleton` (contenido), `LoadingSpinner` (botón), `OverlayLoader` (pantalla), `ProgressBar` (avance)                                    |
+
+```tsx
+// app/(panel)/layout.tsx
+"use client";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { AppShell, HomeIcon, DocumentIcon } from "@rubenpazch/ui";
+
+export default function PanelLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <AppShell
+      brand={<strong>Finanzas</strong>}
+      currentPath={usePathname()}
+      linkComponent={Link}
+      storageKey="menu-finanzas"
+      sections={[
+        {
+          items: [
+            { label: "Inicio", href: "/", icon: <HomeIcon /> },
+            {
+              label: "Obligaciones",
+              href: "/obligaciones",
+              icon: <DocumentIcon />,
+            },
+          ],
+        },
+      ]}
+    >
+      {children}
+    </AppShell>
+  );
+}
+```
+
 ## Textos
 
 La interfaz va en **español**. Varios componentes reciben un objeto `labels` con todos sus textos

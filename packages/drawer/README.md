@@ -23,6 +23,7 @@ npm install @rubenpazch/drawer
 | `isOpen`              | `boolean`                                          | sí   |                 | Whether the drawer is open                                                              |
 | `onClose`             | `() => void`                                       | sí   |                 | Function to close the drawer                                                            |
 | `className`           | `string`                                           |      | ``              | Custom className for the drawer content                                                 |
+| `closeLabel`          | `string`                                           |      | `Cerrar`        | Texto accesible del botón de cerrar.                                                    |
 | `closeOnEscape`       | `boolean`                                          |      | `true`          | Whether pressing Escape closes the drawer                                               |
 | `closeOnOverlayClick` | `boolean`                                          |      | `true`          | Whether clicking overlay closes the drawer                                              |
 | `contentContained`    | `boolean`                                          |      | `false`         | Whether the content (header, body, footer) should be contained in a max-width container |

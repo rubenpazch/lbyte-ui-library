@@ -3077,15 +3077,27 @@ importers:
 
   packages/ui:
     dependencies:
+      '@rubenpazch/alert':
+        specifier: workspace:^
+        version: link:../alert
+      '@rubenpazch/app-shell':
+        specifier: workspace:^
+        version: link:../app-shell
       '@rubenpazch/autocomplete':
         specifier: workspace:^
         version: link:../autocomplete
       '@rubenpazch/avatar':
         specifier: workspace:^
         version: link:../avatar
+      '@rubenpazch/badge':
+        specifier: workspace:^
+        version: link:../badge
       '@rubenpazch/button':
         specifier: workspace:^
         version: link:../button
+      '@rubenpazch/card':
+        specifier: workspace:^
+        version: link:../card
       '@rubenpazch/checkbox-input':
         specifier: workspace:^
         version: link:../checkbox-input
@@ -3095,6 +3107,9 @@ importers:
       '@rubenpazch/confirmation-dialog':
         specifier: workspace:^
         version: link:../confirmation-dialog
+      '@rubenpazch/data-table':
+        specifier: workspace:^
+        version: link:../data-table
       '@rubenpazch/date-input':
         specifier: workspace:^
         version: link:../date-input
@@ -3107,6 +3122,12 @@ importers:
       '@rubenpazch/drawer':
         specifier: workspace:^
         version: link:../drawer
+      '@rubenpazch/empty-state':
+        specifier: workspace:^
+        version: link:../empty-state
+      '@rubenpazch/form-field':
+        specifier: workspace:^
+        version: link:../form-field
       '@rubenpazch/icon-button':
         specifier: workspace:^
         version: link:../icon-button
@@ -3125,6 +3146,18 @@ importers:
       '@rubenpazch/loading-spinner':
         specifier: workspace:^
         version: link:../loading-spinner
+      '@rubenpazch/menu':
+        specifier: workspace:^
+        version: link:../menu
+      '@rubenpazch/modal':
+        specifier: workspace:^
+        version: link:../modal
+      '@rubenpazch/money-input':
+        specifier: workspace:^
+        version: link:../money-input
+      '@rubenpazch/month-navigator':
+        specifier: workspace:^
+        version: link:../month-navigator
       '@rubenpazch/numeric-picker':
         specifier: workspace:^
         version: link:../NumericPicker
@@ -3134,6 +3167,9 @@ importers:
       '@rubenpazch/overlay-loader':
         specifier: workspace:^
         version: link:../overlay-loader
+      '@rubenpazch/page-header':
+        specifier: workspace:^
+        version: link:../page-header
       '@rubenpazch/pagination':
         specifier: workspace:^
         version: link:../pagination
@@ -3149,30 +3185,51 @@ importers:
       '@rubenpazch/prescription-eye-card':
         specifier: workspace:^
         version: link:../prescription-eye-card
+      '@rubenpazch/progress-bar':
+        specifier: workspace:^
+        version: link:../progress-bar
       '@rubenpazch/radio-button':
         specifier: workspace:^
         version: link:../radio-button
+      '@rubenpazch/segmented-control':
+        specifier: workspace:^
+        version: link:../segmented-control
       '@rubenpazch/select':
         specifier: workspace:^
         version: link:../select
       '@rubenpazch/shared':
         specifier: workspace:^
         version: link:../shared
+      '@rubenpazch/sidebar':
+        specifier: workspace:^
+        version: link:../sidebar
+      '@rubenpazch/skeleton':
+        specifier: workspace:^
+        version: link:../skeleton
       '@rubenpazch/stepper':
         specifier: workspace:^
         version: link:../stepper
+      '@rubenpazch/switch':
+        specifier: workspace:^
+        version: link:../switch
       '@rubenpazch/tabs':
         specifier: workspace:^
         version: link:../tabs
       '@rubenpazch/text-input':
         specifier: workspace:^
         version: link:../text-input
+      '@rubenpazch/textarea':
+        specifier: workspace:^
+        version: link:../textarea
       '@rubenpazch/toast':
         specifier: workspace:^
         version: link:../toast
       '@rubenpazch/tokens':
         specifier: workspace:^
         version: link:../tokens
+      '@rubenpazch/tooltip':
+        specifier: workspace:^
+        version: link:../tooltip
       react:
         specifier: 19.2.8
         version: 19.2.8

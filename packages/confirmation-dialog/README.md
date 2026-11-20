@@ -17,16 +17,20 @@ npm install @rubenpazch/confirmation-dialog
 
 ## ConfirmationDialog
 
-| Prop          | Tipo         | Req. | Por defecto | Descripción |
-| ------------- | ------------ | ---- | ----------- | ----------- |
-| `isOpen`      | `boolean`    | sí   |             |             |
-| `message`     | `string`     | sí   |             |             |
-| `onCancel`    | `() => void` | sí   |             |             |
-| `onConfirm`   | `() => void` | sí   |             |             |
-| `title`       | `string`     | sí   |             |             |
-| `cancelText`  | `string`     |      | `Cancel`    |             |
-| `confirmText` | `string`     |      | `Confirm`   |             |
-| `isDangerous` | `boolean`    |      | `false`     |             |
-| `isLoading`   | `boolean`    |      | `false`     |             |
+Diálogo de confirmación (alertdialog) sobre Modal: foco retenido, Escape para cancelar y
+el foco inicial en "Cancelar", la opción segura.
+
+| Prop          | Tipo         | Req. | Por defecto | Descripción                                                          |
+| ------------- | ------------ | ---- | ----------- | -------------------------------------------------------------------- |
+| `isOpen`      | `boolean`    | sí   |             | Si el diálogo está abierto.                                          |
+| `message`     | `ReactNode`  | sí   |             | Explicación de la consecuencia.                                      |
+| `onCancel`    | `() => void` | sí   |             | Al cancelar, pulsar Escape o hacer clic fuera (si no está cargando). |
+| `onConfirm`   | `() => void` | sí   |             | Al confirmar.                                                        |
+| `title`       | `string`     | sí   |             | Pregunta o título: "¿Eliminar la convocatoria?".                     |
+| `cancelText`  | `string`     |      | `Cancelar`  | Texto del botón de cancelar (por defecto "Cancelar").                |
+| `children`    | `ReactNode`  |      |             | Contenido extra bajo el mensaje (p. ej. un campo "motivo").          |
+| `confirmText` | `string`     |      | `Confirmar` | Texto del botón de confirmar (por defecto "Confirmar").              |
+| `isDangerous` | `boolean`    |      | `false`     | Acción destructiva: botón rojo.                                      |
+| `isLoading`   | `boolean`    |      | `false`     | Muestra el botón de confirmar cargando y bloquea los botones.        |
 
 <!-- catalogo:fin -->

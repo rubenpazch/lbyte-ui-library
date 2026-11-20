@@ -13,40 +13,59 @@ librería (ver AGENTS.md del repo lbyte-ui-library), no lo copies en la app.
 
 ## Índice
 
-| Paquete                                                                 | Categoría                  | Exporta                                                                                   | Qué es                                                                                                                                                          |
-| ----------------------------------------------------------------------- | -------------------------- | ----------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [`@rubenpazch/autocomplete`](#rubenpazchautocomplete)                   | Formularios                | Autocomplete                                                                              | Selector con búsqueda sobre una lista de opciones (con descripción, carga y opción de limpiar).                                                                 |
-| [`@rubenpazch/avatar`](#rubenpazchavatar)                               | Presentación de datos      | Avatar, AvatarGroup                                                                       | Avatar de persona (imagen, iniciales o icono) y AvatarGroup para varios.                                                                                        |
-| [`@rubenpazch/button`](#rubenpazchbutton)                               | Acciones                   | Button                                                                                    | Botón con variantes text/contained/outlined, colores, tamaños, estado de carga e iconos; puede renderizar un enlace (href).                                     |
-| [`@rubenpazch/checkbox-input`](#rubenpazchcheckbox-input)               | Formularios                | CheckboxInput                                                                             | Casilla de verificación con etiqueta, ayuda y error.                                                                                                            |
-| [`@rubenpazch/chip`](#rubenpazchchip)                                   | Presentación de datos      | Chip                                                                                      | Chip/etiqueta con variantes, icono y acción de borrar.                                                                                                          |
-| [`@rubenpazch/confirmation-dialog`](#rubenpazchconfirmation-dialog)     | Retroalimentación          | ConfirmationDialog                                                                        | Diálogo modal de confirmación (aceptar/cancelar).                                                                                                               |
-| [`@rubenpazch/date-input`](#rubenpazchdate-input)                       | Formularios                | DateInput                                                                                 | Campo de fecha con formato local, mínimo/máximo, ayuda y error.                                                                                                 |
-| [`@rubenpazch/date-picker`](#rubenpazchdate-picker)                     | Formularios                | DatePicker                                                                                | Selector de fecha con calendario desplegable.                                                                                                                   |
-| [`@rubenpazch/draggable-list`](#rubenpazchdraggable-list)               | Datos                      | DraggableList                                                                             | Lista reordenable arrastrando (también con teclado), basada en dnd-kit.                                                                                         |
-| [`@rubenpazch/drawer`](#rubenpazchdrawer)                               | Navegación                 | Drawer                                                                                    | Panel lateral (izquierda/derecha/arriba/abajo) con animación y fondo.                                                                                           |
-| [`@rubenpazch/icon-button`](#rubenpazchicon-button)                     | Acciones                   | IconButton                                                                                | Botón de solo icono con variantes, formas, tooltip y etiqueta accesible.                                                                                        |
-| [`@rubenpazch/icons`](#rubenpazchicons)                                 | Iconos                     | ArrowDetailsIcon, ArchiveIcon, BrandingIcon, BusinessPlanIcon, CalendarIcon, CheckIcon, … | Más de 60 iconos SVG como componentes React (y MaterialIcon para Material Icons).                                                                               |
-| [`@rubenpazch/identification-input`](#rubenpazchidentification-input)   | Salud (pacientes y óptica) | IdentificationInput                                                                       | Tipo y número de documento peruano (DNI, CE, pasaporte) con validación de longitud y formato.                                                                   |
-| [`@rubenpazch/image-upload`](#rubenpazchimage-upload)                   | Formularios                | ImageUpload                                                                               | Subida de imagen o PDF con vista previa, arrastrar y soltar, validación de tipo y tamaño.                                                                       |
-| [`@rubenpazch/info-row`](#rubenpazchinfo-row)                           | Presentación de datos      | InfoRow                                                                                   | Fila de dato con icono, etiqueta y valor (variantes de color, tamaños, acción opcional).                                                                        |
-| [`@rubenpazch/loading-spinner`](#rubenpazchloading-spinner)             | Retroalimentación          | LoadingSpinner                                                                            | Indicador de carga circular con tamaños y colores.                                                                                                              |
-| [`@rubenpazch/numeric-picker`](#rubenpazchnumeric-picker)               | Formularios                | NumericPicker                                                                             | Campo numérico con mínimo, máximo, paso, decimales y moneda.                                                                                                    |
-| [`@rubenpazch/numeric-up-picker`](#rubenpazchnumeric-up-picker)         | Formularios                | NumericUpPicker                                                                           | Campo numérico con botones +/-, signo opcional, solo enteros, ayuda, advertencia y error.                                                                       |
-| [`@rubenpazch/overlay-loader`](#rubenpazchoverlay-loader)               | Retroalimentación          | OverlayLoader, InlineLoader                                                               | OverlayLoader (pantalla completa, controlado por visible) e InlineLoader (dentro de un contenedor).                                                             |
-| [`@rubenpazch/pagination`](#rubenpazchpagination)                       | Navegación                 | Pagination, PaginationItem                                                                | Paginación con variantes, tamaños y formas; incluye PaginationItem.                                                                                             |
-| [`@rubenpazch/patient-details`](#rubenpazchpatient-details)             | Salud (pacientes y óptica) | PatientDetails                                                                            | Ficha de paciente: identificación, contacto, contacto de emergencia, ubicación (departamento/provincia/distrito) e historia clínica. Textos por la prop labels. |
-| [`@rubenpazch/patient-search`](#rubenpazchpatient-search)               | Salud (pacientes y óptica) | PatientSearch                                                                             | Buscador de pacientes con resultados y selección.                                                                                                               |
-| [`@rubenpazch/prescription-card`](#rubenpazchprescription-card)         | Salud (pacientes y óptica) | PrescriptionCard                                                                          | Tarjeta de receta óptica completa (OD/OI: esfera, cilindro, eje, adición, DNP, prisma, altura) con estado y observaciones.                                      |
-| [`@rubenpazch/prescription-eye-card`](#rubenpazchprescription-eye-card) | Salud (pacientes y óptica) | PrescriptionEyeCard                                                                       | Datos de un ojo de la receta óptica (PrescriptionEyeCard) y campo individual (PrescriptionFieldCard).                                                           |
-| [`@rubenpazch/radio-button`](#rubenpazchradio-button)                   | Formularios                | RadioButton, RadioGroup                                                                   | RadioButton y RadioGroup accesibles con variantes y validación.                                                                                                 |
-| [`@rubenpazch/select`](#rubenpazchselect)                               | Formularios                | Select                                                                                    | Lista desplegable simple con etiqueta, placeholder y error.                                                                                                     |
-| [`@rubenpazch/shared`](#rubenpazchshared)                               | Base (tokens y utilidades) | classList                                                                                 | Utilidades (classList) y tipos comunes; la usan internamente los componentes.                                                                                   |
-| [`@rubenpazch/stepper`](#rubenpazchstepper)                             | Navegación                 | Stepper                                                                                   | Indicador de pasos numerados (opcionalmente clicables) para procesos en etapas.                                                                                 |
-| [`@rubenpazch/tabs`](#rubenpazchtabs)                                   | Navegación                 | Tabs                                                                                      | Pestañas para alternar entre secciones de una misma vista.                                                                                                      |
-| [`@rubenpazch/text-input`](#rubenpazchtext-input)                       | Formularios                | TextInput                                                                                 | Campo de texto con etiqueta, ayuda, advertencia, error, iconos y variantes.                                                                                     |
-| [`@rubenpazch/toast`](#rubenpazchtoast)                                 | Retroalimentación          | ToastBanner                                                                               | Notificaciones temporales (Toast) y avisos fijos (ToastBanner) con tipos y acciones.                                                                            |
-| [`@rubenpazch/tokens`](#rubenpazchtokens)                               | Base (tokens y utilidades) | cssVar, fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, …                    | Tokens de diseño (colores, tipografía, espacios, radios, sombras) como variables CSS --lb-*, estilos base y puente para Tailwind 4.                             |
+| Paquete                                                                 | Categoría                  | Exporta                                                                                   | Qué es                                                                                                                                                                                                                                                 |
+| ----------------------------------------------------------------------- | -------------------------- | ----------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| [`@rubenpazch/alert`](#rubenpazchalert)                                 | Retroalimentación          | Alert                                                                                     | Aviso dentro de la página (info, success, warning, danger) con título, acción y cierre opcional.                                                                                                                                                       |
+| [`@rubenpazch/app-shell`](#rubenpazchapp-shell)                         | Navegación                 | AppShell                                                                                  | Estructura completa de un panel: Sidebar colapsable, cabecera fija con botón ☰ en móvil, título y acciones, enlace "Saltar al contenido" y área principal con ancho máximo.                                                                           |
+| [`@rubenpazch/autocomplete`](#rubenpazchautocomplete)                   | Formularios                | Autocomplete                                                                              | Selector con búsqueda sobre una lista de opciones (con descripción, carga y opción de limpiar).                                                                                                                                                        |
+| [`@rubenpazch/avatar`](#rubenpazchavatar)                               | Presentación de datos      | Avatar, AvatarGroup                                                                       | Avatar de persona (imagen, iniciales o icono) y AvatarGroup para varios.                                                                                                                                                                               |
+| [`@rubenpazch/badge`](#rubenpazchbadge)                                 | Presentación de datos      | Badge                                                                                     | Insignia de estado o categoría (Pagado, Vencido, Borrador) con colores semánticos, variantes soft/solid/outline y punto.                                                                                                                               |
+| [`@rubenpazch/button`](#rubenpazchbutton)                               | Acciones                   | Button                                                                                    | Botón con variantes text/contained/outlined, colores, tamaños, estado de carga e iconos; puede renderizar un enlace (href).                                                                                                                            |
+| [`@rubenpazch/card`](#rubenpazchcard)                                   | Presentación de datos      | Card, CardHeader, CardBody, CardFooter                                                    | Tarjeta (outlined o elevated) con CardHeader (título, subtítulo, acciones), CardBody y CardFooter; puede ser clicable.                                                                                                                                 |
+| [`@rubenpazch/checkbox-input`](#rubenpazchcheckbox-input)               | Formularios                | CheckboxInput                                                                             | Casilla de verificación con etiqueta, ayuda y error.                                                                                                                                                                                                   |
+| [`@rubenpazch/chip`](#rubenpazchchip)                                   | Presentación de datos      | Chip                                                                                      | Chip/etiqueta con variantes, icono y acción de borrar.                                                                                                                                                                                                 |
+| [`@rubenpazch/confirmation-dialog`](#rubenpazchconfirmation-dialog)     | Retroalimentación          | ConfirmationDialog                                                                        | Diálogo modal de confirmación (aceptar/cancelar).                                                                                                                                                                                                      |
+| [`@rubenpazch/data-table`](#rubenpazchdata-table)                       | Datos                      | DataTable                                                                                 | Tabla de datos accesible: columnas con render, orden (aria-sort) en el navegador o en el servidor, carga con Skeleton, estado vacío, filas clicables, encabezado fijo y scroll horizontal en móvil.                                                    |
+| [`@rubenpazch/date-input`](#rubenpazchdate-input)                       | Formularios                | DateInput                                                                                 | Campo de fecha con formato local, mínimo/máximo, ayuda y error.                                                                                                                                                                                        |
+| [`@rubenpazch/date-picker`](#rubenpazchdate-picker)                     | Formularios                | DatePicker                                                                                | Selector de fecha con calendario desplegable.                                                                                                                                                                                                          |
+| [`@rubenpazch/draggable-list`](#rubenpazchdraggable-list)               | Datos                      | DraggableList                                                                             | Lista reordenable arrastrando (también con teclado), basada en dnd-kit.                                                                                                                                                                                |
+| [`@rubenpazch/drawer`](#rubenpazchdrawer)                               | Navegación                 | Drawer                                                                                    | Panel lateral (izquierda/derecha/arriba/abajo) con animación y fondo.                                                                                                                                                                                  |
+| [`@rubenpazch/empty-state`](#rubenpazchempty-state)                     | Retroalimentación          | EmptyState                                                                                | Estado vacío con icono, título, descripción y acciones ("No hay convocatorias · Crear").                                                                                                                                                               |
+| [`@rubenpazch/form-field`](#rubenpazchform-field)                       | Formularios                | FormField, FormRow, FormActions                                                           | FormField (etiqueta, ayuda y error asociados a cualquier control), FormRow (columnas que se apilan en móvil) y FormActions (pie con botones).                                                                                                          |
+| [`@rubenpazch/icon-button`](#rubenpazchicon-button)                     | Acciones                   | IconButton                                                                                | Botón de solo icono con variantes, formas, tooltip y etiqueta accesible.                                                                                                                                                                               |
+| [`@rubenpazch/icons`](#rubenpazchicons)                                 | Iconos                     | ArrowDetailsIcon, ArchiveIcon, BrandingIcon, BusinessPlanIcon, CalendarIcon, CheckIcon, … | Más de 60 iconos SVG como componentes React (y MaterialIcon para Material Icons).                                                                                                                                                                      |
+| [`@rubenpazch/identification-input`](#rubenpazchidentification-input)   | Salud (pacientes y óptica) | IdentificationInput                                                                       | Tipo y número de documento peruano (DNI, CE, pasaporte) con validación de longitud y formato.                                                                                                                                                          |
+| [`@rubenpazch/image-upload`](#rubenpazchimage-upload)                   | Formularios                | ImageUpload                                                                               | Subida de imagen o PDF con vista previa, arrastrar y soltar, validación de tipo y tamaño.                                                                                                                                                              |
+| [`@rubenpazch/info-row`](#rubenpazchinfo-row)                           | Presentación de datos      | InfoRow                                                                                   | Fila de dato con icono, etiqueta y valor (variantes de color, tamaños, acción opcional).                                                                                                                                                               |
+| [`@rubenpazch/loading-spinner`](#rubenpazchloading-spinner)             | Retroalimentación          | LoadingSpinner                                                                            | Indicador de carga circular con tamaños y colores.                                                                                                                                                                                                     |
+| [`@rubenpazch/menu`](#rubenpazchmenu)                                   | Acciones                   | Menu                                                                                      | Menú de acciones (role="menu") con botón ⋮ por defecto, opciones con icono, peligrosas o deshabilitadas, teclado completo.                                                                                                                             |
+| [`@rubenpazch/modal`](#rubenpazchmodal)                                 | Retroalimentación          | Modal                                                                                     | Ventana modal accesible: portal, foco retenido, Escape y clic fuera para cerrar, bloqueo del scroll, título y descripción anunciados.                                                                                                                  |
+| [`@rubenpazch/money-input`](#rubenpazchmoney-input)                     | Formularios                | MoneyInput, formatMoney                                                                   | Campo de monto en PEN (S/) o USD (US$) que devuelve un número; acepta punto o coma decimal y muestra 1,250.50 al salir. Incluye formatMoney().                                                                                                         |
+| [`@rubenpazch/month-navigator`](#rubenpazchmonth-navigator)             | Navegación                 | MonthNavigator, addMonths, currentMonth                                                   | Navegador de periodos ‹ noviembre de 2026 › con valor "AAAA-MM", mínimo, máximo y botón Hoy; incluye addMonths() y currentMonth().                                                                                                                     |
+| [`@rubenpazch/numeric-picker`](#rubenpazchnumeric-picker)               | Formularios                | NumericPicker                                                                             | Campo numérico con mínimo, máximo, paso, decimales y moneda.                                                                                                                                                                                           |
+| [`@rubenpazch/numeric-up-picker`](#rubenpazchnumeric-up-picker)         | Formularios                | NumericUpPicker                                                                           | Campo numérico con botones +/-, signo opcional, solo enteros, ayuda, advertencia y error.                                                                                                                                                              |
+| [`@rubenpazch/overlay-loader`](#rubenpazchoverlay-loader)               | Retroalimentación          | OverlayLoader, InlineLoader                                                               | OverlayLoader (pantalla completa, controlado por visible) e InlineLoader (dentro de un contenedor).                                                                                                                                                    |
+| [`@rubenpazch/page-header`](#rubenpazchpage-header)                     | Navegación                 | PageHeader                                                                                | Cabecera de página: migas de pan, volver, título h1, subtítulo, acciones y contenido extra (filtros); acepta el Link de Next.js.                                                                                                                       |
+| [`@rubenpazch/pagination`](#rubenpazchpagination)                       | Navegación                 | Pagination, PaginationItem                                                                | Paginación con variantes, tamaños y formas; incluye PaginationItem.                                                                                                                                                                                    |
+| [`@rubenpazch/patient-details`](#rubenpazchpatient-details)             | Salud (pacientes y óptica) | PatientDetails                                                                            | Ficha de paciente: identificación, contacto, contacto de emergencia, ubicación (departamento/provincia/distrito) e historia clínica. Textos por la prop labels.                                                                                        |
+| [`@rubenpazch/patient-search`](#rubenpazchpatient-search)               | Salud (pacientes y óptica) | PatientSearch                                                                             | Buscador de pacientes con resultados y selección.                                                                                                                                                                                                      |
+| [`@rubenpazch/prescription-card`](#rubenpazchprescription-card)         | Salud (pacientes y óptica) | PrescriptionCard                                                                          | Tarjeta de receta óptica completa (OD/OI: esfera, cilindro, eje, adición, DNP, prisma, altura) con estado y observaciones.                                                                                                                             |
+| [`@rubenpazch/prescription-eye-card`](#rubenpazchprescription-eye-card) | Salud (pacientes y óptica) | PrescriptionEyeCard                                                                       | Datos de un ojo de la receta óptica (PrescriptionEyeCard) y campo individual (PrescriptionFieldCard).                                                                                                                                                  |
+| [`@rubenpazch/progress-bar`](#rubenpazchprogress-bar)                   | Retroalimentación          | ProgressBar                                                                               | Barra de progreso (role="progressbar") con etiqueta y porcentaje, determinada o indeterminada.                                                                                                                                                         |
+| [`@rubenpazch/radio-button`](#rubenpazchradio-button)                   | Formularios                | RadioButton, RadioGroup                                                                   | RadioButton y RadioGroup accesibles con variantes y validación.                                                                                                                                                                                        |
+| [`@rubenpazch/segmented-control`](#rubenpazchsegmented-control)         | Formularios                | SegmentedControl                                                                          | Botones unidos para elegir una opción entre pocas (radiogroup con flechas del teclado): Personal \| Empresa, Mes \| Año.                                                                                                                               |
+| [`@rubenpazch/select`](#rubenpazchselect)                               | Formularios                | Select                                                                                    | Lista desplegable simple con etiqueta, placeholder y error.                                                                                                                                                                                            |
+| [`@rubenpazch/shared`](#rubenpazchshared)                               | Base (tokens y utilidades) | classList, normalizeSize, toLegacySize, useFieldIds, useEscapeKey, useFocusTrap, …        | Utilidades (classList) y tipos comunes; la usan internamente los componentes.                                                                                                                                                                          |
+| [`@rubenpazch/sidebar`](#rubenpazchsidebar)                             | Navegación                 | Sidebar                                                                                   | Barra de navegación vertical: secciones, subniveles plegables, insignias y página activa (también subrutas); en escritorio se colapsa a iconos y lo recuerda (storageKey); en móvil es un cajón con foco retenido y Escape. Acepta el Link de Next.js. |
+| [`@rubenpazch/skeleton`](#rubenpazchskeleton)                           | Retroalimentación          | Skeleton                                                                                  | Marcador de carga (texto, bloque o círculo) con la forma del contenido; respeta reducir movimiento.                                                                                                                                                    |
+| [`@rubenpazch/stepper`](#rubenpazchstepper)                             | Navegación                 | Stepper                                                                                   | Indicador de pasos numerados (opcionalmente clicables) para procesos en etapas.                                                                                                                                                                        |
+| [`@rubenpazch/switch`](#rubenpazchswitch)                               | Formularios                | Switch                                                                                    | Interruptor encendido/apagado (role="switch") con etiqueta y descripción.                                                                                                                                                                              |
+| [`@rubenpazch/tabs`](#rubenpazchtabs)                                   | Navegación                 | Tabs                                                                                      | Pestañas para alternar entre secciones de una misma vista.                                                                                                                                                                                             |
+| [`@rubenpazch/text-input`](#rubenpazchtext-input)                       | Formularios                | TextInput                                                                                 | Campo de texto con etiqueta, ayuda, advertencia, error, iconos y variantes.                                                                                                                                                                            |
+| [`@rubenpazch/textarea`](#rubenpazchtextarea)                           | Formularios                | Textarea                                                                                  | Área de texto con etiqueta, ayuda, advertencia, error, contador de caracteres y crecimiento automático.                                                                                                                                                |
+| [`@rubenpazch/toast`](#rubenpazchtoast)                                 | Retroalimentación          | ToastBanner                                                                               | Notificaciones temporales (Toast) y avisos fijos (ToastBanner) con tipos y acciones.                                                                                                                                                                   |
+| [`@rubenpazch/tokens`](#rubenpazchtokens)                               | Base (tokens y utilidades) | cssVar, fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, …                    | Tokens de diseño (colores, tipografía, espacios, radios, sombras) como variables CSS --lb-*, estilos base y puente para Tailwind 4.                                                                                                                    |
+| [`@rubenpazch/tooltip`](#rubenpazchtooltip)                             | Presentación de datos      | Tooltip                                                                                   | Texto de ayuda breve al pasar el mouse o enfocar con teclado (role="tooltip", aria-describedby), se cierra con Escape.                                                                                                                                 |
 
 ## Base (tokens y utilidades)
 
@@ -57,9 +76,9 @@ Utilidades (classList) y tipos comunes; la usan internamente los componentes.
 - **Usar cuando:** Solo si construyes un componente nuevo dentro de la librería.
 - **Evitar cuando:** En las apps: no hace falta importarla.
 
-Otras exportaciones: `classList`.
+Otras exportaciones: `classList`, `normalizeSize`, `toLegacySize`, `useFieldIds`, `useEscapeKey`, `useFocusTrap`, `useLockBodyScroll`, `useClickOutside`, `mergeRefs`, `parseISODate`, `toISODate`, `isDayFirst`, `datePlaceholder`, `parseLocalDate`, `formatLocalDate`, `formatMonthYear`, `isSameDay`.
 
-Tipos: `Size`, `Color`, `Variant`.
+Tipos: `Size`, `Color`, `Variant`, `ComponentSize`, `LegacySize`, `SizeProp`, `FieldProps`, `FieldIds`.
 
 ### @rubenpazch/tokens
 
@@ -87,19 +106,19 @@ Botón con variantes text/contained/outlined, colores, tamaños, estado de carga
 import { Button } from "@rubenpazch/ui";
 ```
 
-| Prop               | Tipo                                                                      | Req. | Por defecto | Descripción                               |
-| ------------------ | ------------------------------------------------------------------------- | ---- | ----------- | ----------------------------------------- |
-| `color`            | `"primary" \| "secondary" \| "success" \| "error" \| "warning" \| "info"` |      |             | Button color theme                        |
-| `component`        | `"button" \| "a"`                                                         |      |             |                                           |
-| `disabled`         | `boolean`                                                                 |      |             | Disabled state                            |
-| `disableElevation` | `boolean`                                                                 |      |             | Disable elevation/shadow effects          |
-| `endIcon`          | `ReactNode`                                                               |      |             | Icon to display after text                |
-| `fullWidth`        | `boolean`                                                                 |      |             | Whether the button should take full width |
-| `href`             | `string`                                                                  |      |             |                                           |
-| `loading`          | `boolean`                                                                 |      |             | Loading state with spinner                |
-| `size`             | `"small" \| "medium" \| "large"`                                          |      |             | Button size                               |
-| `startIcon`        | `ReactNode`                                                               |      |             | Icon to display before text               |
-| `variant`          | `"text" \| "contained" \| "outlined"`                                     |      |             | Button variant style                      |
+| Prop               | Tipo                                                                      | Req. | Por defecto | Descripción                                                      |
+| ------------------ | ------------------------------------------------------------------------- | ---- | ----------- | ---------------------------------------------------------------- |
+| `color`            | `"primary" \| "secondary" \| "success" \| "error" \| "warning" \| "info"` |      |             | Button color theme                                               |
+| `component`        | `"button" \| "a"`                                                         |      |             |                                                                  |
+| `disabled`         | `boolean`                                                                 |      |             | Disabled state                                                   |
+| `disableElevation` | `boolean`                                                                 |      |             | Disable elevation/shadow effects                                 |
+| `endIcon`          | `ReactNode`                                                               |      |             | Icon to display after text                                       |
+| `fullWidth`        | `boolean`                                                                 |      |             | Whether the button should take full width                        |
+| `href`             | `string`                                                                  |      |             |                                                                  |
+| `loading`          | `boolean`                                                                 |      |             | Loading state with spinner                                       |
+| `size`             | `"small" \| "medium" \| "large" \| "sm" \| "md" \| "lg"`                  |      |             | Tamaño: sm, md (por defecto) o lg; también small, medium, large. |
+| `startIcon`        | `ReactNode`                                                               |      |             | Icon to display before text                                      |
+| `variant`          | `"text" \| "contained" \| "outlined"`                                     |      |             | Button variant style                                             |
 
 ### @rubenpazch/icon-button
 
@@ -127,12 +146,37 @@ import { IconButton } from "@rubenpazch/ui";
 | `linkStyle`        | `boolean`                                                                                                   |      | `false`     |             |
 | `quiet`            | `boolean`                                                                                                   |      | `false`     |             |
 | `shape`            | `"rounded" \| "square"`                                                                                     |      | `rounded`   |             |
-| `size`             | `"small" \| "medium"`                                                                                       |      | `medium`    |             |
+| `size`             | `"small" \| "medium" \| "sm" \| "md"`                                                                       |      | `medium`    |             |
 | `tooltip`          | `ReactNode`                                                                                                 |      |             |             |
 | `tooltipPosition`  | `"top" \| "bottom" \| "left" \| "right"`                                                                    |      | `top`       |             |
 | `variant`          | `"default" \| "secondary" \| "black" \| "gradient-green" \| "solid-green" \| "blue" \| "pink" \| "warning"` |      | `default`   |             |
 
 Tipos: `IconButtonVariant`, `IconButtonSize`, `IconButtonShape`, `IconButtonFocusStyle`, `IconButtonFocusTrigger`, `IconPosition`, `LabelPosition`, `TooltipPosition`, `IconButtonProps`.
+
+### @rubenpazch/menu
+
+Menú de acciones (role="menu") con botón ⋮ por defecto, opciones con icono, peligrosas o deshabilitadas, teclado completo.
+
+- **Usar cuando:** Acciones secundarias de una fila o tarjeta: Editar, Duplicar, Anular, Eliminar.
+- **Evitar cuando:** La acción principal: usa Button. Navegación del sitio: usa AppShell o enlaces.
+
+#### Menu
+
+Menú de acciones (role="menu"): ⋮ con Editar, Duplicar, Eliminar… Flechas, Inicio, Fin,
+Enter y Escape; se cierra al elegir o al hacer clic fuera.
+
+```tsx
+import { Menu } from "@rubenpazch/ui";
+```
+
+| Prop      | Tipo               | Req. | Por defecto    | Descripción                                                                    |
+| --------- | ------------------ | ---- | -------------- | ------------------------------------------------------------------------------ |
+| `items`   | `MenuItem[]`       | sí   |                | Opciones del menú.                                                             |
+| `align`   | `"start" \| "end"` |      | `end`          | Alineación del panel respecto al botón: end (por defecto) o start.             |
+| `label`   | `string`           |      | `Más opciones` | Texto accesible del botón por defecto (por defecto "Más opciones").            |
+| `trigger` | `ReactNode`        |      |                | Botón que lo abre. Por defecto un botón "⋮" con el texto accesible de `label`. |
+
+Tipos: `MenuProps`, `MenuItem`.
 
 ## Formularios
 
@@ -145,42 +189,47 @@ Selector con búsqueda sobre una lista de opciones (con descripción, carga y op
 
 #### Autocomplete
 
+Selector con búsqueda (combobox accesible): filtra mientras se escribe, teclado completo.
+
 ```tsx
 import { Autocomplete } from "@rubenpazch/ui";
 ```
 
-| Prop              | Tipo                                                                                  | Req. | Por defecto           | Descripción |
-| ----------------- | ------------------------------------------------------------------------------------- | ---- | --------------------- | ----------- |
-| `onChange`        | `(value: string \| number \| null, option?: AutocompleteOption \| undefined) => void` | sí   |                       |             |
-| `value`           | `null \| string \| number`                                                            | sí   |                       |             |
-| `className`       | `string`                                                                              |      | ``                    |             |
-| `clearable`       | `boolean`                                                                             |      | `true`                |             |
-| `createLabel`     | `string`                                                                              |      | `Create`              |             |
-| `debounceMs`      | `number`                                                                              |      | `300`                 |             |
-| `disabled`        | `boolean`                                                                             |      | `false`               |             |
-| `error`           | `string`                                                                              |      |                       |             |
-| `highlightMatch`  | `boolean`                                                                             |      | `true`                |             |
-| `hint`            | `string`                                                                              |      |                       |             |
-| `icon`            | `ReactNode`                                                                           |      |                       |             |
-| `keepListOpen`    | `boolean`                                                                             |      | `false`               |             |
-| `label`           | `string`                                                                              |      |                       |             |
-| `loading`         | `boolean`                                                                             |      | `false`               |             |
-| `loadingText`     | `string`                                                                              |      | `Loading...`          |             |
-| `maxHeight`       | `string`                                                                              |      | `300px`               |             |
-| `minSearchLength` | `number`                                                                              |      | `0`                   |             |
-| `noResultsText`   | `string`                                                                              |      | `No results found`    |             |
-| `onBlur`          | `() => void`                                                                          |      |                       |             |
-| `onCreate`        | `(searchTerm: string) => void`                                                        |      |                       |             |
-| `onFocus`         | `() => void`                                                                          |      |                       |             |
-| `onSearch`        | `(searchTerm: string) => void`                                                        |      |                       |             |
-| `options`         | `AutocompleteOption[]`                                                                |      | `[]`                  |             |
-| `placeholder`     | `string`                                                                              |      | `Search or select...` |             |
-| `position`        | `"bottom" \| "top"`                                                                   |      | `bottom`              |             |
-| `readOnly`        | `boolean`                                                                             |      | `false`               |             |
-| `renderOption`    | `(option: AutocompleteOption, isSelected: boolean) => ReactNode`                      |      |                       |             |
-| `required`        | `boolean`                                                                             |      | `false`               |             |
-| `searchable`      | `boolean`                                                                             |      | `true`                |             |
-| `warning`         | `string`                                                                              |      |                       |             |
+| Prop              | Tipo                                                                                  | Req. | Por defecto             | Descripción                                |
+| ----------------- | ------------------------------------------------------------------------------------- | ---- | ----------------------- | ------------------------------------------ |
+| `onChange`        | `(value: string \| number \| null, option?: AutocompleteOption \| undefined) => void` | sí   |                         |                                            |
+| `value`           | `null \| string \| number`                                                            | sí   |                         |                                            |
+| `className`       | `string`                                                                              |      | ``                      |                                            |
+| `clearable`       | `boolean`                                                                             |      | `true`                  |                                            |
+| `createLabel`     | `string`                                                                              |      | `Crear`                 |                                            |
+| `debounceMs`      | `number`                                                                              |      | `300`                   |                                            |
+| `disabled`        | `boolean`                                                                             |      | `false`                 |                                            |
+| `error`           | `string`                                                                              |      |                         |                                            |
+| `highlightMatch`  | `boolean`                                                                             |      | `true`                  |                                            |
+| `hint`            | `string`                                                                              |      |                         |                                            |
+| `icon`            | `ReactNode`                                                                           |      |                         |                                            |
+| `id`              | `string`                                                                              |      |                         | id del input; si no se pasa se genera uno. |
+| `keepListOpen`    | `boolean`                                                                             |      | `false`                 |                                            |
+| `label`           | `string`                                                                              |      |                         |                                            |
+| `labels`          | `Partial<{ clear: string; open: string; close: string; }>`                            |      |                         | Textos accesibles de los botones.          |
+| `loading`         | `boolean`                                                                             |      | `false`                 |                                            |
+| `loadingText`     | `string`                                                                              |      | `Cargando…`             |                                            |
+| `maxHeight`       | `string`                                                                              |      | `300px`                 |                                            |
+| `minSearchLength` | `number`                                                                              |      | `0`                     |                                            |
+| `name`            | `string`                                                                              |      |                         | name del input.                            |
+| `noResultsText`   | `string`                                                                              |      | `Sin resultados`        |                                            |
+| `onBlur`          | `() => void`                                                                          |      |                         |                                            |
+| `onCreate`        | `(searchTerm: string) => void`                                                        |      |                         |                                            |
+| `onFocus`         | `() => void`                                                                          |      |                         |                                            |
+| `onSearch`        | `(searchTerm: string) => void`                                                        |      |                         |                                            |
+| `options`         | `AutocompleteOption[]`                                                                |      | `[]`                    |                                            |
+| `placeholder`     | `string`                                                                              |      | `Buscar o seleccionar…` |                                            |
+| `position`        | `"bottom" \| "top"`                                                                   |      | `bottom`                |                                            |
+| `readOnly`        | `boolean`                                                                             |      | `false`                 |                                            |
+| `renderOption`    | `(option: AutocompleteOption, isSelected: boolean) => ReactNode`                      |      |                         |                                            |
+| `required`        | `boolean`                                                                             |      | `false`                 |                                            |
+| `searchable`      | `boolean`                                                                             |      | `true`                  |                                            |
+| `warning`         | `string`                                                                              |      |                         |                                            |
 
 ### @rubenpazch/checkbox-input
 
@@ -191,24 +240,28 @@ Casilla de verificación con etiqueta, ayuda y error.
 
 #### CheckboxInput
 
+Casilla de verificación con etiqueta, descripción y error.
+
 ```tsx
 import { CheckboxInput } from "@rubenpazch/ui";
 ```
 
-| Prop            | Tipo                                                           | Req. | Por defecto | Descripción |
-| --------------- | -------------------------------------------------------------- | ---- | ----------- | ----------- |
-| `label`         | `string`                                                       | sí   |             |             |
-| `checked`       | `boolean`                                                      |      | `false`     |             |
-| `className`     | `string`                                                       |      | ``          |             |
-| `description`   | `string`                                                       |      |             |             |
-| `disabled`      | `boolean`                                                      |      | `false`     |             |
-| `error`         | `string`                                                       |      |             |             |
-| `id`            | `string`                                                       |      |             |             |
-| `indeterminate` | `boolean`                                                      |      | `false`     |             |
-| `onChange`      | `(checked: boolean) => void`                                   |      |             |             |
-| `required`      | `boolean`                                                      |      | `false`     |             |
-| `size`          | `"sm" \| "md" \| "lg"`                                         |      | `md`        |             |
-| `variant`       | `"default" \| "primary" \| "success" \| "warning" \| "danger"` |      | `default`   |             |
+| Prop            | Tipo                                                           | Req. | Por defecto | Descripción                                             |
+| --------------- | -------------------------------------------------------------- | ---- | ----------- | ------------------------------------------------------- |
+| `label`         | `string`                                                       | sí   |             |                                                         |
+| `checked`       | `boolean`                                                      |      | `false`     |                                                         |
+| `className`     | `string`                                                       |      | ``          |                                                         |
+| `description`   | `string`                                                       |      |             |                                                         |
+| `disabled`      | `boolean`                                                      |      | `false`     |                                                         |
+| `error`         | `string`                                                       |      |             |                                                         |
+| `id`            | `string`                                                       |      |             | id del input; si no se pasa se genera uno estable.      |
+| `indeterminate` | `boolean`                                                      |      | `false`     |                                                         |
+| `name`          | `string`                                                       |      |             | name del input (formularios nativos, react-hook-form…). |
+| `onChange`      | `(checked: boolean) => void`                                   |      |             |                                                         |
+| `required`      | `boolean`                                                      |      | `false`     |                                                         |
+| `size`          | `"sm" \| "md" \| "lg"`                                         |      | `md`        |                                                         |
+| `value`         | `string`                                                       |      |             | Valor enviado con el formulario cuando está marcado.    |
+| `variant`       | `"default" \| "primary" \| "success" \| "warning" \| "danger"` |      | `default`   |                                                         |
 
 ### @rubenpazch/date-input
 
@@ -219,24 +272,30 @@ Campo de fecha con formato local, mínimo/máximo, ayuda y error.
 
 #### DateInput
 
+Campo de fecha con calendario desplegable. Se escribe en el formato del idioma
+(DD/MM/AAAA en español) y devuelve siempre ISO `AAAA-MM-DD`, en hora local.
+
 ```tsx
 import { DateInput } from "@rubenpazch/ui";
 ```
 
-| Prop          | Tipo                     | Req. | Por defecto  | Descripción |
-| ------------- | ------------------------ | ---- | ------------ | ----------- |
-| `onChange`    | `(date: string) => void` | sí   |              |             |
-| `value`       | `string`                 | sí   |              |             |
-| `className`   | `string`                 |      | ``           |             |
-| `disabled`    | `boolean`                |      | `false`      |             |
-| `error`       | `string`                 |      |              |             |
-| `hint`        | `string`                 |      |              |             |
-| `label`       | `string`                 |      |              |             |
-| `locale`      | `string`                 |      | `en`         |             |
-| `maxDate`     | `string`                 |      |              |             |
-| `minDate`     | `string`                 |      |              |             |
-| `placeholder` | `string`                 |      | `MM/DD/YYYY` |             |
-| `required`    | `boolean`                |      | `false`      |             |
+| Prop          | Tipo                       | Req. | Por defecto | Descripción                                                             |
+| ------------- | -------------------------- | ---- | ----------- | ----------------------------------------------------------------------- |
+| `onChange`    | `(date: string) => void`   | sí   |             | Recibe la fecha en ISO `AAAA-MM-DD` (o "" al limpiar).                  |
+| `value`       | `string`                   | sí   |             | Fecha en formato ISO `AAAA-MM-DD`, o cadena vacía.                      |
+| `className`   | `string`                   |      | ``          | Clase extra para el contenedor.                                         |
+| `disabled`    | `boolean`                  |      | `false`     | Campo deshabilitado.                                                    |
+| `error`       | `string`                   |      |             | Mensaje de error; marca el campo como inválido.                         |
+| `hint`        | `string`                   |      |             | Texto de ayuda.                                                         |
+| `id`          | `string`                   |      |             | id del input; si no se pasa se genera uno (la etiqueta se asocia sola). |
+| `label`       | `string`                   |      |             | Etiqueta visible.                                                       |
+| `labels`      | `Partial<DateInputLabels>` |      |             | Textos del calendario; por defecto en el idioma de `locale`.            |
+| `locale`      | `string`                   |      | `es`        | Idioma: `es` (por defecto, día/mes) o `en` (mes/día).                   |
+| `maxDate`     | `string`                   |      |             | Fecha máxima seleccionable (ISO).                                       |
+| `minDate`     | `string`                   |      |             | Fecha mínima seleccionable (ISO).                                       |
+| `name`        | `string`                   |      |             | name del input (formularios nativos, react-hook-form…).                 |
+| `placeholder` | `string`                   |      |             | Por defecto el formato del idioma: "DD/MM/AAAA" en español.             |
+| `required`    | `boolean`                  |      | `false`     | Campo obligatorio.                                                      |
 
 ### @rubenpazch/date-picker
 
@@ -247,25 +306,86 @@ Selector de fecha con calendario desplegable.
 
 #### DatePicker
 
+Selector de fecha con calendario (días, meses y años). Devuelve ISO `AAAA-MM-DD` en hora local.
+
 ```tsx
 import { DatePicker } from "@rubenpazch/ui";
 ```
 
-| Prop          | Tipo                     | Req. | Por defecto | Descripción |
-| ------------- | ------------------------ | ---- | ----------- | ----------- |
-| `onChange`    | `(date: string) => void` | sí   |             |             |
-| `value`       | `string`                 | sí   |             |             |
-| `className`   | `string`                 |      | ``          |             |
-| `disabled`    | `boolean`                |      | `false`     |             |
-| `error`       | `string`                 |      |             |             |
-| `hint`        | `string`                 |      |             |             |
-| `label`       | `string`                 |      |             |             |
-| `locale`      | `string`                 |      | `en`        |             |
-| `maxDate`     | `string`                 |      |             |             |
-| `minDate`     | `string`                 |      |             |             |
-| `placeholder` | `string`                 |      |             |             |
-| `readOnly`    | `boolean`                |      | `false`     |             |
-| `required`    | `boolean`                |      | `false`     |             |
+| Prop                | Tipo                     | Req. | Por defecto | Descripción                                                             |
+| ------------------- | ------------------------ | ---- | ----------- | ----------------------------------------------------------------------- |
+| `onChange`          | `(date: string) => void` | sí   |             |                                                                         |
+| `value`             | `string`                 | sí   |             |                                                                         |
+| `className`         | `string`                 |      | ``          |                                                                         |
+| `disabled`          | `boolean`                |      | `false`     |                                                                         |
+| `error`             | `string`                 |      |             |                                                                         |
+| `hint`              | `string`                 |      |             |                                                                         |
+| `id`                | `string`                 |      |             | id del input; si no se pasa se genera uno (la etiqueta se asocia sola). |
+| `label`             | `string`                 |      |             |                                                                         |
+| `locale`            | `string`                 |      | `es`        |                                                                         |
+| `maxDate`           | `string`                 |      |             |                                                                         |
+| `minDate`           | `string`                 |      |             |                                                                         |
+| `name`              | `string`                 |      |             | name del input.                                                         |
+| `openCalendarLabel` | `string`                 |      |             | Texto del botón que abre el calendario (accesibilidad).                 |
+| `placeholder`       | `string`                 |      |             |                                                                         |
+| `readOnly`          | `boolean`                |      | `false`     |                                                                         |
+| `required`          | `boolean`                |      | `false`     |                                                                         |
+
+### @rubenpazch/form-field
+
+FormField (etiqueta, ayuda y error asociados a cualquier control), FormRow (columnas que se apilan en móvil) y FormActions (pie con botones).
+
+- **Usar cuando:** Armar formularios: FormRow para poner campos lado a lado, FormActions para Cancelar/Guardar, FormField para controles propios o de terceros.
+- **Evitar cuando:** Con componentes de la librería (TextInput, Select…) no hace falta FormField: ya traen etiqueta y mensajes.
+
+#### FormField
+
+Envoltorio de campo: etiqueta, ayuda, advertencia y error asociados a cualquier control
+(nativo o de terceros). Los componentes de la librería ya lo traen; úsalo para controles propios.
+
+```tsx
+import { FormField } from "@rubenpazch/ui";
+```
+
+| Prop        | Tipo        | Req. | Por defecto | Descripción                                                                                                                                                                   |
+| ----------- | ----------- | ---- | ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `children`  | `ReactNode` | sí   |             | El control. Puede ser un elemento (`<input />`, `<select>`) al que se le agregan id y ARIA, o una función que recibe esos atributos: `{(props) => <MiControl {...props} />}`. |
+| `className` | `string`    |      |             | Clase extra para el contenedor (márgenes, ancho).                                                                                                                             |
+| `disabled`  | `boolean`   |      | `false`     | Campo deshabilitado.                                                                                                                                                          |
+| `error`     | `string`    |      |             | Mensaje de error; marca el campo como inválido.                                                                                                                               |
+| `hint`      | `string`    |      |             | Texto de ayuda bajo el campo.                                                                                                                                                 |
+| `id`        | `string`    |      |             | id del control. Si no se pasa, se genera uno.                                                                                                                                 |
+| `label`     | `string`    |      |             | Etiqueta visible del campo (se asocia al control para lectores de pantalla).                                                                                                  |
+| `name`      | `string`    |      |             | name del control (formularios nativos y librerías de formularios).                                                                                                            |
+| `required`  | `boolean`   |      | `false`     | Campo obligatorio: muestra * y marca el control como requerido.                                                                                                               |
+| `warning`   | `string`    |      |             | Advertencia (no bloquea).                                                                                                                                                     |
+
+#### FormRow
+
+Fila de campos en columnas que se apilan en móvil.
+
+```tsx
+import { FormRow } from "@rubenpazch/ui";
+```
+
+| Prop      | Tipo               | Req. | Por defecto | Descripción                                                       |
+| --------- | ------------------ | ---- | ----------- | ----------------------------------------------------------------- |
+| `columns` | `1 \| 2 \| 3 \| 4` |      | `2`         | Columnas en pantallas anchas (en móvil siempre 1). Por defecto 2. |
+
+#### FormActions
+
+Pie de formulario con los botones (Cancelar / Guardar).
+
+```tsx
+import { FormActions } from "@rubenpazch/ui";
+```
+
+| Prop     | Tipo                                        | Req. | Por defecto | Descripción                                                            |
+| -------- | ------------------------------------------- | ---- | ----------- | ---------------------------------------------------------------------- |
+| `align`  | `"start" \| "end" \| "between" \| "center"` |      | `end`       | Alineación de los botones: end (por defecto), start, between o center. |
+| `sticky` | `boolean`                                   |      | `false`     | Fija el pie al fondo de la pantalla en formularios largos.             |
+
+Tipos: `FormFieldProps`, `FormFieldControlProps`, `FormRowProps`, `FormActionsProps`.
 
 ### @rubenpazch/image-upload
 
@@ -294,6 +414,46 @@ import { ImageUpload } from "@rubenpazch/ui";
 | `previewHeight`   | `number`                        |      | `200`                                          |             |
 | `previewWidth`    | `number`                        |      | `200`                                          |             |
 
+### @rubenpazch/money-input
+
+Campo de monto en PEN (S/) o USD (US$) que devuelve un número; acepta punto o coma decimal y muestra 1,250.50 al salir. Incluye formatMoney().
+
+- **Usar cuando:** Montos de dinero: cuotas, pagos, precios, presupuestos. Usa formatMoney() para mostrar montos en tablas y tarjetas.
+- **Evitar cuando:** Cantidades sin moneda: usa NumericPicker. Valores con signo por pasos: usa NumericUpPicker.
+
+#### MoneyInput
+
+Campo de monto en soles o dólares. Mientras se escribe acepta "1250.5" o "1250,5"; al salir
+muestra "1,250.50". Devuelve siempre un número (no texto).
+
+```tsx
+import { MoneyInput } from "@rubenpazch/ui";
+```
+
+| Prop            | Tipo                              | Req. | Por defecto | Descripción                                                                  |
+| --------------- | --------------------------------- | ---- | ----------- | ---------------------------------------------------------------------------- |
+| `onChange`      | `(value: number \| null) => void` | sí   |             | Recibe el monto como número, o null si se borra.                             |
+| `value`         | `null \| number`                  | sí   |             | Monto actual como número (o null si está vacío).                             |
+| `allowNegative` | `boolean`                         |      | `false`     | Permite montos negativos (por defecto no).                                   |
+| `className`     | `string`                          |      |             | Clase extra para el contenedor (márgenes, ancho).                            |
+| `currency`      | `"PEN" \| "USD"`                  |      | `PEN`       | PEN (por defecto, S/) o USD (US$).                                           |
+| `decimals`      | `number`                          |      | `2`         | Decimales (por defecto 2).                                                   |
+| `disabled`      | `boolean`                         |      | `false`     | Campo deshabilitado.                                                         |
+| `error`         | `string`                          |      |             | Mensaje de error; marca el campo como inválido.                              |
+| `hint`          | `string`                          |      |             | Texto de ayuda bajo el campo.                                                |
+| `id`            | `string`                          |      |             | id del control. Si no se pasa, se genera uno.                                |
+| `label`         | `string`                          |      |             | Etiqueta visible del campo (se asocia al control para lectores de pantalla). |
+| `max`           | `number`                          |      |             | Máximo.                                                                      |
+| `min`           | `number`                          |      | `0`         | Mínimo (por defecto 0).                                                      |
+| `name`          | `string`                          |      |             | name del control (formularios nativos y librerías de formularios).           |
+| `placeholder`   | `string`                          |      | `0.00`      | Texto de ejemplo.                                                            |
+| `required`      | `boolean`                         |      | `false`     | Campo obligatorio: muestra * y marca el control como requerido.              |
+| `warning`       | `string`                          |      |             | Advertencia (no bloquea).                                                    |
+
+Otras exportaciones: `formatMoney`.
+
+Tipos: `MoneyInputProps`, `Currency`.
+
 ### @rubenpazch/numeric-picker
 
 Campo numérico con mínimo, máximo, paso, decimales y moneda.
@@ -303,23 +463,32 @@ Campo numérico con mínimo, máximo, paso, decimales y moneda.
 
 #### NumericPicker
 
+Campo numérico para montos, cantidades y precios. Mientras se escribe no se reformatea
+(se puede escribir 12, 1250.5…); al salir del campo se aplican mínimo, máximo y decimales.
+
 ```tsx
 import { NumericPicker } from "@rubenpazch/ui";
 ```
 
-| Prop          | Tipo                      | Req. | Por defecto | Descripción |
-| ------------- | ------------------------- | ---- | ----------- | ----------- |
-| `onChange`    | `(value: string) => void` | sí   |             |             |
-| `value`       | `string \| number`        | sí   |             |             |
-| `currency`    | `string`                  |      | `S/.`       |             |
-| `decimals`    | `number`                  |      | `2`         |             |
-| `disabled`    | `boolean`                 |      | `false`     |             |
-| `label`       | `string`                  |      |             |             |
-| `max`         | `number`                  |      | `999999`    |             |
-| `min`         | `number`                  |      | `0`         |             |
-| `placeholder` | `string`                  |      | `0.00`      |             |
-| `required`    | `boolean`                 |      | `false`     |             |
-| `step`        | `number`                  |      | `1`         |             |
+| Prop          | Tipo                                                 | Req. | Por defecto | Descripción                                                                        |
+| ------------- | ---------------------------------------------------- | ---- | ----------- | ---------------------------------------------------------------------------------- |
+| `onChange`    | `(value: string) => void`                            | sí   |             | Recibe el valor como texto con punto decimal (p. ej. "12.50"), o "" si está vacío. |
+| `value`       | `string \| number`                                   | sí   |             | Valor actual (número o texto numérico con punto decimal).                          |
+| `className`   | `string`                                             |      |             | Clase extra para el contenedor.                                                    |
+| `currency`    | `string`                                             |      | `S/`        | Símbolo de moneda que se muestra delante. Usa "" para ocultarlo.                   |
+| `decimals`    | `number`                                             |      | `2`         | Decimales con los que se formatea al salir del campo.                              |
+| `disabled`    | `boolean`                                            |      | `false`     | Campo deshabilitado.                                                               |
+| `error`       | `string`                                             |      |             | Mensaje de error; marca el campo como inválido.                                    |
+| `hint`        | `string`                                             |      |             | Texto de ayuda.                                                                    |
+| `id`          | `string`                                             |      |             | id del input; si no se pasa se genera uno.                                         |
+| `label`       | `string`                                             |      |             | Etiqueta visible (se asocia al input).                                             |
+| `labels`      | `Partial<{ increment: string; decrement: string; }>` |      |             | Textos accesibles de los botones.                                                  |
+| `max`         | `number`                                             |      | `999999`    | Máximo permitido.                                                                  |
+| `min`         | `number`                                             |      | `0`         | Mínimo permitido.                                                                  |
+| `name`        | `string`                                             |      |             | name del input.                                                                    |
+| `placeholder` | `string`                                             |      | `0.00`      | Texto de ejemplo.                                                                  |
+| `required`    | `boolean`                                            |      | `false`     | Campo obligatorio.                                                                 |
+| `step`        | `number`                                             |      | `1`         | Paso de los botones + y −.                                                         |
 
 ### @rubenpazch/numeric-up-picker
 
@@ -330,35 +499,40 @@ Campo numérico con botones +/-, signo opcional, solo enteros, ayuda, advertenci
 
 #### NumericUpPicker
 
+Campo numérico con botones − y +, signo opcional, solo enteros, ayuda, advertencia y error.
+
 ```tsx
 import { NumericUpPicker } from "@rubenpazch/ui";
 ```
 
-| Prop              | Tipo                             | Req. | Por defecto | Descripción |
-| ----------------- | -------------------------------- | ---- | ----------- | ----------- |
-| `onChange`        | `(value: string) => void`        | sí   |             |             |
-| `value`           | `string \| number`               | sí   |             |             |
-| `alwaysNegative`  | `boolean`                        |      | `false`     |             |
-| `className`       | `string`                         |      | ``          |             |
-| `clearable`       | `boolean`                        |      | `false`     |             |
-| `defaultToZero`   | `boolean`                        |      | `false`     |             |
-| `disabled`        | `boolean`                        |      | `false`     |             |
-| `error`           | `string`                         |      |             |             |
-| `hint`            | `string`                         |      |             |             |
-| `integerOnly`     | `boolean`                        |      | `false`     |             |
-| `label`           | `string`                         |      |             |             |
-| `max`             | `number`                         |      |             |             |
-| `min`             | `number`                         |      |             |             |
-| `onBlur`          | `() => void`                     |      |             |             |
-| `onClear`         | `() => void`                     |      |             |             |
-| `onFocus`         | `() => void`                     |      |             |             |
-| `placeholder`     | `string`                         |      |             |             |
-| `required`        | `boolean`                        |      | `false`     |             |
-| `showSign`        | `boolean`                        |      | `false`     |             |
-| `size`            | `"small" \| "medium" \| "large"` |      | `medium`    |             |
-| `step`            | `number`                         |      | `0.01`      |             |
-| `useMinAsDefault` | `boolean`                        |      | `false`     |             |
-| `warning`         | `string`                         |      |             |             |
+| Prop              | Tipo                                                              | Req. | Por defecto | Descripción                                |
+| ----------------- | ----------------------------------------------------------------- | ---- | ----------- | ------------------------------------------ |
+| `onChange`        | `(value: string) => void`                                         | sí   |             |                                            |
+| `value`           | `string \| number`                                                | sí   |             |                                            |
+| `alwaysNegative`  | `boolean`                                                         |      | `false`     |                                            |
+| `className`       | `string`                                                          |      | ``          |                                            |
+| `clearable`       | `boolean`                                                         |      | `false`     |                                            |
+| `defaultToZero`   | `boolean`                                                         |      | `false`     |                                            |
+| `disabled`        | `boolean`                                                         |      | `false`     |                                            |
+| `error`           | `string`                                                          |      |             |                                            |
+| `hint`            | `string`                                                          |      |             |                                            |
+| `id`              | `string`                                                          |      |             | id del input; si no se pasa se genera uno. |
+| `integerOnly`     | `boolean`                                                         |      | `false`     |                                            |
+| `label`           | `string`                                                          |      |             |                                            |
+| `labels`          | `Partial<{ decrease: string; increase: string; clear: string; }>` |      |             | Textos accesibles de los botones.          |
+| `max`             | `number`                                                          |      |             |                                            |
+| `min`             | `number`                                                          |      |             |                                            |
+| `name`            | `string`                                                          |      |             | name del input.                            |
+| `onBlur`          | `() => void`                                                      |      |             |                                            |
+| `onClear`         | `() => void`                                                      |      |             |                                            |
+| `onFocus`         | `() => void`                                                      |      |             |                                            |
+| `placeholder`     | `string`                                                          |      |             |                                            |
+| `required`        | `boolean`                                                         |      | `false`     |                                            |
+| `showSign`        | `boolean`                                                         |      | `false`     |                                            |
+| `size`            | `"sm" \| "md" \| "lg" \| "small" \| "medium" \| "large"`          |      | `md`        | Tamaño: sm, md (por defecto) o lg.         |
+| `step`            | `number`                                                          |      | `0.01`      |                                            |
+| `useMinAsDefault` | `boolean`                                                         |      | `false`     |                                            |
+| `warning`         | `string`                                                          |      |             |                                            |
 
 Tipos: `NumericUpPickerProps`, `NumericUpPickerSize`.
 
@@ -418,6 +592,34 @@ import { RadioGroup } from "@rubenpazch/ui";
 
 Tipos: `RadioButtonProps`, `RadioSize`, `RadioVariant`, `RadioGroupProps`, `RadioOption`, `RadioGroupOrientation`.
 
+### @rubenpazch/segmented-control
+
+Botones unidos para elegir una opción entre pocas (radiogroup con flechas del teclado): Personal | Empresa, Mes | Año.
+
+- **Usar cuando:** Cambiar la vista o un filtro con 2 a 5 opciones cortas, siempre visibles.
+- **Evitar cuando:** Opciones largas o dentro de un formulario con etiqueta: usa RadioGroup. Muchas opciones: usa Select.
+
+#### SegmentedControl
+
+Selector de una opción entre pocas, como botones unidos (role="radiogroup"). Se mueve con
+las flechas del teclado. Ej.: Personal | Empresa, Mes | Año.
+
+```tsx
+import { SegmentedControl } from "@rubenpazch/ui";
+```
+
+| Prop         | Tipo                   | Req. | Por defecto | Descripción                                    |
+| ------------ | ---------------------- | ---- | ----------- | ---------------------------------------------- |
+| `aria-label` | `string`               | sí   |             | Nombre accesible del grupo: "Ámbito", "Vista". |
+| `onChange`   | `(value: T) => void`   | sí   |             | Recibe el valor elegido.                       |
+| `options`    | `SegmentedOption<T>[]` | sí   |             | Opciones (2 a 5 funcionan mejor).              |
+| `value`      | `string`               | sí   |             | Valor seleccionado.                            |
+| `className`  | `string`               |      |             | Clase extra.                                   |
+| `fullWidth`  | `boolean`              |      | `false`     | Ocupa todo el ancho.                           |
+| `size`       | `"sm" \| "md"`         |      | `md`        | sm o md (por defecto).                         |
+
+Tipos: `SegmentedControlProps`, `SegmentedOption`.
+
 ### @rubenpazch/select
 
 Lista desplegable simple con etiqueta, placeholder y error.
@@ -447,6 +649,35 @@ import { Select } from "@rubenpazch/ui";
 
 Tipos: `SelectOption`, `SelectProps`.
 
+### @rubenpazch/switch
+
+Interruptor encendido/apagado (role="switch") con etiqueta y descripción.
+
+- **Usar cuando:** Opciones que se activan al instante: notificaciones, módulo activo, mostrar en el sitio.
+- **Evitar cuando:** Opciones que se guardan con un botón Enviar o selección múltiple en una lista: usa CheckboxInput.
+
+#### Switch
+
+Interruptor encendido/apagado (role="switch") para opciones que se aplican al instante.
+
+```tsx
+import { Switch } from "@rubenpazch/ui";
+```
+
+| Prop          | Tipo                         | Req. | Por defecto | Descripción                      |
+| ------------- | ---------------------------- | ---- | ----------- | -------------------------------- |
+| `checked`     | `boolean`                    | sí   |             | Encendido o apagado.             |
+| `label`       | `ReactNode`                  | sí   |             | Etiqueta visible a la derecha.   |
+| `onChange`    | `(checked: boolean) => void` | sí   |             | Recibe el nuevo estado.          |
+| `className`   | `string`                     |      |             | Clase extra.                     |
+| `description` | `ReactNode`                  |      |             | Texto de ayuda bajo la etiqueta. |
+| `disabled`    | `boolean`                    |      | `false`     | Deshabilitado.                   |
+| `id`          | `string`                     |      |             | id del interruptor.              |
+| `name`        | `string`                     |      |             | name, para formularios.          |
+| `size`        | `"sm" \| "md"`               |      | `md`        | sm o md (por defecto).           |
+
+Tipos: `SwitchProps`.
+
 ### @rubenpazch/text-input
 
 Campo de texto con etiqueta, ayuda, advertencia, error, iconos y variantes.
@@ -473,12 +704,14 @@ import { TextInput } from "@rubenpazch/ui";
 | `error`                  | `string`                                                        |      |             |                                                                                                                                                                                                                                                       |
 | `hint`                   | `string`                                                        |      |             |                                                                                                                                                                                                                                                       |
 | `icon`                   | `ReactNode`                                                     |      |             |                                                                                                                                                                                                                                                       |
+| `id`                     | `string`                                                        |      |             | id del input; si no se pasa se genera uno (la etiqueta se asocia sola).                                                                                                                                                                               |
 | `label`                  | `string`                                                        |      |             |                                                                                                                                                                                                                                                       |
 | `max`                    | `number`                                                        |      |             |                                                                                                                                                                                                                                                       |
 | `maxLength`              | `number`                                                        |      |             |                                                                                                                                                                                                                                                       |
 | `min`                    | `number`                                                        |      |             |                                                                                                                                                                                                                                                       |
 | `minLength`              | `number`                                                        |      |             |                                                                                                                                                                                                                                                       |
 | `minLengthMessage`       | `string`                                                        |      |             | Inline error shown when the value is non-empty but shorter than `minLength`.                                                                                                                                                                          |
+| `name`                   | `string`                                                        |      |             | name del input (formularios nativos, react-hook-form…).                                                                                                                                                                                               |
 | `onBlur`                 | `() => void`                                                    |      |             |                                                                                                                                                                                                                                                       |
 | `onFocus`                | `() => void`                                                    |      |             |                                                                                                                                                                                                                                                       |
 | `onValidityChange`       | `(isValid: boolean) => void`                                    |      |             | Fires whenever the field's overall validity changes (respecting `required`, `validateEmail`, `minLength`, `maxLength`, `pattern` and `error`). Lets the parent gate a submit button on the component's own validation, without duplicating the rules. |
@@ -495,7 +728,78 @@ import { TextInput } from "@rubenpazch/ui";
 | `validateEmail`          | `boolean`                                                       |      | `false`     |                                                                                                                                                                                                                                                       |
 | `warning`                | `string`                                                        |      |             |                                                                                                                                                                                                                                                       |
 
+### @rubenpazch/textarea
+
+Área de texto con etiqueta, ayuda, advertencia, error, contador de caracteres y crecimiento automático.
+
+- **Usar cuando:** Textos de varias líneas: observaciones, motivos de anulación, descripciones.
+- **Evitar cuando:** Una sola línea: usa TextInput. Texto con formato (negritas, enlaces, imágenes): usa RichTextEditor.
+
+#### Textarea
+
+Área de texto con etiqueta, ayuda, error, contador y crecimiento automático.
+
+```tsx
+import { Textarea } from "@rubenpazch/ui";
+```
+
+| Prop         | Tipo                      | Req. | Por defecto | Descripción                                                                  |
+| ------------ | ------------------------- | ---- | ----------- | ---------------------------------------------------------------------------- |
+| `onChange`   | `(value: string) => void` | sí   |             | Recibe el texto nuevo.                                                       |
+| `value`      | `string`                  | sí   |             | Texto actual.                                                                |
+| `autoResize` | `boolean`                 |      | `false`     | Crece con el contenido hasta maxRows.                                        |
+| `className`  | `string`                  |      |             | Clase extra para el contenedor (márgenes, ancho).                            |
+| `disabled`   | `boolean`                 |      | `false`     | Campo deshabilitado.                                                         |
+| `error`      | `string`                  |      |             | Mensaje de error; marca el campo como inválido.                              |
+| `hint`       | `string`                  |      |             | Texto de ayuda bajo el campo.                                                |
+| `id`         | `string`                  |      |             | id del control. Si no se pasa, se genera uno.                                |
+| `label`      | `string`                  |      |             | Etiqueta visible del campo (se asocia al control para lectores de pantalla). |
+| `maxRows`    | `number`                  |      | `12`        | Máximo de filas al crecer (por defecto 12).                                  |
+| `name`       | `string`                  |      |             | name del control (formularios nativos y librerías de formularios).           |
+| `required`   | `boolean`                 |      | `false`     | Campo obligatorio: muestra * y marca el control como requerido.              |
+| `rows`       | `number`                  |      | `4`         | Filas visibles al inicio (por defecto 4).                                    |
+| `showCount`  | `boolean`                 |      | `true`      | Muestra el contador "120/500" cuando hay maxLength.                          |
+| `warning`    | `string`                  |      |             | Advertencia (no bloquea).                                                    |
+
+Tipos: `TextareaProps`.
+
 ## Navegación
+
+### @rubenpazch/app-shell
+
+Estructura completa de un panel: Sidebar colapsable, cabecera fija con botón ☰ en móvil, título y acciones, enlace "Saltar al contenido" y área principal con ancho máximo.
+
+- **Usar cuando:** Layout raíz de toda app de administración (app/(panel)/layout.tsx en Next.js), con usePathname() como currentPath.
+- **Evitar cuando:** Sitios públicos: arma tu propia cabecera. Solo necesitas el menú lateral: usa Sidebar.
+
+#### AppShell
+
+Estructura de un panel: barra lateral (Sidebar), cabecera con ☰ en móvil y contenido.
+Es la base de todas las pantallas de administración.
+
+```tsx
+import { AppShell } from "@rubenpazch/ui";
+```
+
+| Prop                | Tipo                                                    | Req. | Por defecto | Descripción                                                                       |
+| ------------------- | ------------------------------------------------------- | ---- | ----------- | --------------------------------------------------------------------------------- |
+| `children`          | `ReactNode`                                             | sí   |             | Contenido de la página.                                                           |
+| `sections`          | `SidebarSection[]`                                      | sí   |             | Secciones del menú.                                                               |
+| `brand`             | `ReactNode`                                             |      |             | Logo o nombre de la app arriba.                                                   |
+| `brandCollapsed`    | `ReactNode`                                             |      |             | Versión compacta del logo para el modo colapsado (por defecto se oculta `brand`). |
+| `collapsed`         | `boolean`                                               |      |             | Colapsado (controlado).                                                           |
+| `currentPath`       | `string`                                                |      |             | Ruta actual (p. ej. usePathname() de Next) para marcar la opción activa.          |
+| `defaultCollapsed`  | `boolean`                                               |      |             | Colapsado inicial (no controlado).                                                |
+| `headerActions`     | `ReactNode`                                             |      |             | Acciones a la derecha de la cabecera: notificaciones, usuario.                    |
+| `labels`            | `Partial<{ openMenu: string; skipToContent: string; }>` |      |             | Textos accesibles.                                                                |
+| `linkComponent`     | `ElementType<any, keyof IntrinsicElements>`             |      |             | Componente de enlace (Link de Next.js). Por defecto <a>.                          |
+| `maxWidth`          | `"none" \| "md" \| "lg"`                                |      | `lg`        | Ancho máximo del contenido: none, lg (72rem, por defecto) o md (56rem).           |
+| `onCollapsedChange` | `(collapsed: boolean) => void`                          |      |             | Al colapsar o expandir.                                                           |
+| `sidebarFooter`     | `ReactNode`                                             |      |             | Contenido al pie de la barra lateral (usuario, "Cerrar sesión").                  |
+| `storageKey`        | `string`                                                |      |             | Clave de localStorage para recordar si estaba colapsado.                          |
+| `title`             | `ReactNode`                                             |      |             | Título en la cabecera (en móvil se ve junto al botón ☰).                         |
+
+Tipos: `AppShellProps`.
 
 ### @rubenpazch/drawer
 
@@ -516,6 +820,7 @@ import { Drawer } from "@rubenpazch/ui";
 | `isOpen`              | `boolean`                                          | sí   |                 | Whether the drawer is open                                                              |
 | `onClose`             | `() => void`                                       | sí   |                 | Function to close the drawer                                                            |
 | `className`           | `string`                                           |      | ``              | Custom className for the drawer content                                                 |
+| `closeLabel`          | `string`                                           |      | `Cerrar`        | Texto accesible del botón de cerrar.                                                    |
 | `closeOnEscape`       | `boolean`                                          |      | `true`          | Whether pressing Escape closes the drawer                                               |
 | `closeOnOverlayClick` | `boolean`                                          |      | `true`          | Whether clicking overlay closes the drawer                                              |
 | `contentContained`    | `boolean`                                          |      | `false`         | Whether the content (header, body, footer) should be contained in a max-width container |
@@ -526,6 +831,64 @@ import { Drawer } from "@rubenpazch/ui";
 | `showOverlay`         | `boolean`                                          |      | `true`          | Whether to show overlay backdrop                                                        |
 | `size`                | `"sm" \| "md" \| "lg" \| "xl" \| "full"`           |      | `md`            | Size of the drawer                                                                      |
 | `title`               | `string`                                           |      |                 | Title displayed in the drawer header                                                    |
+
+### @rubenpazch/month-navigator
+
+Navegador de periodos ‹ noviembre de 2026 › con valor "AAAA-MM", mínimo, máximo y botón Hoy; incluye addMonths() y currentMonth().
+
+- **Usar cuando:** Elegir el mes de trabajo: obligaciones, cierres contables, cronogramas, reportes mensuales.
+- **Evitar cuando:** Elegir un día: usa DateInput o DatePicker. Un rango libre de fechas: usa DateRangePicker.
+
+#### MonthNavigator
+
+Navegador de periodos: ‹ noviembre de 2026 › para finanzas, contabilidad y cronogramas.
+
+```tsx
+import { MonthNavigator } from "@rubenpazch/ui";
+```
+
+| Prop        | Tipo                                                          | Req. | Por defecto | Descripción                                         |
+| ----------- | ------------------------------------------------------------- | ---- | ----------- | --------------------------------------------------- |
+| `onChange`  | `(value: string) => void`                                     | sí   |             | Recibe el nuevo mes "AAAA-MM".                      |
+| `value`     | `string`                                                      | sí   |             | Mes actual en formato "AAAA-MM" (p. ej. "2026-11"). |
+| `className` | `string`                                                      |      |             | Clase extra.                                        |
+| `labels`    | `Partial<{ previous: string; next: string; today: string; }>` |      |             | Textos accesibles.                                  |
+| `locale`    | `string`                                                      |      | `es`        | Idioma del nombre del mes (por defecto "es").       |
+| `max`       | `string`                                                      |      |             | Último mes permitido "AAAA-MM".                     |
+| `min`       | `string`                                                      |      |             | Primer mes permitido "AAAA-MM".                     |
+| `showToday` | `boolean`                                                     |      | `false`     | Muestra el botón "Hoy" para volver al mes actual.   |
+
+Otras exportaciones: `addMonths`, `currentMonth`.
+
+Tipos: `MonthNavigatorProps`.
+
+### @rubenpazch/page-header
+
+Cabecera de página: migas de pan, volver, título h1, subtítulo, acciones y contenido extra (filtros); acepta el Link de Next.js.
+
+- **Usar cuando:** Arriba de cada página del panel, dentro de AppShell.
+- **Evitar cuando:** Títulos de secciones dentro de una página: usa un h2 o CardHeader.
+
+#### PageHeader
+
+Cabecera de página: migas, volver, título h1, subtítulo y acciones.
+
+```tsx
+import { PageHeader } from "@rubenpazch/ui";
+```
+
+| Prop            | Tipo                                                                                                | Req. | Por defecto | Descripción                                                     |
+| --------------- | --------------------------------------------------------------------------------------------------- | ---- | ----------- | --------------------------------------------------------------- |
+| `title`         | `ReactNode`                                                                                         | sí   |             | Título de la página (se renderiza como h1).                     |
+| `actions`       | `ReactNode`                                                                                         |      |             | Acciones a la derecha (botones). En móvil pasan abajo.          |
+| `back`          | `{ label?: string \| undefined; href?: string \| undefined; onClick?: (() => void) \| undefined; }` |      |             | Enlace o acción "Volver".                                       |
+| `breadcrumbs`   | `Breadcrumb[]`                                                                                      |      |             | Migas de pan: Inicio / Convocatorias / Editar.                  |
+| `children`      | `ReactNode`                                                                                         |      |             | Contenido extra bajo el título (filtros, pestañas).             |
+| `className`     | `string`                                                                                            |      |             | Clase extra.                                                    |
+| `linkComponent` | `ElementType<any, keyof IntrinsicElements>`                                                         |      | `a`         | Componente de enlace (p. ej. Link de Next.js). Por defecto <a>. |
+| `subtitle`      | `ReactNode`                                                                                         |      |             | Texto secundario bajo el título.                                |
+
+Tipos: `PageHeaderProps`, `Breadcrumb`.
 
 ### @rubenpazch/pagination
 
@@ -540,23 +903,25 @@ Paginación con variantes, tamaños y formas; incluye PaginationItem.
 import { Pagination } from "@rubenpazch/ui";
 ```
 
-| Prop              | Tipo                                                           | Req. | Por defecto | Descripción                                                      |
-| ----------------- | -------------------------------------------------------------- | ---- | ----------- | ---------------------------------------------------------------- |
-| `boundaryCount`   | `number`                                                       |      | `1`         | Number of always visible pages at the beginning and end          |
-| `count`           | `number`                                                       |      | `1`         | Total number of pages                                            |
-| `defaultPage`     | `number`                                                       |      | `1`         | Default page if uncontrolled                                     |
-| `disabled`        | `boolean`                                                      |      | `false`     | If true, the component is disabled                               |
-| `hideNextButton`  | `boolean`                                                      |      | `false`     | If true, hide the next-page button                               |
-| `hidePrevButton`  | `boolean`                                                      |      | `false`     | If true, hide the previous-page button                           |
-| `onChange`        | `(event: ChangeEvent<unknown, Element>, page: number) => void` |      |             | Callback when page changes                                       |
-| `page`            | `number`                                                       |      |             | The current page (1-based)                                       |
-| `renderItem`      | `(item: PaginationItemType) => ReactNode`                      |      |             | Custom render function for items                                 |
-| `shape`           | `"rounded" \| "circular"`                                      |      | `rounded`   | The shape of the pagination items                                |
-| `showFirstButton` | `boolean`                                                      |      | `false`     | If true, show the first-page button                              |
-| `showLastButton`  | `boolean`                                                      |      | `false`     | If true, show the last-page button                               |
-| `siblingCount`    | `number`                                                       |      | `1`         | Number of always visible pages before and after the current page |
-| `size`            | `"small" \| "medium" \| "large"`                               |      | `medium`    | The size of the pagination component                             |
-| `variant`         | `"text" \| "outlined"`                                         |      | `text`      | The variant to use                                               |
+| Prop              | Tipo                                                           | Req. | Por defecto  | Descripción                                                                         |
+| ----------------- | -------------------------------------------------------------- | ---- | ------------ | ----------------------------------------------------------------------------------- |
+| `aria-label`      | `string`                                                       |      | `Paginación` | Nombre accesible de la navegación (por defecto "Paginación").                       |
+| `boundaryCount`   | `number`                                                       |      | `1`          | Number of always visible pages at the beginning and end                             |
+| `count`           | `number`                                                       |      | `1`          | Total number of pages                                                               |
+| `defaultPage`     | `number`                                                       |      | `1`          | Default page if uncontrolled                                                        |
+| `disabled`        | `boolean`                                                      |      | `false`      | If true, the component is disabled                                                  |
+| `hideNextButton`  | `boolean`                                                      |      | `false`      | If true, hide the next-page button                                                  |
+| `hidePrevButton`  | `boolean`                                                      |      | `false`      | If true, hide the previous-page button                                              |
+| `onChange`        | `(event: ChangeEvent<unknown, Element>, page: number) => void` |      |              | Al cambiar de página, estilo MUI: (evento, página). Se mantiene por compatibilidad. |
+| `onPageChange`    | `(page: number) => void`                                       |      |              | Al cambiar de página (recibe solo el número). Preferido sobre onChange.             |
+| `page`            | `number`                                                       |      |              | The current page (1-based)                                                          |
+| `renderItem`      | `(item: PaginationItemType) => ReactNode`                      |      |              | Custom render function for items                                                    |
+| `shape`           | `"rounded" \| "circular"`                                      |      | `rounded`    | The shape of the pagination items                                                   |
+| `showFirstButton` | `boolean`                                                      |      | `false`      | If true, show the first-page button                                                 |
+| `showLastButton`  | `boolean`                                                      |      | `false`      | If true, show the last-page button                                                  |
+| `siblingCount`    | `number`                                                       |      | `1`          | Number of always visible pages before and after the current page                    |
+| `size`            | `"small" \| "medium" \| "large" \| "sm" \| "md" \| "lg"`       |      | `medium`     | The size of the pagination component                                                |
+| `variant`         | `"text" \| "outlined"`                                         |      | `text`       | The variant to use                                                                  |
 
 #### PaginationItem
 
@@ -570,10 +935,46 @@ import { PaginationItem } from "@rubenpazch/ui";
 | `type`     | `"page" \| "next" \| "previous" \| "first" \| "last" \| "start-ellipsis" \| "end-ellipsis"` | sí   |             | The type of pagination item          |
 | `selected` | `boolean`                                                                                   |      | `false`     | If true, the item is selected/active |
 | `shape`    | `"rounded" \| "circular"`                                                                   |      | `rounded`   | The shape of the pagination items    |
-| `size`     | `"small" \| "medium" \| "large"`                                                            |      | `medium`    | The size of the component            |
+| `size`     | `"small" \| "medium" \| "large" \| "sm" \| "md" \| "lg"`                                    |      | `medium`    | The size of the component            |
 | `variant`  | `"text" \| "outlined"`                                                                      |      | `text`      | The variant to use                   |
 
 Tipos: `PaginationProps`, `PaginationShape`, `PaginationSize`, `PaginationVariant`, `PaginationItemType`, `PaginationItemProps`.
+
+### @rubenpazch/sidebar
+
+Barra de navegación vertical: secciones, subniveles plegables, insignias y página activa (también subrutas); en escritorio se colapsa a iconos y lo recuerda (storageKey); en móvil es un cajón con foco retenido y Escape. Acepta el Link de Next.js.
+
+- **Usar cuando:** Menú principal de un panel de administración. Normalmente a través de AppShell; úsala sola si ya tienes tu propia cabecera.
+- **Evitar cuando:** Pestañas dentro de una página: usa Tabs. Acciones de un registro: usa Menu.
+
+#### Sidebar
+
+Barra de navegación vertical: secciones, subniveles, insignias y estado activo. En escritorio
+se colapsa a iconos (y lo recuerda); en móvil es un cajón con foco retenido y Escape.
+
+```tsx
+import { Sidebar } from "@rubenpazch/ui";
+```
+
+| Prop                 | Tipo                                        | Req. | Por defecto | Descripción                                                                       |
+| -------------------- | ------------------------------------------- | ---- | ----------- | --------------------------------------------------------------------------------- |
+| `sections`           | `SidebarSection[]`                          | sí   |             | Secciones del menú.                                                               |
+| `brand`              | `ReactNode`                                 |      |             | Logo o nombre de la app arriba.                                                   |
+| `brandCollapsed`     | `ReactNode`                                 |      |             | Versión compacta del logo para el modo colapsado (por defecto se oculta `brand`). |
+| `className`          | `string`                                    |      |             | Clase extra.                                                                      |
+| `collapsed`          | `boolean`                                   |      |             | Colapsado (controlado).                                                           |
+| `collapsible`        | `boolean`                                   |      | `true`      | Muestra el botón para colapsar (por defecto sí).                                  |
+| `currentPath`        | `string`                                    |      |             | Ruta actual (p. ej. usePathname() de Next) para marcar la opción activa.          |
+| `defaultCollapsed`   | `boolean`                                   |      | `false`     | Colapsado inicial (no controlado).                                                |
+| `footer`             | `ReactNode`                                 |      |             | Contenido al pie: usuario, "Cerrar sesión".                                       |
+| `labels`             | `Partial<SidebarLabels>`                    |      |             | Textos accesibles.                                                                |
+| `linkComponent`      | `ElementType<any, keyof IntrinsicElements>` |      | `a`         | Componente de enlace (Link de Next.js). Por defecto <a>.                          |
+| `mobileOpen`         | `boolean`                                   |      | `false`     | Abierto en móvil (lo controla el botón ☰ de AppShell o de tu cabecera).          |
+| `onCollapsedChange`  | `(collapsed: boolean) => void`              |      |             | Al colapsar o expandir.                                                           |
+| `onMobileOpenChange` | `(open: boolean) => void`                   |      |             | Al cerrar en móvil (Escape, fondo, elegir una opción).                            |
+| `storageKey`         | `string`                                    |      |             | Clave de localStorage para recordar si estaba colapsado.                          |
+
+Tipos: `SidebarProps`, `SidebarItem`, `SidebarSection`, `SidebarLabels`.
 
 ### @rubenpazch/stepper
 
@@ -588,14 +989,15 @@ Indicador de pasos numerados (opcionalmente clicables) para procesos en etapas.
 import { Stepper } from "@rubenpazch/ui";
 ```
 
-| Prop            | Tipo                             | Req. | Por defecto | Descripción |
-| --------------- | -------------------------------- | ---- | ----------- | ----------- |
-| `currentStep`   | `number`                         | sí   |             |             |
-| `steps`         | `Step[]`                         | sí   |             |             |
-| `className`     | `string`                         |      | ``          |             |
-| `onStepChange`  | `(step: number) => void`         |      |             |             |
-| `size`          | `"small" \| "medium" \| "large"` |      | `medium`    |             |
-| `stepClickable` | `boolean`                        |      | `false`     |             |
+| Prop            | Tipo                                                     | Req. | Por defecto | Descripción                                                          |
+| --------------- | -------------------------------------------------------- | ---- | ----------- | -------------------------------------------------------------------- |
+| `currentStep`   | `number`                                                 | sí   |             |                                                                      |
+| `steps`         | `Step[]`                                                 | sí   |             |                                                                      |
+| `ariaLabel`     | `string`                                                 |      | `Progreso`  | Nombre accesible de la navegación de pasos (por defecto "Progreso"). |
+| `className`     | `string`                                                 |      | ``          |                                                                      |
+| `onStepChange`  | `(step: number) => void`                                 |      |             |                                                                      |
+| `size`          | `"small" \| "medium" \| "large" \| "sm" \| "md" \| "lg"` |      | `medium`    |                                                                      |
+| `stepClickable` | `boolean`                                                |      | `false`     |                                                                      |
 
 ### @rubenpazch/tabs
 
@@ -613,6 +1015,7 @@ import { Tabs } from "@rubenpazch/ui";
 | Prop               | Tipo                                       | Req. | Por defecto  | Descripción                                                           |
 | ------------------ | ------------------------------------------ | ---- | ------------ | --------------------------------------------------------------------- |
 | `tabs`             | `Tab[]`                                    | sí   |              |                                                                       |
+| `ariaLabel`        | `string`                                   |      | `Pestañas`   | Nombre accesible del grupo de pestañas (por defecto "Pestañas").      |
 | `className`        | `string`                                   |      |              |                                                                       |
 | `defaultTab`       | `string`                                   |      |              |                                                                       |
 | `lazy`             | `boolean`                                  |      | `false`      | Lazy mode - only calls onLoad when tab is first visited               |
@@ -625,6 +1028,35 @@ import { Tabs } from "@rubenpazch/ui";
 
 ## Retroalimentación
 
+### @rubenpazch/alert
+
+Aviso dentro de la página (info, success, warning, danger) con título, acción y cierre opcional.
+
+- **Usar cuando:** Mensajes que deben quedar visibles en la página: errores de carga, advertencias de un formulario, avisos de estado.
+- **Evitar cuando:** Confirmaciones pasajeras ("Guardado"): usa Toast. Pedir una decisión: usa ConfirmationDialog.
+
+#### Alert
+
+Aviso dentro de la página (no flotante): información, éxito, advertencia o error.
+`warning` y `danger` se anuncian de inmediato (role="alert"); el resto como estado.
+
+```tsx
+import { Alert } from "@rubenpazch/ui";
+```
+
+| Prop         | Tipo                                           | Req. | Por defecto    | Descripción                                                          |
+| ------------ | ---------------------------------------------- | ---- | -------------- | -------------------------------------------------------------------- |
+| `action`     | `ReactNode`                                    |      |                | Acción a la derecha o abajo (p. ej. un Button "Reintentar").         |
+| `children`   | `ReactNode`                                    |      |                | Texto del aviso.                                                     |
+| `className`  | `string`                                       |      |                | Clase extra.                                                         |
+| `closeLabel` | `string`                                       |      | `Cerrar aviso` | Texto accesible del botón ×.                                         |
+| `icon`       | `ReactNode`                                    |      |                | Icono propio; `false` para ocultarlo. Por defecto uno según el tipo. |
+| `onClose`    | `() => void`                                   |      |                | Si se pasa, muestra el botón × y se llama al cerrarlo.               |
+| `title`      | `ReactNode`                                    |      |                | Título en negrita (opcional).                                        |
+| `variant`    | `"info" \| "success" \| "warning" \| "danger"` |      | `info`         | Tipo de mensaje: info (por defecto), success, warning o danger.      |
+
+Tipos: `AlertProps`, `AlertVariant`.
+
 ### @rubenpazch/confirmation-dialog
 
 Diálogo modal de confirmación (aceptar/cancelar).
@@ -634,21 +1066,52 @@ Diálogo modal de confirmación (aceptar/cancelar).
 
 #### ConfirmationDialog
 
+Diálogo de confirmación (alertdialog) sobre Modal: foco retenido, Escape para cancelar y
+el foco inicial en "Cancelar", la opción segura.
+
 ```tsx
 import { ConfirmationDialog } from "@rubenpazch/ui";
 ```
 
-| Prop          | Tipo         | Req. | Por defecto | Descripción |
-| ------------- | ------------ | ---- | ----------- | ----------- |
-| `isOpen`      | `boolean`    | sí   |             |             |
-| `message`     | `string`     | sí   |             |             |
-| `onCancel`    | `() => void` | sí   |             |             |
-| `onConfirm`   | `() => void` | sí   |             |             |
-| `title`       | `string`     | sí   |             |             |
-| `cancelText`  | `string`     |      | `Cancel`    |             |
-| `confirmText` | `string`     |      | `Confirm`   |             |
-| `isDangerous` | `boolean`    |      | `false`     |             |
-| `isLoading`   | `boolean`    |      | `false`     |             |
+| Prop          | Tipo         | Req. | Por defecto | Descripción                                                          |
+| ------------- | ------------ | ---- | ----------- | -------------------------------------------------------------------- |
+| `isOpen`      | `boolean`    | sí   |             | Si el diálogo está abierto.                                          |
+| `message`     | `ReactNode`  | sí   |             | Explicación de la consecuencia.                                      |
+| `onCancel`    | `() => void` | sí   |             | Al cancelar, pulsar Escape o hacer clic fuera (si no está cargando). |
+| `onConfirm`   | `() => void` | sí   |             | Al confirmar.                                                        |
+| `title`       | `string`     | sí   |             | Pregunta o título: "¿Eliminar la convocatoria?".                     |
+| `cancelText`  | `string`     |      | `Cancelar`  | Texto del botón de cancelar (por defecto "Cancelar").                |
+| `children`    | `ReactNode`  |      |             | Contenido extra bajo el mensaje (p. ej. un campo "motivo").          |
+| `confirmText` | `string`     |      | `Confirmar` | Texto del botón de confirmar (por defecto "Confirmar").              |
+| `isDangerous` | `boolean`    |      | `false`     | Acción destructiva: botón rojo.                                      |
+| `isLoading`   | `boolean`    |      | `false`     | Muestra el botón de confirmar cargando y bloquea los botones.        |
+
+### @rubenpazch/empty-state
+
+Estado vacío con icono, título, descripción y acciones ("No hay convocatorias · Crear").
+
+- **Usar cuando:** Listas, tablas o búsquedas sin resultados; primera vez que se usa una sección.
+- **Evitar cuando:** Errores de carga: usa Alert variant="danger".
+
+#### EmptyState
+
+Estado vacío: lo que se muestra cuando una lista o búsqueda no tiene resultados.
+
+```tsx
+import { EmptyState } from "@rubenpazch/ui";
+```
+
+| Prop              | Tipo           | Req. | Por defecto | Descripción                                                             |
+| ----------------- | -------------- | ---- | ----------- | ----------------------------------------------------------------------- |
+| `title`           | `ReactNode`    | sí   |             | Título: "No hay convocatorias".                                         |
+| `action`          | `ReactNode`    |      |             | Acción principal: normalmente un Button "Crear…".                       |
+| `className`       | `string`       |      |             | Clase extra.                                                            |
+| `description`     | `ReactNode`    |      |             | Explicación o siguiente paso.                                           |
+| `icon`            | `ReactNode`    |      |             | Icono o ilustración (por defecto una bandeja vacía). `false` lo oculta. |
+| `secondaryAction` | `ReactNode`    |      |             | Acción secundaria (enlace o botón de texto).                            |
+| `size`            | `"sm" \| "md"` |      | `md`        | sm para dentro de tablas o tarjetas; md (por defecto) para una página.  |
+
+Tipos: `EmptyStateProps`.
 
 ### @rubenpazch/loading-spinner
 
@@ -674,6 +1137,40 @@ import { LoadingSpinner } from "@rubenpazch/ui";
 | `message`   | `string`                                   |      |             |             |
 | `size`      | `"sm" \| "md" \| "lg"`                     |      | `md`        |             |
 | `variant`   | `"spinner" \| "dots" \| "pulse" \| "ring"` |      | `spinner`   |             |
+
+### @rubenpazch/modal
+
+Ventana modal accesible: portal, foco retenido, Escape y clic fuera para cerrar, bloqueo del scroll, título y descripción anunciados.
+
+- **Usar cuando:** Formularios cortos o detalles que requieren atención sin cambiar de página (editar un registro, ver un detalle).
+- **Evitar cuando:** Confirmar una acción: usa ConfirmationDialog. Formularios largos o navegación lateral: usa Drawer.
+
+#### Modal
+
+Ventana modal accesible: se monta en un portal, retiene el foco, bloquea el scroll de la
+página y se cierra con Escape. Para confirmar acciones usa ConfirmationDialog.
+
+```tsx
+import { Modal } from "@rubenpazch/ui";
+```
+
+| Prop                  | Tipo                                     | Req. | Por defecto | Descripción                                                                       |
+| --------------------- | ---------------------------------------- | ---- | ----------- | --------------------------------------------------------------------------------- |
+| `onClose`             | `() => void`                             | sí   |             | Se llama al pedir cierre: botón ×, Escape o clic en el fondo.                     |
+| `open`                | `boolean`                                | sí   |             | Si el modal está abierto.                                                         |
+| `children`            | `ReactNode`                              |      |             | Contenido del modal.                                                              |
+| `className`           | `string`                                 |      |             | Clase extra para la caja del modal.                                               |
+| `closeLabel`          | `string`                                 |      | `Cerrar`    | Texto accesible del botón ×.                                                      |
+| `closeOnEscape`       | `boolean`                                |      | `true`      | Cerrar con Escape (por defecto sí).                                               |
+| `closeOnOverlayClick` | `boolean`                                |      | `true`      | Cerrar al hacer clic en el fondo (por defecto sí).                                |
+| `description`         | `ReactNode`                              |      |             | Texto bajo el título (se anuncia como descripción).                               |
+| `footer`              | `ReactNode`                              |      |             | Pie: normalmente los botones de acción.                                           |
+| `role`                | `"dialog" \| "alertdialog"`              |      | `dialog`    | Rol del diálogo: `alertdialog` para confirmaciones que exigen respuesta.          |
+| `showCloseButton`     | `boolean`                                |      | `true`      | Mostrar el botón × (por defecto sí).                                              |
+| `size`                | `"sm" \| "md" \| "lg" \| "xl" \| "full"` |      | `md`        | Ancho máximo: sm (400px), md (520px, por defecto), lg (720px), xl (960px) o full. |
+| `title`               | `ReactNode`                              |      |             | Título (se anuncia como nombre del diálogo).                                      |
+
+Tipos: `ModalProps`, `ModalSize`.
 
 ### @rubenpazch/overlay-loader
 
@@ -723,6 +1220,60 @@ import { InlineLoader } from "@rubenpazch/ui";
 
 Tipos: `OverlayLoaderProps`, `OverlayLoaderVariant`, `InlineLoaderProps`, `InlineLoaderVariant`.
 
+### @rubenpazch/progress-bar
+
+Barra de progreso (role="progressbar") con etiqueta y porcentaje, determinada o indeterminada.
+
+- **Usar cuando:** Subidas de archivos, importaciones, avance de un proceso o de una meta (presupuesto usado).
+- **Evitar cuando:** Pasos con nombre: usa Stepper. Esperas sin avance medible y cortas: usa LoadingSpinner.
+
+#### ProgressBar
+
+Barra de progreso accesible (role="progressbar"), determinada o indeterminada.
+
+```tsx
+import { ProgressBar } from "@rubenpazch/ui";
+```
+
+| Prop        | Tipo                                              | Req. | Por defecto | Descripción                                                             |
+| ----------- | ------------------------------------------------- | ---- | ----------- | ----------------------------------------------------------------------- |
+| `className` | `string`                                          |      |             | Clase extra.                                                            |
+| `color`     | `"primary" \| "success" \| "warning" \| "danger"` |      | `primary`   | primary (por defecto), success, warning o danger.                       |
+| `label`     | `string`                                          |      |             | Etiqueta visible: "Subiendo archivos". También es el nombre accesible.  |
+| `max`       | `number`                                          |      | `100`       | Máximo (por defecto 100).                                               |
+| `showValue` | `boolean`                                         |      | `false`     | Muestra el porcentaje a la derecha de la etiqueta.                      |
+| `size`      | `"sm" \| "md" \| "lg"`                            |      | `md`        | sm (4px), md (8px, por defecto) o lg (12px).                            |
+| `value`     | `number`                                          |      |             | Valor actual (0 a max). Sin valor = indeterminado (animación continua). |
+| `valueText` | `string`                                          |      |             | Texto del valor (por defecto "45 %").                                   |
+
+Tipos: `ProgressBarProps`.
+
+### @rubenpazch/skeleton
+
+Marcador de carga (texto, bloque o círculo) con la forma del contenido; respeta reducir movimiento.
+
+- **Usar cuando:** Mientras cargan tarjetas, filas o perfiles, para que la página no salte al llegar los datos.
+- **Evitar cuando:** Operaciones que bloquean la pantalla: usa OverlayLoader. Esperas dentro de un botón: usa LoadingSpinner.
+
+#### Skeleton
+
+Marcador de carga con la forma del contenido. Es decorativo (aria-hidden): anuncia la carga
+en el contenedor con aria-busy o un texto oculto.
+
+```tsx
+import { Skeleton } from "@rubenpazch/ui";
+```
+
+| Prop        | Tipo                           | Req. | Por defecto | Descripción                                                                          |
+| ----------- | ------------------------------ | ---- | ----------- | ------------------------------------------------------------------------------------ |
+| `className` | `string`                       |      |             | Clase extra.                                                                         |
+| `height`    | `string \| number`             |      |             | Alto (número = px o valor CSS). Por defecto según la variante.                       |
+| `lines`     | `number`                       |      | `1`         | Con variant="text": cuántas líneas (la última más corta).                            |
+| `variant`   | `"text" \| "rect" \| "circle"` |      | `text`      | text (línea de texto, por defecto), rect (bloque) o circle (avatar).                 |
+| `width`     | `string \| number`             |      |             | Ancho (número = px o cualquier valor CSS). Por defecto 100% (circle: igual al alto). |
+
+Tipos: `SkeletonProps`.
+
 ### @rubenpazch/toast
 
 Notificaciones temporales (Toast) y avisos fijos (ToastBanner) con tipos y acciones.
@@ -736,12 +1287,12 @@ Notificaciones temporales (Toast) y avisos fijos (ToastBanner) con tipos y accio
 import { ToastBanner } from "@rubenpazch/ui";
 ```
 
-| Prop             | Tipo                   | Req. | Por defecto          | Descripción |
-| ---------------- | ---------------------- | ---- | -------------------- | ----------- |
-| `onClose`        | `(id: string) => void` | sí   |                      |             |
-| `toasts`         | `ToastItem[]`          | sí   |                      |             |
-| `className`      | `string`               |      |                      |             |
-| `closeAriaLabel` | `string`               |      | `Close notification` |             |
+| Prop             | Tipo                   | Req. | Por defecto           | Descripción |
+| ---------------- | ---------------------- | ---- | --------------------- | ----------- |
+| `onClose`        | `(id: string) => void` | sí   |                       |             |
+| `toasts`         | `ToastItem[]`          | sí   |                       |             |
+| `className`      | `string`               |      |                       |             |
+| `closeAriaLabel` | `string`               |      | `Cerrar notificación` |             |
 
 Tipos: `ToastAction`, `ToastBannerProps`, `ToastItem`, `ToastType`.
 
@@ -790,6 +1341,91 @@ import { AvatarGroup } from "@rubenpazch/ui";
 
 Tipos: `AvatarProps`, `AvatarSize`, `AvatarVariant`, `AvatarGroupProps`, `AvatarGroupSpacing`.
 
+### @rubenpazch/badge
+
+Insignia de estado o categoría (Pagado, Vencido, Borrador) con colores semánticos, variantes soft/solid/outline y punto.
+
+- **Usar cuando:** Mostrar el estado de un registro en tablas, tarjetas o detalles; contadores pequeños.
+- **Evitar cuando:** Algo que se puede quitar o filtrar: usa Chip.
+
+#### Badge
+
+Insignia de estado o categoría: "Pagado", "Vencido", "Borrador", "3 nuevos".
+
+```tsx
+import { Badge } from "@rubenpazch/ui";
+```
+
+| Prop         | Tipo                                                                                                       | Req. | Por defecto | Descripción                                                                           |
+| ------------ | ---------------------------------------------------------------------------------------------------------- | ---- | ----------- | ------------------------------------------------------------------------------------- |
+| `children`   | `ReactNode`                                                                                                | sí   |             | Texto del badge.                                                                      |
+| `aria-label` | `string`                                                                                                   |      |             | Texto para lectores de pantalla si el visible no basta (p. ej. "Estado: vencido").    |
+| `className`  | `string`                                                                                                   |      |             | Clase extra.                                                                          |
+| `color`      | `"neutral" \| "primary" \| "success" \| "warning" \| "danger" \| "info" \| "violet" \| "orange" \| "pink"` |      | `neutral`   | Color según el significado: success (pagado), warning (por vencer), danger (vencido)… |
+| `dot`        | `boolean`                                                                                                  |      | `false`     | Muestra un punto de color antes del texto.                                            |
+| `size`       | `"sm" \| "md"`                                                                                             |      | `sm`        | sm (por defecto) o md.                                                                |
+| `variant`    | `"soft" \| "solid" \| "outline"`                                                                           |      | `soft`      | soft (fondo suave, por defecto), solid o outline.                                     |
+
+Tipos: `BadgeProps`, `BadgeColor`, `BadgeVariant`.
+
+### @rubenpazch/card
+
+Tarjeta (outlined o elevated) con CardHeader (título, subtítulo, acciones), CardBody y CardFooter; puede ser clicable.
+
+- **Usar cuando:** Agrupar la información de un registro o una sección del panel: resúmenes, KPIs, fichas.
+- **Evitar cuando:** Listas largas de registros comparables: usa DataTable.
+
+#### Card
+
+Contenedor con borde o sombra para agrupar información. Usa CardHeader, CardBody y CardFooter.
+
+```tsx
+import { Card } from "@rubenpazch/ui";
+```
+
+| Prop      | Tipo                                      | Req. | Por defecto | Descripción                                                                             |
+| --------- | ----------------------------------------- | ---- | ----------- | --------------------------------------------------------------------------------------- |
+| `as`      | `"div" \| "section" \| "article" \| "li"` |      | `div`       | Etiqueta HTML: div (por defecto), section, article o li.                                |
+| `onClick` | `MouseEventHandler<HTMLElement>`          |      |             | Si se pasa, la tarjeta es clicable (sombra al pasar y foco con teclado).                |
+| `padding` | `"none" \| "sm" \| "md" \| "lg"`          |      | `none`      | Relleno interno cuando no se usan CardHeader/CardBody: none, sm, md (por defecto) o lg. |
+| `variant` | `"outlined" \| "elevated"`                |      | `outlined`  | outlined (borde, por defecto) o elevated (sombra).                                      |
+
+#### CardHeader
+
+Cabecera de Card con título, subtítulo y acciones.
+
+```tsx
+import { CardHeader } from "@rubenpazch/ui";
+```
+
+| Prop       | Tipo        | Req. | Por defecto | Descripción                            |
+| ---------- | ----------- | ---- | ----------- | -------------------------------------- |
+| `actions`  | `ReactNode` |      |             | Acciones a la derecha (botones, menú). |
+| `subtitle` | `ReactNode` |      |             | Texto secundario bajo el título.       |
+| `title`    | `ReactNode` |      |             | Título de la tarjeta.                  |
+
+#### CardBody
+
+Cuerpo de Card.
+
+```tsx
+import { CardBody } from "@rubenpazch/ui";
+```
+
+_Sin props documentadas._
+
+#### CardFooter
+
+Pie de Card (botones o totales).
+
+```tsx
+import { CardFooter } from "@rubenpazch/ui";
+```
+
+_Sin props documentadas._
+
+Tipos: `CardProps`, `CardHeaderProps`.
+
 ### @rubenpazch/chip
 
 Chip/etiqueta con variantes, icono y acción de borrar.
@@ -803,21 +1439,21 @@ Chip/etiqueta con variantes, icono y acción de borrar.
 import { Chip } from "@rubenpazch/ui";
 ```
 
-| Prop              | Tipo                                                                    | Req. | Por defecto   | Descripción                                    |
-| ----------------- | ----------------------------------------------------------------------- | ---- | ------------- | ---------------------------------------------- |
-| `avatar`          | `ReactNode`                                                             |      |               | Avatar or custom element shown at the start    |
-| `clickable`       | `boolean`                                                               |      | `false`       | Whether the chip behaves like a button         |
-| `color`           | `"default" \| "primary" \| "success" \| "warning" \| "error" \| "info"` |      | `default`     | Color theme for the chip                       |
-| `component`       | `ElementType<any, keyof IntrinsicElements>`                             |      |               | Override root component                        |
-| `deleteAriaLabel` | `string`                                                                |      | `Remove chip` | Accessible label for the delete button         |
-| `deleteIcon`      | `ReactNode`                                                             |      |               | Custom delete icon element                     |
-| `disabled`        | `boolean`                                                               |      | `false`       | Disabled state                                 |
-| `icon`            | `ReactNode`                                                             |      |               | Leading icon rendered before the label         |
-| `label`           | `ReactNode`                                                             |      |               | Content shown inside the chip                  |
-| `onDelete`        | `(event: MouseEvent<HTMLButtonElement, MouseEvent>) => void`            |      |               | Callback fired when the delete icon is clicked |
-| `selected`        | `boolean`                                                               |      | `false`       | Selected/pressed state for toggleable chips    |
-| `size`            | `"sm" \| "md"`                                                          |      | `md`          | Chip size                                      |
-| `variant`         | `"filled" \| "outlined" \| "soft"`                                      |      | `filled`      | Visual style for the chip                      |
+| Prop              | Tipo                                                                    | Req. | Por defecto | Descripción                                    |
+| ----------------- | ----------------------------------------------------------------------- | ---- | ----------- | ---------------------------------------------- |
+| `avatar`          | `ReactNode`                                                             |      |             | Avatar or custom element shown at the start    |
+| `clickable`       | `boolean`                                                               |      | `false`     | Whether the chip behaves like a button         |
+| `color`           | `"default" \| "primary" \| "success" \| "warning" \| "error" \| "info"` |      | `default`   | Color theme for the chip                       |
+| `component`       | `ElementType<any, keyof IntrinsicElements>`                             |      |             | Override root component                        |
+| `deleteAriaLabel` | `string`                                                                |      | `Quitar`    | Accessible label for the delete button         |
+| `deleteIcon`      | `ReactNode`                                                             |      |             | Custom delete icon element                     |
+| `disabled`        | `boolean`                                                               |      | `false`     | Disabled state                                 |
+| `icon`            | `ReactNode`                                                             |      |             | Leading icon rendered before the label         |
+| `label`           | `ReactNode`                                                             |      |             | Content shown inside the chip                  |
+| `onDelete`        | `(event: MouseEvent<HTMLButtonElement, MouseEvent>) => void`            |      |             | Callback fired when the delete icon is clicked |
+| `selected`        | `boolean`                                                               |      | `false`     | Selected/pressed state for toggleable chips    |
+| `size`            | `"sm" \| "md"`                                                          |      | `md`        | Chip size                                      |
+| `variant`         | `"filled" \| "outlined" \| "soft"`                                      |      | `filled`    | Visual style for the chip                      |
 
 Tipos: `ChipVariant`, `ChipColor`, `ChipSize`, `ChipProps`.
 
@@ -851,7 +1487,69 @@ import { InfoRow } from "@rubenpazch/ui";
 | `size`      | `"xs" \| "sm" \| "md" \| "lg"`                                                          |      | `md`        |             |
 | `variant`   | `"default" \| "blue" \| "yellow" \| "purple" \| "green" \| "red" \| "indigo" \| "gray"` |      | `default`   |             |
 
+### @rubenpazch/tooltip
+
+Texto de ayuda breve al pasar el mouse o enfocar con teclado (role="tooltip", aria-describedby), se cierra con Escape.
+
+- **Usar cuando:** Explicar un botón de solo icono o un dato abreviado.
+- **Evitar cuando:** Información importante o acciones: muéstrala en la página o usa Menu/Modal. En móvil no hay hover: no ocultes ahí lo esencial.
+
+#### Tooltip
+
+Texto de ayuda al pasar el mouse o enfocar con el teclado; se cierra con Escape. Se asocia al
+elemento con aria-describedby. No pongas acciones dentro: usa Menu o Modal.
+
+```tsx
+import { Tooltip } from "@rubenpazch/ui";
+```
+
+| Prop        | Tipo                                                          | Req. | Por defecto | Descripción                                                                        |
+| ----------- | ------------------------------------------------------------- | ---- | ----------- | ---------------------------------------------------------------------------------- |
+| `children`  | `ReactElement<unknown, string \| JSXElementConstructor<any>>` | sí   |             | Elemento que lo dispara (un botón, un icono con foco). Debe aceptar ref y eventos. |
+| `content`   | `ReactNode`                                                   | sí   |             | Texto del tooltip (breve, sin elementos interactivos).                             |
+| `delay`     | `number`                                                      |      | `300`       | Espera en ms antes de mostrarse al pasar el mouse (por defecto 300).               |
+| `placement` | `"top" \| "bottom" \| "left" \| "right"`                      |      | `top`       | Posición: top (por defecto), bottom, left o right.                                 |
+
+Tipos: `TooltipProps`.
+
 ## Datos
+
+### @rubenpazch/data-table
+
+Tabla de datos accesible: columnas con render, orden (aria-sort) en el navegador o en el servidor, carga con Skeleton, estado vacío, filas clicables, encabezado fijo y scroll horizontal en móvil.
+
+- **Usar cuando:** Listados de registros comparables: obligaciones, cobros, convocatorias, usuarios. Combínala con Pagination y filtros.
+- **Evitar cuando:** Pocos datos de un solo registro: usa InfoRow o Card. Listas reordenables: usa DraggableList.
+
+#### DataTable
+
+Tabla de datos accesible: orden por columnas (aria-sort), carga, estado vacío, filas
+clicables y scroll horizontal en móvil. Pagina con Pagination debajo.
+
+```tsx
+import { DataTable } from "@rubenpazch/ui";
+```
+
+| Prop               | Tipo                                | Req. | Por defecto        | Descripción                                                                |
+| ------------------ | ----------------------------------- | ---- | ------------------ | -------------------------------------------------------------------------- |
+| `caption`          | `string`                            | sí   |                    | Título accesible de la tabla (se lee al entrar). Visible si `showCaption`. |
+| `columns`          | `DataTableColumn<T>[]`              | sí   |                    | Columnas.                                                                  |
+| `getRowId`         | `(row: T) => string \| number`      | sí   |                    | id único de cada fila.                                                     |
+| `rows`             | `T[]`                               | sí   |                    | Filas.                                                                     |
+| `className`        | `string`                            |      |                    | Clase extra del contenedor.                                                |
+| `dense`            | `boolean`                           |      | `false`            | Filas más compactas.                                                       |
+| `emptyAction`      | `ReactNode`                         |      |                    | Acción del estado vacío (Button "Crear…").                                 |
+| `emptyDescription` | `ReactNode`                         |      |                    | Explicación del estado vacío.                                              |
+| `emptyTitle`       | `ReactNode`                         |      | `No hay registros` | Texto del estado vacío.                                                    |
+| `loading`          | `boolean`                           |      | `false`            | Muestra filas de carga.                                                    |
+| `loadingRows`      | `number`                            |      | `5`                | Filas de carga a mostrar (por defecto 5).                                  |
+| `onRowClick`       | `(row: T) => void`                  |      |                    | Al hacer clic (o Enter) en una fila.                                       |
+| `onSortChange`     | `(sort: SortState \| null) => void` |      |                    | Al cambiar el orden (para ordenar en el servidor).                         |
+| `showCaption`      | `boolean`                           |      | `false`            | Muestra el caption encima de la tabla.                                     |
+| `sort`             | `null \| SortState`                 |      |                    | Orden controlado. Sin él, la tabla ordena sola en el navegador.            |
+| `stickyHeader`     | `boolean`                           |      | `false`            | Encabezado fijo al hacer scroll vertical.                                  |
+
+Tipos: `DataTableProps`, `DataTableColumn`, `SortState`, `SortDirection`.
 
 ### @rubenpazch/draggable-list
 

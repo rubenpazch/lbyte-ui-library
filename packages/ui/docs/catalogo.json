@@ -14,6 +14,207 @@
   },
   "paquetes": [
     {
+      "paquete": "@rubenpazch/alert",
+      "version": "0.0.0",
+      "carpeta": "packages/alert",
+      "categoria": "retroalimentacion",
+      "resumen": "Aviso dentro de la página (info, success, warning, danger) con título, acción y cierre opcional.",
+      "usarCuando": "Mensajes que deben quedar visibles en la página: errores de carga, advertencias de un formulario, avisos de estado.",
+      "evitarCuando": "Confirmaciones pasajeras (\"Guardado\"): usa Toast. Pedir una decisión: usa ConfirmationDialog.",
+      "componentes": [
+        {
+          "nombre": "Alert",
+          "importar": "import { Alert } from \"@rubenpazch/ui\";",
+          "descripcion": "Aviso dentro de la página (no flotante): información, éxito, advertencia o error.\n`warning` y `danger` se anuncian de inmediato (role=\"alert\"); el resto como estado.",
+          "props": [
+            {
+              "nombre": "action",
+              "tipo": "ReactNode",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Acción a la derecha o abajo (p. ej. un Button \"Reintentar\")."
+            },
+            {
+              "nombre": "children",
+              "tipo": "ReactNode",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Texto del aviso."
+            },
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Clase extra."
+            },
+            {
+              "nombre": "closeLabel",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "Cerrar aviso",
+              "descripcion": "Texto accesible del botón ×."
+            },
+            {
+              "nombre": "icon",
+              "tipo": "ReactNode",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Icono propio; `false` para ocultarlo. Por defecto uno según el tipo."
+            },
+            {
+              "nombre": "onClose",
+              "tipo": "() => void",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Si se pasa, muestra el botón × y se llama al cerrarlo."
+            },
+            {
+              "nombre": "title",
+              "tipo": "ReactNode",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Título en negrita (opcional)."
+            },
+            {
+              "nombre": "variant",
+              "tipo": "\"info\" | \"success\" | \"warning\" | \"danger\"",
+              "requerido": false,
+              "porDefecto": "info",
+              "descripcion": "Tipo de mensaje: info (por defecto), success, warning o danger."
+            }
+          ]
+        }
+      ],
+      "otrosValores": [],
+      "tipos": ["AlertProps", "AlertVariant"]
+    },
+    {
+      "paquete": "@rubenpazch/app-shell",
+      "version": "0.0.0",
+      "carpeta": "packages/app-shell",
+      "categoria": "navegacion",
+      "resumen": "Estructura completa de un panel: Sidebar colapsable, cabecera fija con botón ☰ en móvil, título y acciones, enlace \"Saltar al contenido\" y área principal con ancho máximo.",
+      "usarCuando": "Layout raíz de toda app de administración (app/(panel)/layout.tsx en Next.js), con usePathname() como currentPath.",
+      "evitarCuando": "Sitios públicos: arma tu propia cabecera. Solo necesitas el menú lateral: usa Sidebar.",
+      "componentes": [
+        {
+          "nombre": "AppShell",
+          "importar": "import { AppShell } from \"@rubenpazch/ui\";",
+          "descripcion": "Estructura de un panel: barra lateral (Sidebar), cabecera con ☰ en móvil y contenido.\nEs la base de todas las pantallas de administración.",
+          "props": [
+            {
+              "nombre": "children",
+              "tipo": "ReactNode",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": "Contenido de la página."
+            },
+            {
+              "nombre": "sections",
+              "tipo": "SidebarSection[]",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": "Secciones del menú."
+            },
+            {
+              "nombre": "brand",
+              "tipo": "ReactNode",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Logo o nombre de la app arriba."
+            },
+            {
+              "nombre": "brandCollapsed",
+              "tipo": "ReactNode",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Versión compacta del logo para el modo colapsado (por defecto se oculta `brand`)."
+            },
+            {
+              "nombre": "collapsed",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Colapsado (controlado)."
+            },
+            {
+              "nombre": "currentPath",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Ruta actual (p. ej. usePathname() de Next) para marcar la opción activa."
+            },
+            {
+              "nombre": "defaultCollapsed",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Colapsado inicial (no controlado)."
+            },
+            {
+              "nombre": "headerActions",
+              "tipo": "ReactNode",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Acciones a la derecha de la cabecera: notificaciones, usuario."
+            },
+            {
+              "nombre": "labels",
+              "tipo": "Partial<{ openMenu: string; skipToContent: string; }>",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Textos accesibles."
+            },
+            {
+              "nombre": "linkComponent",
+              "tipo": "ElementType<any, keyof IntrinsicElements>",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Componente de enlace (Link de Next.js). Por defecto <a>."
+            },
+            {
+              "nombre": "maxWidth",
+              "tipo": "\"none\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "lg",
+              "descripcion": "Ancho máximo del contenido: none, lg (72rem, por defecto) o md (56rem)."
+            },
+            {
+              "nombre": "onCollapsedChange",
+              "tipo": "(collapsed: boolean) => void",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Al colapsar o expandir."
+            },
+            {
+              "nombre": "sidebarFooter",
+              "tipo": "ReactNode",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Contenido al pie de la barra lateral (usuario, \"Cerrar sesión\")."
+            },
+            {
+              "nombre": "storageKey",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Clave de localStorage para recordar si estaba colapsado."
+            },
+            {
+              "nombre": "title",
+              "tipo": "ReactNode",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Título en la cabecera (en móvil se ve junto al botón ☰)."
+            }
+          ]
+        }
+      ],
+      "otrosValores": [],
+      "tipos": ["AppShellProps"]
+    },
+    {
       "paquete": "@rubenpazch/autocomplete",
       "version": "5.0.0",
       "carpeta": "packages/autocomplete",
@@ -25,7 +226,7 @@
         {
           "nombre": "Autocomplete",
           "importar": "import { Autocomplete } from \"@rubenpazch/ui\";",
-          "descripcion": "",
+          "descripcion": "Selector con búsqueda (combobox accesible): filtra mientras se escribe, teclado completo.",
           "props": [
             {
               "nombre": "onChange",
@@ -59,7 +260,7 @@
               "nombre": "createLabel",
               "tipo": "string",
               "requerido": false,
-              "porDefecto": "Create",
+              "porDefecto": "Crear",
               "descripcion": ""
             },
             {
@@ -105,6 +306,13 @@
               "descripcion": ""
             },
             {
+              "nombre": "id",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "id del input; si no se pasa se genera uno."
+            },
+            {
               "nombre": "keepListOpen",
               "tipo": "boolean",
               "requerido": false,
@@ -119,6 +327,13 @@
               "descripcion": ""
             },
             {
+              "nombre": "labels",
+              "tipo": "Partial<{ clear: string; open: string; close: string; }>",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Textos accesibles de los botones."
+            },
+            {
               "nombre": "loading",
               "tipo": "boolean",
               "requerido": false,
@@ -129,7 +344,7 @@
               "nombre": "loadingText",
               "tipo": "string",
               "requerido": false,
-              "porDefecto": "Loading...",
+              "porDefecto": "Cargando…",
               "descripcion": ""
             },
             {
@@ -147,10 +362,17 @@
               "descripcion": ""
             },
             {
+              "nombre": "name",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "name del input."
+            },
+            {
               "nombre": "noResultsText",
               "tipo": "string",
               "requerido": false,
-              "porDefecto": "No results found",
+              "porDefecto": "Sin resultados",
               "descripcion": ""
             },
             {
@@ -192,7 +414,7 @@
               "nombre": "placeholder",
               "tipo": "string",
               "requerido": false,
-              "porDefecto": "Search or select...",
+              "porDefecto": "Buscar o seleccionar…",
               "descripcion": ""
             },
             {
@@ -389,6 +611,75 @@
       ]
     },
     {
+      "paquete": "@rubenpazch/badge",
+      "version": "0.0.0",
+      "carpeta": "packages/badge",
+      "categoria": "presentacion",
+      "resumen": "Insignia de estado o categoría (Pagado, Vencido, Borrador) con colores semánticos, variantes soft/solid/outline y punto.",
+      "usarCuando": "Mostrar el estado de un registro en tablas, tarjetas o detalles; contadores pequeños.",
+      "evitarCuando": "Algo que se puede quitar o filtrar: usa Chip.",
+      "componentes": [
+        {
+          "nombre": "Badge",
+          "importar": "import { Badge } from \"@rubenpazch/ui\";",
+          "descripcion": "Insignia de estado o categoría: \"Pagado\", \"Vencido\", \"Borrador\", \"3 nuevos\".",
+          "props": [
+            {
+              "nombre": "children",
+              "tipo": "ReactNode",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": "Texto del badge."
+            },
+            {
+              "nombre": "aria-label",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Texto para lectores de pantalla si el visible no basta (p. ej. \"Estado: vencido\")."
+            },
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Clase extra."
+            },
+            {
+              "nombre": "color",
+              "tipo": "\"neutral\" | \"primary\" | \"success\" | \"warning\" | \"danger\" | \"info\" | \"violet\" | \"orange\" | \"pink\"",
+              "requerido": false,
+              "porDefecto": "neutral",
+              "descripcion": "Color según el significado: success (pagado), warning (por vencer), danger (vencido)…"
+            },
+            {
+              "nombre": "dot",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "false",
+              "descripcion": "Muestra un punto de color antes del texto."
+            },
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\"",
+              "requerido": false,
+              "porDefecto": "sm",
+              "descripcion": "sm (por defecto) o md."
+            },
+            {
+              "nombre": "variant",
+              "tipo": "\"soft\" | \"solid\" | \"outline\"",
+              "requerido": false,
+              "porDefecto": "soft",
+              "descripcion": "soft (fondo suave, por defecto), solid o outline."
+            }
+          ]
+        }
+      ],
+      "otrosValores": [],
+      "tipos": ["BadgeProps", "BadgeColor", "BadgeVariant"]
+    },
+    {
       "paquete": "@rubenpazch/button",
       "version": "6.1.0",
       "carpeta": "packages/button",
@@ -460,10 +751,10 @@
             },
             {
               "nombre": "size",
-              "tipo": "\"small\" | \"medium\" | \"large\"",
+              "tipo": "\"small\" | \"medium\" | \"large\" | \"sm\" | \"md\" | \"lg\"",
               "requerido": false,
               "porDefecto": null,
-              "descripcion": "Button size"
+              "descripcion": "Tamaño: sm, md (por defecto) o lg; también small, medium, large."
             },
             {
               "nombre": "startIcon",
@@ -486,6 +777,94 @@
       "tipos": []
     },
     {
+      "paquete": "@rubenpazch/card",
+      "version": "0.0.0",
+      "carpeta": "packages/card",
+      "categoria": "presentacion",
+      "resumen": "Tarjeta (outlined o elevated) con CardHeader (título, subtítulo, acciones), CardBody y CardFooter; puede ser clicable.",
+      "usarCuando": "Agrupar la información de un registro o una sección del panel: resúmenes, KPIs, fichas.",
+      "evitarCuando": "Listas largas de registros comparables: usa DataTable.",
+      "componentes": [
+        {
+          "nombre": "Card",
+          "importar": "import { Card } from \"@rubenpazch/ui\";",
+          "descripcion": "Contenedor con borde o sombra para agrupar información. Usa CardHeader, CardBody y CardFooter.",
+          "props": [
+            {
+              "nombre": "as",
+              "tipo": "\"div\" | \"section\" | \"article\" | \"li\"",
+              "requerido": false,
+              "porDefecto": "div",
+              "descripcion": "Etiqueta HTML: div (por defecto), section, article o li."
+            },
+            {
+              "nombre": "onClick",
+              "tipo": "MouseEventHandler<HTMLElement>",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Si se pasa, la tarjeta es clicable (sombra al pasar y foco con teclado)."
+            },
+            {
+              "nombre": "padding",
+              "tipo": "\"none\" | \"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "none",
+              "descripcion": "Relleno interno cuando no se usan CardHeader/CardBody: none, sm, md (por defecto) o lg."
+            },
+            {
+              "nombre": "variant",
+              "tipo": "\"outlined\" | \"elevated\"",
+              "requerido": false,
+              "porDefecto": "outlined",
+              "descripcion": "outlined (borde, por defecto) o elevated (sombra)."
+            }
+          ]
+        },
+        {
+          "nombre": "CardHeader",
+          "importar": "import { CardHeader } from \"@rubenpazch/ui\";",
+          "descripcion": "Cabecera de Card con título, subtítulo y acciones.",
+          "props": [
+            {
+              "nombre": "actions",
+              "tipo": "ReactNode",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Acciones a la derecha (botones, menú)."
+            },
+            {
+              "nombre": "subtitle",
+              "tipo": "ReactNode",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Texto secundario bajo el título."
+            },
+            {
+              "nombre": "title",
+              "tipo": "ReactNode",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Título de la tarjeta."
+            }
+          ]
+        },
+        {
+          "nombre": "CardBody",
+          "importar": "import { CardBody } from \"@rubenpazch/ui\";",
+          "descripcion": "Cuerpo de Card.",
+          "props": []
+        },
+        {
+          "nombre": "CardFooter",
+          "importar": "import { CardFooter } from \"@rubenpazch/ui\";",
+          "descripcion": "Pie de Card (botones o totales).",
+          "props": []
+        }
+      ],
+      "otrosValores": [],
+      "tipos": ["CardProps", "CardHeaderProps"]
+    },
+    {
       "paquete": "@rubenpazch/checkbox-input",
       "version": "3.1.0",
       "carpeta": "packages/checkbox-input",
@@ -497,7 +876,7 @@
         {
           "nombre": "CheckboxInput",
           "importar": "import { CheckboxInput } from \"@rubenpazch/ui\";",
-          "descripcion": "",
+          "descripcion": "Casilla de verificación con etiqueta, descripción y error.",
           "props": [
             {
               "nombre": "label",
@@ -546,7 +925,7 @@
               "tipo": "string",
               "requerido": false,
               "porDefecto": null,
-              "descripcion": ""
+              "descripcion": "id del input; si no se pasa se genera uno estable."
             },
             {
               "nombre": "indeterminate",
@@ -554,6 +933,13 @@
               "requerido": false,
               "porDefecto": "false",
               "descripcion": ""
+            },
+            {
+              "nombre": "name",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "name del input (formularios nativos, react-hook-form…)."
             },
             {
               "nombre": "onChange",
@@ -575,6 +961,13 @@
               "requerido": false,
               "porDefecto": "md",
               "descripcion": ""
+            },
+            {
+              "nombre": "value",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Valor enviado con el formulario cuando está marcado."
             },
             {
               "nombre": "variant",
@@ -635,7 +1028,7 @@
               "nombre": "deleteAriaLabel",
               "tipo": "string",
               "requerido": false,
-              "porDefecto": "Remove chip",
+              "porDefecto": "Quitar",
               "descripcion": "Accessible label for the delete button"
             },
             {
@@ -712,76 +1105,220 @@
         {
           "nombre": "ConfirmationDialog",
           "importar": "import { ConfirmationDialog } from \"@rubenpazch/ui\";",
-          "descripcion": "",
+          "descripcion": "Diálogo de confirmación (alertdialog) sobre Modal: foco retenido, Escape para cancelar y\nel foco inicial en \"Cancelar\", la opción segura.",
           "props": [
             {
               "nombre": "isOpen",
               "tipo": "boolean",
               "requerido": true,
               "porDefecto": null,
-              "descripcion": ""
+              "descripcion": "Si el diálogo está abierto."
             },
             {
               "nombre": "message",
-              "tipo": "string",
+              "tipo": "ReactNode",
               "requerido": true,
               "porDefecto": null,
-              "descripcion": ""
+              "descripcion": "Explicación de la consecuencia."
             },
             {
               "nombre": "onCancel",
               "tipo": "() => void",
               "requerido": true,
               "porDefecto": null,
-              "descripcion": ""
+              "descripcion": "Al cancelar, pulsar Escape o hacer clic fuera (si no está cargando)."
             },
             {
               "nombre": "onConfirm",
               "tipo": "() => void",
               "requerido": true,
               "porDefecto": null,
-              "descripcion": ""
+              "descripcion": "Al confirmar."
             },
             {
               "nombre": "title",
               "tipo": "string",
               "requerido": true,
               "porDefecto": null,
-              "descripcion": ""
+              "descripcion": "Pregunta o título: \"¿Eliminar la convocatoria?\"."
             },
             {
               "nombre": "cancelText",
               "tipo": "string",
               "requerido": false,
-              "porDefecto": "Cancel",
-              "descripcion": ""
+              "porDefecto": "Cancelar",
+              "descripcion": "Texto del botón de cancelar (por defecto \"Cancelar\")."
+            },
+            {
+              "nombre": "children",
+              "tipo": "ReactNode",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Contenido extra bajo el mensaje (p. ej. un campo \"motivo\")."
             },
             {
               "nombre": "confirmText",
               "tipo": "string",
               "requerido": false,
-              "porDefecto": "Confirm",
-              "descripcion": ""
+              "porDefecto": "Confirmar",
+              "descripcion": "Texto del botón de confirmar (por defecto \"Confirmar\")."
             },
             {
               "nombre": "isDangerous",
               "tipo": "boolean",
               "requerido": false,
               "porDefecto": "false",
-              "descripcion": ""
+              "descripcion": "Acción destructiva: botón rojo."
             },
             {
               "nombre": "isLoading",
               "tipo": "boolean",
               "requerido": false,
               "porDefecto": "false",
-              "descripcion": ""
+              "descripcion": "Muestra el botón de confirmar cargando y bloquea los botones."
             }
           ]
         }
       ],
       "otrosValores": [],
       "tipos": []
+    },
+    {
+      "paquete": "@rubenpazch/data-table",
+      "version": "0.0.0",
+      "carpeta": "packages/data-table",
+      "categoria": "datos",
+      "resumen": "Tabla de datos accesible: columnas con render, orden (aria-sort) en el navegador o en el servidor, carga con Skeleton, estado vacío, filas clicables, encabezado fijo y scroll horizontal en móvil.",
+      "usarCuando": "Listados de registros comparables: obligaciones, cobros, convocatorias, usuarios. Combínala con Pagination y filtros.",
+      "evitarCuando": "Pocos datos de un solo registro: usa InfoRow o Card. Listas reordenables: usa DraggableList.",
+      "componentes": [
+        {
+          "nombre": "DataTable",
+          "importar": "import { DataTable } from \"@rubenpazch/ui\";",
+          "descripcion": "Tabla de datos accesible: orden por columnas (aria-sort), carga, estado vacío, filas\nclicables y scroll horizontal en móvil. Pagina con Pagination debajo.",
+          "props": [
+            {
+              "nombre": "caption",
+              "tipo": "string",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": "Título accesible de la tabla (se lee al entrar). Visible si `showCaption`."
+            },
+            {
+              "nombre": "columns",
+              "tipo": "DataTableColumn<T>[]",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": "Columnas."
+            },
+            {
+              "nombre": "getRowId",
+              "tipo": "(row: T) => string | number",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": "id único de cada fila."
+            },
+            {
+              "nombre": "rows",
+              "tipo": "T[]",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": "Filas."
+            },
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Clase extra del contenedor."
+            },
+            {
+              "nombre": "dense",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "false",
+              "descripcion": "Filas más compactas."
+            },
+            {
+              "nombre": "emptyAction",
+              "tipo": "ReactNode",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Acción del estado vacío (Button \"Crear…\")."
+            },
+            {
+              "nombre": "emptyDescription",
+              "tipo": "ReactNode",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Explicación del estado vacío."
+            },
+            {
+              "nombre": "emptyTitle",
+              "tipo": "ReactNode",
+              "requerido": false,
+              "porDefecto": "No hay registros",
+              "descripcion": "Texto del estado vacío."
+            },
+            {
+              "nombre": "loading",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "false",
+              "descripcion": "Muestra filas de carga."
+            },
+            {
+              "nombre": "loadingRows",
+              "tipo": "number",
+              "requerido": false,
+              "porDefecto": "5",
+              "descripcion": "Filas de carga a mostrar (por defecto 5)."
+            },
+            {
+              "nombre": "onRowClick",
+              "tipo": "(row: T) => void",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Al hacer clic (o Enter) en una fila."
+            },
+            {
+              "nombre": "onSortChange",
+              "tipo": "(sort: SortState | null) => void",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Al cambiar el orden (para ordenar en el servidor)."
+            },
+            {
+              "nombre": "showCaption",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "false",
+              "descripcion": "Muestra el caption encima de la tabla."
+            },
+            {
+              "nombre": "sort",
+              "tipo": "null | SortState",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Orden controlado. Sin él, la tabla ordena sola en el navegador."
+            },
+            {
+              "nombre": "stickyHeader",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "false",
+              "descripcion": "Encabezado fijo al hacer scroll vertical."
+            }
+          ]
+        }
+      ],
+      "otrosValores": [],
+      "tipos": [
+        "DataTableProps",
+        "DataTableColumn",
+        "SortState",
+        "SortDirection"
+      ]
     },
     {
       "paquete": "@rubenpazch/date-input",
@@ -795,91 +1332,112 @@
         {
           "nombre": "DateInput",
           "importar": "import { DateInput } from \"@rubenpazch/ui\";",
-          "descripcion": "",
+          "descripcion": "Campo de fecha con calendario desplegable. Se escribe en el formato del idioma\n(DD/MM/AAAA en español) y devuelve siempre ISO `AAAA-MM-DD`, en hora local.",
           "props": [
             {
               "nombre": "onChange",
               "tipo": "(date: string) => void",
               "requerido": true,
               "porDefecto": null,
-              "descripcion": ""
+              "descripcion": "Recibe la fecha en ISO `AAAA-MM-DD` (o \"\" al limpiar)."
             },
             {
               "nombre": "value",
               "tipo": "string",
               "requerido": true,
               "porDefecto": null,
-              "descripcion": ""
+              "descripcion": "Fecha en formato ISO `AAAA-MM-DD`, o cadena vacía."
             },
             {
               "nombre": "className",
               "tipo": "string",
               "requerido": false,
               "porDefecto": "",
-              "descripcion": ""
+              "descripcion": "Clase extra para el contenedor."
             },
             {
               "nombre": "disabled",
               "tipo": "boolean",
               "requerido": false,
               "porDefecto": "false",
-              "descripcion": ""
+              "descripcion": "Campo deshabilitado."
             },
             {
               "nombre": "error",
               "tipo": "string",
               "requerido": false,
               "porDefecto": null,
-              "descripcion": ""
+              "descripcion": "Mensaje de error; marca el campo como inválido."
             },
             {
               "nombre": "hint",
               "tipo": "string",
               "requerido": false,
               "porDefecto": null,
-              "descripcion": ""
+              "descripcion": "Texto de ayuda."
+            },
+            {
+              "nombre": "id",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "id del input; si no se pasa se genera uno (la etiqueta se asocia sola)."
             },
             {
               "nombre": "label",
               "tipo": "string",
               "requerido": false,
               "porDefecto": null,
-              "descripcion": ""
+              "descripcion": "Etiqueta visible."
+            },
+            {
+              "nombre": "labels",
+              "tipo": "Partial<DateInputLabels>",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Textos del calendario; por defecto en el idioma de `locale`."
             },
             {
               "nombre": "locale",
               "tipo": "string",
               "requerido": false,
-              "porDefecto": "en",
-              "descripcion": ""
+              "porDefecto": "es",
+              "descripcion": "Idioma: `es` (por defecto, día/mes) o `en` (mes/día)."
             },
             {
               "nombre": "maxDate",
               "tipo": "string",
               "requerido": false,
               "porDefecto": null,
-              "descripcion": ""
+              "descripcion": "Fecha máxima seleccionable (ISO)."
             },
             {
               "nombre": "minDate",
               "tipo": "string",
               "requerido": false,
               "porDefecto": null,
-              "descripcion": ""
+              "descripcion": "Fecha mínima seleccionable (ISO)."
+            },
+            {
+              "nombre": "name",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "name del input (formularios nativos, react-hook-form…)."
             },
             {
               "nombre": "placeholder",
               "tipo": "string",
               "requerido": false,
-              "porDefecto": "MM/DD/YYYY",
-              "descripcion": ""
+              "porDefecto": null,
+              "descripcion": "Por defecto el formato del idioma: \"DD/MM/AAAA\" en español."
             },
             {
               "nombre": "required",
               "tipo": "boolean",
               "requerido": false,
               "porDefecto": "false",
-              "descripcion": ""
+              "descripcion": "Campo obligatorio."
             }
           ]
         }
@@ -899,7 +1457,7 @@
         {
           "nombre": "DatePicker",
           "importar": "import { DatePicker } from \"@rubenpazch/ui\";",
-          "descripcion": "",
+          "descripcion": "Selector de fecha con calendario (días, meses y años). Devuelve ISO `AAAA-MM-DD` en hora local.",
           "props": [
             {
               "nombre": "onChange",
@@ -944,6 +1502,13 @@
               "descripcion": ""
             },
             {
+              "nombre": "id",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "id del input; si no se pasa se genera uno (la etiqueta se asocia sola)."
+            },
+            {
               "nombre": "label",
               "tipo": "string",
               "requerido": false,
@@ -954,7 +1519,7 @@
               "nombre": "locale",
               "tipo": "string",
               "requerido": false,
-              "porDefecto": "en",
+              "porDefecto": "es",
               "descripcion": ""
             },
             {
@@ -970,6 +1535,20 @@
               "requerido": false,
               "porDefecto": null,
               "descripcion": ""
+            },
+            {
+              "nombre": "name",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "name del input."
+            },
+            {
+              "nombre": "openCalendarLabel",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Texto del botón que abre el calendario (accesibilidad)."
             },
             {
               "nombre": "placeholder",
@@ -1124,6 +1703,13 @@
               "descripcion": "Custom className for the drawer content"
             },
             {
+              "nombre": "closeLabel",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "Cerrar",
+              "descripcion": "Texto accesible del botón de cerrar."
+            },
+            {
               "nombre": "closeOnEscape",
               "tipo": "boolean",
               "requerido": false,
@@ -1198,6 +1784,205 @@
       ],
       "otrosValores": [],
       "tipos": []
+    },
+    {
+      "paquete": "@rubenpazch/empty-state",
+      "version": "0.0.0",
+      "carpeta": "packages/empty-state",
+      "categoria": "retroalimentacion",
+      "resumen": "Estado vacío con icono, título, descripción y acciones (\"No hay convocatorias · Crear\").",
+      "usarCuando": "Listas, tablas o búsquedas sin resultados; primera vez que se usa una sección.",
+      "evitarCuando": "Errores de carga: usa Alert variant=\"danger\".",
+      "componentes": [
+        {
+          "nombre": "EmptyState",
+          "importar": "import { EmptyState } from \"@rubenpazch/ui\";",
+          "descripcion": "Estado vacío: lo que se muestra cuando una lista o búsqueda no tiene resultados.",
+          "props": [
+            {
+              "nombre": "title",
+              "tipo": "ReactNode",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": "Título: \"No hay convocatorias\"."
+            },
+            {
+              "nombre": "action",
+              "tipo": "ReactNode",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Acción principal: normalmente un Button \"Crear…\"."
+            },
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Clase extra."
+            },
+            {
+              "nombre": "description",
+              "tipo": "ReactNode",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Explicación o siguiente paso."
+            },
+            {
+              "nombre": "icon",
+              "tipo": "ReactNode",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Icono o ilustración (por defecto una bandeja vacía). `false` lo oculta."
+            },
+            {
+              "nombre": "secondaryAction",
+              "tipo": "ReactNode",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Acción secundaria (enlace o botón de texto)."
+            },
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": "sm para dentro de tablas o tarjetas; md (por defecto) para una página."
+            }
+          ]
+        }
+      ],
+      "otrosValores": [],
+      "tipos": ["EmptyStateProps"]
+    },
+    {
+      "paquete": "@rubenpazch/form-field",
+      "version": "0.0.0",
+      "carpeta": "packages/form-field",
+      "categoria": "formularios",
+      "resumen": "FormField (etiqueta, ayuda y error asociados a cualquier control), FormRow (columnas que se apilan en móvil) y FormActions (pie con botones).",
+      "usarCuando": "Armar formularios: FormRow para poner campos lado a lado, FormActions para Cancelar/Guardar, FormField para controles propios o de terceros.",
+      "evitarCuando": "Con componentes de la librería (TextInput, Select…) no hace falta FormField: ya traen etiqueta y mensajes.",
+      "componentes": [
+        {
+          "nombre": "FormField",
+          "importar": "import { FormField } from \"@rubenpazch/ui\";",
+          "descripcion": "Envoltorio de campo: etiqueta, ayuda, advertencia y error asociados a cualquier control\n(nativo o de terceros). Los componentes de la librería ya lo traen; úsalo para controles propios.",
+          "props": [
+            {
+              "nombre": "children",
+              "tipo": "ReactNode",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": "El control. Puede ser un elemento (`<input />`, `<select>`) al que se le agregan id y ARIA,\no una función que recibe esos atributos: `{(props) => <MiControl {...props} />}`."
+            },
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Clase extra para el contenedor (márgenes, ancho)."
+            },
+            {
+              "nombre": "disabled",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "false",
+              "descripcion": "Campo deshabilitado."
+            },
+            {
+              "nombre": "error",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Mensaje de error; marca el campo como inválido."
+            },
+            {
+              "nombre": "hint",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Texto de ayuda bajo el campo."
+            },
+            {
+              "nombre": "id",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "id del control. Si no se pasa, se genera uno."
+            },
+            {
+              "nombre": "label",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Etiqueta visible del campo (se asocia al control para lectores de pantalla)."
+            },
+            {
+              "nombre": "name",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "name del control (formularios nativos y librerías de formularios)."
+            },
+            {
+              "nombre": "required",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "false",
+              "descripcion": "Campo obligatorio: muestra * y marca el control como requerido."
+            },
+            {
+              "nombre": "warning",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Advertencia (no bloquea)."
+            }
+          ]
+        },
+        {
+          "nombre": "FormRow",
+          "importar": "import { FormRow } from \"@rubenpazch/ui\";",
+          "descripcion": "Fila de campos en columnas que se apilan en móvil.",
+          "props": [
+            {
+              "nombre": "columns",
+              "tipo": "1 | 2 | 3 | 4",
+              "requerido": false,
+              "porDefecto": "2",
+              "descripcion": "Columnas en pantallas anchas (en móvil siempre 1). Por defecto 2."
+            }
+          ]
+        },
+        {
+          "nombre": "FormActions",
+          "importar": "import { FormActions } from \"@rubenpazch/ui\";",
+          "descripcion": "Pie de formulario con los botones (Cancelar / Guardar).",
+          "props": [
+            {
+              "nombre": "align",
+              "tipo": "\"start\" | \"end\" | \"between\" | \"center\"",
+              "requerido": false,
+              "porDefecto": "end",
+              "descripcion": "Alineación de los botones: end (por defecto), start, between o center."
+            },
+            {
+              "nombre": "sticky",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "false",
+              "descripcion": "Fija el pie al fondo de la pantalla en formularios largos."
+            }
+          ]
+        }
+      ],
+      "otrosValores": [],
+      "tipos": [
+        "FormFieldProps",
+        "FormFieldControlProps",
+        "FormRowProps",
+        "FormActionsProps"
+      ]
     },
     {
       "paquete": "@rubenpazch/icon-button",
@@ -1292,7 +2077,7 @@
             },
             {
               "nombre": "size",
-              "tipo": "\"small\" | \"medium\"",
+              "tipo": "\"small\" | \"medium\" | \"sm\" | \"md\"",
               "requerido": false,
               "porDefecto": "medium",
               "descripcion": ""
@@ -3500,6 +4285,380 @@
       "tipos": []
     },
     {
+      "paquete": "@rubenpazch/menu",
+      "version": "0.0.0",
+      "carpeta": "packages/menu",
+      "categoria": "acciones",
+      "resumen": "Menú de acciones (role=\"menu\") con botón ⋮ por defecto, opciones con icono, peligrosas o deshabilitadas, teclado completo.",
+      "usarCuando": "Acciones secundarias de una fila o tarjeta: Editar, Duplicar, Anular, Eliminar.",
+      "evitarCuando": "La acción principal: usa Button. Navegación del sitio: usa AppShell o enlaces.",
+      "componentes": [
+        {
+          "nombre": "Menu",
+          "importar": "import { Menu } from \"@rubenpazch/ui\";",
+          "descripcion": "Menú de acciones (role=\"menu\"): ⋮ con Editar, Duplicar, Eliminar… Flechas, Inicio, Fin,\nEnter y Escape; se cierra al elegir o al hacer clic fuera.",
+          "props": [
+            {
+              "nombre": "items",
+              "tipo": "MenuItem[]",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": "Opciones del menú."
+            },
+            {
+              "nombre": "align",
+              "tipo": "\"start\" | \"end\"",
+              "requerido": false,
+              "porDefecto": "end",
+              "descripcion": "Alineación del panel respecto al botón: end (por defecto) o start."
+            },
+            {
+              "nombre": "label",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "Más opciones",
+              "descripcion": "Texto accesible del botón por defecto (por defecto \"Más opciones\")."
+            },
+            {
+              "nombre": "trigger",
+              "tipo": "ReactNode",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Botón que lo abre. Por defecto un botón \"⋮\" con el texto accesible de `label`."
+            }
+          ]
+        }
+      ],
+      "otrosValores": [],
+      "tipos": ["MenuProps", "MenuItem"]
+    },
+    {
+      "paquete": "@rubenpazch/modal",
+      "version": "0.0.0",
+      "carpeta": "packages/modal",
+      "categoria": "retroalimentacion",
+      "resumen": "Ventana modal accesible: portal, foco retenido, Escape y clic fuera para cerrar, bloqueo del scroll, título y descripción anunciados.",
+      "usarCuando": "Formularios cortos o detalles que requieren atención sin cambiar de página (editar un registro, ver un detalle).",
+      "evitarCuando": "Confirmar una acción: usa ConfirmationDialog. Formularios largos o navegación lateral: usa Drawer.",
+      "componentes": [
+        {
+          "nombre": "Modal",
+          "importar": "import { Modal } from \"@rubenpazch/ui\";",
+          "descripcion": "Ventana modal accesible: se monta en un portal, retiene el foco, bloquea el scroll de la\npágina y se cierra con Escape. Para confirmar acciones usa ConfirmationDialog.",
+          "props": [
+            {
+              "nombre": "onClose",
+              "tipo": "() => void",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": "Se llama al pedir cierre: botón ×, Escape o clic en el fondo."
+            },
+            {
+              "nombre": "open",
+              "tipo": "boolean",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": "Si el modal está abierto."
+            },
+            {
+              "nombre": "children",
+              "tipo": "ReactNode",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Contenido del modal."
+            },
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Clase extra para la caja del modal."
+            },
+            {
+              "nombre": "closeLabel",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "Cerrar",
+              "descripcion": "Texto accesible del botón ×."
+            },
+            {
+              "nombre": "closeOnEscape",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "true",
+              "descripcion": "Cerrar con Escape (por defecto sí)."
+            },
+            {
+              "nombre": "closeOnOverlayClick",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "true",
+              "descripcion": "Cerrar al hacer clic en el fondo (por defecto sí)."
+            },
+            {
+              "nombre": "description",
+              "tipo": "ReactNode",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Texto bajo el título (se anuncia como descripción)."
+            },
+            {
+              "nombre": "footer",
+              "tipo": "ReactNode",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Pie: normalmente los botones de acción."
+            },
+            {
+              "nombre": "role",
+              "tipo": "\"dialog\" | \"alertdialog\"",
+              "requerido": false,
+              "porDefecto": "dialog",
+              "descripcion": "Rol del diálogo: `alertdialog` para confirmaciones que exigen respuesta."
+            },
+            {
+              "nombre": "showCloseButton",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "true",
+              "descripcion": "Mostrar el botón × (por defecto sí)."
+            },
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\" | \"xl\" | \"full\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": "Ancho máximo: sm (400px), md (520px, por defecto), lg (720px), xl (960px) o full."
+            },
+            {
+              "nombre": "title",
+              "tipo": "ReactNode",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Título (se anuncia como nombre del diálogo)."
+            }
+          ]
+        }
+      ],
+      "otrosValores": [],
+      "tipos": ["ModalProps", "ModalSize"]
+    },
+    {
+      "paquete": "@rubenpazch/money-input",
+      "version": "0.0.0",
+      "carpeta": "packages/money-input",
+      "categoria": "formularios",
+      "resumen": "Campo de monto en PEN (S/) o USD (US$) que devuelve un número; acepta punto o coma decimal y muestra 1,250.50 al salir. Incluye formatMoney().",
+      "usarCuando": "Montos de dinero: cuotas, pagos, precios, presupuestos. Usa formatMoney() para mostrar montos en tablas y tarjetas.",
+      "evitarCuando": "Cantidades sin moneda: usa NumericPicker. Valores con signo por pasos: usa NumericUpPicker.",
+      "componentes": [
+        {
+          "nombre": "MoneyInput",
+          "importar": "import { MoneyInput } from \"@rubenpazch/ui\";",
+          "descripcion": "Campo de monto en soles o dólares. Mientras se escribe acepta \"1250.5\" o \"1250,5\"; al salir\nmuestra \"1,250.50\". Devuelve siempre un número (no texto).",
+          "props": [
+            {
+              "nombre": "onChange",
+              "tipo": "(value: number | null) => void",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": "Recibe el monto como número, o null si se borra."
+            },
+            {
+              "nombre": "value",
+              "tipo": "null | number",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": "Monto actual como número (o null si está vacío)."
+            },
+            {
+              "nombre": "allowNegative",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "false",
+              "descripcion": "Permite montos negativos (por defecto no)."
+            },
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Clase extra para el contenedor (márgenes, ancho)."
+            },
+            {
+              "nombre": "currency",
+              "tipo": "\"PEN\" | \"USD\"",
+              "requerido": false,
+              "porDefecto": "PEN",
+              "descripcion": "PEN (por defecto, S/) o USD (US$)."
+            },
+            {
+              "nombre": "decimals",
+              "tipo": "number",
+              "requerido": false,
+              "porDefecto": "2",
+              "descripcion": "Decimales (por defecto 2)."
+            },
+            {
+              "nombre": "disabled",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "false",
+              "descripcion": "Campo deshabilitado."
+            },
+            {
+              "nombre": "error",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Mensaje de error; marca el campo como inválido."
+            },
+            {
+              "nombre": "hint",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Texto de ayuda bajo el campo."
+            },
+            {
+              "nombre": "id",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "id del control. Si no se pasa, se genera uno."
+            },
+            {
+              "nombre": "label",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Etiqueta visible del campo (se asocia al control para lectores de pantalla)."
+            },
+            {
+              "nombre": "max",
+              "tipo": "number",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Máximo."
+            },
+            {
+              "nombre": "min",
+              "tipo": "number",
+              "requerido": false,
+              "porDefecto": "0",
+              "descripcion": "Mínimo (por defecto 0)."
+            },
+            {
+              "nombre": "name",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "name del control (formularios nativos y librerías de formularios)."
+            },
+            {
+              "nombre": "placeholder",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "0.00",
+              "descripcion": "Texto de ejemplo."
+            },
+            {
+              "nombre": "required",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "false",
+              "descripcion": "Campo obligatorio: muestra * y marca el control como requerido."
+            },
+            {
+              "nombre": "warning",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Advertencia (no bloquea)."
+            }
+          ]
+        }
+      ],
+      "otrosValores": ["formatMoney"],
+      "tipos": ["MoneyInputProps", "Currency"]
+    },
+    {
+      "paquete": "@rubenpazch/month-navigator",
+      "version": "0.0.0",
+      "carpeta": "packages/month-navigator",
+      "categoria": "navegacion",
+      "resumen": "Navegador de periodos ‹ noviembre de 2026 › con valor \"AAAA-MM\", mínimo, máximo y botón Hoy; incluye addMonths() y currentMonth().",
+      "usarCuando": "Elegir el mes de trabajo: obligaciones, cierres contables, cronogramas, reportes mensuales.",
+      "evitarCuando": "Elegir un día: usa DateInput o DatePicker. Un rango libre de fechas: usa DateRangePicker.",
+      "componentes": [
+        {
+          "nombre": "MonthNavigator",
+          "importar": "import { MonthNavigator } from \"@rubenpazch/ui\";",
+          "descripcion": "Navegador de periodos: ‹ noviembre de 2026 › para finanzas, contabilidad y cronogramas.",
+          "props": [
+            {
+              "nombre": "onChange",
+              "tipo": "(value: string) => void",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": "Recibe el nuevo mes \"AAAA-MM\"."
+            },
+            {
+              "nombre": "value",
+              "tipo": "string",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": "Mes actual en formato \"AAAA-MM\" (p. ej. \"2026-11\")."
+            },
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Clase extra."
+            },
+            {
+              "nombre": "labels",
+              "tipo": "Partial<{ previous: string; next: string; today: string; }>",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Textos accesibles."
+            },
+            {
+              "nombre": "locale",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "es",
+              "descripcion": "Idioma del nombre del mes (por defecto \"es\")."
+            },
+            {
+              "nombre": "max",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Último mes permitido \"AAAA-MM\"."
+            },
+            {
+              "nombre": "min",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Primer mes permitido \"AAAA-MM\"."
+            },
+            {
+              "nombre": "showToday",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "false",
+              "descripcion": "Muestra el botón \"Hoy\" para volver al mes actual."
+            }
+          ]
+        }
+      ],
+      "otrosValores": ["addMonths", "currentMonth"],
+      "tipos": ["MonthNavigatorProps"]
+    },
+    {
       "paquete": "@rubenpazch/numeric-picker",
       "version": "5.0.0",
       "carpeta": "packages/NumericPicker",
@@ -3511,84 +4670,126 @@
         {
           "nombre": "NumericPicker",
           "importar": "import { NumericPicker } from \"@rubenpazch/ui\";",
-          "descripcion": "",
+          "descripcion": "Campo numérico para montos, cantidades y precios. Mientras se escribe no se reformatea\n(se puede escribir 12, 1250.5…); al salir del campo se aplican mínimo, máximo y decimales.",
           "props": [
             {
               "nombre": "onChange",
               "tipo": "(value: string) => void",
               "requerido": true,
               "porDefecto": null,
-              "descripcion": ""
+              "descripcion": "Recibe el valor como texto con punto decimal (p. ej. \"12.50\"), o \"\" si está vacío."
             },
             {
               "nombre": "value",
               "tipo": "string | number",
               "requerido": true,
               "porDefecto": null,
-              "descripcion": ""
+              "descripcion": "Valor actual (número o texto numérico con punto decimal)."
+            },
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Clase extra para el contenedor."
             },
             {
               "nombre": "currency",
               "tipo": "string",
               "requerido": false,
-              "porDefecto": "S/.",
-              "descripcion": ""
+              "porDefecto": "S/",
+              "descripcion": "Símbolo de moneda que se muestra delante. Usa \"\" para ocultarlo."
             },
             {
               "nombre": "decimals",
               "tipo": "number",
               "requerido": false,
               "porDefecto": "2",
-              "descripcion": ""
+              "descripcion": "Decimales con los que se formatea al salir del campo."
             },
             {
               "nombre": "disabled",
               "tipo": "boolean",
               "requerido": false,
               "porDefecto": "false",
-              "descripcion": ""
+              "descripcion": "Campo deshabilitado."
+            },
+            {
+              "nombre": "error",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Mensaje de error; marca el campo como inválido."
+            },
+            {
+              "nombre": "hint",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Texto de ayuda."
+            },
+            {
+              "nombre": "id",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "id del input; si no se pasa se genera uno."
             },
             {
               "nombre": "label",
               "tipo": "string",
               "requerido": false,
               "porDefecto": null,
-              "descripcion": ""
+              "descripcion": "Etiqueta visible (se asocia al input)."
+            },
+            {
+              "nombre": "labels",
+              "tipo": "Partial<{ increment: string; decrement: string; }>",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Textos accesibles de los botones."
             },
             {
               "nombre": "max",
               "tipo": "number",
               "requerido": false,
               "porDefecto": "999999",
-              "descripcion": ""
+              "descripcion": "Máximo permitido."
             },
             {
               "nombre": "min",
               "tipo": "number",
               "requerido": false,
               "porDefecto": "0",
-              "descripcion": ""
+              "descripcion": "Mínimo permitido."
+            },
+            {
+              "nombre": "name",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "name del input."
             },
             {
               "nombre": "placeholder",
               "tipo": "string",
               "requerido": false,
               "porDefecto": "0.00",
-              "descripcion": ""
+              "descripcion": "Texto de ejemplo."
             },
             {
               "nombre": "required",
               "tipo": "boolean",
               "requerido": false,
               "porDefecto": "false",
-              "descripcion": ""
+              "descripcion": "Campo obligatorio."
             },
             {
               "nombre": "step",
               "tipo": "number",
               "requerido": false,
               "porDefecto": "1",
-              "descripcion": ""
+              "descripcion": "Paso de los botones + y −."
             }
           ]
         }
@@ -3608,7 +4809,7 @@
         {
           "nombre": "NumericUpPicker",
           "importar": "import { NumericUpPicker } from \"@rubenpazch/ui\";",
-          "descripcion": "",
+          "descripcion": "Campo numérico con botones − y +, signo opcional, solo enteros, ayuda, advertencia y error.",
           "props": [
             {
               "nombre": "onChange",
@@ -3674,6 +4875,13 @@
               "descripcion": ""
             },
             {
+              "nombre": "id",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "id del input; si no se pasa se genera uno."
+            },
+            {
               "nombre": "integerOnly",
               "tipo": "boolean",
               "requerido": false,
@@ -3688,6 +4896,13 @@
               "descripcion": ""
             },
             {
+              "nombre": "labels",
+              "tipo": "Partial<{ decrease: string; increase: string; clear: string; }>",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Textos accesibles de los botones."
+            },
+            {
               "nombre": "max",
               "tipo": "number",
               "requerido": false,
@@ -3700,6 +4915,13 @@
               "requerido": false,
               "porDefecto": null,
               "descripcion": ""
+            },
+            {
+              "nombre": "name",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "name del input."
             },
             {
               "nombre": "onBlur",
@@ -3745,10 +4967,10 @@
             },
             {
               "nombre": "size",
-              "tipo": "\"small\" | \"medium\" | \"large\"",
+              "tipo": "\"sm\" | \"md\" | \"lg\" | \"small\" | \"medium\" | \"large\"",
               "requerido": false,
-              "porDefecto": "medium",
-              "descripcion": ""
+              "porDefecto": "md",
+              "descripcion": "Tamaño: sm, md (por defecto) o lg."
             },
             {
               "nombre": "step",
@@ -3887,6 +5109,82 @@
       ]
     },
     {
+      "paquete": "@rubenpazch/page-header",
+      "version": "0.0.0",
+      "carpeta": "packages/page-header",
+      "categoria": "navegacion",
+      "resumen": "Cabecera de página: migas de pan, volver, título h1, subtítulo, acciones y contenido extra (filtros); acepta el Link de Next.js.",
+      "usarCuando": "Arriba de cada página del panel, dentro de AppShell.",
+      "evitarCuando": "Títulos de secciones dentro de una página: usa un h2 o CardHeader.",
+      "componentes": [
+        {
+          "nombre": "PageHeader",
+          "importar": "import { PageHeader } from \"@rubenpazch/ui\";",
+          "descripcion": "Cabecera de página: migas, volver, título h1, subtítulo y acciones.",
+          "props": [
+            {
+              "nombre": "title",
+              "tipo": "ReactNode",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": "Título de la página (se renderiza como h1)."
+            },
+            {
+              "nombre": "actions",
+              "tipo": "ReactNode",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Acciones a la derecha (botones). En móvil pasan abajo."
+            },
+            {
+              "nombre": "back",
+              "tipo": "{ label?: string | undefined; href?: string | undefined; onClick?: (() => void) | undefined; }",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Enlace o acción \"Volver\"."
+            },
+            {
+              "nombre": "breadcrumbs",
+              "tipo": "Breadcrumb[]",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Migas de pan: Inicio / Convocatorias / Editar."
+            },
+            {
+              "nombre": "children",
+              "tipo": "ReactNode",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Contenido extra bajo el título (filtros, pestañas)."
+            },
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Clase extra."
+            },
+            {
+              "nombre": "linkComponent",
+              "tipo": "ElementType<any, keyof IntrinsicElements>",
+              "requerido": false,
+              "porDefecto": "a",
+              "descripcion": "Componente de enlace (p. ej. Link de Next.js). Por defecto <a>."
+            },
+            {
+              "nombre": "subtitle",
+              "tipo": "ReactNode",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Texto secundario bajo el título."
+            }
+          ]
+        }
+      ],
+      "otrosValores": [],
+      "tipos": ["PageHeaderProps", "Breadcrumb"]
+    },
+    {
       "paquete": "@rubenpazch/pagination",
       "version": "3.1.0",
       "carpeta": "packages/pagination",
@@ -3900,6 +5198,13 @@
           "importar": "import { Pagination } from \"@rubenpazch/ui\";",
           "descripcion": "",
           "props": [
+            {
+              "nombre": "aria-label",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "Paginación",
+              "descripcion": "Nombre accesible de la navegación (por defecto \"Paginación\")."
+            },
             {
               "nombre": "boundaryCount",
               "tipo": "number",
@@ -3947,7 +5252,14 @@
               "tipo": "(event: ChangeEvent<unknown, Element>, page: number) => void",
               "requerido": false,
               "porDefecto": null,
-              "descripcion": "Callback when page changes"
+              "descripcion": "Al cambiar de página, estilo MUI: (evento, página). Se mantiene por compatibilidad."
+            },
+            {
+              "nombre": "onPageChange",
+              "tipo": "(page: number) => void",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Al cambiar de página (recibe solo el número). Preferido sobre onChange."
             },
             {
               "nombre": "page",
@@ -3993,7 +5305,7 @@
             },
             {
               "nombre": "size",
-              "tipo": "\"small\" | \"medium\" | \"large\"",
+              "tipo": "\"small\" | \"medium\" | \"large\" | \"sm\" | \"md\" | \"lg\"",
               "requerido": false,
               "porDefecto": "medium",
               "descripcion": "The size of the pagination component"
@@ -4042,7 +5354,7 @@
             },
             {
               "nombre": "size",
-              "tipo": "\"small\" | \"medium\" | \"large\"",
+              "tipo": "\"small\" | \"medium\" | \"large\" | \"sm\" | \"md\" | \"lg\"",
               "requerido": false,
               "porDefecto": "medium",
               "descripcion": "The size of the component"
@@ -4400,6 +5712,82 @@
       "tipos": []
     },
     {
+      "paquete": "@rubenpazch/progress-bar",
+      "version": "0.0.0",
+      "carpeta": "packages/progress-bar",
+      "categoria": "retroalimentacion",
+      "resumen": "Barra de progreso (role=\"progressbar\") con etiqueta y porcentaje, determinada o indeterminada.",
+      "usarCuando": "Subidas de archivos, importaciones, avance de un proceso o de una meta (presupuesto usado).",
+      "evitarCuando": "Pasos con nombre: usa Stepper. Esperas sin avance medible y cortas: usa LoadingSpinner.",
+      "componentes": [
+        {
+          "nombre": "ProgressBar",
+          "importar": "import { ProgressBar } from \"@rubenpazch/ui\";",
+          "descripcion": "Barra de progreso accesible (role=\"progressbar\"), determinada o indeterminada.",
+          "props": [
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Clase extra."
+            },
+            {
+              "nombre": "color",
+              "tipo": "\"primary\" | \"success\" | \"warning\" | \"danger\"",
+              "requerido": false,
+              "porDefecto": "primary",
+              "descripcion": "primary (por defecto), success, warning o danger."
+            },
+            {
+              "nombre": "label",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Etiqueta visible: \"Subiendo archivos\". También es el nombre accesible."
+            },
+            {
+              "nombre": "max",
+              "tipo": "number",
+              "requerido": false,
+              "porDefecto": "100",
+              "descripcion": "Máximo (por defecto 100)."
+            },
+            {
+              "nombre": "showValue",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "false",
+              "descripcion": "Muestra el porcentaje a la derecha de la etiqueta."
+            },
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": "sm (4px), md (8px, por defecto) o lg (12px)."
+            },
+            {
+              "nombre": "value",
+              "tipo": "number",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Valor actual (0 a max). Sin valor = indeterminado (animación continua)."
+            },
+            {
+              "nombre": "valueText",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Texto del valor (por defecto \"45 %\")."
+            }
+          ]
+        }
+      ],
+      "otrosValores": [],
+      "tipos": ["ProgressBarProps"]
+    },
+    {
       "paquete": "@rubenpazch/radio-button",
       "version": "4.1.0",
       "carpeta": "packages/radio-button",
@@ -4637,6 +6025,75 @@
       ]
     },
     {
+      "paquete": "@rubenpazch/segmented-control",
+      "version": "0.0.0",
+      "carpeta": "packages/segmented-control",
+      "categoria": "formularios",
+      "resumen": "Botones unidos para elegir una opción entre pocas (radiogroup con flechas del teclado): Personal | Empresa, Mes | Año.",
+      "usarCuando": "Cambiar la vista o un filtro con 2 a 5 opciones cortas, siempre visibles.",
+      "evitarCuando": "Opciones largas o dentro de un formulario con etiqueta: usa RadioGroup. Muchas opciones: usa Select.",
+      "componentes": [
+        {
+          "nombre": "SegmentedControl",
+          "importar": "import { SegmentedControl } from \"@rubenpazch/ui\";",
+          "descripcion": "Selector de una opción entre pocas, como botones unidos (role=\"radiogroup\"). Se mueve con\nlas flechas del teclado. Ej.: Personal | Empresa, Mes | Año.",
+          "props": [
+            {
+              "nombre": "aria-label",
+              "tipo": "string",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": "Nombre accesible del grupo: \"Ámbito\", \"Vista\"."
+            },
+            {
+              "nombre": "onChange",
+              "tipo": "(value: T) => void",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": "Recibe el valor elegido."
+            },
+            {
+              "nombre": "options",
+              "tipo": "SegmentedOption<T>[]",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": "Opciones (2 a 5 funcionan mejor)."
+            },
+            {
+              "nombre": "value",
+              "tipo": "string",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": "Valor seleccionado."
+            },
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Clase extra."
+            },
+            {
+              "nombre": "fullWidth",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "false",
+              "descripcion": "Ocupa todo el ancho."
+            },
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": "sm o md (por defecto)."
+            }
+          ]
+        }
+      ],
+      "otrosValores": [],
+      "tipos": ["SegmentedControlProps", "SegmentedOption"]
+    },
+    {
       "paquete": "@rubenpazch/select",
       "version": "1.1.0",
       "carpeta": "packages/select",
@@ -4742,8 +6199,220 @@
       "usarCuando": "Solo si construyes un componente nuevo dentro de la librería.",
       "evitarCuando": "En las apps: no hace falta importarla.",
       "componentes": [],
-      "otrosValores": ["classList"],
-      "tipos": ["Size", "Color", "Variant"]
+      "otrosValores": [
+        "classList",
+        "normalizeSize",
+        "toLegacySize",
+        "useFieldIds",
+        "useEscapeKey",
+        "useFocusTrap",
+        "useLockBodyScroll",
+        "useClickOutside",
+        "mergeRefs",
+        "parseISODate",
+        "toISODate",
+        "isDayFirst",
+        "datePlaceholder",
+        "parseLocalDate",
+        "formatLocalDate",
+        "formatMonthYear",
+        "isSameDay"
+      ],
+      "tipos": [
+        "Size",
+        "Color",
+        "Variant",
+        "ComponentSize",
+        "LegacySize",
+        "SizeProp",
+        "FieldProps",
+        "FieldIds"
+      ]
+    },
+    {
+      "paquete": "@rubenpazch/sidebar",
+      "version": "0.0.0",
+      "carpeta": "packages/sidebar",
+      "categoria": "navegacion",
+      "resumen": "Barra de navegación vertical: secciones, subniveles plegables, insignias y página activa (también subrutas); en escritorio se colapsa a iconos y lo recuerda (storageKey); en móvil es un cajón con foco retenido y Escape. Acepta el Link de Next.js.",
+      "usarCuando": "Menú principal de un panel de administración. Normalmente a través de AppShell; úsala sola si ya tienes tu propia cabecera.",
+      "evitarCuando": "Pestañas dentro de una página: usa Tabs. Acciones de un registro: usa Menu.",
+      "componentes": [
+        {
+          "nombre": "Sidebar",
+          "importar": "import { Sidebar } from \"@rubenpazch/ui\";",
+          "descripcion": "Barra de navegación vertical: secciones, subniveles, insignias y estado activo. En escritorio\nse colapsa a iconos (y lo recuerda); en móvil es un cajón con foco retenido y Escape.",
+          "props": [
+            {
+              "nombre": "sections",
+              "tipo": "SidebarSection[]",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": "Secciones del menú."
+            },
+            {
+              "nombre": "brand",
+              "tipo": "ReactNode",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Logo o nombre de la app arriba."
+            },
+            {
+              "nombre": "brandCollapsed",
+              "tipo": "ReactNode",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Versión compacta del logo para el modo colapsado (por defecto se oculta `brand`)."
+            },
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Clase extra."
+            },
+            {
+              "nombre": "collapsed",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Colapsado (controlado)."
+            },
+            {
+              "nombre": "collapsible",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "true",
+              "descripcion": "Muestra el botón para colapsar (por defecto sí)."
+            },
+            {
+              "nombre": "currentPath",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Ruta actual (p. ej. usePathname() de Next) para marcar la opción activa."
+            },
+            {
+              "nombre": "defaultCollapsed",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "false",
+              "descripcion": "Colapsado inicial (no controlado)."
+            },
+            {
+              "nombre": "footer",
+              "tipo": "ReactNode",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Contenido al pie: usuario, \"Cerrar sesión\"."
+            },
+            {
+              "nombre": "labels",
+              "tipo": "Partial<SidebarLabels>",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Textos accesibles."
+            },
+            {
+              "nombre": "linkComponent",
+              "tipo": "ElementType<any, keyof IntrinsicElements>",
+              "requerido": false,
+              "porDefecto": "a",
+              "descripcion": "Componente de enlace (Link de Next.js). Por defecto <a>."
+            },
+            {
+              "nombre": "mobileOpen",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "false",
+              "descripcion": "Abierto en móvil (lo controla el botón ☰ de AppShell o de tu cabecera)."
+            },
+            {
+              "nombre": "onCollapsedChange",
+              "tipo": "(collapsed: boolean) => void",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Al colapsar o expandir."
+            },
+            {
+              "nombre": "onMobileOpenChange",
+              "tipo": "(open: boolean) => void",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Al cerrar en móvil (Escape, fondo, elegir una opción)."
+            },
+            {
+              "nombre": "storageKey",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Clave de localStorage para recordar si estaba colapsado."
+            }
+          ]
+        }
+      ],
+      "otrosValores": [],
+      "tipos": [
+        "SidebarProps",
+        "SidebarItem",
+        "SidebarSection",
+        "SidebarLabels"
+      ]
+    },
+    {
+      "paquete": "@rubenpazch/skeleton",
+      "version": "0.0.0",
+      "carpeta": "packages/skeleton",
+      "categoria": "retroalimentacion",
+      "resumen": "Marcador de carga (texto, bloque o círculo) con la forma del contenido; respeta reducir movimiento.",
+      "usarCuando": "Mientras cargan tarjetas, filas o perfiles, para que la página no salte al llegar los datos.",
+      "evitarCuando": "Operaciones que bloquean la pantalla: usa OverlayLoader. Esperas dentro de un botón: usa LoadingSpinner.",
+      "componentes": [
+        {
+          "nombre": "Skeleton",
+          "importar": "import { Skeleton } from \"@rubenpazch/ui\";",
+          "descripcion": "Marcador de carga con la forma del contenido. Es decorativo (aria-hidden): anuncia la carga\nen el contenedor con aria-busy o un texto oculto.",
+          "props": [
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Clase extra."
+            },
+            {
+              "nombre": "height",
+              "tipo": "string | number",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Alto (número = px o valor CSS). Por defecto según la variante."
+            },
+            {
+              "nombre": "lines",
+              "tipo": "number",
+              "requerido": false,
+              "porDefecto": "1",
+              "descripcion": "Con variant=\"text\": cuántas líneas (la última más corta)."
+            },
+            {
+              "nombre": "variant",
+              "tipo": "\"text\" | \"rect\" | \"circle\"",
+              "requerido": false,
+              "porDefecto": "text",
+              "descripcion": "text (línea de texto, por defecto), rect (bloque) o circle (avatar)."
+            },
+            {
+              "nombre": "width",
+              "tipo": "string | number",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Ancho (número = px o cualquier valor CSS). Por defecto 100% (circle: igual al alto)."
+            }
+          ]
+        }
+      ],
+      "otrosValores": [],
+      "tipos": ["SkeletonProps"]
     },
     {
       "paquete": "@rubenpazch/stepper",
@@ -4774,6 +6443,13 @@
               "descripcion": ""
             },
             {
+              "nombre": "ariaLabel",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "Progreso",
+              "descripcion": "Nombre accesible de la navegación de pasos (por defecto \"Progreso\")."
+            },
+            {
               "nombre": "className",
               "tipo": "string",
               "requerido": false,
@@ -4789,7 +6465,7 @@
             },
             {
               "nombre": "size",
-              "tipo": "\"small\" | \"medium\" | \"large\"",
+              "tipo": "\"small\" | \"medium\" | \"large\" | \"sm\" | \"md\" | \"lg\"",
               "requerido": false,
               "porDefecto": "medium",
               "descripcion": ""
@@ -4806,6 +6482,89 @@
       ],
       "otrosValores": [],
       "tipos": []
+    },
+    {
+      "paquete": "@rubenpazch/switch",
+      "version": "0.0.0",
+      "carpeta": "packages/switch",
+      "categoria": "formularios",
+      "resumen": "Interruptor encendido/apagado (role=\"switch\") con etiqueta y descripción.",
+      "usarCuando": "Opciones que se activan al instante: notificaciones, módulo activo, mostrar en el sitio.",
+      "evitarCuando": "Opciones que se guardan con un botón Enviar o selección múltiple en una lista: usa CheckboxInput.",
+      "componentes": [
+        {
+          "nombre": "Switch",
+          "importar": "import { Switch } from \"@rubenpazch/ui\";",
+          "descripcion": "Interruptor encendido/apagado (role=\"switch\") para opciones que se aplican al instante.",
+          "props": [
+            {
+              "nombre": "checked",
+              "tipo": "boolean",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": "Encendido o apagado."
+            },
+            {
+              "nombre": "label",
+              "tipo": "ReactNode",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": "Etiqueta visible a la derecha."
+            },
+            {
+              "nombre": "onChange",
+              "tipo": "(checked: boolean) => void",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": "Recibe el nuevo estado."
+            },
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Clase extra."
+            },
+            {
+              "nombre": "description",
+              "tipo": "ReactNode",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Texto de ayuda bajo la etiqueta."
+            },
+            {
+              "nombre": "disabled",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "false",
+              "descripcion": "Deshabilitado."
+            },
+            {
+              "nombre": "id",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "id del interruptor."
+            },
+            {
+              "nombre": "name",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "name, para formularios."
+            },
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": "sm o md (por defecto)."
+            }
+          ]
+        }
+      ],
+      "otrosValores": [],
+      "tipos": ["SwitchProps"]
     },
     {
       "paquete": "@rubenpazch/tabs",
@@ -4827,6 +6586,13 @@
               "requerido": true,
               "porDefecto": null,
               "descripcion": ""
+            },
+            {
+              "nombre": "ariaLabel",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "Pestañas",
+              "descripcion": "Nombre accesible del grupo de pestañas (por defecto \"Pestañas\")."
             },
             {
               "nombre": "className",
@@ -4989,6 +6755,13 @@
               "descripcion": ""
             },
             {
+              "nombre": "id",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "id del input; si no se pasa se genera uno (la etiqueta se asocia sola)."
+            },
+            {
               "nombre": "label",
               "tipo": "string",
               "requerido": false,
@@ -5029,6 +6802,13 @@
               "requerido": false,
               "porDefecto": null,
               "descripcion": "Inline error shown when the value is non-empty but shorter than `minLength`."
+            },
+            {
+              "nombre": "name",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "name del input (formularios nativos, react-hook-form…)."
             },
             {
               "nombre": "onBlur",
@@ -5142,6 +6922,131 @@
       "tipos": []
     },
     {
+      "paquete": "@rubenpazch/textarea",
+      "version": "0.0.0",
+      "carpeta": "packages/textarea",
+      "categoria": "formularios",
+      "resumen": "Área de texto con etiqueta, ayuda, advertencia, error, contador de caracteres y crecimiento automático.",
+      "usarCuando": "Textos de varias líneas: observaciones, motivos de anulación, descripciones.",
+      "evitarCuando": "Una sola línea: usa TextInput. Texto con formato (negritas, enlaces, imágenes): usa RichTextEditor.",
+      "componentes": [
+        {
+          "nombre": "Textarea",
+          "importar": "import { Textarea } from \"@rubenpazch/ui\";",
+          "descripcion": "Área de texto con etiqueta, ayuda, error, contador y crecimiento automático.",
+          "props": [
+            {
+              "nombre": "onChange",
+              "tipo": "(value: string) => void",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": "Recibe el texto nuevo."
+            },
+            {
+              "nombre": "value",
+              "tipo": "string",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": "Texto actual."
+            },
+            {
+              "nombre": "autoResize",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "false",
+              "descripcion": "Crece con el contenido hasta maxRows."
+            },
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Clase extra para el contenedor (márgenes, ancho)."
+            },
+            {
+              "nombre": "disabled",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "false",
+              "descripcion": "Campo deshabilitado."
+            },
+            {
+              "nombre": "error",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Mensaje de error; marca el campo como inválido."
+            },
+            {
+              "nombre": "hint",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Texto de ayuda bajo el campo."
+            },
+            {
+              "nombre": "id",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "id del control. Si no se pasa, se genera uno."
+            },
+            {
+              "nombre": "label",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Etiqueta visible del campo (se asocia al control para lectores de pantalla)."
+            },
+            {
+              "nombre": "maxRows",
+              "tipo": "number",
+              "requerido": false,
+              "porDefecto": "12",
+              "descripcion": "Máximo de filas al crecer (por defecto 12)."
+            },
+            {
+              "nombre": "name",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "name del control (formularios nativos y librerías de formularios)."
+            },
+            {
+              "nombre": "required",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "false",
+              "descripcion": "Campo obligatorio: muestra * y marca el control como requerido."
+            },
+            {
+              "nombre": "rows",
+              "tipo": "number",
+              "requerido": false,
+              "porDefecto": "4",
+              "descripcion": "Filas visibles al inicio (por defecto 4)."
+            },
+            {
+              "nombre": "showCount",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "true",
+              "descripcion": "Muestra el contador \"120/500\" cuando hay maxLength."
+            },
+            {
+              "nombre": "warning",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Advertencia (no bloquea)."
+            }
+          ]
+        }
+      ],
+      "otrosValores": [],
+      "tipos": ["TextareaProps"]
+    },
+    {
       "paquete": "@rubenpazch/toast",
       "version": "4.0.0",
       "carpeta": "packages/toast",
@@ -5180,7 +7085,7 @@
               "nombre": "closeAriaLabel",
               "tipo": "string",
               "requerido": false,
-              "porDefecto": "Close notification",
+              "porDefecto": "Cerrar notificación",
               "descripcion": ""
             }
           ]
@@ -5212,6 +7117,54 @@
         "tokens"
       ],
       "tipos": ["Tokens"]
+    },
+    {
+      "paquete": "@rubenpazch/tooltip",
+      "version": "0.0.0",
+      "carpeta": "packages/tooltip",
+      "categoria": "presentacion",
+      "resumen": "Texto de ayuda breve al pasar el mouse o enfocar con teclado (role=\"tooltip\", aria-describedby), se cierra con Escape.",
+      "usarCuando": "Explicar un botón de solo icono o un dato abreviado.",
+      "evitarCuando": "Información importante o acciones: muéstrala en la página o usa Menu/Modal. En móvil no hay hover: no ocultes ahí lo esencial.",
+      "componentes": [
+        {
+          "nombre": "Tooltip",
+          "importar": "import { Tooltip } from \"@rubenpazch/ui\";",
+          "descripcion": "Texto de ayuda al pasar el mouse o enfocar con el teclado; se cierra con Escape. Se asocia al\nelemento con aria-describedby. No pongas acciones dentro: usa Menu o Modal.",
+          "props": [
+            {
+              "nombre": "children",
+              "tipo": "ReactElement<unknown, string | JSXElementConstructor<any>>",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": "Elemento que lo dispara (un botón, un icono con foco). Debe aceptar ref y eventos."
+            },
+            {
+              "nombre": "content",
+              "tipo": "ReactNode",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": "Texto del tooltip (breve, sin elementos interactivos)."
+            },
+            {
+              "nombre": "delay",
+              "tipo": "number",
+              "requerido": false,
+              "porDefecto": "300",
+              "descripcion": "Espera en ms antes de mostrarse al pasar el mouse (por defecto 300)."
+            },
+            {
+              "nombre": "placement",
+              "tipo": "\"top\" | \"bottom\" | \"left\" | \"right\"",
+              "requerido": false,
+              "porDefecto": "top",
+              "descripcion": "Posición: top (por defecto), bottom, left o right."
+            }
+          ]
+        }
+      ],
+      "otrosValores": [],
+      "tipos": ["TooltipProps"]
     }
   ]
 }

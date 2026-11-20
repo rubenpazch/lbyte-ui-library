@@ -17,31 +17,36 @@ npm install @rubenpazch/numeric-up-picker
 
 ## NumericUpPicker
 
-| Prop              | Tipo                             | Req. | Por defecto | Descripción |
-| ----------------- | -------------------------------- | ---- | ----------- | ----------- |
-| `onChange`        | `(value: string) => void`        | sí   |             |             |
-| `value`           | `string \| number`               | sí   |             |             |
-| `alwaysNegative`  | `boolean`                        |      | `false`     |             |
-| `className`       | `string`                         |      | ``          |             |
-| `clearable`       | `boolean`                        |      | `false`     |             |
-| `defaultToZero`   | `boolean`                        |      | `false`     |             |
-| `disabled`        | `boolean`                        |      | `false`     |             |
-| `error`           | `string`                         |      |             |             |
-| `hint`            | `string`                         |      |             |             |
-| `integerOnly`     | `boolean`                        |      | `false`     |             |
-| `label`           | `string`                         |      |             |             |
-| `max`             | `number`                         |      |             |             |
-| `min`             | `number`                         |      |             |             |
-| `onBlur`          | `() => void`                     |      |             |             |
-| `onClear`         | `() => void`                     |      |             |             |
-| `onFocus`         | `() => void`                     |      |             |             |
-| `placeholder`     | `string`                         |      |             |             |
-| `required`        | `boolean`                        |      | `false`     |             |
-| `showSign`        | `boolean`                        |      | `false`     |             |
-| `size`            | `"small" \| "medium" \| "large"` |      | `medium`    |             |
-| `step`            | `number`                         |      | `0.01`      |             |
-| `useMinAsDefault` | `boolean`                        |      | `false`     |             |
-| `warning`         | `string`                         |      |             |             |
+Campo numérico con botones − y +, signo opcional, solo enteros, ayuda, advertencia y error.
+
+| Prop              | Tipo                                                              | Req. | Por defecto | Descripción                                |
+| ----------------- | ----------------------------------------------------------------- | ---- | ----------- | ------------------------------------------ |
+| `onChange`        | `(value: string) => void`                                         | sí   |             |                                            |
+| `value`           | `string \| number`                                                | sí   |             |                                            |
+| `alwaysNegative`  | `boolean`                                                         |      | `false`     |                                            |
+| `className`       | `string`                                                          |      | ``          |                                            |
+| `clearable`       | `boolean`                                                         |      | `false`     |                                            |
+| `defaultToZero`   | `boolean`                                                         |      | `false`     |                                            |
+| `disabled`        | `boolean`                                                         |      | `false`     |                                            |
+| `error`           | `string`                                                          |      |             |                                            |
+| `hint`            | `string`                                                          |      |             |                                            |
+| `id`              | `string`                                                          |      |             | id del input; si no se pasa se genera uno. |
+| `integerOnly`     | `boolean`                                                         |      | `false`     |                                            |
+| `label`           | `string`                                                          |      |             |                                            |
+| `labels`          | `Partial<{ decrease: string; increase: string; clear: string; }>` |      |             | Textos accesibles de los botones.          |
+| `max`             | `number`                                                          |      |             |                                            |
+| `min`             | `number`                                                          |      |             |                                            |
+| `name`            | `string`                                                          |      |             | name del input.                            |
+| `onBlur`          | `() => void`                                                      |      |             |                                            |
+| `onClear`         | `() => void`                                                      |      |             |                                            |
+| `onFocus`         | `() => void`                                                      |      |             |                                            |
+| `placeholder`     | `string`                                                          |      |             |                                            |
+| `required`        | `boolean`                                                         |      | `false`     |                                            |
+| `showSign`        | `boolean`                                                         |      | `false`     |                                            |
+| `size`            | `"sm" \| "md" \| "lg" \| "small" \| "medium" \| "large"`          |      | `md`        | Tamaño: sm, md (por defecto) o lg.         |
+| `step`            | `number`                                                          |      | `0.01`      |                                            |
+| `useMinAsDefault` | `boolean`                                                         |      | `false`     |                                            |
+| `warning`         | `string`                                                          |      |             |                                            |
 
 Tipos: `NumericUpPickerProps`, `NumericUpPickerSize`.
 
