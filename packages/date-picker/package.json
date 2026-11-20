@@ -45,5 +45,11 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "lbyte": {
+    "categoria": "formularios",
+    "resumen": "Selector de fecha con calendario desplegable.",
+    "usarCuando": "Elegir una fecha cercana o explorando el calendario (citas, vencimientos).",
+    "evitarCuando": "Fechas lejanas que el usuario conoce de memoria: usa DateInput."
   }
 }

@@ -58,5 +58,11 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "lbyte": {
+    "categoria": "formularios",
+    "resumen": "Lista desplegable simple con etiqueta, placeholder y error.",
+    "usarCuando": "Elegir una opción entre una lista corta y conocida.",
+    "evitarCuando": "Listas largas o con búsqueda: usa Autocomplete."
   }
 }

@@ -92,6 +92,9 @@ importers:
       lodash:
         specifier: 4.18.1
         version: 4.18.1
+      react-docgen-typescript:
+        specifier: ^2.4.0
+        version: 2.4.0(typescript@6.0.3)
       turbo:
         specifier: ^2.10.12
         version: 2.10.12
@@ -1411,6 +1414,130 @@ importers:
       rollup-plugin-typescript2:
         specifier: ^0.37.0
         version: 0.37.0(rollup@4.63.1)(typescript@6.0.3)
+      tslib:
+        specifier: ^2.8.1
+        version: 2.8.1
+      typescript:
+        specifier: 6.0.3
+        version: 6.0.3
+
+  packages/ui:
+    dependencies:
+      '@rubenpazch/autocomplete':
+        specifier: workspace:^
+        version: link:../autocomplete
+      '@rubenpazch/avatar':
+        specifier: workspace:^
+        version: link:../avatar
+      '@rubenpazch/button':
+        specifier: workspace:^
+        version: link:../button
+      '@rubenpazch/checkbox-input':
+        specifier: workspace:^
+        version: link:../checkbox-input
+      '@rubenpazch/chip':
+        specifier: workspace:^
+        version: link:../chip
+      '@rubenpazch/confirmation-dialog':
+        specifier: workspace:^
+        version: link:../confirmation-dialog
+      '@rubenpazch/date-input':
+        specifier: workspace:^
+        version: link:../date-input
+      '@rubenpazch/date-picker':
+        specifier: workspace:^
+        version: link:../date-picker
+      '@rubenpazch/draggable-list':
+        specifier: workspace:^
+        version: link:../draggable-list
+      '@rubenpazch/drawer':
+        specifier: workspace:^
+        version: link:../drawer
+      '@rubenpazch/icon-button':
+        specifier: workspace:^
+        version: link:../icon-button
+      '@rubenpazch/icons':
+        specifier: workspace:^
+        version: link:../icons
+      '@rubenpazch/identification-input':
+        specifier: workspace:^
+        version: link:../identification-input
+      '@rubenpazch/image-upload':
+        specifier: workspace:^
+        version: link:../image-upload
+      '@rubenpazch/info-row':
+        specifier: workspace:^
+        version: link:../info-row
+      '@rubenpazch/loading-spinner':
+        specifier: workspace:^
+        version: link:../loading-spinner
+      '@rubenpazch/numeric-picker':
+        specifier: workspace:^
+        version: link:../NumericPicker
+      '@rubenpazch/numeric-up-picker':
+        specifier: workspace:^
+        version: link:../NumericUpPicker
+      '@rubenpazch/overlay-loader':
+        specifier: workspace:^
+        version: link:../overlay-loader
+      '@rubenpazch/pagination':
+        specifier: workspace:^
+        version: link:../pagination
+      '@rubenpazch/patient-details':
+        specifier: workspace:^
+        version: link:../patient-details
+      '@rubenpazch/patient-search':
+        specifier: workspace:^
+        version: link:../patient-search
+      '@rubenpazch/prescription-card':
+        specifier: workspace:^
+        version: link:../prescription-card
+      '@rubenpazch/prescription-eye-card':
+        specifier: workspace:^
+        version: link:../prescription-eye-card
+      '@rubenpazch/radio-button':
+        specifier: workspace:^
+        version: link:../radio-button
+      '@rubenpazch/select':
+        specifier: workspace:^
+        version: link:../select
+      '@rubenpazch/shared':
+        specifier: workspace:^
+        version: link:../shared
+      '@rubenpazch/stepper':
+        specifier: workspace:^
+        version: link:../stepper
+      '@rubenpazch/tabs':
+        specifier: workspace:^
+        version: link:../tabs
+      '@rubenpazch/text-input':
+        specifier: workspace:^
+        version: link:../text-input
+      '@rubenpazch/toast':
+        specifier: workspace:^
+        version: link:../toast
+      '@rubenpazch/tokens':
+        specifier: workspace:^
+        version: link:../tokens
+      react:
+        specifier: 19.2.8
+        version: 19.2.8
+      react-dom:
+        specifier: 19.2.8
+        version: 19.2.8(react@19.2.8)
+    devDependencies:
+      '@rollup/plugin-typescript':
+        specifier: ^12.3.0
+        version: 12.3.0(rollup@4.63.1)(tslib@2.8.1)(typescript@6.0.3)
+      '@rubenpazch/typescript-config':
+        specifier: workspace:*
+        version: link:../../tooling/typescript-config
+      rollup:
+        specifier: ^4.63.1
+        version: 4.63.1
+      rollup-plugin-dts:
+        specifier: ^6.5.1
+        version: 6.5.1(rollup@4.63.1)(typescript@6.0.3)
       tslib:
         specifier: ^2.8.1
         version: 2.8.1

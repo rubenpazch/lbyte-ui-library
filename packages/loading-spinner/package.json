@@ -40,5 +40,11 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "lbyte": {
+    "categoria": "retroalimentacion",
+    "resumen": "Indicador de carga circular con tamaños y colores.",
+    "usarCuando": "Esperas cortas dentro de un botón, tarjeta o sección.",
+    "evitarCuando": "Bloquear toda la pantalla: usa OverlayLoader."
   }
 }

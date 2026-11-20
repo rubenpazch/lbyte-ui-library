@@ -62,5 +62,11 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "lbyte": {
+    "categoria": "acciones",
+    "resumen": "Botón con variantes text/contained/outlined, colores, tamaños, estado de carga e iconos; puede renderizar un enlace (href).",
+    "usarCuando": "Cualquier acción principal o secundaria: guardar, enviar, cancelar, navegar con apariencia de botón.",
+    "evitarCuando": "Acciones de solo icono: usa IconButton."
   }
 }

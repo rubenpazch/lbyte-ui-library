@@ -43,5 +43,11 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "lbyte": {
+    "categoria": "retroalimentacion",
+    "resumen": "Notificaciones temporales (Toast) y avisos fijos (ToastBanner) con tipos y acciones.",
+    "usarCuando": "Confirmar que algo se guardó o avisar un error sin interrumpir.",
+    "evitarCuando": "Pedir una decisión: usa ConfirmationDialog."
   }
 }

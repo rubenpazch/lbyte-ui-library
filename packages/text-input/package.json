@@ -63,5 +63,11 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "lbyte": {
+    "categoria": "formularios",
+    "resumen": "Campo de texto con etiqueta, ayuda, advertencia, error, iconos y variantes.",
+    "usarCuando": "Cualquier entrada de texto (nombre, correo, búsqueda simple, contraseña).",
+    "evitarCuando": "Números o fechas: usa NumericPicker, NumericUpPicker, DateInput o DatePicker."
   }
 }

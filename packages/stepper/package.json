@@ -40,5 +40,11 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "lbyte": {
+    "categoria": "navegacion",
+    "resumen": "Indicador de pasos numerados (opcionalmente clicables) para procesos en etapas.",
+    "usarCuando": "Asistentes y formularios de varios pasos.",
+    "evitarCuando": "Navegación entre secciones independientes: usa Tabs."
   }
 }

@@ -1,0 +1,102 @@
+# Lbyte UI — instrucciones para agentes (y personas)
+
+Este archivo viaja dentro del paquete npm: si lo estás leyendo en
+`node_modules/@rubenpazch/ui/AGENTS.md`, describe **exactamente la versión instalada** en esta app.
+
+## Regla principal
+
+**Toda interfaz de una app Lbyte se construye con `@rubenpazch/ui`.** Antes de escribir un
+botón, un campo, un modal, una paginación, un loader o un icono, búscalo en el catálogo:
+
+- `node_modules/@rubenpazch/ui/docs/COMPONENTES.md` — catálogo legible: qué es cada componente,
+  cuándo usarlo, cuándo no, y sus props con tipos y valores posibles.
+- `node_modules/@rubenpazch/ui/docs/catalogo.json` — lo mismo en JSON (también exportado como
+  `@rubenpazch/ui/catalogo.json`).
+
+Si un componente existe, úsalo; no lo reescribas ni lo copies con Tailwind.
+
+## Instalación y configuración (una vez por app)
+
+```bash
+npm install @rubenpazch/ui
+```
+
+**Con Tailwind 4** (las apps Next.js de Lbyte) — en el CSS global (`app/globals.css`):
+
+```css
+@import "tailwindcss";
+@import "@rubenpazch/ui/tokens.css";
+@import "@rubenpazch/ui/tailwind.css";
+```
+
+**Sin Tailwind** — en el layout raíz:
+
+```tsx
+import "@rubenpazch/ui/tokens.css";
+import "@rubenpazch/ui/base.css"; // opcional: tipografía y colores base en body, h1…h6, a
+```
+
+No hace falta configurar nada más: cada componente trae su propio CSS.
+
+## Cómo importar
+
+```tsx
+import {
+  Button,
+  TextInput,
+  ConfirmationDialog,
+  CheckIcon,
+} from "@rubenpazch/ui";
+import type { ButtonProps, SelectOption } from "@rubenpazch/ui";
+```
+
+Siempre desde `@rubenpazch/ui`, nunca desde los paquetes sueltos (`@rubenpazch/button`…) ni desde
+rutas internas (`dist/…`).
+
+## Next.js (App Router)
+
+- El paquete está marcado `"use client"`: puedes importarlo desde cualquier archivo, incluso
+  páginas que son Server Components.
+- Un **Server Component no puede pasar funciones** (`onChange`, `onClick`, `onClose`…) a un
+  componente. Los formularios y todo lo que tenga eventos o estado van en un componente propio con
+  `"use client"` al inicio, que la página importa. Componentes sin eventos (`Button` sin `onClick`,
+  `InfoRow`, `Stepper`, iconos) se pueden usar directo en la página.
+- Funciona con `output: "export"` (sitios estáticos).
+
+## Estilos
+
+- Usa los **tokens**, nunca colores en hexadecimal ni tamaños sueltos:
+  - Tailwind: utilidades con prefijo `lb`: `bg-lb-primary`, `text-lb-foreground`,
+    `text-lb-muted-foreground`, `border-lb-border`, `rounded-lb-md`, `shadow-lb-md`, `p-lb-4`,
+    `gap-lb-2`, `text-lb-sm`, `font-lb-sans`.
+  - CSS: `var(--lb-color-primary)`, `var(--lb-space-4)`, `var(--lb-radius-md)`…
+  - La lista completa está en `@rubenpazch/ui/tokens.css`.
+- Tema oscuro: `data-theme="dark"` en `<html>` (o en un contenedor). Los tokens y las utilidades
+  `lb-*` cambian solos.
+- Para ajustar un componente usa sus props (`variant`, `color`, `size`, `fullWidth`…) y, si hace
+  falta, `className` para márgenes o posición. No sobrescribas sus clases internas.
+- Para Tailwind puro (layout, grid, flex) usa las utilidades normales; para color, tipografía,
+  radios, sombras y espacios del sistema, las `lb-*`.
+
+## Textos
+
+La interfaz va en **español**. Varios componentes reciben un objeto `labels` con todos sus textos
+(por ejemplo `ImageUpload`, `IdentificationInput`, `PatientDetails`, `PrescriptionCard`):
+pásalo siempre completo y en español.
+
+## Si falta un componente
+
+1. Confirma en `COMPONENTES.md` que no existe (revisa también variantes de uno parecido).
+2. Si es **reutilizable** (lo usarían otras apps): no lo construyas dentro de la app. Agrégalo a la
+   librería [`rubenpazch/lbyte-ui-library`](https://github.com/rubenpazch/lbyte-ui-library)
+   siguiendo su `AGENTS.md` (`pnpm generate-package <nombre>`), publícalo y luego úsalo aquí.
+   Si no puedes hacerlo ahora, créalo en la app en `src/components/` con tokens `lb-*` y anota
+   en el README de la app que debe migrarse a la librería.
+3. Si es **específico de esta app** (una composición: tarjeta de una obligación, fila de una
+   tabla concreta), créalo en la app **componiendo** componentes de `@rubenpazch/ui`.
+
+## Categorías
+
+`base` (tokens, utilidades) · `acciones` · `formularios` · `navegacion` · `retroalimentacion` ·
+`presentacion` · `datos` · `iconos` · `salud` (pacientes y recetas ópticas: úsalos solo en apps
+clínicas u ópticas).

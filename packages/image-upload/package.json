@@ -44,5 +44,11 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "lbyte": {
+    "categoria": "formularios",
+    "resumen": "Subida de imagen o PDF con vista previa, arrastrar y soltar, validación de tipo y tamaño.",
+    "usarCuando": "Fotos de perfil, comprobantes, documentos adjuntos (suele enviar a archivos-api).",
+    "evitarCuando": "Muchos archivos a la vez sin vista previa."
   }
 }

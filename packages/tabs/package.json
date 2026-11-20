@@ -40,5 +40,11 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "lbyte": {
+    "categoria": "navegacion",
+    "resumen": "Pestañas para alternar entre secciones de una misma vista.",
+    "usarCuando": "Separar contenido relacionado en la misma página (datos, historial, archivos).",
+    "evitarCuando": "Procesos secuenciales: usa Stepper."
   }
 }

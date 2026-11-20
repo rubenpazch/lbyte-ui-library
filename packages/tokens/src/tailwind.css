@@ -1,0 +1,121 @@
+/* GENERADO por scripts/catalogo.mjs (pnpm catalogo). No editar a mano.
+ *
+ * Puente de los tokens --lb-* hacia Tailwind 4. En el CSS global de la app:
+ *
+ *   @import "tailwindcss";
+ *   @import "@rubenpazch/ui/tokens.css";
+ *   @import "@rubenpazch/ui/tailwind.css";
+ *
+ * Crea utilidades con prefijo lb: bg-lb-primary, text-lb-foreground, border-lb-border,
+ * rounded-lb-md, shadow-lb-md, p-lb-4, text-lb-sm, font-lb-sans…
+ * "inline" hace que el tema oscuro ([data-theme="dark"]) cambie también estas utilidades.
+ */
+@theme inline {
+  --font-lb-sans: var(--lb-font-sans);
+  --font-lb-mono: var(--lb-font-mono);
+  --text-lb-xs: var(--lb-font-size-xs);
+  --text-lb-sm: var(--lb-font-size-sm);
+  --text-lb-md: var(--lb-font-size-md);
+  --text-lb-lg: var(--lb-font-size-lg);
+  --text-lb-xl: var(--lb-font-size-xl);
+  --text-lb-2xl: var(--lb-font-size-2xl);
+  --text-lb-3xl: var(--lb-font-size-3xl);
+  --text-lb-4xl: var(--lb-font-size-4xl);
+  --text-lb-5xl: var(--lb-font-size-5xl);
+  --text-lb-h1: var(--lb-font-size-h1);
+  --text-lb-h2: var(--lb-font-size-h2);
+  --text-lb-h3: var(--lb-font-size-h3);
+  --text-lb-h4: var(--lb-font-size-h4);
+  --text-lb-h5: var(--lb-font-size-h5);
+  --text-lb-h6: var(--lb-font-size-h6);
+  --text-lb-body: var(--lb-font-size-body);
+  --text-lb-small: var(--lb-font-size-small);
+  --font-weight-lb-regular: var(--lb-font-weight-regular);
+  --font-weight-lb-medium: var(--lb-font-weight-medium);
+  --font-weight-lb-semibold: var(--lb-font-weight-semibold);
+  --font-weight-lb-bold: var(--lb-font-weight-bold);
+  --leading-lb-tight: var(--lb-line-height-tight);
+  --leading-lb-snug: var(--lb-line-height-snug);
+  --leading-lb-normal: var(--lb-line-height-normal);
+  --leading-lb-relaxed: var(--lb-line-height-relaxed);
+  --tracking-lb-tight: var(--lb-letter-spacing-tight);
+  --tracking-lb-normal: var(--lb-letter-spacing-normal);
+  --tracking-lb-wide: var(--lb-letter-spacing-wide);
+  --color-lb-neutral-50: var(--lb-color-neutral-50);
+  --color-lb-neutral-100: var(--lb-color-neutral-100);
+  --color-lb-neutral-200: var(--lb-color-neutral-200);
+  --color-lb-neutral-300: var(--lb-color-neutral-300);
+  --color-lb-neutral-400: var(--lb-color-neutral-400);
+  --color-lb-neutral-500: var(--lb-color-neutral-500);
+  --color-lb-neutral-600: var(--lb-color-neutral-600);
+  --color-lb-neutral-700: var(--lb-color-neutral-700);
+  --color-lb-neutral-800: var(--lb-color-neutral-800);
+  --color-lb-neutral-900: var(--lb-color-neutral-900);
+  --color-lb-primary: var(--lb-color-primary);
+  --color-lb-primary-hover: var(--lb-color-primary-hover);
+  --color-lb-primary-foreground: var(--lb-color-primary-foreground);
+  --color-lb-success: var(--lb-color-success);
+  --color-lb-success-foreground: var(--lb-color-success-foreground);
+  --color-lb-warning: var(--lb-color-warning);
+  --color-lb-warning-foreground: var(--lb-color-warning-foreground);
+  --color-lb-danger: var(--lb-color-danger);
+  --color-lb-danger-foreground: var(--lb-color-danger-foreground);
+  --color-lb-info: var(--lb-color-info);
+  --color-lb-info-foreground: var(--lb-color-info-foreground);
+  --color-lb-blue-subtle: var(--lb-color-blue-subtle);
+  --color-lb-blue-border: var(--lb-color-blue-border);
+  --color-lb-blue-accent: var(--lb-color-blue-accent);
+  --color-lb-blue-strong: var(--lb-color-blue-strong);
+  --color-lb-amber-subtle: var(--lb-color-amber-subtle);
+  --color-lb-amber-border: var(--lb-color-amber-border);
+  --color-lb-amber-accent: var(--lb-color-amber-accent);
+  --color-lb-amber-strong: var(--lb-color-amber-strong);
+  --color-lb-emerald-subtle: var(--lb-color-emerald-subtle);
+  --color-lb-emerald-border: var(--lb-color-emerald-border);
+  --color-lb-emerald-accent: var(--lb-color-emerald-accent);
+  --color-lb-emerald-strong: var(--lb-color-emerald-strong);
+  --color-lb-red-subtle: var(--lb-color-red-subtle);
+  --color-lb-red-border: var(--lb-color-red-border);
+  --color-lb-red-accent: var(--lb-color-red-accent);
+  --color-lb-red-strong: var(--lb-color-red-strong);
+  --color-lb-violet-subtle: var(--lb-color-violet-subtle);
+  --color-lb-violet-border: var(--lb-color-violet-border);
+  --color-lb-violet-accent: var(--lb-color-violet-accent);
+  --color-lb-violet-strong: var(--lb-color-violet-strong);
+  --color-lb-indigo-subtle: var(--lb-color-indigo-subtle);
+  --color-lb-indigo-border: var(--lb-color-indigo-border);
+  --color-lb-indigo-accent: var(--lb-color-indigo-accent);
+  --color-lb-indigo-strong: var(--lb-color-indigo-strong);
+  --color-lb-orange-subtle: var(--lb-color-orange-subtle);
+  --color-lb-orange-border: var(--lb-color-orange-border);
+  --color-lb-orange-accent: var(--lb-color-orange-accent);
+  --color-lb-orange-strong: var(--lb-color-orange-strong);
+  --color-lb-background: var(--lb-color-background);
+  --color-lb-foreground: var(--lb-color-foreground);
+  --color-lb-muted: var(--lb-color-muted);
+  --color-lb-muted-foreground: var(--lb-color-muted-foreground);
+  --color-lb-border: var(--lb-color-border);
+  --color-lb-ring: var(--lb-color-ring);
+  --color-lb-link: var(--lb-color-link);
+  --color-lb-link-hover: var(--lb-color-link-hover);
+  --spacing-lb-0: var(--lb-space-0);
+  --spacing-lb-1: var(--lb-space-1);
+  --spacing-lb-2: var(--lb-space-2);
+  --spacing-lb-3: var(--lb-space-3);
+  --spacing-lb-4: var(--lb-space-4);
+  --spacing-lb-5: var(--lb-space-5);
+  --spacing-lb-6: var(--lb-space-6);
+  --spacing-lb-8: var(--lb-space-8);
+  --spacing-lb-10: var(--lb-space-10);
+  --spacing-lb-12: var(--lb-space-12);
+  --spacing-lb-16: var(--lb-space-16);
+  --radius-lb-sm: var(--lb-radius-sm);
+  --radius-lb-md: var(--lb-radius-md);
+  --radius-lb-lg: var(--lb-radius-lg);
+  --radius-lb-xl: var(--lb-radius-xl);
+  --radius-lb-2xl: var(--lb-radius-2xl);
+  --radius-lb-full: var(--lb-radius-full);
+  --shadow-lb-sm: var(--lb-shadow-sm);
+  --shadow-lb-md: var(--lb-shadow-md);
+  --shadow-lb-lg: var(--lb-shadow-lg);
+}

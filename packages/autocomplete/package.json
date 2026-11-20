@@ -44,5 +44,11 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "lbyte": {
+    "categoria": "formularios",
+    "resumen": "Selector con búsqueda sobre una lista de opciones (con descripción, carga y opción de limpiar).",
+    "usarCuando": "Elegir un valor entre muchas opciones (más de ~8) o cuando el usuario necesita filtrar escribiendo.",
+    "evitarCuando": "Pocas opciones fijas: usa Select o RadioGroup."
   }
 }

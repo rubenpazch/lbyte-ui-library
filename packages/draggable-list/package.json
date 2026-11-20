@@ -45,5 +45,11 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "lbyte": {
+    "categoria": "datos",
+    "resumen": "Lista reordenable arrastrando (también con teclado), basada en dnd-kit.",
+    "usarCuando": "Que el usuario defina el orden de elementos (prioridades, orden de servicios o menús).",
+    "evitarCuando": "Listas de solo lectura: usa una lista normal."
   }
 }

@@ -45,5 +45,11 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "lbyte": {
+    "categoria": "formularios",
+    "resumen": "Campo de fecha con formato local, mínimo/máximo, ayuda y error.",
+    "usarCuando": "Ingresar una fecha escribiéndola (fecha de nacimiento, fecha de documento).",
+    "evitarCuando": "Elegir en un calendario visual: usa DatePicker."
   }
 }

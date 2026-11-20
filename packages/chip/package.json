@@ -65,5 +65,11 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "lbyte": {
+    "categoria": "presentacion",
+    "resumen": "Chip/etiqueta con variantes, icono y acción de borrar.",
+    "usarCuando": "Estados, etiquetas, filtros activos o valores seleccionados que se pueden quitar.",
+    "evitarCuando": "Acciones principales: usa Button."
   }
 }

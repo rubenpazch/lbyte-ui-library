@@ -40,5 +40,11 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "lbyte": {
+    "categoria": "presentacion",
+    "resumen": "Fila de dato con icono, etiqueta y valor (variantes de color, tamaños, acción opcional).",
+    "usarCuando": "Vistas de detalle de un registro (contacto, dirección, datos del documento).",
+    "evitarCuando": "Tablas con muchas filas comparables."
   }
 }

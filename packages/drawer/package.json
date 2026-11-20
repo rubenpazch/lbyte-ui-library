@@ -43,5 +43,11 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "lbyte": {
+    "categoria": "navegacion",
+    "resumen": "Panel lateral (izquierda/derecha/arriba/abajo) con animación y fondo.",
+    "usarCuando": "Menús laterales, filtros o formularios de edición que no requieren cambiar de página.",
+    "evitarCuando": "Confirmaciones breves: usa ConfirmationDialog."
   }
 }

@@ -1,12 +1,15 @@
 name: CI
 
+# Solo en PRs: en main ya construye y prueba release.yml (evita pagar dos veces los mismos minutos).
 on:
   pull_request:
     branches:
       - main
-  push:
-    branches:
-      - main
+
+# Un push nuevo al mismo PR cancela la ejecución anterior.
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   test:
@@ -41,6 +44,9 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
+
+      - name: Catálogo al día (pnpm catalogo)
+        run: pnpm catalogo:check
 
       - name: Lint
         run: pnpm lint || true

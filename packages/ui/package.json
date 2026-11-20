@@ -1,0 +1,88 @@
+{
+  "name": "@rubenpazch/ui",
+  "version": "0.0.0",
+  "description": "Todos los componentes de Lbyte UI en un solo paquete, con su documentación para personas y agentes de IA",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rubenpazch/lbyte-ui-library.git",
+    "directory": "packages/ui"
+  },
+  "license": "MIT",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.esm.js",
+      "require": "./dist/index.cjs.js"
+    },
+    "./tokens.css": "./dist/tokens.css",
+    "./base.css": "./dist/base.css",
+    "./tailwind.css": "./dist/tailwind.css",
+    "./catalogo.json": "./docs/catalogo.json",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "docs",
+    "AGENTS.md",
+    "README.md"
+  ],
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "scripts": {
+    "build": "rollup -c",
+    "clean": "rm -rf dist"
+  },
+  "peerDependencies": {
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3"
+  },
+  "dependencies": {
+    "@rubenpazch/autocomplete": "workspace:^",
+    "@rubenpazch/avatar": "workspace:^",
+    "@rubenpazch/button": "workspace:^",
+    "@rubenpazch/checkbox-input": "workspace:^",
+    "@rubenpazch/chip": "workspace:^",
+    "@rubenpazch/confirmation-dialog": "workspace:^",
+    "@rubenpazch/date-input": "workspace:^",
+    "@rubenpazch/date-picker": "workspace:^",
+    "@rubenpazch/draggable-list": "workspace:^",
+    "@rubenpazch/drawer": "workspace:^",
+    "@rubenpazch/icon-button": "workspace:^",
+    "@rubenpazch/icons": "workspace:^",
+    "@rubenpazch/identification-input": "workspace:^",
+    "@rubenpazch/image-upload": "workspace:^",
+    "@rubenpazch/info-row": "workspace:^",
+    "@rubenpazch/loading-spinner": "workspace:^",
+    "@rubenpazch/numeric-picker": "workspace:^",
+    "@rubenpazch/numeric-up-picker": "workspace:^",
+    "@rubenpazch/overlay-loader": "workspace:^",
+    "@rubenpazch/pagination": "workspace:^",
+    "@rubenpazch/patient-details": "workspace:^",
+    "@rubenpazch/patient-search": "workspace:^",
+    "@rubenpazch/prescription-card": "workspace:^",
+    "@rubenpazch/prescription-eye-card": "workspace:^",
+    "@rubenpazch/radio-button": "workspace:^",
+    "@rubenpazch/select": "workspace:^",
+    "@rubenpazch/shared": "workspace:^",
+    "@rubenpazch/stepper": "workspace:^",
+    "@rubenpazch/tabs": "workspace:^",
+    "@rubenpazch/text-input": "workspace:^",
+    "@rubenpazch/toast": "workspace:^",
+    "@rubenpazch/tokens": "workspace:^"
+  },
+  "devDependencies": {
+    "@rollup/plugin-typescript": "^12.3.0",
+    "@rubenpazch/typescript-config": "workspace:*",
+    "rollup": "^4.63.1",
+    "rollup-plugin-dts": "^6.5.1",
+    "tslib": "^2.8.1",
+    "typescript": "^6.0.3"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

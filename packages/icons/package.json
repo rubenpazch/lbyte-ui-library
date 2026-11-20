@@ -61,5 +61,11 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "lbyte": {
+    "categoria": "iconos",
+    "resumen": "Más de 60 iconos SVG como componentes React (y MaterialIcon para Material Icons).",
+    "usarCuando": "Cualquier icono de la interfaz; combínalos con Button, IconButton, Chip o InfoRow.",
+    "evitarCuando": "Ilustraciones grandes o logos de marca."
   }
 }

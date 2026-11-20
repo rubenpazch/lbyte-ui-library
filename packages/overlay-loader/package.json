@@ -58,5 +58,11 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "lbyte": {
+    "categoria": "retroalimentacion",
+    "resumen": "OverlayLoader (pantalla completa, controlado por visible) e InlineLoader (dentro de un contenedor).",
+    "usarCuando": "Carga inicial de la app, inicio/cierre de sesión u operaciones que bloquean la pantalla.",
+    "evitarCuando": "Esperas pequeñas dentro de un elemento: usa LoadingSpinner."
   }
 }

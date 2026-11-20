@@ -43,5 +43,11 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "lbyte": {
+    "categoria": "salud",
+    "resumen": "Datos de un ojo de la receta óptica (PrescriptionEyeCard) y campo individual (PrescriptionFieldCard).",
+    "usarCuando": "Mostrar o comparar los valores de un ojo en apps de óptica.",
+    "evitarCuando": "Cualquier dato que no sea una receta óptica."
   }
 }

@@ -40,5 +40,11 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "lbyte": {
+    "categoria": "acciones",
+    "resumen": "Botón de solo icono con variantes, formas, tooltip y etiqueta accesible.",
+    "usarCuando": "Acciones compactas en tablas, barras de herramientas o tarjetas (editar, borrar, cerrar).",
+    "evitarCuando": "Acciones principales con texto: usa Button."
   }
 }

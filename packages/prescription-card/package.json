@@ -45,5 +45,11 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "lbyte": {
+    "categoria": "salud",
+    "resumen": "Tarjeta de receta óptica completa (OD/OI: esfera, cilindro, eje, adición, DNP, prisma, altura) con estado y observaciones.",
+    "usarCuando": "Mostrar recetas ópticas en apps de óptica.",
+    "evitarCuando": "Cualquier dato que no sea una receta óptica."
   }
 }
