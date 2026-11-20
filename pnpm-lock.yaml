@@ -290,6 +290,9 @@ importers:
       '@rubenpazch/loading-spinner':
         specifier: workspace:*
         version: link:../loading-spinner
+      '@rubenpazch/shared':
+        specifier: workspace:*
+        version: link:../shared
       '@rubenpazch/tokens':
         specifier: workspace:*
         version: link:../tokens
@@ -461,6 +464,9 @@ importers:
       '@rubenpazch/button':
         specifier: workspace:*
         version: link:../button
+      '@rubenpazch/shared':
+        specifier: workspace:*
+        version: link:../shared
       '@rubenpazch/tokens':
         specifier: workspace:*
         version: link:../tokens

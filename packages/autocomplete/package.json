@@ -37,7 +37,8 @@
   },
   "dependencies": {
     "@rubenpazch/icons": "workspace:*",
-    "@rubenpazch/loading-spinner": "workspace:*"
+    "@rubenpazch/loading-spinner": "workspace:*",
+    "@rubenpazch/shared": "workspace:*"
   },
   "devDependencies": {
     "@rubenpazch/typescript-config": "workspace:*"

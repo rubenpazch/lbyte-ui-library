@@ -258,7 +258,7 @@ describe("Autocomplete Component", () => {
       const input = screen.getByTestId("autocomplete-input");
       fireEvent.focus(input);
 
-      expect(screen.getByText("Loading...")).toBeInTheDocument();
+      expect(screen.getByText("Cargando…")).toBeInTheDocument();
     });
 
     it("displays inline loading spinner when loading with options", () => {
@@ -415,7 +415,7 @@ describe("Autocomplete Component", () => {
       fireEvent.focus(input);
       fireEvent.change(input, { target: { value: "New Option" } });
 
-      expect(screen.getByText(/Create "New Option"/)).toBeInTheDocument();
+      expect(screen.getByText(/Crear "New Option"/)).toBeInTheDocument();
     });
 
     it("calls onCreate when create option is clicked", () => {
@@ -645,7 +645,7 @@ describe("Autocomplete Component", () => {
   });
 
   describe("No Options State", () => {
-    it('shows "No results found" when no options match search', () => {
+    it('shows "Sin resultados" when no options match search', () => {
       const onChange = jest.fn();
       render(
         <Autocomplete
@@ -660,7 +660,70 @@ describe("Autocomplete Component", () => {
       fireEvent.focus(input);
       fireEvent.change(input, { target: { value: "xyz" } });
 
-      expect(screen.getByText("No results found")).toBeInTheDocument();
+      expect(screen.getByText("Sin resultados")).toBeInTheDocument();
     });
+  });
+});
+
+describe("Autocomplete: combobox accesible", () => {
+  const opciones = [
+    { value: "lima", label: "Lima" },
+    { value: "cusco", label: "Cusco" },
+  ];
+
+  it("es un combobox con listbox y opciones", () => {
+    render(
+      <Autocomplete
+        label="Ciudad"
+        value={null}
+        onChange={jest.fn()}
+        options={opciones}
+      />,
+    );
+    const input = screen.getByRole("combobox", { name: "Ciudad" });
+    fireEvent.focus(input);
+    if (!screen.queryByRole("listbox"))
+      fireEvent.click(screen.getByTestId("autocomplete-toggle"));
+    const listbox = screen.getByRole("listbox");
+    expect(input).toHaveAttribute("aria-controls", listbox.id);
+    expect(screen.getAllByRole("option")).toHaveLength(2);
+  });
+
+  it("marca la opción activa con aria-activedescendant al usar las flechas", () => {
+    render(
+      <Autocomplete
+        label="Ciudad"
+        value={null}
+        onChange={jest.fn()}
+        options={opciones}
+      />,
+    );
+    const input = screen.getByRole("combobox", { name: "Ciudad" });
+    fireEvent.focus(input);
+    fireEvent.keyDown(input, { key: "ArrowDown" });
+    const activa = input.getAttribute("aria-activedescendant");
+    expect(activa).toBeTruthy();
+    expect(document.getElementById(activa as string)).toHaveAttribute(
+      "role",
+      "option",
+    );
+  });
+
+  it("textos por defecto en español y error asociado", () => {
+    render(
+      <Autocomplete
+        label="Ciudad"
+        value={null}
+        onChange={jest.fn()}
+        options={opciones}
+        error="Elige una"
+      />,
+    );
+    const input = screen.getByRole("combobox", { name: "Ciudad" });
+    expect(input).toHaveAttribute("placeholder", "Buscar o seleccionar…");
+    expect(input).toHaveAccessibleDescription("Elige una");
+    expect(
+      screen.getByRole("button", { name: "Abrir lista" }),
+    ).toBeInTheDocument();
   });
 });
