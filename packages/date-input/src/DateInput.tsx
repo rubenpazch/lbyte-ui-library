@@ -2,399 +2,429 @@ import React, { useState, useRef, useEffect } from "react";
 import Button from "@rubenpazch/button";
 import IconButton from "@rubenpazch/icon-button";
 import { CalendarIcon, ChevronIcon, ErrorIcon } from "@rubenpazch/icons";
+import {
+  datePlaceholder,
+  formatLocalDate,
+  formatMonthYear,
+  mergeRefs,
+  parseISODate,
+  parseLocalDate,
+  toISODate,
+  useClickOutside,
+  useEscapeKey,
+  useFieldIds,
+} from "@rubenpazch/shared";
 import styles from "./DateInput.module.css";
 
-export interface DateInputProps {
-  label?: string;
-  value: string;
-  onChange: (date: string) => void;
-  placeholder?: string;
-  error?: string;
-  required?: boolean;
-  disabled?: boolean;
-  minDate?: string;
-  maxDate?: string;
-  className?: string;
-  hint?: string;
-  locale?: string;
+/** Textos del calendario (accesibilidad y botones). */
+export interface DateInputLabels {
+  openCalendar: string;
+  previousMonth: string;
+  nextMonth: string;
+  today: string;
+  clear: string;
+  calendar: string;
 }
 
-const DateInput: React.FC<DateInputProps> = ({
-  label,
-  value,
-  onChange,
-  placeholder = "MM/DD/YYYY",
-  error,
-  required = false,
-  disabled = false,
-  minDate,
-  maxDate,
-  className = "",
-  hint,
-  locale = "en",
-}) => {
-  const classNames = (...classes: Array<string | undefined | false>) =>
-    classes.filter(Boolean).join(" ");
+const LABELS_ES: DateInputLabels = {
+  openCalendar: "Abrir calendario",
+  previousMonth: "Mes anterior",
+  nextMonth: "Mes siguiente",
+  today: "Hoy",
+  clear: "Limpiar",
+  calendar: "Calendario",
+};
 
-  const [isOpen, setIsOpen] = useState(false);
-  const [currentMonth, setCurrentMonth] = useState<Date>(
-    value ? new Date(value) : new Date(),
-  );
-  const [inputValue, setInputValue] = useState(value);
-  const containerRef = useRef<HTMLDivElement>(null);
-  const inputRef = useRef<HTMLInputElement>(null);
+const LABELS_EN: DateInputLabels = {
+  openCalendar: "Open calendar",
+  previousMonth: "Previous month",
+  nextMonth: "Next month",
+  today: "Today",
+  clear: "Clear",
+  calendar: "Calendar",
+};
 
-  // Format date based on locale
-  const formatDate = (date: Date): string => {
-    if (locale.startsWith("es")) {
-      return date.toLocaleDateString("es-ES", {
-        year: "numeric",
-        month: "2-digit",
-        day: "2-digit",
-      });
-    }
-    return date.toLocaleDateString("en-US", {
-      year: "numeric",
-      month: "2-digit",
-      day: "2-digit",
+const DAY_NAMES_ES = ["Dom", "Lun", "Mar", "Mié", "Jue", "Vie", "Sáb"];
+const DAY_NAMES_EN = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+export interface DateInputProps {
+  /** id del input; si no se pasa se genera uno (la etiqueta se asocia sola). */
+  id?: string;
+  /** name del input (formularios nativos, react-hook-form…). */
+  name?: string;
+  /** Etiqueta visible. */
+  label?: string;
+  /** Fecha en formato ISO `AAAA-MM-DD`, o cadena vacía. */
+  value: string;
+  /** Recibe la fecha en ISO `AAAA-MM-DD` (o "" al limpiar). */
+  onChange: (date: string) => void;
+  /** Por defecto el formato del idioma: "DD/MM/AAAA" en español. */
+  placeholder?: string;
+  /** Mensaje de error; marca el campo como inválido. */
+  error?: string;
+  /** Campo obligatorio. */
+  required?: boolean;
+  /** Campo deshabilitado. */
+  disabled?: boolean;
+  /** Fecha mínima seleccionable (ISO). */
+  minDate?: string;
+  /** Fecha máxima seleccionable (ISO). */
+  maxDate?: string;
+  /** Clase extra para el contenedor. */
+  className?: string;
+  /** Texto de ayuda. */
+  hint?: string;
+  /** Idioma: `es` (por defecto, día/mes) o `en` (mes/día). */
+  locale?: string;
+  /** Textos del calendario; por defecto en el idioma de `locale`. */
+  labels?: Partial<DateInputLabels>;
+}
+
+const classNames = (...classes: Array<string | undefined | false>) =>
+  classes.filter(Boolean).join(" ");
+
+/**
+ * Campo de fecha con calendario desplegable. Se escribe en el formato del idioma
+ * (DD/MM/AAAA en español) y devuelve siempre ISO `AAAA-MM-DD`, en hora local.
+ */
+const DateInput = React.forwardRef<HTMLInputElement, DateInputProps>(
+  function DateInput(
+    {
+      id,
+      name,
+      label,
+      value,
+      onChange,
+      placeholder,
+      error,
+      required = false,
+      disabled = false,
+      minDate,
+      maxDate,
+      className = "",
+      hint,
+      locale = "es",
+      labels,
+    },
+    ref,
+  ) {
+    const isEs = locale.startsWith("es");
+    const text: DateInputLabels = {
+      ...(isEs ? LABELS_ES : LABELS_EN),
+      ...labels,
+    };
+    const field = useFieldIds({
+      id,
+      name,
+      required,
+      error,
+      hint: hint && !error ? hint : undefined,
     });
-  };
+    const calendarId = `${field.inputId}-calendario`;
 
-  // Parse input value
-  const parseInputValue = (val: string): Date | null => {
-    if (!val) return null;
-    const date = new Date(val);
-    return isNaN(date.getTime()) ? null : date;
-  };
-
-  // Handle date selection from calendar
-  const handleSelectDate = (day: number) => {
-    const selectedDate = new Date(currentMonth);
-    selectedDate.setDate(day);
-    const isoString = selectedDate.toISOString().split("T")[0];
-
-    onChange(isoString);
-    setInputValue(formatDate(selectedDate));
-    setIsOpen(false);
-  };
-
-  // Handle month navigation
-  const handlePreviousMonth = () => {
-    setCurrentMonth(
-      new Date(currentMonth.getFullYear(), currentMonth.getMonth() - 1),
+    const [isOpen, setIsOpen] = useState(false);
+    const [currentMonth, setCurrentMonth] = useState<Date>(
+      parseISODate(value) ?? new Date(),
     );
-  };
+    const [inputValue, setInputValue] = useState("");
+    const containerRef = useRef<HTMLDivElement>(null);
+    const inputRef = useRef<HTMLInputElement>(null);
 
-  const handleNextMonth = () => {
-    setCurrentMonth(
-      new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1),
-    );
-  };
+    // Al cerrar con Escape devolvemos el foco al input sin que onFocus lo vuelva a abrir.
+    const skipOpenOnFocus = useRef(false);
+    useClickOutside(containerRef, () => setIsOpen(false), isOpen);
+    useEscapeKey(() => {
+      setIsOpen(false);
+      skipOpenOnFocus.current = true;
+      inputRef.current?.focus();
+    }, isOpen);
 
-  // Handle input change with validation
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const val = e.target.value;
-    setInputValue(val);
+    // Sincroniza el texto con el valor (ISO) que llega por props.
+    useEffect(() => {
+      const date = parseISODate(value);
+      if (date) {
+        setInputValue(formatLocalDate(date, locale));
+        setCurrentMonth(date);
+      } else {
+        setInputValue("");
+      }
+    }, [value, locale]);
 
-    // Try to parse the date
-    const parsed = parseInputValue(val);
-    if (parsed) {
-      onChange(parsed.toISOString().split("T")[0]);
-      setCurrentMonth(parsed);
-    }
-  };
+    const isDateSelectable = (date: Date): boolean => {
+      const iso = toISODate(date);
+      if (minDate && iso < minDate) return false;
+      if (maxDate && iso > maxDate) return false;
+      return true;
+    };
 
-  // Handle input blur
-  const handleInputBlur = () => {
-    if (inputValue && !parseInputValue(inputValue)) {
-      // Invalid date, reset
-      setInputValue(value);
-    }
-  };
+    const selectDate = (date: Date) => {
+      onChange(toISODate(date));
+      setInputValue(formatLocalDate(date, locale));
+      setCurrentMonth(date);
+      setIsOpen(false);
+    };
 
-  // Close picker on outside click
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (
-        containerRef.current &&
-        !containerRef.current.contains(event.target as Node)
-      ) {
-        setIsOpen(false);
+    const handleSelectDay = (day: number) => {
+      selectDate(
+        new Date(currentMonth.getFullYear(), currentMonth.getMonth(), day),
+      );
+    };
+
+    const handlePreviousMonth = () =>
+      setCurrentMonth(
+        new Date(currentMonth.getFullYear(), currentMonth.getMonth() - 1, 1),
+      );
+    const handleNextMonth = () =>
+      setCurrentMonth(
+        new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1, 1),
+      );
+
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+      const val = e.target.value;
+      setInputValue(val);
+      const parsed = parseLocalDate(val, locale);
+      if (parsed && isDateSelectable(parsed)) {
+        onChange(toISODate(parsed));
+        setCurrentMonth(parsed);
       }
     };
 
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
+    const handleInputBlur = () => {
+      // Texto inválido: vuelve a mostrar el valor vigente.
+      if (inputValue && !parseLocalDate(inputValue, locale)) {
+        const date = parseISODate(value);
+        setInputValue(date ? formatLocalDate(date, locale) : "");
+      }
+    };
 
-  // Update input value when prop changes
-  useEffect(() => {
-    if (value) {
-      const date = new Date(value);
-      setInputValue(formatDate(date));
-      setCurrentMonth(date);
-    } else {
-      setInputValue("");
-    }
-  }, [value, locale]);
-
-  // Get days in month
-  const getDaysInMonth = (date: Date): number => {
-    return new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
-  };
-
-  // Get first day of month (0 = Sunday)
-  const getFirstDayOfMonth = (date: Date): number => {
-    return new Date(date.getFullYear(), date.getMonth(), 1).getDay();
-  };
-
-  // Get day names
-  const getDayNames = (): string[] => {
-    if (locale.startsWith("es")) {
-      return ["Dom", "Lun", "Mar", "Mié", "Jue", "Vie", "Sáb"];
-    }
-    return ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-  };
-
-  // Get month name
-  const getMonthName = (date: Date): string => {
-    if (locale.startsWith("es")) {
-      return date.toLocaleDateString("es-ES", {
-        month: "long",
-        year: "numeric",
-      });
-    }
-    return date.toLocaleDateString("en-US", {
-      month: "long",
-      year: "numeric",
-    });
-  };
-
-  // Check if date is selectable
-  const isDateSelectable = (day: number): boolean => {
-    const testDate = new Date(
+    // Celdas del calendario (null = hueco antes del día 1).
+    const daysInMonth = new Date(
+      currentMonth.getFullYear(),
+      currentMonth.getMonth() + 1,
+      0,
+    ).getDate();
+    const firstDay = new Date(
       currentMonth.getFullYear(),
       currentMonth.getMonth(),
-      day,
-    );
-    const testDateStr = testDate.toISOString().split("T")[0];
+      1,
+    ).getDay();
+    const calendarDays: (number | null)[] = [
+      ...Array<null>(firstDay).fill(null),
+      ...Array.from({ length: daysInMonth }, (_, i) => i + 1),
+    ];
 
-    if (minDate && testDateStr < minDate) return false;
-    if (maxDate && testDateStr > maxDate) return false;
-
-    return true;
-  };
-
-  // Check if date is today
-  const isToday = (day: number): boolean => {
+    const selected = parseISODate(value);
     const today = new Date();
+    const dayDate = (day: number) =>
+      new Date(currentMonth.getFullYear(), currentMonth.getMonth(), day);
+    const sameDay = (a: Date | null, b: Date) =>
+      !!a &&
+      a.getFullYear() === b.getFullYear() &&
+      a.getMonth() === b.getMonth() &&
+      a.getDate() === b.getDate();
+
     return (
-      day === today.getDate() &&
-      currentMonth.getMonth() === today.getMonth() &&
-      currentMonth.getFullYear() === today.getFullYear()
-    );
-  };
+      <div className={classNames(styles.wrapper, className)} ref={containerRef}>
+        {label && (
+          <label htmlFor={field.inputId} className={styles.label}>
+            {label}
+            {required && (
+              <span className={styles.required} aria-hidden="true">
+                *
+              </span>
+            )}
+          </label>
+        )}
 
-  // Check if date is selected
-  const isSelected = (day: number): boolean => {
-    if (!value) return false;
-    const selectedDate = new Date(value);
-    return (
-      day === selectedDate.getDate() &&
-      currentMonth.getMonth() === selectedDate.getMonth() &&
-      currentMonth.getFullYear() === selectedDate.getFullYear()
-    );
-  };
+        <div className={styles.inputWrapper}>
+          <div
+            className={classNames(
+              styles.inputContainer,
+              error && styles.inputError,
+              disabled && styles.inputDisabled,
+            )}
+          >
+            <input
+              ref={mergeRefs(inputRef, ref)}
+              {...field.controlProps}
+              name={name}
+              required={required}
+              type="text"
+              inputMode="numeric"
+              autoComplete="off"
+              value={inputValue}
+              onChange={handleInputChange}
+              onBlur={handleInputBlur}
+              onClick={() => !disabled && setIsOpen(!isOpen)}
+              onFocus={() => {
+                if (skipOpenOnFocus.current) {
+                  skipOpenOnFocus.current = false;
+                  return;
+                }
+                if (!disabled) setIsOpen(true);
+              }}
+              placeholder={placeholder ?? datePlaceholder(locale)}
+              disabled={disabled}
+              className={styles.input}
+              aria-haspopup="dialog"
+              aria-expanded={isOpen}
+              aria-controls={isOpen ? calendarId : undefined}
+            />
+            <IconButton
+              icon={<CalendarIcon size="md" className={styles.icon} />}
+              aria-label={text.openCalendar}
+              onClick={() => !disabled && setIsOpen(!isOpen)}
+              disabled={disabled}
+              size="small"
+              variant="secondary"
+              quiet
+            />
+          </div>
 
-  // Generate calendar days
-  const calendarDays: (number | null)[] = [];
-  const daysInMonth = getDaysInMonth(currentMonth);
-  const firstDay = getFirstDayOfMonth(currentMonth);
-
-  // Add empty cells for days before the first day of month
-  for (let i = 0; i < firstDay; i++) {
-    calendarDays.push(null);
-  }
-
-  // Add days of the month
-  for (let i = 1; i <= daysInMonth; i++) {
-    calendarDays.push(i);
-  }
-
-  const getQuickActionLabels = () => {
-    if (locale.startsWith("es")) {
-      return { today: "Hoy", clear: "Limpiar" };
-    }
-    return { today: "Today", clear: "Clear" };
-  };
-
-  const { today, clear } = getQuickActionLabels();
-
-  return (
-    <div className={classNames(styles.wrapper, className)} ref={containerRef}>
-      {/* Label */}
-      {label && (
-        <label className={styles.label}>
-          {label}
-          {required && <span className={styles.required}>*</span>}
-        </label>
-      )}
-
-      {/* Input Field */}
-      <div className={styles.inputWrapper}>
-        <div
-          className={classNames(
-            styles.inputContainer,
-            error && styles.inputError,
-            disabled && styles.inputDisabled,
-          )}
-        >
-          <input
-            ref={inputRef}
-            type="text"
-            value={inputValue}
-            onChange={handleInputChange}
-            onBlur={handleInputBlur}
-            onClick={() => !disabled && setIsOpen(!isOpen)}
-            onFocus={() => !disabled && setIsOpen(true)}
-            placeholder={placeholder}
-            disabled={disabled}
-            className={styles.input}
-          />
-          <IconButton
-            icon={<CalendarIcon size="md" className={styles.icon} />}
-            aria-label="Open calendar"
-            onClick={() => !disabled && setIsOpen(!isOpen)}
-            disabled={disabled}
-            size="small"
-            variant="secondary"
-            quiet
-          />
-        </div>
-
-        {/* Calendar Picker */}
-        {isOpen && !disabled && (
-          <div className={styles.calendar}>
-            {/* Header */}
-            <div className={styles.header}>
-              <IconButton
-                icon={<ChevronIcon size="md" className={styles.navIconPrev} />}
-                aria-label="Previous month"
-                onClick={handlePreviousMonth}
-                size="small"
-                variant="secondary"
-                quiet
-              />
-
-              <h3 className={styles.monthTitle}>
-                {getMonthName(currentMonth)}
-              </h3>
-
-              <IconButton
-                icon={<ChevronIcon size="md" className={styles.navIconNext} />}
-                aria-label="Next month"
-                onClick={handleNextMonth}
-                size="small"
-                variant="secondary"
-                quiet
-              />
-            </div>
-
-            {/* Day Names */}
-            <div className={styles.dayNames}>
-              {getDayNames().map((day) => (
-                <div key={day} className={styles.dayName}>
-                  {day}
-                </div>
-              ))}
-            </div>
-
-            {/* Calendar Grid */}
-            <div className={styles.calendarGrid}>
-              {calendarDays.map((day, index) => (
-                <Button
-                  key={index}
-                  type="button"
-                  onClick={() =>
-                    day !== null &&
-                    isDateSelectable(day) &&
-                    handleSelectDate(day)
+          {isOpen && !disabled && (
+            <div
+              id={calendarId}
+              className={styles.calendar}
+              role="dialog"
+              aria-label={text.calendar}
+            >
+              <div className={styles.header}>
+                <IconButton
+                  icon={
+                    <ChevronIcon size="md" className={styles.navIconPrev} />
                   }
-                  disabled={day === null || !isDateSelectable(day)}
-                  variant="text"
+                  aria-label={text.previousMonth}
+                  onClick={handlePreviousMonth}
+                  size="small"
+                  variant="secondary"
+                  quiet
+                />
+                <h3 className={styles.monthTitle} aria-live="polite">
+                  {formatMonthYear(currentMonth, locale)}
+                </h3>
+                <IconButton
+                  icon={
+                    <ChevronIcon size="md" className={styles.navIconNext} />
+                  }
+                  aria-label={text.nextMonth}
+                  onClick={handleNextMonth}
+                  size="small"
+                  variant="secondary"
+                  quiet
+                />
+              </div>
+
+              <div className={styles.dayNames} aria-hidden="true">
+                {(isEs ? DAY_NAMES_ES : DAY_NAMES_EN).map((day) => (
+                  <div key={day} className={styles.dayName}>
+                    {day}
+                  </div>
+                ))}
+              </div>
+
+              <div className={styles.calendarGrid}>
+                {calendarDays.map((day, index) => {
+                  if (day === null) {
+                    return (
+                      <span
+                        key={`vacio-${index}`}
+                        className={classNames(
+                          styles.dayButton,
+                          styles.dayEmpty,
+                        )}
+                      />
+                    );
+                  }
+                  const date = dayDate(day);
+                  const isSel = sameDay(selected, date);
+                  const isToday = sameDay(today, date);
+                  const selectable = isDateSelectable(date);
+                  return (
+                    <Button
+                      key={day}
+                      type="button"
+                      onClick={() => selectable && handleSelectDay(day)}
+                      disabled={!selectable}
+                      aria-pressed={isSel}
+                      aria-current={isToday ? "date" : undefined}
+                      aria-label={formatLocalDate(date, locale)}
+                      variant="text"
+                      color="secondary"
+                      size="small"
+                      disableElevation
+                      className={classNames(
+                        styles.dayButton,
+                        isSel && styles.daySelected,
+                        !isSel && isToday && styles.dayToday,
+                        !isSel &&
+                          !isToday &&
+                          selectable &&
+                          styles.daySelectable,
+                        !selectable && styles.dayDisabled,
+                      )}
+                    >
+                      {day}
+                    </Button>
+                  );
+                })}
+              </div>
+
+              <div className={styles.quickActions}>
+                <Button
+                  type="button"
+                  onClick={() => {
+                    const now = new Date();
+                    const hoy = new Date(
+                      now.getFullYear(),
+                      now.getMonth(),
+                      now.getDate(),
+                    );
+                    if (isDateSelectable(hoy)) selectDate(hoy);
+                    else setCurrentMonth(hoy);
+                  }}
+                  variant="outlined"
+                  color="primary"
+                  size="small"
+                  className={styles.actionButton}
+                >
+                  {text.today}
+                </Button>
+                <Button
+                  type="button"
+                  onClick={() => {
+                    onChange("");
+                    setInputValue("");
+                    setIsOpen(false);
+                  }}
+                  variant="outlined"
                   color="secondary"
                   size="small"
-                  disableElevation
-                  className={classNames(
-                    styles.dayButton,
-                    day === null && styles.dayEmpty,
-                    day !== null && isSelected(day) && styles.daySelected,
-                    day !== null &&
-                      !isSelected(day) &&
-                      isToday(day) &&
-                      styles.dayToday,
-                    day !== null &&
-                      !isSelected(day) &&
-                      !isToday(day) &&
-                      isDateSelectable(day) &&
-                      styles.daySelectable,
-                    day !== null &&
-                      !isDateSelectable(day) &&
-                      styles.dayDisabled,
-                  )}
+                  className={styles.actionButton}
                 >
-                  {day}
+                  {text.clear}
                 </Button>
-              ))}
+              </div>
             </div>
+          )}
+        </div>
 
-            {/* Quick Actions */}
-            <div className={styles.quickActions}>
-              <Button
-                type="button"
-                onClick={() => {
-                  const today = new Date();
-                  handleSelectDate(today.getDate());
-                  setCurrentMonth(today);
-                }}
-                variant="outlined"
-                color="primary"
-                size="small"
-                className={styles.actionButton}
-              >
-                {today}
-              </Button>
-              <Button
-                type="button"
-                onClick={() => {
-                  onChange("");
-                  setInputValue("");
-                  setIsOpen(false);
-                }}
-                variant="outlined"
-                color="secondary"
-                size="small"
-                className={styles.actionButton}
-              >
-                {clear}
-              </Button>
-            </div>
+        {hint && !error && (
+          <p id={field.hintId} className={styles.hint}>
+            {hint}
+          </p>
+        )}
+
+        {error && (
+          <div id={field.errorId} className={styles.errorRow} role="alert">
+            <ErrorIcon size="sm" className={styles.errorIcon} />
+            <p className={styles.errorText}>{error}</p>
           </div>
         )}
       </div>
+    );
+  },
+);
 
-      {/* Hint Text */}
-      {hint && !error && <p className={styles.hint}>{hint}</p>}
-
-      {/* Error Message */}
-      {error && (
-        <div className={styles.errorRow}>
-          <ErrorIcon size="sm" className={styles.errorIcon} />
-          <p className={styles.errorText}>{error}</p>
-        </div>
-      )}
-    </div>
-  );
-};
+DateInput.displayName = "DateInput";
 
 export default DateInput;

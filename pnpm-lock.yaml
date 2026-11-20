@@ -575,6 +575,9 @@ importers:
       '@rubenpazch/icons':
         specifier: workspace:*
         version: link:../icons
+      '@rubenpazch/shared':
+        specifier: workspace:*
+        version: link:../shared
       '@rubenpazch/tokens':
         specifier: workspace:*
         version: link:../tokens
@@ -600,6 +603,9 @@ importers:
       '@rubenpazch/icons':
         specifier: workspace:*
         version: link:../icons
+      '@rubenpazch/shared':
+        specifier: workspace:*
+        version: link:../shared
       '@rubenpazch/tokens':
         specifier: workspace:*
         version: link:../tokens
