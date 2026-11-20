@@ -1,18 +1,21 @@
 import React from "react";
+import { toLegacySize } from "@rubenpazch/shared";
 import styles from "./Button.module.css";
 
 export type ButtonVariant = "text" | "contained" | "outlined";
 export type ButtonColor =
   "primary" | "secondary" | "success" | "error" | "warning" | "info";
 export type ButtonSize = "small" | "medium" | "large";
+/** Tamaño aceptado en la prop: sm/md/lg (estándar) o small/medium/large. */
+export type ButtonSizeProp = ButtonSize | "sm" | "md" | "lg";
 
 type ButtonBaseProps = {
   /** Button variant style */
   variant?: ButtonVariant;
   /** Button color theme */
   color?: ButtonColor;
-  /** Button size */
-  size?: ButtonSize;
+  /** Tamaño: sm, md (por defecto) o lg; también small, medium, large. */
+  size?: ButtonSizeProp;
   /** Disabled state */
   disabled?: boolean;
   /** Loading state with spinner */
@@ -93,7 +96,7 @@ const Button = React.forwardRef<
   const {
     variant = "text",
     color = "primary",
-    size = "medium",
+    size: sizeProp = "medium",
     component,
     className,
     loading = false,
@@ -105,6 +108,7 @@ const Button = React.forwardRef<
     ...rest
   } = props;
 
+  const size = toLegacySize(sizeProp) as ButtonSize;
   const disabled = "disabled" in props ? props.disabled : false;
   const href = "href" in props ? props.href : undefined;
   const Component = component || ((href ? "a" : "button") as any);

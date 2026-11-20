@@ -1,5 +1,6 @@
 import React from "react";
 import { ChevronBarIcon, ChevronIcon } from "@rubenpazch/icons";
+import { toLegacySize } from "@rubenpazch/shared";
 import styles from "./PaginationItem.module.css";
 import type {
   PaginationShape,
@@ -35,7 +36,7 @@ export interface PaginationItemProps extends Omit<
 const classNames = (...classes: (string | undefined | false)[]) =>
   classes.filter(Boolean).join(" ");
 
-const iconSizeMap: Record<PaginationSize, "sm" | "md" | "lg"> = {
+const iconSizeMap: Record<"small" | "medium" | "large", "sm" | "md" | "lg"> = {
   small: "sm",
   medium: "md",
   large: "lg",
@@ -49,13 +50,14 @@ const PaginationItem = React.forwardRef<HTMLButtonElement, PaginationItemProps>(
       selected = false,
       disabled = false,
       shape = "rounded",
-      size = "medium",
+      size: sizeProp = "medium",
       variant = "text",
       className,
       ...props
     },
     ref,
   ) => {
+    const size = toLegacySize(sizeProp);
     // Ellipsis are not interactive
     if (type === "start-ellipsis" || type === "end-ellipsis") {
       // Use ASCII ellipsis to keep output portable across environments
@@ -160,16 +162,16 @@ const PaginationItem = React.forwardRef<HTMLButtonElement, PaginationItemProps>(
         disabled={disabled}
         aria-label={
           type === "first"
-            ? "Go to first page"
+            ? "Ir a la primera página"
             : type === "last"
-              ? "Go to last page"
+              ? "Ir a la última página"
               : type === "next"
-                ? "Go to next page"
+                ? "Página siguiente"
                 : type === "previous"
-                  ? "Go to previous page"
-                  : `Go to page ${page}`
+                  ? "Página anterior"
+                  : `Página ${page}`
         }
-        aria-current={selected ? "true" : undefined}
+        aria-current={selected ? "page" : undefined}
         {...props}
       >
         {getButtonContent()}

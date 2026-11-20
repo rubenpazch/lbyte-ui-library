@@ -20,7 +20,8 @@
     "**/*.css"
   ],
   "dependencies": {
-    "@rubenpazch/icons": "workspace:*"
+    "@rubenpazch/icons": "workspace:*",
+    "@rubenpazch/shared": "workspace:*"
   },
   "exports": {
     ".": {

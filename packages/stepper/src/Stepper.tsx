@@ -1,4 +1,5 @@
 import React from "react";
+import { toLegacySize } from "@rubenpazch/shared";
 import styles from "./Stepper.module.css";
 
 export interface Step {
@@ -8,7 +9,7 @@ export interface Step {
   onClick?: () => void;
 }
 
-type StepperSize = "small" | "medium" | "large";
+export type StepperSize = "small" | "medium" | "large" | "sm" | "md" | "lg";
 interface Stepper {
   steps: Step[];
   currentStep: number;
@@ -45,8 +46,9 @@ const ProgressSteps: React.FC<Stepper> = ({
   className = "",
   stepClickable = false,
   onStepChange,
-  size = "medium",
+  size: sizeProp = "medium",
 }) => {
+  const size = toLegacySize(sizeProp);
   const sizeStyles = sizeMap[size] || sizeMap.medium;
   const handleStepClick = (step: Step) => {
     if (step.onClick) step.onClick();

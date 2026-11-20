@@ -31,6 +31,23 @@ export function normalizeSize(
   );
 }
 
+/**
+ * Inverso de normalizeSize, para componentes cuyos estilos internos usan los nombres largos.
+ * `toLegacySize("sm") === "small"`.
+ */
+export function toLegacySize(
+  size: SizeProp | undefined,
+  fallback: LegacySize = "medium",
+): LegacySize {
+  if (!size) return fallback;
+  const map: Record<ComponentSize, LegacySize> = {
+    sm: "small",
+    md: "medium",
+    lg: "large",
+  };
+  return (map as Record<string, LegacySize>)[size] ?? (size as LegacySize);
+}
+
 /* ------------------------------------------------------------------ campos */
 
 /** Props comunes a todos los campos de formulario. */

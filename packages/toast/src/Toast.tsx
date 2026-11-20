@@ -126,7 +126,7 @@ const ToastBannerItem: React.FC<ToastBannerItemProps> = ({
 export const ToastBanner: React.FC<ToastBannerProps> = ({
   toasts,
   onClose,
-  closeAriaLabel = "Close notification",
+  closeAriaLabel = "Cerrar notificación",
   className,
 }) => {
   if (toasts.length === 0) {

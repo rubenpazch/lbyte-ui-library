@@ -115,10 +115,10 @@ describe("Drawer Component", () => {
       );
 
       await waitFor(() => {
-        expect(screen.getByLabelText("Close drawer")).toBeInTheDocument();
+        expect(screen.getByLabelText("Cerrar")).toBeInTheDocument();
       });
 
-      const closeButton = screen.getByLabelText("Close drawer");
+      const closeButton = screen.getByLabelText("Cerrar");
       fireEvent.click(closeButton);
 
       expect(mockOnClose).toHaveBeenCalledTimes(1);
