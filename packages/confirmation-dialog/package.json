@@ -43,5 +43,11 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "lbyte": {
+    "categoria": "retroalimentacion",
+    "resumen": "Diálogo modal de confirmación (aceptar/cancelar).",
+    "usarCuando": "Confirmar acciones destructivas o irreversibles (eliminar, anular, cerrar periodo).",
+    "evitarCuando": "Mostrar formularios o contenido largo: usa Drawer."
   }
 }

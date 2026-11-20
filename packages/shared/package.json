@@ -63,5 +63,11 @@
     "rollup-plugin-typescript2": "^0.37.0",
     "tslib": "^2.8.1",
     "typescript": "^6.0.3"
+  },
+  "lbyte": {
+    "categoria": "base",
+    "resumen": "Utilidades (classList) y tipos comunes; la usan internamente los componentes.",
+    "usarCuando": "Solo si construyes un componente nuevo dentro de la librería.",
+    "evitarCuando": "En las apps: no hace falta importarla."
   }
 }

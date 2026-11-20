@@ -35,5 +35,11 @@
   },
   "devDependencies": {
     "@rubenpazch/typescript-config": "workspace:*"
+  },
+  "lbyte": {
+    "categoria": "formularios",
+    "resumen": "Campo numérico con botones +/-, signo opcional, solo enteros, ayuda, advertencia y error.",
+    "usarCuando": "Ajustar un valor por pasos (cantidades, graduaciones con signo).",
+    "evitarCuando": "Montos de dinero: usa NumericPicker."
   }
 }

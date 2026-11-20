@@ -43,5 +43,11 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "lbyte": {
+    "categoria": "salud",
+    "resumen": "Tipo y número de documento peruano (DNI, CE, pasaporte) con validación de longitud y formato.",
+    "usarCuando": "Registrar el documento de identidad de una persona en Perú.",
+    "evitarCuando": "Otros países o identificadores que no son documentos de identidad."
   }
 }

@@ -43,5 +43,11 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "lbyte": {
+    "categoria": "salud",
+    "resumen": "Buscador de pacientes con resultados y selección.",
+    "usarCuando": "Elegir un paciente existente en apps clínicas u ópticas.",
+    "evitarCuando": "Buscar otro tipo de registros: usa Autocomplete."
   }
 }

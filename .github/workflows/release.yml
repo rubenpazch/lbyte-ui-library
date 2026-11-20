@@ -11,6 +11,8 @@ jobs:
   release:
     name: Release
     runs-on: ubuntu-latest
+    outputs:
+      published: ${{ steps.changesets.outputs.published }}
     permissions:
       contents: write
       pull-requests: write
@@ -63,3 +65,10 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN_UI_LIBRARY }}
           NPM_CONFIG_PROVENANCE: true
+
+  # Solo cuando se publicó una versión nueva en npm: actualiza https://ui.lbyte.pe
+  storybook:
+    needs: release
+    if: needs.release.outputs.published == 'true'
+    uses: ./.github/workflows/storybook.yml
+    secrets: inherit

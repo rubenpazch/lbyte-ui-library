@@ -32,5 +32,11 @@
   },
   "devDependencies": {
     "@rubenpazch/typescript-config": "workspace:*"
+  },
+  "lbyte": {
+    "categoria": "formularios",
+    "resumen": "Campo numérico con mínimo, máximo, paso, decimales y moneda.",
+    "usarCuando": "Montos, cantidades y precios.",
+    "evitarCuando": "Valores con signo o graduaciones ópticas: usa NumericUpPicker."
   }
 }

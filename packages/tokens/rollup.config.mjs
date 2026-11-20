@@ -16,7 +16,8 @@ const copyCss = () => ({
     mkdirSync("./dist", { recursive: true });
     copyFileSync("./src/tokens.css", "./dist/tokens.css");
     copyFileSync("./src/base.css", "./dist/base.css");
-    console.log("\u2713 Copied tokens.css and base.css to dist/");
+    copyFileSync("./src/tailwind.css", "./dist/tailwind.css");
+    console.log("\u2713 Copied tokens.css, base.css and tailwind.css to dist/");
   },
 });
 

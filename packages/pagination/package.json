@@ -60,5 +60,11 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "lbyte": {
+    "categoria": "navegacion",
+    "resumen": "Paginación con variantes, tamaños y formas; incluye PaginationItem.",
+    "usarCuando": "Listados paginados en el servidor (tablas, resultados de búsqueda).",
+    "evitarCuando": "Pocas páginas que caben en una sola vista."
   }
 }

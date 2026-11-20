@@ -43,5 +43,11 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "lbyte": {
+    "categoria": "formularios",
+    "resumen": "Casilla de verificación con etiqueta, ayuda y error.",
+    "usarCuando": "Opciones sí/no o selección múltiple independiente.",
+    "evitarCuando": "Elegir una sola opción entre varias: usa RadioGroup."
   }
 }

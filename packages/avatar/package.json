@@ -57,5 +57,11 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "lbyte": {
+    "categoria": "presentacion",
+    "resumen": "Avatar de persona (imagen, iniciales o icono) y AvatarGroup para varios.",
+    "usarCuando": "Mostrar quién es un usuario, autor o responsable.",
+    "evitarCuando": "Logos o imágenes de contenido: usa <img>."
   }
 }

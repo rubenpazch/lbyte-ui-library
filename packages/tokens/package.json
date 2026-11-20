@@ -19,7 +19,8 @@
       "types": "./dist/index.d.ts"
     },
     "./tokens.css": "./dist/tokens.css",
-    "./base.css": "./dist/base.css"
+    "./base.css": "./dist/base.css",
+    "./tailwind.css": "./dist/tailwind.css"
   },
   "files": [
     "dist"
@@ -39,5 +40,11 @@
     "rollup-plugin-typescript2": "^0.37.0",
     "tslib": "^2.8.1",
     "typescript": "^6.0.3"
+  },
+  "lbyte": {
+    "categoria": "base",
+    "resumen": "Tokens de diseño (colores, tipografía, espacios, radios, sombras) como variables CSS --lb-*, estilos base y puente para Tailwind 4.",
+    "usarCuando": "Siempre: importar tokens.css una vez por app; usar var(--lb-*) o las clases de Tailwind lb-*.",
+    "evitarCuando": "No escribir colores en hexadecimal en las apps."
   }
 }

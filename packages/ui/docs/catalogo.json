@@ -1,0 +1,5217 @@
+{
+  "paquete": "@rubenpazch/ui",
+  "generadoPor": "scripts/catalogo.mjs",
+  "categorias": {
+    "base": "Base (tokens y utilidades)",
+    "acciones": "Acciones",
+    "formularios": "Formularios",
+    "navegacion": "Navegación",
+    "retroalimentacion": "Retroalimentación",
+    "presentacion": "Presentación de datos",
+    "datos": "Datos",
+    "iconos": "Iconos",
+    "salud": "Salud (pacientes y óptica)"
+  },
+  "paquetes": [
+    {
+      "paquete": "@rubenpazch/autocomplete",
+      "version": "5.0.0",
+      "carpeta": "packages/autocomplete",
+      "categoria": "formularios",
+      "resumen": "Selector con búsqueda sobre una lista de opciones (con descripción, carga y opción de limpiar).",
+      "usarCuando": "Elegir un valor entre muchas opciones (más de ~8) o cuando el usuario necesita filtrar escribiendo.",
+      "evitarCuando": "Pocas opciones fijas: usa Select o RadioGroup.",
+      "componentes": [
+        {
+          "nombre": "Autocomplete",
+          "importar": "import { Autocomplete } from \"@rubenpazch/ui\";",
+          "descripcion": "",
+          "props": [
+            {
+              "nombre": "onChange",
+              "tipo": "(value: string | number | null, option?: AutocompleteOption | undefined) => void",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "value",
+              "tipo": "null | string | number",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "",
+              "descripcion": ""
+            },
+            {
+              "nombre": "clearable",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "true",
+              "descripcion": ""
+            },
+            {
+              "nombre": "createLabel",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "Create",
+              "descripcion": ""
+            },
+            {
+              "nombre": "debounceMs",
+              "tipo": "number",
+              "requerido": false,
+              "porDefecto": "300",
+              "descripcion": ""
+            },
+            {
+              "nombre": "disabled",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "false",
+              "descripcion": ""
+            },
+            {
+              "nombre": "error",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "highlightMatch",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "true",
+              "descripcion": ""
+            },
+            {
+              "nombre": "hint",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "icon",
+              "tipo": "ReactNode",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "keepListOpen",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "false",
+              "descripcion": ""
+            },
+            {
+              "nombre": "label",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "loading",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "false",
+              "descripcion": ""
+            },
+            {
+              "nombre": "loadingText",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "Loading...",
+              "descripcion": ""
+            },
+            {
+              "nombre": "maxHeight",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "300px",
+              "descripcion": ""
+            },
+            {
+              "nombre": "minSearchLength",
+              "tipo": "number",
+              "requerido": false,
+              "porDefecto": "0",
+              "descripcion": ""
+            },
+            {
+              "nombre": "noResultsText",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "No results found",
+              "descripcion": ""
+            },
+            {
+              "nombre": "onBlur",
+              "tipo": "() => void",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "onCreate",
+              "tipo": "(searchTerm: string) => void",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "onFocus",
+              "tipo": "() => void",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "onSearch",
+              "tipo": "(searchTerm: string) => void",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "options",
+              "tipo": "AutocompleteOption[]",
+              "requerido": false,
+              "porDefecto": "[]",
+              "descripcion": ""
+            },
+            {
+              "nombre": "placeholder",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "Search or select...",
+              "descripcion": ""
+            },
+            {
+              "nombre": "position",
+              "tipo": "\"bottom\" | \"top\"",
+              "requerido": false,
+              "porDefecto": "bottom",
+              "descripcion": ""
+            },
+            {
+              "nombre": "readOnly",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "false",
+              "descripcion": ""
+            },
+            {
+              "nombre": "renderOption",
+              "tipo": "(option: AutocompleteOption, isSelected: boolean) => ReactNode",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "required",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "false",
+              "descripcion": ""
+            },
+            {
+              "nombre": "searchable",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "true",
+              "descripcion": ""
+            },
+            {
+              "nombre": "warning",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            }
+          ]
+        }
+      ],
+      "otrosValores": [],
+      "tipos": []
+    },
+    {
+      "paquete": "@rubenpazch/avatar",
+      "version": "3.1.0",
+      "carpeta": "packages/avatar",
+      "categoria": "presentacion",
+      "resumen": "Avatar de persona (imagen, iniciales o icono) y AvatarGroup para varios.",
+      "usarCuando": "Mostrar quién es un usuario, autor o responsable.",
+      "evitarCuando": "Logos o imágenes de contenido: usa <img>.",
+      "componentes": [
+        {
+          "nombre": "Avatar",
+          "importar": "import { Avatar } from \"@rubenpazch/ui\";",
+          "descripcion": "",
+          "props": [
+            {
+              "nombre": "alt",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "",
+              "descripcion": "Alt text for image"
+            },
+            {
+              "nombre": "children",
+              "tipo": "ReactNode",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Children - can be text, icon, or fallback content"
+            },
+            {
+              "nombre": "component",
+              "tipo": "ElementType<any, keyof IntrinsicElements>",
+              "requerido": false,
+              "porDefecto": "div",
+              "descripcion": "Custom component to use instead of default div"
+            },
+            {
+              "nombre": "loading",
+              "tipo": "\"eager\" | \"lazy\"",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Image loading strategy"
+            },
+            {
+              "nombre": "onError",
+              "tipo": "ReactEventHandler<HTMLImageElement>",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Callback fired when image fails to load"
+            },
+            {
+              "nombre": "onLoad",
+              "tipo": "ReactEventHandler<HTMLImageElement>",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Callback fired when image loads successfully"
+            },
+            {
+              "nombre": "size",
+              "tipo": "\"xs\" | \"sm\" | \"md\" | \"lg\" | \"xl\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": "Size of the avatar"
+            },
+            {
+              "nombre": "sizes",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Custom sizes object for more control"
+            },
+            {
+              "nombre": "src",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Image source URL"
+            },
+            {
+              "nombre": "srcSet",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Image srcset for responsive images"
+            },
+            {
+              "nombre": "variant",
+              "tipo": "\"circular\" | \"rounded\" | \"square\"",
+              "requerido": false,
+              "porDefecto": "circular",
+              "descripcion": "Shape variant of the avatar"
+            }
+          ]
+        },
+        {
+          "nombre": "AvatarGroup",
+          "importar": "import { AvatarGroup } from \"@rubenpazch/ui\";",
+          "descripcion": "",
+          "props": [
+            {
+              "nombre": "children",
+              "tipo": "ReactNode",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": "Avatar children to display"
+            },
+            {
+              "nombre": "max",
+              "tipo": "number",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Maximum number of avatars to show before showing +X"
+            },
+            {
+              "nombre": "renderSurplus",
+              "tipo": "(surplus: number) => ReactNode",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Custom render function for surplus count"
+            },
+            {
+              "nombre": "spacing",
+              "tipo": "number | \"small\" | \"medium\"",
+              "requerido": false,
+              "porDefecto": "medium",
+              "descripcion": "Spacing between avatars"
+            },
+            {
+              "nombre": "total",
+              "tipo": "number",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Total number of avatars (for showing +X count)"
+            }
+          ]
+        }
+      ],
+      "otrosValores": [],
+      "tipos": [
+        "AvatarProps",
+        "AvatarSize",
+        "AvatarVariant",
+        "AvatarGroupProps",
+        "AvatarGroupSpacing"
+      ]
+    },
+    {
+      "paquete": "@rubenpazch/button",
+      "version": "6.1.0",
+      "carpeta": "packages/button",
+      "categoria": "acciones",
+      "resumen": "Botón con variantes text/contained/outlined, colores, tamaños, estado de carga e iconos; puede renderizar un enlace (href).",
+      "usarCuando": "Cualquier acción principal o secundaria: guardar, enviar, cancelar, navegar con apariencia de botón.",
+      "evitarCuando": "Acciones de solo icono: usa IconButton.",
+      "componentes": [
+        {
+          "nombre": "Button",
+          "importar": "import { Button } from \"@rubenpazch/ui\";",
+          "descripcion": "",
+          "props": [
+            {
+              "nombre": "color",
+              "tipo": "\"primary\" | \"secondary\" | \"success\" | \"error\" | \"warning\" | \"info\"",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Button color theme"
+            },
+            {
+              "nombre": "component",
+              "tipo": "\"button\" | \"a\"",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "disabled",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Disabled state"
+            },
+            {
+              "nombre": "disableElevation",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Disable elevation/shadow effects"
+            },
+            {
+              "nombre": "endIcon",
+              "tipo": "ReactNode",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Icon to display after text"
+            },
+            {
+              "nombre": "fullWidth",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Whether the button should take full width"
+            },
+            {
+              "nombre": "href",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "loading",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Loading state with spinner"
+            },
+            {
+              "nombre": "size",
+              "tipo": "\"small\" | \"medium\" | \"large\"",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Button size"
+            },
+            {
+              "nombre": "startIcon",
+              "tipo": "ReactNode",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Icon to display before text"
+            },
+            {
+              "nombre": "variant",
+              "tipo": "\"text\" | \"contained\" | \"outlined\"",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Button variant style"
+            }
+          ]
+        }
+      ],
+      "otrosValores": [],
+      "tipos": []
+    },
+    {
+      "paquete": "@rubenpazch/checkbox-input",
+      "version": "3.1.0",
+      "carpeta": "packages/checkbox-input",
+      "categoria": "formularios",
+      "resumen": "Casilla de verificación con etiqueta, ayuda y error.",
+      "usarCuando": "Opciones sí/no o selección múltiple independiente.",
+      "evitarCuando": "Elegir una sola opción entre varias: usa RadioGroup.",
+      "componentes": [
+        {
+          "nombre": "CheckboxInput",
+          "importar": "import { CheckboxInput } from \"@rubenpazch/ui\";",
+          "descripcion": "",
+          "props": [
+            {
+              "nombre": "label",
+              "tipo": "string",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "checked",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "false",
+              "descripcion": ""
+            },
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "",
+              "descripcion": ""
+            },
+            {
+              "nombre": "description",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "disabled",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "false",
+              "descripcion": ""
+            },
+            {
+              "nombre": "error",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "id",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "indeterminate",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "false",
+              "descripcion": ""
+            },
+            {
+              "nombre": "onChange",
+              "tipo": "(checked: boolean) => void",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "required",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "false",
+              "descripcion": ""
+            },
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": ""
+            },
+            {
+              "nombre": "variant",
+              "tipo": "\"default\" | \"primary\" | \"success\" | \"warning\" | \"danger\"",
+              "requerido": false,
+              "porDefecto": "default",
+              "descripcion": ""
+            }
+          ]
+        }
+      ],
+      "otrosValores": [],
+      "tipos": []
+    },
+    {
+      "paquete": "@rubenpazch/chip",
+      "version": "4.0.0",
+      "carpeta": "packages/chip",
+      "categoria": "presentacion",
+      "resumen": "Chip/etiqueta con variantes, icono y acción de borrar.",
+      "usarCuando": "Estados, etiquetas, filtros activos o valores seleccionados que se pueden quitar.",
+      "evitarCuando": "Acciones principales: usa Button.",
+      "componentes": [
+        {
+          "nombre": "Chip",
+          "importar": "import { Chip } from \"@rubenpazch/ui\";",
+          "descripcion": "",
+          "props": [
+            {
+              "nombre": "avatar",
+              "tipo": "ReactNode",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Avatar or custom element shown at the start"
+            },
+            {
+              "nombre": "clickable",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "false",
+              "descripcion": "Whether the chip behaves like a button"
+            },
+            {
+              "nombre": "color",
+              "tipo": "\"default\" | \"primary\" | \"success\" | \"warning\" | \"error\" | \"info\"",
+              "requerido": false,
+              "porDefecto": "default",
+              "descripcion": "Color theme for the chip"
+            },
+            {
+              "nombre": "component",
+              "tipo": "ElementType<any, keyof IntrinsicElements>",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Override root component"
+            },
+            {
+              "nombre": "deleteAriaLabel",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "Remove chip",
+              "descripcion": "Accessible label for the delete button"
+            },
+            {
+              "nombre": "deleteIcon",
+              "tipo": "ReactNode",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Custom delete icon element"
+            },
+            {
+              "nombre": "disabled",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "false",
+              "descripcion": "Disabled state"
+            },
+            {
+              "nombre": "icon",
+              "tipo": "ReactNode",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Leading icon rendered before the label"
+            },
+            {
+              "nombre": "label",
+              "tipo": "ReactNode",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Content shown inside the chip"
+            },
+            {
+              "nombre": "onDelete",
+              "tipo": "(event: MouseEvent<HTMLButtonElement, MouseEvent>) => void",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Callback fired when the delete icon is clicked"
+            },
+            {
+              "nombre": "selected",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "false",
+              "descripcion": "Selected/pressed state for toggleable chips"
+            },
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": "Chip size"
+            },
+            {
+              "nombre": "variant",
+              "tipo": "\"filled\" | \"outlined\" | \"soft\"",
+              "requerido": false,
+              "porDefecto": "filled",
+              "descripcion": "Visual style for the chip"
+            }
+          ]
+        }
+      ],
+      "otrosValores": [],
+      "tipos": ["ChipVariant", "ChipColor", "ChipSize", "ChipProps"]
+    },
+    {
+      "paquete": "@rubenpazch/confirmation-dialog",
+      "version": "3.0.0",
+      "carpeta": "packages/confirmation-dialog",
+      "categoria": "retroalimentacion",
+      "resumen": "Diálogo modal de confirmación (aceptar/cancelar).",
+      "usarCuando": "Confirmar acciones destructivas o irreversibles (eliminar, anular, cerrar periodo).",
+      "evitarCuando": "Mostrar formularios o contenido largo: usa Drawer.",
+      "componentes": [
+        {
+          "nombre": "ConfirmationDialog",
+          "importar": "import { ConfirmationDialog } from \"@rubenpazch/ui\";",
+          "descripcion": "",
+          "props": [
+            {
+              "nombre": "isOpen",
+              "tipo": "boolean",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "message",
+              "tipo": "string",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "onCancel",
+              "tipo": "() => void",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "onConfirm",
+              "tipo": "() => void",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "title",
+              "tipo": "string",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "cancelText",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "Cancel",
+              "descripcion": ""
+            },
+            {
+              "nombre": "confirmText",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "Confirm",
+              "descripcion": ""
+            },
+            {
+              "nombre": "isDangerous",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "false",
+              "descripcion": ""
+            },
+            {
+              "nombre": "isLoading",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "false",
+              "descripcion": ""
+            }
+          ]
+        }
+      ],
+      "otrosValores": [],
+      "tipos": []
+    },
+    {
+      "paquete": "@rubenpazch/date-input",
+      "version": "3.0.0",
+      "carpeta": "packages/date-input",
+      "categoria": "formularios",
+      "resumen": "Campo de fecha con formato local, mínimo/máximo, ayuda y error.",
+      "usarCuando": "Ingresar una fecha escribiéndola (fecha de nacimiento, fecha de documento).",
+      "evitarCuando": "Elegir en un calendario visual: usa DatePicker.",
+      "componentes": [
+        {
+          "nombre": "DateInput",
+          "importar": "import { DateInput } from \"@rubenpazch/ui\";",
+          "descripcion": "",
+          "props": [
+            {
+              "nombre": "onChange",
+              "tipo": "(date: string) => void",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "value",
+              "tipo": "string",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "",
+              "descripcion": ""
+            },
+            {
+              "nombre": "disabled",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "false",
+              "descripcion": ""
+            },
+            {
+              "nombre": "error",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "hint",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "label",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "locale",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "en",
+              "descripcion": ""
+            },
+            {
+              "nombre": "maxDate",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "minDate",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "placeholder",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "MM/DD/YYYY",
+              "descripcion": ""
+            },
+            {
+              "nombre": "required",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "false",
+              "descripcion": ""
+            }
+          ]
+        }
+      ],
+      "otrosValores": [],
+      "tipos": []
+    },
+    {
+      "paquete": "@rubenpazch/date-picker",
+      "version": "3.0.0",
+      "carpeta": "packages/date-picker",
+      "categoria": "formularios",
+      "resumen": "Selector de fecha con calendario desplegable.",
+      "usarCuando": "Elegir una fecha cercana o explorando el calendario (citas, vencimientos).",
+      "evitarCuando": "Fechas lejanas que el usuario conoce de memoria: usa DateInput.",
+      "componentes": [
+        {
+          "nombre": "DatePicker",
+          "importar": "import { DatePicker } from \"@rubenpazch/ui\";",
+          "descripcion": "",
+          "props": [
+            {
+              "nombre": "onChange",
+              "tipo": "(date: string) => void",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "value",
+              "tipo": "string",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "",
+              "descripcion": ""
+            },
+            {
+              "nombre": "disabled",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "false",
+              "descripcion": ""
+            },
+            {
+              "nombre": "error",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "hint",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "label",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "locale",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "en",
+              "descripcion": ""
+            },
+            {
+              "nombre": "maxDate",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "minDate",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "placeholder",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "readOnly",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "false",
+              "descripcion": ""
+            },
+            {
+              "nombre": "required",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "false",
+              "descripcion": ""
+            }
+          ]
+        }
+      ],
+      "otrosValores": [],
+      "tipos": []
+    },
+    {
+      "paquete": "@rubenpazch/draggable-list",
+      "version": "3.0.0",
+      "carpeta": "packages/draggable-list",
+      "categoria": "datos",
+      "resumen": "Lista reordenable arrastrando (también con teclado), basada en dnd-kit.",
+      "usarCuando": "Que el usuario defina el orden de elementos (prioridades, orden de servicios o menús).",
+      "evitarCuando": "Listas de solo lectura: usa una lista normal.",
+      "componentes": [
+        {
+          "nombre": "DraggableList",
+          "importar": "import { DraggableList } from \"@rubenpazch/ui\";",
+          "descripcion": "",
+          "props": [
+            {
+              "nombre": "getItemId",
+              "tipo": "(item: T) => string | number",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "items",
+              "tipo": "T[]",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "onReorder",
+              "tipo": "(newItems: T[]) => void",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "renderItem",
+              "tipo": "(item: T) => ReactNode",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "",
+              "descripcion": ""
+            },
+            {
+              "nombre": "gap",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": ""
+            },
+            {
+              "nombre": "itemClassName",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "",
+              "descripcion": ""
+            },
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": ""
+            },
+            {
+              "nombre": "variant",
+              "tipo": "\"default\" | \"outline\" | \"subtle\"",
+              "requerido": false,
+              "porDefecto": "default",
+              "descripcion": ""
+            }
+          ]
+        }
+      ],
+      "otrosValores": [],
+      "tipos": []
+    },
+    {
+      "paquete": "@rubenpazch/drawer",
+      "version": "4.1.0",
+      "carpeta": "packages/drawer",
+      "categoria": "navegacion",
+      "resumen": "Panel lateral (izquierda/derecha/arriba/abajo) con animación y fondo.",
+      "usarCuando": "Menús laterales, filtros o formularios de edición que no requieren cambiar de página.",
+      "evitarCuando": "Confirmaciones breves: usa ConfirmationDialog.",
+      "componentes": [
+        {
+          "nombre": "Drawer",
+          "importar": "import { Drawer } from \"@rubenpazch/ui\";",
+          "descripcion": "",
+          "props": [
+            {
+              "nombre": "children",
+              "tipo": "ReactNode",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": "Content to render in the drawer"
+            },
+            {
+              "nombre": "isOpen",
+              "tipo": "boolean",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": "Whether the drawer is open"
+            },
+            {
+              "nombre": "onClose",
+              "tipo": "() => void",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": "Function to close the drawer"
+            },
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "",
+              "descripcion": "Custom className for the drawer content"
+            },
+            {
+              "nombre": "closeOnEscape",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "true",
+              "descripcion": "Whether pressing Escape closes the drawer"
+            },
+            {
+              "nombre": "closeOnOverlayClick",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "true",
+              "descripcion": "Whether clicking overlay closes the drawer"
+            },
+            {
+              "nombre": "contentContained",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "false",
+              "descripcion": "Whether the content (header, body, footer) should be contained in a max-width container"
+            },
+            {
+              "nombre": "footer",
+              "tipo": "ReactNode",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Footer content (typically action buttons)"
+            },
+            {
+              "nombre": "footerAlign",
+              "tipo": "\"left\" | \"right\" | \"center\" | \"space-between\"",
+              "requerido": false,
+              "porDefecto": "right",
+              "descripcion": "Footer alignment"
+            },
+            {
+              "nombre": "headerAlign",
+              "tipo": "\"left\" | \"right\" | \"center\" | \"space-between\"",
+              "requerido": false,
+              "porDefecto": "space-between",
+              "descripcion": "Header alignment (how to position title and close button)"
+            },
+            {
+              "nombre": "position",
+              "tipo": "\"left\" | \"right\" | \"top\" | \"bottom\"",
+              "requerido": false,
+              "porDefecto": "right",
+              "descripcion": "Position from which the drawer slides in"
+            },
+            {
+              "nombre": "showOverlay",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "true",
+              "descripcion": "Whether to show overlay backdrop"
+            },
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\" | \"xl\" | \"full\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": "Size of the drawer"
+            },
+            {
+              "nombre": "title",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Title displayed in the drawer header"
+            }
+          ]
+        }
+      ],
+      "otrosValores": [],
+      "tipos": []
+    },
+    {
+      "paquete": "@rubenpazch/icon-button",
+      "version": "4.1.0",
+      "carpeta": "packages/icon-button",
+      "categoria": "acciones",
+      "resumen": "Botón de solo icono con variantes, formas, tooltip y etiqueta accesible.",
+      "usarCuando": "Acciones compactas en tablas, barras de herramientas o tarjetas (editar, borrar, cerrar).",
+      "evitarCuando": "Acciones principales con texto: usa Button.",
+      "componentes": [
+        {
+          "nombre": "IconButton",
+          "importar": "import { IconButton } from \"@rubenpazch/ui\";",
+          "descripcion": "",
+          "props": [
+            {
+              "nombre": "icon",
+              "tipo": "ReactNode",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "filled",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "false",
+              "descripcion": ""
+            },
+            {
+              "nombre": "focusStyleType",
+              "tipo": "\"filled\" | \"outline\" | \"underline\"",
+              "requerido": false,
+              "porDefecto": "filled",
+              "descripcion": ""
+            },
+            {
+              "nombre": "focusTriggerType",
+              "tipo": "\"self\" | \"sibling\" | \"parent\" | \"grandparent\"",
+              "requerido": false,
+              "porDefecto": "self",
+              "descripcion": ""
+            },
+            {
+              "nombre": "iconPosition",
+              "tipo": "\"start\" | \"end\"",
+              "requerido": false,
+              "porDefecto": "start",
+              "descripcion": ""
+            },
+            {
+              "nombre": "inverted",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "false",
+              "descripcion": ""
+            },
+            {
+              "nombre": "label",
+              "tipo": "ReactNode",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "labelPosition",
+              "tipo": "\"start\" | \"end\" | \"top\" | \"bottom\"",
+              "requerido": false,
+              "porDefecto": "end",
+              "descripcion": ""
+            },
+            {
+              "nombre": "linkStyle",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "false",
+              "descripcion": ""
+            },
+            {
+              "nombre": "quiet",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "false",
+              "descripcion": ""
+            },
+            {
+              "nombre": "shape",
+              "tipo": "\"rounded\" | \"square\"",
+              "requerido": false,
+              "porDefecto": "rounded",
+              "descripcion": ""
+            },
+            {
+              "nombre": "size",
+              "tipo": "\"small\" | \"medium\"",
+              "requerido": false,
+              "porDefecto": "medium",
+              "descripcion": ""
+            },
+            {
+              "nombre": "tooltip",
+              "tipo": "ReactNode",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "tooltipPosition",
+              "tipo": "\"top\" | \"bottom\" | \"left\" | \"right\"",
+              "requerido": false,
+              "porDefecto": "top",
+              "descripcion": ""
+            },
+            {
+              "nombre": "variant",
+              "tipo": "\"default\" | \"secondary\" | \"black\" | \"gradient-green\" | \"solid-green\" | \"blue\" | \"pink\" | \"warning\"",
+              "requerido": false,
+              "porDefecto": "default",
+              "descripcion": ""
+            }
+          ]
+        }
+      ],
+      "otrosValores": [],
+      "tipos": [
+        "IconButtonVariant",
+        "IconButtonSize",
+        "IconButtonShape",
+        "IconButtonFocusStyle",
+        "IconButtonFocusTrigger",
+        "IconPosition",
+        "LabelPosition",
+        "TooltipPosition",
+        "IconButtonProps"
+      ]
+    },
+    {
+      "paquete": "@rubenpazch/icons",
+      "version": "6.1.0",
+      "carpeta": "packages/icons",
+      "categoria": "iconos",
+      "resumen": "Más de 60 iconos SVG como componentes React (y MaterialIcon para Material Icons).",
+      "usarCuando": "Cualquier icono de la interfaz; combínalos con Button, IconButton, Chip o InfoRow.",
+      "evitarCuando": "Ilustraciones grandes o logos de marca.",
+      "componentes": [
+        {
+          "nombre": "ArrowDetailsIcon",
+          "importar": "import { ArrowDetailsIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "ArrowDetailsIcon Component\n\nA reusable arrow-in-circle icon component.\nCommonly used for viewing more details or expanding information.",
+          "props": [
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "",
+              "descripcion": ""
+            },
+            {
+              "nombre": "color",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "currentColor",
+              "descripcion": ""
+            },
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": ""
+            }
+          ]
+        },
+        {
+          "nombre": "ArchiveIcon",
+          "importar": "import { ArchiveIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "",
+          "props": [
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "",
+              "descripcion": ""
+            },
+            {
+              "nombre": "color",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "currentColor",
+              "descripcion": ""
+            },
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": ""
+            }
+          ]
+        },
+        {
+          "nombre": "BrandingIcon",
+          "importar": "import { BrandingIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "BrandingIcon Component\n\nA reusable branding/paintbrush icon component.\nCommonly used for branding settings, customization, and design options.",
+          "props": [
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "",
+              "descripcion": ""
+            },
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": ""
+            }
+          ]
+        },
+        {
+          "nombre": "BusinessPlanIcon",
+          "importar": "import { BusinessPlanIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "",
+          "props": [
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "",
+              "descripcion": ""
+            },
+            {
+              "nombre": "color",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "currentColor",
+              "descripcion": ""
+            },
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": ""
+            }
+          ]
+        },
+        {
+          "nombre": "CalendarIcon",
+          "importar": "import { CalendarIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "CalendarIcon Component\n\nA reusable calendar icon component.\nCommonly used for date pickers, scheduling features, and appointment management.",
+          "props": [
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "",
+              "descripcion": ""
+            },
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": ""
+            }
+          ]
+        },
+        {
+          "nombre": "CheckIcon",
+          "importar": "import { CheckIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "CheckIcon Component\n\nA reusable checkmark/check circle icon component.\nCommonly used for success states, task completion, and list items.",
+          "props": [
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "",
+              "descripcion": ""
+            },
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": ""
+            }
+          ]
+        },
+        {
+          "nombre": "CheckOutIcon",
+          "importar": "import { CheckOutIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "",
+          "props": [
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "",
+              "descripcion": ""
+            },
+            {
+              "nombre": "color",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "currentColor",
+              "descripcion": ""
+            },
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": ""
+            }
+          ]
+        },
+        {
+          "nombre": "CheckmarkIcon",
+          "importar": "import { CheckmarkIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "CheckmarkIcon Component\n\nA simple checkmark icon (without circle).\nUsed for list items, feature highlights, and confirmation states.",
+          "props": [
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "",
+              "descripcion": ""
+            },
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": ""
+            }
+          ]
+        },
+        {
+          "nombre": "ChecksIcon",
+          "importar": "import { ChecksIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "",
+          "props": [
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "",
+              "descripcion": ""
+            },
+            {
+              "nombre": "color",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "currentColor",
+              "descripcion": ""
+            },
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": ""
+            }
+          ]
+        },
+        {
+          "nombre": "ChevronBarIcon",
+          "importar": "import { ChevronBarIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "",
+          "props": [
+            {
+              "nombre": "direction",
+              "tipo": "\"left\" | \"right\"",
+              "requerido": false,
+              "porDefecto": "right",
+              "descripcion": ""
+            },
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": ""
+            }
+          ]
+        },
+        {
+          "nombre": "ChevronIcon",
+          "importar": "import { ChevronIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "",
+          "props": [
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "",
+              "descripcion": ""
+            },
+            {
+              "nombre": "color",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "currentColor",
+              "descripcion": ""
+            },
+            {
+              "nombre": "direction",
+              "tipo": "\"left\" | \"right\" | \"up\" | \"down\"",
+              "requerido": false,
+              "porDefecto": "down",
+              "descripcion": ""
+            },
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": ""
+            }
+          ]
+        },
+        {
+          "nombre": "ClinicalNotesIcon",
+          "importar": "import { ClinicalNotesIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "ClinicalNotesIcon component\nDisplays a clinical notes icon",
+          "props": [
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "",
+              "descripcion": ""
+            },
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\" | \"xl\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": ""
+            }
+          ]
+        },
+        {
+          "nombre": "CityIcon",
+          "importar": "import { CityIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "CityIcon component\nDisplays a building/city icon for city-related UI elements",
+          "props": [
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "",
+              "descripcion": ""
+            },
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\" | \"xl\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": ""
+            }
+          ]
+        },
+        {
+          "nombre": "ClockIcon",
+          "importar": "import { ClockIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "ClockIcon component\nDisplays a clock icon for time/date-related UI elements",
+          "props": [
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "",
+              "descripcion": ""
+            },
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\" | \"xl\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": ""
+            }
+          ]
+        },
+        {
+          "nombre": "CloseIcon",
+          "importar": "import { CloseIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "",
+          "props": [
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "",
+              "descripcion": ""
+            },
+            {
+              "nombre": "color",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "currentColor",
+              "descripcion": ""
+            },
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": ""
+            }
+          ]
+        },
+        {
+          "nombre": "CopyIcon",
+          "importar": "import { CopyIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "CopyIcon component\nDisplays a copy icon",
+          "props": [
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "",
+              "descripcion": ""
+            },
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\" | \"xl\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": ""
+            }
+          ]
+        },
+        {
+          "nombre": "CoinsHandIcon",
+          "importar": "import { CoinsHandIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "",
+          "props": [
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "",
+              "descripcion": ""
+            },
+            {
+              "nombre": "color",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "currentColor",
+              "descripcion": ""
+            },
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": ""
+            }
+          ]
+        },
+        {
+          "nombre": "CoinsAcceptedIcon",
+          "importar": "import { CoinsAcceptedIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "CoinsAcceptedIcon component\nDisplays a coins accepted icon",
+          "props": [
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "",
+              "descripcion": ""
+            },
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\" | \"xl\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": ""
+            }
+          ]
+        },
+        {
+          "nombre": "MenuGridIcon",
+          "importar": "import { MenuGridIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "",
+          "props": [
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "",
+              "descripcion": ""
+            },
+            {
+              "nombre": "color",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "currentColor",
+              "descripcion": ""
+            },
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": ""
+            }
+          ]
+        },
+        {
+          "nombre": "DocumentIcon",
+          "importar": "import { DocumentIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "DocumentIcon Component\n\nA reusable document/file icon component.\nCommonly used for viewing documents, prescriptions, or records.",
+          "props": [
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "",
+              "descripcion": ""
+            },
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": ""
+            }
+          ]
+        },
+        {
+          "nombre": "DownloadIcon",
+          "importar": "import { DownloadIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "",
+          "props": [
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "",
+              "descripcion": ""
+            },
+            {
+              "nombre": "color",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "currentColor",
+              "descripcion": ""
+            },
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": ""
+            }
+          ]
+        },
+        {
+          "nombre": "DragHandleIcon",
+          "importar": "import { DragHandleIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "DragHandleIcon Component\n\nA reusable drag handle icon component showing grip dots.\nCommonly used to indicate draggable items.",
+          "props": [
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "",
+              "descripcion": ""
+            },
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": ""
+            }
+          ]
+        },
+        {
+          "nombre": "EditIcon",
+          "importar": "import { EditIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "EditIcon Component\n\nA reusable pencil/edit icon component.\nCommonly used for edit or modify actions.",
+          "props": [
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "",
+              "descripcion": ""
+            },
+            {
+              "nombre": "color",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "currentColor",
+              "descripcion": ""
+            },
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": ""
+            }
+          ]
+        },
+        {
+          "nombre": "EmailIcon",
+          "importar": "import { EmailIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "EmailIcon component\nDisplays an envelope icon for email-related UI elements",
+          "props": [
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "",
+              "descripcion": ""
+            },
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\" | \"xl\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": ""
+            }
+          ]
+        },
+        {
+          "nombre": "ErrorIcon",
+          "importar": "import { ErrorIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "ErrorIcon Component\n\nA reusable error icon component showing an X inside a circle.\nCommonly used for error states, validation failures, and alert messages.",
+          "props": [
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "",
+              "descripcion": ""
+            },
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": ""
+            }
+          ]
+        },
+        {
+          "nombre": "ExclamationTriangleIcon",
+          "importar": "import { ExclamationTriangleIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "",
+          "props": [
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "",
+              "descripcion": ""
+            },
+            {
+              "nombre": "color",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "currentColor",
+              "descripcion": ""
+            },
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": ""
+            }
+          ]
+        },
+        {
+          "nombre": "EyeIcon",
+          "importar": "import { EyeIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "",
+          "props": [
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "",
+              "descripcion": ""
+            },
+            {
+              "nombre": "color",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "currentColor",
+              "descripcion": ""
+            },
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": ""
+            }
+          ]
+        },
+        {
+          "nombre": "EyeCheckIcon",
+          "importar": "import { EyeCheckIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "",
+          "props": [
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "",
+              "descripcion": ""
+            },
+            {
+              "nombre": "color",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "currentColor",
+              "descripcion": ""
+            },
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": ""
+            }
+          ]
+        },
+        {
+          "nombre": "FilterIcon",
+          "importar": "import { FilterIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "FilterIcon Component\n\nA reusable filter/funnel icon component.\nCommonly used for filter actions and filtering controls.",
+          "props": [
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "",
+              "descripcion": ""
+            },
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": ""
+            }
+          ]
+        },
+        {
+          "nombre": "FoldersIcon",
+          "importar": "import { FoldersIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "FoldersIcon component\nDisplays a folders icon",
+          "props": [
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "",
+              "descripcion": ""
+            },
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\" | \"xl\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": ""
+            }
+          ]
+        },
+        {
+          "nombre": "GalleryPhotoIcon",
+          "importar": "import { GalleryPhotoIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "",
+          "props": [
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "",
+              "descripcion": ""
+            },
+            {
+              "nombre": "color",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "currentColor",
+              "descripcion": ""
+            },
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": ""
+            }
+          ]
+        },
+        {
+          "nombre": "GlassesIcon",
+          "importar": "import { GlassesIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "",
+          "props": [
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "",
+              "descripcion": ""
+            },
+            {
+              "nombre": "color",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "currentColor",
+              "descripcion": ""
+            },
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": ""
+            }
+          ]
+        },
+        {
+          "nombre": "HomeIcon",
+          "importar": "import { HomeIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "",
+          "props": [
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "",
+              "descripcion": ""
+            },
+            {
+              "nombre": "color",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "currentColor",
+              "descripcion": ""
+            },
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": ""
+            }
+          ]
+        },
+        {
+          "nombre": "InfoIcon",
+          "importar": "import { InfoIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "InfoIcon Component\n\nA reusable info/information icon component.\nCommonly used to display help text, tips, or additional information.",
+          "props": [
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "",
+              "descripcion": ""
+            },
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": ""
+            }
+          ]
+        },
+        {
+          "nombre": "LinkIcon",
+          "importar": "import { LinkIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "",
+          "props": [
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "",
+              "descripcion": ""
+            },
+            {
+              "nombre": "color",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "currentColor",
+              "descripcion": ""
+            },
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": ""
+            }
+          ]
+        },
+        {
+          "nombre": "LocationIcon",
+          "importar": "import { LocationIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "LocationIcon component\nDisplays a map pin/location icon for address-related UI elements",
+          "props": [
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "",
+              "descripcion": ""
+            },
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\" | \"xl\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": ""
+            }
+          ]
+        },
+        {
+          "nombre": "ManualIdentifierIcon",
+          "importar": "import { ManualIdentifierIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "ManualIdentifierIcon Component\n\nA reusable icon component representing manually-entered identifiers.\nThe icon shows a pen/pencil symbol to represent user input and manual entry.",
+          "props": [
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "",
+              "descripcion": ""
+            },
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": ""
+            }
+          ]
+        },
+        {
+          "nombre": "MapIcon",
+          "importar": "import { MapIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "MapIcon component\nDisplays a map icon for state/region-related UI elements",
+          "props": [
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "",
+              "descripcion": ""
+            },
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\" | \"xl\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": ""
+            }
+          ]
+        },
+        {
+          "nombre": "MenuIcon",
+          "importar": "import { MenuIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "",
+          "props": [
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "",
+              "descripcion": ""
+            },
+            {
+              "nombre": "color",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "currentColor",
+              "descripcion": ""
+            },
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": ""
+            }
+          ]
+        },
+        {
+          "nombre": "MinusIcon",
+          "importar": "import { MinusIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "",
+          "props": [
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "",
+              "descripcion": ""
+            },
+            {
+              "nombre": "color",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "currentColor",
+              "descripcion": ""
+            },
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": ""
+            }
+          ]
+        },
+        {
+          "nombre": "MoreIcon",
+          "importar": "import { MoreIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "MoreIcon component\nDisplays a vertical three-dot menu icon for more options/actions",
+          "props": [
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "",
+              "descripcion": ""
+            },
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\" | \"xl\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": ""
+            }
+          ]
+        },
+        {
+          "nombre": "NotificationIcon",
+          "importar": "import { NotificationIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "NotificationIcon Component\n\nA reusable notification/bell icon component.\nCommonly used for notification settings, alerts, and updates.",
+          "props": [
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "",
+              "descripcion": ""
+            },
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": ""
+            }
+          ]
+        },
+        {
+          "nombre": "PatientIcon",
+          "importar": "import { PatientIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "",
+          "props": [
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "",
+              "descripcion": ""
+            },
+            {
+              "nombre": "color",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "currentColor",
+              "descripcion": ""
+            },
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": ""
+            }
+          ]
+        },
+        {
+          "nombre": "PatientListIcon",
+          "importar": "import { PatientListIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "PatientListIcon component\nDisplays a patient list icon",
+          "props": [
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "",
+              "descripcion": ""
+            },
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\" | \"xl\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": ""
+            }
+          ]
+        },
+        {
+          "nombre": "PatientsIcon",
+          "importar": "import { PatientsIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "",
+          "props": [
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "",
+              "descripcion": ""
+            },
+            {
+              "nombre": "color",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "currentColor",
+              "descripcion": ""
+            },
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": ""
+            }
+          ]
+        },
+        {
+          "nombre": "PhoneIcon",
+          "importar": "import { PhoneIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "PhoneIcon component\nDisplays a phone icon for contact-related UI elements",
+          "props": [
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "",
+              "descripcion": ""
+            },
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\" | \"xl\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": ""
+            }
+          ]
+        },
+        {
+          "nombre": "WhatsAppIcon",
+          "importar": "import { WhatsAppIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "WhatsAppIcon component\nDisplays the WhatsApp logo icon",
+          "props": [
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "",
+              "descripcion": ""
+            },
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\" | \"xl\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": ""
+            }
+          ]
+        },
+        {
+          "nombre": "PlusIcon",
+          "importar": "import { PlusIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "PlusIcon Component\n\nA reusable plus/add icon component.\nCommonly used for actions like creating new items or adding records.",
+          "props": [
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "",
+              "descripcion": ""
+            },
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": ""
+            }
+          ]
+        },
+        {
+          "nombre": "PrescriptionIcon",
+          "importar": "import { PrescriptionIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "",
+          "props": [
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "",
+              "descripcion": ""
+            },
+            {
+              "nombre": "color",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "currentColor",
+              "descripcion": ""
+            },
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": ""
+            }
+          ]
+        },
+        {
+          "nombre": "PresentationChartIcon",
+          "importar": "import { PresentationChartIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "",
+          "props": [
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "",
+              "descripcion": ""
+            },
+            {
+              "nombre": "color",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "currentColor",
+              "descripcion": ""
+            },
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": ""
+            }
+          ]
+        },
+        {
+          "nombre": "PrintIcon",
+          "importar": "import { PrintIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "PrintIcon Component\n\nA reusable printer/print icon component.\nCommonly used for printing documents or opening print formats.",
+          "props": [
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "",
+              "descripcion": ""
+            },
+            {
+              "nombre": "color",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "currentColor",
+              "descripcion": ""
+            },
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": ""
+            }
+          ]
+        },
+        {
+          "nombre": "RefreshIcon",
+          "importar": "import { RefreshIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "RefreshIcon Component\n\nA reusable refresh/restore icon component.\nCommonly used for refresh, reload, or restore actions.",
+          "props": [
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "",
+              "descripcion": ""
+            },
+            {
+              "nombre": "color",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "currentColor",
+              "descripcion": ""
+            },
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": ""
+            }
+          ]
+        },
+        {
+          "nombre": "SearchIcon",
+          "importar": "import { SearchIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "SearchIcon Component\n\nA reusable search/magnifying glass icon component.\nCommonly used in search inputs and filter actions.",
+          "props": [
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "",
+              "descripcion": ""
+            },
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": ""
+            }
+          ]
+        },
+        {
+          "nombre": "SettingsIcon",
+          "importar": "import { SettingsIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "",
+          "props": [
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "",
+              "descripcion": ""
+            },
+            {
+              "nombre": "color",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "currentColor",
+              "descripcion": ""
+            },
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": ""
+            }
+          ]
+        },
+        {
+          "nombre": "SortIcon",
+          "importar": "import { SortIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "SortIcon Component\n\nA reusable sort icon component showing ascending/descending arrows.\nCommonly used for sorting actions and controls.",
+          "props": [
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "",
+              "descripcion": ""
+            },
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": ""
+            }
+          ]
+        },
+        {
+          "nombre": "SpinnerIcon",
+          "importar": "import { SpinnerIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "",
+          "props": [
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "",
+              "descripcion": ""
+            },
+            {
+              "nombre": "color",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "currentColor",
+              "descripcion": ""
+            },
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": ""
+            }
+          ]
+        },
+        {
+          "nombre": "SystemIdentifierIcon",
+          "importar": "import { SystemIdentifierIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "SystemIdentifierIcon Component\n\nA reusable icon component representing system-generated identifiers.\nThe icon shows a gear/cog symbol to represent automated system generation.",
+          "props": [
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "",
+              "descripcion": ""
+            },
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": ""
+            }
+          ]
+        },
+        {
+          "nombre": "TrashIcon",
+          "importar": "import { TrashIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "TrashIcon Component\n\nA reusable trash/delete icon component.\nCommonly used for delete or remove actions.",
+          "props": [
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "",
+              "descripcion": ""
+            },
+            {
+              "nombre": "color",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "currentColor",
+              "descripcion": ""
+            },
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": ""
+            }
+          ]
+        },
+        {
+          "nombre": "ArrowLeftIcon",
+          "importar": "import { ArrowLeftIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "",
+          "props": [
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": ""
+            }
+          ]
+        },
+        {
+          "nombre": "ArrowRightIcon",
+          "importar": "import { ArrowRightIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "",
+          "props": [
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": ""
+            }
+          ]
+        },
+        {
+          "nombre": "RobotOffIcon",
+          "importar": "import { RobotOffIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "",
+          "props": [
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "",
+              "descripcion": ""
+            },
+            {
+              "nombre": "color",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "currentColor",
+              "descripcion": ""
+            },
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": ""
+            }
+          ]
+        },
+        {
+          "nombre": "UploadIcon",
+          "importar": "import { UploadIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "",
+          "props": [
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "",
+              "descripcion": ""
+            },
+            {
+              "nombre": "color",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "currentColor",
+              "descripcion": ""
+            },
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": ""
+            }
+          ]
+        },
+        {
+          "nombre": "UserManagementIcon",
+          "importar": "import { UserManagementIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "",
+          "props": [
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "",
+              "descripcion": ""
+            },
+            {
+              "nombre": "color",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "currentColor",
+              "descripcion": ""
+            },
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": ""
+            }
+          ]
+        },
+        {
+          "nombre": "UserPlusIcon",
+          "importar": "import { UserPlusIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "",
+          "props": [
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "",
+              "descripcion": ""
+            },
+            {
+              "nombre": "color",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "currentColor",
+              "descripcion": ""
+            },
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": ""
+            }
+          ]
+        },
+        {
+          "nombre": "UserSelectIcon",
+          "importar": "import { UserSelectIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "",
+          "props": [
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "",
+              "descripcion": ""
+            },
+            {
+              "nombre": "color",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "currentColor",
+              "descripcion": ""
+            },
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": ""
+            }
+          ]
+        },
+        {
+          "nombre": "UsersIcon",
+          "importar": "import { UsersIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "UsersIcon Component\n\nA reusable users/people icon component showing multiple users.\nCommonly used for viewing lists of users or patients.",
+          "props": [
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "",
+              "descripcion": ""
+            },
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": ""
+            }
+          ]
+        },
+        {
+          "nombre": "WalletOpenIcon",
+          "importar": "import { WalletOpenIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "",
+          "props": [
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "",
+              "descripcion": ""
+            },
+            {
+              "nombre": "color",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "currentColor",
+              "descripcion": ""
+            },
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": ""
+            }
+          ]
+        },
+        {
+          "nombre": "ZoomInIcon",
+          "importar": "import { ZoomInIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "",
+          "props": [
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "",
+              "descripcion": ""
+            },
+            {
+              "nombre": "color",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "currentColor",
+              "descripcion": ""
+            },
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": ""
+            }
+          ]
+        },
+        {
+          "nombre": "ZoomOutIcon",
+          "importar": "import { ZoomOutIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "",
+          "props": [
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "",
+              "descripcion": ""
+            },
+            {
+              "nombre": "color",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "currentColor",
+              "descripcion": ""
+            },
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": ""
+            }
+          ]
+        },
+        {
+          "nombre": "RobotIcon",
+          "importar": "import { RobotIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "",
+          "props": [
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "",
+              "descripcion": ""
+            },
+            {
+              "nombre": "color",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "currentColor",
+              "descripcion": ""
+            },
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": ""
+            }
+          ]
+        },
+        {
+          "nombre": "TargetIcon",
+          "importar": "import { TargetIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "TargetIcon Component\n\nA target/crosshair icon for selection, focus, or goal indication.",
+          "props": [
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "",
+              "descripcion": ""
+            },
+            {
+              "nombre": "color",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "currentColor",
+              "descripcion": ""
+            },
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": ""
+            }
+          ]
+        },
+        {
+          "nombre": "MaterialIcon",
+          "importar": "import { MaterialIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "",
+          "props": [
+            {
+              "nombre": "name",
+              "tipo": "string",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": "Icon name, e.g. \"search\", \"home\", \"close\""
+            },
+            {
+              "nombre": "fill",
+              "tipo": "0 | 1",
+              "requerido": false,
+              "porDefecto": "0",
+              "descripcion": "Fill glyphs: 0 outline, 1 filled"
+            },
+            {
+              "nombre": "grade",
+              "tipo": "0 | 200 | -25",
+              "requerido": false,
+              "porDefecto": "0",
+              "descripcion": "Grade -25 to 200 (commonly -25, 0, 200)"
+            },
+            {
+              "nombre": "opticalSize",
+              "tipo": "number",
+              "requerido": false,
+              "porDefecto": "24",
+              "descripcion": "Optical size in px (20-48 typical)"
+            },
+            {
+              "nombre": "size",
+              "tipo": "number | \"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": "Icon size preset or pixel size"
+            },
+            {
+              "nombre": "variant",
+              "tipo": "\"outlined\" | \"rounded\" | \"sharp\"",
+              "requerido": false,
+              "porDefecto": "outlined",
+              "descripcion": "Style family"
+            },
+            {
+              "nombre": "weight",
+              "tipo": "100 | 200 | 300 | 400 | 500 | 600 | 700",
+              "requerido": false,
+              "porDefecto": "400",
+              "descripcion": "Weight 100-700"
+            }
+          ]
+        }
+      ],
+      "otrosValores": [],
+      "tipos": []
+    },
+    {
+      "paquete": "@rubenpazch/identification-input",
+      "version": "2.0.2",
+      "carpeta": "packages/identification-input",
+      "categoria": "salud",
+      "resumen": "Tipo y número de documento peruano (DNI, CE, pasaporte) con validación de longitud y formato.",
+      "usarCuando": "Registrar el documento de identidad de una persona en Perú.",
+      "evitarCuando": "Otros países o identificadores que no son documentos de identidad.",
+      "componentes": [
+        {
+          "nombre": "IdentificationInput",
+          "importar": "import { IdentificationInput } from \"@rubenpazch/ui\";",
+          "descripcion": "",
+          "props": [
+            {
+              "nombre": "documentType",
+              "tipo": "null | \"dni\" | \"ce\" | \"passport\"",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "identificationNumber",
+              "tipo": "string",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "labels",
+              "tipo": "IdentificationInputLabels",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "onDocumentTypeChange",
+              "tipo": "(type: PeruIdentificationType | null) => void",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "onIdentificationNumberChange",
+              "tipo": "(value: string) => void",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "",
+              "descripcion": ""
+            },
+            {
+              "nombre": "disabled",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "false",
+              "descripcion": ""
+            },
+            {
+              "nombre": "documentTypeError",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "identificationNumberError",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "required",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "false",
+              "descripcion": ""
+            }
+          ]
+        }
+      ],
+      "otrosValores": [],
+      "tipos": []
+    },
+    {
+      "paquete": "@rubenpazch/image-upload",
+      "version": "3.0.0",
+      "carpeta": "packages/image-upload",
+      "categoria": "formularios",
+      "resumen": "Subida de imagen o PDF con vista previa, arrastrar y soltar, validación de tipo y tamaño.",
+      "usarCuando": "Fotos de perfil, comprobantes, documentos adjuntos (suele enviar a archivos-api).",
+      "evitarCuando": "Muchos archivos a la vez sin vista previa.",
+      "componentes": [
+        {
+          "nombre": "ImageUpload",
+          "importar": "import { ImageUpload } from \"@rubenpazch/ui\";",
+          "descripcion": "",
+          "props": [
+            {
+              "nombre": "labels",
+              "tipo": "ImageUploadLabels",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "onUpload",
+              "tipo": "(file: File) => Promise<void>",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "acceptedFormats",
+              "tipo": "string[]",
+              "requerido": false,
+              "porDefecto": "[\"image/jpeg\", \"image/png\", \"image/svg+xml\"]",
+              "descripcion": ""
+            },
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "",
+              "descripcion": ""
+            },
+            {
+              "nombre": "currentImageUrl",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "disabled",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "false",
+              "descripcion": ""
+            },
+            {
+              "nombre": "label",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "maxSizeMB",
+              "tipo": "number",
+              "requerido": false,
+              "porDefecto": "5",
+              "descripcion": ""
+            },
+            {
+              "nombre": "onRemove",
+              "tipo": "() => Promise<void>",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "previewHeight",
+              "tipo": "number",
+              "requerido": false,
+              "porDefecto": "200",
+              "descripcion": ""
+            },
+            {
+              "nombre": "previewWidth",
+              "tipo": "number",
+              "requerido": false,
+              "porDefecto": "200",
+              "descripcion": ""
+            }
+          ]
+        }
+      ],
+      "otrosValores": [],
+      "tipos": []
+    },
+    {
+      "paquete": "@rubenpazch/info-row",
+      "version": "3.0.1",
+      "carpeta": "packages/info-row",
+      "categoria": "presentacion",
+      "resumen": "Fila de dato con icono, etiqueta y valor (variantes de color, tamaños, acción opcional).",
+      "usarCuando": "Vistas de detalle de un registro (contacto, dirección, datos del documento).",
+      "evitarCuando": "Tablas con muchas filas comparables.",
+      "componentes": [
+        {
+          "nombre": "InfoRow",
+          "importar": "import { InfoRow } from \"@rubenpazch/ui\";",
+          "descripcion": "InfoRow component\nDisplays a row of information with an icon, label, and value\nUsed in detail views to present structured data",
+          "props": [
+            {
+              "nombre": "icon",
+              "tipo": "ReactNode",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "label",
+              "tipo": "string",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "value",
+              "tipo": "string",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "action",
+              "tipo": "ReactNode",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "",
+              "descripcion": ""
+            },
+            {
+              "nombre": "hideIcon",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "false",
+              "descripcion": ""
+            },
+            {
+              "nombre": "hideLabel",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "false",
+              "descripcion": ""
+            },
+            {
+              "nombre": "layout",
+              "tipo": "\"vertical\" | \"horizontal\" | \"inline\" | \"compact\"",
+              "requerido": false,
+              "porDefecto": "vertical",
+              "descripcion": ""
+            },
+            {
+              "nombre": "size",
+              "tipo": "\"xs\" | \"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": ""
+            },
+            {
+              "nombre": "variant",
+              "tipo": "\"default\" | \"blue\" | \"yellow\" | \"purple\" | \"green\" | \"red\" | \"indigo\" | \"gray\"",
+              "requerido": false,
+              "porDefecto": "default",
+              "descripcion": ""
+            }
+          ]
+        }
+      ],
+      "otrosValores": [],
+      "tipos": []
+    },
+    {
+      "paquete": "@rubenpazch/loading-spinner",
+      "version": "4.0.0",
+      "carpeta": "packages/loading-spinner",
+      "categoria": "retroalimentacion",
+      "resumen": "Indicador de carga circular con tamaños y colores.",
+      "usarCuando": "Esperas cortas dentro de un botón, tarjeta o sección.",
+      "evitarCuando": "Bloquear toda la pantalla: usa OverlayLoader.",
+      "componentes": [
+        {
+          "nombre": "LoadingSpinner",
+          "importar": "import { LoadingSpinner } from \"@rubenpazch/ui\";",
+          "descripcion": "LoadingSpinner component\nDisplays a loading indicator with multiple style variants",
+          "props": [
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "",
+              "descripcion": ""
+            },
+            {
+              "nombre": "color",
+              "tipo": "\"blue\" | \"gray\" | \"white\"",
+              "requerido": false,
+              "porDefecto": "blue",
+              "descripcion": ""
+            },
+            {
+              "nombre": "inline",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "false",
+              "descripcion": ""
+            },
+            {
+              "nombre": "message",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": ""
+            },
+            {
+              "nombre": "variant",
+              "tipo": "\"spinner\" | \"dots\" | \"pulse\" | \"ring\"",
+              "requerido": false,
+              "porDefecto": "spinner",
+              "descripcion": ""
+            }
+          ]
+        }
+      ],
+      "otrosValores": [],
+      "tipos": []
+    },
+    {
+      "paquete": "@rubenpazch/numeric-picker",
+      "version": "5.0.0",
+      "carpeta": "packages/NumericPicker",
+      "categoria": "formularios",
+      "resumen": "Campo numérico con mínimo, máximo, paso, decimales y moneda.",
+      "usarCuando": "Montos, cantidades y precios.",
+      "evitarCuando": "Valores con signo o graduaciones ópticas: usa NumericUpPicker.",
+      "componentes": [
+        {
+          "nombre": "NumericPicker",
+          "importar": "import { NumericPicker } from \"@rubenpazch/ui\";",
+          "descripcion": "",
+          "props": [
+            {
+              "nombre": "onChange",
+              "tipo": "(value: string) => void",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "value",
+              "tipo": "string | number",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "currency",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "S/.",
+              "descripcion": ""
+            },
+            {
+              "nombre": "decimals",
+              "tipo": "number",
+              "requerido": false,
+              "porDefecto": "2",
+              "descripcion": ""
+            },
+            {
+              "nombre": "disabled",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "false",
+              "descripcion": ""
+            },
+            {
+              "nombre": "label",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "max",
+              "tipo": "number",
+              "requerido": false,
+              "porDefecto": "999999",
+              "descripcion": ""
+            },
+            {
+              "nombre": "min",
+              "tipo": "number",
+              "requerido": false,
+              "porDefecto": "0",
+              "descripcion": ""
+            },
+            {
+              "nombre": "placeholder",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "0.00",
+              "descripcion": ""
+            },
+            {
+              "nombre": "required",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "false",
+              "descripcion": ""
+            },
+            {
+              "nombre": "step",
+              "tipo": "number",
+              "requerido": false,
+              "porDefecto": "1",
+              "descripcion": ""
+            }
+          ]
+        }
+      ],
+      "otrosValores": [],
+      "tipos": []
+    },
+    {
+      "paquete": "@rubenpazch/numeric-up-picker",
+      "version": "6.0.0",
+      "carpeta": "packages/NumericUpPicker",
+      "categoria": "formularios",
+      "resumen": "Campo numérico con botones +/-, signo opcional, solo enteros, ayuda, advertencia y error.",
+      "usarCuando": "Ajustar un valor por pasos (cantidades, graduaciones con signo).",
+      "evitarCuando": "Montos de dinero: usa NumericPicker.",
+      "componentes": [
+        {
+          "nombre": "NumericUpPicker",
+          "importar": "import { NumericUpPicker } from \"@rubenpazch/ui\";",
+          "descripcion": "",
+          "props": [
+            {
+              "nombre": "onChange",
+              "tipo": "(value: string) => void",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "value",
+              "tipo": "string | number",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "alwaysNegative",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "false",
+              "descripcion": ""
+            },
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "",
+              "descripcion": ""
+            },
+            {
+              "nombre": "clearable",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "false",
+              "descripcion": ""
+            },
+            {
+              "nombre": "defaultToZero",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "false",
+              "descripcion": ""
+            },
+            {
+              "nombre": "disabled",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "false",
+              "descripcion": ""
+            },
+            {
+              "nombre": "error",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "hint",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "integerOnly",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "false",
+              "descripcion": ""
+            },
+            {
+              "nombre": "label",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "max",
+              "tipo": "number",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "min",
+              "tipo": "number",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "onBlur",
+              "tipo": "() => void",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "onClear",
+              "tipo": "() => void",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "onFocus",
+              "tipo": "() => void",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "placeholder",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "required",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "false",
+              "descripcion": ""
+            },
+            {
+              "nombre": "showSign",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "false",
+              "descripcion": ""
+            },
+            {
+              "nombre": "size",
+              "tipo": "\"small\" | \"medium\" | \"large\"",
+              "requerido": false,
+              "porDefecto": "medium",
+              "descripcion": ""
+            },
+            {
+              "nombre": "step",
+              "tipo": "number",
+              "requerido": false,
+              "porDefecto": "0.01",
+              "descripcion": ""
+            },
+            {
+              "nombre": "useMinAsDefault",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "false",
+              "descripcion": ""
+            },
+            {
+              "nombre": "warning",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            }
+          ]
+        }
+      ],
+      "otrosValores": [],
+      "tipos": ["NumericUpPickerProps", "NumericUpPickerSize"]
+    },
+    {
+      "paquete": "@rubenpazch/overlay-loader",
+      "version": "1.1.0",
+      "carpeta": "packages/overlay-loader",
+      "categoria": "retroalimentacion",
+      "resumen": "OverlayLoader (pantalla completa, controlado por visible) e InlineLoader (dentro de un contenedor).",
+      "usarCuando": "Carga inicial de la app, inicio/cierre de sesión u operaciones que bloquean la pantalla.",
+      "evitarCuando": "Esperas pequeñas dentro de un elemento: usa LoadingSpinner.",
+      "componentes": [
+        {
+          "nombre": "OverlayLoader",
+          "importar": "import { OverlayLoader } from \"@rubenpazch/ui\";",
+          "descripcion": "Presentational full-screen loading overlay. It is fully controlled: the\nconsumer decides when it is `visible` and which `message` it shows, so the\nsame component can express every loading state (boot, sign-in, sign-out,…).\nIt keeps no state and performs no side effects — the fade in/out is CSS only.",
+          "props": [
+            {
+              "nombre": "visible",
+              "tipo": "boolean",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": "Whether the overlay is shown. When false it fades out and stops capturing pointer events."
+            },
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Extra class applied to the root overlay element."
+            },
+            {
+              "nombre": "message",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Primary line describing what is happening (e.g. \"Estamos cargando la aplicación\")."
+            },
+            {
+              "nombre": "spinnerLabel",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Accessible label for the spinner (screen readers). Defaults to the message or \"Cargando\"."
+            },
+            {
+              "nombre": "title",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Optional emphasized heading rendered above the message."
+            },
+            {
+              "nombre": "variant",
+              "tipo": "\"default\" | \"success\" | \"danger\"",
+              "requerido": false,
+              "porDefecto": "default",
+              "descripcion": "Tone for the spinner accent."
+            }
+          ]
+        },
+        {
+          "nombre": "InlineLoader",
+          "importar": "import { InlineLoader } from \"@rubenpazch/ui\";",
+          "descripcion": "Contained, non-blocking loading indicator. Unlike `OverlayLoader` it flows\ninside its parent (no fixed positioning), so it can fill just a content\nregion — e.g. the microfrontend slot while its bundle mounts — without\ncovering the rest of the shell (the sidebar stays interactive).",
+          "props": [
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Extra class applied to the root element."
+            },
+            {
+              "nombre": "fill",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "false",
+              "descripcion": "Stretch to fill the available width and height of the parent and center\nits content, instead of rendering as a compact inline card. Use it when the\nloader owns a whole region (e.g. a route's content slot)."
+            },
+            {
+              "nombre": "message",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Optional line describing what is loading (e.g. \"Cargando módulo…\")."
+            },
+            {
+              "nombre": "spinnerLabel",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Accessible label for the spinner. Defaults to the message or \"Cargando\"."
+            },
+            {
+              "nombre": "variant",
+              "tipo": "\"default\" | \"success\" | \"danger\"",
+              "requerido": false,
+              "porDefecto": "default",
+              "descripcion": "Tone for the spinner accent."
+            }
+          ]
+        }
+      ],
+      "otrosValores": [],
+      "tipos": [
+        "OverlayLoaderProps",
+        "OverlayLoaderVariant",
+        "InlineLoaderProps",
+        "InlineLoaderVariant"
+      ]
+    },
+    {
+      "paquete": "@rubenpazch/pagination",
+      "version": "3.1.0",
+      "carpeta": "packages/pagination",
+      "categoria": "navegacion",
+      "resumen": "Paginación con variantes, tamaños y formas; incluye PaginationItem.",
+      "usarCuando": "Listados paginados en el servidor (tablas, resultados de búsqueda).",
+      "evitarCuando": "Pocas páginas que caben en una sola vista.",
+      "componentes": [
+        {
+          "nombre": "Pagination",
+          "importar": "import { Pagination } from \"@rubenpazch/ui\";",
+          "descripcion": "",
+          "props": [
+            {
+              "nombre": "boundaryCount",
+              "tipo": "number",
+              "requerido": false,
+              "porDefecto": "1",
+              "descripcion": "Number of always visible pages at the beginning and end"
+            },
+            {
+              "nombre": "count",
+              "tipo": "number",
+              "requerido": false,
+              "porDefecto": "1",
+              "descripcion": "Total number of pages"
+            },
+            {
+              "nombre": "defaultPage",
+              "tipo": "number",
+              "requerido": false,
+              "porDefecto": "1",
+              "descripcion": "Default page if uncontrolled"
+            },
+            {
+              "nombre": "disabled",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "false",
+              "descripcion": "If true, the component is disabled"
+            },
+            {
+              "nombre": "hideNextButton",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "false",
+              "descripcion": "If true, hide the next-page button"
+            },
+            {
+              "nombre": "hidePrevButton",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "false",
+              "descripcion": "If true, hide the previous-page button"
+            },
+            {
+              "nombre": "onChange",
+              "tipo": "(event: ChangeEvent<unknown, Element>, page: number) => void",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Callback when page changes"
+            },
+            {
+              "nombre": "page",
+              "tipo": "number",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "The current page (1-based)"
+            },
+            {
+              "nombre": "renderItem",
+              "tipo": "(item: PaginationItemType) => ReactNode",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Custom render function for items"
+            },
+            {
+              "nombre": "shape",
+              "tipo": "\"rounded\" | \"circular\"",
+              "requerido": false,
+              "porDefecto": "rounded",
+              "descripcion": "The shape of the pagination items"
+            },
+            {
+              "nombre": "showFirstButton",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "false",
+              "descripcion": "If true, show the first-page button"
+            },
+            {
+              "nombre": "showLastButton",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "false",
+              "descripcion": "If true, show the last-page button"
+            },
+            {
+              "nombre": "siblingCount",
+              "tipo": "number",
+              "requerido": false,
+              "porDefecto": "1",
+              "descripcion": "Number of always visible pages before and after the current page"
+            },
+            {
+              "nombre": "size",
+              "tipo": "\"small\" | \"medium\" | \"large\"",
+              "requerido": false,
+              "porDefecto": "medium",
+              "descripcion": "The size of the pagination component"
+            },
+            {
+              "nombre": "variant",
+              "tipo": "\"text\" | \"outlined\"",
+              "requerido": false,
+              "porDefecto": "text",
+              "descripcion": "The variant to use"
+            }
+          ]
+        },
+        {
+          "nombre": "PaginationItem",
+          "importar": "import { PaginationItem } from \"@rubenpazch/ui\";",
+          "descripcion": "",
+          "props": [
+            {
+              "nombre": "page",
+              "tipo": "number",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": "The page number"
+            },
+            {
+              "nombre": "type",
+              "tipo": "\"page\" | \"next\" | \"previous\" | \"first\" | \"last\" | \"start-ellipsis\" | \"end-ellipsis\"",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": "The type of pagination item"
+            },
+            {
+              "nombre": "selected",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "false",
+              "descripcion": "If true, the item is selected/active"
+            },
+            {
+              "nombre": "shape",
+              "tipo": "\"rounded\" | \"circular\"",
+              "requerido": false,
+              "porDefecto": "rounded",
+              "descripcion": "The shape of the pagination items"
+            },
+            {
+              "nombre": "size",
+              "tipo": "\"small\" | \"medium\" | \"large\"",
+              "requerido": false,
+              "porDefecto": "medium",
+              "descripcion": "The size of the component"
+            },
+            {
+              "nombre": "variant",
+              "tipo": "\"text\" | \"outlined\"",
+              "requerido": false,
+              "porDefecto": "text",
+              "descripcion": "The variant to use"
+            }
+          ]
+        }
+      ],
+      "otrosValores": [],
+      "tipos": [
+        "PaginationProps",
+        "PaginationShape",
+        "PaginationSize",
+        "PaginationVariant",
+        "PaginationItemType",
+        "PaginationItemProps"
+      ]
+    },
+    {
+      "paquete": "@rubenpazch/patient-details",
+      "version": "3.1.0",
+      "carpeta": "packages/patient-details",
+      "categoria": "salud",
+      "resumen": "Ficha de paciente: identificación, contacto, contacto de emergencia, ubicación (departamento/provincia/distrito) e historia clínica. Textos por la prop labels.",
+      "usarCuando": "Apps clínicas u ópticas que muestran el detalle de un paciente.",
+      "evitarCuando": "Personas que no son pacientes: usa InfoRow.",
+      "componentes": [
+        {
+          "nombre": "PatientDetails",
+          "importar": "import { PatientDetails } from \"@rubenpazch/ui\";",
+          "descripcion": "",
+          "props": [
+            {
+              "nombre": "formatDate",
+              "tipo": "(dateIso: string) => string",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "formatDateTime",
+              "tipo": "(dateIso: string) => string",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "labels",
+              "tipo": "PatientDetailsLabels",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "onClose",
+              "tipo": "() => void",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "patient",
+              "tipo": "PatientDetailsPatient",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "defaultShowMoreInfo",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "false",
+              "descripcion": ""
+            },
+            {
+              "nombre": "onEdit",
+              "tipo": "() => void",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "onViewProfile",
+              "tipo": "() => void",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "onViewSubscriptions",
+              "tipo": "() => void",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "showEditButton",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "false",
+              "descripcion": ""
+            },
+            {
+              "nombre": "showViewProfileButton",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "true",
+              "descripcion": ""
+            },
+            {
+              "nombre": "ubigeoResolved",
+              "tipo": "PatientDetailsUbigeo",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            }
+          ]
+        }
+      ],
+      "otrosValores": [],
+      "tipos": []
+    },
+    {
+      "paquete": "@rubenpazch/patient-search",
+      "version": "3.0.0",
+      "carpeta": "packages/patient-search",
+      "categoria": "salud",
+      "resumen": "Buscador de pacientes con resultados y selección.",
+      "usarCuando": "Elegir un paciente existente en apps clínicas u ópticas.",
+      "evitarCuando": "Buscar otro tipo de registros: usa Autocomplete.",
+      "componentes": [
+        {
+          "nombre": "PatientSearch",
+          "importar": "import { PatientSearch } from \"@rubenpazch/ui\";",
+          "descripcion": "",
+          "props": [
+            {
+              "nombre": "labels",
+              "tipo": "PatientSearchLabels",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "onSelectPatient",
+              "tipo": "(patient: PatientSearchPatient) => void",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "initialSearchTerm",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "",
+              "descripcion": ""
+            },
+            {
+              "nombre": "onCreateNewPatient",
+              "tipo": "(searchTerm: string) => void",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "onSearchPatients",
+              "tipo": "(searchTerm: string) => Promise<{ patients?: PatientSearchPatient[] | undefined; } | PatientSearchPatient[]>",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": ""
+            }
+          ]
+        }
+      ],
+      "otrosValores": [],
+      "tipos": []
+    },
+    {
+      "paquete": "@rubenpazch/prescription-card",
+      "version": "3.0.1",
+      "carpeta": "packages/prescription-card",
+      "categoria": "salud",
+      "resumen": "Tarjeta de receta óptica completa (OD/OI: esfera, cilindro, eje, adición, DNP, prisma, altura) con estado y observaciones.",
+      "usarCuando": "Mostrar recetas ópticas en apps de óptica.",
+      "evitarCuando": "Cualquier dato que no sea una receta óptica.",
+      "componentes": [
+        {
+          "nombre": "PrescriptionCard",
+          "importar": "import { PrescriptionCard } from \"@rubenpazch/ui\";",
+          "descripcion": "",
+          "props": [
+            {
+              "nombre": "formatDateLong",
+              "tipo": "(dateIso: string) => string",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "labels",
+              "tipo": "PrescriptionCardLabels",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "patientId",
+              "tipo": "string | number",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "prescription",
+              "tipo": "Prescription",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "canEdit",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "false",
+              "descripcion": ""
+            },
+            {
+              "nombre": "onEdit",
+              "tipo": "() => void",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "onOrderFormat",
+              "tipo": "() => void",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "onPrintFormat",
+              "tipo": "() => void",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "onView",
+              "tipo": "() => void",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "onViewDetails",
+              "tipo": "() => void",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "onWorkOrder",
+              "tipo": "() => void",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "patientName",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "",
+              "descripcion": ""
+            },
+            {
+              "nombre": "statusColors",
+              "tipo": "{ color: string; badgeColor: string; }",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "statusLabels",
+              "tipo": "PrescriptionCardStatusLabels",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            }
+          ]
+        }
+      ],
+      "otrosValores": [],
+      "tipos": []
+    },
+    {
+      "paquete": "@rubenpazch/prescription-eye-card",
+      "version": "3.0.1",
+      "carpeta": "packages/prescription-eye-card",
+      "categoria": "salud",
+      "resumen": "Datos de un ojo de la receta óptica (PrescriptionEyeCard) y campo individual (PrescriptionFieldCard).",
+      "usarCuando": "Mostrar o comparar los valores de un ojo en apps de óptica.",
+      "evitarCuando": "Cualquier dato que no sea una receta óptica.",
+      "componentes": [
+        {
+          "nombre": "PrescriptionEyeCard",
+          "importar": "import { PrescriptionEyeCard } from \"@rubenpazch/ui\";",
+          "descripcion": "",
+          "props": [
+            {
+              "nombre": "eye",
+              "tipo": "\"OD\" | \"OI\"",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "eyeInfo",
+              "tipo": "PrescriptionEyeInfo",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "labels",
+              "tipo": "PrescriptionEyeCardLabels",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "prismBaseLookup",
+              "tipo": "{ getNameByKey: (key: string) => string; }",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": ""
+            }
+          ]
+        }
+      ],
+      "otrosValores": [],
+      "tipos": []
+    },
+    {
+      "paquete": "@rubenpazch/radio-button",
+      "version": "4.1.0",
+      "carpeta": "packages/radio-button",
+      "categoria": "formularios",
+      "resumen": "RadioButton y RadioGroup accesibles con variantes y validación.",
+      "usarCuando": "Elegir una sola opción entre pocas (2 a 6) visibles a la vez.",
+      "evitarCuando": "Muchas opciones: usa Select o Autocomplete.",
+      "componentes": [
+        {
+          "nombre": "RadioButton",
+          "importar": "import { RadioButton } from \"@rubenpazch/ui\";",
+          "descripcion": "",
+          "props": [
+            {
+              "nombre": "label",
+              "tipo": "string",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "name",
+              "tipo": "string",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "value",
+              "tipo": "string",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "checked",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "false",
+              "descripcion": ""
+            },
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "",
+              "descripcion": ""
+            },
+            {
+              "nombre": "description",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "disabled",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "false",
+              "descripcion": ""
+            },
+            {
+              "nombre": "error",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "id",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "onChange",
+              "tipo": "(value: string) => void",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "required",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "false",
+              "descripcion": ""
+            },
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": ""
+            },
+            {
+              "nombre": "variant",
+              "tipo": "\"default\" | \"primary\" | \"success\" | \"warning\" | \"danger\"",
+              "requerido": false,
+              "porDefecto": "default",
+              "descripcion": ""
+            }
+          ]
+        },
+        {
+          "nombre": "RadioGroup",
+          "importar": "import { RadioGroup } from \"@rubenpazch/ui\";",
+          "descripcion": "",
+          "props": [
+            {
+              "nombre": "name",
+              "tipo": "string",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "onChange",
+              "tipo": "(value: string) => void",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "options",
+              "tipo": "RadioOption[]",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "bordered",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "false",
+              "descripcion": ""
+            },
+            {
+              "nombre": "borderLabel",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "",
+              "descripcion": ""
+            },
+            {
+              "nombre": "disabled",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "false",
+              "descripcion": ""
+            },
+            {
+              "nombre": "error",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "groupLabel",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "orientation",
+              "tipo": "\"vertical\" | \"horizontal\"",
+              "requerido": false,
+              "porDefecto": "vertical",
+              "descripcion": ""
+            },
+            {
+              "nombre": "required",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "false",
+              "descripcion": ""
+            },
+            {
+              "nombre": "selectedLabelText",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "Selected:",
+              "descripcion": ""
+            },
+            {
+              "nombre": "showSelectedLabel",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "false",
+              "descripcion": ""
+            },
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": ""
+            },
+            {
+              "nombre": "value",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "variant",
+              "tipo": "\"default\" | \"primary\" | \"success\" | \"warning\" | \"danger\"",
+              "requerido": false,
+              "porDefecto": "default",
+              "descripcion": ""
+            }
+          ]
+        }
+      ],
+      "otrosValores": [],
+      "tipos": [
+        "RadioButtonProps",
+        "RadioSize",
+        "RadioVariant",
+        "RadioGroupProps",
+        "RadioOption",
+        "RadioGroupOrientation"
+      ]
+    },
+    {
+      "paquete": "@rubenpazch/select",
+      "version": "1.1.0",
+      "carpeta": "packages/select",
+      "categoria": "formularios",
+      "resumen": "Lista desplegable simple con etiqueta, placeholder y error.",
+      "usarCuando": "Elegir una opción entre una lista corta y conocida.",
+      "evitarCuando": "Listas largas o con búsqueda: usa Autocomplete.",
+      "componentes": [
+        {
+          "nombre": "Select",
+          "importar": "import { Select } from \"@rubenpazch/ui\";",
+          "descripcion": "",
+          "props": [
+            {
+              "nombre": "onChange",
+              "tipo": "(value: string) => void",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "options",
+              "tipo": "SelectOption[]",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "value",
+              "tipo": "string",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "disabled",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "false",
+              "descripcion": ""
+            },
+            {
+              "nombre": "error",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "id",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "label",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "name",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "placeholder",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "required",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "false",
+              "descripcion": ""
+            }
+          ]
+        }
+      ],
+      "otrosValores": [],
+      "tipos": ["SelectOption", "SelectProps"]
+    },
+    {
+      "paquete": "@rubenpazch/shared",
+      "version": "5.1.0",
+      "carpeta": "packages/shared",
+      "categoria": "base",
+      "resumen": "Utilidades (classList) y tipos comunes; la usan internamente los componentes.",
+      "usarCuando": "Solo si construyes un componente nuevo dentro de la librería.",
+      "evitarCuando": "En las apps: no hace falta importarla.",
+      "componentes": [],
+      "otrosValores": ["classList"],
+      "tipos": ["Size", "Color", "Variant"]
+    },
+    {
+      "paquete": "@rubenpazch/stepper",
+      "version": "4.0.0",
+      "carpeta": "packages/stepper",
+      "categoria": "navegacion",
+      "resumen": "Indicador de pasos numerados (opcionalmente clicables) para procesos en etapas.",
+      "usarCuando": "Asistentes y formularios de varios pasos.",
+      "evitarCuando": "Navegación entre secciones independientes: usa Tabs.",
+      "componentes": [
+        {
+          "nombre": "Stepper",
+          "importar": "import { Stepper } from \"@rubenpazch/ui\";",
+          "descripcion": "",
+          "props": [
+            {
+              "nombre": "currentStep",
+              "tipo": "number",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "steps",
+              "tipo": "Step[]",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "",
+              "descripcion": ""
+            },
+            {
+              "nombre": "onStepChange",
+              "tipo": "(step: number) => void",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "size",
+              "tipo": "\"small\" | \"medium\" | \"large\"",
+              "requerido": false,
+              "porDefecto": "medium",
+              "descripcion": ""
+            },
+            {
+              "nombre": "stepClickable",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "false",
+              "descripcion": ""
+            }
+          ]
+        }
+      ],
+      "otrosValores": [],
+      "tipos": []
+    },
+    {
+      "paquete": "@rubenpazch/tabs",
+      "version": "3.0.0",
+      "carpeta": "packages/tabs",
+      "categoria": "navegacion",
+      "resumen": "Pestañas para alternar entre secciones de una misma vista.",
+      "usarCuando": "Separar contenido relacionado en la misma página (datos, historial, archivos).",
+      "evitarCuando": "Procesos secuenciales: usa Stepper.",
+      "componentes": [
+        {
+          "nombre": "Tabs",
+          "importar": "import { Tabs } from \"@rubenpazch/ui\";",
+          "descripcion": "",
+          "props": [
+            {
+              "nombre": "tabs",
+              "tipo": "Tab[]",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "defaultTab",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "lazy",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "false",
+              "descripcion": "Lazy mode - only calls onLoad when tab is first visited"
+            },
+            {
+              "nombre": "loading",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "false",
+              "descripcion": "Loading state for the active tab content"
+            },
+            {
+              "nombre": "loadingComponent",
+              "tipo": "ReactNode",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Custom loading component"
+            },
+            {
+              "nombre": "onChange",
+              "tipo": "(tabId: string) => void",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "onLoad",
+              "tipo": "(tabId: string) => void | Promise<void>",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Called when a tab is activated. Use for lazy loading data"
+            },
+            {
+              "nombre": "orientation",
+              "tipo": "\"horizontal\" | \"vertical\"",
+              "requerido": false,
+              "porDefecto": "horizontal",
+              "descripcion": "Orientation of tabs - horizontal (default) or vertical (left-aligned)"
+            },
+            {
+              "nombre": "renderContent",
+              "tipo": "(tabId: string) => ReactNode",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Render function for tab content (alternative to content prop in Tab)"
+            }
+          ]
+        }
+      ],
+      "otrosValores": [],
+      "tipos": []
+    },
+    {
+      "paquete": "@rubenpazch/text-input",
+      "version": "6.1.0",
+      "carpeta": "packages/text-input",
+      "categoria": "formularios",
+      "resumen": "Campo de texto con etiqueta, ayuda, advertencia, error, iconos y variantes.",
+      "usarCuando": "Cualquier entrada de texto (nombre, correo, búsqueda simple, contraseña).",
+      "evitarCuando": "Números o fechas: usa NumericPicker, NumericUpPicker, DateInput o DatePicker.",
+      "componentes": [
+        {
+          "nombre": "TextInput",
+          "importar": "import { TextInput } from \"@rubenpazch/ui\";",
+          "descripcion": "",
+          "props": [
+            {
+              "nombre": "onChange",
+              "tipo": "(value: string) => void",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "value",
+              "tipo": "string",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "autoComplete",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "",
+              "descripcion": ""
+            },
+            {
+              "nombre": "disabled",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "false",
+              "descripcion": ""
+            },
+            {
+              "nombre": "emailInvalidMessage",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "emailSuggestionMessage",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "emailValidMessage",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "error",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "hint",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "icon",
+              "tipo": "ReactNode",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "label",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "max",
+              "tipo": "number",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "maxLength",
+              "tipo": "number",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "min",
+              "tipo": "number",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "minLength",
+              "tipo": "number",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "minLengthMessage",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Inline error shown when the value is non-empty but shorter than `minLength`."
+            },
+            {
+              "nombre": "onBlur",
+              "tipo": "() => void",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "onFocus",
+              "tipo": "() => void",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "onValidityChange",
+              "tipo": "(isValid: boolean) => void",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Fires whenever the field's overall validity changes (respecting `required`,\n`validateEmail`, `minLength`, `maxLength`, `pattern` and `error`). Lets the\nparent gate a submit button on the component's own validation, without\nduplicating the rules."
+            },
+            {
+              "nombre": "pattern",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "placeholder",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "required",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "false",
+              "descripcion": ""
+            },
+            {
+              "nombre": "requiredMessage",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "requirementsLabels",
+              "tipo": "Partial<PasswordRequirementsLabels>",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "showPasswordStrength",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "false",
+              "descripcion": ""
+            },
+            {
+              "nombre": "step",
+              "tipo": "number",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "strengthLabelPrefix",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "strengthLabels",
+              "tipo": "Partial<Record<PasswordStrengthKey, string>>",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "type",
+              "tipo": "\"number\" | \"text\" | \"email\" | \"tel\" | \"password\" | \"url\"",
+              "requerido": false,
+              "porDefecto": "text",
+              "descripcion": ""
+            },
+            {
+              "nombre": "validateEmail",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "false",
+              "descripcion": ""
+            },
+            {
+              "nombre": "warning",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            }
+          ]
+        }
+      ],
+      "otrosValores": [],
+      "tipos": []
+    },
+    {
+      "paquete": "@rubenpazch/toast",
+      "version": "4.0.0",
+      "carpeta": "packages/toast",
+      "categoria": "retroalimentacion",
+      "resumen": "Notificaciones temporales (Toast) y avisos fijos (ToastBanner) con tipos y acciones.",
+      "usarCuando": "Confirmar que algo se guardó o avisar un error sin interrumpir.",
+      "evitarCuando": "Pedir una decisión: usa ConfirmationDialog.",
+      "componentes": [
+        {
+          "nombre": "ToastBanner",
+          "importar": "import { ToastBanner } from \"@rubenpazch/ui\";",
+          "descripcion": "",
+          "props": [
+            {
+              "nombre": "onClose",
+              "tipo": "(id: string) => void",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "toasts",
+              "tipo": "ToastItem[]",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "closeAriaLabel",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "Close notification",
+              "descripcion": ""
+            }
+          ]
+        }
+      ],
+      "otrosValores": [],
+      "tipos": ["ToastAction", "ToastBannerProps", "ToastItem", "ToastType"]
+    },
+    {
+      "paquete": "@rubenpazch/tokens",
+      "version": "0.2.0",
+      "carpeta": "packages/tokens",
+      "categoria": "base",
+      "resumen": "Tokens de diseño (colores, tipografía, espacios, radios, sombras) como variables CSS --lb-*, estilos base y puente para Tailwind 4.",
+      "usarCuando": "Siempre: importar tokens.css una vez por app; usar var(--lb-*) o las clases de Tailwind lb-*.",
+      "evitarCuando": "No escribir colores en hexadecimal en las apps.",
+      "componentes": [],
+      "otrosValores": [
+        "cssVar",
+        "fontFamily",
+        "fontSize",
+        "fontWeight",
+        "lineHeight",
+        "letterSpacing",
+        "color",
+        "space",
+        "radius",
+        "shadow",
+        "tokens"
+      ],
+      "tipos": ["Tokens"]
+    }
+  ]
+}

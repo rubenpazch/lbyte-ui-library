@@ -40,5 +40,11 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "lbyte": {
+    "categoria": "formularios",
+    "resumen": "RadioButton y RadioGroup accesibles con variantes y validación.",
+    "usarCuando": "Elegir una sola opción entre pocas (2 a 6) visibles a la vez.",
+    "evitarCuando": "Muchas opciones: usa Select o Autocomplete."
   }
 }
