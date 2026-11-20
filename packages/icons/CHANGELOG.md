@@ -1,5 +1,13 @@
 # @rubenpazch/icons
 
+## 6.1.1
+
+### Patch Changes
+
+- c2188cd: Nuevo paquete `@rubenpazch/ui` que reexporta todos los componentes (marcado `"use client"`) e incluye su documentación para personas y agentes de IA (`AGENTS.md`, `docs/COMPONENTES.md`, `docs/catalogo.json`). `@rubenpazch/tokens` agrega `tailwind.css` (puente de los tokens hacia Tailwind 4). Cada paquete trae un README con su uso y sus props, generado por `pnpm catalogo`.
+- Updated dependencies [c2188cd]
+  - @rubenpazch/shared@5.1.1
+
 ## 6.1.0
 
 ### Minor Changes
