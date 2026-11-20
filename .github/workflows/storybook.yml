@@ -57,8 +57,10 @@ jobs:
       - name: Instalar dependencias
         run: pnpm install --frozen-lockfile
 
-      - name: Construir Storybook (y los paquetes de los que depende)
-        run: pnpm turbo build --filter=@rubenpazch/storybook...
+      # Todo el monorepo: las historias importan paquetes (@rubenpazch/*) que la app de
+      # Storybook no declara como dependencia, así que un --filter deja algunos sin dist/.
+      - name: Construir paquetes y Storybook
+        run: pnpm build
 
       - name: Comprobar el build
         run: test -f apps/storybook/storybook-static/index.html
