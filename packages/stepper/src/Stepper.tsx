@@ -15,6 +15,8 @@ interface Stepper {
   currentStep: number;
   className?: string;
   stepClickable?: boolean;
+  /** Nombre accesible de la navegación de pasos (por defecto "Progreso"). */
+  ariaLabel?: string;
   onStepChange?: (step: number) => void;
   size?: StepperSize;
 }
@@ -46,6 +48,7 @@ const ProgressSteps: React.FC<Stepper> = ({
   className = "",
   stepClickable = false,
   onStepChange,
+  ariaLabel = "Progreso",
   size: sizeProp = "medium",
 }) => {
   const size = toLegacySize(sizeProp);
@@ -55,11 +58,12 @@ const ProgressSteps: React.FC<Stepper> = ({
     if (onStepChange) onStepChange(step.number);
   };
   return (
-    <div
+    <nav
+      aria-label={ariaLabel}
       className={classNames(styles.container, className)}
       data-testid="progress-steps"
     >
-      <div className={styles.stepsContainer}>
+      <div className={styles.stepsContainer} role="list">
         {steps.map((step, index) => {
           const isClickable =
             stepClickable && (step.link || step.onClick || onStepChange);
@@ -103,7 +107,12 @@ const ProgressSteps: React.FC<Stepper> = ({
             </div>
           );
           return (
-            <div key={step.number} className={styles.stepWrapper}>
+            <div
+              key={step.number}
+              className={styles.stepWrapper}
+              role="listitem"
+              aria-current={isActive ? "step" : undefined}
+            >
               {isClickable ? (
                 step.link ? (
                   <a href={step.link} className={styles.link} tabIndex={0}>
@@ -136,7 +145,7 @@ const ProgressSteps: React.FC<Stepper> = ({
           );
         })}
       </div>
-    </div>
+    </nav>
   );
 };
 

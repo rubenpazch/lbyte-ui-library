@@ -321,25 +321,31 @@ describe("Tabs Component", () => {
   });
 
   describe("Accessibility", () => {
-    it("has proper ARIA attributes on navigation", () => {
+    it("uses the tablist pattern with a Spanish label", () => {
       render(<Tabs tabs={basicTabs} />);
 
-      const nav = screen.getByRole("navigation");
-      expect(nav).toHaveAttribute("aria-label", "Tabs");
+      const list = screen.getByRole("tablist", { name: "Pestañas" });
+      expect(list).toBeInTheDocument();
+      expect(screen.getAllByRole("tab")).toHaveLength(basicTabs.length);
+      const panel = screen.getByRole("tabpanel");
+      expect(panel).toHaveAttribute(
+        "aria-labelledby",
+        screen.getAllByRole("tab")[0].id,
+      );
     });
 
-    it("marks active tab with aria-current", () => {
+    it("marks active tab with aria-selected", () => {
       render(<Tabs tabs={basicTabs} defaultTab="tab2" />);
 
       const tab2Button = screen.getByText("Tab 2").closest("button");
-      expect(tab2Button).toHaveAttribute("aria-current", "page");
+      expect(tab2Button).toHaveAttribute("aria-selected", "true");
     });
 
-    it("does not mark inactive tabs with aria-current", () => {
+    it("marks inactive tabs as not selected", () => {
       render(<Tabs tabs={basicTabs} defaultTab="tab2" />);
 
       const tab1Button = screen.getByText("Tab 1").closest("button");
-      expect(tab1Button).not.toHaveAttribute("aria-current");
+      expect(tab1Button).toHaveAttribute("aria-selected", "false");
     });
 
     it("has proper disabled attribute on disabled tabs", () => {
@@ -364,7 +370,7 @@ describe("Tabs Component", () => {
     it("handles empty tabs array", () => {
       render(<Tabs tabs={[]} />);
 
-      expect(screen.queryByRole("navigation")).toBeInTheDocument();
+      expect(screen.queryByRole("tablist")).toBeInTheDocument();
     });
 
     it("handles tabs without content", () => {
@@ -420,8 +426,9 @@ describe("Tabs Component", () => {
     it("applies vertical styles to navigation", () => {
       render(<Tabs tabs={basicTabs} orientation="vertical" />);
 
-      const nav = screen.getByRole("navigation");
+      const nav = screen.getByRole("tablist");
       expect(nav).toHaveClass(styles.navVertical);
+      expect(nav).toHaveAttribute("aria-orientation", "vertical");
     });
 
     it("applies correct active styles in vertical mode", () => {
@@ -480,5 +487,27 @@ describe("Tabs Component", () => {
       expect(contentArea).toBeInTheDocument();
       expect(contentArea?.textContent).toContain("Content 1");
     });
+  });
+});
+
+describe("Tabs: teclado", () => {
+  it("flechas, Inicio y Fin mueven la pestaña activa y el foco", () => {
+    const tabs: Tab[] = [
+      { id: "a", label: "Datos", content: <p>Datos</p> },
+      { id: "b", label: "Historial", content: <p>Historial</p> },
+      { id: "c", label: "Archivos", content: <p>Archivos</p> },
+    ];
+    render(<Tabs tabs={tabs} />);
+    const [a, b, c] = screen.getAllByRole("tab");
+    a.focus();
+    fireEvent.keyDown(a, { key: "ArrowRight" });
+    expect(b).toHaveFocus();
+    expect(b).toHaveAttribute("aria-selected", "true");
+    fireEvent.keyDown(b, { key: "End" });
+    expect(c).toHaveFocus();
+    fireEvent.keyDown(c, { key: "ArrowRight" });
+    expect(a).toHaveFocus();
+    expect(a).toHaveAttribute("tabindex", "0");
+    expect(b).toHaveAttribute("tabindex", "-1");
   });
 });
