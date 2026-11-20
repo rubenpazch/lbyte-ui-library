@@ -6,7 +6,7 @@
   align-items: center;
   justify-content: center;
   padding: var(--lb-space-4);
-  background: rgb(15 23 42 / 0.45);
+  background: var(--lb-color-overlay);
   animation: fade 140ms ease-out;
 }
 

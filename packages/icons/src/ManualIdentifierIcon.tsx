@@ -24,11 +24,15 @@ const ManualIdentifierIcon: React.FC<ManualIdentifierIconProps> = ({
     md: "w-5 h-5",
     lg: "w-6 h-6",
   };
+  // Tamaño en px como atributo SVG: funciona sin Tailwind y cualquier clase CSS lo sobrescribe.
+  const sizePx: Record<string, number> = { sm: 16, md: 20, lg: 24 };
 
   const defaultClasses = `${sizeClasses[size]} ${className}`;
 
   return (
     <svg
+      width={sizePx[size]}
+      height={sizePx[size]}
       className={defaultClasses}
       fill="currentColor"
       viewBox="0 0 21 21"

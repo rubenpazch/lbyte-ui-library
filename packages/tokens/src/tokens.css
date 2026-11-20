@@ -116,6 +116,10 @@
   --lb-color-orange-border: #fed7aa;
   --lb-color-orange-accent: #f97316;
   --lb-color-orange-strong: #9a3412;
+  --lb-color-pink-subtle: #fdf2f8;
+  --lb-color-pink-border: #fbcfe8;
+  --lb-color-pink-accent: #ec4899;
+  --lb-color-pink-strong: #be185d;
 
   /* ----- Color: semantic surface roles ----- */
   --lb-color-background: #ffffff;
@@ -126,6 +130,8 @@
   --lb-color-ring: var(--lb-color-primary);
   --lb-color-link: var(--lb-color-primary);
   --lb-color-link-hover: var(--lb-color-primary-hover);
+  /* Fondo semitransparente detrás de modales y drawers. */
+  --lb-color-overlay: rgb(15 23 42 / 0.45);
 
   /* ----- Spacing scale (4px step) ----- */
   --lb-space-0: 0;
@@ -156,6 +162,7 @@
 
 /* Optional dark theme: apply `data-theme="dark"` on <html> or a container. */
 [data-theme="dark"] {
+  --lb-color-overlay: rgb(2 6 23 / 0.7);
   --lb-color-background: var(--lb-color-neutral-900);
   --lb-color-foreground: var(--lb-color-neutral-50);
   --lb-color-muted: var(--lb-color-neutral-800);

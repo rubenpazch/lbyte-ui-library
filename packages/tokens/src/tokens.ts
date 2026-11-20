@@ -118,6 +118,12 @@ export const color = {
       accent: "#f97316",
       strong: "#9a3412",
     },
+    pink: {
+      subtle: "#fdf2f8",
+      border: "#fbcfe8",
+      accent: "#ec4899",
+      strong: "#be185d",
+    },
   },
   background: "#ffffff",
   foreground: "#0f172a",
@@ -127,6 +133,7 @@ export const color = {
   ring: "#2563eb",
   link: "#2563eb",
   linkHover: "#1d4ed8",
+  overlay: "rgb(15 23 42 / 0.45)",
 } as const;
 
 export const space = {

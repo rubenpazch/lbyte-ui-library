@@ -18,6 +18,8 @@ const ChevronIcon: React.FC<ChevronIconProps> = ({
     md: "w-5 h-5",
     lg: "w-6 h-6",
   };
+  // Tamaño en px como atributo SVG: funciona sin Tailwind y cualquier clase CSS lo sobrescribe.
+  const sizePx: Record<string, number> = { sm: 16, md: 20, lg: 24 };
 
   const rotationClasses = {
     up: "rotate-180",
@@ -28,6 +30,8 @@ const ChevronIcon: React.FC<ChevronIconProps> = ({
 
   return (
     <svg
+      width={sizePx[size]}
+      height={sizePx[size]}
       className={`${sizeClasses[size]} ${rotationClasses[direction]} ${className}`}
       fill="none"
       stroke={color}
