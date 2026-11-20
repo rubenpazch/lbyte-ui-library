@@ -364,8 +364,20 @@ if (errores.length) {
   console.error("Errores de documentación:\n- " + errores.join("\n- "));
   process.exit(1);
 }
+// Formatear con prettier (misma configuración que el hook de pre-commit) para que lo generado y
+// lo que queda tras el commit sean idénticos.
+const prettier = await import("prettier");
+const ignorar = path.join(RAIZ, ".prettierignore");
+async function formatear(f, contenido) {
+  const info = await prettier.getFileInfo(f, { ignorePath: fs.existsSync(ignorar) ? ignorar : undefined });
+  if (info.ignored || !info.inferredParser) return contenido;
+  const config = (await prettier.resolveConfig(f)) ?? {};
+  return norm(await prettier.format(contenido, { ...config, filepath: f }));
+}
+
 const desactualizados = [];
-for (const [f, contenido] of salidas) {
+for (const [f, crudo] of salidas) {
+  const contenido = await formatear(f, crudo);
   const actual = fs.existsSync(f) ? norm(fs.readFileSync(f, "utf8")) : null;
   if (actual === contenido) continue;
   if (CHECK) {
