@@ -59,6 +59,12 @@ pnpm catalogo:check     # lo que corre el CI: falla si el catálogo está desact
 **Agregar o cambiar un componente:** ver [AGENTS.md](AGENTS.md) (`pnpm generate-package <nombre>`,
 bloque `lbyte` en su `package.json`, `pnpm catalogo`, `pnpm changeset`).
 
+## Storybook
+
+Publicado en **https://ui.lbyte.pe**. Se actualiza solo cuando `release.yml` publica una versión
+nueva en npm (o a mano: Actions → "Storybook (ui.lbyte.pe)" → Run workflow). Configuración del
+servidor en el encabezado de `.github/workflows/storybook.yml` (Environment `storybook`).
+
 ## Publicación
 
 Con Changesets y GitHub Actions (`release.yml`): al integrar en `main` se abre el PR

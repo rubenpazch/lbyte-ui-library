@@ -1,0 +1,114 @@
+name: Storybook (ui.lbyte.pe)
+
+# Publica el Storybook como sitio estático en Hestia por SFTP.
+# - Automático: lo llama release.yml cuando Changesets publica una versión nueva en npm,
+#   así el Storybook siempre coincide con lo publicado.
+# - Manual: Actions -> "Storybook (ui.lbyte.pe)" -> Run workflow.
+#
+# Environment "storybook" del repo:
+#   Variables: DEPLOY_USER (usuario SFTP del dominio en Hestia), REMOTE_DOMAIN_DIR
+#              (p. ej. /home/<usuario>/web/ui.lbyte.pe), DEPLOY_PORT (opcional, 22)
+#   Secrets:   DEPLOY_HOST, DEPLOY_SSH_KEY, DEPLOY_KNOWN_HOSTS
+#              (DEPLOY_KNOWN_HOSTS = salida verificada de `ssh-keyscan -t ed25519,rsa,ecdsa <host>`)
+#
+# El repo es público: los minutos de Actions no tienen costo.
+
+on:
+  workflow_call:
+  workflow_dispatch:
+
+concurrency:
+  group: storybook-deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Build y deploy de Storybook
+    runs-on: ubuntu-latest
+    environment:
+      name: storybook
+      url: https://ui.lbyte.pe
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24.20.0
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.28.2
+
+      - name: Get pnpm store directory
+        shell: bash
+        run: echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+      - name: Setup pnpm cache
+        uses: actions/cache@v4
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Instalar dependencias
+        run: pnpm install --frozen-lockfile
+
+      - name: Construir Storybook (y los paquetes de los que depende)
+        run: pnpm turbo build --filter=@rubenpazch/storybook...
+
+      - name: Comprobar el build
+        run: test -f apps/storybook/storybook-static/index.html
+
+      - name: Instalar lftp
+        run: sudo apt-get update && sudo apt-get install -y lftp
+
+      - name: Configurar clave SSH
+        env:
+          DEPLOY_SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
+        run: |
+          mkdir -p ~/.ssh
+          printf '%s\n' "$DEPLOY_SSH_KEY" > ~/.ssh/id_deploy
+          chmod 600 ~/.ssh/id_deploy
+
+      - name: Desplegar por SFTP
+        env:
+          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+          DEPLOY_KNOWN_HOSTS: ${{ secrets.DEPLOY_KNOWN_HOSTS }}
+          DEPLOY_USER: ${{ vars.DEPLOY_USER }}
+          DEPLOY_PORT: ${{ vars.DEPLOY_PORT }}
+          REMOTE_DOMAIN_DIR: ${{ vars.REMOTE_DOMAIN_DIR }}
+        run: |
+          set -euo pipefail
+          for v in DEPLOY_HOST DEPLOY_KNOWN_HOSTS DEPLOY_USER REMOTE_DOMAIN_DIR; do
+            test -n "${!v}" || { echo "::error::Falta $v en el Environment 'storybook'"; exit 1; }
+          done
+          PORT="${DEPLOY_PORT:-22}"
+          printf '%s\n' "$DEPLOY_KNOWN_HOSTS" > "$HOME/.ssh/known_hosts"
+          chmod 600 "$HOME/.ssh/known_hosts"
+          SSH="ssh -a -x -i $HOME/.ssh/id_deploy -p $PORT -o StrictHostKeyChecking=yes -o UserKnownHostsFile=$HOME/.ssh/known_hosts"
+          lftp -e "
+            set sftp:connect-program '$SSH';
+            set net:max-retries 5;
+            set net:persist-retries 10;
+            set net:timeout 30;
+            set xfer:clobber on;
+            set mirror:parallel-transfer-count 2;
+            open -u $DEPLOY_USER, sftp://$DEPLOY_HOST;
+            mkdir -p -f $REMOTE_DOMAIN_DIR/public_html;
+            mirror -R --delete --no-perms --verbose ./apps/storybook/storybook-static/ $REMOTE_DOMAIN_DIR/public_html;
+            bye
+          "
+
+      - name: Prueba de humo
+        run: |
+          sleep 5
+          curl -fsS -o /dev/null -w "HTTP %{http_code}\n" https://ui.lbyte.pe/ || {
+            echo "::warning::https://ui.lbyte.pe no respondió 200 (¿DNS/SSL del dominio en Hestia?)"; }
+
+      - name: Limpiar clave SSH
+        if: always()
+        run: rm -f ~/.ssh/id_deploy ~/.ssh/known_hosts

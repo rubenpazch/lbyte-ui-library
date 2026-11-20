@@ -20,7 +20,7 @@ import { Button, TextInput } from "@rubenpazch/ui";
 
 - Catálogo de componentes con props: [docs/COMPONENTES.md](docs/COMPONENTES.md)
 - Instrucciones para agentes de IA y reglas de uso: [AGENTS.md](AGENTS.md)
-- Storybook: (ver README del repositorio)
+- Storybook (todas las variantes en vivo): https://ui.lbyte.pe
 
 Este paquete solo reexporta los paquetes `@rubenpazch/*`; se publica junto con ellos desde
 [lbyte-ui-library](https://github.com/rubenpazch/lbyte-ui-library).
