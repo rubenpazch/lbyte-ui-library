@@ -64,3 +64,71 @@ describe("NumericPicker Component", () => {
     expect(decrementButton).toBeDisabled();
   });
 });
+
+describe("NumericPicker: escritura, límites y accesibilidad", () => {
+  it("permite escribir números de varios dígitos (no reformatea al escribir)", () => {
+    const handleChange = jest.fn();
+    render(<NumericPicker value="" onChange={handleChange} />);
+    const input = screen.getByTestId("numeric-input");
+    fireEvent.focus(input);
+    fireEvent.change(input, { target: { value: "1" } });
+    fireEvent.change(input, { target: { value: "12" } });
+    fireEvent.change(input, { target: { value: "125.5" } });
+    expect(input).toHaveValue("125.5");
+    expect(handleChange).toHaveBeenLastCalledWith("125.5");
+  });
+
+  it("acepta coma decimal", () => {
+    const handleChange = jest.fn();
+    render(<NumericPicker value="" onChange={handleChange} />);
+    fireEvent.change(screen.getByTestId("numeric-input"), {
+      target: { value: "8,9" },
+    });
+    expect(handleChange).toHaveBeenLastCalledWith("8.9");
+  });
+
+  it("al salir del campo aplica decimales, mínimo y máximo", () => {
+    const handleChange = jest.fn();
+    render(
+      <NumericPicker value="" onChange={handleChange} min={10} max={100} />,
+    );
+    const input = screen.getByTestId("numeric-input");
+    fireEvent.focus(input);
+    fireEvent.change(input, { target: { value: "500" } });
+    fireEvent.blur(input);
+    expect(input).toHaveValue("100.00");
+    expect(handleChange).toHaveBeenLastCalledWith("100.00");
+  });
+
+  it("asocia etiqueta, ayuda y error", () => {
+    render(
+      <NumericPicker
+        label="Monto"
+        value=""
+        onChange={jest.fn()}
+        error="Requerido"
+      />,
+    );
+    const input = screen.getByLabelText("Monto");
+    expect(input).toHaveAttribute("aria-invalid", "true");
+    expect(input).toHaveAccessibleDescription("Requerido");
+  });
+
+  it("botones con nombre accesible en español y flechas del teclado", () => {
+    const handleChange = jest.fn();
+    render(
+      <NumericPicker
+        label="Cantidad"
+        value="5"
+        onChange={handleChange}
+        step={1}
+        decimals={0}
+      />,
+    );
+    expect(
+      screen.getByRole("button", { name: "Aumentar" }),
+    ).toBeInTheDocument();
+    fireEvent.keyDown(screen.getByLabelText("Cantidad"), { key: "ArrowUp" });
+    expect(handleChange).toHaveBeenLastCalledWith("6");
+  });
+});

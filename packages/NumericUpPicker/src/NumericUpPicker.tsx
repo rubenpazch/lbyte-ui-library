@@ -1,11 +1,13 @@
-import {
+import React, {
   useState,
   useMemo,
   KeyboardEvent,
   FocusEvent,
   ChangeEvent,
 } from "react";
-import { MinusIcon, PlusIcon, CheckIcon, CloseIcon } from "@rubenpazch/icons";
+import { MinusIcon, PlusIcon, ErrorIcon, CloseIcon } from "@rubenpazch/icons";
+import { normalizeSize, useFieldIds } from "@rubenpazch/shared";
+import type { SizeProp } from "@rubenpazch/shared";
 import styles from "./NumericUpPicker.module.css";
 
 // CSS to hide native number input spinners
@@ -23,9 +25,16 @@ const hideSpinnersStyle = `
 const classNames = (...classes: Array<string | undefined | false>) =>
   classes.filter(Boolean).join(" ");
 
-export type NumericUpPickerSize = "small" | "medium" | "large";
+/** Tamaño: `sm`, `md`, `lg` (también acepta los nombres antiguos small, medium, large). */
+export type NumericUpPickerSize = SizeProp;
 
 export interface NumericUpPickerProps {
+  /** id del input; si no se pasa se genera uno. */
+  id?: string;
+  /** name del input. */
+  name?: string;
+  /** Textos accesibles de los botones. */
+  labels?: Partial<{ decrease: string; increase: string; clear: string }>;
   label?: string;
   value: string | number;
   onChange: (value: string) => void;
@@ -48,34 +57,63 @@ export interface NumericUpPickerProps {
   defaultToZero?: boolean; // Flag to start at 0 instead of min/max when empty
   clearable?: boolean; // Flag to show clear button when value exists
   onClear?: () => void; // Callback when clear button is clicked
-  size?: NumericUpPickerSize; // Size variation: small, medium, large
+  /** Tamaño: sm, md (por defecto) o lg. */
+  size?: NumericUpPickerSize;
 }
 
-export default function NumericUpPicker({
-  label,
-  value,
-  onChange,
-  onBlur,
-  onFocus,
-  placeholder,
-  min,
-  max,
-  step = 0.01,
-  error,
-  hint,
-  warning,
-  disabled = false,
-  className = "",
-  required = false,
-  useMinAsDefault = false,
-  alwaysNegative = false,
-  integerOnly = false,
-  showSign = false,
-  defaultToZero = false,
-  clearable = false,
-  onClear,
-  size = "medium",
-}: NumericUpPickerProps) {
+/** Campo numérico con botones − y +, signo opcional, solo enteros, ayuda, advertencia y error. */
+const NumericUpPicker = React.forwardRef<
+  HTMLInputElement,
+  NumericUpPickerProps
+>(function NumericUpPicker(
+  {
+    id,
+    name,
+    labels,
+    label,
+    value,
+    onChange,
+    onBlur,
+    onFocus,
+    placeholder,
+    min,
+    max,
+    step = 0.01,
+    error,
+    hint,
+    warning,
+    disabled = false,
+    className = "",
+    required = false,
+    useMinAsDefault = false,
+    alwaysNegative = false,
+    integerOnly = false,
+    showSign = false,
+    defaultToZero = false,
+    clearable = false,
+    onClear,
+    size: sizeProp = "md",
+  },
+  ref,
+) {
+  // Mapa interno con los nombres de clase existentes (small/medium/large).
+  const size = ({ sm: "small", md: "medium", lg: "large" } as const)[
+    normalizeSize(sizeProp)
+  ];
+  const text = {
+    decrease: "Disminuir",
+    increase: "Aumentar",
+    clear: "Limpiar",
+    ...labels,
+  };
+  const field = useFieldIds({
+    id,
+    name,
+    required,
+    error,
+    warning: !error ? warning : undefined,
+    hint: hint && !error && !warning ? hint : undefined,
+  });
   // Track if the field has been touched (user has focused on it)
   const [hasBeenTouched, setHasBeenTouched] = useState(false);
   const [hasBeenBlurred, setHasBeenBlurred] = useState(false);
@@ -418,6 +456,7 @@ export default function NumericUpPicker({
       {/* Top Label */}
       {label && (
         <label
+          htmlFor={field.inputId}
           className={classNames(
             styles.label,
             labelSize,
@@ -425,7 +464,11 @@ export default function NumericUpPicker({
           )}
         >
           {label}
-          {required && <span className={styles.required}>*</span>}
+          {required && (
+            <span className={styles.required} aria-hidden="true">
+              *
+            </span>
+          )}
         </label>
       )}
 
@@ -455,8 +498,8 @@ export default function NumericUpPicker({
             buttonSize,
             error ? styles.buttonError : styles.buttonNormal,
           )}
-          title="Decrease value"
-          aria-label="Decrease"
+          title={text.decrease}
+          aria-label={text.decrease}
           data-testid="decrement-button"
         >
           <MinusIcon size={iconSize} />
@@ -466,6 +509,11 @@ export default function NumericUpPicker({
         <div className={styles.inputWrapper}>
           {/* Value Display Only */}
           <input
+            ref={ref}
+            {...field.controlProps}
+            name={name}
+            required={required}
+            inputMode={integerOnly ? "numeric" : "decimal"}
             type="text"
             step={step}
             min={min}
@@ -501,8 +549,8 @@ export default function NumericUpPicker({
               type="button"
               onClick={handleClear}
               className={styles.clearButton}
-              title="Clear value"
-              aria-label="Clear"
+              title={text.clear}
+              aria-label={text.clear}
               data-testid="clear-button"
             >
               <CloseIcon size="sm" className={styles.clearIcon} />
@@ -521,8 +569,8 @@ export default function NumericUpPicker({
             buttonSize,
             error ? styles.buttonError : styles.buttonNormal,
           )}
-          title="Increase value"
-          aria-label="Increase"
+          title={text.increase}
+          aria-label={text.increase}
           data-testid="increment-button"
         >
           <PlusIcon size={iconSize} />
@@ -531,16 +579,23 @@ export default function NumericUpPicker({
 
       {/* Bottom Messages: Error has priority */}
       {error && (
-        <div className={classNames(styles.message, styles.errorMessage)}>
-          <CheckIcon size="sm" className={styles.messageIcon} />
+        <div
+          id={field.errorId}
+          role="alert"
+          className={classNames(styles.message, styles.errorMessage)}
+        >
+          <ErrorIcon size="sm" className={styles.messageIcon} />
           <p className={styles.messageText}>{error}</p>
         </div>
       )}
 
       {/* Warning message (shows if no error) */}
       {warning && !error && (
-        <div className={classNames(styles.message, styles.warningMessage)}>
-          <div className={styles.messageIcon}>
+        <div
+          id={field.warningId}
+          className={classNames(styles.message, styles.warningMessage)}
+        >
+          <div className={styles.messageIcon} aria-hidden="true">
             <span>!</span>
           </div>
           <p className={styles.messageText}>{warning}</p>
@@ -549,10 +604,17 @@ export default function NumericUpPicker({
 
       {/* Hint message (shows if no error or warning) */}
       {hint && !error && !warning && (
-        <div className={classNames(styles.message, styles.hintMessage)}>
+        <div
+          id={field.hintId}
+          className={classNames(styles.message, styles.hintMessage)}
+        >
           <p className={styles.messageText}>{hint}</p>
         </div>
       )}
     </div>
   );
-}
+});
+
+NumericUpPicker.displayName = "NumericUpPicker";
+
+export default NumericUpPicker;
