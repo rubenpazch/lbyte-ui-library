@@ -36,7 +36,8 @@
     "react-dom": "^19.0.0"
   },
   "dependencies": {
-    "@rubenpazch/button": "workspace:*"
+    "@rubenpazch/button": "workspace:*",
+    "@rubenpazch/modal": "workspace:*"
   },
   "devDependencies": {
     "@rubenpazch/typescript-config": "workspace:*"

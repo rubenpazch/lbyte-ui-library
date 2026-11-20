@@ -9,11 +9,15 @@ import path from "path";
 const packageJson = JSON.parse(
   fs.readFileSync(path.resolve("./package.json"), "utf8"),
 );
+const deps = Object.keys(packageJson.dependencies ?? {});
+// React y las dependencias declaradas no se empaquetan.
+const external = (id) =>
+  /^react(-dom)?(\/|$)/.test(id) || deps.some((d) => id === d || id.startsWith(d + "/"));
 
 export default [
   {
     input: "src/index.ts",
-    external: ["react", "react-dom", "@rubenpazch/shared"],
+    external,
     output: [
       { file: packageJson.main || "dist/index.cjs.js", format: "cjs" },
       { file: packageJson.module || "dist/index.esm.js", format: "esm" },
