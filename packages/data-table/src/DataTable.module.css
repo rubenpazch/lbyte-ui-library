@@ -1,0 +1,130 @@
+.wrapper {
+  border: 1px solid var(--lb-color-border);
+  border-radius: var(--lb-radius-xl);
+  background: var(--lb-color-background);
+  overflow: hidden;
+  font-family: var(--lb-font-sans);
+}
+
+.scroll {
+  overflow-x: auto;
+}
+
+.scroll:focus-visible {
+  outline: 2px solid var(--lb-color-ring);
+  outline-offset: -2px;
+}
+
+.sticky {
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+.sticky thead th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--lb-font-size-sm);
+  color: var(--lb-color-foreground);
+}
+
+.caption {
+  padding: var(--lb-space-3) var(--lb-space-4);
+  text-align: left;
+  font-weight: var(--lb-font-weight-semibold);
+}
+
+.table th,
+.table td {
+  padding: var(--lb-space-3) var(--lb-space-4);
+  border-bottom: 1px solid var(--lb-color-border);
+  vertical-align: middle;
+}
+
+.dense th,
+.dense td {
+  padding: var(--lb-space-2) var(--lb-space-3);
+}
+
+.table th {
+  background: var(--lb-color-muted);
+  color: var(--lb-color-muted-foreground);
+  font-size: var(--lb-font-size-xs);
+  font-weight: var(--lb-font-weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: var(--lb-letter-spacing-wide);
+  white-space: nowrap;
+}
+
+.table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.table tbody tr:hover td {
+  background: var(--lb-color-neutral-50);
+}
+
+.align-left { text-align: left; }
+.align-center { text-align: center; }
+.align-right { text-align: right; font-variant-numeric: tabular-nums; }
+
+.sortButton {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--lb-space-1);
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-transform: inherit;
+  letter-spacing: inherit;
+  cursor: pointer;
+}
+
+.sortButton:focus-visible {
+  outline: 2px solid var(--lb-color-ring);
+  outline-offset: 2px;
+  border-radius: var(--lb-radius-sm);
+}
+
+.sortIcon {
+  font-size: 0.7em;
+  opacity: 0.5;
+}
+
+.sortActive {
+  opacity: 1;
+  color: var(--lb-color-primary);
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.clickable:focus-visible td {
+  background: var(--lb-color-blue-subtle);
+  outline: none;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+@media (max-width: 639px) {
+  .hide-sm { display: none; }
+}
+
+@media (max-width: 767px) {
+  .hide-md { display: none; }
+}

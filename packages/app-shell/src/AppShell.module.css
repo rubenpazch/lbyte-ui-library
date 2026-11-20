@@ -1,0 +1,111 @@
+.shell {
+  display: flex;
+  min-height: 100dvh;
+  background: var(--lb-color-neutral-50);
+  color: var(--lb-color-foreground);
+  font-family: var(--lb-font-sans);
+}
+
+.skip {
+  position: absolute;
+  left: var(--lb-space-2);
+  top: -100px;
+  z-index: 100;
+  padding: var(--lb-space-2) var(--lb-space-3);
+  border-radius: var(--lb-radius-md);
+  background: var(--lb-color-primary);
+  color: var(--lb-color-primary-foreground);
+  text-decoration: none;
+}
+
+.skip:focus {
+  top: var(--lb-space-2);
+}
+
+.column {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  gap: var(--lb-space-3);
+  min-height: 4rem;
+  padding: var(--lb-space-2) var(--lb-space-6);
+  border-bottom: 1px solid var(--lb-color-border);
+  background: color-mix(in srgb, var(--lb-color-background) 88%, transparent);
+  backdrop-filter: saturate(1.4) blur(8px);
+}
+
+.menuButton {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-left: calc(-1 * var(--lb-space-2));
+  padding: 0;
+  border: 0;
+  border-radius: var(--lb-radius-md);
+  background: transparent;
+  color: var(--lb-color-foreground);
+  cursor: pointer;
+}
+
+.menuButton:hover {
+  background: var(--lb-color-muted);
+}
+
+.menuButton:focus-visible {
+  outline: 2px solid var(--lb-color-ring);
+  outline-offset: 1px;
+}
+
+.title {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  font-size: var(--lb-font-size-md);
+  font-weight: var(--lb-font-weight-semibold);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--lb-space-2);
+  margin-left: auto;
+}
+
+.main {
+  flex: 1;
+  padding: var(--lb-space-8) var(--lb-space-6);
+  outline: none;
+}
+
+.content {
+  margin: 0 auto;
+}
+
+.max-lg { max-width: 72rem; }
+.max-md { max-width: 56rem; }
+.max-none { max-width: none; }
+
+@media (max-width: 767px) {
+  .menuButton {
+    display: inline-flex;
+  }
+  .header {
+    padding-inline: var(--lb-space-4);
+  }
+  .main {
+    padding: var(--lb-space-5) var(--lb-space-4);
+  }
+}
