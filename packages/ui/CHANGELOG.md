@@ -1,5 +1,24 @@
 # @rubenpazch/ui
 
+## 0.6.0
+
+### Minor Changes
+
+- 9aae9cd: - `ToastProvider` + `useToast()` (`toast.exito`, `error`, `aviso`, `info`): mensajes del servidor dentro de la app como toast bajo la cabecera. Fuera de un proveedor, `useToast()` lanza un error claro (en pantallas públicas el mensaje va en el formulario).
+  - `AppShell` incluye `ToastProvider` (prop `toasts={false}` para desactivarlo).
+  - Toast: `role="status"` para éxito/info y `role="alert"` para error/aviso (antes todos `alert`).
+  - AGENTS.md: regla de **Mensajes** para todas las apps y valores por defecto de `Button` y `TextInput`.
+  - `ToastRegion` y `placement="inline"`: `AppShell` muestra los toasts en su bloque fijo bajo la cabecera, solo en la columna del contenido (no tapan el menú ni el contenido; lo empujan).
+- 57f6af5: Nuevo `UserCard`: tarjeta reutilizable de una persona (avatar con iniciales, nombre, dato secundario, etiquetas, acciones principales en el pie y secundarias en un menú ⋮).
+
+### Patch Changes
+
+- Updated dependencies [9aae9cd]
+- Updated dependencies [57f6af5]
+  - @rubenpazch/toast@4.1.0
+  - @rubenpazch/app-shell@0.2.0
+  - @rubenpazch/user-card@0.1.0
+
 ## 0.5.1
 
 ### Patch Changes
