@@ -3,7 +3,31 @@ import { CheckIcon, ErrorIcon, InfoIcon } from "@rubenpazch/icons";
 import { useFieldIds } from "@rubenpazch/shared";
 import styles from "./TextInput.module.css";
 
-export interface TextInputProps {
+/** Atributos nativos del <input> que se pasan tal cual (autoFocus, inputMode, spellCheck, aria-*, data-*…). */
+export type TextInputNativeProps = Omit<
+  React.InputHTMLAttributes<HTMLInputElement>,
+  | "value"
+  | "onChange"
+  | "onBlur"
+  | "onFocus"
+  | "type"
+  | "size"
+  | "className"
+  | "id"
+  | "name"
+  | "required"
+  | "disabled"
+  | "placeholder"
+  | "maxLength"
+  | "minLength"
+  | "pattern"
+  | "autoComplete"
+  | "min"
+  | "max"
+  | "step"
+>;
+
+export interface TextInputProps extends TextInputNativeProps {
   /** id del input; si no se pasa se genera uno (la etiqueta se asocia sola). */
   id?: string;
   /** name del input (formularios nativos, react-hook-form…). */
@@ -151,6 +175,7 @@ const TextInput = React.forwardRef<HTMLInputElement, TextInputProps>(
       strengthLabels,
       strengthLabelPrefix,
       requirementsLabels,
+      ...nativeProps
     },
     ref,
   ) {
@@ -273,12 +298,13 @@ const TextInput = React.forwardRef<HTMLInputElement, TextInputProps>(
           {icon && !isFocused && <div className={styles.icon}>{icon}</div>}
 
           <input
+            {...nativeProps}
             ref={ref}
             {...field.controlProps}
             name={name}
             required={required}
             type={validateEmail ? "text" : type}
-            inputMode={validateEmail ? "email" : undefined}
+            inputMode={validateEmail ? "email" : nativeProps.inputMode}
             value={value}
             onChange={(e) => onChange(e.target.value)}
             onFocus={handleFocus}

@@ -301,6 +301,10 @@ export { default as Switch } from "@rubenpazch/switch";
 export type { SwitchProps } from "@rubenpazch/switch";
 export { default as Tabs } from "@rubenpazch/tabs";
 export { default as TextInput } from "@rubenpazch/text-input";
+export type {
+  TextInputProps,
+  TextInputNativeProps,
+} from "@rubenpazch/text-input";
 export { default as Textarea } from "@rubenpazch/textarea";
 export type { TextareaProps } from "@rubenpazch/textarea";
 export { ToastBanner } from "@rubenpazch/toast";

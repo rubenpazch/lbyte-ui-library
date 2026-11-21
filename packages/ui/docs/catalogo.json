@@ -7822,7 +7822,7 @@
         }
       ],
       "otrosValores": [],
-      "tipos": []
+      "tipos": ["TextInputProps", "TextInputNativeProps"]
     },
     {
       "paquete": "@rubenpazch/textarea",
