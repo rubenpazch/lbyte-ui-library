@@ -2,6 +2,29 @@
 
 This document outlines the step-by-step process for releasing packages from the Lbyte UI Library monorepo to npm.
 
+## Publicar (desde la terminal)
+
+npm exige verificación en dos pasos para publicar, así que la publicación se hace en local. El CI
+solo abre el PR "chore: version packages" y, al integrarlo, actualiza el Storybook.
+
+1. Integra en GitHub el PR **"chore: version packages"** (sube versiones y CHANGELOG).
+2. En tu PC:
+
+   ```bash
+   git switch main && git pull
+   pnpm install --frozen-lockfile
+   pnpm build && pnpm test
+   npm login            # una vez por equipo (abre el navegador)
+   npm whoami           # debe mostrar tu usuario
+   pnpm changeset publish
+   ```
+
+   `changeset publish` solo publica los paquetes cuya versión aún no está en npm. Si tu cuenta
+   pide código de la app autenticadora, npm lo pregunta (o pásalo con `--otp 123456`; si el
+   código caduca a mitad, vuelve a ejecutar el comando: retoma los que faltan).
+
+3. Sube las etiquetas que crea Changesets: `git push --follow-tags`.
+
 ## Git Hooks
 
 The repository uses Husky to run automated checks before commits and pushes:

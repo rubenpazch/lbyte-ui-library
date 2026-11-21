@@ -12,7 +12,7 @@ jobs:
     name: Release
     runs-on: ubuntu-latest
     outputs:
-      published: ${{ steps.changesets.outputs.published }}
+      hasChangesets: ${{ steps.changesets.outputs.hasChangesets }}
     permissions:
       contents: write
       pull-requests: write
@@ -53,22 +53,22 @@ jobs:
       - name: Run tests
         run: pnpm test
 
-      - name: Create Release Pull Request or Publish to npm
+      # Solo abre/actualiza el PR "chore: version packages". La publicación en npm se hace
+      # desde la terminal (npm exige 2FA): ver RELEASE.md, sección "Publicar".
+      - name: Crear o actualizar el PR de versiones
         id: changesets
         uses: changesets/action@v1
         with:
-          publish: pnpm release
           version: pnpm changeset version
           commit: "chore: version packages"
           title: "chore: version packages"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN_UI_LIBRARY }}
-          NPM_CONFIG_PROVENANCE: true
 
-  # Solo cuando se publicó una versión nueva en npm: actualiza https://ui.lbyte.pe
+  # Al integrar el PR de versiones (ya no quedan changesets pendientes) se actualiza
+  # https://ui.lbyte.pe con lo que se va a publicar.
   storybook:
     needs: release
-    if: needs.release.outputs.published == 'true'
+    if: needs.release.outputs.hasChangesets == 'false'
     uses: ./.github/workflows/storybook.yml
     secrets: inherit

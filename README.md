@@ -61,14 +61,14 @@ bloque `lbyte` en su `package.json`, `pnpm catalogo`, `pnpm changeset`).
 
 ## Storybook
 
-Publicado en **https://ui.lbyte.pe**. Se actualiza solo cuando `release.yml` publica una versión
-nueva en npm (o a mano: Actions → "Storybook (ui.lbyte.pe)" → Run workflow). Configuración del
+Publicado en **https://ui.lbyte.pe**. Se actualiza al integrar el PR "chore: version packages" (o a mano: Actions → "Storybook (ui.lbyte.pe)" → Run workflow). Configuración del
 servidor en el encabezado de `.github/workflows/storybook.yml` (Environment `storybook`).
 
 ## Publicación
 
-Con Changesets y GitHub Actions (`release.yml`): al integrar en `main` se abre el PR
-"chore: version packages"; al integrar ese PR se publica en npm. Ver [RELEASE.md](RELEASE.md).
+Al integrar en `main` el CI abre el PR "chore: version packages"; al integrar ese PR se
+actualiza el Storybook y se publica en npm **desde la terminal** (npm exige 2FA). Pasos en
+[RELEASE.md](RELEASE.md#publicar-desde-la-terminal).
 
 ## Stack
 

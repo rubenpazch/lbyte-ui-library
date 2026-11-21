@@ -1,8 +1,8 @@
 name: Storybook (ui.lbyte.pe)
 
 # Publica el Storybook como sitio estático en Hestia por SFTP.
-# - Automático: lo llama release.yml cuando Changesets publica una versión nueva en npm,
-#   así el Storybook siempre coincide con lo publicado.
+# - Automático: lo llama release.yml al integrar el PR "chore: version packages" (justo antes
+#   de publicar en npm desde la terminal), así coincide con lo publicado.
 # - Manual: Actions -> "Storybook (ui.lbyte.pe)" -> Run workflow.
 #
 # Environment "storybook" del repo:
