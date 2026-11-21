@@ -43,6 +43,7 @@
   "dependencies": {
     "@rubenpazch/alert": "workspace:^",
     "@rubenpazch/app-shell": "workspace:^",
+    "@rubenpazch/auth-gate": "workspace:^",
     "@rubenpazch/autocomplete": "workspace:^",
     "@rubenpazch/avatar": "workspace:^",
     "@rubenpazch/badge": "workspace:^",

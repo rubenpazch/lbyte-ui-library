@@ -461,6 +461,21 @@ importers:
         specifier: 6.0.3
         version: 6.0.3
 
+  packages/auth-gate:
+    dependencies:
+      '@rubenpazch/shared':
+        specifier: workspace:*
+        version: link:../shared
+      '@rubenpazch/tokens':
+        specifier: workspace:*
+        version: link:../tokens
+      react:
+        specifier: 19.2.8
+        version: 19.2.8
+      react-dom:
+        specifier: 19.2.8
+        version: 19.2.8(react@19.2.8)
+
   packages/autocomplete:
     dependencies:
       '@rubenpazch/icons':
@@ -3089,6 +3104,9 @@ importers:
       '@rubenpazch/app-shell':
         specifier: workspace:^
         version: link:../app-shell
+      '@rubenpazch/auth-gate':
+        specifier: workspace:^
+        version: link:../auth-gate
       '@rubenpazch/autocomplete':
         specifier: workspace:^
         version: link:../autocomplete

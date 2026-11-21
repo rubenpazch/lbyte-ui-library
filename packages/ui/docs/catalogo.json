@@ -179,6 +179,20 @@
               "descripcion": "Componente de enlace (Link de Next.js). Por defecto <a>."
             },
             {
+              "nombre": "loading",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "false",
+              "descripcion": "Carga del contenido al cambiar de pantalla: solo el área de contenido muestra el indicador\n(el menú y la cabecera no cambian). Los hijos siguen montados, atenuados y sin interacción."
+            },
+            {
+              "nombre": "loadingLabel",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "Cargando…",
+              "descripcion": "Texto accesible de la carga."
+            },
+            {
               "nombre": "maxWidth",
               "tipo": "\"none\" | \"md\" | \"lg\"",
               "requerido": false,
@@ -225,6 +239,95 @@
       ],
       "otrosValores": [],
       "tipos": ["AppShellProps"]
+    },
+    {
+      "paquete": "@rubenpazch/auth-gate",
+      "carpeta": "packages/auth-gate",
+      "categoria": "navegacion",
+      "resumen": "Puerta de sesión: comprueba el token, confirma con el servidor (/me) y solo entonces pinta la app; mientras, una pantalla neutra. Sin sesión, va al login sin mostrar nada.",
+      "usarCuando": "Raíz de toda app con sesión (paneles, módulos), envolviendo AppShell.",
+      "evitarCuando": "Pantallas públicas (login, registro, landing).",
+      "componentes": [
+        {
+          "nombre": "AuthGate",
+          "importar": "import { AuthGate } from \"@rubenpazch/ui\";",
+          "descripcion": "Puerta de sesión para la raíz de toda app con sesión (decisión 0006 de lbyte-contexto):\n1. sin token → al login sin pintar nada de la app;\n2. con token → pantalla neutra mientras `verify()` (/me) confirma;\n3. confirmada → pinta la app; rechazada → al login.\nUn 401 posterior (`logoutEvent`) oculta la app y va al login.\n\nEs experiencia de usuario, no seguridad: la API sigue respondiendo 401.",
+          "props": [
+            {
+              "nombre": "children",
+              "tipo": "ReactNode",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": "La app; recibe lo que devolvió `verify` (usuario, permisos…)."
+            },
+            {
+              "nombre": "hasSession",
+              "tipo": "() => boolean",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": "Comprobación local inmediata (sin red): ¿hay token o cookie de sesión y no está vencido?\nSi devuelve false se va al login sin pintar nada de la app."
+            },
+            {
+              "nombre": "onUnauthenticated",
+              "tipo": "() => void",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": "Ir al login (p. ej. `window.location.href = AUTH_URL`)."
+            },
+            {
+              "nombre": "verify",
+              "tipo": "() => Promise<T>",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": "Confirma la sesión con el servidor (p. ej. `GET /me`). Si rechaza, se va al login."
+            },
+            {
+              "nombre": "brand",
+              "tipo": "ReactNode",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Marca de la organización sobre el texto (logo o nombre)."
+            },
+            {
+              "nombre": "labels",
+              "tipo": "Partial<AuthGateLabels>",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Textos; por defecto en español."
+            },
+            {
+              "nombre": "logoutEvent",
+              "tipo": "string | false",
+              "requerido": false,
+              "porDefecto": "auth:logout",
+              "descripcion": "Evento global que indica que la sesión terminó (un 401 a mitad de uso). Al recibirlo se oculta\nla app tras la pantalla neutra y se va al login. Por defecto \"auth:logout\"."
+            }
+          ]
+        },
+        {
+          "nombre": "AuthScreen",
+          "importar": "import { AuthScreen } from \"@rubenpazch/ui\";",
+          "descripcion": "Pantalla neutra a pantalla completa: sin datos ni estructura de la app.",
+          "props": [
+            {
+              "nombre": "label",
+              "tipo": "string",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "brand",
+              "tipo": "ReactNode",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            }
+          ]
+        }
+      ],
+      "otrosValores": [],
+      "tipos": ["AuthGateProps", "AuthGateLabels"]
     },
     {
       "paquete": "@rubenpazch/autocomplete",

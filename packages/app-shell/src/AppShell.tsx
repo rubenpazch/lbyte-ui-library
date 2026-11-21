@@ -33,6 +33,13 @@ export interface AppShellProps extends Pick<
    * toast bajo la cabecera. Pon `false` solo si la app ya tiene su propio proveedor más arriba.
    */
   toasts?: boolean;
+  /**
+   * Carga del contenido al cambiar de pantalla: solo el área de contenido muestra el indicador
+   * (el menú y la cabecera no cambian). Los hijos siguen montados, atenuados y sin interacción.
+   */
+  loading?: boolean;
+  /** Texto accesible de la carga. */
+  loadingLabel?: string;
 }
 
 const cx = (...c: Array<string | false | undefined>) =>
@@ -59,6 +66,8 @@ export default function AppShell({
   maxWidth = "lg",
   labels,
   toasts = true,
+  loading = false,
+  loadingLabel = "Cargando…",
 }: AppShellProps) {
   const text = {
     openMenu: "Abrir menú",
@@ -121,9 +130,22 @@ export default function AppShell({
           {toasts && <ToastRegion className={styles.toasts} />}
         </div>
         <main id={mainId} tabIndex={-1} className={styles.main}>
-          <div className={cx(styles.content, styles[`max-${maxWidth}`])}>
+          <div
+            className={cx(
+              styles.content,
+              styles[`max-${maxWidth}`],
+              loading && styles.contentLoading,
+            )}
+            aria-busy={loading || undefined}
+          >
             {children}
           </div>
+          {loading && (
+            <div className={styles.loading} role="status">
+              <span className={styles.spinner} aria-hidden="true" />
+              <span>{loadingLabel}</span>
+            </div>
+          )}
         </main>
       </div>
     </div>
