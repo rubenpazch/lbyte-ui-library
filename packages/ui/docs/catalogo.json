@@ -1775,7 +1775,7 @@
               "nombre": "presets",
               "tipo": "false | DateRangePreset[]",
               "requerido": false,
-              "porDefecto": "[\n  { label: \"Hoy\", range: (h) => rango(h, h) },\n  { label: \"Últimos 7 días\", range: (h) => rango(menos(h, 6), h) },\n  { label: \"Últimos 30 días\", range: (h) => rango(menos(h, 29), h) },\n  { label: \"Este mes\", range: (h) => rango(primerDia(h.getFullYear(), h.getMonth()), ultimoDia(h.getFullYear(), h.getMonth())) },\n  { label: \"Mes anterior\", range: (h) => rango(primerDia(h.getFullYear(), h.getMonth() - 1), ultimoDia(h.getFullYear(), h.getMonth() - 1)) },\n  { label: \"Este año\", range: (h) => rango(new Date(h.getFullYear(), 0, 1), new Date(h.getFullYear(), 11, 31)) },\n]",
+              "porDefecto": "[\n  { label: \"Hoy\", range: (h) => rango(h, h) },\n  { label: \"Últimos 7 días\", range: (h) => rango(menos(h, 6), h) },\n  { label: \"Últimos 30 días\", range: (h) => rango(menos(h, 29), h) },\n  {\n    label: \"Este mes\",\n    range: (h) =>\n      rango(\n        primerDia(h.getFullYear(), h.getMonth()),\n        ultimoDia(h.getFullYear(), h.getMonth()),\n      ),\n  },\n  {\n    label: \"Mes anterior\",\n    range: (h) =>\n      rango(\n        primerDia(h.getFullYear(), h.getMonth() - 1),\n        ultimoDia(h.getFullYear(), h.getMonth() - 1),\n      ),\n  },\n  {\n    label: \"Este año\",\n    range: (h) =>\n      rango(new Date(h.getFullYear(), 0, 1), new Date(h.getFullYear(), 11, 31)),\n  },\n]",
               "descripcion": "Atajos; `false` los oculta. Por defecto: hoy, 7/30 días, este mes, mes anterior, este año."
             },
             {
