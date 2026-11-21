@@ -29,4 +29,6 @@ npm install @rubenpazch/button
 | `startIcon`        | `ReactNode`                                                               |      |             | Icon to display before text                                      |
 | `variant`          | `"text" \| "contained" \| "outlined"`                                     |      |             | Button variant style                                             |
 
+Tipos: `ButtonVariant`, `ButtonColor`, `ButtonSize`, `ButtonSizeProp`, `ButtonProps`.
+
 <!-- catalogo:fin -->

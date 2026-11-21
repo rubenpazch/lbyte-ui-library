@@ -441,6 +441,13 @@
               "descripcion": ""
             },
             {
+              "nombre": "labelAction",
+              "tipo": "ReactNode",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Contenido junto a la etiqueta, a la derecha: un botón de ayuda (\"?\"), un enlace…\nNo va dentro del `<label>`."
+            },
+            {
               "nombre": "labels",
               "tipo": "Partial<{ clear: string; open: string; close: string; }>",
               "requerido": false,
@@ -577,7 +584,7 @@
         }
       ],
       "otrosValores": [],
-      "tipos": []
+      "tipos": ["AutocompleteOption", "AutocompleteProps"]
     },
     {
       "paquete": "@rubenpazch/avatar",
@@ -885,7 +892,13 @@
         }
       ],
       "otrosValores": [],
-      "tipos": []
+      "tipos": [
+        "ButtonVariant",
+        "ButtonColor",
+        "ButtonSize",
+        "ButtonSizeProp",
+        "ButtonProps"
+      ]
     },
     {
       "paquete": "@rubenpazch/card",
@@ -1089,7 +1102,7 @@
         }
       ],
       "otrosValores": [],
-      "tipos": []
+      "tipos": ["CheckboxInputProps"]
     },
     {
       "paquete": "@rubenpazch/chip",
@@ -1288,7 +1301,7 @@
         }
       ],
       "otrosValores": [],
-      "tipos": []
+      "tipos": ["ConfirmationDialogProps"]
     },
     {
       "paquete": "@rubenpazch/data-table",
@@ -1555,7 +1568,7 @@
         }
       ],
       "otrosValores": [],
-      "tipos": []
+      "tipos": ["DateInputLabels", "DateInputProps"]
     },
     {
       "paquete": "@rubenpazch/date-picker",
@@ -1693,7 +1706,7 @@
         }
       ],
       "otrosValores": [],
-      "tipos": []
+      "tipos": ["DatePickerProps"]
     },
     {
       "paquete": "@rubenpazch/date-range-picker",
@@ -1977,7 +1990,7 @@
         }
       ],
       "otrosValores": [],
-      "tipos": []
+      "tipos": ["DraggableListProps"]
     },
     {
       "paquete": "@rubenpazch/drawer",
@@ -2101,7 +2114,7 @@
         }
       ],
       "otrosValores": [],
-      "tipos": []
+      "tipos": ["DrawerPosition", "DrawerSize", "DrawerAlign", "DrawerProps"]
     },
     {
       "paquete": "@rubenpazch/empty-state",
@@ -6159,7 +6172,7 @@
         }
       ],
       "otrosValores": [],
-      "tipos": []
+      "tipos": ["NumericPickerProps"]
     },
     {
       "paquete": "@rubenpazch/numeric-up-picker",
@@ -7065,7 +7078,11 @@
         }
       ],
       "otrosValores": [],
-      "tipos": []
+      "tipos": [
+        "PrescriptionEyeInfo",
+        "PrescriptionEyeCardLabels",
+        "PrescriptionEyeCardProps"
+      ]
     },
     {
       "paquete": "@rubenpazch/progress-bar",
@@ -7542,6 +7559,13 @@
               "requerido": false,
               "porDefecto": null,
               "descripcion": ""
+            },
+            {
+              "nombre": "labelAction",
+              "tipo": "ReactNode",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Contenido junto a la etiqueta, a la derecha: un botón de ayuda (\"?\"), un enlace…\nNo va dentro del `<label>`."
             },
             {
               "nombre": "name",

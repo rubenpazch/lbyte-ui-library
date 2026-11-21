@@ -8,6 +8,10 @@ export type { AppShellProps } from "@rubenpazch/app-shell";
 export { default as AuthGate, AuthScreen } from "@rubenpazch/auth-gate";
 export type { AuthGateProps, AuthGateLabels } from "@rubenpazch/auth-gate";
 export { default as Autocomplete } from "@rubenpazch/autocomplete";
+export type {
+  AutocompleteOption,
+  AutocompleteProps,
+} from "@rubenpazch/autocomplete";
 export { Avatar, AvatarGroup } from "@rubenpazch/avatar";
 export type {
   AvatarProps,
@@ -19,6 +23,13 @@ export type {
 export { default as Badge } from "@rubenpazch/badge";
 export type { BadgeProps, BadgeColor, BadgeVariant } from "@rubenpazch/badge";
 export { default as Button } from "@rubenpazch/button";
+export type {
+  ButtonVariant,
+  ButtonColor,
+  ButtonSize,
+  ButtonSizeProp,
+  ButtonProps,
+} from "@rubenpazch/button";
 export {
   default as Card,
   CardHeader,
@@ -27,6 +38,7 @@ export {
 } from "@rubenpazch/card";
 export type { CardProps, CardHeaderProps } from "@rubenpazch/card";
 export { default as CheckboxInput } from "@rubenpazch/checkbox-input";
+export type { CheckboxInputProps } from "@rubenpazch/checkbox-input";
 export { default as Chip } from "@rubenpazch/chip";
 export type {
   ChipVariant,
@@ -35,6 +47,7 @@ export type {
   ChipProps,
 } from "@rubenpazch/chip";
 export { default as ConfirmationDialog } from "@rubenpazch/confirmation-dialog";
+export type { ConfirmationDialogProps } from "@rubenpazch/confirmation-dialog";
 export { default as DataTable } from "@rubenpazch/data-table";
 export type {
   DataTableProps,
@@ -43,7 +56,9 @@ export type {
   SortDirection,
 } from "@rubenpazch/data-table";
 export { default as DateInput } from "@rubenpazch/date-input";
+export type { DateInputLabels, DateInputProps } from "@rubenpazch/date-input";
 export { default as DatePicker } from "@rubenpazch/date-picker";
+export type { DatePickerProps } from "@rubenpazch/date-picker";
 export {
   default as DateRangePicker,
   DEFAULT_DATE_RANGE_LABELS,
@@ -62,7 +77,14 @@ export type {
   DescriptionListProps,
 } from "@rubenpazch/description-list";
 export { default as DraggableList } from "@rubenpazch/draggable-list";
+export type { DraggableListProps } from "@rubenpazch/draggable-list";
 export { default as Drawer } from "@rubenpazch/drawer";
+export type {
+  DrawerPosition,
+  DrawerSize,
+  DrawerAlign,
+  DrawerProps,
+} from "@rubenpazch/drawer";
 export { default as EmptyState } from "@rubenpazch/empty-state";
 export type { EmptyStateProps } from "@rubenpazch/empty-state";
 export {
@@ -242,6 +264,7 @@ export {
 } from "@rubenpazch/month-navigator";
 export type { MonthNavigatorProps } from "@rubenpazch/month-navigator";
 export { default as NumericPicker } from "@rubenpazch/numeric-picker";
+export type { NumericPickerProps } from "@rubenpazch/numeric-picker";
 export { default as NumericUpPicker } from "@rubenpazch/numeric-up-picker";
 export type {
   NumericUpPickerProps,
@@ -269,6 +292,11 @@ export { default as PatientDetails } from "@rubenpazch/patient-details";
 export { default as PatientSearch } from "@rubenpazch/patient-search";
 export { default as PrescriptionCard } from "@rubenpazch/prescription-card";
 export { default as PrescriptionEyeCard } from "@rubenpazch/prescription-eye-card";
+export type {
+  PrescriptionEyeInfo,
+  PrescriptionEyeCardLabels,
+  PrescriptionEyeCardProps,
+} from "@rubenpazch/prescription-eye-card";
 export { default as ProgressBar } from "@rubenpazch/progress-bar";
 export type { ProgressBarProps } from "@rubenpazch/progress-bar";
 export { default as RadioButton, RadioGroup } from "@rubenpazch/radio-button";

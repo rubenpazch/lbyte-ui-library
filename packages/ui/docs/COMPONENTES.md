@@ -127,6 +127,8 @@ import { Button } from "@rubenpazch/ui";
 | `startIcon`        | `ReactNode`                                                               |      |             | Icon to display before text                                      |
 | `variant`          | `"text" \| "contained" \| "outlined"`                                     |      |             | Button variant style                                             |
 
+Tipos: `ButtonVariant`, `ButtonColor`, `ButtonSize`, `ButtonSizeProp`, `ButtonProps`.
+
 ### @rubenpazch/icon-button
 
 Botón de solo icono con variantes, formas, tooltip y etiqueta accesible.
@@ -202,41 +204,44 @@ Selector con búsqueda (combobox accesible): filtra mientras se escribe, teclado
 import { Autocomplete } from "@rubenpazch/ui";
 ```
 
-| Prop              | Tipo                                                                                  | Req. | Por defecto             | Descripción                                |
-| ----------------- | ------------------------------------------------------------------------------------- | ---- | ----------------------- | ------------------------------------------ |
-| `onChange`        | `(value: string \| number \| null, option?: AutocompleteOption \| undefined) => void` | sí   |                         |                                            |
-| `value`           | `null \| string \| number`                                                            | sí   |                         |                                            |
-| `className`       | `string`                                                                              |      | ``                      |                                            |
-| `clearable`       | `boolean`                                                                             |      | `true`                  |                                            |
-| `createLabel`     | `string`                                                                              |      | `Crear`                 |                                            |
-| `debounceMs`      | `number`                                                                              |      | `300`                   |                                            |
-| `disabled`        | `boolean`                                                                             |      | `false`                 |                                            |
-| `error`           | `string`                                                                              |      |                         |                                            |
-| `highlightMatch`  | `boolean`                                                                             |      | `true`                  |                                            |
-| `hint`            | `string`                                                                              |      |                         |                                            |
-| `icon`            | `ReactNode`                                                                           |      |                         |                                            |
-| `id`              | `string`                                                                              |      |                         | id del input; si no se pasa se genera uno. |
-| `keepListOpen`    | `boolean`                                                                             |      | `false`                 |                                            |
-| `label`           | `string`                                                                              |      |                         |                                            |
-| `labels`          | `Partial<{ clear: string; open: string; close: string; }>`                            |      |                         | Textos accesibles de los botones.          |
-| `loading`         | `boolean`                                                                             |      | `false`                 |                                            |
-| `loadingText`     | `string`                                                                              |      | `Cargando…`             |                                            |
-| `maxHeight`       | `string`                                                                              |      | `300px`                 |                                            |
-| `minSearchLength` | `number`                                                                              |      | `0`                     |                                            |
-| `name`            | `string`                                                                              |      |                         | name del input.                            |
-| `noResultsText`   | `string`                                                                              |      | `Sin resultados`        |                                            |
-| `onBlur`          | `() => void`                                                                          |      |                         |                                            |
-| `onCreate`        | `(searchTerm: string) => void`                                                        |      |                         |                                            |
-| `onFocus`         | `() => void`                                                                          |      |                         |                                            |
-| `onSearch`        | `(searchTerm: string) => void`                                                        |      |                         |                                            |
-| `options`         | `AutocompleteOption[]`                                                                |      | `[]`                    |                                            |
-| `placeholder`     | `string`                                                                              |      | `Buscar o seleccionar…` |                                            |
-| `position`        | `"bottom" \| "top"`                                                                   |      | `bottom`                |                                            |
-| `readOnly`        | `boolean`                                                                             |      | `false`                 |                                            |
-| `renderOption`    | `(option: AutocompleteOption, isSelected: boolean) => ReactNode`                      |      |                         |                                            |
-| `required`        | `boolean`                                                                             |      | `false`                 |                                            |
-| `searchable`      | `boolean`                                                                             |      | `true`                  |                                            |
-| `warning`         | `string`                                                                              |      |                         |                                            |
+| Prop              | Tipo                                                                                  | Req. | Por defecto             | Descripción                                                                                                  |
+| ----------------- | ------------------------------------------------------------------------------------- | ---- | ----------------------- | ------------------------------------------------------------------------------------------------------------ |
+| `onChange`        | `(value: string \| number \| null, option?: AutocompleteOption \| undefined) => void` | sí   |                         |                                                                                                              |
+| `value`           | `null \| string \| number`                                                            | sí   |                         |                                                                                                              |
+| `className`       | `string`                                                                              |      | ``                      |                                                                                                              |
+| `clearable`       | `boolean`                                                                             |      | `true`                  |                                                                                                              |
+| `createLabel`     | `string`                                                                              |      | `Crear`                 |                                                                                                              |
+| `debounceMs`      | `number`                                                                              |      | `300`                   |                                                                                                              |
+| `disabled`        | `boolean`                                                                             |      | `false`                 |                                                                                                              |
+| `error`           | `string`                                                                              |      |                         |                                                                                                              |
+| `highlightMatch`  | `boolean`                                                                             |      | `true`                  |                                                                                                              |
+| `hint`            | `string`                                                                              |      |                         |                                                                                                              |
+| `icon`            | `ReactNode`                                                                           |      |                         |                                                                                                              |
+| `id`              | `string`                                                                              |      |                         | id del input; si no se pasa se genera uno.                                                                   |
+| `keepListOpen`    | `boolean`                                                                             |      | `false`                 |                                                                                                              |
+| `label`           | `string`                                                                              |      |                         |                                                                                                              |
+| `labelAction`     | `ReactNode`                                                                           |      |                         | Contenido junto a la etiqueta, a la derecha: un botón de ayuda ("?"), un enlace… No va dentro del `<label>`. |
+| `labels`          | `Partial<{ clear: string; open: string; close: string; }>`                            |      |                         | Textos accesibles de los botones.                                                                            |
+| `loading`         | `boolean`                                                                             |      | `false`                 |                                                                                                              |
+| `loadingText`     | `string`                                                                              |      | `Cargando…`             |                                                                                                              |
+| `maxHeight`       | `string`                                                                              |      | `300px`                 |                                                                                                              |
+| `minSearchLength` | `number`                                                                              |      | `0`                     |                                                                                                              |
+| `name`            | `string`                                                                              |      |                         | name del input.                                                                                              |
+| `noResultsText`   | `string`                                                                              |      | `Sin resultados`        |                                                                                                              |
+| `onBlur`          | `() => void`                                                                          |      |                         |                                                                                                              |
+| `onCreate`        | `(searchTerm: string) => void`                                                        |      |                         |                                                                                                              |
+| `onFocus`         | `() => void`                                                                          |      |                         |                                                                                                              |
+| `onSearch`        | `(searchTerm: string) => void`                                                        |      |                         |                                                                                                              |
+| `options`         | `AutocompleteOption[]`                                                                |      | `[]`                    |                                                                                                              |
+| `placeholder`     | `string`                                                                              |      | `Buscar o seleccionar…` |                                                                                                              |
+| `position`        | `"bottom" \| "top"`                                                                   |      | `bottom`                |                                                                                                              |
+| `readOnly`        | `boolean`                                                                             |      | `false`                 |                                                                                                              |
+| `renderOption`    | `(option: AutocompleteOption, isSelected: boolean) => ReactNode`                      |      |                         |                                                                                                              |
+| `required`        | `boolean`                                                                             |      | `false`                 |                                                                                                              |
+| `searchable`      | `boolean`                                                                             |      | `true`                  |                                                                                                              |
+| `warning`         | `string`                                                                              |      |                         |                                                                                                              |
+
+Tipos: `AutocompleteOption`, `AutocompleteProps`.
 
 ### @rubenpazch/checkbox-input
 
@@ -269,6 +274,8 @@ import { CheckboxInput } from "@rubenpazch/ui";
 | `size`          | `"sm" \| "md" \| "lg"`                                         |      | `md`        |                                                         |
 | `value`         | `string`                                                       |      |             | Valor enviado con el formulario cuando está marcado.    |
 | `variant`       | `"default" \| "primary" \| "success" \| "warning" \| "danger"` |      | `default`   |                                                         |
+
+Tipos: `CheckboxInputProps`.
 
 ### @rubenpazch/date-input
 
@@ -305,6 +312,8 @@ import { DateInput } from "@rubenpazch/ui";
 | `placeholder`      | `string`                   |      |             | Por defecto el formato del idioma: "DD/MM/AAAA" en español.                                                                        |
 | `required`         | `boolean`                  |      | `false`     | Campo obligatorio.                                                                                                                 |
 
+Tipos: `DateInputLabels`, `DateInputProps`.
+
 ### @rubenpazch/date-picker
 
 Selector de fecha con calendario desplegable.
@@ -339,6 +348,8 @@ import { DatePicker } from "@rubenpazch/ui";
 | `placeholder`       | `string`                 |      |             |                                                                                                                                    |
 | `readOnly`          | `boolean`                |      | `false`     |                                                                                                                                    |
 | `required`          | `boolean`                |      | `false`     |                                                                                                                                    |
+
+Tipos: `DatePickerProps`.
 
 ### @rubenpazch/date-range-picker
 
@@ -619,6 +630,8 @@ import { NumericPicker } from "@rubenpazch/ui";
 | `required`    | `boolean`                                            |      | `false`     | Campo obligatorio.                                                                 |
 | `step`        | `number`                                             |      | `1`         | Paso de los botones + y −.                                                         |
 
+Tipos: `NumericPickerProps`.
+
 ### @rubenpazch/numeric-up-picker
 
 Campo numérico con botones +/-, signo opcional, solo enteros, ayuda, advertencia y error.
@@ -765,20 +778,21 @@ Lista desplegable simple con etiqueta, placeholder y error.
 import { Select } from "@rubenpazch/ui";
 ```
 
-| Prop          | Tipo                      | Req. | Por defecto | Descripción                   |
-| ------------- | ------------------------- | ---- | ----------- | ----------------------------- |
-| `onChange`    | `(value: string) => void` | sí   |             |                               |
-| `options`     | `SelectOption[]`          | sí   |             |                               |
-| `value`       | `string`                  | sí   |             |                               |
-| `className`   | `string`                  |      |             |                               |
-| `disabled`    | `boolean`                 |      | `false`     |                               |
-| `error`       | `string`                  |      |             |                               |
-| `hint`        | `string`                  |      |             | Texto de ayuda bajo el campo. |
-| `id`          | `string`                  |      |             |                               |
-| `label`       | `string`                  |      |             |                               |
-| `name`        | `string`                  |      |             |                               |
-| `placeholder` | `string`                  |      |             |                               |
-| `required`    | `boolean`                 |      | `false`     |                               |
+| Prop          | Tipo                      | Req. | Por defecto | Descripción                                                                                                  |
+| ------------- | ------------------------- | ---- | ----------- | ------------------------------------------------------------------------------------------------------------ |
+| `onChange`    | `(value: string) => void` | sí   |             |                                                                                                              |
+| `options`     | `SelectOption[]`          | sí   |             |                                                                                                              |
+| `value`       | `string`                  | sí   |             |                                                                                                              |
+| `className`   | `string`                  |      |             |                                                                                                              |
+| `disabled`    | `boolean`                 |      | `false`     |                                                                                                              |
+| `error`       | `string`                  |      |             |                                                                                                              |
+| `hint`        | `string`                  |      |             | Texto de ayuda bajo el campo.                                                                                |
+| `id`          | `string`                  |      |             |                                                                                                              |
+| `label`       | `string`                  |      |             |                                                                                                              |
+| `labelAction` | `ReactNode`               |      |             | Contenido junto a la etiqueta, a la derecha: un botón de ayuda ("?"), un enlace… No va dentro del `<label>`. |
+| `name`        | `string`                  |      |             |                                                                                                              |
+| `placeholder` | `string`                  |      |             |                                                                                                              |
+| `required`    | `boolean`                 |      | `false`     |                                                                                                              |
 
 Tipos: `SelectOption`, `SelectProps`.
 
@@ -1060,6 +1074,8 @@ import { Drawer } from "@rubenpazch/ui";
 | `size`                | `"sm" \| "md" \| "lg" \| "xl" \| "full"`           |      | `md`            | Size of the drawer                                                                      |
 | `title`               | `string`                                           |      |                 | Title displayed in the drawer header                                                    |
 
+Tipos: `DrawerPosition`, `DrawerSize`, `DrawerAlign`, `DrawerProps`.
+
 ### @rubenpazch/month-navigator
 
 Navegador de periodos ‹ noviembre de 2026 › con valor "AAAA-MM", mínimo, máximo y botón Hoy; incluye addMonths() y currentMonth().
@@ -1314,6 +1330,8 @@ import { ConfirmationDialog } from "@rubenpazch/ui";
 | `confirmText` | `string`     |      | `Confirmar` | Texto del botón de confirmar (por defecto "Confirmar").              |
 | `isDangerous` | `boolean`    |      | `false`     | Acción destructiva: botón rojo.                                      |
 | `isLoading`   | `boolean`    |      | `false`     | Muestra el botón de confirmar cargando y bloquea los botones.        |
+
+Tipos: `ConfirmationDialogProps`.
 
 ### @rubenpazch/empty-state
 
@@ -1927,6 +1945,8 @@ import { DraggableList } from "@rubenpazch/ui";
 | `size`          | `"sm" \| "md" \| "lg"`               |      | `md`        |             |
 | `variant`       | `"default" \| "outline" \| "subtle"` |      | `default`   |             |
 
+Tipos: `DraggableListProps`.
+
 ## Iconos
 
 ### @rubenpazch/icons
@@ -2079,3 +2099,5 @@ import { PrescriptionEyeCard } from "@rubenpazch/ui";
 | `eyeInfo`         | `PrescriptionEyeInfo`                        | sí   |             |             |
 | `labels`          | `PrescriptionEyeCardLabels`                  | sí   |             |             |
 | `prismBaseLookup` | `{ getNameByKey: (key: string) => string; }` | sí   |             |             |
+
+Tipos: `PrescriptionEyeInfo`, `PrescriptionEyeCardLabels`, `PrescriptionEyeCardProps`.

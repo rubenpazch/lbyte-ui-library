@@ -39,4 +39,6 @@ Selector de fecha con calendario (días, meses y años). Devuelve ISO `AAAA-MM-D
 | `readOnly`          | `boolean`                |      | `false`     |                                                                                                                                    |
 | `required`          | `boolean`                |      | `false`     |                                                                                                                                    |
 
+Tipos: `DatePickerProps`.
+
 <!-- catalogo:fin -->

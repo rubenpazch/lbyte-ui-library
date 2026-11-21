@@ -329,3 +329,17 @@
   width: 1rem;
   height: 1rem;
 }
+
+/* Etiqueta con acción a la derecha (ayuda, enlace) */
+.labelRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--lb-space-2);
+}
+
+.labelAction {
+  display: inline-flex;
+  align-items: center;
+  flex: none;
+}

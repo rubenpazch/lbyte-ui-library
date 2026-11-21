@@ -36,4 +36,6 @@ Casilla de verificación con etiqueta, descripción y error.
 | `value`         | `string`                                                       |      |             | Valor enviado con el formulario cuando está marcado.    |
 | `variant`       | `"default" \| "primary" \| "success" \| "warning" \| "danger"` |      | `default`   |                                                         |
 
+Tipos: `CheckboxInputProps`.
+
 <!-- catalogo:fin -->

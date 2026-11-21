@@ -8,6 +8,11 @@ export interface SelectOption {
 
 export interface SelectProps {
   label?: string;
+  /**
+   * Contenido junto a la etiqueta, a la derecha: un botón de ayuda ("?"), un enlace…
+   * No va dentro del `<label>`.
+   */
+  labelAction?: React.ReactNode;
   value: string;
   onChange: (value: string) => void;
   options: SelectOption[];
@@ -28,6 +33,7 @@ const classNames = (...classes: Array<string | undefined | false>) =>
 const Select = React.forwardRef<HTMLSelectElement, SelectProps>(function Select(
   {
     label,
+    labelAction,
     value,
     onChange,
     options,
@@ -51,17 +57,28 @@ const Select = React.forwardRef<HTMLSelectElement, SelectProps>(function Select(
 
   return (
     <div className={classNames(styles.field, className)}>
-      {label && (
-        <label htmlFor={selectId} className={styles.label}>
-          {label}
-          {required && (
-            <span className={styles.required} aria-hidden="true">
-              {" "}
-              *
-            </span>
-          )}
-        </label>
-      )}
+      {label &&
+        (() => {
+          const labelEl = (
+            <label htmlFor={selectId} className={styles.label}>
+              {label}
+              {required && (
+                <span className={styles.required} aria-hidden="true">
+                  {" "}
+                  *
+                </span>
+              )}
+            </label>
+          );
+          return labelAction ? (
+            <div className={styles.labelRow}>
+              {labelEl}
+              <span className={styles.labelAction}>{labelAction}</span>
+            </div>
+          ) : (
+            labelEl
+          );
+        })()}
 
       <select
         ref={ref}

@@ -29,4 +29,6 @@ npm install @rubenpazch/draggable-list
 | `size`          | `"sm" \| "md" \| "lg"`               |      | `md`        |             |
 | `variant`       | `"default" \| "outline" \| "subtle"` |      | `default`   |             |
 
+Tipos: `DraggableListProps`.
+
 <!-- catalogo:fin -->

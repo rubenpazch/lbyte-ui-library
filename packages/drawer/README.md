@@ -35,4 +35,6 @@ npm install @rubenpazch/drawer
 | `size`                | `"sm" \| "md" \| "lg" \| "xl" \| "full"`           |      | `md`            | Size of the drawer                                                                      |
 | `title`               | `string`                                           |      |                 | Title displayed in the drawer header                                                    |
 
+Tipos: `DrawerPosition`, `DrawerSize`, `DrawerAlign`, `DrawerProps`.
+
 <!-- catalogo:fin -->

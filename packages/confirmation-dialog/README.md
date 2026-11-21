@@ -33,4 +33,6 @@ el foco inicial en "Cancelar", la opción segura.
 | `isDangerous` | `boolean`    |      | `false`     | Acción destructiva: botón rojo.                                      |
 | `isLoading`   | `boolean`    |      | `false`     | Muestra el botón de confirmar cargando y bloquea los botones.        |
 
+Tipos: `ConfirmationDialogProps`.
+
 <!-- catalogo:fin -->

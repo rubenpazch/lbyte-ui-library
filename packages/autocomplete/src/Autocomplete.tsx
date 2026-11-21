@@ -59,6 +59,11 @@ export interface AutocompleteProps {
   debounceMs?: number;
   keepListOpen?: boolean;
   position?: "bottom" | "top";
+  /**
+   * Contenido junto a la etiqueta, a la derecha: un botón de ayuda ("?"), un enlace…
+   * No va dentro del `<label>`.
+   */
+  labelAction?: React.ReactNode;
 }
 // Helper function to highlight matching text
 const highlightMatchText = (
@@ -96,6 +101,7 @@ const Autocomplete = React.forwardRef<HTMLInputElement, AutocompleteProps>(
       name,
       labels,
       label,
+      labelAction,
       value,
       onChange,
       options = [],
@@ -348,16 +354,27 @@ const Autocomplete = React.forwardRef<HTMLInputElement, AutocompleteProps>(
     return (
       <div className={classNames(styles.container, className)}>
         {/* Label */}
-        {label && (
-          <label htmlFor={field.inputId} className={styles.label}>
-            {label}
-            {required && (
-              <span className={styles.required} aria-hidden="true">
-                *
-              </span>
-            )}
-          </label>
-        )}
+        {label &&
+          (() => {
+            const labelEl = (
+              <label htmlFor={field.inputId} className={styles.label}>
+                {label}
+                {required && (
+                  <span className={styles.required} aria-hidden="true">
+                    *
+                  </span>
+                )}
+              </label>
+            );
+            return labelAction ? (
+              <div className={styles.labelRow}>
+                {labelEl}
+                <span className={styles.labelAction}>{labelAction}</span>
+              </div>
+            ) : (
+              labelEl
+            );
+          })()}
 
         {/* Input Container */}
         <div ref={containerRef} className={styles.inputWrapper}>
