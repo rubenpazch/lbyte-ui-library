@@ -1,5 +1,14 @@
 # @rubenpazch/confirmation-dialog
 
+## 3.1.2
+
+### Patch Changes
+
+- Updated dependencies [1a4b995]
+  - @rubenpazch/tokens@0.5.0
+  - @rubenpazch/button@6.2.1
+  - @rubenpazch/modal@0.1.2
+
 ## 3.1.1
 
 ### Patch Changes

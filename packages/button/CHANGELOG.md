@@ -1,5 +1,12 @@
 # @rubenpazch/button
 
+## 6.2.1
+
+### Patch Changes
+
+- Updated dependencies [1a4b995]
+  - @rubenpazch/tokens@0.5.0
+
 ## 6.2.0
 
 ### Minor Changes

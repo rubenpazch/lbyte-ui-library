@@ -1,5 +1,12 @@
 # @rubenpazch/page-header
 
+## 0.1.1
+
+### Patch Changes
+
+- Updated dependencies [1a4b995]
+  - @rubenpazch/tokens@0.5.0
+
 ## 0.1.0
 
 ### Minor Changes

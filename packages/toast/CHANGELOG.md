@@ -1,5 +1,12 @@
 # @rubenpazch/toast
 
+## 4.0.5
+
+### Patch Changes
+
+- Updated dependencies [1a4b995]
+  - @rubenpazch/tokens@0.5.0
+
 ## 4.0.4
 
 ### Patch Changes

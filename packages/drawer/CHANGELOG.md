@@ -1,5 +1,12 @@
 # @rubenpazch/drawer
 
+## 4.2.3
+
+### Patch Changes
+
+- Updated dependencies [1a4b995]
+  - @rubenpazch/tokens@0.5.0
+
 ## 4.2.2
 
 ### Patch Changes

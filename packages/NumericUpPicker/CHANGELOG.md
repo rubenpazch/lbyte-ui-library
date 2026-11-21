@@ -1,5 +1,12 @@
 # @rubenpazch/numeric-up-picker
 
+## 6.1.3
+
+### Patch Changes
+
+- Updated dependencies [1a4b995]
+  - @rubenpazch/tokens@0.5.0
+
 ## 6.1.2
 
 ### Patch Changes

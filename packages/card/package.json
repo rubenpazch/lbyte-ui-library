@@ -1,6 +1,6 @@
 {
   "name": "@rubenpazch/card",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Tarjeta con cabecera, cuerpo y pie",
   "repository": {
     "type": "git",

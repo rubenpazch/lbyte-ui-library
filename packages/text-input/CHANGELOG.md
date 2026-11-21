@@ -1,5 +1,16 @@
 # @rubenpazch/text-input
 
+## 6.3.0
+
+### Minor Changes
+
+- 7ce6522: `TextInput` pasa los atributos nativos al `<input>` (`autoFocus`, `inputMode`, `spellCheck`, `aria-*`, `data-*`…) y ahora sí aplica `min`, `max` y `step`. Las props propias del componente (ids, `aria-describedby`, `aria-invalid`) tienen prioridad.
+
+### Patch Changes
+
+- Updated dependencies [1a4b995]
+  - @rubenpazch/tokens@0.5.0
+
 ## 6.2.2
 
 ### Patch Changes

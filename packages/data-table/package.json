@@ -1,6 +1,6 @@
 {
   "name": "@rubenpazch/data-table",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Tabla de datos accesible con orden, carga y estado vacío",
   "repository": {
     "type": "git",
