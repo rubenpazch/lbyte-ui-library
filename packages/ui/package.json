@@ -1,6 +1,6 @@
 {
   "name": "@rubenpazch/ui",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "description": "Todos los componentes de Lbyte UI en un solo paquete, con su documentación para personas y agentes de IA",
   "repository": {
     "type": "git",

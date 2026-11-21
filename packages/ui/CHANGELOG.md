@@ -1,5 +1,30 @@
 # @rubenpazch/ui
 
+## 0.8.0
+
+### Minor Changes
+
+- 3a87d2e: - `DateRangePicker`: periodo desde/hasta (ISO) con dos `DateInput`, validación del orden y atajos (hoy, últimos 7/30 días, este mes, mes anterior, este año) o propios.
+  - `Turnstile`: verificación anti-robots de Cloudflare para formularios públicos; carga el script una sola vez, entrega el token y se reinicia con `resetKey` (sale del `Captcha` de auth-ui).
+- 7e356fa: Componentes genéricos para la migración de hal-docs (criterio 0010 de lbyte-contexto):
+
+  - `Timeline`: historial en orden con estado, fecha (`<time>`) y descripción; resalta el evento actual.
+  - `DescriptionList`: pares etiqueta/valor (`<dl>`) en 1–3 columnas, con valor por defecto para vacíos.
+  - `FileUpload`: uno o varios archivos con arrastrar y soltar, validación de tipo, tamaño, cantidad y duplicados, y lista para quitarlos (`ImageUpload` sigue para una sola imagen).
+  - `LoadingSpinner`: `color="primary"` (por defecto) con el nombre correcto; `"blue"` sigue como alias (ya usaba el color de la marca).
+
+### Patch Changes
+
+- Updated dependencies [3a87d2e]
+- Updated dependencies [7e356fa]
+  - @rubenpazch/date-range-picker@0.1.0
+  - @rubenpazch/turnstile@0.1.0
+  - @rubenpazch/timeline@0.1.0
+  - @rubenpazch/description-list@0.1.0
+  - @rubenpazch/file-upload@0.1.0
+  - @rubenpazch/loading-spinner@4.1.0
+  - @rubenpazch/autocomplete@5.1.4
+
 ## 0.7.0
 
 ### Minor Changes
