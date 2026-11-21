@@ -15,7 +15,6 @@
   "paquetes": [
     {
       "paquete": "@rubenpazch/alert",
-      "version": "0.0.0",
       "carpeta": "packages/alert",
       "categoria": "retroalimentacion",
       "resumen": "Aviso dentro de la página (info, success, warning, danger) con título, acción y cierre opcional.",
@@ -91,7 +90,6 @@
     },
     {
       "paquete": "@rubenpazch/app-shell",
-      "version": "0.0.0",
       "carpeta": "packages/app-shell",
       "categoria": "navegacion",
       "resumen": "Estructura completa de un panel: Sidebar colapsable, cabecera fija con botón ☰ en móvil, título y acciones, enlace \"Saltar al contenido\" y área principal con ancho máximo.",
@@ -216,7 +214,6 @@
     },
     {
       "paquete": "@rubenpazch/autocomplete",
-      "version": "5.0.1",
       "carpeta": "packages/autocomplete",
       "categoria": "formularios",
       "resumen": "Selector con búsqueda sobre una lista de opciones (con descripción, carga y opción de limpiar).",
@@ -467,7 +464,6 @@
     },
     {
       "paquete": "@rubenpazch/avatar",
-      "version": "3.1.1",
       "carpeta": "packages/avatar",
       "categoria": "presentacion",
       "resumen": "Avatar de persona (imagen, iniciales o icono) y AvatarGroup para varios.",
@@ -612,7 +608,6 @@
     },
     {
       "paquete": "@rubenpazch/badge",
-      "version": "0.0.0",
       "carpeta": "packages/badge",
       "categoria": "presentacion",
       "resumen": "Insignia de estado o categoría (Pagado, Vencido, Borrador) con colores semánticos, variantes soft/solid/outline y punto.",
@@ -681,7 +676,6 @@
     },
     {
       "paquete": "@rubenpazch/button",
-      "version": "6.1.1",
       "carpeta": "packages/button",
       "categoria": "acciones",
       "resumen": "Botón con variantes text/contained/outlined, colores, tamaños, estado de carga e iconos; puede renderizar un enlace (href).",
@@ -778,7 +772,6 @@
     },
     {
       "paquete": "@rubenpazch/card",
-      "version": "0.0.0",
       "carpeta": "packages/card",
       "categoria": "presentacion",
       "resumen": "Tarjeta (outlined o elevated) con CardHeader (título, subtítulo, acciones), CardBody y CardFooter; puede ser clicable.",
@@ -866,7 +859,6 @@
     },
     {
       "paquete": "@rubenpazch/checkbox-input",
-      "version": "3.1.1",
       "carpeta": "packages/checkbox-input",
       "categoria": "formularios",
       "resumen": "Casilla de verificación con etiqueta, ayuda y error.",
@@ -984,7 +976,6 @@
     },
     {
       "paquete": "@rubenpazch/chip",
-      "version": "4.0.1",
       "carpeta": "packages/chip",
       "categoria": "presentacion",
       "resumen": "Chip/etiqueta con variantes, icono y acción de borrar.",
@@ -1095,7 +1086,6 @@
     },
     {
       "paquete": "@rubenpazch/confirmation-dialog",
-      "version": "3.0.1",
       "carpeta": "packages/confirmation-dialog",
       "categoria": "retroalimentacion",
       "resumen": "Diálogo modal de confirmación (aceptar/cancelar).",
@@ -1185,7 +1175,6 @@
     },
     {
       "paquete": "@rubenpazch/data-table",
-      "version": "0.0.0",
       "carpeta": "packages/data-table",
       "categoria": "datos",
       "resumen": "Tabla de datos accesible: columnas con render, orden (aria-sort) en el navegador o en el servidor, carga con Skeleton, estado vacío, filas clicables, encabezado fijo y scroll horizontal en móvil.",
@@ -1322,7 +1311,6 @@
     },
     {
       "paquete": "@rubenpazch/date-input",
-      "version": "3.0.1",
       "carpeta": "packages/date-input",
       "categoria": "formularios",
       "resumen": "Campo de fecha con formato local, mínimo/máximo, ayuda y error.",
@@ -1447,7 +1435,6 @@
     },
     {
       "paquete": "@rubenpazch/date-picker",
-      "version": "3.0.1",
       "carpeta": "packages/date-picker",
       "categoria": "formularios",
       "resumen": "Selector de fecha con calendario desplegable.",
@@ -1579,7 +1566,6 @@
     },
     {
       "paquete": "@rubenpazch/draggable-list",
-      "version": "3.0.1",
       "carpeta": "packages/draggable-list",
       "categoria": "datos",
       "resumen": "Lista reordenable arrastrando (también con teclado), basada en dnd-kit.",
@@ -1662,7 +1648,6 @@
     },
     {
       "paquete": "@rubenpazch/drawer",
-      "version": "4.1.1",
       "carpeta": "packages/drawer",
       "categoria": "navegacion",
       "resumen": "Panel lateral (izquierda/derecha/arriba/abajo) con animación y fondo.",
@@ -1787,7 +1772,6 @@
     },
     {
       "paquete": "@rubenpazch/empty-state",
-      "version": "0.0.0",
       "carpeta": "packages/empty-state",
       "categoria": "retroalimentacion",
       "resumen": "Estado vacío con icono, título, descripción y acciones (\"No hay convocatorias · Crear\").",
@@ -1856,7 +1840,6 @@
     },
     {
       "paquete": "@rubenpazch/form-field",
-      "version": "0.0.0",
       "carpeta": "packages/form-field",
       "categoria": "formularios",
       "resumen": "FormField (etiqueta, ayuda y error asociados a cualquier control), FormRow (columnas que se apilan en móvil) y FormActions (pie con botones).",
@@ -1986,7 +1969,6 @@
     },
     {
       "paquete": "@rubenpazch/icon-button",
-      "version": "4.1.1",
       "carpeta": "packages/icon-button",
       "categoria": "acciones",
       "resumen": "Botón de solo icono con variantes, formas, tooltip y etiqueta accesible.",
@@ -2121,7 +2103,6 @@
     },
     {
       "paquete": "@rubenpazch/icons",
-      "version": "6.1.1",
       "carpeta": "packages/icons",
       "categoria": "iconos",
       "resumen": "Más de 60 iconos SVG como componentes React (y MaterialIcon para Material Icons).",
@@ -3947,7 +3928,6 @@
     },
     {
       "paquete": "@rubenpazch/identification-input",
-      "version": "2.0.3",
       "carpeta": "packages/identification-input",
       "categoria": "salud",
       "resumen": "Tipo y número de documento peruano (DNI, CE, pasaporte) con validación de longitud y formato.",
@@ -4037,7 +4017,6 @@
     },
     {
       "paquete": "@rubenpazch/image-upload",
-      "version": "3.0.1",
       "carpeta": "packages/image-upload",
       "categoria": "formularios",
       "resumen": "Subida de imagen o PDF con vista previa, arrastrar y soltar, validación de tipo y tamaño.",
@@ -4134,7 +4113,6 @@
     },
     {
       "paquete": "@rubenpazch/info-row",
-      "version": "3.0.2",
       "carpeta": "packages/info-row",
       "categoria": "presentacion",
       "resumen": "Fila de dato con icono, etiqueta y valor (variantes de color, tamaños, acción opcional).",
@@ -4224,7 +4202,6 @@
     },
     {
       "paquete": "@rubenpazch/loading-spinner",
-      "version": "4.0.1",
       "carpeta": "packages/loading-spinner",
       "categoria": "retroalimentacion",
       "resumen": "Indicador de carga circular con tamaños y colores.",
@@ -4286,7 +4263,6 @@
     },
     {
       "paquete": "@rubenpazch/menu",
-      "version": "0.0.0",
       "carpeta": "packages/menu",
       "categoria": "acciones",
       "resumen": "Menú de acciones (role=\"menu\") con botón ⋮ por defecto, opciones con icono, peligrosas o deshabilitadas, teclado completo.",
@@ -4334,7 +4310,6 @@
     },
     {
       "paquete": "@rubenpazch/modal",
-      "version": "0.0.0",
       "carpeta": "packages/modal",
       "categoria": "retroalimentacion",
       "resumen": "Ventana modal accesible: portal, foco retenido, Escape y clic fuera para cerrar, bloqueo del scroll, título y descripción anunciados.",
@@ -4445,7 +4420,6 @@
     },
     {
       "paquete": "@rubenpazch/money-input",
-      "version": "0.0.0",
       "carpeta": "packages/money-input",
       "categoria": "formularios",
       "resumen": "Campo de monto en PEN (S/) o USD (US$) que devuelve un número; acepta punto o coma decimal y muestra 1,250.50 al salir. Incluye formatMoney().",
@@ -4584,7 +4558,6 @@
     },
     {
       "paquete": "@rubenpazch/month-navigator",
-      "version": "0.0.0",
       "carpeta": "packages/month-navigator",
       "categoria": "navegacion",
       "resumen": "Navegador de periodos ‹ noviembre de 2026 › con valor \"AAAA-MM\", mínimo, máximo y botón Hoy; incluye addMonths() y currentMonth().",
@@ -4660,7 +4633,6 @@
     },
     {
       "paquete": "@rubenpazch/numeric-picker",
-      "version": "5.0.1",
       "carpeta": "packages/NumericPicker",
       "categoria": "formularios",
       "resumen": "Campo numérico con mínimo, máximo, paso, decimales y moneda.",
@@ -4799,7 +4771,6 @@
     },
     {
       "paquete": "@rubenpazch/numeric-up-picker",
-      "version": "6.0.1",
       "carpeta": "packages/NumericUpPicker",
       "categoria": "formularios",
       "resumen": "Campo numérico con botones +/-, signo opcional, solo enteros, ayuda, advertencia y error.",
@@ -5001,7 +4972,6 @@
     },
     {
       "paquete": "@rubenpazch/overlay-loader",
-      "version": "1.1.1",
       "carpeta": "packages/overlay-loader",
       "categoria": "retroalimentacion",
       "resumen": "OverlayLoader (pantalla completa, controlado por visible) e InlineLoader (dentro de un contenedor).",
@@ -5110,7 +5080,6 @@
     },
     {
       "paquete": "@rubenpazch/page-header",
-      "version": "0.0.0",
       "carpeta": "packages/page-header",
       "categoria": "navegacion",
       "resumen": "Cabecera de página: migas de pan, volver, título h1, subtítulo, acciones y contenido extra (filtros); acepta el Link de Next.js.",
@@ -5186,7 +5155,6 @@
     },
     {
       "paquete": "@rubenpazch/pagination",
-      "version": "3.1.1",
       "carpeta": "packages/pagination",
       "categoria": "navegacion",
       "resumen": "Paginación con variantes, tamaños y formas; incluye PaginationItem.",
@@ -5381,7 +5349,6 @@
     },
     {
       "paquete": "@rubenpazch/patient-details",
-      "version": "3.1.1",
       "carpeta": "packages/patient-details",
       "categoria": "salud",
       "resumen": "Ficha de paciente: identificación, contacto, contacto de emergencia, ubicación (departamento/provincia/distrito) e historia clínica. Textos por la prop labels.",
@@ -5485,7 +5452,6 @@
     },
     {
       "paquete": "@rubenpazch/patient-search",
-      "version": "3.0.1",
       "carpeta": "packages/patient-search",
       "categoria": "salud",
       "resumen": "Buscador de pacientes con resultados y selección.",
@@ -5547,7 +5513,6 @@
     },
     {
       "paquete": "@rubenpazch/prescription-card",
-      "version": "3.0.2",
       "carpeta": "packages/prescription-card",
       "categoria": "salud",
       "resumen": "Tarjeta de receta óptica completa (OD/OI: esfera, cilindro, eje, adición, DNP, prisma, altura) con estado y observaciones.",
@@ -5665,7 +5630,6 @@
     },
     {
       "paquete": "@rubenpazch/prescription-eye-card",
-      "version": "3.0.2",
       "carpeta": "packages/prescription-eye-card",
       "categoria": "salud",
       "resumen": "Datos de un ojo de la receta óptica (PrescriptionEyeCard) y campo individual (PrescriptionFieldCard).",
@@ -5713,7 +5677,6 @@
     },
     {
       "paquete": "@rubenpazch/progress-bar",
-      "version": "0.0.0",
       "carpeta": "packages/progress-bar",
       "categoria": "retroalimentacion",
       "resumen": "Barra de progreso (role=\"progressbar\") con etiqueta y porcentaje, determinada o indeterminada.",
@@ -5789,7 +5752,6 @@
     },
     {
       "paquete": "@rubenpazch/radio-button",
-      "version": "4.1.1",
       "carpeta": "packages/radio-button",
       "categoria": "formularios",
       "resumen": "RadioButton y RadioGroup accesibles con variantes y validación.",
@@ -6026,7 +5988,6 @@
     },
     {
       "paquete": "@rubenpazch/segmented-control",
-      "version": "0.0.0",
       "carpeta": "packages/segmented-control",
       "categoria": "formularios",
       "resumen": "Botones unidos para elegir una opción entre pocas (radiogroup con flechas del teclado): Personal | Empresa, Mes | Año.",
@@ -6095,7 +6056,6 @@
     },
     {
       "paquete": "@rubenpazch/select",
-      "version": "1.1.1",
       "carpeta": "packages/select",
       "categoria": "formularios",
       "resumen": "Lista desplegable simple con etiqueta, placeholder y error.",
@@ -6192,7 +6152,6 @@
     },
     {
       "paquete": "@rubenpazch/shared",
-      "version": "5.1.1",
       "carpeta": "packages/shared",
       "categoria": "base",
       "resumen": "Utilidades (classList) y tipos comunes; la usan internamente los componentes.",
@@ -6231,7 +6190,6 @@
     },
     {
       "paquete": "@rubenpazch/sidebar",
-      "version": "0.0.0",
       "carpeta": "packages/sidebar",
       "categoria": "navegacion",
       "resumen": "Barra de navegación vertical: secciones, subniveles plegables, insignias y página activa (también subrutas); en escritorio se colapsa a iconos y lo recuerda (storageKey); en móvil es un cajón con foco retenido y Escape. Acepta el Link de Next.js.",
@@ -6361,7 +6319,6 @@
     },
     {
       "paquete": "@rubenpazch/skeleton",
-      "version": "0.0.0",
       "carpeta": "packages/skeleton",
       "categoria": "retroalimentacion",
       "resumen": "Marcador de carga (texto, bloque o círculo) con la forma del contenido; respeta reducir movimiento.",
@@ -6416,7 +6373,6 @@
     },
     {
       "paquete": "@rubenpazch/stepper",
-      "version": "4.0.1",
       "carpeta": "packages/stepper",
       "categoria": "navegacion",
       "resumen": "Indicador de pasos numerados (opcionalmente clicables) para procesos en etapas.",
@@ -6485,7 +6441,6 @@
     },
     {
       "paquete": "@rubenpazch/switch",
-      "version": "0.0.0",
       "carpeta": "packages/switch",
       "categoria": "formularios",
       "resumen": "Interruptor encendido/apagado (role=\"switch\") con etiqueta y descripción.",
@@ -6568,7 +6523,6 @@
     },
     {
       "paquete": "@rubenpazch/tabs",
-      "version": "3.0.1",
       "carpeta": "packages/tabs",
       "categoria": "navegacion",
       "resumen": "Pestañas para alternar entre secciones de una misma vista.",
@@ -6665,7 +6619,6 @@
     },
     {
       "paquete": "@rubenpazch/text-input",
-      "version": "6.1.1",
       "carpeta": "packages/text-input",
       "categoria": "formularios",
       "resumen": "Campo de texto con etiqueta, ayuda, advertencia, error, iconos y variantes.",
@@ -6923,7 +6876,6 @@
     },
     {
       "paquete": "@rubenpazch/textarea",
-      "version": "0.0.0",
       "carpeta": "packages/textarea",
       "categoria": "formularios",
       "resumen": "Área de texto con etiqueta, ayuda, advertencia, error, contador de caracteres y crecimiento automático.",
@@ -7048,7 +7000,6 @@
     },
     {
       "paquete": "@rubenpazch/toast",
-      "version": "4.0.1",
       "carpeta": "packages/toast",
       "categoria": "retroalimentacion",
       "resumen": "Notificaciones temporales (Toast) y avisos fijos (ToastBanner) con tipos y acciones.",
@@ -7096,7 +7047,6 @@
     },
     {
       "paquete": "@rubenpazch/tokens",
-      "version": "0.3.0",
       "carpeta": "packages/tokens",
       "categoria": "base",
       "resumen": "Tokens de diseño (colores, tipografía, espacios, radios, sombras) como variables CSS --lb-*, estilos base y puente para Tailwind 4.",
@@ -7120,7 +7070,6 @@
     },
     {
       "paquete": "@rubenpazch/tooltip",
-      "version": "0.0.0",
       "carpeta": "packages/tooltip",
       "categoria": "presentacion",
       "resumen": "Texto de ayuda breve al pasar el mouse o enfocar con teclado (role=\"tooltip\", aria-describedby), se cierra con Escape.",

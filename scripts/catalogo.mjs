@@ -204,7 +204,6 @@ for (const p of paquetes) {
   const docs = props(componentes);
   catalogo.push({
     paquete: p.pkg.name,
-    version: p.pkg.version,
     carpeta: path.relative(RAIZ, p.dir).replace(/\\/g, "/"),
     categoria: p.pkg.lbyte?.categoria ?? null,
     resumen: p.pkg.lbyte?.resumen ?? p.pkg.description ?? "",
