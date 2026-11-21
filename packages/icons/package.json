@@ -18,7 +18,8 @@
     "directory": "packages/icons"
   },
   "files": [
-    "dist"
+    "dist",
+    "LICENSE-lucide"
   ],
   "sideEffects": false,
   "scripts": {
