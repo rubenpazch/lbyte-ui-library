@@ -3236,6 +3236,9 @@ importers:
       '@rubenpazch/tooltip':
         specifier: workspace:^
         version: link:../tooltip
+      '@rubenpazch/user-card':
+        specifier: workspace:^
+        version: link:../user-card
       react:
         specifier: 19.2.8
         version: 19.2.8
