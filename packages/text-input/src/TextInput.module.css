@@ -370,3 +370,54 @@
   color: var(--lb-color-amber-strong);
   margin-top: var(--lb-space-1);
 }
+
+/* Etiqueta con acción a la derecha (ayuda, enlace) */
+.labelRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--lb-space-2);
+}
+
+.labelAction {
+  display: inline-flex;
+  align-items: center;
+  flex: none;
+}
+
+/* Ver / ocultar contraseña */
+.inputWithToggle {
+  padding-right: 2.75rem;
+}
+
+.passwordToggle {
+  position: absolute;
+  top: 50%;
+  right: 0.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  border: 0;
+  border-radius: var(--lb-radius-sm);
+  background: transparent;
+  color: var(--lb-color-muted-foreground);
+  cursor: pointer;
+  transform: translateY(-50%);
+}
+
+.passwordToggle:hover:not(:disabled) {
+  color: var(--lb-color-foreground);
+}
+
+.passwordToggle:focus-visible {
+  outline: 2px solid var(--lb-color-ring);
+  outline-offset: 1px;
+}
+
+.passwordToggle:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
