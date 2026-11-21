@@ -144,3 +144,18 @@
     transform: translateY(0);
   }
 }
+
+/* Región fija de ToastProvider: arriba a la derecha, bajo la cabecera de AppShell. */
+.region {
+  position: fixed;
+  top: calc(env(safe-area-inset-top, 0px) + var(--lb-toast-offset-top, 4.5rem));
+  right: var(--lb-space-4);
+  z-index: 1200;
+  width: min(26rem, calc(100vw - 2 * var(--lb-space-4)));
+  pointer-events: none;
+}
+
+.region .toast {
+  pointer-events: auto;
+  box-shadow: var(--lb-shadow-md);
+}

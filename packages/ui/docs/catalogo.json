@@ -212,6 +212,13 @@
               "requerido": false,
               "porDefecto": null,
               "descripcion": "Título en la cabecera (en móvil se ve junto al botón ☰)."
+            },
+            {
+              "nombre": "toasts",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "true",
+              "descripcion": "Incluye `ToastProvider`: dentro del panel, `useToast()` muestra los mensajes del servidor como\ntoast bajo la cabecera. Pon `false` solo si la app ya tiene su propio proveedor más arriba."
             }
           ]
         }
@@ -7997,10 +8004,39 @@
               "descripcion": ""
             }
           ]
+        },
+        {
+          "nombre": "ToastProvider",
+          "importar": "import { ToastProvider } from \"@rubenpazch/ui\";",
+          "descripcion": "Mensajes del servidor dentro de la app (usuario con sesión): toasts arriba a la derecha,\nbajo la cabecera. `AppShell` ya lo incluye; úsalo directamente solo en un layout propio.\n\nEn pantallas públicas (login, registro, recuperación) NO se usa: ahí el mensaje va junto al\nformulario. Por eso `useToast()` falla fuera de un proveedor.",
+          "props": [
+            {
+              "nombre": "closeAriaLabel",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "Cerrar mensaje",
+              "descripcion": "Texto accesible del botón ×."
+            },
+            {
+              "nombre": "offsetTop",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Distancia desde arriba (por defecto deja libre la cabecera de AppShell)."
+            }
+          ]
         }
       ],
-      "otrosValores": [],
-      "tipos": ["ToastAction", "ToastBannerProps", "ToastItem", "ToastType"]
+      "otrosValores": ["useToast"],
+      "tipos": [
+        "ToastAction",
+        "ToastBannerProps",
+        "ToastItem",
+        "ToastType",
+        "ToastApi",
+        "ToastOptions",
+        "ToastProviderProps"
+      ]
     },
     {
       "paquete": "@rubenpazch/tokens",

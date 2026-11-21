@@ -98,7 +98,7 @@ rutas internas (`dist/…`).
 | Elegir el mes de trabajo                                  | `MonthNavigator`                                                                                                                        |
 | Mostrar un estado                                         | `Badge`                                                                                                                                 |
 | Agrupar información                                       | `Card` + `CardHeader` / `CardBody` / `CardFooter`                                                                                       |
-| Avisos en la página / pasajeros                           | `Alert` / `Toast`                                                                                                                       |
+| Aviso fijo en la página / mensaje del servidor            | `Alert` / `useToast()` (ver **Mensajes**)                                                                                               |
 | Confirmar / editar en ventana                             | `ConfirmationDialog` / `Modal`                                                                                                          |
 | Acciones de una fila                                      | `Menu` (⋮)                                                                                                                              |
 | Cargando                                                  | `Skeleton` (contenido), `LoadingSpinner` (botón), `OverlayLoader` (pantalla), `ProgressBar` (avance)                                    |
@@ -139,6 +139,42 @@ export default function PanelLayout({
   );
 }
 ```
+
+## Mensajes (regla para todas las apps)
+
+| Situación                                                                                                                           | Cómo se muestra                                                                                                    |
+| ----------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| **Dentro de la app** (usuario con sesión): resultado de una acción o error del servidor ("Usuario guardado", "No se pudo eliminar") | **Toast**: `const toast = useToast(); toast.exito("…"); toast.error(err.message);`                                 |
+| **Fuera de la app** (sin sesión): login, registro, recuperar contraseña                                                             | **En el formulario**: un texto con `role="alert"` bajo el botón, o `Alert` dentro del formulario. **Nunca toast.** |
+| Error de un campo concreto ("Correo inválido")                                                                                      | La prop `error` del campo (`TextInput`, `Select`…), en cualquier pantalla                                          |
+| Estado que describe la página y no una acción ("Esta instancia solo permite…", "Sin permisos")                                      | `Alert` en la página (`role="note"` si no debe anunciarse)                                                         |
+| Confirmar algo destructivo                                                                                                          | `ConfirmationDialog`. Nunca `window.alert` ni `window.confirm`                                                     |
+
+`AppShell` ya incluye `ToastProvider`, así que en un panel `useToast()` funciona sin configurar nada.
+Fuera de `AppShell` (las pantallas públicas) `useToast()` lanza un error a propósito: ahí el mensaje
+va en el formulario.
+
+```tsx
+function GuardarUsuario() {
+  const toast = useToast();
+  async function guardar() {
+    try {
+      await api.guardar(datos);
+      toast.exito("Usuario guardado.");
+    } catch (err) {
+      toast.error((err as Error).message);
+    }
+  }
+}
+```
+
+## Valores por defecto que conviene conocer
+
+- `Button` es `variant="text"` (sin fondo) por defecto: el botón principal de una acción lleva
+  `variant="contained"`, el secundario `variant="outlined"`. Su `type` por defecto es `"button"`:
+  para enviar un formulario usa `type="submit"`.
+- `TextInput` con `maxLength` muestra un contador de caracteres. Úsalo cuando el límite importa al
+  usuario, no como validación de seguridad (esa va en el servidor).
 
 ## Textos
 

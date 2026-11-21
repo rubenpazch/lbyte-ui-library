@@ -24,6 +24,21 @@ npm install @rubenpazch/toast
 | `className`      | `string`               |      |                       |             |
 | `closeAriaLabel` | `string`               |      | `Cerrar notificación` |             |
 
-Tipos: `ToastAction`, `ToastBannerProps`, `ToastItem`, `ToastType`.
+## ToastProvider
+
+Mensajes del servidor dentro de la app (usuario con sesión): toasts arriba a la derecha,
+bajo la cabecera. `AppShell` ya lo incluye; úsalo directamente solo en un layout propio.
+
+En pantallas públicas (login, registro, recuperación) NO se usa: ahí el mensaje va junto al
+formulario. Por eso `useToast()` falla fuera de un proveedor.
+
+| Prop             | Tipo     | Req. | Por defecto      | Descripción                                                              |
+| ---------------- | -------- | ---- | ---------------- | ------------------------------------------------------------------------ |
+| `closeAriaLabel` | `string` |      | `Cerrar mensaje` | Texto accesible del botón ×.                                             |
+| `offsetTop`      | `string` |      |                  | Distancia desde arriba (por defecto deja libre la cabecera de AppShell). |
+
+Otras exportaciones: `useToast`.
+
+Tipos: `ToastAction`, `ToastBannerProps`, `ToastItem`, `ToastType`, `ToastApi`, `ToastOptions`, `ToastProviderProps`.
 
 <!-- catalogo:fin -->

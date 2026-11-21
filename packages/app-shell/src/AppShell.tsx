@@ -1,6 +1,7 @@
 import React, { useId, useState } from "react";
 import Sidebar from "@rubenpazch/sidebar";
 import type { SidebarProps } from "@rubenpazch/sidebar";
+import { ToastProvider } from "@rubenpazch/toast";
 import styles from "./AppShell.module.css";
 
 export interface AppShellProps extends Pick<
@@ -27,6 +28,11 @@ export interface AppShellProps extends Pick<
   maxWidth?: "none" | "md" | "lg";
   /** Textos accesibles. */
   labels?: Partial<{ openMenu: string; skipToContent: string }>;
+  /**
+   * Incluye `ToastProvider`: dentro del panel, `useToast()` muestra los mensajes del servidor como
+   * toast bajo la cabecera. Pon `false` solo si la app ya tiene su propio proveedor más arriba.
+   */
+  toasts?: boolean;
 }
 
 const cx = (...c: Array<string | false | undefined>) =>
@@ -52,6 +58,7 @@ export default function AppShell({
   children,
   maxWidth = "lg",
   labels,
+  toasts = true,
 }: AppShellProps) {
   const text = {
     openMenu: "Abrir menú",
@@ -61,7 +68,7 @@ export default function AppShell({
   const mainId = `${useId()}-contenido`;
   const [mobileOpen, setMobileOpen] = useState(false);
 
-  return (
+  const shell = (
     <div className={styles.shell}>
       <a href={`#${mainId}`} className={styles.skip}>
         {text.skipToContent}
@@ -116,4 +123,5 @@ export default function AppShell({
       </div>
     </div>
   );
+  return toasts ? <ToastProvider>{shell}</ToastProvider> : shell;
 }

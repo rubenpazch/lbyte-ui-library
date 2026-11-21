@@ -1,4 +1,5 @@
 import { fireEvent, render, screen } from "@testing-library/react";
+import { useToast } from "@rubenpazch/toast";
 import AppShell from "./AppShell";
 
 const sections = [
@@ -47,5 +48,28 @@ describe("AppShell", () => {
     // El botón Cerrar del cajón solo se ve en móvil (CSS real del Sidebar compilado).
     fireEvent.keyDown(document, { key: "Escape" });
     expect(btn).toHaveAttribute("aria-expanded", "false");
+  });
+});
+
+describe("AppShell + toasts", () => {
+  it("incluye ToastProvider: useToast() funciona dentro del panel", () => {
+    function Guardar() {
+      const toast = useToast();
+      return (
+        <button onClick={() => toast.exito("Cambios guardados")}>
+          Guardar
+        </button>
+      );
+    }
+    render(
+      <AppShell
+        title="Panel"
+        sections={[{ items: [{ label: "Inicio", href: "/" }] }]}
+      >
+        <Guardar />
+      </AppShell>,
+    );
+    fireEvent.click(screen.getByRole("button", { name: "Guardar" }));
+    expect(screen.getByRole("status")).toHaveTextContent("Cambios guardados");
   });
 });

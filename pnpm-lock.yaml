@@ -378,6 +378,9 @@ importers:
       '@rubenpazch/sidebar':
         specifier: workspace:*
         version: link:../sidebar
+      '@rubenpazch/toast':
+        specifier: workspace:*
+        version: link:../toast
       '@rubenpazch/tokens':
         specifier: workspace:*
         version: link:../tokens

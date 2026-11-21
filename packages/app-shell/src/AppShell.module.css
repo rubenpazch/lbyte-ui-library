@@ -94,9 +94,15 @@
   margin: 0 auto;
 }
 
-.max-lg { max-width: 72rem; }
-.max-md { max-width: 56rem; }
-.max-none { max-width: none; }
+.max-lg {
+  max-width: 72rem;
+}
+.max-md {
+  max-width: 56rem;
+}
+.max-none {
+  max-width: none;
+}
 
 @media (max-width: 767px) {
   .menuButton {
