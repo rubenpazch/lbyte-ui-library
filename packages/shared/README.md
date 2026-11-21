@@ -13,7 +13,7 @@ Se recomienda instalar el paquete completo `@rubenpazch/ui` (incluye este). Por 
 npm install @rubenpazch/shared
 ```
 
-Otras exportaciones: `classList`, `normalizeSize`, `toLegacySize`, `useFieldIds`, `useEscapeKey`, `useFocusTrap`, `useLockBodyScroll`, `useClickOutside`, `mergeRefs`, `parseISODate`, `toISODate`, `isDayFirst`, `datePlaceholder`, `parseLocalDate`, `formatLocalDate`, `formatMonthYear`, `isSameDay`.
+Otras exportaciones: `classList`, `normalizeSize`, `toLegacySize`, `useFieldIds`, `useEscapeKey`, `useFocusTrap`, `useLockBodyScroll`, `useClickOutside`, `mergeRefs`, `useMediaQuery`, `MOBILE_QUERY`, `parseISODate`, `toISODate`, `isDayFirst`, `datePlaceholder`, `parseLocalDate`, `formatLocalDate`, `formatMonthYear`, `isSameDay`.
 
 Tipos: `Size`, `Color`, `Variant`, `ComponentSize`, `LegacySize`, `SizeProp`, `FieldProps`, `FieldIds`.
 
