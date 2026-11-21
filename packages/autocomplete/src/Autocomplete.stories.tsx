@@ -497,3 +497,28 @@ export const KeepListOpen: Story = {
     );
   },
 };
+
+// Texto libre con sugerencias (freeSolo)
+export const TextoLibre: Story = {
+  name: "Texto libre con sugerencias (freeSolo)",
+  render: () => {
+    const [value, setValue] = useState<string | number | null>(null);
+    return (
+      <div style={{ maxWidth: 420 }}>
+        <Autocomplete
+          label="Destinatario"
+          freeSolo
+          placeholder="Busca un usuario o escribe un nombre…"
+          noResultsText="Sin coincidencias: se registrará el texto escrito"
+          value={value}
+          onChange={setValue}
+          options={[
+            { value: "Ana Pérez", label: "Ana Pérez — Jefa de Logística" },
+            { value: "Luis Rojas", label: "Luis Rojas — Asistente" },
+          ]}
+        />
+        <p style={{ fontSize: 13 }}>Valor: {value ?? "—"}</p>
+      </div>
+    );
+  },
+};

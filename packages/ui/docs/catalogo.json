@@ -399,6 +399,13 @@
               "descripcion": ""
             },
             {
+              "nombre": "freeSolo",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "false",
+              "descripcion": "Texto libre con sugerencias: el valor es lo escrito (`onChange(texto)` en cada cambio) y las\nopciones solo ayudan a completarlo. Útil para un destinatario que puede ser un usuario de la\nlista o un nombre externo. Escape, Tab y salir del campo no borran lo escrito."
+            },
+            {
               "nombre": "highlightMatch",
               "tipo": "boolean",
               "requerido": false,

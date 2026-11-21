@@ -64,6 +64,12 @@ export interface AutocompleteProps {
    * No va dentro del `<label>`.
    */
   labelAction?: React.ReactNode;
+  /**
+   * Texto libre con sugerencias: el valor es lo escrito (`onChange(texto)` en cada cambio) y las
+   * opciones solo ayudan a completarlo. Útil para un destinatario que puede ser un usuario de la
+   * lista o un nombre externo. Escape, Tab y salir del campo no borran lo escrito.
+   */
+  freeSolo?: boolean;
 }
 // Helper function to highlight matching text
 const highlightMatchText = (
@@ -102,6 +108,7 @@ const Autocomplete = React.forwardRef<HTMLInputElement, AutocompleteProps>(
       labels,
       label,
       labelAction,
+      freeSolo = false,
       value,
       onChange,
       options = [],
@@ -181,9 +188,21 @@ const Autocomplete = React.forwardRef<HTMLInputElement, AutocompleteProps>(
 
     // Display value in input
     const displayValue = useMemo(() => {
+      if (freeSolo) {
+        if (isFocused || isOpen) return searchTerm;
+        return selectedOption?.label ?? (value == null ? "" : String(value));
+      }
       if (searchable && isOpen) return searchTerm;
       return selectedOption?.label || "";
-    }, [isOpen, searchable, searchTerm, selectedOption]);
+    }, [
+      freeSolo,
+      isFocused,
+      isOpen,
+      searchable,
+      searchTerm,
+      selectedOption,
+      value,
+    ]);
 
     // Call onSearch with debounce
     useEffect(() => {
@@ -205,7 +224,7 @@ const Autocomplete = React.forwardRef<HTMLInputElement, AutocompleteProps>(
         ) {
           setIsOpen(false);
           setIsFocused(false);
-          if (!keepListOpen) {
+          if (!keepListOpen && !freeSolo) {
             setSearchTerm("");
           }
         }
@@ -214,7 +233,7 @@ const Autocomplete = React.forwardRef<HTMLInputElement, AutocompleteProps>(
       document.addEventListener("mousedown", handleClickOutside);
       return () =>
         document.removeEventListener("mousedown", handleClickOutside);
-    }, [keepListOpen]);
+    }, [keepListOpen, freeSolo]);
 
     // Scroll highlighted option into view
     useEffect(() => {
@@ -229,6 +248,8 @@ const Autocomplete = React.forwardRef<HTMLInputElement, AutocompleteProps>(
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
       const newValue = e.target.value;
       setSearchTerm(newValue);
+      // Texto libre: lo escrito es el valor.
+      if (freeSolo) onChange(newValue === "" ? null : newValue);
 
       if (!isOpen) {
         setIsOpen(true);
@@ -239,6 +260,8 @@ const Autocomplete = React.forwardRef<HTMLInputElement, AutocompleteProps>(
 
     const handleInputFocus = () => {
       if (disabled || readOnly) return;
+      // Texto libre: se sigue editando lo que ya hay, no se empieza en blanco.
+      if (freeSolo) setSearchTerm(value == null ? "" : String(value));
       setIsFocused(true);
       setIsOpen(true);
       onFocus?.();
@@ -249,7 +272,8 @@ const Autocomplete = React.forwardRef<HTMLInputElement, AutocompleteProps>(
       setTimeout(() => {
         if (!containerRef.current?.contains(document.activeElement)) {
           setIsFocused(false);
-          if (!keepListOpen) {
+          if (freeSolo) setIsOpen(false);
+          if (!keepListOpen && !freeSolo) {
             setSearchTerm("");
           }
           onBlur?.();
@@ -261,7 +285,9 @@ const Autocomplete = React.forwardRef<HTMLInputElement, AutocompleteProps>(
       if (option.disabled) return;
 
       onChange(option.value, option);
-      setSearchTerm("");
+      setSearchTerm(freeSolo ? String(option.value) : "");
+      // Texto libre: tras elegir se muestra la etiqueta de la opción.
+      if (freeSolo) setIsFocused(false);
       setHighlightedIndex(-1);
       if (!keepListOpen) {
         setIsOpen(false);
@@ -318,6 +344,8 @@ const Autocomplete = React.forwardRef<HTMLInputElement, AutocompleteProps>(
             filteredOptions[highlightedIndex]
           ) {
             handleSelect(filteredOptions[highlightedIndex]);
+          } else if (freeSolo) {
+            setIsOpen(false);
           } else if (isOpen && onCreate && searchTerm.trim()) {
             onCreate(searchTerm.trim());
             setIsOpen(false);
@@ -328,13 +356,13 @@ const Autocomplete = React.forwardRef<HTMLInputElement, AutocompleteProps>(
         case "Escape":
           e.preventDefault();
           setIsOpen(false);
-          setSearchTerm("");
+          if (!freeSolo) setSearchTerm("");
           inputRef.current?.blur();
           break;
 
         case "Tab":
           setIsOpen(false);
-          setSearchTerm("");
+          if (!freeSolo) setSearchTerm("");
           break;
       }
     };
@@ -540,7 +568,7 @@ const Autocomplete = React.forwardRef<HTMLInputElement, AutocompleteProps>(
               </div>
 
               {/* Create New Option */}
-              {onCreate && searchTerm && (
+              {onCreate && !freeSolo && searchTerm && (
                 <div
                   onClick={() => {
                     onCreate(searchTerm.trim());
