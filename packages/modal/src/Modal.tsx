@@ -1,4 +1,4 @@
-import React, { useEffect, useId, useRef, useState } from "react";
+import React, { useId, useRef, useSyncExternalStore } from "react";
 import { createPortal } from "react-dom";
 import {
   useEscapeKey,
@@ -38,6 +38,8 @@ export interface ModalProps {
   closeLabel?: string;
 }
 
+const suscribirNada = () => () => {};
+
 const cx = (...c: Array<string | false | undefined>) =>
   c.filter(Boolean).join(" ");
 
@@ -65,8 +67,11 @@ export default function Modal({
   const descId = `${id}-descripcion`;
   const dialogRef = useRef<HTMLDivElement>(null);
   // El portal necesita document: se monta después del primer render (seguro con SSR).
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => setMounted(true), []);
+  const mounted = useSyncExternalStore(
+    suscribirNada,
+    () => true,
+    () => false,
+  );
 
   useEscapeKey(onClose, open && closeOnEscape);
   useFocusTrap(dialogRef, open && mounted);

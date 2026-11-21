@@ -1,4 +1,5 @@
 import type { StorybookConfig } from "@storybook/react-vite";
+import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 
@@ -27,73 +28,19 @@ const config: StorybookConfig = {
   },
   viteFinal: async (config) => {
     config.resolve = config.resolve || { alias: {} };
-    config.resolve.alias = {
-      ...(config.resolve.alias || {}),
-      "@rubenpazch/shared": path.resolve(
-        __dirname,
-        "../../../packages/shared/src",
-      ),
-      "@rubenpazch/chip": path.resolve(__dirname, "../../../packages/chip/src"),
-      "@rubenpazch/button": path.resolve(
-        __dirname,
-        "../../../packages/button/src",
-      ),
-      "@rubenpazch/background": path.resolve(
-        __dirname,
-        "../../../packages/background/src",
-      ),
-      "@rubenpazch/drawer": path.resolve(
-        __dirname,
-        "../../../packages/drawer/src",
-      ),
-      "@rubenpazch/drawer-menu-mobile": path.resolve(
-        __dirname,
-        "../../../packages/drawer-menu-mobile/src",
-      ),
-      "@rubenpazch/icon-button": path.resolve(
-        __dirname,
-        "../../../packages/icon-button/src",
-      ),
-      "@rubenpazch/icons": path.resolve(
-        __dirname,
-        "../../../packages/icons/src",
-      ),
-      "@rubenpazch/input-button": path.resolve(
-        __dirname,
-        "../../../packages/input-button/src",
-      ),
-      "@rubenpazch/link": path.resolve(__dirname, "../../../packages/link/src"),
-      "@rubenpazch/menu": path.resolve(__dirname, "../../../packages/menu/src"),
-      "@rubenpazch/menu-mobile": path.resolve(
-        __dirname,
-        "../../../packages/menu-mobile/src",
-      ),
-      "@rubenpazch/navbar": path.resolve(
-        __dirname,
-        "../../../packages/navbar/src",
-      ),
-      "@rubenpazch/numeric-picker": path.resolve(
-        __dirname,
-        "../../../packages/NumericPicker/src",
-      ),
-      "@rubenpazch/numeric-up-picker": path.resolve(
-        __dirname,
-        "../../../packages/NumericUpPicker/src",
-      ),
-      "@rubenpazch/page": path.resolve(__dirname, "../../../packages/page/src"),
-      "@rubenpazch/square-button": path.resolve(
-        __dirname,
-        "../../../packages/square-button/src",
-      ),
-      "@rubenpazch/text-area": path.resolve(
-        __dirname,
-        "../../../packages/text-area/src",
-      ),
-      "@rubenpazch/text-input": path.resolve(
-        __dirname,
-        "../../../packages/text-input/src",
-      ),
-    };
+    // Cada @rubenpazch/<paquete> apunta a su src/ (se edita sin compilar).
+    // Se genera desde packages/, así los paquetes nuevos no requieren tocar este archivo.
+    const paquetes = path.resolve(__dirname, "../../../packages");
+    const alias: Record<string, string> = {};
+    for (const dir of fs.readdirSync(paquetes)) {
+      const pkgFile = path.join(paquetes, dir, "package.json");
+      const src = path.join(paquetes, dir, "src");
+      if (!fs.existsSync(pkgFile) || !fs.existsSync(path.join(src, "index.ts")))
+        continue;
+      const { name } = JSON.parse(fs.readFileSync(pkgFile, "utf8"));
+      alias[name] = src;
+    }
+    config.resolve.alias = { ...(config.resolve.alias || {}), ...alias };
     return config;
   },
 };

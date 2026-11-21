@@ -17,6 +17,13 @@ export type IdentificationInputLabels = {
   identificationNumber: string;
 };
 
+export const DEFAULT_IDENTIFICATION_LABELS: IdentificationInputLabels = {
+  documentType: "Tipo de documento",
+  selectDocumentType: "Selecciona el tipo de documento",
+  documentTypeHint: "DNI, carné de extranjería, RUC o pasaporte",
+  identificationNumber: "Número de documento",
+};
+
 export interface IdentificationInputProps {
   documentType: PeruIdentificationType | null;
   onDocumentTypeChange: (type: PeruIdentificationType | null) => void;
@@ -26,22 +33,39 @@ export interface IdentificationInputProps {
   identificationNumberError?: string;
   required?: boolean;
   disabled?: boolean;
-  labels: IdentificationInputLabels;
+  /** Textos de la interfaz; por defecto en español. */
+  labels?: Partial<IdentificationInputLabels>;
+  /** Prefijo de los ids de ambos campos. */
+  id?: string;
+  /** `name` del campo de número (el tipo usa `${name}-tipo`). */
+  name?: string;
   className?: string;
 }
 
-const IdentificationInput: React.FC<IdentificationInputProps> = ({
-  documentType,
-  onDocumentTypeChange,
-  identificationNumber,
-  onIdentificationNumberChange,
-  documentTypeError,
-  identificationNumberError,
-  required = false,
-  disabled = false,
-  labels,
-  className = "",
-}) => {
+/** El `ref` apunta al campo del número de documento. */
+const IdentificationInput = React.forwardRef<
+  HTMLInputElement,
+  IdentificationInputProps
+>(function IdentificationInput(
+  {
+    documentType,
+    onDocumentTypeChange,
+    identificationNumber,
+    onIdentificationNumberChange,
+    documentTypeError,
+    identificationNumberError,
+    required = false,
+    disabled = false,
+    labels: labelsProp,
+    id,
+    name,
+    className = "",
+  },
+  ref,
+) {
+  const labels = { ...DEFAULT_IDENTIFICATION_LABELS, ...labelsProp };
+  const generatedId = React.useId();
+  const baseId = id ?? generatedId;
   const selectedDoc = documentType
     ? PERU_IDENTIFICATION_DOCS[documentType]
     : null;
@@ -71,6 +95,8 @@ const IdentificationInput: React.FC<IdentificationInputProps> = ({
     >
       {/* Document Type Selection */}
       <Autocomplete
+        id={`${baseId}-tipo`}
+        name={name ? `${name}-tipo` : undefined}
         label={labels.documentType}
         value={documentType}
         onChange={(value) => {
@@ -91,6 +117,9 @@ const IdentificationInput: React.FC<IdentificationInputProps> = ({
       {/* Identification Number Input */}
       {documentType && selectedDoc && (
         <TextInput
+          ref={ref}
+          id={`${baseId}-numero`}
+          name={name}
           label={`${labels.identificationNumber} - ${selectedDoc.label}`}
           value={identificationNumber}
           onChange={handleIdentificationChange}
@@ -106,6 +135,6 @@ const IdentificationInput: React.FC<IdentificationInputProps> = ({
       )}
     </div>
   );
-};
+});
 
 export default IdentificationInput;

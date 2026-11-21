@@ -72,102 +72,119 @@ const variantClasses: Record<RadioVariant, { checked: string; focus: string }> =
     },
   };
 
-const RadioButton: React.FC<RadioButtonProps> = ({
-  id,
-  name,
-  label,
-  value,
-  checked = false,
-  onChange,
-  disabled = false,
-  description,
-  error,
-  className = "",
-  required = false,
-  size = "md",
-  variant = "default",
-}) => {
-  const radioId = id || `radio-${name}-${value}`;
-  const sizes = sizeClasses[size];
-  const variants = variantClasses[variant];
+const RadioButton = React.forwardRef<HTMLInputElement, RadioButtonProps>(
+  function RadioButton(
+    {
+      id,
+      name,
+      label,
+      value,
+      checked = false,
+      onChange,
+      disabled = false,
+      description,
+      error,
+      className = "",
+      required = false,
+      size = "md",
+      variant = "default",
+    },
+    ref,
+  ) {
+    const radioId = id || `radio-${name}-${value}`;
+    const describedBy =
+      [description && `${radioId}-description`, error && `${radioId}-error`]
+        .filter(Boolean)
+        .join(" ") || undefined;
+    const sizes = sizeClasses[size];
+    const variants = variantClasses[variant];
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    if (onChange && !disabled) {
-      onChange(event.target.value);
-    }
-  };
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+      if (onChange && !disabled) {
+        onChange(event.target.value);
+      }
+    };
 
-  const radioClasses = classNames(
-    styles.radio,
-    sizes.radio,
-    sizes.container,
-    variants.checked,
-    variants.focus,
-    required && !checked
-      ? styles.radioBorderRequired
-      : styles.radioBorderDefault,
-    disabled && styles.radioDisabled,
-  );
+    const radioClasses = classNames(
+      styles.radio,
+      sizes.radio,
+      sizes.container,
+      variants.checked,
+      variants.focus,
+      required && !checked
+        ? styles.radioBorderRequired
+        : styles.radioBorderDefault,
+      disabled && styles.radioDisabled,
+    );
 
-  const labelClasses = classNames(
-    styles.label,
-    sizes.label,
-    disabled
-      ? styles.labelDisabled
-      : required && !checked
-        ? styles.labelRequired
-        : styles.labelDefault,
-  );
+    const labelClasses = classNames(
+      styles.label,
+      sizes.label,
+      disabled
+        ? styles.labelDisabled
+        : required && !checked
+          ? styles.labelRequired
+          : styles.labelDefault,
+    );
 
-  const descriptionClasses = classNames(styles.description, sizes.description);
+    const descriptionClasses = classNames(
+      styles.description,
+      sizes.description,
+    );
 
-  const errorClasses = classNames(
-    styles.error,
-    size === "sm"
-      ? styles.errorSm
-      : size === "lg"
-        ? styles.errorLg
-        : styles.errorMd,
-  );
+    const errorClasses = classNames(
+      styles.error,
+      size === "sm"
+        ? styles.errorSm
+        : size === "lg"
+          ? styles.errorLg
+          : styles.errorMd,
+    );
 
-  return (
-    <div
-      className={classNames(styles.container, className)}
-      data-testid="radio-button-container"
-      data-size={size}
-      data-variant={variant}
-      data-checked={checked}
-      data-disabled={disabled}
-      data-error={!!error}
-    >
-      <div className={classNames(styles.radioWrapper, sizes.container)}>
-        <input
-          id={radioId}
-          name={name}
-          type="radio"
-          value={value}
-          checked={checked}
-          onChange={handleChange}
-          disabled={disabled}
-          required={required}
-          className={radioClasses}
-          aria-describedby={description ? `${radioId}-description` : undefined}
-          aria-invalid={!!error}
-        />
+    return (
+      <div
+        className={classNames(styles.container, className)}
+        data-testid="radio-button-container"
+        data-size={size}
+        data-variant={variant}
+        data-checked={checked}
+        data-disabled={disabled}
+        data-error={!!error}
+      >
+        <div className={classNames(styles.radioWrapper, sizes.container)}>
+          <input
+            ref={ref}
+            id={radioId}
+            name={name}
+            type="radio"
+            value={value}
+            checked={checked}
+            onChange={handleChange}
+            disabled={disabled}
+            required={required}
+            className={radioClasses}
+            aria-describedby={describedBy}
+            aria-invalid={error ? true : undefined}
+          />
+        </div>
+        <div className={styles.contentWrapper}>
+          <label htmlFor={radioId} className={labelClasses}>
+            {label}
+          </label>
+          {description && (
+            <p id={`${radioId}-description`} className={descriptionClasses}>
+              {description}
+            </p>
+          )}
+          {error && (
+            <p id={`${radioId}-error`} className={errorClasses}>
+              {error}
+            </p>
+          )}
+        </div>
       </div>
-      <div className={styles.contentWrapper}>
-        <label htmlFor={radioId} className={labelClasses}>
-          {label}
-        </label>
-        {description && (
-          <p id={`${radioId}-description`} className={descriptionClasses}>
-            {description}
-          </p>
-        )}
-        {error && <p className={errorClasses}>{error}</p>}
-      </div>
-    </div>
-  );
-};
+    );
+  },
+);
 
 export default RadioButton;

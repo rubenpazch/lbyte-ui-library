@@ -3937,7 +3937,7 @@
         {
           "nombre": "IdentificationInput",
           "importar": "import { IdentificationInput } from \"@rubenpazch/ui\";",
-          "descripcion": "",
+          "descripcion": "El `ref` apunta al campo del número de documento.",
           "props": [
             {
               "nombre": "documentType",
@@ -3949,13 +3949,6 @@
             {
               "nombre": "identificationNumber",
               "tipo": "string",
-              "requerido": true,
-              "porDefecto": null,
-              "descripcion": ""
-            },
-            {
-              "nombre": "labels",
-              "tipo": "IdentificationInputLabels",
               "requerido": true,
               "porDefecto": null,
               "descripcion": ""
@@ -3996,11 +3989,32 @@
               "descripcion": ""
             },
             {
+              "nombre": "id",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Prefijo de los ids de ambos campos."
+            },
+            {
               "nombre": "identificationNumberError",
               "tipo": "string",
               "requerido": false,
               "porDefecto": null,
               "descripcion": ""
+            },
+            {
+              "nombre": "labels",
+              "tipo": "Partial<IdentificationInputLabels>",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Textos de la interfaz; por defecto en español."
+            },
+            {
+              "nombre": "name",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "`name` del campo de número (el tipo usa `${name}-tipo`)."
             },
             {
               "nombre": "required",
@@ -4010,6 +4024,12 @@
               "descripcion": ""
             }
           ]
+        },
+        {
+          "nombre": "DEFAULT_IDENTIFICATION_LABELS",
+          "importar": "import { DEFAULT_IDENTIFICATION_LABELS } from \"@rubenpazch/ui\";",
+          "descripcion": "",
+          "props": []
         }
       ],
       "otrosValores": [],
@@ -4026,15 +4046,8 @@
         {
           "nombre": "ImageUpload",
           "importar": "import { ImageUpload } from \"@rubenpazch/ui\";",
-          "descripcion": "",
+          "descripcion": "El `ref` apunta al `<input type=\"file\">`.",
           "props": [
-            {
-              "nombre": "labels",
-              "tipo": "ImageUploadLabels",
-              "requerido": true,
-              "porDefecto": null,
-              "descripcion": ""
-            },
             {
               "nombre": "onUpload",
               "tipo": "(file: File) => Promise<void>",
@@ -4071,6 +4084,27 @@
               "descripcion": ""
             },
             {
+              "nombre": "error",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Error externo (validación del formulario)."
+            },
+            {
+              "nombre": "hint",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Texto de ayuda bajo el campo."
+            },
+            {
+              "nombre": "id",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
               "nombre": "label",
               "tipo": "string",
               "requerido": false,
@@ -4078,10 +4112,24 @@
               "descripcion": ""
             },
             {
+              "nombre": "labels",
+              "tipo": "Partial<ImageUploadLabels>",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Textos de la interfaz; por defecto en español."
+            },
+            {
               "nombre": "maxSizeMB",
               "tipo": "number",
               "requerido": false,
               "porDefecto": "5",
+              "descripcion": ""
+            },
+            {
+              "nombre": "name",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
               "descripcion": ""
             },
             {
@@ -4104,12 +4152,25 @@
               "requerido": false,
               "porDefecto": "200",
               "descripcion": ""
+            },
+            {
+              "nombre": "required",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "false",
+              "descripcion": ""
             }
           ]
+        },
+        {
+          "nombre": "DEFAULT_IMAGE_UPLOAD_LABELS",
+          "importar": "import { DEFAULT_IMAGE_UPLOAD_LABELS } from \"@rubenpazch/ui\";",
+          "descripcion": "",
+          "props": []
         }
       ],
       "otrosValores": [],
-      "tipos": []
+      "tipos": ["ImageUploadProps", "ImageUploadLabels"]
     },
     {
       "paquete": "@rubenpazch/info-row",
@@ -5925,6 +5986,27 @@
               "descripcion": ""
             },
             {
+              "nombre": "hint",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Texto de ayuda bajo el grupo."
+            },
+            {
+              "nombre": "id",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "label",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Etiqueta del grupo (alias de `groupLabel`)."
+            },
+            {
               "nombre": "orientation",
               "tipo": "\"vertical\" | \"horizontal\"",
               "requerido": false,
@@ -5942,7 +6024,7 @@
               "nombre": "selectedLabelText",
               "tipo": "string",
               "requerido": false,
-              "porDefecto": "Selected:",
+              "porDefecto": "Seleccionado:",
               "descripcion": ""
             },
             {
@@ -6108,6 +6190,13 @@
               "requerido": false,
               "porDefecto": null,
               "descripcion": ""
+            },
+            {
+              "nombre": "hint",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Texto de ayuda bajo el campo."
             },
             {
               "nombre": "id",

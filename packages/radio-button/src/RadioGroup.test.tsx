@@ -161,7 +161,7 @@ describe("RadioGroup Component", () => {
       );
 
       const selectedLabel = screen.getByText((content, element) => {
-        return element?.textContent === "Selected: Option 1";
+        return element?.textContent === "Seleccionado: Option 1";
       });
       expect(selectedLabel).toBeInTheDocument();
     });
@@ -197,7 +197,7 @@ describe("RadioGroup Component", () => {
       expect(screen.getByText("unknown")).toBeInTheDocument();
     });
 
-    it("should show 'None' when no value is selected", () => {
+    it("should show 'Ninguno' when no value is selected", () => {
       const handleChange = jest.fn();
       render(
         <RadioGroup
@@ -208,7 +208,7 @@ describe("RadioGroup Component", () => {
         />,
       );
 
-      expect(screen.getByText("None")).toBeInTheDocument();
+      expect(screen.getByText("Ninguno")).toBeInTheDocument();
     });
   });
 
