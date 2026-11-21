@@ -1,5 +1,12 @@
 # @rubenpazch/text-input
 
+## 6.2.2
+
+### Patch Changes
+
+- Updated dependencies [0eeab3b]
+  - @rubenpazch/icons@6.4.0
+
 ## 6.2.1
 
 ### Patch Changes
