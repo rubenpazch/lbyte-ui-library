@@ -1,0 +1,8 @@
+---
+"@rubenpazch/date-range-picker": minor
+"@rubenpazch/turnstile": minor
+"@rubenpazch/ui": minor
+---
+
+- `DateRangePicker`: periodo desde/hasta (ISO) con dos `DateInput`, validación del orden y atajos (hoy, últimos 7/30 días, este mes, mes anterior, este año) o propios.
+- `Turnstile`: verificación anti-robots de Cloudflare para formularios públicos; carga el script una sola vez, entrega el token y se reinicia con `resetKey` (sale del `Captcha` de auth-ui).

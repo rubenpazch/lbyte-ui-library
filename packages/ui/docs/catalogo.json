@@ -1682,6 +1682,140 @@
       "tipos": []
     },
     {
+      "paquete": "@rubenpazch/date-range-picker",
+      "carpeta": "packages/date-range-picker",
+      "categoria": "formularios",
+      "resumen": "Dos fechas (desde y hasta) con validación del orden y atajos (este mes, mes anterior, últimos 30 días…). Valores ISO AAAA-MM-DD.",
+      "usarCuando": "Filtrar reportes, listados o libros por un periodo.",
+      "evitarCuando": "Una sola fecha: usa DateInput. Navegar mes a mes: usa MonthNavigator.",
+      "componentes": [
+        {
+          "nombre": "DateRangePicker",
+          "importar": "import { DateRangePicker } from \"@rubenpazch/ui\";",
+          "descripcion": "Periodo desde/hasta con dos `DateInput` y atajos. Valida que \"hasta\" no sea anterior a \"desde\"\ny limita cada calendario según la otra fecha.",
+          "props": [
+            {
+              "nombre": "onChange",
+              "tipo": "(range: DateRange) => void",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "value",
+              "tipo": "DateRange",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "disabled",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "false",
+              "descripcion": ""
+            },
+            {
+              "nombre": "error",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Error externo; si no hay, se muestra el de orden cuando corresponde."
+            },
+            {
+              "nombre": "hint",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "label",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Título del grupo (se usa como `<legend>`)."
+            },
+            {
+              "nombre": "labels",
+              "tipo": "Partial<DateRangePickerLabels>",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "locale",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "maxDate",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "minDate",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "presets",
+              "tipo": "false | DateRangePreset[]",
+              "requerido": false,
+              "porDefecto": "[\n  { label: \"Hoy\", range: (h) => rango(h, h) },\n  { label: \"Últimos 7 días\", range: (h) => rango(menos(h, 6), h) },\n  { label: \"Últimos 30 días\", range: (h) => rango(menos(h, 29), h) },\n  {\n    label: \"Este mes\",\n    range: (h) =>\n      rango(\n        primerDia(h.getFullYear(), h.getMonth()),\n        ultimoDia(h.getFullYear(), h.getMonth()),\n      ),\n  },\n  {\n    label: \"Mes anterior\",\n    range: (h) =>\n      rango(\n        primerDia(h.getFullYear(), h.getMonth() - 1),\n        ultimoDia(h.getFullYear(), h.getMonth() - 1),\n      ),\n  },\n  {\n    label: \"Este año\",\n    range: (h) =>\n      rango(new Date(h.getFullYear(), 0, 1), new Date(h.getFullYear(), 11, 31)),\n  },\n]",
+              "descripcion": "Atajos; `false` los oculta. Por defecto: hoy, 7/30 días, este mes, mes anterior, este año."
+            },
+            {
+              "nombre": "required",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "false",
+              "descripcion": ""
+            },
+            {
+              "nombre": "today",
+              "tipo": "Date",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Para pruebas: fecha que se toma como \"hoy\" en los atajos."
+            }
+          ]
+        },
+        {
+          "nombre": "DEFAULT_DATE_RANGE_LABELS",
+          "importar": "import { DEFAULT_DATE_RANGE_LABELS } from \"@rubenpazch/ui\";",
+          "descripcion": "",
+          "props": []
+        },
+        {
+          "nombre": "DEFAULT_DATE_RANGE_PRESETS",
+          "importar": "import { DEFAULT_DATE_RANGE_PRESETS } from \"@rubenpazch/ui\";",
+          "descripcion": "Atajos habituales (fechas locales, sin corrimiento de zona horaria).",
+          "props": []
+        }
+      ],
+      "otrosValores": ["rangoValido"],
+      "tipos": [
+        "DateRange",
+        "DateRangePickerLabels",
+        "DateRangePickerProps",
+        "DateRangePreset"
+      ]
+    },
+    {
       "paquete": "@rubenpazch/description-list",
       "carpeta": "packages/description-list",
       "categoria": "presentacion",
@@ -8497,6 +8631,94 @@
       ],
       "otrosValores": [],
       "tipos": ["TooltipProps"]
+    },
+    {
+      "paquete": "@rubenpazch/turnstile",
+      "carpeta": "packages/turnstile",
+      "categoria": "formularios",
+      "resumen": "Widget de Cloudflare Turnstile (anti-robots) para formularios públicos: carga el script una sola vez, entrega el token y se reinicia tras cada envío.",
+      "usarCuando": "Login, registro, recuperación o cualquier formulario público que la API protege con Turnstile.",
+      "evitarCuando": "Pantallas detrás de la sesión (el usuario ya está autenticado).",
+      "componentes": [
+        {
+          "nombre": "Turnstile",
+          "importar": "import { Turnstile } from \"@rubenpazch/ui\";",
+          "descripcion": "Verificación anti-robots de Cloudflare Turnstile para formularios públicos.\nRequiere que la CSP permita `https://challenges.cloudflare.com` en script-src y frame-src.",
+          "props": [
+            {
+              "nombre": "onToken",
+              "tipo": "(token: string) => void",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": "Recibe el token, o \"\" cuando caduca o falla (deshabilita el envío mientras sea \"\").\nEl token se valida en el servidor y sirve una sola vez."
+            },
+            {
+              "nombre": "siteKey",
+              "tipo": "string",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": "Clave pública del sitio (NEXT_PUBLIC_TURNSTILE_SITE_KEY o la que entregue la API)."
+            },
+            {
+              "nombre": "action",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Acción del formulario (\"login\", \"registro\"…): el servidor puede exigir que coincida."
+            },
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "errorText",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "No se pudo cargar la verificación anti-robots. Revisa tu conexión o desactiva bloqueadores y recarga la página.",
+              "descripcion": "Mensaje si el widget no carga (red, bloqueadores)."
+            },
+            {
+              "nombre": "language",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "es",
+              "descripcion": ""
+            },
+            {
+              "nombre": "resetKey",
+              "tipo": "number",
+              "requerido": false,
+              "porDefecto": "0",
+              "descripcion": "Cambia este número después de cada envío para pedir un token nuevo."
+            },
+            {
+              "nombre": "size",
+              "tipo": "\"normal\" | \"flexible\" | \"compact\"",
+              "requerido": false,
+              "porDefecto": "flexible",
+              "descripcion": ""
+            },
+            {
+              "nombre": "theme",
+              "tipo": "\"auto\" | \"light\" | \"dark\"",
+              "requerido": false,
+              "porDefecto": "auto",
+              "descripcion": ""
+            }
+          ]
+        },
+        {
+          "nombre": "TURNSTILE_SCRIPT",
+          "importar": "import { TURNSTILE_SCRIPT } from \"@rubenpazch/ui\";",
+          "descripcion": "",
+          "props": []
+        }
+      ],
+      "otrosValores": ["cargarTurnstile"],
+      "tipos": ["TurnstileProps"]
     },
     {
       "paquete": "@rubenpazch/user-card",
