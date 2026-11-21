@@ -39,4 +39,6 @@ Campo de fecha con calendario desplegable. Se escribe en el formato del idioma
 | `placeholder`      | `string`                   |      |             | Por defecto el formato del idioma: "DD/MM/AAAA" en español.                                                                        |
 | `required`         | `boolean`                  |      | `false`     | Campo obligatorio.                                                                                                                 |
 
+Tipos: `DateInputLabels`, `DateInputProps`.
+
 <!-- catalogo:fin -->

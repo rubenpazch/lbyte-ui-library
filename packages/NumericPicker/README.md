@@ -40,4 +40,6 @@ Campo numérico para montos, cantidades y precios. Mientras se escribe no se ref
 | `required`    | `boolean`                                            |      | `false`     | Campo obligatorio.                                                                 |
 | `step`        | `number`                                             |      | `1`         | Paso de los botones + y −.                                                         |
 
+Tipos: `NumericPickerProps`.
+
 <!-- catalogo:fin -->

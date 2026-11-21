@@ -24,4 +24,6 @@ npm install @rubenpazch/prescription-eye-card
 | `labels`          | `PrescriptionEyeCardLabels`                  | sí   |             |             |
 | `prismBaseLookup` | `{ getNameByKey: (key: string) => string; }` | sí   |             |             |
 
+Tipos: `PrescriptionEyeInfo`, `PrescriptionEyeCardLabels`, `PrescriptionEyeCardProps`.
+
 <!-- catalogo:fin -->
