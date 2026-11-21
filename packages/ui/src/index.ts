@@ -44,10 +44,25 @@ export type {
 } from "@rubenpazch/data-table";
 export { default as DateInput } from "@rubenpazch/date-input";
 export { default as DatePicker } from "@rubenpazch/date-picker";
+export { default as DescriptionList } from "@rubenpazch/description-list";
+export type {
+  DescriptionItem,
+  DescriptionListProps,
+} from "@rubenpazch/description-list";
 export { default as DraggableList } from "@rubenpazch/draggable-list";
 export { default as Drawer } from "@rubenpazch/drawer";
 export { default as EmptyState } from "@rubenpazch/empty-state";
 export type { EmptyStateProps } from "@rubenpazch/empty-state";
+export {
+  default as FileUpload,
+  DEFAULT_FILE_UPLOAD_LABELS,
+  aceptaArchivo,
+} from "@rubenpazch/file-upload";
+export type {
+  FileRejection,
+  FileUploadLabels,
+  FileUploadProps,
+} from "@rubenpazch/file-upload";
 export {
   default as FormField,
   FormRow,
@@ -309,6 +324,12 @@ export type {
 } from "@rubenpazch/text-input";
 export { default as Textarea } from "@rubenpazch/textarea";
 export type { TextareaProps } from "@rubenpazch/textarea";
+export { default as Timeline } from "@rubenpazch/timeline";
+export type {
+  TimelineItem,
+  TimelineProps,
+  TimelineStatus,
+} from "@rubenpazch/timeline";
 export {
   ToastBanner,
   ToastProvider,

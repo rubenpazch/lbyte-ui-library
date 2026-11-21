@@ -29,9 +29,11 @@ librería (ver AGENTS.md del repo lbyte-ui-library), no lo copies en la app.
 | [`@rubenpazch/data-table`](#rubenpazchdata-table)                       | Datos                      | DataTable                                                                                 | Tabla de datos accesible: columnas con render, orden (aria-sort) en el navegador o en el servidor, carga con Skeleton, estado vacío, filas clicables, encabezado fijo y scroll horizontal en móvil.                                                    |
 | [`@rubenpazch/date-input`](#rubenpazchdate-input)                       | Formularios                | DateInput                                                                                 | Campo de fecha con formato local, mínimo/máximo, ayuda y error.                                                                                                                                                                                        |
 | [`@rubenpazch/date-picker`](#rubenpazchdate-picker)                     | Formularios                | DatePicker                                                                                | Selector de fecha con calendario desplegable.                                                                                                                                                                                                          |
+| [`@rubenpazch/description-list`](#rubenpazchdescription-list)           | Presentación de datos      | DescriptionList                                                                           | Pares etiqueta/valor en columnas: resumen de un registro (datos de un trámite, de un cliente, de un pago).                                                                                                                                             |
 | [`@rubenpazch/draggable-list`](#rubenpazchdraggable-list)               | Datos                      | DraggableList                                                                             | Lista reordenable arrastrando (también con teclado), basada en dnd-kit.                                                                                                                                                                                |
 | [`@rubenpazch/drawer`](#rubenpazchdrawer)                               | Navegación                 | Drawer                                                                                    | Panel lateral (izquierda/derecha/arriba/abajo) con animación y fondo.                                                                                                                                                                                  |
 | [`@rubenpazch/empty-state`](#rubenpazchempty-state)                     | Retroalimentación          | EmptyState                                                                                | Estado vacío con icono, título, descripción y acciones ("No hay convocatorias · Crear").                                                                                                                                                               |
+| [`@rubenpazch/file-upload`](#rubenpazchfile-upload)                     | Formularios                | FileUpload, DEFAULT_FILE_UPLOAD_LABELS, aceptaArchivo                                     | Zona para subir uno o varios archivos (arrastrar y soltar o elegir), con validación de tipo, tamaño y cantidad, y lista para quitarlos.                                                                                                                |
 | [`@rubenpazch/form-field`](#rubenpazchform-field)                       | Formularios                | FormField, FormRow, FormActions                                                           | FormField (etiqueta, ayuda y error asociados a cualquier control), FormRow (columnas que se apilan en móvil) y FormActions (pie con botones).                                                                                                          |
 | [`@rubenpazch/icon-button`](#rubenpazchicon-button)                     | Acciones                   | IconButton                                                                                | Botón de solo icono con variantes, formas, tooltip y etiqueta accesible.                                                                                                                                                                               |
 | [`@rubenpazch/icons`](#rubenpazchicons)                                 | Iconos                     | ArrowDetailsIcon, ArchiveIcon, BrandingIcon, BusinessPlanIcon, CalendarIcon, CheckIcon, … | Más de 60 iconos SVG como componentes React (y MaterialIcon para Material Icons).                                                                                                                                                                      |
@@ -64,6 +66,7 @@ librería (ver AGENTS.md del repo lbyte-ui-library), no lo copies en la app.
 | [`@rubenpazch/tabs`](#rubenpazchtabs)                                   | Navegación                 | Tabs                                                                                      | Pestañas para alternar entre secciones de una misma vista.                                                                                                                                                                                             |
 | [`@rubenpazch/text-input`](#rubenpazchtext-input)                       | Formularios                | TextInput                                                                                 | Campo de texto con etiqueta, ayuda, advertencia, error, iconos y variantes.                                                                                                                                                                            |
 | [`@rubenpazch/textarea`](#rubenpazchtextarea)                           | Formularios                | Textarea                                                                                  | Área de texto con etiqueta, ayuda, advertencia, error, contador de caracteres y crecimiento automático.                                                                                                                                                |
+| [`@rubenpazch/timeline`](#rubenpazchtimeline)                           | Presentación de datos      | Timeline                                                                                  | Línea de tiempo vertical: historial de un trámite, pedido o expediente (eventos con estado, fecha y descripción).                                                                                                                                      |
 | [`@rubenpazch/toast`](#rubenpazchtoast)                                 | Retroalimentación          | ToastBanner, ToastProvider, ToastRegion, useToast                                         | Notificaciones temporales (Toast) y avisos fijos (ToastBanner) con tipos y acciones.                                                                                                                                                                   |
 | [`@rubenpazch/tokens`](#rubenpazchtokens)                               | Base (tokens y utilidades) | cssVar, fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, …                    | Tokens de diseño (colores, tipografía, espacios, radios, sombras) como variables CSS --lb-*, estilos base y puente para Tailwind 4.                                                                                                                    |
 | [`@rubenpazch/tooltip`](#rubenpazchtooltip)                             | Presentación de datos      | Tooltip                                                                                   | Texto de ayuda breve al pasar el mouse o enfocar con teclado (role="tooltip", aria-describedby), se cierra con Escape.                                                                                                                                 |
@@ -332,6 +335,54 @@ import { DatePicker } from "@rubenpazch/ui";
 | `placeholder`       | `string`                 |      |             |                                                                         |
 | `readOnly`          | `boolean`                |      | `false`     |                                                                         |
 | `required`          | `boolean`                |      | `false`     |                                                                         |
+
+### @rubenpazch/file-upload
+
+Zona para subir uno o varios archivos (arrastrar y soltar o elegir), con validación de tipo, tamaño y cantidad, y lista para quitarlos.
+
+- **Usar cuando:** Adjuntar documentos o archivos en un formulario.
+- **Evitar cuando:** Una sola imagen con vista previa (logo, foto): usa ImageUpload.
+
+#### FileUpload
+
+Zona para subir uno o varios archivos: arrastrar y soltar o "Elegir archivos" (teclado).
+Valida tipo, tamaño, cantidad y duplicados; los rechazados se informan en la zona y por `onReject`.
+No sube nada: entrega los `File` a la app, que decide cuándo y cómo enviarlos.
+
+```tsx
+import { FileUpload } from "@rubenpazch/ui";
+```
+
+| Prop        | Tipo                                    | Req. | Por defecto | Descripción                                                                           |
+| ----------- | --------------------------------------- | ---- | ----------- | ------------------------------------------------------------------------------------- |
+| `onChange`  | `(files: File[]) => void`               | sí   |             | Nueva lista de archivos (agregados o quitados).                                       |
+| `value`     | `File[]`                                | sí   |             | Archivos elegidos (controlado).                                                       |
+| `accept`    | `string`                                |      |             | Tipos aceptados como en `<input accept>`: ".pdf,.docx", "image/*", "application/pdf". |
+| `className` | `string`                                |      |             |                                                                                       |
+| `disabled`  | `boolean`                               |      | `false`     |                                                                                       |
+| `error`     | `string`                                |      |             | Error externo (validación del formulario).                                            |
+| `hint`      | `string`                                |      |             |                                                                                       |
+| `id`        | `string`                                |      |             |                                                                                       |
+| `label`     | `string`                                |      |             |                                                                                       |
+| `labels`    | `Partial<FileUploadLabels>`             |      |             |                                                                                       |
+| `maxFiles`  | `number`                                |      |             | Máximo de archivos (por defecto sin límite).                                          |
+| `maxSizeMB` | `number`                                |      |             | Tamaño máximo por archivo en MB.                                                      |
+| `multiple`  | `boolean`                               |      | `true`      | Permitir varios archivos (por defecto sí).                                            |
+| `name`      | `string`                                |      |             |                                                                                       |
+| `onReject`  | `(rejections: FileRejection[]) => void` |      |             | Archivos que no se aceptaron y por qué (para avisar o registrar).                     |
+| `required`  | `boolean`                               |      | `false`     |                                                                                       |
+
+#### DEFAULT_FILE_UPLOAD_LABELS
+
+```tsx
+import { DEFAULT_FILE_UPLOAD_LABELS } from "@rubenpazch/ui";
+```
+
+_Sin props documentadas._
+
+Otras exportaciones: `aceptaArchivo`.
+
+Tipos: `FileRejection`, `FileUploadLabels`, `FileUploadProps`.
 
 ### @rubenpazch/form-field
 
@@ -1205,14 +1256,14 @@ Displays a loading indicator with multiple style variants
 import { LoadingSpinner } from "@rubenpazch/ui";
 ```
 
-| Prop        | Tipo                                       | Req. | Por defecto | Descripción |
-| ----------- | ------------------------------------------ | ---- | ----------- | ----------- |
-| `className` | `string`                                   |      | ``          |             |
-| `color`     | `"blue" \| "gray" \| "white"`              |      | `blue`      |             |
-| `inline`    | `boolean`                                  |      | `false`     |             |
-| `message`   | `string`                                   |      |             |             |
-| `size`      | `"sm" \| "md" \| "lg"`                     |      | `md`        |             |
-| `variant`   | `"spinner" \| "dots" \| "pulse" \| "ring"` |      | `spinner`   |             |
+| Prop        | Tipo                                       | Req. | Por defecto | Descripción                                                                                                                                                              |
+| ----------- | ------------------------------------------ | ---- | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `className` | `string`                                   |      | ``          |                                                                                                                                                                          |
+| `color`     | `"primary" \| "gray" \| "white" \| "blue"` |      | `primary`   | primary (por defecto): color de la marca (--lb-color-primary). gray: neutro. white: sobre fondos de color. "blue" es el nombre antiguo de "primary" (sigue funcionando). |
+| `inline`    | `boolean`                                  |      | `false`     |                                                                                                                                                                          |
+| `message`   | `string`                                   |      |             |                                                                                                                                                                          |
+| `size`      | `"sm" \| "md" \| "lg"`                     |      | `md`        |                                                                                                                                                                          |
+| `variant`   | `"spinner" \| "dots" \| "pulse" \| "ring"` |      | `spinner`   |                                                                                                                                                                          |
 
 ### @rubenpazch/modal
 
@@ -1565,6 +1616,33 @@ import { Chip } from "@rubenpazch/ui";
 
 Tipos: `ChipVariant`, `ChipColor`, `ChipSize`, `ChipProps`.
 
+### @rubenpazch/description-list
+
+Pares etiqueta/valor en columnas: resumen de un registro (datos de un trámite, de un cliente, de un pago).
+
+- **Usar cuando:** Mostrar varios datos de solo lectura de un registro, con etiquetas.
+- **Evitar cuando:** Datos tabulares de muchos registros: usa DataTable. Una sola fila con icono: usa InfoRow.
+
+#### DescriptionList
+
+Pares etiqueta/valor de solo lectura (`<dl>`): resumen de un registro.
+
+```tsx
+import { DescriptionList } from "@rubenpazch/ui";
+```
+
+| Prop         | Tipo                | Req. | Por defecto  | Descripción                                                       |
+| ------------ | ------------------- | ---- | ------------ | ----------------------------------------------------------------- |
+| `items`      | `DescriptionItem[]` | sí   |              |                                                                   |
+| `className`  | `string`            |      |              |                                                                   |
+| `columns`    | `1 \| 2 \| 3`       |      | `2`          | Columnas en pantallas anchas (en móvil siempre 1). Por defecto 2. |
+| `emptyText`  | `ReactNode`         |      | `Sin datos.` | Texto si no hay ningún dato.                                      |
+| `emptyValue` | `ReactNode`         |      | `—`          | Qué mostrar si un valor está vacío.                               |
+| `footnote`   | `ReactNode`         |      |              | Nota al pie (fuente de los datos, aclaraciones).                  |
+| `title`      | `ReactNode`         |      |              | Título opcional sobre la lista.                                   |
+
+Tipos: `DescriptionItem`, `DescriptionListProps`.
+
 ### @rubenpazch/info-row
 
 Fila de dato con icono, etiqueta y valor (variantes de color, tamaños, acción opcional).
@@ -1594,6 +1672,34 @@ import { InfoRow } from "@rubenpazch/ui";
 | `layout`    | `"vertical" \| "horizontal" \| "inline" \| "compact"`                                   |      | `vertical`  |             |
 | `size`      | `"xs" \| "sm" \| "md" \| "lg"`                                                          |      | `md`        |             |
 | `variant`   | `"default" \| "blue" \| "yellow" \| "purple" \| "green" \| "red" \| "indigo" \| "gray"` |      | `default`   |             |
+
+### @rubenpazch/timeline
+
+Línea de tiempo vertical: historial de un trámite, pedido o expediente (eventos con estado, fecha y descripción).
+
+- **Usar cuando:** Mostrar el historial o seguimiento de algo en orden cronológico.
+- **Evitar cuando:** Pasos de un proceso que el usuario recorre ahora: usa Stepper.
+
+#### Timeline
+
+Línea de tiempo vertical: historial de un trámite, pedido o expediente, en orden.
+Genérica: el significado de cada estado lo decide la app (p. ej. un envoltorio local que
+convierte los estados del trámite en `items`).
+
+```tsx
+import { Timeline } from "@rubenpazch/ui";
+```
+
+| Prop            | Tipo             | Req. | Por defecto            | Descripción                                                         |
+| --------------- | ---------------- | ---- | ---------------------- | ------------------------------------------------------------------- |
+| `items`         | `TimelineItem[]` | sí   |                        |                                                                     |
+| `aria-label`    | `string`         |      |                        | Nombre accesible de la lista, p. ej. "Historial del trámite".       |
+| `className`     | `string`         |      |                        |                                                                     |
+| `dense`         | `boolean`        |      | `false`                | Más compacto (menos espacio entre eventos).                         |
+| `emptyText`     | `ReactNode`      |      | `Sin eventos todavía.` | Texto cuando no hay eventos.                                        |
+| `highlightLast` | `boolean`        |      | `false`                | El último evento se marca como el estado actual (anillo y negrita). |
+
+Tipos: `TimelineItem`, `TimelineProps`, `TimelineStatus`.
 
 ### @rubenpazch/tooltip
 

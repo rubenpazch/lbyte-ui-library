@@ -1682,6 +1682,74 @@
       "tipos": []
     },
     {
+      "paquete": "@rubenpazch/description-list",
+      "carpeta": "packages/description-list",
+      "categoria": "presentacion",
+      "resumen": "Pares etiqueta/valor en columnas: resumen de un registro (datos de un trámite, de un cliente, de un pago).",
+      "usarCuando": "Mostrar varios datos de solo lectura de un registro, con etiquetas.",
+      "evitarCuando": "Datos tabulares de muchos registros: usa DataTable. Una sola fila con icono: usa InfoRow.",
+      "componentes": [
+        {
+          "nombre": "DescriptionList",
+          "importar": "import { DescriptionList } from \"@rubenpazch/ui\";",
+          "descripcion": "Pares etiqueta/valor de solo lectura (`<dl>`): resumen de un registro.",
+          "props": [
+            {
+              "nombre": "items",
+              "tipo": "DescriptionItem[]",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "columns",
+              "tipo": "1 | 2 | 3",
+              "requerido": false,
+              "porDefecto": "2",
+              "descripcion": "Columnas en pantallas anchas (en móvil siempre 1). Por defecto 2."
+            },
+            {
+              "nombre": "emptyText",
+              "tipo": "ReactNode",
+              "requerido": false,
+              "porDefecto": "Sin datos.",
+              "descripcion": "Texto si no hay ningún dato."
+            },
+            {
+              "nombre": "emptyValue",
+              "tipo": "ReactNode",
+              "requerido": false,
+              "porDefecto": "—",
+              "descripcion": "Qué mostrar si un valor está vacío."
+            },
+            {
+              "nombre": "footnote",
+              "tipo": "ReactNode",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Nota al pie (fuente de los datos, aclaraciones)."
+            },
+            {
+              "nombre": "title",
+              "tipo": "ReactNode",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Título opcional sobre la lista."
+            }
+          ]
+        }
+      ],
+      "otrosValores": [],
+      "tipos": ["DescriptionItem", "DescriptionListProps"]
+    },
+    {
       "paquete": "@rubenpazch/draggable-list",
       "carpeta": "packages/draggable-list",
       "categoria": "datos",
@@ -1954,6 +2022,143 @@
       ],
       "otrosValores": [],
       "tipos": ["EmptyStateProps"]
+    },
+    {
+      "paquete": "@rubenpazch/file-upload",
+      "carpeta": "packages/file-upload",
+      "categoria": "formularios",
+      "resumen": "Zona para subir uno o varios archivos (arrastrar y soltar o elegir), con validación de tipo, tamaño y cantidad, y lista para quitarlos.",
+      "usarCuando": "Adjuntar documentos o archivos en un formulario.",
+      "evitarCuando": "Una sola imagen con vista previa (logo, foto): usa ImageUpload.",
+      "componentes": [
+        {
+          "nombre": "FileUpload",
+          "importar": "import { FileUpload } from \"@rubenpazch/ui\";",
+          "descripcion": "Zona para subir uno o varios archivos: arrastrar y soltar o \"Elegir archivos\" (teclado).\nValida tipo, tamaño, cantidad y duplicados; los rechazados se informan en la zona y por `onReject`.\nNo sube nada: entrega los `File` a la app, que decide cuándo y cómo enviarlos.",
+          "props": [
+            {
+              "nombre": "onChange",
+              "tipo": "(files: File[]) => void",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": "Nueva lista de archivos (agregados o quitados)."
+            },
+            {
+              "nombre": "value",
+              "tipo": "File[]",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": "Archivos elegidos (controlado)."
+            },
+            {
+              "nombre": "accept",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Tipos aceptados como en `<input accept>`: \".pdf,.docx\", \"image/*\", \"application/pdf\"."
+            },
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "disabled",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "false",
+              "descripcion": ""
+            },
+            {
+              "nombre": "error",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Error externo (validación del formulario)."
+            },
+            {
+              "nombre": "hint",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "id",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "label",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "labels",
+              "tipo": "Partial<FileUploadLabels>",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "maxFiles",
+              "tipo": "number",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Máximo de archivos (por defecto sin límite)."
+            },
+            {
+              "nombre": "maxSizeMB",
+              "tipo": "number",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Tamaño máximo por archivo en MB."
+            },
+            {
+              "nombre": "multiple",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "true",
+              "descripcion": "Permitir varios archivos (por defecto sí)."
+            },
+            {
+              "nombre": "name",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "onReject",
+              "tipo": "(rejections: FileRejection[]) => void",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Archivos que no se aceptaron y por qué (para avisar o registrar)."
+            },
+            {
+              "nombre": "required",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "false",
+              "descripcion": ""
+            }
+          ]
+        },
+        {
+          "nombre": "DEFAULT_FILE_UPLOAD_LABELS",
+          "importar": "import { DEFAULT_FILE_UPLOAD_LABELS } from \"@rubenpazch/ui\";",
+          "descripcion": "",
+          "props": []
+        }
+      ],
+      "otrosValores": ["aceptaArchivo"],
+      "tipos": ["FileRejection", "FileUploadLabels", "FileUploadProps"]
     },
     {
       "paquete": "@rubenpazch/form-field",
@@ -5261,10 +5466,10 @@
             },
             {
               "nombre": "color",
-              "tipo": "\"blue\" | \"gray\" | \"white\"",
+              "tipo": "\"primary\" | \"gray\" | \"white\" | \"blue\"",
               "requerido": false,
-              "porDefecto": "blue",
-              "descripcion": ""
+              "porDefecto": "primary",
+              "descripcion": "primary (por defecto): color de la marca (--lb-color-primary). gray: neutro. white: sobre fondos de color.\n\"blue\" es el nombre antiguo de \"primary\" (sigue funcionando)."
             },
             {
               "nombre": "inline",
@@ -8064,6 +8269,67 @@
       ],
       "otrosValores": [],
       "tipos": ["TextareaProps"]
+    },
+    {
+      "paquete": "@rubenpazch/timeline",
+      "carpeta": "packages/timeline",
+      "categoria": "presentacion",
+      "resumen": "Línea de tiempo vertical: historial de un trámite, pedido o expediente (eventos con estado, fecha y descripción).",
+      "usarCuando": "Mostrar el historial o seguimiento de algo en orden cronológico.",
+      "evitarCuando": "Pasos de un proceso que el usuario recorre ahora: usa Stepper.",
+      "componentes": [
+        {
+          "nombre": "Timeline",
+          "importar": "import { Timeline } from \"@rubenpazch/ui\";",
+          "descripcion": "Línea de tiempo vertical: historial de un trámite, pedido o expediente, en orden.\nGenérica: el significado de cada estado lo decide la app (p. ej. un envoltorio local que\nconvierte los estados del trámite en `items`).",
+          "props": [
+            {
+              "nombre": "items",
+              "tipo": "TimelineItem[]",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "aria-label",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Nombre accesible de la lista, p. ej. \"Historial del trámite\"."
+            },
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "dense",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "false",
+              "descripcion": "Más compacto (menos espacio entre eventos)."
+            },
+            {
+              "nombre": "emptyText",
+              "tipo": "ReactNode",
+              "requerido": false,
+              "porDefecto": "Sin eventos todavía.",
+              "descripcion": "Texto cuando no hay eventos."
+            },
+            {
+              "nombre": "highlightLast",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "false",
+              "descripcion": "El último evento se marca como el estado actual (anillo y negrita)."
+            }
+          ]
+        }
+      ],
+      "otrosValores": [],
+      "tipos": ["TimelineItem", "TimelineProps", "TimelineStatus"]
     },
     {
       "paquete": "@rubenpazch/toast",
