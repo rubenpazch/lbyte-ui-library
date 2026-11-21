@@ -387,7 +387,14 @@ for (const [f, crudo] of salidas) {
   const actual = fs.existsSync(f) ? norm(fs.readFileSync(f, "utf8")) : null;
   if (actual === contenido) continue;
   if (CHECK) {
-    desactualizados.push(path.relative(RAIZ, f));
+    // Primera línea distinta, para entender la diferencia sin tener que reproducirla.
+    const a = (actual ?? "").split("\n");
+    const b = contenido.split("\n");
+    const i = b.findIndex((l, k) => l !== a[k]);
+    const linea = i < 0 ? a.length : i;
+    desactualizados.push(
+      `${path.relative(RAIZ, f)}\n    línea ${linea + 1}\n    actual:   ${(a[linea] ?? "(fin)").trim().slice(0, 160)}\n    generado: ${(b[linea] ?? "(fin)").trim().slice(0, 160)}`,
+    );
   } else {
     fs.mkdirSync(path.dirname(f), { recursive: true });
     fs.writeFileSync(f, contenido);
