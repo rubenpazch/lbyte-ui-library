@@ -63,9 +63,10 @@ librería (ver AGENTS.md del repo lbyte-ui-library), no lo copies en la app.
 | [`@rubenpazch/tabs`](#rubenpazchtabs)                                   | Navegación                 | Tabs                                                                                      | Pestañas para alternar entre secciones de una misma vista.                                                                                                                                                                                             |
 | [`@rubenpazch/text-input`](#rubenpazchtext-input)                       | Formularios                | TextInput                                                                                 | Campo de texto con etiqueta, ayuda, advertencia, error, iconos y variantes.                                                                                                                                                                            |
 | [`@rubenpazch/textarea`](#rubenpazchtextarea)                           | Formularios                | Textarea                                                                                  | Área de texto con etiqueta, ayuda, advertencia, error, contador de caracteres y crecimiento automático.                                                                                                                                                |
-| [`@rubenpazch/toast`](#rubenpazchtoast)                                 | Retroalimentación          | ToastBanner                                                                               | Notificaciones temporales (Toast) y avisos fijos (ToastBanner) con tipos y acciones.                                                                                                                                                                   |
+| [`@rubenpazch/toast`](#rubenpazchtoast)                                 | Retroalimentación          | ToastBanner, ToastProvider, ToastRegion, useToast                                         | Notificaciones temporales (Toast) y avisos fijos (ToastBanner) con tipos y acciones.                                                                                                                                                                   |
 | [`@rubenpazch/tokens`](#rubenpazchtokens)                               | Base (tokens y utilidades) | cssVar, fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, …                    | Tokens de diseño (colores, tipografía, espacios, radios, sombras) como variables CSS --lb-*, estilos base y puente para Tailwind 4.                                                                                                                    |
 | [`@rubenpazch/tooltip`](#rubenpazchtooltip)                             | Presentación de datos      | Tooltip                                                                                   | Texto de ayuda breve al pasar el mouse o enfocar con teclado (role="tooltip", aria-describedby), se cierra con Escape.                                                                                                                                 |
+| [`@rubenpazch/user-card`](#rubenpazchuser-card)                         | Presentación de datos      | UserCard, initials                                                                        | Tarjeta de una persona (usuario, socio, cliente): avatar, nombre, correo u otro dato, etiquetas y acciones; las secundarias van en un menú ⋮.                                                                                                          |
 
 ## Base (tokens y utilidades)
 
@@ -804,23 +805,24 @@ Es la base de todas las pantallas de administración.
 import { AppShell } from "@rubenpazch/ui";
 ```
 
-| Prop                | Tipo                                                    | Req. | Por defecto | Descripción                                                                       |
-| ------------------- | ------------------------------------------------------- | ---- | ----------- | --------------------------------------------------------------------------------- |
-| `children`          | `ReactNode`                                             | sí   |             | Contenido de la página.                                                           |
-| `sections`          | `SidebarSection[]`                                      | sí   |             | Secciones del menú.                                                               |
-| `brand`             | `ReactNode`                                             |      |             | Logo o nombre de la app arriba.                                                   |
-| `brandCollapsed`    | `ReactNode`                                             |      |             | Versión compacta del logo para el modo colapsado (por defecto se oculta `brand`). |
-| `collapsed`         | `boolean`                                               |      |             | Colapsado (controlado).                                                           |
-| `currentPath`       | `string`                                                |      |             | Ruta actual (p. ej. usePathname() de Next) para marcar la opción activa.          |
-| `defaultCollapsed`  | `boolean`                                               |      |             | Colapsado inicial (no controlado).                                                |
-| `headerActions`     | `ReactNode`                                             |      |             | Acciones a la derecha de la cabecera: notificaciones, usuario.                    |
-| `labels`            | `Partial<{ openMenu: string; skipToContent: string; }>` |      |             | Textos accesibles.                                                                |
-| `linkComponent`     | `ElementType<any, keyof IntrinsicElements>`             |      |             | Componente de enlace (Link de Next.js). Por defecto <a>.                          |
-| `maxWidth`          | `"none" \| "md" \| "lg"`                                |      | `lg`        | Ancho máximo del contenido: none, lg (72rem, por defecto) o md (56rem).           |
-| `onCollapsedChange` | `(collapsed: boolean) => void`                          |      |             | Al colapsar o expandir.                                                           |
-| `sidebarFooter`     | `ReactNode`                                             |      |             | Contenido al pie de la barra lateral (usuario, "Cerrar sesión").                  |
-| `storageKey`        | `string`                                                |      |             | Clave de localStorage para recordar si estaba colapsado.                          |
-| `title`             | `ReactNode`                                             |      |             | Título en la cabecera (en móvil se ve junto al botón ☰).                         |
+| Prop                | Tipo                                                    | Req. | Por defecto | Descripción                                                                                                                                                                                |
+| ------------------- | ------------------------------------------------------- | ---- | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `children`          | `ReactNode`                                             | sí   |             | Contenido de la página.                                                                                                                                                                    |
+| `sections`          | `SidebarSection[]`                                      | sí   |             | Secciones del menú.                                                                                                                                                                        |
+| `brand`             | `ReactNode`                                             |      |             | Logo o nombre de la app arriba.                                                                                                                                                            |
+| `brandCollapsed`    | `ReactNode`                                             |      |             | Versión compacta del logo para el modo colapsado (por defecto se oculta `brand`).                                                                                                          |
+| `collapsed`         | `boolean`                                               |      |             | Colapsado (controlado).                                                                                                                                                                    |
+| `currentPath`       | `string`                                                |      |             | Ruta actual (p. ej. usePathname() de Next) para marcar la opción activa.                                                                                                                   |
+| `defaultCollapsed`  | `boolean`                                               |      |             | Colapsado inicial (no controlado).                                                                                                                                                         |
+| `headerActions`     | `ReactNode`                                             |      |             | Acciones a la derecha de la cabecera: notificaciones, usuario.                                                                                                                             |
+| `labels`            | `Partial<{ openMenu: string; skipToContent: string; }>` |      |             | Textos accesibles.                                                                                                                                                                         |
+| `linkComponent`     | `ElementType<any, keyof IntrinsicElements>`             |      |             | Componente de enlace (Link de Next.js). Por defecto <a>.                                                                                                                                   |
+| `maxWidth`          | `"none" \| "md" \| "lg"`                                |      | `lg`        | Ancho máximo del contenido: none, lg (72rem, por defecto) o md (56rem).                                                                                                                    |
+| `onCollapsedChange` | `(collapsed: boolean) => void`                          |      |             | Al colapsar o expandir.                                                                                                                                                                    |
+| `sidebarFooter`     | `ReactNode`                                             |      |             | Contenido al pie de la barra lateral (usuario, "Cerrar sesión").                                                                                                                           |
+| `storageKey`        | `string`                                                |      |             | Clave de localStorage para recordar si estaba colapsado.                                                                                                                                   |
+| `title`             | `ReactNode`                                             |      |             | Título en la cabecera (en móvil se ve junto al botón ☰).                                                                                                                                  |
+| `toasts`            | `boolean`                                               |      | `true`      | Incluye `ToastProvider`: dentro del panel, `useToast()` muestra los mensajes del servidor como toast bajo la cabecera. Pon `false` solo si la app ya tiene su propio proveedor más arriba. |
 
 Tipos: `AppShellProps`.
 
@@ -1318,7 +1320,39 @@ import { ToastBanner } from "@rubenpazch/ui";
 | `className`      | `string`               |      |                       |             |
 | `closeAriaLabel` | `string`               |      | `Cerrar notificación` |             |
 
-Tipos: `ToastAction`, `ToastBannerProps`, `ToastItem`, `ToastType`.
+#### ToastProvider
+
+Mensajes del servidor dentro de la app (usuario con sesión). `AppShell` ya lo incluye y los
+muestra bajo su cabecera; úsalo directamente solo en un layout propio.
+
+En pantallas públicas (login, registro, recuperación) NO se usa: ahí el mensaje va junto al
+formulario. Por eso `useToast()` falla fuera de un proveedor.
+
+```tsx
+import { ToastProvider } from "@rubenpazch/ui";
+```
+
+| Prop             | Tipo                     | Req. | Por defecto      | Descripción                                                                                                                                                                                             |
+| ---------------- | ------------------------ | ---- | ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `closeAriaLabel` | `string`                 |      | `Cerrar mensaje` | Texto accesible del botón ×.                                                                                                                                                                            |
+| `offsetTop`      | `string`                 |      |                  | Distancia desde arriba en modo `floating`.                                                                                                                                                              |
+| `placement`      | `"floating" \| "inline"` |      | `floating`       | `floating` (por defecto): flotan arriba a la derecha. `inline`: no se pintan aquí; el layout pone `<ToastRegion />` en su sitio (AppShell lo hace bajo su cabecera, sin tapar el menú ni el contenido). |
+
+#### ToastRegion
+
+Pinta los toasts de un `ToastProvider placement="inline"` en el lugar del layout donde se ponga.
+
+```tsx
+import { ToastRegion } from "@rubenpazch/ui";
+```
+
+| Prop        | Tipo     | Req. | Por defecto | Descripción |
+| ----------- | -------- | ---- | ----------- | ----------- |
+| `className` | `string` |      |             |             |
+
+Otras exportaciones: `useToast`.
+
+Tipos: `ToastAction`, `ToastBannerProps`, `ToastItem`, `ToastType`, `ToastApi`, `ToastOptions`, `ToastProviderProps`.
 
 ## Presentación de datos
 
@@ -1535,6 +1569,41 @@ import { Tooltip } from "@rubenpazch/ui";
 | `placement` | `"top" \| "bottom" \| "left" \| "right"`                      |      | `top`       | Posición: top (por defecto), bottom, left o right.                                 |
 
 Tipos: `TooltipProps`.
+
+### @rubenpazch/user-card
+
+Tarjeta de una persona (usuario, socio, cliente): avatar, nombre, correo u otro dato, etiquetas y acciones; las secundarias van en un menú ⋮.
+
+- **Usar cuando:** Listas de personas en cuadrícula: usuarios de un panel, socios, clientes, pacientes.
+- **Evitar cuando:** Listas largas o con muchas columnas para comparar: usa DataTable.
+
+#### UserCard
+
+Tarjeta de una persona: avatar, nombre, dato secundario, etiquetas y acciones.
+Las acciones principales se ven en el pie; las secundarias van en un menú ⋮ para que la
+tarjeta no se llene de botones.
+
+```tsx
+import { UserCard } from "@rubenpazch/ui";
+```
+
+| Prop        | Tipo                         | Req. | Por defecto | Descripción                                                            |
+| ----------- | ---------------------------- | ---- | ----------- | ---------------------------------------------------------------------- |
+| `name`      | `string`                     | sí   |             | Nombre visible.                                                        |
+| `actions`   | `ReactNode`                  |      |             | Acciones principales visibles en el pie (una o dos `Button`).          |
+| `as`        | `"article" \| "li" \| "div"` |      | `article`   |                                                                        |
+| `avatarSrc` | `string`                     |      |             | Foto. Sin ella se muestran las iniciales del nombre.                   |
+| `badges`    | `ReactNode`                  |      |             | Etiquetas (normalmente `Badge`): rol, estado, módulos…                 |
+| `children`  | `ReactNode`                  |      |             | Contenido extra entre las etiquetas y el pie.                          |
+| `className` | `string`                     |      |             |                                                                        |
+| `menuItems` | `MenuItem[]`                 |      |             | Acciones secundarias en el menú ⋮ (editar contraseña, eliminar…).      |
+| `menuLabel` | `string`                     |      |             | Texto accesible del botón ⋮. Por defecto "Más acciones para <nombre>". |
+| `muted`     | `boolean`                    |      | `false`     | Atenúa la tarjeta (p. ej. usuario inactivo).                           |
+| `subtitle`  | `ReactNode`                  |      |             | Dato secundario bajo el nombre: correo, documento, cargo…              |
+
+Otras exportaciones: `initials`.
+
+Tipos: `UserCardProps`.
 
 ## Datos
 

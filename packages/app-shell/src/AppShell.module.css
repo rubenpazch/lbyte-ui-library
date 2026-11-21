@@ -29,10 +29,13 @@
   min-width: 0;
 }
 
-.header {
+.top {
   position: sticky;
   top: 0;
   z-index: 20;
+}
+
+.header {
   display: flex;
   align-items: center;
   gap: var(--lb-space-3);
@@ -94,9 +97,15 @@
   margin: 0 auto;
 }
 
-.max-lg { max-width: 72rem; }
-.max-md { max-width: 56rem; }
-.max-none { max-width: none; }
+.max-lg {
+  max-width: 72rem;
+}
+.max-md {
+  max-width: 56rem;
+}
+.max-none {
+  max-width: none;
+}
 
 @media (max-width: 767px) {
   .menuButton {
@@ -108,4 +117,10 @@
   .main {
     padding: var(--lb-space-5) var(--lb-space-4);
   }
+}
+
+/* Mensajes (useToast) bajo la cabecera: mismo ancho que el contenido. */
+.toasts {
+  border-bottom: 1px solid var(--lb-color-border);
+  background: var(--lb-color-background);
 }

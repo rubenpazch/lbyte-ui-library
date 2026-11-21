@@ -307,12 +307,20 @@ export type {
 } from "@rubenpazch/text-input";
 export { default as Textarea } from "@rubenpazch/textarea";
 export type { TextareaProps } from "@rubenpazch/textarea";
-export { ToastBanner } from "@rubenpazch/toast";
+export {
+  ToastBanner,
+  ToastProvider,
+  ToastRegion,
+  useToast,
+} from "@rubenpazch/toast";
 export type {
   ToastAction,
   ToastBannerProps,
   ToastItem,
   ToastType,
+  ToastApi,
+  ToastOptions,
+  ToastProviderProps,
 } from "@rubenpazch/toast";
 export {
   cssVar,
@@ -330,3 +338,5 @@ export {
 export type { Tokens } from "@rubenpazch/tokens";
 export { default as Tooltip } from "@rubenpazch/tooltip";
 export type { TooltipProps } from "@rubenpazch/tooltip";
+export { default as UserCard, initials } from "@rubenpazch/user-card";
+export type { UserCardProps } from "@rubenpazch/user-card";

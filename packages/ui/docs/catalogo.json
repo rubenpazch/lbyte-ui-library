@@ -212,6 +212,13 @@
               "requerido": false,
               "porDefecto": null,
               "descripcion": "Título en la cabecera (en móvil se ve junto al botón ☰)."
+            },
+            {
+              "nombre": "toasts",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "true",
+              "descripcion": "Incluye `ToastProvider`: dentro del panel, `useToast()` muestra los mensajes del servidor como\ntoast bajo la cabecera. Pon `false` solo si la app ya tiene su propio proveedor más arriba."
             }
           ]
         }
@@ -7997,10 +8004,60 @@
               "descripcion": ""
             }
           ]
+        },
+        {
+          "nombre": "ToastProvider",
+          "importar": "import { ToastProvider } from \"@rubenpazch/ui\";",
+          "descripcion": "Mensajes del servidor dentro de la app (usuario con sesión). `AppShell` ya lo incluye y los\nmuestra bajo su cabecera; úsalo directamente solo en un layout propio.\n\nEn pantallas públicas (login, registro, recuperación) NO se usa: ahí el mensaje va junto al\nformulario. Por eso `useToast()` falla fuera de un proveedor.",
+          "props": [
+            {
+              "nombre": "closeAriaLabel",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "Cerrar mensaje",
+              "descripcion": "Texto accesible del botón ×."
+            },
+            {
+              "nombre": "offsetTop",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Distancia desde arriba en modo `floating`."
+            },
+            {
+              "nombre": "placement",
+              "tipo": "\"floating\" | \"inline\"",
+              "requerido": false,
+              "porDefecto": "floating",
+              "descripcion": "`floating` (por defecto): flotan arriba a la derecha.\n`inline`: no se pintan aquí; el layout pone `<ToastRegion />` en su sitio\n(AppShell lo hace bajo su cabecera, sin tapar el menú ni el contenido)."
+            }
+          ]
+        },
+        {
+          "nombre": "ToastRegion",
+          "importar": "import { ToastRegion } from \"@rubenpazch/ui\";",
+          "descripcion": "Pinta los toasts de un `ToastProvider placement=\"inline\"` en el lugar del layout donde se ponga.",
+          "props": [
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            }
+          ]
         }
       ],
-      "otrosValores": [],
-      "tipos": ["ToastAction", "ToastBannerProps", "ToastItem", "ToastType"]
+      "otrosValores": ["useToast"],
+      "tipos": [
+        "ToastAction",
+        "ToastBannerProps",
+        "ToastItem",
+        "ToastType",
+        "ToastApi",
+        "ToastOptions",
+        "ToastProviderProps"
+      ]
     },
     {
       "paquete": "@rubenpazch/tokens",
@@ -8071,6 +8128,102 @@
       ],
       "otrosValores": [],
       "tipos": ["TooltipProps"]
+    },
+    {
+      "paquete": "@rubenpazch/user-card",
+      "carpeta": "packages/user-card",
+      "categoria": "presentacion",
+      "resumen": "Tarjeta de una persona (usuario, socio, cliente): avatar, nombre, correo u otro dato, etiquetas y acciones; las secundarias van en un menú ⋮.",
+      "usarCuando": "Listas de personas en cuadrícula: usuarios de un panel, socios, clientes, pacientes.",
+      "evitarCuando": "Listas largas o con muchas columnas para comparar: usa DataTable.",
+      "componentes": [
+        {
+          "nombre": "UserCard",
+          "importar": "import { UserCard } from \"@rubenpazch/ui\";",
+          "descripcion": "Tarjeta de una persona: avatar, nombre, dato secundario, etiquetas y acciones.\nLas acciones principales se ven en el pie; las secundarias van en un menú ⋮ para que la\ntarjeta no se llene de botones.",
+          "props": [
+            {
+              "nombre": "name",
+              "tipo": "string",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": "Nombre visible."
+            },
+            {
+              "nombre": "actions",
+              "tipo": "ReactNode",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Acciones principales visibles en el pie (una o dos `Button`)."
+            },
+            {
+              "nombre": "as",
+              "tipo": "\"article\" | \"li\" | \"div\"",
+              "requerido": false,
+              "porDefecto": "article",
+              "descripcion": ""
+            },
+            {
+              "nombre": "avatarSrc",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Foto. Sin ella se muestran las iniciales del nombre."
+            },
+            {
+              "nombre": "badges",
+              "tipo": "ReactNode",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Etiquetas (normalmente `Badge`): rol, estado, módulos…"
+            },
+            {
+              "nombre": "children",
+              "tipo": "ReactNode",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Contenido extra entre las etiquetas y el pie."
+            },
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
+            },
+            {
+              "nombre": "menuItems",
+              "tipo": "MenuItem[]",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Acciones secundarias en el menú ⋮ (editar contraseña, eliminar…)."
+            },
+            {
+              "nombre": "menuLabel",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Texto accesible del botón ⋮. Por defecto \"Más acciones para <nombre>\"."
+            },
+            {
+              "nombre": "muted",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "false",
+              "descripcion": "Atenúa la tarjeta (p. ej. usuario inactivo)."
+            },
+            {
+              "nombre": "subtitle",
+              "tipo": "ReactNode",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Dato secundario bajo el nombre: correo, documento, cargo…"
+            }
+          ]
+        }
+      ],
+      "otrosValores": ["initials"],
+      "tipos": ["UserCardProps"]
     }
   ],
   "iconos": [

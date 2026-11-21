@@ -23,7 +23,8 @@ describe("ToastBanner", () => {
     expect(screen.getByText(toastItem.title)).toBeInTheDocument();
     expect(screen.getByText(toastItem.message)).toBeInTheDocument();
 
-    const alert = screen.getByRole("alert");
+    // Un toast de éxito se anuncia como estado (no interrumpe).
+    const alert = screen.getByRole("status");
     expect(alert).toHaveClass(styles.toast);
     expect(alert).toHaveClass(styles.toastSuccess);
   });

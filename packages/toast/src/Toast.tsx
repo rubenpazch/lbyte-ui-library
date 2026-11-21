@@ -88,7 +88,11 @@ const ToastBannerItem: React.FC<ToastBannerItemProps> = ({
   }
 
   return (
-    <div className={classNames(styles.toast, typeClassMap[type])} role="alert">
+    <div
+      className={classNames(styles.toast, typeClassMap[type])}
+      // Errores y avisos interrumpen al lector de pantalla; el resto se anuncia sin interrumpir.
+      role={type === "error" || type === "warning" ? "alert" : "status"}
+    >
       <div className={styles.icon}>{getIcon(type)}</div>
 
       <div className={styles.content}>

@@ -1,6 +1,7 @@
 import React, { useId, useState } from "react";
 import Sidebar from "@rubenpazch/sidebar";
 import type { SidebarProps } from "@rubenpazch/sidebar";
+import { ToastProvider, ToastRegion } from "@rubenpazch/toast";
 import styles from "./AppShell.module.css";
 
 export interface AppShellProps extends Pick<
@@ -27,6 +28,11 @@ export interface AppShellProps extends Pick<
   maxWidth?: "none" | "md" | "lg";
   /** Textos accesibles. */
   labels?: Partial<{ openMenu: string; skipToContent: string }>;
+  /**
+   * Incluye `ToastProvider`: dentro del panel, `useToast()` muestra los mensajes del servidor como
+   * toast bajo la cabecera. Pon `false` solo si la app ya tiene su propio proveedor más arriba.
+   */
+  toasts?: boolean;
 }
 
 const cx = (...c: Array<string | false | undefined>) =>
@@ -52,6 +58,7 @@ export default function AppShell({
   children,
   maxWidth = "lg",
   labels,
+  toasts = true,
 }: AppShellProps) {
   const text = {
     openMenu: "Abrir menú",
@@ -61,7 +68,7 @@ export default function AppShell({
   const mainId = `${useId()}-contenido`;
   const [mobileOpen, setMobileOpen] = useState(false);
 
-  return (
+  const shell = (
     <div className={styles.shell}>
       <a href={`#${mainId}`} className={styles.skip}>
         {text.skipToContent}
@@ -81,33 +88,38 @@ export default function AppShell({
         onMobileOpenChange={setMobileOpen}
       />
       <div className={styles.column}>
-        <header className={styles.header}>
-          <button
-            type="button"
-            className={styles.menuButton}
-            onClick={() => setMobileOpen(true)}
-            aria-label={text.openMenu}
-            aria-expanded={mobileOpen}
-          >
-            <svg
-              viewBox="0 0 20 20"
-              fill="currentColor"
-              width="20"
-              height="20"
-              aria-hidden="true"
+        {/* Bloque fijo: cabecera + mensajes. Ocupa solo la columna del contenido: no tapa el menú
+            y empuja el contenido en vez de superponerse. */}
+        <div className={styles.top}>
+          <header className={styles.header}>
+            <button
+              type="button"
+              className={styles.menuButton}
+              onClick={() => setMobileOpen(true)}
+              aria-label={text.openMenu}
+              aria-expanded={mobileOpen}
             >
-              <path
-                fillRule="evenodd"
-                d="M2 4.75A.75.75 0 0 1 2.75 4h14.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 4.75Zm0 5.25a.75.75 0 0 1 .75-.75h14.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 10Zm0 5.25a.75.75 0 0 1 .75-.75h14.5a.75.75 0 0 1 0 1.5H2.75a.75.75 0 0 1-.75-.75Z"
-                clipRule="evenodd"
-              />
-            </svg>
-          </button>
-          {title && <div className={styles.title}>{title}</div>}
-          {headerActions && (
-            <div className={styles.actions}>{headerActions}</div>
-          )}
-        </header>
+              <svg
+                viewBox="0 0 20 20"
+                fill="currentColor"
+                width="20"
+                height="20"
+                aria-hidden="true"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M2 4.75A.75.75 0 0 1 2.75 4h14.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 4.75Zm0 5.25a.75.75 0 0 1 .75-.75h14.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 10Zm0 5.25a.75.75 0 0 1 .75-.75h14.5a.75.75 0 0 1 0 1.5H2.75a.75.75 0 0 1-.75-.75Z"
+                  clipRule="evenodd"
+                />
+              </svg>
+            </button>
+            {title && <div className={styles.title}>{title}</div>}
+            {headerActions && (
+              <div className={styles.actions}>{headerActions}</div>
+            )}
+          </header>
+          {toasts && <ToastRegion className={styles.toasts} />}
+        </div>
         <main id={mainId} tabIndex={-1} className={styles.main}>
           <div className={cx(styles.content, styles[`max-${maxWidth}`])}>
             {children}
@@ -115,5 +127,10 @@ export default function AppShell({
         </main>
       </div>
     </div>
+  );
+  return toasts ? (
+    <ToastProvider placement="inline">{shell}</ToastProvider>
+  ) : (
+    shell
   );
 }

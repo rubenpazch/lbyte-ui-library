@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 import ToastBanner, { type ToastBannerProps } from "./Toast";
+import { ToastProvider, useToast } from "./ToastProvider";
 
 const meta: Meta<ToastBannerProps> = {
   title: "Retroalimentación/Toast",
@@ -98,4 +99,37 @@ export const AutoDismiss: Story = {
     onClose: () => undefined,
   },
   render: ToastTemplate,
+};
+
+function DemoUseToast() {
+  const toast = useToast();
+  return (
+    <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+      <button onClick={() => toast.exito("Usuario guardado.")}>Éxito</button>
+      <button
+        onClick={() => toast.error("No se pudo guardar: el correo ya existe.")}
+      >
+        Error del servidor
+      </button>
+      <button
+        onClick={() => toast.aviso("Guardado, pero falta asignar módulos.")}
+      >
+        Aviso
+      </button>
+      <button onClick={() => toast.info("Sincronizando…")}>Info</button>
+    </div>
+  );
+}
+
+/**
+ * Regla: dentro de la app (con sesión) los mensajes del servidor van en toast con `useToast()`.
+ * `AppShell` ya incluye `ToastProvider`. En el login y demás pantallas públicas, el mensaje va en el formulario.
+ */
+export const ConUseToast: StoryObj = {
+  name: "useToast() (mensajes del servidor)",
+  render: () => (
+    <ToastProvider offsetTop="1rem">
+      <DemoUseToast />
+    </ToastProvider>
+  ),
 };
