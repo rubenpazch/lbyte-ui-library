@@ -338,3 +338,5 @@ export {
 export type { Tokens } from "@rubenpazch/tokens";
 export { default as Tooltip } from "@rubenpazch/tooltip";
 export type { TooltipProps } from "@rubenpazch/tooltip";
+export { default as UserCard, initials } from "@rubenpazch/user-card";
+export type { UserCardProps } from "@rubenpazch/user-card";

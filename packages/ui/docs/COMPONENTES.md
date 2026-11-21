@@ -66,6 +66,7 @@ librería (ver AGENTS.md del repo lbyte-ui-library), no lo copies en la app.
 | [`@rubenpazch/toast`](#rubenpazchtoast)                                 | Retroalimentación          | ToastBanner, ToastProvider, ToastRegion, useToast                                         | Notificaciones temporales (Toast) y avisos fijos (ToastBanner) con tipos y acciones.                                                                                                                                                                   |
 | [`@rubenpazch/tokens`](#rubenpazchtokens)                               | Base (tokens y utilidades) | cssVar, fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, …                    | Tokens de diseño (colores, tipografía, espacios, radios, sombras) como variables CSS --lb-*, estilos base y puente para Tailwind 4.                                                                                                                    |
 | [`@rubenpazch/tooltip`](#rubenpazchtooltip)                             | Presentación de datos      | Tooltip                                                                                   | Texto de ayuda breve al pasar el mouse o enfocar con teclado (role="tooltip", aria-describedby), se cierra con Escape.                                                                                                                                 |
+| [`@rubenpazch/user-card`](#rubenpazchuser-card)                         | Presentación de datos      | UserCard, initials                                                                        | Tarjeta de una persona (usuario, socio, cliente): avatar, nombre, correo u otro dato, etiquetas y acciones; las secundarias van en un menú ⋮.                                                                                                          |
 
 ## Base (tokens y utilidades)
 
@@ -1568,6 +1569,41 @@ import { Tooltip } from "@rubenpazch/ui";
 | `placement` | `"top" \| "bottom" \| "left" \| "right"`                      |      | `top`       | Posición: top (por defecto), bottom, left o right.                                 |
 
 Tipos: `TooltipProps`.
+
+### @rubenpazch/user-card
+
+Tarjeta de una persona (usuario, socio, cliente): avatar, nombre, correo u otro dato, etiquetas y acciones; las secundarias van en un menú ⋮.
+
+- **Usar cuando:** Listas de personas en cuadrícula: usuarios de un panel, socios, clientes, pacientes.
+- **Evitar cuando:** Listas largas o con muchas columnas para comparar: usa DataTable.
+
+#### UserCard
+
+Tarjeta de una persona: avatar, nombre, dato secundario, etiquetas y acciones.
+Las acciones principales se ven en el pie; las secundarias van en un menú ⋮ para que la
+tarjeta no se llene de botones.
+
+```tsx
+import { UserCard } from "@rubenpazch/ui";
+```
+
+| Prop        | Tipo                         | Req. | Por defecto | Descripción                                                            |
+| ----------- | ---------------------------- | ---- | ----------- | ---------------------------------------------------------------------- |
+| `name`      | `string`                     | sí   |             | Nombre visible.                                                        |
+| `actions`   | `ReactNode`                  |      |             | Acciones principales visibles en el pie (una o dos `Button`).          |
+| `as`        | `"article" \| "li" \| "div"` |      | `article`   |                                                                        |
+| `avatarSrc` | `string`                     |      |             | Foto. Sin ella se muestran las iniciales del nombre.                   |
+| `badges`    | `ReactNode`                  |      |             | Etiquetas (normalmente `Badge`): rol, estado, módulos…                 |
+| `children`  | `ReactNode`                  |      |             | Contenido extra entre las etiquetas y el pie.                          |
+| `className` | `string`                     |      |             |                                                                        |
+| `menuItems` | `MenuItem[]`                 |      |             | Acciones secundarias en el menú ⋮ (editar contraseña, eliminar…).      |
+| `menuLabel` | `string`                     |      |             | Texto accesible del botón ⋮. Por defecto "Más acciones para <nombre>". |
+| `muted`     | `boolean`                    |      | `false`     | Atenúa la tarjeta (p. ej. usuario inactivo).                           |
+| `subtitle`  | `ReactNode`                  |      |             | Dato secundario bajo el nombre: correo, documento, cargo…              |
+
+Otras exportaciones: `initials`.
+
+Tipos: `UserCardProps`.
 
 ## Datos
 

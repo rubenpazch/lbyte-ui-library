@@ -1,0 +1,92 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--lb-space-3);
+  padding: var(--lb-space-4);
+  border: 1px solid var(--lb-color-border);
+  border-radius: var(--lb-radius-lg);
+  background: var(--lb-color-background);
+  box-shadow: var(--lb-shadow-sm);
+  font-family: var(--lb-font-sans);
+  transition: box-shadow 150ms ease;
+}
+
+.card:hover {
+  box-shadow: var(--lb-shadow-md);
+}
+
+.muted {
+  opacity: 0.7;
+}
+
+/* Avatar + nombre en una fila, centrados verticalmente; el menú ⋮ a la derecha. */
+.head {
+  display: flex;
+  align-items: center;
+  gap: var(--lb-space-3);
+  min-width: 0;
+}
+
+.avatar {
+  flex: none;
+}
+
+.identity {
+  flex: 1;
+  min-width: 0;
+}
+
+.name,
+.subtitle {
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.name {
+  font-size: var(--lb-font-size-body);
+  font-weight: var(--lb-font-weight-semibold);
+  color: var(--lb-color-foreground);
+}
+
+.subtitle {
+  margin-top: 2px;
+  font-size: var(--lb-font-size-sm);
+  color: var(--lb-color-muted-foreground);
+}
+
+.menu {
+  flex: none;
+  align-self: flex-start;
+}
+
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--lb-space-1);
+}
+
+.extra {
+  font-size: var(--lb-font-size-sm);
+}
+
+/* Pie con las acciones principales, a lo ancho. */
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--lb-space-2);
+  margin-top: auto;
+  padding-top: var(--lb-space-3);
+  border-top: 1px solid var(--lb-color-border);
+}
+
+.actions > * {
+  flex: 1 1 auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card {
+    transition: none;
+  }
+}
