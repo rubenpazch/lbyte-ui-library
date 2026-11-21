@@ -1,6 +1,6 @@
 {
   "name": "@rubenpazch/timeline",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Línea de tiempo: eventos en orden con estado, fecha y descripción",
   "repository": {
     "type": "git",

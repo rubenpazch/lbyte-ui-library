@@ -1,5 +1,11 @@
 # @rubenpazch/user-card
 
+## 0.1.1
+
+### Patch Changes
+
+- @rubenpazch/menu@0.1.2
+
 ## 0.1.0
 
 ### Minor Changes

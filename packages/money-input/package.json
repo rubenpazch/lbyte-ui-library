@@ -1,6 +1,6 @@
 {
   "name": "@rubenpazch/money-input",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Campo de monto en soles o dólares",
   "repository": {
     "type": "git",

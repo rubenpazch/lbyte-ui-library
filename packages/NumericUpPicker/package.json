@@ -1,6 +1,6 @@
 {
   "name": "@rubenpazch/numeric-up-picker",
-  "version": "6.1.3",
+  "version": "6.1.4",
   "repository": "https://github.com/rubenpazch/lbyte-ui-library.git",
   "publishConfig": {
     "access": "public"

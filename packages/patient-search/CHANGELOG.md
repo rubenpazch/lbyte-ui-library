@@ -1,5 +1,11 @@
 # @rubenpazch/patient-search
 
+## 3.0.6
+
+### Patch Changes
+
+- @rubenpazch/icons@6.4.1
+
 ## 3.0.5
 
 ### Patch Changes

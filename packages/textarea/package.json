@@ -1,6 +1,6 @@
 {
   "name": "@rubenpazch/textarea",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Área de texto con contador y crecimiento automático",
   "repository": {
     "type": "git",

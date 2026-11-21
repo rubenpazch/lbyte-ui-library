@@ -1,5 +1,14 @@
 # @rubenpazch/app-shell
 
+## 0.3.1
+
+### Patch Changes
+
+- Updated dependencies [f747c04]
+  - @rubenpazch/shared@5.3.0
+  - @rubenpazch/sidebar@0.1.3
+  - @rubenpazch/toast@4.1.1
+
 ## 0.3.0
 
 ### Minor Changes

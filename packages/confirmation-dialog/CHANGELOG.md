@@ -1,5 +1,12 @@
 # @rubenpazch/confirmation-dialog
 
+## 3.1.4
+
+### Patch Changes
+
+- @rubenpazch/button@6.2.3
+  - @rubenpazch/modal@0.1.3
+
 ## 3.1.3
 
 ### Patch Changes

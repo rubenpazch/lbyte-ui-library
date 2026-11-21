@@ -1,5 +1,12 @@
 # @rubenpazch/alert
 
+## 0.2.1
+
+### Patch Changes
+
+- Updated dependencies [f747c04]
+  - @rubenpazch/shared@5.3.0
+
 ## 0.2.0
 
 ### Minor Changes

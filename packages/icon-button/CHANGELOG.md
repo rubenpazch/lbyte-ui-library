@@ -1,5 +1,12 @@
 # @rubenpazch/icon-button
 
+## 4.2.2
+
+### Patch Changes
+
+- Updated dependencies [f747c04]
+  - @rubenpazch/shared@5.3.0
+
 ## 4.2.1
 
 ### Patch Changes

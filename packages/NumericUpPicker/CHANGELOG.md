@@ -1,5 +1,13 @@
 # @rubenpazch/numeric-up-picker
 
+## 6.1.4
+
+### Patch Changes
+
+- Updated dependencies [f747c04]
+  - @rubenpazch/shared@5.3.0
+  - @rubenpazch/icons@6.4.1
+
 ## 6.1.3
 
 ### Patch Changes

@@ -1,5 +1,15 @@
 # @rubenpazch/autocomplete
 
+## 5.1.4
+
+### Patch Changes
+
+- Updated dependencies [f747c04]
+- Updated dependencies [7e356fa]
+  - @rubenpazch/shared@5.3.0
+  - @rubenpazch/loading-spinner@4.1.0
+  - @rubenpazch/icons@6.4.1
+
 ## 5.1.3
 
 ### Patch Changes
