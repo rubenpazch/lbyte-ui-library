@@ -86,6 +86,12 @@ const opciones = {
   skipLibCheck: true,
   strict: true,
   noEmit: true,
+  // Los paquetes de la librería se leen desde su src/, no desde dist/: así el catálogo es el
+  // mismo antes y después de compilar (en el CI esta comprobación corre antes del build).
+  baseUrl: RAIZ,
+  paths: Object.fromEntries(
+    paquetes.map((p) => [p.pkg.name, [path.relative(RAIZ, p.index).replace(/\\/g, "/")]]),
+  ),
 };
 const programa = ts.createProgram(
   [path.join(RAIZ, "css-module.d.ts"), ...paquetes.map((p) => p.index).filter(fs.existsSync)],
