@@ -97,3 +97,23 @@ it("pinta los toasts bajo la cabecera, dentro de la columna del contenido (no fl
   expect(container.querySelector("main")!.contains(alerta)).toBe(false);
   expect(container.querySelector("nav")?.contains(alerta) ?? false).toBe(false);
 });
+
+it("loading muestra la carga solo en el contenido: el menú y la cabecera siguen igual", () => {
+  const { container } = render(
+    <AppShell
+      title="Panel"
+      loading
+      sections={[{ items: [{ label: "Inicio", href: "/" }] }]}
+    >
+      <p>Lista de usuarios</p>
+    </AppShell>,
+  );
+  const carga = screen.getByRole("status");
+  expect(carga).toHaveTextContent("Cargando");
+  expect(container.querySelector("main")!.contains(carga)).toBe(true);
+  expect(
+    screen.getByText("Lista de usuarios").closest("[aria-busy]"),
+  ).toHaveAttribute("aria-busy", "true");
+  expect(screen.getByRole("link", { name: "Inicio" })).toBeInTheDocument();
+  expect(container.querySelector("header")).toHaveTextContent("Panel");
+});

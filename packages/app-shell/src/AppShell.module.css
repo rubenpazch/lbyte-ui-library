@@ -88,6 +88,7 @@
 }
 
 .main {
+  position: relative;
   flex: 1;
   padding: var(--lb-space-8) var(--lb-space-6);
   outline: none;
@@ -123,4 +124,53 @@
 .toasts {
   border-bottom: 1px solid var(--lb-color-border);
   background: var(--lb-color-background);
+}
+
+/* Carga al cambiar de pantalla: solo en el contenido. */
+.contentLoading {
+  opacity: 0.35;
+  pointer-events: none;
+  transition: opacity 150ms ease;
+}
+
+.loading {
+  position: absolute;
+  top: var(--lb-space-8);
+  left: 50%;
+  z-index: 5;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--lb-space-2);
+  transform: translateX(-50%);
+  padding: var(--lb-space-2) var(--lb-space-4);
+  border: 1px solid var(--lb-color-border);
+  border-radius: var(--lb-radius-full);
+  background: var(--lb-color-background);
+  box-shadow: var(--lb-shadow-md);
+  color: var(--lb-color-muted-foreground);
+  font-size: var(--lb-font-size-sm);
+}
+
+.spinner {
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid var(--lb-color-primary-subtle, var(--lb-color-border));
+  border-top-color: var(--lb-color-primary);
+  border-radius: 50%;
+  animation: giro 0.8s linear infinite;
+}
+
+@keyframes giro {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contentLoading {
+    transition: none;
+  }
+  .spinner {
+    animation-duration: 2.4s;
+  }
 }
