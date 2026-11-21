@@ -1,6 +1,6 @@
 {
   "name": "@rubenpazch/tooltip",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Texto de ayuda al pasar el mouse o enfocar",
   "repository": {
     "type": "git",

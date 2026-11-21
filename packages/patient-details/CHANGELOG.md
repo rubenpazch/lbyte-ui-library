@@ -1,5 +1,16 @@
 # @rubenpazch/patient-details
 
+## 3.1.2
+
+### Patch Changes
+
+- Updated dependencies [d0f0768]
+  - @rubenpazch/tokens@0.4.0
+  - @rubenpazch/icons@6.2.0
+  - @rubenpazch/button@6.2.0
+  - @rubenpazch/icon-button@4.2.0
+  - @rubenpazch/info-row@3.0.3
+
 ## 3.1.1
 
 ### Patch Changes

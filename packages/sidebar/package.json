@@ -1,6 +1,6 @@
 {
   "name": "@rubenpazch/sidebar",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Barra de navegación vertical colapsable y adaptable a móvil",
   "repository": {
     "type": "git",
