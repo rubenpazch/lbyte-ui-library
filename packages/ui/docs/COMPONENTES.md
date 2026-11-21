@@ -1067,16 +1067,17 @@ Aviso dentro de la página (no flotante): información, éxito, advertencia o er
 import { Alert } from "@rubenpazch/ui";
 ```
 
-| Prop         | Tipo                                           | Req. | Por defecto    | Descripción                                                          |
-| ------------ | ---------------------------------------------- | ---- | -------------- | -------------------------------------------------------------------- |
-| `action`     | `ReactNode`                                    |      |                | Acción a la derecha o abajo (p. ej. un Button "Reintentar").         |
-| `children`   | `ReactNode`                                    |      |                | Texto del aviso.                                                     |
-| `className`  | `string`                                       |      |                | Clase extra.                                                         |
-| `closeLabel` | `string`                                       |      | `Cerrar aviso` | Texto accesible del botón ×.                                         |
-| `icon`       | `ReactNode`                                    |      |                | Icono propio; `false` para ocultarlo. Por defecto uno según el tipo. |
-| `onClose`    | `() => void`                                   |      |                | Si se pasa, muestra el botón × y se llama al cerrarlo.               |
-| `title`      | `ReactNode`                                    |      |                | Título en negrita (opcional).                                        |
-| `variant`    | `"info" \| "success" \| "warning" \| "danger"` |      | `info`         | Tipo de mensaje: info (por defecto), success, warning o danger.      |
+| Prop         | Tipo                                           | Req. | Por defecto    | Descripción                                                                                                                                                                 |
+| ------------ | ---------------------------------------------- | ---- | -------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `action`     | `ReactNode`                                    |      |                | Acción a la derecha o abajo (p. ej. un Button "Reintentar").                                                                                                                |
+| `children`   | `ReactNode`                                    |      |                | Texto del aviso.                                                                                                                                                            |
+| `className`  | `string`                                       |      |                | Clase extra.                                                                                                                                                                |
+| `closeLabel` | `string`                                       |      | `Cerrar aviso` | Texto accesible del botón ×.                                                                                                                                                |
+| `icon`       | `ReactNode`                                    |      |                | Icono propio; `false` para ocultarlo. Por defecto uno según el tipo.                                                                                                        |
+| `onClose`    | `() => void`                                   |      |                | Si se pasa, muestra el botón × y se llama al cerrarlo.                                                                                                                      |
+| `role`       | `"alert" \| "status" \| "note"`                |      |                | Rol ARIA. Por defecto `alert` (warning/danger) o `status` (info/success), que se anuncian al aparecer. Para un aviso fijo que ya está en la página al cargar, usa `"note"`. |
+| `title`      | `ReactNode`                                    |      |                | Título en negrita (opcional).                                                                                                                                               |
+| `variant`    | `"info" \| "success" \| "warning" \| "danger"` |      | `info`         | Tipo de mensaje: info (por defecto), success, warning o danger.                                                                                                             |
 
 Tipos: `AlertProps`, `AlertVariant`.
 

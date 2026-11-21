@@ -20,6 +20,11 @@ export interface AlertProps {
   closeLabel?: string;
   /** Clase extra. */
   className?: string;
+  /**
+   * Rol ARIA. Por defecto `alert` (warning/danger) o `status` (info/success), que se anuncian al
+   * aparecer. Para un aviso fijo que ya está en la página al cargar, usa `"note"`.
+   */
+  role?: "alert" | "status" | "note";
 }
 
 const cx = (...c: Array<string | false | undefined>) =>
@@ -48,11 +53,12 @@ export default function Alert({
   icon,
   closeLabel = "Cerrar aviso",
   className,
+  role,
 }: AlertProps) {
   const urgent = variant === "warning" || variant === "danger";
   return (
     <div
-      role={urgent ? "alert" : "status"}
+      role={role ?? (urgent ? "alert" : "status")}
       className={cx(styles.alert, styles[variant], className)}
       data-variant={variant}
     >
