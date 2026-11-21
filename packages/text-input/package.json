@@ -2,6 +2,11 @@
   "name": "@rubenpazch/text-input",
   "version": "6.2.0",
   "description": "TextInput component for Lbyte UI library",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rubenpazch/lbyte-ui-library.git",
+    "directory": "packages/text-input"
+  },
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
   "types": "dist/index.d.ts",

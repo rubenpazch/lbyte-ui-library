@@ -70,6 +70,13 @@ const paquetes = fs
         `${pkg.name}: categoría "${pkg.lbyte.categoria}" no válida (${Object.keys(CATEGORIAS).join(", ")})`,
       );
     }
+    // npm rechaza la publicación con provenance (E422) si falta repository.url.
+    const repoUrl = typeof pkg.repository === "string" ? pkg.repository : pkg.repository?.url;
+    if (!pkg.private && !/github\.com\/rubenpazch\/lbyte-ui-library/.test(repoUrl ?? "")) {
+      errores.push(
+        `${pkg.name}: falta "repository" en package.json ({ "type": "git", "url": "https://github.com/rubenpazch/lbyte-ui-library.git", "directory": "packages/…" }); npm no lo publica sin él`,
+      );
+    }
     return { dir, pkgFile, pkg, clave, index: path.join(dir, "src", "index.ts") };
   })
   .filter(Boolean)
