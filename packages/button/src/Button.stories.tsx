@@ -3,7 +3,7 @@ import React from "react";
 import Button, { type ButtonProps } from "./Button";
 
 const meta: Meta<ButtonProps> = {
-  title: "Components/Button",
+  title: "Acciones/Button",
   component: Button as any,
   parameters: {
     layout: "centered",

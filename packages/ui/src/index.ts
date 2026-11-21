@@ -142,9 +142,22 @@ export {
   RobotIcon,
   TargetIcon,
   MaterialIcon,
+  ReceiptIcon,
+  ICONOS,
 } from "@rubenpazch/icons";
-export { default as IdentificationInput } from "@rubenpazch/identification-input";
-export { default as ImageUpload } from "@rubenpazch/image-upload";
+export type { IconoInfo, CategoriaIcono } from "@rubenpazch/icons";
+export {
+  default as IdentificationInput,
+  DEFAULT_IDENTIFICATION_LABELS,
+} from "@rubenpazch/identification-input";
+export {
+  default as ImageUpload,
+  DEFAULT_IMAGE_UPLOAD_LABELS,
+} from "@rubenpazch/image-upload";
+export type {
+  ImageUploadProps,
+  ImageUploadLabels,
+} from "@rubenpazch/image-upload";
 export { default as InfoRow } from "@rubenpazch/info-row";
 export { default as LoadingSpinner } from "@rubenpazch/loading-spinner";
 export { default as Menu } from "@rubenpazch/menu";

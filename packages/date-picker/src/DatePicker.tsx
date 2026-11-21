@@ -509,6 +509,7 @@ const DatePicker = React.forwardRef<HTMLInputElement, DatePickerProps>(
               name={name}
               required={required}
               autoComplete="off"
+              role="combobox"
               aria-haspopup="dialog"
               aria-expanded={isOpen}
               type="text"

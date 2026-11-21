@@ -3,7 +3,7 @@ import React from "react";
 import LoadingSpinner from "./LoadingSpinner";
 
 const meta: Meta<typeof LoadingSpinner> = {
-  title: "Components/LoadingSpinner",
+  title: "Retroalimentación/LoadingSpinner",
   component: LoadingSpinner,
   parameters: {
     layout: "centered",

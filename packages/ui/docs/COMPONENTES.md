@@ -34,8 +34,8 @@ librería (ver AGENTS.md del repo lbyte-ui-library), no lo copies en la app.
 | [`@rubenpazch/form-field`](#rubenpazchform-field)                       | Formularios                | FormField, FormRow, FormActions                                                           | FormField (etiqueta, ayuda y error asociados a cualquier control), FormRow (columnas que se apilan en móvil) y FormActions (pie con botones).                                                                                                          |
 | [`@rubenpazch/icon-button`](#rubenpazchicon-button)                     | Acciones                   | IconButton                                                                                | Botón de solo icono con variantes, formas, tooltip y etiqueta accesible.                                                                                                                                                                               |
 | [`@rubenpazch/icons`](#rubenpazchicons)                                 | Iconos                     | ArrowDetailsIcon, ArchiveIcon, BrandingIcon, BusinessPlanIcon, CalendarIcon, CheckIcon, … | Más de 60 iconos SVG como componentes React (y MaterialIcon para Material Icons).                                                                                                                                                                      |
-| [`@rubenpazch/identification-input`](#rubenpazchidentification-input)   | Salud (pacientes y óptica) | IdentificationInput                                                                       | Tipo y número de documento peruano (DNI, CE, pasaporte) con validación de longitud y formato.                                                                                                                                                          |
-| [`@rubenpazch/image-upload`](#rubenpazchimage-upload)                   | Formularios                | ImageUpload                                                                               | Subida de imagen o PDF con vista previa, arrastrar y soltar, validación de tipo y tamaño.                                                                                                                                                              |
+| [`@rubenpazch/identification-input`](#rubenpazchidentification-input)   | Salud (pacientes y óptica) | IdentificationInput, DEFAULT_IDENTIFICATION_LABELS                                        | Tipo y número de documento peruano (DNI, CE, pasaporte) con validación de longitud y formato.                                                                                                                                                          |
+| [`@rubenpazch/image-upload`](#rubenpazchimage-upload)                   | Formularios                | ImageUpload, DEFAULT_IMAGE_UPLOAD_LABELS                                                  | Subida de imagen o PDF con vista previa, arrastrar y soltar, validación de tipo y tamaño.                                                                                                                                                              |
 | [`@rubenpazch/info-row`](#rubenpazchinfo-row)                           | Presentación de datos      | InfoRow                                                                                   | Fila de dato con icono, etiqueta y valor (variantes de color, tamaños, acción opcional).                                                                                                                                                               |
 | [`@rubenpazch/loading-spinner`](#rubenpazchloading-spinner)             | Retroalimentación          | LoadingSpinner                                                                            | Indicador de carga circular con tamaños y colores.                                                                                                                                                                                                     |
 | [`@rubenpazch/menu`](#rubenpazchmenu)                                   | Acciones                   | Menu                                                                                      | Menú de acciones (role="menu") con botón ⋮ por defecto, opciones con icono, peligrosas o deshabilitadas, teclado completo.                                                                                                                             |
@@ -396,23 +396,40 @@ Subida de imagen o PDF con vista previa, arrastrar y soltar, validación de tipo
 
 #### ImageUpload
 
+El `ref` apunta al `<input type="file">`.
+
 ```tsx
 import { ImageUpload } from "@rubenpazch/ui";
 ```
 
-| Prop              | Tipo                            | Req. | Por defecto                                    | Descripción |
-| ----------------- | ------------------------------- | ---- | ---------------------------------------------- | ----------- |
-| `labels`          | `ImageUploadLabels`             | sí   |                                                |             |
-| `onUpload`        | `(file: File) => Promise<void>` | sí   |                                                |             |
-| `acceptedFormats` | `string[]`                      |      | `["image/jpeg", "image/png", "image/svg+xml"]` |             |
-| `className`       | `string`                        |      | ``                                             |             |
-| `currentImageUrl` | `string`                        |      |                                                |             |
-| `disabled`        | `boolean`                       |      | `false`                                        |             |
-| `label`           | `string`                        |      |                                                |             |
-| `maxSizeMB`       | `number`                        |      | `5`                                            |             |
-| `onRemove`        | `() => Promise<void>`           |      |                                                |             |
-| `previewHeight`   | `number`                        |      | `200`                                          |             |
-| `previewWidth`    | `number`                        |      | `200`                                          |             |
+| Prop              | Tipo                            | Req. | Por defecto                                    | Descripción                                    |
+| ----------------- | ------------------------------- | ---- | ---------------------------------------------- | ---------------------------------------------- |
+| `onUpload`        | `(file: File) => Promise<void>` | sí   |                                                |                                                |
+| `acceptedFormats` | `string[]`                      |      | `["image/jpeg", "image/png", "image/svg+xml"]` |                                                |
+| `className`       | `string`                        |      | ``                                             |                                                |
+| `currentImageUrl` | `string`                        |      |                                                |                                                |
+| `disabled`        | `boolean`                       |      | `false`                                        |                                                |
+| `error`           | `string`                        |      |                                                | Error externo (validación del formulario).     |
+| `hint`            | `string`                        |      |                                                | Texto de ayuda bajo el campo.                  |
+| `id`              | `string`                        |      |                                                |                                                |
+| `label`           | `string`                        |      |                                                |                                                |
+| `labels`          | `Partial<ImageUploadLabels>`    |      |                                                | Textos de la interfaz; por defecto en español. |
+| `maxSizeMB`       | `number`                        |      | `5`                                            |                                                |
+| `name`            | `string`                        |      |                                                |                                                |
+| `onRemove`        | `() => Promise<void>`           |      |                                                |                                                |
+| `previewHeight`   | `number`                        |      | `200`                                          |                                                |
+| `previewWidth`    | `number`                        |      | `200`                                          |                                                |
+| `required`        | `boolean`                       |      | `false`                                        |                                                |
+
+#### DEFAULT_IMAGE_UPLOAD_LABELS
+
+```tsx
+import { DEFAULT_IMAGE_UPLOAD_LABELS } from "@rubenpazch/ui";
+```
+
+_Sin props documentadas._
+
+Tipos: `ImageUploadProps`, `ImageUploadLabels`.
 
 ### @rubenpazch/money-input
 
@@ -571,24 +588,27 @@ import { RadioButton } from "@rubenpazch/ui";
 import { RadioGroup } from "@rubenpazch/ui";
 ```
 
-| Prop                | Tipo                                                           | Req. | Por defecto | Descripción |
-| ------------------- | -------------------------------------------------------------- | ---- | ----------- | ----------- |
-| `name`              | `string`                                                       | sí   |             |             |
-| `onChange`          | `(value: string) => void`                                      | sí   |             |             |
-| `options`           | `RadioOption[]`                                                | sí   |             |             |
-| `bordered`          | `boolean`                                                      |      | `false`     |             |
-| `borderLabel`       | `string`                                                       |      |             |             |
-| `className`         | `string`                                                       |      | ``          |             |
-| `disabled`          | `boolean`                                                      |      | `false`     |             |
-| `error`             | `string`                                                       |      |             |             |
-| `groupLabel`        | `string`                                                       |      |             |             |
-| `orientation`       | `"vertical" \| "horizontal"`                                   |      | `vertical`  |             |
-| `required`          | `boolean`                                                      |      | `false`     |             |
-| `selectedLabelText` | `string`                                                       |      | `Selected:` |             |
-| `showSelectedLabel` | `boolean`                                                      |      | `false`     |             |
-| `size`              | `"sm" \| "md" \| "lg"`                                         |      | `md`        |             |
-| `value`             | `string`                                                       |      |             |             |
-| `variant`           | `"default" \| "primary" \| "success" \| "warning" \| "danger"` |      | `default`   |             |
+| Prop                | Tipo                                                           | Req. | Por defecto     | Descripción                                 |
+| ------------------- | -------------------------------------------------------------- | ---- | --------------- | ------------------------------------------- |
+| `name`              | `string`                                                       | sí   |                 |                                             |
+| `onChange`          | `(value: string) => void`                                      | sí   |                 |                                             |
+| `options`           | `RadioOption[]`                                                | sí   |                 |                                             |
+| `bordered`          | `boolean`                                                      |      | `false`         |                                             |
+| `borderLabel`       | `string`                                                       |      |                 |                                             |
+| `className`         | `string`                                                       |      | ``              |                                             |
+| `disabled`          | `boolean`                                                      |      | `false`         |                                             |
+| `error`             | `string`                                                       |      |                 |                                             |
+| `groupLabel`        | `string`                                                       |      |                 |                                             |
+| `hint`              | `string`                                                       |      |                 | Texto de ayuda bajo el grupo.               |
+| `id`                | `string`                                                       |      |                 |                                             |
+| `label`             | `string`                                                       |      |                 | Etiqueta del grupo (alias de `groupLabel`). |
+| `orientation`       | `"vertical" \| "horizontal"`                                   |      | `vertical`      |                                             |
+| `required`          | `boolean`                                                      |      | `false`         |                                             |
+| `selectedLabelText` | `string`                                                       |      | `Seleccionado:` |                                             |
+| `showSelectedLabel` | `boolean`                                                      |      | `false`         |                                             |
+| `size`              | `"sm" \| "md" \| "lg"`                                         |      | `md`            |                                             |
+| `value`             | `string`                                                       |      |                 |                                             |
+| `variant`           | `"default" \| "primary" \| "success" \| "warning" \| "danger"` |      | `default`       |                                             |
 
 Tipos: `RadioButtonProps`, `RadioSize`, `RadioVariant`, `RadioGroupProps`, `RadioOption`, `RadioGroupOrientation`.
 
@@ -633,19 +653,20 @@ Lista desplegable simple con etiqueta, placeholder y error.
 import { Select } from "@rubenpazch/ui";
 ```
 
-| Prop          | Tipo                      | Req. | Por defecto | Descripción |
-| ------------- | ------------------------- | ---- | ----------- | ----------- |
-| `onChange`    | `(value: string) => void` | sí   |             |             |
-| `options`     | `SelectOption[]`          | sí   |             |             |
-| `value`       | `string`                  | sí   |             |             |
-| `className`   | `string`                  |      |             |             |
-| `disabled`    | `boolean`                 |      | `false`     |             |
-| `error`       | `string`                  |      |             |             |
-| `id`          | `string`                  |      |             |             |
-| `label`       | `string`                  |      |             |             |
-| `name`        | `string`                  |      |             |             |
-| `placeholder` | `string`                  |      |             |             |
-| `required`    | `boolean`                 |      | `false`     |             |
+| Prop          | Tipo                      | Req. | Por defecto | Descripción                   |
+| ------------- | ------------------------- | ---- | ----------- | ----------------------------- |
+| `onChange`    | `(value: string) => void` | sí   |             |                               |
+| `options`     | `SelectOption[]`          | sí   |             |                               |
+| `value`       | `string`                  | sí   |             |                               |
+| `className`   | `string`                  |      |             |                               |
+| `disabled`    | `boolean`                 |      | `false`     |                               |
+| `error`       | `string`                  |      |             |                               |
+| `hint`        | `string`                  |      |             | Texto de ayuda bajo el campo. |
+| `id`          | `string`                  |      |             |                               |
+| `label`       | `string`                  |      |             |                               |
+| `name`        | `string`                  |      |             |                               |
+| `placeholder` | `string`                  |      |             |                               |
+| `required`    | `boolean`                 |      | `false`     |                               |
 
 Tipos: `SelectOption`, `SelectProps`.
 
@@ -1585,7 +1606,7 @@ Más de 60 iconos SVG como componentes React (y MaterialIcon para Material Icons
 - **Usar cuando:** Cualquier icono de la interfaz; combínalos con Button, IconButton, Chip o InfoRow.
 - **Evitar cuando:** Ilustraciones grandes o logos de marca.
 
-Iconos disponibles (72): `ArrowDetailsIcon`, `ArchiveIcon`, `BrandingIcon`, `BusinessPlanIcon`, `CalendarIcon`, `CheckIcon`, `CheckOutIcon`, `CheckmarkIcon`, `ChecksIcon`, `ChevronBarIcon`, `ChevronIcon`, `ClinicalNotesIcon`, `CityIcon`, `ClockIcon`, `CloseIcon`, `CopyIcon`, `CoinsHandIcon`, `CoinsAcceptedIcon`, `MenuGridIcon`, `DocumentIcon`, `DownloadIcon`, `DragHandleIcon`, `EditIcon`, `EmailIcon`, `ErrorIcon`, `ExclamationTriangleIcon`, `EyeIcon`, `EyeCheckIcon`, `FilterIcon`, `FoldersIcon`, `GalleryPhotoIcon`, `GlassesIcon`, `HomeIcon`, `InfoIcon`, `LinkIcon`, `LocationIcon`, `ManualIdentifierIcon`, `MapIcon`, `MenuIcon`, `MinusIcon`, `MoreIcon`, `NotificationIcon`, `PatientIcon`, `PatientListIcon`, `PatientsIcon`, `PhoneIcon`, `WhatsAppIcon`, `PlusIcon`, `PrescriptionIcon`, `PresentationChartIcon`, `PrintIcon`, `RefreshIcon`, `SearchIcon`, `SettingsIcon`, `SortIcon`, `SpinnerIcon`, `SystemIdentifierIcon`, `TrashIcon`, `ArrowLeftIcon`, `ArrowRightIcon`, `RobotOffIcon`, `UploadIcon`, `UserManagementIcon`, `UserPlusIcon`, `UserSelectIcon`, `UsersIcon`, `WalletOpenIcon`, `ZoomInIcon`, `ZoomOutIcon`, `RobotIcon`, `TargetIcon`, `MaterialIcon`.
+Iconos disponibles (73): `ArrowDetailsIcon`, `ArchiveIcon`, `BrandingIcon`, `BusinessPlanIcon`, `CalendarIcon`, `CheckIcon`, `CheckOutIcon`, `CheckmarkIcon`, `ChecksIcon`, `ChevronBarIcon`, `ChevronIcon`, `ClinicalNotesIcon`, `CityIcon`, `ClockIcon`, `CloseIcon`, `CopyIcon`, `CoinsHandIcon`, `CoinsAcceptedIcon`, `MenuGridIcon`, `DocumentIcon`, `DownloadIcon`, `DragHandleIcon`, `EditIcon`, `EmailIcon`, `ErrorIcon`, `ExclamationTriangleIcon`, `EyeIcon`, `EyeCheckIcon`, `FilterIcon`, `FoldersIcon`, `GalleryPhotoIcon`, `GlassesIcon`, `HomeIcon`, `InfoIcon`, `LinkIcon`, `LocationIcon`, `ManualIdentifierIcon`, `MapIcon`, `MenuIcon`, `MinusIcon`, `MoreIcon`, `NotificationIcon`, `PatientIcon`, `PatientListIcon`, `PatientsIcon`, `PhoneIcon`, `WhatsAppIcon`, `PlusIcon`, `PrescriptionIcon`, `PresentationChartIcon`, `PrintIcon`, `RefreshIcon`, `SearchIcon`, `SettingsIcon`, `SortIcon`, `SpinnerIcon`, `SystemIdentifierIcon`, `TrashIcon`, `ArrowLeftIcon`, `ArrowRightIcon`, `RobotOffIcon`, `UploadIcon`, `UserManagementIcon`, `UserPlusIcon`, `UserSelectIcon`, `UsersIcon`, `WalletOpenIcon`, `ZoomInIcon`, `ZoomOutIcon`, `RobotIcon`, `TargetIcon`, `MaterialIcon`, `ReceiptIcon`.
 
 Props habituales: `size`, `className` (y en algunos `color`, `width`, `height`). Ver el tipo de cada icono en su archivo.
 
@@ -1600,22 +1621,34 @@ Tipo y número de documento peruano (DNI, CE, pasaporte) con validación de long
 
 #### IdentificationInput
 
+El `ref` apunta al campo del número de documento.
+
 ```tsx
 import { IdentificationInput } from "@rubenpazch/ui";
 ```
 
-| Prop                           | Tipo                                             | Req. | Por defecto | Descripción |
-| ------------------------------ | ------------------------------------------------ | ---- | ----------- | ----------- |
-| `documentType`                 | `null \| "dni" \| "ce" \| "passport"`            | sí   |             |             |
-| `identificationNumber`         | `string`                                         | sí   |             |             |
-| `labels`                       | `IdentificationInputLabels`                      | sí   |             |             |
-| `onDocumentTypeChange`         | `(type: PeruIdentificationType \| null) => void` | sí   |             |             |
-| `onIdentificationNumberChange` | `(value: string) => void`                        | sí   |             |             |
-| `className`                    | `string`                                         |      | ``          |             |
-| `disabled`                     | `boolean`                                        |      | `false`     |             |
-| `documentTypeError`            | `string`                                         |      |             |             |
-| `identificationNumberError`    | `string`                                         |      |             |             |
-| `required`                     | `boolean`                                        |      | `false`     |             |
+| Prop                           | Tipo                                             | Req. | Por defecto | Descripción                                              |
+| ------------------------------ | ------------------------------------------------ | ---- | ----------- | -------------------------------------------------------- |
+| `documentType`                 | `null \| "dni" \| "ce" \| "passport"`            | sí   |             |                                                          |
+| `identificationNumber`         | `string`                                         | sí   |             |                                                          |
+| `onDocumentTypeChange`         | `(type: PeruIdentificationType \| null) => void` | sí   |             |                                                          |
+| `onIdentificationNumberChange` | `(value: string) => void`                        | sí   |             |                                                          |
+| `className`                    | `string`                                         |      | ``          |                                                          |
+| `disabled`                     | `boolean`                                        |      | `false`     |                                                          |
+| `documentTypeError`            | `string`                                         |      |             |                                                          |
+| `id`                           | `string`                                         |      |             | Prefijo de los ids de ambos campos.                      |
+| `identificationNumberError`    | `string`                                         |      |             |                                                          |
+| `labels`                       | `Partial<IdentificationInputLabels>`             |      |             | Textos de la interfaz; por defecto en español.           |
+| `name`                         | `string`                                         |      |             | `name` del campo de número (el tipo usa `${name}-tipo`). |
+| `required`                     | `boolean`                                        |      | `false`     |                                                          |
+
+#### DEFAULT_IDENTIFICATION_LABELS
+
+```tsx
+import { DEFAULT_IDENTIFICATION_LABELS } from "@rubenpazch/ui";
+```
+
+_Sin props documentadas._
 
 ### @rubenpazch/patient-details
 

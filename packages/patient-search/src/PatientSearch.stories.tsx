@@ -24,7 +24,7 @@ const createSearchPatients = (patients: PatientSearchPatient[], delay = 0) => {
 };
 
 const meta = {
-  title: "Components/PatientSearch",
+  title: "Salud/PatientSearch",
   component: PatientSearch,
   parameters: {
     layout: "centered",

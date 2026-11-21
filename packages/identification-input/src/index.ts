@@ -1,1 +1,1 @@
-export { default } from "./IdentificationInput";
+export { default, DEFAULT_IDENTIFICATION_LABELS } from "./IdentificationInput";

@@ -35,24 +35,27 @@ npm install @rubenpazch/radio-button
 
 ## RadioGroup
 
-| Prop                | Tipo                                                           | Req. | Por defecto | Descripción |
-| ------------------- | -------------------------------------------------------------- | ---- | ----------- | ----------- |
-| `name`              | `string`                                                       | sí   |             |             |
-| `onChange`          | `(value: string) => void`                                      | sí   |             |             |
-| `options`           | `RadioOption[]`                                                | sí   |             |             |
-| `bordered`          | `boolean`                                                      |      | `false`     |             |
-| `borderLabel`       | `string`                                                       |      |             |             |
-| `className`         | `string`                                                       |      | ``          |             |
-| `disabled`          | `boolean`                                                      |      | `false`     |             |
-| `error`             | `string`                                                       |      |             |             |
-| `groupLabel`        | `string`                                                       |      |             |             |
-| `orientation`       | `"vertical" \| "horizontal"`                                   |      | `vertical`  |             |
-| `required`          | `boolean`                                                      |      | `false`     |             |
-| `selectedLabelText` | `string`                                                       |      | `Selected:` |             |
-| `showSelectedLabel` | `boolean`                                                      |      | `false`     |             |
-| `size`              | `"sm" \| "md" \| "lg"`                                         |      | `md`        |             |
-| `value`             | `string`                                                       |      |             |             |
-| `variant`           | `"default" \| "primary" \| "success" \| "warning" \| "danger"` |      | `default`   |             |
+| Prop                | Tipo                                                           | Req. | Por defecto     | Descripción                                 |
+| ------------------- | -------------------------------------------------------------- | ---- | --------------- | ------------------------------------------- |
+| `name`              | `string`                                                       | sí   |                 |                                             |
+| `onChange`          | `(value: string) => void`                                      | sí   |                 |                                             |
+| `options`           | `RadioOption[]`                                                | sí   |                 |                                             |
+| `bordered`          | `boolean`                                                      |      | `false`         |                                             |
+| `borderLabel`       | `string`                                                       |      |                 |                                             |
+| `className`         | `string`                                                       |      | ``              |                                             |
+| `disabled`          | `boolean`                                                      |      | `false`         |                                             |
+| `error`             | `string`                                                       |      |                 |                                             |
+| `groupLabel`        | `string`                                                       |      |                 |                                             |
+| `hint`              | `string`                                                       |      |                 | Texto de ayuda bajo el grupo.               |
+| `id`                | `string`                                                       |      |                 |                                             |
+| `label`             | `string`                                                       |      |                 | Etiqueta del grupo (alias de `groupLabel`). |
+| `orientation`       | `"vertical" \| "horizontal"`                                   |      | `vertical`      |                                             |
+| `required`          | `boolean`                                                      |      | `false`         |                                             |
+| `selectedLabelText` | `string`                                                       |      | `Seleccionado:` |                                             |
+| `showSelectedLabel` | `boolean`                                                      |      | `false`         |                                             |
+| `size`              | `"sm" \| "md" \| "lg"`                                         |      | `md`            |                                             |
+| `value`             | `string`                                                       |      |                 |                                             |
+| `variant`           | `"default" \| "primary" \| "success" \| "warning" \| "danger"` |      | `default`       |                                             |
 
 Tipos: `RadioButtonProps`, `RadioSize`, `RadioVariant`, `RadioGroupProps`, `RadioOption`, `RadioGroupOrientation`.
 

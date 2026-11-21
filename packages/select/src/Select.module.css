@@ -60,3 +60,9 @@
   font-size: var(--lb-font-size-sm);
   color: var(--lb-color-danger);
 }
+
+.hint {
+  margin: 0;
+  font-size: var(--lb-font-size-xs);
+  color: var(--lb-color-muted-foreground);
+}

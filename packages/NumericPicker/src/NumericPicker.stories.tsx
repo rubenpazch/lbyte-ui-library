@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import NumericPicker, { type NumericPickerProps } from "./NumericPicker";
 
 const meta: Meta<NumericPickerProps> = {
-  title: "Components/NumericPicker",
+  title: "Formularios/NumericPicker",
   component: NumericPicker as any,
   parameters: {
     layout: "padded",

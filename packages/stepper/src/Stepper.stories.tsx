@@ -3,7 +3,7 @@ import React from "react";
 import Stepper from "./Stepper";
 
 const meta = {
-  title: "Components/Stepper",
+  title: "Navegación/Stepper",
   component: Stepper,
   parameters: {
     layout: "padded",

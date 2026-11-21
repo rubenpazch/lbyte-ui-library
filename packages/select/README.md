@@ -15,19 +15,20 @@ npm install @rubenpazch/select
 
 ## Select
 
-| Prop          | Tipo                      | Req. | Por defecto | Descripción |
-| ------------- | ------------------------- | ---- | ----------- | ----------- |
-| `onChange`    | `(value: string) => void` | sí   |             |             |
-| `options`     | `SelectOption[]`          | sí   |             |             |
-| `value`       | `string`                  | sí   |             |             |
-| `className`   | `string`                  |      |             |             |
-| `disabled`    | `boolean`                 |      | `false`     |             |
-| `error`       | `string`                  |      |             |             |
-| `id`          | `string`                  |      |             |             |
-| `label`       | `string`                  |      |             |             |
-| `name`        | `string`                  |      |             |             |
-| `placeholder` | `string`                  |      |             |             |
-| `required`    | `boolean`                 |      | `false`     |             |
+| Prop          | Tipo                      | Req. | Por defecto | Descripción                   |
+| ------------- | ------------------------- | ---- | ----------- | ----------------------------- |
+| `onChange`    | `(value: string) => void` | sí   |             |                               |
+| `options`     | `SelectOption[]`          | sí   |             |                               |
+| `value`       | `string`                  | sí   |             |                               |
+| `className`   | `string`                  |      |             |                               |
+| `disabled`    | `boolean`                 |      | `false`     |                               |
+| `error`       | `string`                  |      |             |                               |
+| `hint`        | `string`                  |      |             | Texto de ayuda bajo el campo. |
+| `id`          | `string`                  |      |             |                               |
+| `label`       | `string`                  |      |             |                               |
+| `name`        | `string`                  |      |             |                               |
+| `placeholder` | `string`                  |      |             |                               |
+| `required`    | `boolean`                 |      | `false`     |                               |
 
 Tipos: `SelectOption`, `SelectProps`.
 

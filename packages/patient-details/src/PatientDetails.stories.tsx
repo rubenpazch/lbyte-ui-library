@@ -5,7 +5,7 @@ import PatientDetails, {
 } from "./PatientDetails";
 
 const meta: Meta<typeof PatientDetails> = {
-  title: "Components/PatientDetails",
+  title: "Salud/PatientDetails",
   component: PatientDetails,
   parameters: {
     layout: "centered",

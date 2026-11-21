@@ -17,17 +17,25 @@ npm install @rubenpazch/identification-input
 
 ## IdentificationInput
 
-| Prop                           | Tipo                                             | Req. | Por defecto | Descripción |
-| ------------------------------ | ------------------------------------------------ | ---- | ----------- | ----------- |
-| `documentType`                 | `null \| "dni" \| "ce" \| "passport"`            | sí   |             |             |
-| `identificationNumber`         | `string`                                         | sí   |             |             |
-| `labels`                       | `IdentificationInputLabels`                      | sí   |             |             |
-| `onDocumentTypeChange`         | `(type: PeruIdentificationType \| null) => void` | sí   |             |             |
-| `onIdentificationNumberChange` | `(value: string) => void`                        | sí   |             |             |
-| `className`                    | `string`                                         |      | ``          |             |
-| `disabled`                     | `boolean`                                        |      | `false`     |             |
-| `documentTypeError`            | `string`                                         |      |             |             |
-| `identificationNumberError`    | `string`                                         |      |             |             |
-| `required`                     | `boolean`                                        |      | `false`     |             |
+El `ref` apunta al campo del número de documento.
+
+| Prop                           | Tipo                                             | Req. | Por defecto | Descripción                                              |
+| ------------------------------ | ------------------------------------------------ | ---- | ----------- | -------------------------------------------------------- |
+| `documentType`                 | `null \| "dni" \| "ce" \| "passport"`            | sí   |             |                                                          |
+| `identificationNumber`         | `string`                                         | sí   |             |                                                          |
+| `onDocumentTypeChange`         | `(type: PeruIdentificationType \| null) => void` | sí   |             |                                                          |
+| `onIdentificationNumberChange` | `(value: string) => void`                        | sí   |             |                                                          |
+| `className`                    | `string`                                         |      | ``          |                                                          |
+| `disabled`                     | `boolean`                                        |      | `false`     |                                                          |
+| `documentTypeError`            | `string`                                         |      |             |                                                          |
+| `id`                           | `string`                                         |      |             | Prefijo de los ids de ambos campos.                      |
+| `identificationNumberError`    | `string`                                         |      |             |                                                          |
+| `labels`                       | `Partial<IdentificationInputLabels>`             |      |             | Textos de la interfaz; por defecto en español.           |
+| `name`                         | `string`                                         |      |             | `name` del campo de número (el tipo usa `${name}-tipo`). |
+| `required`                     | `boolean`                                        |      | `false`     |                                                          |
+
+## DEFAULT_IDENTIFICATION_LABELS
+
+_Sin props documentadas._
 
 <!-- catalogo:fin -->

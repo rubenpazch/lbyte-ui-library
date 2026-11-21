@@ -39,7 +39,7 @@ const BrandingIcon: React.FC<BrandingIconProps> = ({
       strokeWidth={1.5}
       stroke="currentColor"
       className={defaultClasses}
-      aria-label="Branding"
+      aria-hidden="true"
     >
       <path
         strokeLinecap="round"

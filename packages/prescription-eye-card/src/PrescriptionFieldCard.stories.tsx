@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { PrescriptionFieldCard } from "./PrescriptionFieldCard";
 
 const meta = {
-  title: "Components/PrescriptionFieldCard",
+  title: "Salud/PrescriptionFieldCard",
   component: PrescriptionFieldCard,
   parameters: {
     layout: "padded",

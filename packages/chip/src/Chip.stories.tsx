@@ -4,7 +4,7 @@ import Chip, { type ChipProps } from "./Chip";
 import { CheckIcon, InfoIcon, CloseIcon } from "@rubenpazch/icons";
 
 const meta: Meta<ChipProps> = {
-  title: "Components/Chip",
+  title: "Presentación/Chip",
   component: Chip as any,
   tags: ["autodocs"],
   parameters: {

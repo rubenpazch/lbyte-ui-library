@@ -73,7 +73,7 @@ const createImageDataUrl = (
 };
 
 const meta = {
-  title: "Components/ImageUpload",
+  title: "Formularios/ImageUpload",
   component: ImageUpload,
   parameters: {
     layout: "centered",

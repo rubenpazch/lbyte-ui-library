@@ -142,6 +142,9 @@ export default function Sidebar({
     if (controlled || !storageKey) return;
     try {
       const saved = window.localStorage.getItem(storageKey);
+      // Se lee tras montar a propósito: en SSR no hay localStorage y leerlo en el
+      // primer render provocaría un desajuste de hidratación.
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       if (saved !== null) setInternalCollapsed(saved === "1");
     } catch {
       /* almacenamiento no disponible */

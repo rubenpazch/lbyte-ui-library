@@ -18,7 +18,7 @@ import {
 } from "@rubenpazch/icons";
 
 const meta: Meta<typeof InfoRow> = {
-  title: "Components/InfoRow",
+  title: "Presentación/InfoRow",
   component: InfoRow,
   parameters: {
     layout: "padded",

@@ -4,7 +4,7 @@ import Avatar, { type AvatarProps } from "./Avatar";
 import AvatarGroup from "./AvatarGroup";
 
 const meta: Meta<AvatarProps> = {
-  title: "Components/Avatar",
+  title: "Presentación/Avatar",
   component: Avatar as any,
   parameters: {
     layout: "centered",

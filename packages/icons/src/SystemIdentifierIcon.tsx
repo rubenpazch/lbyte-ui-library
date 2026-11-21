@@ -37,7 +37,7 @@ const SystemIdentifierIcon: React.FC<SystemIdentifierIconProps> = ({
       viewBox="0 0 24 24"
       fill="currentColor"
       className={defaultClasses}
-      aria-label="System Identifier"
+      aria-hidden="true"
     >
       <rect
         x="3"

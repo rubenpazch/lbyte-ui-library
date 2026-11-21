@@ -12,6 +12,8 @@ export interface SelectProps {
   onChange: (value: string) => void;
   options: SelectOption[];
   placeholder?: string;
+  /** Texto de ayuda bajo el campo. */
+  hint?: string;
   error?: string;
   required?: boolean;
   disabled?: boolean;
@@ -23,22 +25,29 @@ export interface SelectProps {
 const classNames = (...classes: Array<string | undefined | false>) =>
   classes.filter(Boolean).join(" ");
 
-const Select: React.FC<SelectProps> = ({
-  label,
-  value,
-  onChange,
-  options,
-  placeholder,
-  error,
-  required = false,
-  disabled = false,
-  id,
-  name,
-  className,
-}) => {
+const Select = React.forwardRef<HTMLSelectElement, SelectProps>(function Select(
+  {
+    label,
+    value,
+    onChange,
+    options,
+    placeholder,
+    hint,
+    error,
+    required = false,
+    disabled = false,
+    id,
+    name,
+    className,
+  },
+  ref,
+) {
   const generatedId = React.useId();
   const selectId = id ?? name ?? generatedId;
   const errorId = `${selectId}-error`;
+  const hintId = `${selectId}-ayuda`;
+  const describedBy =
+    [hint && hintId, error && errorId].filter(Boolean).join(" ") || undefined;
 
   return (
     <div className={classNames(styles.field, className)}>
@@ -55,6 +64,7 @@ const Select: React.FC<SelectProps> = ({
       )}
 
       <select
+        ref={ref}
         id={selectId}
         name={name}
         className={classNames(styles.select, error && styles.selectError)}
@@ -62,7 +72,7 @@ const Select: React.FC<SelectProps> = ({
         required={required}
         disabled={disabled}
         aria-invalid={error ? true : undefined}
-        aria-describedby={error ? errorId : undefined}
+        aria-describedby={describedBy}
         onChange={(event) => onChange(event.target.value)}
       >
         {placeholder && (
@@ -77,6 +87,12 @@ const Select: React.FC<SelectProps> = ({
         ))}
       </select>
 
+      {hint && (
+        <p id={hintId} className={styles.hint}>
+          {hint}
+        </p>
+      )}
+
       {error && (
         <p id={errorId} className={styles.error} role="alert">
           {error}
@@ -84,6 +100,6 @@ const Select: React.FC<SelectProps> = ({
       )}
     </div>
   );
-};
+});
 
 export default Select;

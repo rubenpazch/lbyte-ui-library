@@ -60,3 +60,9 @@
   background: var(--lb-color-neutral-100);
   border-radius: var(--lb-radius-sm);
 }
+
+.hint {
+  margin: 0.25rem 0 0;
+  font-size: var(--lb-font-size-xs);
+  color: var(--lb-color-muted-foreground);
+}

@@ -266,6 +266,7 @@ const DateInput = React.forwardRef<HTMLInputElement, DateInputProps>(
               placeholder={placeholder ?? datePlaceholder(locale)}
               disabled={disabled}
               className={styles.input}
+              role="combobox"
               aria-haspopup="dialog"
               aria-expanded={isOpen}
               aria-controls={isOpen ? calendarId : undefined}
