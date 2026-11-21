@@ -1,6 +1,6 @@
 {
   "name": "@rubenpazch/auth-gate",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Puerta de sesión: no pinta la app hasta confirmar la sesión con el servidor",
   "repository": {
     "type": "git",
