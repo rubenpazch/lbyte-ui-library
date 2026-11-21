@@ -29,7 +29,8 @@ const PKGS = path.join(RAIZ, "packages");
 const UI = path.join(PKGS, "ui");
 const CHECK = process.argv.includes("--check");
 const SCOPE = "@rubenpazch/";
-const INICIO = "<!-- catalogo:inicio (generado por pnpm catalogo, no editar) -->";
+const INICIO =
+  "<!-- catalogo:inicio (generado por pnpm catalogo, no editar) -->";
 const FIN = "<!-- catalogo:fin -->";
 const CATEGORIAS = {
   base: "Base (tokens y utilidades)",
@@ -49,7 +50,8 @@ const errores = [];
 const salidas = new Map(); // ruta -> contenido
 
 const leerJson = (f) => JSON.parse(fs.readFileSync(f, "utf8"));
-const norm = (s) => s.replace(/\r\n/g, "\n");
+// CRLF (Windows) y CR suelto → LF: lo generado debe ser idéntico en Windows y en el CI.
+const norm = (s) => s.replace(/\r\n?/g, "\n");
 
 // ---------------------------------------------------------------- paquetes
 const paquetes = fs
@@ -61,7 +63,11 @@ const paquetes = fs
     if (!fs.existsSync(pkgFile)) return null;
     const pkg = leerJson(pkgFile);
     const clave = pkg.name.replace(SCOPE, "");
-    if (!pkg.lbyte?.categoria || !pkg.lbyte?.resumen || !pkg.lbyte?.usarCuando) {
+    if (
+      !pkg.lbyte?.categoria ||
+      !pkg.lbyte?.resumen ||
+      !pkg.lbyte?.usarCuando
+    ) {
       errores.push(
         `${pkg.name}: falta el bloque "lbyte" (categoria, resumen, usarCuando, evitarCuando) en package.json`,
       );
@@ -71,13 +77,23 @@ const paquetes = fs
       );
     }
     // npm rechaza la publicación con provenance (E422) si falta repository.url.
-    const repoUrl = typeof pkg.repository === "string" ? pkg.repository : pkg.repository?.url;
-    if (!pkg.private && !/github\.com\/rubenpazch\/lbyte-ui-library/.test(repoUrl ?? "")) {
+    const repoUrl =
+      typeof pkg.repository === "string" ? pkg.repository : pkg.repository?.url;
+    if (
+      !pkg.private &&
+      !/github\.com\/rubenpazch\/lbyte-ui-library/.test(repoUrl ?? "")
+    ) {
       errores.push(
         `${pkg.name}: falta "repository" en package.json ({ "type": "git", "url": "https://github.com/rubenpazch/lbyte-ui-library.git", "directory": "packages/…" }); npm no lo publica sin él`,
       );
     }
-    return { dir, pkgFile, pkg, clave, index: path.join(dir, "src", "index.ts") };
+    return {
+      dir,
+      pkgFile,
+      pkg,
+      clave,
+      index: path.join(dir, "src", "index.ts"),
+    };
   })
   .filter(Boolean)
   .sort((a, b) => a.clave.localeCompare(b.clave));
@@ -97,11 +113,17 @@ const opciones = {
   // mismo antes y después de compilar (en el CI esta comprobación corre antes del build).
   baseUrl: RAIZ,
   paths: Object.fromEntries(
-    paquetes.map((p) => [p.pkg.name, [path.relative(RAIZ, p.index).replace(/\\/g, "/")]]),
+    paquetes.map((p) => [
+      p.pkg.name,
+      [path.relative(RAIZ, p.index).replace(/\\/g, "/")],
+    ]),
   ),
 };
 const programa = ts.createProgram(
-  [path.join(RAIZ, "css-module.d.ts"), ...paquetes.map((p) => p.index).filter(fs.existsSync)],
+  [
+    path.join(RAIZ, "css-module.d.ts"),
+    ...paquetes.map((p) => p.index).filter(fs.existsSync),
+  ],
   opciones,
 );
 const checker = programa.getTypeChecker();
@@ -110,7 +132,8 @@ const parser = docgen.withCompilerOptions(opciones, {
   shouldExtractLiteralValuesFromEnum: true,
   shouldExtractValuesFromUnion: true,
   shouldRemoveUndefinedFromOptional: true,
-  propFilter: (prop) => !prop.parent || !/node_modules/.test(prop.parent.fileName),
+  propFilter: (prop) =>
+    !prop.parent || !/node_modules/.test(prop.parent.fileName),
 });
 
 function exportaciones(p) {
@@ -119,21 +142,29 @@ function exportaciones(p) {
   const mod = checker.getSymbolAtLocation(sf);
   if (!mod) return [];
   return checker.getExportsOfModule(mod).map((s) => {
-    const real = s.flags & ts.SymbolFlags.Alias ? checker.getAliasedSymbol(s) : s;
+    const real =
+      s.flags & ts.SymbolFlags.Alias ? checker.getAliasedSymbol(s) : s;
     const decl = real.declarations?.[0];
     const archivo = decl?.getSourceFile().fileName;
     // Un "default" se publica con el nombre de su archivo (Stepper.tsx -> Stepper), que coincide
     // con el paquete, aunque la función interna se llame distinto (ProgressSteps).
     const interno = real.name;
     const nombreReal =
-      s.name === "default" && archivo ? path.basename(archivo).replace(/\.(tsx?|jsx?)$/, "") : interno;
+      s.name === "default" && archivo
+        ? path.basename(archivo).replace(/\.(tsx?|jsx?)$/, "")
+        : interno;
     return {
       exportado: s.name,
       nombreReal,
       interno,
       archivo,
       valor: Boolean(real.flags & ts.SymbolFlags.Value),
-      tipo: Boolean(real.flags & (ts.SymbolFlags.Type | ts.SymbolFlags.Interface | ts.SymbolFlags.TypeAlias)),
+      tipo: Boolean(
+        real.flags &
+        (ts.SymbolFlags.Type |
+          ts.SymbolFlags.Interface |
+          ts.SymbolFlags.TypeAlias),
+      ),
       real,
     };
   });
@@ -143,10 +174,18 @@ function exportaciones(p) {
 function tipoLegible(t) {
   if (!t) return "unknown";
   if (t.name === "enum" && Array.isArray(t.value) && t.value.length) {
-    let valores = [...new Set(t.value.map((v) => v.value).filter((v) => v !== "undefined"))];
-    if (valores.some((v) => /ReactElement|ReactPortal|AwaitedReactNode/.test(v))) return "ReactNode";
+    let valores = [
+      ...new Set(t.value.map((v) => v.value).filter((v) => v !== "undefined")),
+    ];
+    if (
+      valores.some((v) => /ReactElement|ReactPortal|AwaitedReactNode/.test(v))
+    )
+      return "ReactNode";
     if (valores.includes("false") && valores.includes("true")) {
-      valores = ["boolean", ...valores.filter((v) => v !== "false" && v !== "true")];
+      valores = [
+        "boolean",
+        ...valores.filter((v) => v !== "false" && v !== "true"),
+      ];
     }
     const texto = valores.join(" | ");
     if (texto.length <= 200) return texto;
@@ -156,7 +195,9 @@ function tipoLegible(t) {
 }
 
 function props(componentes) {
-  const archivos = [...new Set(componentes.map((c) => c.archivo).filter(Boolean))];
+  const archivos = [
+    ...new Set(componentes.map((c) => c.archivo).filter(Boolean)),
+  ];
   if (!archivos.length) return new Map();
   const docs = parser.parse(archivos);
   const porNombre = new Map();
@@ -166,11 +207,22 @@ function props(componentes) {
         nombre: pr.name,
         tipo: tipoLegible(pr.type),
         requerido: Boolean(pr.required),
-        porDefecto: pr.defaultValue?.value ?? null,
-        descripcion: (pr.description || "").trim(),
+        // Sin CR: en Windows (core.autocrlf) el código llega con CRLF y el catálogo no coincidiría con el CI.
+        porDefecto:
+          pr.defaultValue?.value != null
+            ? norm(String(pr.defaultValue.value))
+            : null,
+        descripcion: norm(pr.description || "").trim(),
       }))
-      .sort((a, b) => Number(b.requerido) - Number(a.requerido) || a.nombre.localeCompare(b.nombre));
-    porNombre.set(d.displayName, { descripcion: (d.description || "").trim(), props: lista });
+      .sort(
+        (a, b) =>
+          Number(b.requerido) - Number(a.requerido) ||
+          a.nombre.localeCompare(b.nombre),
+      );
+    porNombre.set(d.displayName, {
+      descripcion: norm(d.description || "").trim(),
+      props: lista,
+    });
   }
   return porNombre;
 }
@@ -189,25 +241,41 @@ for (const p of paquetes) {
   const valoresUi = [];
   for (const v of valores) {
     if (v.exportado === "default") {
-      if (valores.some((o) => o.exportado !== "default" && o.real === v.real)) continue;
+      if (valores.some((o) => o.exportado !== "default" && o.real === v.real))
+        continue;
       valoresUi.push({ ...v, como: v.nombreReal });
     } else {
       valoresUi.push({ ...v, como: v.exportado });
     }
   }
-  for (const v of [...valoresUi.map((v) => v.como), ...tipos.map((t) => t.exportado)]) {
-    if (usados.has(v)) errores.push(`Nombre repetido "${v}" en ${p.pkg.name} y ${usados.get(v)}: renómbralo en uno de los dos`);
+  for (const v of [
+    ...valoresUi.map((v) => v.como),
+    ...tipos.map((t) => t.exportado),
+  ]) {
+    if (usados.has(v))
+      errores.push(
+        `Nombre repetido "${v}" en ${p.pkg.name} y ${usados.get(v)}: renómbralo en uno de los dos`,
+      );
     usados.set(v, p.pkg.name);
   }
 
   if (valoresUi.length || tipos.length) {
-    const partes = valoresUi.map((v) => (v.exportado === v.como ? v.como : `${v.exportado} as ${v.como}`));
-    if (partes.length) lineasIndex.push(`export { ${partes.join(", ")} } from "${p.pkg.name}";`);
-    if (tipos.length) lineasIndex.push(`export type { ${tipos.map((t) => t.exportado).join(", ")} } from "${p.pkg.name}";`);
+    const partes = valoresUi.map((v) =>
+      v.exportado === v.como ? v.como : `${v.exportado} as ${v.como}`,
+    );
+    if (partes.length)
+      lineasIndex.push(`export { ${partes.join(", ")} } from "${p.pkg.name}";`);
+    if (tipos.length)
+      lineasIndex.push(
+        `export type { ${tipos.map((t) => t.exportado).join(", ")} } from "${p.pkg.name}";`,
+      );
   }
 
-  const esComponente = (v) => /^[A-Z]/.test(v.como) && /\.tsx$/.test(v.archivo || "");
-  const componentes = SIN_COMPONENTES.has(p.clave) ? [] : valoresUi.filter(esComponente);
+  const esComponente = (v) =>
+    /^[A-Z]/.test(v.como) && /\.tsx$/.test(v.archivo || "");
+  const componentes = SIN_COMPONENTES.has(p.clave)
+    ? []
+    : valoresUi.filter(esComponente);
   const docs = props(componentes);
   catalogo.push({
     paquete: p.pkg.name,
@@ -219,19 +287,32 @@ for (const p of paquetes) {
     componentes: componentes.map((c) => ({
       nombre: c.como,
       importar: `import { ${c.como} } from "@rubenpazch/ui";`,
-      descripcion: (docs.get(c.interno) || docs.get(c.nombreReal) || docs.get(c.como))?.descripcion || "",
-      props: (docs.get(c.interno) || docs.get(c.nombreReal) || docs.get(c.como))?.props || [],
+      descripcion:
+        (docs.get(c.interno) || docs.get(c.nombreReal) || docs.get(c.como))
+          ?.descripcion || "",
+      props:
+        (docs.get(c.interno) || docs.get(c.nombreReal) || docs.get(c.como))
+          ?.props || [],
     })),
-    otrosValores: valoresUi.filter((v) => !componentes.includes(v)).map((v) => v.como),
+    otrosValores: valoresUi
+      .filter((v) => !componentes.includes(v))
+      .map((v) => v.como),
     tipos: tipos.map((t) => t.exportado),
   });
 }
 
 // Textos de la plantilla del generador que nadie completó.
 for (const c of catalogo) {
-  const textos = [c.resumen, c.usarCuando, c.evitarCuando, ...c.componentes.map((x) => x.descripcion)];
+  const textos = [
+    c.resumen,
+    c.usarCuando,
+    c.evitarCuando,
+    ...c.componentes.map((x) => x.descripcion),
+  ];
   if (textos.some((t) => /COMPLETAR/.test(t))) {
-    errores.push(`${c.paquete}: quedan textos "COMPLETAR" (bloque lbyte o descripción JSDoc del componente)`);
+    errores.push(
+      `${c.paquete}: quedan textos "COMPLETAR" (bloque lbyte o descripción JSDoc del componente)`,
+    );
   }
 }
 
@@ -250,14 +331,19 @@ const uiPkg = leerJson(uiPkgFile);
 const deps = { ...(uiPkg.dependencies || {}) };
 for (const k of Object.keys(deps)) if (k.startsWith(SCOPE)) delete deps[k];
 for (const p of paquetes) deps[p.pkg.name] = "workspace:^";
-uiPkg.dependencies = Object.fromEntries(Object.entries(deps).sort(([a], [b]) => a.localeCompare(b)));
+uiPkg.dependencies = Object.fromEntries(
+  Object.entries(deps).sort(([a], [b]) => a.localeCompare(b)),
+);
 salidas.set(uiPkgFile, JSON.stringify(uiPkg, null, 2) + "\n");
 
 // ---------------------------------------------------------------- iconos (packages/icons/src/iconos.ts)
 // Formato fijo: i("Nombre", "categoria", "palabra, palabra", "Uso."). El test de icons valida que estén todos.
 const iconos = [
   ...fs
-    .readFileSync(path.join(RAIZ, "packages", "icons", "src", "iconos.ts"), "utf8")
+    .readFileSync(
+      path.join(RAIZ, "packages", "icons", "src", "iconos.ts"),
+      "utf8",
+    )
     .matchAll(/\bi\(\s*"(\w+)",\s*"(\w+)",\s*"([^"]+)",\s*"([^"]+)",?\s*\)/g),
 ].map(([, nombre, categoria, palabras, usarPara]) => ({
   nombre,
@@ -265,33 +351,52 @@ const iconos = [
   palabras: palabras.split(", "),
   usarPara,
 }));
-if (iconos.length === 0) errores.push("No se pudieron leer los iconos de packages/icons/src/iconos.ts");
+if (iconos.length === 0)
+  errores.push(
+    "No se pudieron leer los iconos de packages/icons/src/iconos.ts",
+  );
 
 let mdIconos =
   `<!-- GENERADO por scripts/catalogo.mjs desde packages/icons/src/iconos.ts. No editar a mano. -->\n\n` +
   `# Iconos de @rubenpazch/ui\n\n` +
   `${iconos.length} iconos SVG. Se importan por nombre y solo los que uses entran en el bundle:\n\n` +
-  "```tsx\nimport { TrashIcon, PlusIcon } from \"@rubenpazch/ui\";\n\n<TrashIcon size=\"sm\" /> // sm 16px · md 20px · lg 24px; color = currentColor\n```\n\n" +
+  '```tsx\nimport { TrashIcon, PlusIcon } from "@rubenpazch/ui";\n\n<TrashIcon size="sm" /> // sm 16px · md 20px · lg 24px; color = currentColor\n```\n\n' +
   `Reglas: usa el color del texto (\`currentColor\`); un botón solo con icono necesita \`aria-label\` (usa \`IconButton\`). ` +
   `Si no hay un icono adecuado, no lo dibujes en la app: agrégalo a \`packages/icons\` (ver su README).\n`;
 const porCategoria = Object.groupBy(iconos, (ic) => ic.categoria);
 for (const [cat, lista] of Object.entries(porCategoria)) {
   mdIconos += `\n## ${cat}\n\n| Icono | Usar para | Palabras clave |\n|---|---|---|\n`;
-  for (const ic of lista) mdIconos += `| \`${ic.nombre}\` | ${ic.usarPara} | ${ic.palabras.join(", ")} |\n`;
+  for (const ic of lista)
+    mdIconos += `| \`${ic.nombre}\` | ${ic.usarPara} | ${ic.palabras.join(", ")} |\n`;
 }
 salidas.set(path.join(UI, "docs", "ICONOS.md"), mdIconos);
 
 // ---------------------------------------------------------------- catálogo JSON
-const catalogoJson = { paquete: "@rubenpazch/ui", generadoPor: "scripts/catalogo.mjs", categorias: CATEGORIAS, paquetes: catalogo, iconos };
-salidas.set(path.join(UI, "docs", "catalogo.json"), JSON.stringify(catalogoJson, null, 2) + "\n");
+const catalogoJson = {
+  paquete: "@rubenpazch/ui",
+  generadoPor: "scripts/catalogo.mjs",
+  categorias: CATEGORIAS,
+  paquetes: catalogo,
+  iconos,
+};
+salidas.set(
+  path.join(UI, "docs", "catalogo.json"),
+  JSON.stringify(catalogoJson, null, 2) + "\n",
+);
 
 // ---------------------------------------------------------------- COMPONENTES.md
-const esc = (s) => String(s ?? "").replace(/\|/g, "\\|").replace(/\n+/g, " ");
+const esc = (s) =>
+  String(s ?? "")
+    .replace(/\|/g, "\\|")
+    .replace(/\n+/g, " ");
 const tablaProps = (lista) =>
   lista.length
     ? "| Prop | Tipo | Req. | Por defecto | Descripción |\n|---|---|---|---|---|\n" +
       lista
-        .map((pr) => `| \`${pr.nombre}\` | \`${esc(pr.tipo)}\` | ${pr.requerido ? "sí" : ""} | ${pr.porDefecto !== null ? `\`${esc(pr.porDefecto)}\`` : ""} | ${esc(pr.descripcion)} |`)
+        .map(
+          (pr) =>
+            `| \`${pr.nombre}\` | \`${esc(pr.tipo)}\` | ${pr.requerido ? "sí" : ""} | ${pr.porDefecto !== null ? `\`${esc(pr.porDefecto)}\`` : ""} | ${esc(pr.descripcion)} |`,
+        )
         .join("\n")
     : "_Sin props documentadas._";
 
@@ -312,7 +417,10 @@ librería (ver AGENTS.md del repo lbyte-ui-library), no lo copies en la app.
 | Paquete | Categoría | Exporta | Qué es |
 |---|---|---|---|
 ${catalogo
-  .map((c) => `| [\`${c.paquete}\`](#${c.paquete.replace(/[@/]/g, "").replace(/[^a-z0-9-]/g, "")}) | ${CATEGORIAS[c.categoria] ?? ""} | ${[...c.componentes.map((x) => x.nombre), ...c.otrosValores].slice(0, 6).join(", ")}${c.componentes.length + c.otrosValores.length > 6 ? ", …" : ""} | ${esc(c.resumen)} |`)
+  .map(
+    (c) =>
+      `| [\`${c.paquete}\`](#${c.paquete.replace(/[@/]/g, "").replace(/[^a-z0-9-]/g, "")}) | ${CATEGORIAS[c.categoria] ?? ""} | ${[...c.componentes.map((x) => x.nombre), ...c.otrosValores].slice(0, 6).join(", ")}${c.componentes.length + c.otrosValores.length > 6 ? ", …" : ""} | ${esc(c.resumen)} |`,
+  )
   .join("\n")}
 `;
 
@@ -329,8 +437,10 @@ for (const [cat, titulo] of Object.entries(CATEGORIAS)) {
     for (const comp of c.componentes) {
       md += `\n#### ${comp.nombre}\n\n${comp.descripcion ? comp.descripcion + "\n\n" : ""}\`\`\`tsx\n${comp.importar}\n\`\`\`\n\n${tablaProps(comp.props)}\n`;
     }
-    if (c.otrosValores.length) md += `\nOtras exportaciones: ${c.otrosValores.map((v) => `\`${v}\``).join(", ")}.\n`;
-    if (c.tipos.length) md += `\nTipos: ${c.tipos.map((t) => `\`${t}\``).join(", ")}.\n`;
+    if (c.otrosValores.length)
+      md += `\nOtras exportaciones: ${c.otrosValores.map((v) => `\`${v}\``).join(", ")}.\n`;
+    if (c.tipos.length)
+      md += `\nTipos: ${c.tipos.map((t) => `\`${t}\``).join(", ")}.\n`;
   }
 }
 salidas.set(path.join(UI, "docs", "COMPONENTES.md"), md);
@@ -341,15 +451,28 @@ for (const p of paquetes) {
   const bloque =
     `${INICIO}\n\n${c.resumen}\n\n- **Usar cuando:** ${c.usarCuando}\n- **Evitar cuando:** ${c.evitarCuando}\n\n` +
     `Se recomienda instalar el paquete completo \`@rubenpazch/ui\` (incluye este). Por separado:\n\n` +
-    "```bash\nnpm install " + p.pkg.name + "\n```\n" +
+    "```bash\nnpm install " +
+    p.pkg.name +
+    "\n```\n" +
     (c.categoria === "iconos"
       ? `\nIconos: ${c.componentes.map((x) => `\`${x.nombre}\``).join(", ")}.\n`
-      : c.componentes.map((comp) => `\n## ${comp.nombre}\n\n${comp.descripcion ? comp.descripcion + "\n\n" : ""}${tablaProps(comp.props)}\n`).join("")) +
-    (c.otrosValores.length ? `\nOtras exportaciones: ${c.otrosValores.map((v) => `\`${v}\``).join(", ")}.\n` : "") +
-    (c.tipos.length ? `\nTipos: ${c.tipos.map((t) => `\`${t}\``).join(", ")}.\n` : "") +
+      : c.componentes
+          .map(
+            (comp) =>
+              `\n## ${comp.nombre}\n\n${comp.descripcion ? comp.descripcion + "\n\n" : ""}${tablaProps(comp.props)}\n`,
+          )
+          .join("")) +
+    (c.otrosValores.length
+      ? `\nOtras exportaciones: ${c.otrosValores.map((v) => `\`${v}\``).join(", ")}.\n`
+      : "") +
+    (c.tipos.length
+      ? `\nTipos: ${c.tipos.map((t) => `\`${t}\``).join(", ")}.\n`
+      : "") +
     `\n${FIN}`;
   const f = path.join(p.dir, "README.md");
-  const actual = fs.existsSync(f) ? norm(fs.readFileSync(f, "utf8")) : `# ${p.pkg.name}\n`;
+  const actual = fs.existsSync(f)
+    ? norm(fs.readFileSync(f, "utf8"))
+    : `# ${p.pkg.name}\n`;
   const i = actual.indexOf(INICIO);
   const j = actual.indexOf(FIN);
   const nuevo =
@@ -360,9 +483,15 @@ for (const p of paquetes) {
 }
 
 // ---------------------------------------------------------------- puente Tailwind 4
-const tokensCss = norm(fs.readFileSync(path.join(PKGS, "tokens", "src", "tokens.css"), "utf8"));
+const tokensCss = norm(
+  fs.readFileSync(path.join(PKGS, "tokens", "src", "tokens.css"), "utf8"),
+);
 const raizTokens = tokensCss.slice(0, tokensCss.indexOf("[data-theme")); // solo :root
-const nombres = [...new Set([...raizTokens.matchAll(/(--lb-[a-z0-9-]+)\s*:/g)].map((m) => m[1]))];
+const nombres = [
+  ...new Set(
+    [...raizTokens.matchAll(/(--lb-[a-z0-9-]+)\s*:/g)].map((m) => m[1]),
+  ),
+];
 const mapa = [
   [/^--lb-color-(.+)$/, "--color-lb-$1"],
   [/^--lb-font-(sans|mono)$/, "--font-lb-$1"],
@@ -409,7 +538,9 @@ if (errores.length) {
 const prettier = await import("prettier");
 const ignorar = path.join(RAIZ, ".prettierignore");
 async function formatear(f, contenido) {
-  const info = await prettier.getFileInfo(f, { ignorePath: fs.existsSync(ignorar) ? ignorar : undefined });
+  const info = await prettier.getFileInfo(f, {
+    ignorePath: fs.existsSync(ignorar) ? ignorar : undefined,
+  });
   if (info.ignored || !info.inferredParser) return contenido;
   const config = (await prettier.resolveConfig(f)) ?? {};
   return norm(await prettier.format(contenido, { ...config, filepath: f }));
@@ -436,9 +567,12 @@ for (const [f, crudo] of salidas) {
 }
 if (CHECK && desactualizados.length) {
   console.error(
-    "El catálogo está desactualizado. Ejecuta `pnpm catalogo` y haz commit de:\n- " + desactualizados.join("\n- "),
+    "El catálogo está desactualizado. Ejecuta `pnpm catalogo` y haz commit de:\n- " +
+      desactualizados.join("\n- "),
   );
   process.exit(1);
 }
 const total = catalogo.reduce((n, c) => n + c.componentes.length, 0);
-console.log(`${CHECK ? "Catálogo al día" : "Catálogo generado"}: ${catalogo.length} paquetes, ${total} componentes.`);
+console.log(
+  `${CHECK ? "Catálogo al día" : "Catálogo generado"}: ${catalogo.length} paquetes, ${total} componentes.`,
+);
