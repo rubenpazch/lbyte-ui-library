@@ -60,7 +60,7 @@
 }
 
 .input:focus {
-  border-color: var(--lb-color-blue-accent);
+  border-color: var(--lb-color-primary-accent);
   box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
 }
 
@@ -100,7 +100,7 @@
 }
 
 .inputFocused {
-  border-color: var(--lb-color-blue-accent);
+  border-color: var(--lb-color-primary-accent);
   box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
 }
 
@@ -223,11 +223,11 @@
 }
 
 .optionHighlighted:not(.optionDisabled) {
-  background: var(--lb-color-blue-subtle);
+  background: var(--lb-color-primary-subtle);
 }
 
 .optionSelected:not(.optionDisabled) {
-  background: var(--lb-color-blue-subtle);
+  background: var(--lb-color-primary-subtle);
 }
 
 .optionContent {
@@ -249,7 +249,7 @@
 .optionCheckIcon {
   width: 1.25rem;
   height: 1.25rem;
-  color: var(--lb-color-blue-accent);
+  color: var(--lb-color-primary-accent);
   flex-shrink: 0;
 }
 
@@ -277,11 +277,11 @@
 }
 
 .createOptionHighlighted {
-  background: var(--lb-color-blue-subtle);
+  background: var(--lb-color-primary-subtle);
 }
 
 .createIcon {
-  color: var(--lb-color-blue-accent);
+  color: var(--lb-color-primary-accent);
   font-weight: 500;
 }
 

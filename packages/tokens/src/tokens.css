@@ -68,6 +68,12 @@
   --lb-color-primary: #2563eb;
   --lb-color-primary-hover: #1d4ed8;
   --lb-color-primary-foreground: #ffffff;
+  /* Tonos del color principal, derivados de él: para personalizar la marca basta con
+     redefinir --lb-color-primary (y opcionalmente -hover). Funcionan también en modo oscuro. */
+  --lb-color-primary-subtle: color-mix(in srgb, var(--lb-color-primary) 10%, var(--lb-color-background));
+  --lb-color-primary-border: color-mix(in srgb, var(--lb-color-primary) 35%, var(--lb-color-background));
+  --lb-color-primary-accent: color-mix(in srgb, var(--lb-color-primary) 85%, var(--lb-color-background));
+  --lb-color-primary-strong: color-mix(in srgb, var(--lb-color-primary) 75%, var(--lb-color-foreground));
 
   --lb-color-success: #16a34a;
   --lb-color-success-foreground: #ffffff;

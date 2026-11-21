@@ -32,7 +32,7 @@
 }
 
 .inputFocused {
-  border-color: var(--lb-color-blue-accent);
+  border-color: var(--lb-color-primary-accent);
   box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
 }
 
@@ -250,11 +250,11 @@
 .dayToday {
   background: var(--lb-color-neutral-100);
   color: var(--lb-color-primary);
-  border: 2px solid var(--lb-color-blue-accent);
+  border: 2px solid var(--lb-color-primary-accent);
 }
 
 .dayToday:hover {
-  background: var(--lb-color-blue-subtle);
+  background: var(--lb-color-primary-subtle);
 }
 
 .dayDisabled {
@@ -303,7 +303,7 @@
 .yearCurrent {
   background: var(--lb-color-neutral-100);
   color: var(--lb-color-primary);
-  border: 2px solid var(--lb-color-blue-accent);
+  border: 2px solid var(--lb-color-primary-accent);
 }
 
 .quickActions {

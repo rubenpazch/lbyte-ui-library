@@ -54,6 +54,10 @@
   --color-lb-primary: var(--lb-color-primary);
   --color-lb-primary-hover: var(--lb-color-primary-hover);
   --color-lb-primary-foreground: var(--lb-color-primary-foreground);
+  --color-lb-primary-subtle: var(--lb-color-primary-subtle);
+  --color-lb-primary-border: var(--lb-color-primary-border);
+  --color-lb-primary-accent: var(--lb-color-primary-accent);
+  --color-lb-primary-strong: var(--lb-color-primary-strong);
   --color-lb-success: var(--lb-color-success);
   --color-lb-success-foreground: var(--lb-color-success-foreground);
   --color-lb-warning: var(--lb-color-warning);

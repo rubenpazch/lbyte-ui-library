@@ -137,7 +137,7 @@
 }
 
 .active {
-  background: var(--lb-color-blue-subtle);
+  background: var(--lb-color-primary-subtle);
   color: var(--lb-color-primary);
   font-weight: var(--lb-font-weight-semibold);
 }
@@ -159,7 +159,7 @@
 }
 
 .active:hover {
-  background: var(--lb-color-blue-subtle);
+  background: var(--lb-color-primary-subtle);
   color: var(--lb-color-primary);
 }
 

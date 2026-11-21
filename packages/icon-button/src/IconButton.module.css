@@ -246,16 +246,16 @@
 
 /* Variants - Blue */
 .variantBlueOutlined {
-  color: var(--lb-color-blue-accent);
-  border: 2px solid var(--lb-color-blue-accent);
+  color: var(--lb-color-primary-accent);
+  border: 2px solid var(--lb-color-primary-accent);
 }
 
 .variantBlueOutlined:hover:not(:disabled) {
-  background-color: var(--lb-color-blue-subtle);
+  background-color: var(--lb-color-primary-subtle);
 }
 
 .variantBlueFilled {
-  background-color: var(--lb-color-blue-accent);
+  background-color: var(--lb-color-primary-accent);
   color: white;
 }
 
@@ -264,12 +264,12 @@
 }
 
 .variantBlueQuiet {
-  color: var(--lb-color-blue-accent);
+  color: var(--lb-color-primary-accent);
 }
 
 .variantBlueQuiet:hover:not(:disabled) {
   color: var(--lb-color-primary);
-  background-color: var(--lb-color-blue-subtle);
+  background-color: var(--lb-color-primary-subtle);
 }
 
 /* Variants - Pink */

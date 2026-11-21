@@ -749,6 +749,8 @@ import { TextInput } from "@rubenpazch/ui";
 | `validateEmail`          | `boolean`                                                       |      | `false`     |                                                                                                                                                                                                                                                       |
 | `warning`                | `string`                                                        |      |             |                                                                                                                                                                                                                                                       |
 
+Tipos: `TextInputProps`, `TextInputNativeProps`.
+
 ### @rubenpazch/textarea
 
 Área de texto con etiqueta, ayuda, advertencia, error, contador de caracteres y crecimiento automático.

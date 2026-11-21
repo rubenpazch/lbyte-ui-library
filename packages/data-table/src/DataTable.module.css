@@ -108,7 +108,7 @@
 }
 
 .clickable:focus-visible td {
-  background: var(--lb-color-blue-subtle);
+  background: var(--lb-color-primary-subtle);
   outline: none;
 }
 

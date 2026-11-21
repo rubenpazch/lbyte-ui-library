@@ -31,8 +31,8 @@
 }
 
 .dropzoneActive {
-  border-color: var(--lb-color-blue-accent);
-  background: var(--lb-color-blue-subtle);
+  border-color: var(--lb-color-primary-accent);
+  background: var(--lb-color-primary-subtle);
 }
 
 .dropzoneDisabled {

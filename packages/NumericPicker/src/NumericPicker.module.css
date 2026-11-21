@@ -44,8 +44,8 @@
 }
 
 .input:focus {
-  border-color: var(--lb-color-blue-accent);
-  box-shadow: 0 0 0 1px var(--lb-color-blue-accent);
+  border-color: var(--lb-color-primary-accent);
+  box-shadow: 0 0 0 1px var(--lb-color-primary-accent);
 }
 
 .input:disabled {

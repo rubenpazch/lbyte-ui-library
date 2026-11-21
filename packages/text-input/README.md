@@ -52,4 +52,6 @@ npm install @rubenpazch/text-input
 | `validateEmail`          | `boolean`                                                       |      | `false`     |                                                                                                                                                                                                                                                       |
 | `warning`                | `string`                                                        |      |             |                                                                                                                                                                                                                                                       |
 
+Tipos: `TextInputProps`, `TextInputNativeProps`.
+
 <!-- catalogo:fin -->
