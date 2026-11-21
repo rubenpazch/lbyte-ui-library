@@ -31,7 +31,8 @@
     "react-dom": "^19.0.0"
   },
   "dependencies": {
-    "@rubenpazch/icons": "workspace:*"
+    "@rubenpazch/icons": "workspace:*",
+    "@rubenpazch/shared": "workspace:*"
   },
   "devDependencies": {
     "@rubenpazch/typescript-config": "workspace:*"

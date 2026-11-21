@@ -1,3 +1,4 @@
+import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import userEvent from "@testing-library/user-event";
@@ -654,7 +655,7 @@ describe("NumericUpPicker Component", () => {
       const buttons = screen.getAllByRole("button");
       const decrementButton = buttons[0];
 
-      expect(decrementButton).toHaveAttribute("aria-label", "Decrease");
+      expect(decrementButton).toHaveAttribute("aria-label", "Disminuir");
     });
 
     it("should have aria-label on increment button", () => {
@@ -663,7 +664,7 @@ describe("NumericUpPicker Component", () => {
       const buttons = screen.getAllByRole("button");
       const incrementButton = buttons[1];
 
-      expect(incrementButton).toHaveAttribute("aria-label", "Increase");
+      expect(incrementButton).toHaveAttribute("aria-label", "Aumentar");
     });
 
     it("should have title attributes on buttons", () => {
@@ -671,8 +672,8 @@ describe("NumericUpPicker Component", () => {
 
       const buttons = screen.getAllByRole("button");
 
-      expect(buttons[0]).toHaveAttribute("title", "Decrease value");
-      expect(buttons[1]).toHaveAttribute("title", "Increase value");
+      expect(buttons[0]).toHaveAttribute("title", "Disminuir");
+      expect(buttons[1]).toHaveAttribute("title", "Aumentar");
     });
   });
 
@@ -2254,8 +2255,8 @@ describe("NumericUpPicker Component", () => {
       render(<NumericUpPicker value="5" onChange={jest.fn()} />);
 
       const buttons = screen.getAllByRole("button");
-      expect(buttons[0]).toHaveAttribute("aria-label", "Decrease");
-      expect(buttons[1]).toHaveAttribute("aria-label", "Increase");
+      expect(buttons[0]).toHaveAttribute("aria-label", "Disminuir");
+      expect(buttons[1]).toHaveAttribute("aria-label", "Aumentar");
     });
 
     it("should have proper ARIA label for clear button when clearable", () => {
@@ -2264,7 +2265,7 @@ describe("NumericUpPicker Component", () => {
       );
 
       const buttons = screen.getAllByRole("button");
-      expect(buttons[1]).toHaveAttribute("aria-label", "Clear");
+      expect(buttons[1]).toHaveAttribute("aria-label", "Limpiar");
     });
 
     it("should disable buttons when disabled prop is true", () => {
@@ -2708,5 +2709,60 @@ describe("NumericUpPicker Component", () => {
         expect(newInput).toBeInTheDocument();
       });
     });
+  });
+});
+
+describe("NumericUpPicker: API común", () => {
+  it("asocia etiqueta, error y advertencia al input", () => {
+    const { rerender } = render(
+      <NumericUpPicker
+        label="Esfera"
+        value="0"
+        onChange={() => {}}
+        error="Fuera de rango"
+      />,
+    );
+    const input = screen.getByLabelText("Esfera");
+    expect(input).toHaveAttribute("aria-invalid", "true");
+    expect(input).toHaveAccessibleDescription("Fuera de rango");
+    rerender(
+      <NumericUpPicker
+        label="Esfera"
+        value="0"
+        onChange={() => {}}
+        warning="Valor alto"
+      />,
+    );
+    expect(screen.getByLabelText("Esfera")).toHaveAccessibleDescription(
+      "Valor alto",
+    );
+  });
+
+  it("acepta tamaños sm/md/lg y los nombres antiguos", () => {
+    const { rerender } = render(
+      <NumericUpPicker value="0" onChange={() => {}} size="sm" />,
+    );
+    const a = screen.getByTestId("stepper-container").className;
+    rerender(<NumericUpPicker value="0" onChange={() => {}} size="small" />);
+    expect(screen.getByTestId("stepper-container").className).toBe(a);
+  });
+
+  it("permite personalizar los textos de los botones", () => {
+    render(
+      <NumericUpPicker
+        value="0"
+        onChange={() => {}}
+        labels={{ increase: "Más" }}
+      />,
+    );
+    expect(screen.getByRole("button", { name: "Más" })).toBeInTheDocument();
+  });
+
+  it("reenvía la ref al input", () => {
+    const ref = React.createRef<HTMLInputElement>();
+    render(
+      <NumericUpPicker ref={ref} label="X" value="0" onChange={() => {}} />,
+    );
+    expect(ref.current).toBe(screen.getByLabelText("X"));
   });
 });

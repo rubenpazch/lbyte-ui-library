@@ -38,7 +38,8 @@
   "dependencies": {
     "@rubenpazch/button": "workspace:*",
     "@rubenpazch/icon-button": "workspace:*",
-    "@rubenpazch/icons": "workspace:*"
+    "@rubenpazch/icons": "workspace:*",
+    "@rubenpazch/shared": "workspace:*"
   },
   "devDependencies": {
     "@rubenpazch/typescript-config": "workspace:*"

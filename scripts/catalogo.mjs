@@ -86,6 +86,12 @@ const opciones = {
   skipLibCheck: true,
   strict: true,
   noEmit: true,
+  // Los paquetes de la librería se leen desde su src/, no desde dist/: así el catálogo es el
+  // mismo antes y después de compilar (en el CI esta comprobación corre antes del build).
+  baseUrl: RAIZ,
+  paths: Object.fromEntries(
+    paquetes.map((p) => [p.pkg.name, [path.relative(RAIZ, p.index).replace(/\\/g, "/")]]),
+  ),
 };
 const programa = ts.createProgram(
   [path.join(RAIZ, "css-module.d.ts"), ...paquetes.map((p) => p.index).filter(fs.existsSync)],
@@ -198,7 +204,6 @@ for (const p of paquetes) {
   const docs = props(componentes);
   catalogo.push({
     paquete: p.pkg.name,
-    version: p.pkg.version,
     carpeta: path.relative(RAIZ, p.dir).replace(/\\/g, "/"),
     categoria: p.pkg.lbyte?.categoria ?? null,
     resumen: p.pkg.lbyte?.resumen ?? p.pkg.description ?? "",
@@ -381,7 +386,14 @@ for (const [f, crudo] of salidas) {
   const actual = fs.existsSync(f) ? norm(fs.readFileSync(f, "utf8")) : null;
   if (actual === contenido) continue;
   if (CHECK) {
-    desactualizados.push(path.relative(RAIZ, f));
+    // Primera línea distinta, para entender la diferencia sin tener que reproducirla.
+    const a = (actual ?? "").split("\n");
+    const b = contenido.split("\n");
+    const i = b.findIndex((l, k) => l !== a[k]);
+    const linea = i < 0 ? a.length : i;
+    desactualizados.push(
+      `${path.relative(RAIZ, f)}\n    línea ${linea + 1}\n    actual:   ${(a[linea] ?? "(fin)").trim().slice(0, 160)}\n    generado: ${(b[linea] ?? "(fin)").trim().slice(0, 160)}`,
+    );
   } else {
     fs.mkdirSync(path.dirname(f), { recursive: true });
     fs.writeFileSync(f, contenido);

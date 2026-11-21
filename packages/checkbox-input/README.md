@@ -17,19 +17,23 @@ npm install @rubenpazch/checkbox-input
 
 ## CheckboxInput
 
-| Prop            | Tipo                                                           | Req. | Por defecto | Descripción |
-| --------------- | -------------------------------------------------------------- | ---- | ----------- | ----------- |
-| `label`         | `string`                                                       | sí   |             |             |
-| `checked`       | `boolean`                                                      |      | `false`     |             |
-| `className`     | `string`                                                       |      | ``          |             |
-| `description`   | `string`                                                       |      |             |             |
-| `disabled`      | `boolean`                                                      |      | `false`     |             |
-| `error`         | `string`                                                       |      |             |             |
-| `id`            | `string`                                                       |      |             |             |
-| `indeterminate` | `boolean`                                                      |      | `false`     |             |
-| `onChange`      | `(checked: boolean) => void`                                   |      |             |             |
-| `required`      | `boolean`                                                      |      | `false`     |             |
-| `size`          | `"sm" \| "md" \| "lg"`                                         |      | `md`        |             |
-| `variant`       | `"default" \| "primary" \| "success" \| "warning" \| "danger"` |      | `default`   |             |
+Casilla de verificación con etiqueta, descripción y error.
+
+| Prop            | Tipo                                                           | Req. | Por defecto | Descripción                                             |
+| --------------- | -------------------------------------------------------------- | ---- | ----------- | ------------------------------------------------------- |
+| `label`         | `string`                                                       | sí   |             |                                                         |
+| `checked`       | `boolean`                                                      |      | `false`     |                                                         |
+| `className`     | `string`                                                       |      | ``          |                                                         |
+| `description`   | `string`                                                       |      |             |                                                         |
+| `disabled`      | `boolean`                                                      |      | `false`     |                                                         |
+| `error`         | `string`                                                       |      |             |                                                         |
+| `id`            | `string`                                                       |      |             | id del input; si no se pasa se genera uno estable.      |
+| `indeterminate` | `boolean`                                                      |      | `false`     |                                                         |
+| `name`          | `string`                                                       |      |             | name del input (formularios nativos, react-hook-form…). |
+| `onChange`      | `(checked: boolean) => void`                                   |      |             |                                                         |
+| `required`      | `boolean`                                                      |      | `false`     |                                                         |
+| `size`          | `"sm" \| "md" \| "lg"`                                         |      | `md`        |                                                         |
+| `value`         | `string`                                                       |      |             | Valor enviado con el formulario cuando está marcado.    |
+| `variant`       | `"default" \| "primary" \| "success" \| "warning" \| "danger"` |      | `default`   |                                                         |
 
 <!-- catalogo:fin -->

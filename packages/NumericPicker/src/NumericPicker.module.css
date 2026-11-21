@@ -92,3 +92,19 @@
   width: 0.75rem;
   height: 0.75rem;
 }
+
+.inputError {
+  border-color: var(--lb-color-danger);
+}
+
+.hint {
+  margin-top: var(--lb-space-1);
+  font-size: var(--lb-font-size-xs);
+  color: var(--lb-color-muted-foreground);
+}
+
+.error {
+  margin-top: var(--lb-space-1);
+  font-size: var(--lb-font-size-xs);
+  color: var(--lb-color-danger);
+}

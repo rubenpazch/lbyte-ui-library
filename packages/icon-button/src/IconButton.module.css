@@ -158,8 +158,8 @@
 
 /* Variants - Black */
 .variantBlackOutlined {
-  color: #000;
-  border: 2px solid #000;
+  color: var(--lb-color-neutral-900);
+  border: 2px solid var(--lb-color-neutral-900);
 }
 
 .variantBlackOutlined:hover:not(:disabled) {
@@ -167,7 +167,7 @@
 }
 
 .variantBlackFilled {
-  background-color: #000;
+  background-color: var(--lb-color-neutral-900);
   color: white;
 }
 
@@ -176,7 +176,7 @@
 }
 
 .variantBlackQuiet {
-  color: #000;
+  color: var(--lb-color-neutral-900);
 }
 
 .variantBlackQuiet:hover:not(:disabled) {
@@ -198,7 +198,7 @@
   background: linear-gradient(
     to right,
     var(--lb-color-emerald-accent),
-    #22d3ee
+    var(--lb-color-info)
   );
   color: white;
 }
@@ -274,30 +274,30 @@
 
 /* Variants - Pink */
 .variantPinkOutlined {
-  color: #ec4899;
-  border: 2px solid #ec4899;
+  color: var(--lb-color-pink-accent);
+  border: 2px solid var(--lb-color-pink-accent);
 }
 
 .variantPinkOutlined:hover:not(:disabled) {
-  background-color: #fdf2f8;
+  background-color: var(--lb-color-pink-subtle);
 }
 
 .variantPinkFilled {
-  background-color: #ec4899;
+  background-color: var(--lb-color-pink-accent);
   color: white;
 }
 
 .variantPinkFilled:hover:not(:disabled) {
-  background-color: #db2777;
+  background-color: var(--lb-color-pink-strong);
 }
 
 .variantPinkQuiet {
-  color: #ec4899;
+  color: var(--lb-color-pink-accent);
 }
 
 .variantPinkQuiet:hover:not(:disabled) {
-  color: #db2777;
-  background-color: #fdf2f8;
+  color: var(--lb-color-pink-strong);
+  background-color: var(--lb-color-pink-subtle);
 }
 
 /* Variants - Warning */

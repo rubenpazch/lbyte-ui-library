@@ -70,7 +70,7 @@ const Chip = React.forwardRef<HTMLElement, ChipProps>(
       avatar,
       onDelete,
       deleteIcon,
-      deleteAriaLabel = "Remove chip",
+      deleteAriaLabel = "Quitar",
       clickable = false,
       disabled = false,
       selected = false,

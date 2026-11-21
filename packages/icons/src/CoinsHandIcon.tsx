@@ -16,8 +16,12 @@ const CoinsHandIcon: React.FC<CoinsHandIconProps> = ({
     md: "w-5 h-5",
     lg: "w-6 h-6",
   };
+  // Tamaño en px como atributo SVG: funciona sin Tailwind y cualquier clase CSS lo sobrescribe.
+  const sizePx: Record<string, number> = { sm: 16, md: 20, lg: 24 };
   return (
     <svg
+      width={sizePx[size]}
+      height={sizePx[size]}
       className={`${sizeClasses[size]} ${className}`}
       viewBox="0 0 24 24"
       fill="none"

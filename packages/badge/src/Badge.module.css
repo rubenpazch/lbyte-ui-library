@@ -1,0 +1,39 @@
+.badge {
+  --b-bg: var(--lb-color-muted);
+  --b-fg: var(--lb-color-neutral-700);
+  --b-bd: var(--lb-color-border);
+  --b-solid: var(--lb-color-neutral-600);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--lb-space-1);
+  border: 1px solid transparent;
+  border-radius: var(--lb-radius-full);
+  font-family: var(--lb-font-sans);
+  font-weight: var(--lb-font-weight-medium);
+  line-height: 1;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+.sm { padding: 0.25rem 0.5rem; font-size: var(--lb-font-size-xs); }
+.md { padding: 0.375rem 0.625rem; font-size: var(--lb-font-size-sm); }
+
+.primary { --b-bg: var(--lb-color-blue-subtle); --b-fg: var(--lb-color-blue-strong); --b-bd: var(--lb-color-blue-border); --b-solid: var(--lb-color-primary); }
+.info { --b-bg: var(--lb-color-blue-subtle); --b-fg: var(--lb-color-blue-strong); --b-bd: var(--lb-color-blue-border); --b-solid: var(--lb-color-info); }
+.success { --b-bg: var(--lb-color-emerald-subtle); --b-fg: var(--lb-color-emerald-strong); --b-bd: var(--lb-color-emerald-border); --b-solid: var(--lb-color-success); }
+.warning { --b-bg: var(--lb-color-amber-subtle); --b-fg: var(--lb-color-amber-strong); --b-bd: var(--lb-color-amber-border); --b-solid: var(--lb-color-warning); }
+.danger { --b-bg: var(--lb-color-red-subtle); --b-fg: var(--lb-color-red-strong); --b-bd: var(--lb-color-red-border); --b-solid: var(--lb-color-danger); }
+.violet { --b-bg: var(--lb-color-violet-subtle); --b-fg: var(--lb-color-violet-strong); --b-bd: var(--lb-color-violet-border); --b-solid: var(--lb-color-violet-accent); }
+.orange { --b-bg: var(--lb-color-orange-subtle); --b-fg: var(--lb-color-orange-strong); --b-bd: var(--lb-color-orange-border); --b-solid: var(--lb-color-orange-accent); }
+.pink { --b-bg: var(--lb-color-pink-subtle); --b-fg: var(--lb-color-pink-strong); --b-bd: var(--lb-color-pink-border); --b-solid: var(--lb-color-pink-accent); }
+
+.soft { background: var(--b-bg); color: var(--b-fg); }
+.solid { background: var(--b-solid); color: var(--lb-color-primary-foreground); }
+.outline { background: transparent; color: var(--b-fg); border-color: var(--b-bd); }
+
+.dot {
+  width: 0.4rem;
+  height: 0.4rem;
+  border-radius: var(--lb-radius-full);
+  background: currentColor;
+}

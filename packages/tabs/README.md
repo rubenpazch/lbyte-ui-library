@@ -20,6 +20,7 @@ npm install @rubenpazch/tabs
 | Prop               | Tipo                                       | Req. | Por defecto  | Descripción                                                           |
 | ------------------ | ------------------------------------------ | ---- | ------------ | --------------------------------------------------------------------- |
 | `tabs`             | `Tab[]`                                    | sí   |              |                                                                       |
+| `ariaLabel`        | `string`                                   |      | `Pestañas`   | Nombre accesible del grupo de pestañas (por defecto "Pestañas").      |
 | `className`        | `string`                                   |      |              |                                                                       |
 | `defaultTab`       | `string`                                   |      |              |                                                                       |
 | `lazy`             | `boolean`                                  |      | `false`      | Lazy mode - only calls onLoad when tab is first visited               |

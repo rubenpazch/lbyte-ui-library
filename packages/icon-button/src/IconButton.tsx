@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { toLegacySize } from "@rubenpazch/shared";
 import styles from "./IconButton.module.css";
 
 export type IconButtonVariant =
@@ -10,7 +11,8 @@ export type IconButtonVariant =
   | "blue"
   | "pink"
   | "warning";
-export type IconButtonSize = "small" | "medium";
+/** Tamaño: sm o md (estándar); también small o medium. */
+export type IconButtonSize = "small" | "medium" | "sm" | "md";
 export type IconButtonShape = "rounded" | "square";
 export type IconButtonFocusStyle = "filled" | "outline" | "underline";
 export type IconButtonFocusTrigger =
@@ -43,7 +45,7 @@ const IconButton = React.forwardRef<HTMLButtonElement, IconButtonProps>(
     {
       icon,
       variant = "default",
-      size = "medium",
+      size: sizeProp = "medium",
       shape = "rounded",
       filled = false,
       quiet = false,
@@ -64,6 +66,8 @@ const IconButton = React.forwardRef<HTMLButtonElement, IconButtonProps>(
     },
     ref,
   ) => {
+    // IconButton solo tiene small y medium: sm/small -> small; el resto -> medium.
+    const size = toLegacySize(sizeProp) === "small" ? "small" : "medium";
     const [showTooltip, setShowTooltip] = useState(false);
 
     // Inverted styles (outline becomes filled and vice versa)

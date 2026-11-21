@@ -1,0 +1,65 @@
+.wrapper {
+  width: 100%;
+  font-family: var(--lb-font-sans);
+}
+
+.labels {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--lb-space-2);
+  margin-bottom: var(--lb-space-1);
+  font-size: var(--lb-font-size-sm);
+}
+
+.label {
+  color: var(--lb-color-foreground);
+  font-weight: var(--lb-font-weight-medium);
+}
+
+.value {
+  color: var(--lb-color-muted-foreground);
+  font-variant-numeric: tabular-nums;
+}
+
+.track {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  border-radius: var(--lb-radius-full);
+  background: var(--lb-color-muted);
+}
+
+.sm { height: 4px; }
+.md { height: 8px; }
+.lg { height: 12px; }
+
+.bar {
+  height: 100%;
+  border-radius: inherit;
+  transition: width 200ms ease;
+}
+
+.primary { background: var(--lb-color-primary); }
+.success { background: var(--lb-color-success); }
+.warning { background: var(--lb-color-warning); }
+.danger { background: var(--lb-color-danger); }
+
+.indeterminate {
+  position: absolute;
+  width: 40%;
+  animation: slide 1.2s ease-in-out infinite;
+}
+
+@keyframes slide {
+  from { left: -40%; }
+  to { left: 100%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .indeterminate {
+    animation: none;
+    left: 0;
+    width: 100%;
+    opacity: 0.5;
+  }
+}

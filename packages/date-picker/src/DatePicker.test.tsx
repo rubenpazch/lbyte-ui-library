@@ -1,3 +1,4 @@
+import React from "react";
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import "@testing-library/jest-dom";
@@ -18,14 +19,19 @@ describe("DatePicker Component", () => {
   describe("Basic Rendering", () => {
     it("renders the date picker component", () => {
       const { container } = render(
-        <DatePicker value="" onChange={mockOnChange} />,
+        <DatePicker locale="en" value="" onChange={mockOnChange} />,
       );
       expect(container.querySelector("input")).toBeInTheDocument();
     });
 
     it("renders with label", () => {
       render(
-        <DatePicker label="Select Date" value="" onChange={mockOnChange} />,
+        <DatePicker
+          locale="en"
+          label="Select Date"
+          value=""
+          onChange={mockOnChange}
+        />,
       );
       expect(screen.getByText("Select Date")).toBeInTheDocument();
     });
@@ -33,6 +39,7 @@ describe("DatePicker Component", () => {
     it("shows required indicator when required", () => {
       render(
         <DatePicker
+          locale="en"
           label="Birth Date"
           value=""
           onChange={mockOnChange}
@@ -45,6 +52,7 @@ describe("DatePicker Component", () => {
     it("renders with placeholder", () => {
       render(
         <DatePicker
+          locale="en"
           value=""
           onChange={mockOnChange}
           placeholder="Select date..."
@@ -56,7 +64,7 @@ describe("DatePicker Component", () => {
 
     it("renders calendar icon", () => {
       const { container } = render(
-        <DatePicker value="" onChange={mockOnChange} />,
+        <DatePicker locale="en" value="" onChange={mockOnChange} />,
       );
       const button = container.querySelector(
         'button[aria-label="Open calendar"]',
@@ -67,6 +75,7 @@ describe("DatePicker Component", () => {
     it("renders with hint text", () => {
       render(
         <DatePicker
+          locale="en"
           value=""
           onChange={mockOnChange}
           hint="Select your preferred date"
@@ -80,6 +89,7 @@ describe("DatePicker Component", () => {
     it("renders with error message", () => {
       render(
         <DatePicker
+          locale="en"
           value=""
           onChange={mockOnChange}
           error="Date is required"
@@ -93,7 +103,7 @@ describe("DatePicker Component", () => {
     it("opens calendar when clicking input field", async () => {
       const user = userEvent.setup();
       const { container } = render(
-        <DatePicker value="" onChange={mockOnChange} />,
+        <DatePicker locale="en" value="" onChange={mockOnChange} />,
       );
       const input = container.querySelector("input") as HTMLInputElement;
 
@@ -109,7 +119,7 @@ describe("DatePicker Component", () => {
     it("opens calendar when clicking calendar icon", async () => {
       const user = userEvent.setup();
       const { container } = render(
-        <DatePicker value="" onChange={mockOnChange} />,
+        <DatePicker locale="en" value="" onChange={mockOnChange} />,
       );
       const button = container.querySelector(
         'button[aria-label="Open calendar"]',
@@ -127,7 +137,7 @@ describe("DatePicker Component", () => {
     it("does not open calendar when disabled", async () => {
       const user = userEvent.setup();
       const { container } = render(
-        <DatePicker value="" onChange={mockOnChange} disabled />,
+        <DatePicker locale="en" value="" onChange={mockOnChange} disabled />,
       );
       const input = container.querySelector("input") as HTMLInputElement;
 
@@ -143,7 +153,7 @@ describe("DatePicker Component", () => {
     it("does not open calendar when read-only", async () => {
       const user = userEvent.setup();
       const { container } = render(
-        <DatePicker value="" onChange={mockOnChange} readOnly />,
+        <DatePicker locale="en" value="" onChange={mockOnChange} readOnly />,
       );
       const input = container.querySelector("input") as HTMLInputElement;
 
@@ -159,7 +169,7 @@ describe("DatePicker Component", () => {
     it("closes calendar on escape key", async () => {
       const user = userEvent.setup();
       const { container } = render(
-        <DatePicker value="" onChange={mockOnChange} />,
+        <DatePicker locale="en" value="" onChange={mockOnChange} />,
       );
       const input = container.querySelector("input") as HTMLInputElement;
 
@@ -184,7 +194,7 @@ describe("DatePicker Component", () => {
       const { container } = render(
         <div>
           <div data-testid="outside">Outside</div>
-          <DatePicker value="" onChange={mockOnChange} />
+          <DatePicker locale="en" value="" onChange={mockOnChange} />
         </div>,
       );
       const input = container.querySelector("input") as HTMLInputElement;
@@ -211,7 +221,7 @@ describe("DatePicker Component", () => {
     it("selects a date when clicking on a day", async () => {
       const user = userEvent.setup();
       const { container } = render(
-        <DatePicker value="" onChange={mockOnChange} />,
+        <DatePicker locale="en" value="" onChange={mockOnChange} />,
       );
       const input = container.querySelector("input") as HTMLInputElement;
 
@@ -238,7 +248,7 @@ describe("DatePicker Component", () => {
 
     it("displays selected date in input", () => {
       const { container } = render(
-        <DatePicker value="2025-11-14" onChange={mockOnChange} />,
+        <DatePicker locale="en" value="2025-11-14" onChange={mockOnChange} />,
       );
       const input = container.querySelector("input") as HTMLInputElement;
 
@@ -248,7 +258,9 @@ describe("DatePicker Component", () => {
     it("calls onChange with ISO format date", async () => {
       const user = userEvent.setup();
       const mockFn = jest.fn();
-      const { container } = render(<DatePicker value="" onChange={mockFn} />);
+      const { container } = render(
+        <DatePicker locale="en" value="" onChange={mockFn} />,
+      );
       const input = container.querySelector("input") as HTMLInputElement;
 
       await user.click(input);
@@ -273,7 +285,7 @@ describe("DatePicker Component", () => {
     it("switches to month view when clicking month name", async () => {
       const user = userEvent.setup();
       const { container } = render(
-        <DatePicker value="" onChange={mockOnChange} />,
+        <DatePicker locale="en" value="" onChange={mockOnChange} />,
       );
       const input = container.querySelector("input") as HTMLInputElement;
 
@@ -294,7 +306,7 @@ describe("DatePicker Component", () => {
     it("switches to year view when clicking year", async () => {
       const user = userEvent.setup();
       const { container } = render(
-        <DatePicker value="" onChange={mockOnChange} />,
+        <DatePicker locale="en" value="" onChange={mockOnChange} />,
       );
       const input = container.querySelector("input") as HTMLInputElement;
 
@@ -313,7 +325,7 @@ describe("DatePicker Component", () => {
     it("returns to days view after selecting month", async () => {
       const user = userEvent.setup();
       const { container } = render(
-        <DatePicker value="" onChange={mockOnChange} />,
+        <DatePicker locale="en" value="" onChange={mockOnChange} />,
       );
       const input = container.querySelector("input") as HTMLInputElement;
 
@@ -356,7 +368,7 @@ describe("DatePicker Component", () => {
     it("navigates to previous month", async () => {
       const user = userEvent.setup();
       const { container } = render(
-        <DatePicker value="2025-11-14" onChange={mockOnChange} />,
+        <DatePicker locale="en" value="2025-11-14" onChange={mockOnChange} />,
       );
       const input = container.querySelector("input") as HTMLInputElement;
 
@@ -378,7 +390,7 @@ describe("DatePicker Component", () => {
     it("navigates to next month", async () => {
       const user = userEvent.setup();
       const { container } = render(
-        <DatePicker value="2025-11-14" onChange={mockOnChange} />,
+        <DatePicker locale="en" value="2025-11-14" onChange={mockOnChange} />,
       );
       const input = container.querySelector("input") as HTMLInputElement;
 
@@ -399,7 +411,7 @@ describe("DatePicker Component", () => {
     it("selects today when clicking Today button", async () => {
       const user = userEvent.setup();
       const { container } = render(
-        <DatePicker value="" onChange={mockOnChange} />,
+        <DatePicker locale="en" value="" onChange={mockOnChange} />,
       );
       const input = container.querySelector("input") as HTMLInputElement;
 
@@ -421,7 +433,7 @@ describe("DatePicker Component", () => {
     it("clears date when clicking Clear button", async () => {
       const user = userEvent.setup();
       const { container } = render(
-        <DatePicker value="2025-11-14" onChange={mockOnChange} />,
+        <DatePicker locale="en" value="2025-11-14" onChange={mockOnChange} />,
       );
       const input = container.querySelector("input") as HTMLInputElement;
 
@@ -442,7 +454,12 @@ describe("DatePicker Component", () => {
     it("respects minDate restriction", async () => {
       const user = userEvent.setup();
       const { container } = render(
-        <DatePicker value="" onChange={mockOnChange} minDate="2025-12-15" />,
+        <DatePicker
+          locale="en"
+          value=""
+          onChange={mockOnChange}
+          minDate="2025-12-15"
+        />,
       );
       const input = container.querySelector("input") as HTMLInputElement;
 
@@ -461,7 +478,12 @@ describe("DatePicker Component", () => {
     it("respects maxDate restriction", async () => {
       const user = userEvent.setup();
       const { container } = render(
-        <DatePicker value="" onChange={mockOnChange} maxDate="2025-12-15" />,
+        <DatePicker
+          locale="en"
+          value=""
+          onChange={mockOnChange}
+          maxDate="2025-12-15"
+        />,
       );
       const input = container.querySelector("input") as HTMLInputElement;
 
@@ -481,7 +503,7 @@ describe("DatePicker Component", () => {
   describe("States", () => {
     it("applies disabled styles when disabled", () => {
       const { container } = render(
-        <DatePicker value="" onChange={mockOnChange} disabled />,
+        <DatePicker locale="en" value="" onChange={mockOnChange} disabled />,
       );
       const input = container.querySelector("input") as HTMLInputElement;
 
@@ -491,7 +513,7 @@ describe("DatePicker Component", () => {
 
     it("applies read-only styles when readOnly", () => {
       const { container } = render(
-        <DatePicker value="" onChange={mockOnChange} readOnly />,
+        <DatePicker locale="en" value="" onChange={mockOnChange} readOnly />,
       );
       const input = container.querySelector("input") as HTMLInputElement;
 
@@ -500,7 +522,12 @@ describe("DatePicker Component", () => {
 
     it("shows error border when error is present", () => {
       const { container } = render(
-        <DatePicker value="" onChange={mockOnChange} error="Required field" />,
+        <DatePicker
+          locale="en"
+          value=""
+          onChange={mockOnChange}
+          error="Required field"
+        />,
       );
       const inputWrapper = container.querySelector(`.${styles.inputContainer}`);
 
@@ -508,13 +535,20 @@ describe("DatePicker Component", () => {
     });
 
     it("shows required indicator when required and empty", () => {
-      render(<DatePicker value="" onChange={mockOnChange} required />);
+      render(
+        <DatePicker locale="en" value="" onChange={mockOnChange} required />,
+      );
       expect(screen.getByText(/This field is required/i)).toBeInTheDocument();
     });
 
     it("hides required indicator when required but has value", () => {
       render(
-        <DatePicker value="2025-11-14" onChange={mockOnChange} required />,
+        <DatePicker
+          locale="en"
+          value="2025-11-14"
+          onChange={mockOnChange}
+          required
+        />,
       );
       expect(
         screen.queryByText(/This field is required/i),
@@ -525,16 +559,27 @@ describe("DatePicker Component", () => {
   describe("Accessibility", () => {
     it("has proper aria-label", () => {
       const { container } = render(
-        <DatePicker label="Birth Date" value="" onChange={mockOnChange} />,
+        <DatePicker
+          locale="en"
+          label="Birth Date"
+          value=""
+          onChange={mockOnChange}
+        />,
       );
       const input = container.querySelector("input") as HTMLInputElement;
 
-      expect(input).toHaveAttribute("aria-label", "Birth Date");
+      // La etiqueta se asocia con <label htmlFor>, no con aria-label.
+      expect(screen.getByLabelText("Birth Date")).toBe(input);
     });
 
     it("has proper aria-invalid when error", () => {
       const { container } = render(
-        <DatePicker value="" onChange={mockOnChange} error="Invalid date" />,
+        <DatePicker
+          locale="en"
+          value=""
+          onChange={mockOnChange}
+          error="Invalid date"
+        />,
       );
       const input = container.querySelector("input") as HTMLInputElement;
 
@@ -543,7 +588,7 @@ describe("DatePicker Component", () => {
 
     it("has proper aria-required when required", () => {
       const { container } = render(
-        <DatePicker value="" onChange={mockOnChange} required />,
+        <DatePicker locale="en" value="" onChange={mockOnChange} required />,
       );
       const input = container.querySelector("input") as HTMLInputElement;
 
@@ -554,7 +599,7 @@ describe("DatePicker Component", () => {
   describe("Edge Cases", () => {
     it("handles empty value prop", () => {
       const { container } = render(
-        <DatePicker value="" onChange={mockOnChange} />,
+        <DatePicker locale="en" value="" onChange={mockOnChange} />,
       );
       const input = container.querySelector("input") as HTMLInputElement;
 
@@ -562,13 +607,16 @@ describe("DatePicker Component", () => {
     });
 
     it("handles null onChange gracefully", () => {
-      const { container } = render(<DatePicker value="" onChange={() => {}} />);
+      const { container } = render(
+        <DatePicker locale="en" value="" onChange={() => {}} />,
+      );
       expect(container.querySelector("input")).toBeInTheDocument();
     });
 
     it("handles custom className", () => {
       const { container } = render(
         <DatePicker
+          locale="en"
           value=""
           onChange={mockOnChange}
           className="custom-class"
@@ -581,12 +629,14 @@ describe("DatePicker Component", () => {
 
     it("updates when value prop changes", () => {
       const { container, rerender } = render(
-        <DatePicker value="2025-11-14" onChange={mockOnChange} />,
+        <DatePicker locale="en" value="2025-11-14" onChange={mockOnChange} />,
       );
       const input = container.querySelector("input") as HTMLInputElement;
       const initialValue = input.value;
 
-      rerender(<DatePicker value="2025-12-25" onChange={mockOnChange} />);
+      rerender(
+        <DatePicker locale="en" value="2025-12-25" onChange={mockOnChange} />,
+      );
 
       const newValue = input.value;
       expect(newValue).not.toBe(initialValue);
@@ -597,7 +647,7 @@ describe("DatePicker Component", () => {
     it("renders touch-friendly buttons", async () => {
       const user = userEvent.setup();
       const { container } = render(
-        <DatePicker value="" onChange={mockOnChange} />,
+        <DatePicker locale="en" value="" onChange={mockOnChange} />,
       );
       const input = container.querySelector("input") as HTMLInputElement;
 
@@ -612,7 +662,7 @@ describe("DatePicker Component", () => {
     it("calendar is responsive", async () => {
       const user = userEvent.setup();
       const { container } = render(
-        <DatePicker value="" onChange={mockOnChange} />,
+        <DatePicker locale="en" value="" onChange={mockOnChange} />,
       );
       const input = container.querySelector("input") as HTMLInputElement;
 
@@ -629,7 +679,7 @@ describe("DatePicker Component", () => {
     it("navigates to previous year in months view", async () => {
       const user = userEvent.setup();
       const { container } = render(
-        <DatePicker value="2025-11-14" onChange={mockOnChange} />,
+        <DatePicker locale="en" value="2025-11-14" onChange={mockOnChange} />,
       );
       const input = container.querySelector("input") as HTMLInputElement;
 
@@ -661,7 +711,7 @@ describe("DatePicker Component", () => {
     it("navigates to next year in months view", async () => {
       const user = userEvent.setup();
       const { container } = render(
-        <DatePicker value="2025-11-14" onChange={mockOnChange} />,
+        <DatePicker locale="en" value="2025-11-14" onChange={mockOnChange} />,
       );
       const input = container.querySelector("input") as HTMLInputElement;
 
@@ -691,7 +741,7 @@ describe("DatePicker Component", () => {
     it("navigates to previous decade in years view", async () => {
       const user = userEvent.setup();
       const { container } = render(
-        <DatePicker value="2025-11-14" onChange={mockOnChange} />,
+        <DatePicker locale="en" value="2025-11-14" onChange={mockOnChange} />,
       );
       const input = container.querySelector("input") as HTMLInputElement;
 
@@ -728,7 +778,7 @@ describe("DatePicker Component", () => {
     it("navigates to next decade in years view", async () => {
       const user = userEvent.setup();
       const { container } = render(
-        <DatePicker value="2025-11-14" onChange={mockOnChange} />,
+        <DatePicker locale="en" value="2025-11-14" onChange={mockOnChange} />,
       );
       const input = container.querySelector("input") as HTMLInputElement;
 
@@ -765,7 +815,7 @@ describe("DatePicker Component", () => {
     it("handles manual date input", async () => {
       const user = userEvent.setup();
       const { container } = render(
-        <DatePicker value="" onChange={mockOnChange} />,
+        <DatePicker locale="en" value="" onChange={mockOnChange} />,
       );
       const input = container.querySelector("input") as HTMLInputElement;
 
@@ -778,7 +828,7 @@ describe("DatePicker Component", () => {
     it("resets invalid input on blur", async () => {
       const user = userEvent.setup();
       const { container } = render(
-        <DatePicker value="2025-11-14" onChange={mockOnChange} />,
+        <DatePicker locale="en" value="2025-11-14" onChange={mockOnChange} />,
       );
       const input = container.querySelector("input") as HTMLInputElement;
 
@@ -798,7 +848,7 @@ describe("DatePicker Component", () => {
       const user = userEvent.setup();
       const today = new Date();
       const { container } = render(
-        <DatePicker value="" onChange={mockOnChange} />,
+        <DatePicker locale="en" value="" onChange={mockOnChange} />,
       );
       const input = container.querySelector("input") as HTMLInputElement;
 
@@ -851,7 +901,7 @@ describe("DatePicker Component", () => {
     it("highlights selected month in months view", async () => {
       const user = userEvent.setup();
       const { container } = render(
-        <DatePicker value="2025-03-15" onChange={mockOnChange} />,
+        <DatePicker locale="en" value="2025-03-15" onChange={mockOnChange} />,
       );
       const input = container.querySelector("input") as HTMLInputElement;
 
@@ -881,7 +931,7 @@ describe("DatePicker Component", () => {
       const user = userEvent.setup();
       const currentYear = new Date().getFullYear();
       const { container } = render(
-        <DatePicker value="" onChange={mockOnChange} />,
+        <DatePicker locale="en" value="" onChange={mockOnChange} />,
       );
       const input = container.querySelector("input") as HTMLInputElement;
 
@@ -910,7 +960,7 @@ describe("DatePicker Component", () => {
     it("highlights selected year in years view", async () => {
       const user = userEvent.setup();
       const { container } = render(
-        <DatePicker value="2023-06-15" onChange={mockOnChange} />,
+        <DatePicker locale="en" value="2023-06-15" onChange={mockOnChange} />,
       );
       const input = container.querySelector("input") as HTMLInputElement;
 
@@ -955,7 +1005,7 @@ describe("DatePicker Component", () => {
     it("selects a year and returns to months view", async () => {
       const user = userEvent.setup();
       const { container } = render(
-        <DatePicker value="" onChange={mockOnChange} />,
+        <DatePicker locale="en" value="" onChange={mockOnChange} />,
       );
       const input = container.querySelector("input") as HTMLInputElement;
 
@@ -989,4 +1039,46 @@ describe("DatePicker Component", () => {
   });
 
   // Internationalization is covered via the locale prop in component behavior.
+});
+
+describe("DatePicker en español (idioma por defecto)", () => {
+  it("usa textos y formato en español", () => {
+    render(<DatePicker label="Fecha" value="" onChange={() => {}} />);
+    expect(
+      screen.getByRole("button", { name: "Abrir calendario" }),
+    ).toBeInTheDocument();
+    expect(screen.getByLabelText("Fecha")).toHaveAttribute(
+      "placeholder",
+      "DD/MM/AAAA",
+    );
+  });
+
+  it("lee lo que se escribe como día/mes", () => {
+    const onChange = jest.fn();
+    render(<DatePicker label="Fecha" value="" onChange={onChange} />);
+    fireEvent.change(screen.getByLabelText("Fecha"), {
+      target: { value: "05/12/2026" },
+    });
+    expect(onChange).toHaveBeenLastCalledWith("2026-12-05");
+  });
+
+  it("asocia ayuda y error al input", () => {
+    render(
+      <DatePicker
+        label="Fecha"
+        value=""
+        onChange={() => {}}
+        error="Requerida"
+      />,
+    );
+    const input = screen.getByLabelText("Fecha");
+    expect(input).toHaveAttribute("aria-invalid", "true");
+    expect(input).toHaveAccessibleDescription("Requerida");
+  });
+
+  it("reenvía la ref al input", () => {
+    const ref = React.createRef<HTMLInputElement>();
+    render(<DatePicker ref={ref} label="Fecha" value="" onChange={() => {}} />);
+    expect(ref.current).toBe(screen.getByLabelText("Fecha"));
+  });
 });

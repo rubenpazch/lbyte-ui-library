@@ -17,37 +17,42 @@ npm install @rubenpazch/autocomplete
 
 ## Autocomplete
 
-| Prop              | Tipo                                                                                  | Req. | Por defecto           | Descripción |
-| ----------------- | ------------------------------------------------------------------------------------- | ---- | --------------------- | ----------- |
-| `onChange`        | `(value: string \| number \| null, option?: AutocompleteOption \| undefined) => void` | sí   |                       |             |
-| `value`           | `null \| string \| number`                                                            | sí   |                       |             |
-| `className`       | `string`                                                                              |      | ``                    |             |
-| `clearable`       | `boolean`                                                                             |      | `true`                |             |
-| `createLabel`     | `string`                                                                              |      | `Create`              |             |
-| `debounceMs`      | `number`                                                                              |      | `300`                 |             |
-| `disabled`        | `boolean`                                                                             |      | `false`               |             |
-| `error`           | `string`                                                                              |      |                       |             |
-| `highlightMatch`  | `boolean`                                                                             |      | `true`                |             |
-| `hint`            | `string`                                                                              |      |                       |             |
-| `icon`            | `ReactNode`                                                                           |      |                       |             |
-| `keepListOpen`    | `boolean`                                                                             |      | `false`               |             |
-| `label`           | `string`                                                                              |      |                       |             |
-| `loading`         | `boolean`                                                                             |      | `false`               |             |
-| `loadingText`     | `string`                                                                              |      | `Loading...`          |             |
-| `maxHeight`       | `string`                                                                              |      | `300px`               |             |
-| `minSearchLength` | `number`                                                                              |      | `0`                   |             |
-| `noResultsText`   | `string`                                                                              |      | `No results found`    |             |
-| `onBlur`          | `() => void`                                                                          |      |                       |             |
-| `onCreate`        | `(searchTerm: string) => void`                                                        |      |                       |             |
-| `onFocus`         | `() => void`                                                                          |      |                       |             |
-| `onSearch`        | `(searchTerm: string) => void`                                                        |      |                       |             |
-| `options`         | `AutocompleteOption[]`                                                                |      | `[]`                  |             |
-| `placeholder`     | `string`                                                                              |      | `Search or select...` |             |
-| `position`        | `"bottom" \| "top"`                                                                   |      | `bottom`              |             |
-| `readOnly`        | `boolean`                                                                             |      | `false`               |             |
-| `renderOption`    | `(option: AutocompleteOption, isSelected: boolean) => ReactNode`                      |      |                       |             |
-| `required`        | `boolean`                                                                             |      | `false`               |             |
-| `searchable`      | `boolean`                                                                             |      | `true`                |             |
-| `warning`         | `string`                                                                              |      |                       |             |
+Selector con búsqueda (combobox accesible): filtra mientras se escribe, teclado completo.
+
+| Prop              | Tipo                                                                                  | Req. | Por defecto             | Descripción                                |
+| ----------------- | ------------------------------------------------------------------------------------- | ---- | ----------------------- | ------------------------------------------ |
+| `onChange`        | `(value: string \| number \| null, option?: AutocompleteOption \| undefined) => void` | sí   |                         |                                            |
+| `value`           | `null \| string \| number`                                                            | sí   |                         |                                            |
+| `className`       | `string`                                                                              |      | ``                      |                                            |
+| `clearable`       | `boolean`                                                                             |      | `true`                  |                                            |
+| `createLabel`     | `string`                                                                              |      | `Crear`                 |                                            |
+| `debounceMs`      | `number`                                                                              |      | `300`                   |                                            |
+| `disabled`        | `boolean`                                                                             |      | `false`                 |                                            |
+| `error`           | `string`                                                                              |      |                         |                                            |
+| `highlightMatch`  | `boolean`                                                                             |      | `true`                  |                                            |
+| `hint`            | `string`                                                                              |      |                         |                                            |
+| `icon`            | `ReactNode`                                                                           |      |                         |                                            |
+| `id`              | `string`                                                                              |      |                         | id del input; si no se pasa se genera uno. |
+| `keepListOpen`    | `boolean`                                                                             |      | `false`                 |                                            |
+| `label`           | `string`                                                                              |      |                         |                                            |
+| `labels`          | `Partial<{ clear: string; open: string; close: string; }>`                            |      |                         | Textos accesibles de los botones.          |
+| `loading`         | `boolean`                                                                             |      | `false`                 |                                            |
+| `loadingText`     | `string`                                                                              |      | `Cargando…`             |                                            |
+| `maxHeight`       | `string`                                                                              |      | `300px`                 |                                            |
+| `minSearchLength` | `number`                                                                              |      | `0`                     |                                            |
+| `name`            | `string`                                                                              |      |                         | name del input.                            |
+| `noResultsText`   | `string`                                                                              |      | `Sin resultados`        |                                            |
+| `onBlur`          | `() => void`                                                                          |      |                         |                                            |
+| `onCreate`        | `(searchTerm: string) => void`                                                        |      |                         |                                            |
+| `onFocus`         | `() => void`                                                                          |      |                         |                                            |
+| `onSearch`        | `(searchTerm: string) => void`                                                        |      |                         |                                            |
+| `options`         | `AutocompleteOption[]`                                                                |      | `[]`                    |                                            |
+| `placeholder`     | `string`                                                                              |      | `Buscar o seleccionar…` |                                            |
+| `position`        | `"bottom" \| "top"`                                                                   |      | `bottom`                |                                            |
+| `readOnly`        | `boolean`                                                                             |      | `false`                 |                                            |
+| `renderOption`    | `(option: AutocompleteOption, isSelected: boolean) => ReactNode`                      |      |                         |                                            |
+| `required`        | `boolean`                                                                             |      | `false`                 |                                            |
+| `searchable`      | `boolean`                                                                             |      | `true`                  |                                            |
+| `warning`         | `string`                                                                              |      |                         |                                            |
 
 <!-- catalogo:fin -->

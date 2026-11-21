@@ -17,13 +17,14 @@ npm install @rubenpazch/stepper
 
 ## Stepper
 
-| Prop            | Tipo                             | Req. | Por defecto | Descripción |
-| --------------- | -------------------------------- | ---- | ----------- | ----------- |
-| `currentStep`   | `number`                         | sí   |             |             |
-| `steps`         | `Step[]`                         | sí   |             |             |
-| `className`     | `string`                         |      | ``          |             |
-| `onStepChange`  | `(step: number) => void`         |      |             |             |
-| `size`          | `"small" \| "medium" \| "large"` |      | `medium`    |             |
-| `stepClickable` | `boolean`                        |      | `false`     |             |
+| Prop            | Tipo                                                     | Req. | Por defecto | Descripción                                                          |
+| --------------- | -------------------------------------------------------- | ---- | ----------- | -------------------------------------------------------------------- |
+| `currentStep`   | `number`                                                 | sí   |             |                                                                      |
+| `steps`         | `Step[]`                                                 | sí   |             |                                                                      |
+| `ariaLabel`     | `string`                                                 |      | `Progreso`  | Nombre accesible de la navegación de pasos (por defecto "Progreso"). |
+| `className`     | `string`                                                 |      | ``          |                                                                      |
+| `onStepChange`  | `(step: number) => void`                                 |      |             |                                                                      |
+| `size`          | `"small" \| "medium" \| "large" \| "sm" \| "md" \| "lg"` |      | `medium`    |                                                                      |
+| `stepClickable` | `boolean`                                                |      | `false`     |                                                                      |
 
 <!-- catalogo:fin -->

@@ -28,6 +28,8 @@ export interface DrawerProps {
   closeOnOverlayClick?: boolean;
   /** Whether pressing Escape closes the drawer */
   closeOnEscape?: boolean;
+  /** Texto accesible del botón de cerrar. */
+  closeLabel?: string;
   /** Custom className for the drawer content */
   className?: string;
   /** Footer content (typically action buttons) */
@@ -50,6 +52,7 @@ const Drawer: React.FC<DrawerProps> = ({
   showOverlay = true,
   closeOnOverlayClick = true,
   closeOnEscape = true,
+  closeLabel = "Cerrar",
   className = "",
   footer,
   headerAlign = "space-between",
@@ -221,7 +224,7 @@ const Drawer: React.FC<DrawerProps> = ({
               <button
                 onClick={onClose}
                 className={styles.closeButton}
-                aria-label="Close drawer"
+                aria-label={closeLabel}
               >
                 <CloseIcon size="md" />
               </button>

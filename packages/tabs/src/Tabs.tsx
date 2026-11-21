@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useId, useRef, useState } from "react";
 import styles from "./Tabs.module.css";
 
 const classNames = (...classes: Array<string | false | undefined>) =>
@@ -32,6 +32,8 @@ interface TabsProps {
   /** Orientation of tabs - horizontal (default) or vertical (left-aligned) */
   orientation?: TabOrientation;
   className?: string;
+  /** Nombre accesible del grupo de pestañas (por defecto "Pestañas"). */
+  ariaLabel?: string;
 }
 
 const Tabs: React.FC<TabsProps> = ({
@@ -45,7 +47,12 @@ const Tabs: React.FC<TabsProps> = ({
   lazy = false,
   orientation = "horizontal",
   className,
+  ariaLabel = "Pestañas",
 }) => {
+  const baseId = useId();
+  const tabId = (id: string) => `${baseId}-tab-${id}`;
+  const panelId = `${baseId}-panel`;
+  const tabRefs = useRef<Record<string, HTMLButtonElement | null>>({});
   const [activeTab, setActiveTab] = useState(defaultTab || tabs[0]?.id);
   const [visitedTabs, setVisitedTabs] = useState<Set<string>>(
     new Set([defaultTab || tabs[0]?.id]),
@@ -116,6 +123,24 @@ const Tabs: React.FC<TabsProps> = ({
 
   const isVertical = orientation === "vertical";
 
+  // Teclado del patrón tablist: flechas, Inicio y Fin; salta las pestañas deshabilitadas.
+  const handleKeyDown = (event: React.KeyboardEvent, currentId: string) => {
+    const enabled = tabs.filter((t) => !t.disabled);
+    const i = enabled.findIndex((t) => t.id === currentId);
+    const next = isVertical ? "ArrowDown" : "ArrowRight";
+    const prev = isVertical ? "ArrowUp" : "ArrowLeft";
+    let target: Tab | undefined;
+    if (event.key === next) target = enabled[(i + 1) % enabled.length];
+    else if (event.key === prev)
+      target = enabled[(i - 1 + enabled.length) % enabled.length];
+    else if (event.key === "Home") target = enabled[0];
+    else if (event.key === "End") target = enabled[enabled.length - 1];
+    if (!target) return;
+    event.preventDefault();
+    handleTabChange(target.id);
+    tabRefs.current[target.id]?.focus();
+  };
+
   return (
     <div
       className={classNames(
@@ -133,12 +158,14 @@ const Tabs: React.FC<TabsProps> = ({
             : styles.navContainerHorizontal,
         )}
       >
-        <nav
+        <div
+          role="tablist"
+          aria-label={ariaLabel}
+          aria-orientation={isVertical ? "vertical" : "horizontal"}
           className={classNames(
             styles.nav,
             isVertical ? styles.navVertical : styles.navHorizontal,
           )}
-          aria-label="Tabs"
         >
           {tabs.map((tab) => {
             const isActive = activeTab === tab.id;
@@ -147,9 +174,18 @@ const Tabs: React.FC<TabsProps> = ({
             return (
               <button
                 key={tab.id}
+                ref={(el) => {
+                  tabRefs.current[tab.id] = el;
+                }}
+                type="button"
+                role="tab"
+                id={tabId(tab.id)}
+                aria-selected={isActive}
+                aria-controls={panelId}
+                tabIndex={isActive ? 0 : -1}
                 onClick={() => handleTabChange(tab.id)}
+                onKeyDown={(e) => handleKeyDown(e, tab.id)}
                 disabled={isDisabled}
-                aria-current={isActive ? "page" : undefined}
                 className={classNames(
                   styles.tabButton,
                   isVertical
@@ -180,11 +216,15 @@ const Tabs: React.FC<TabsProps> = ({
               </button>
             );
           })}
-        </nav>
+        </div>
       </div>
 
       {/* Tab Content */}
       <div
+        role="tabpanel"
+        id={panelId}
+        aria-labelledby={tabId(activeTab)}
+        tabIndex={0}
         className={classNames(
           styles.content,
           isVertical ? styles.contentVertical : styles.contentHorizontal,

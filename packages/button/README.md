@@ -15,18 +15,18 @@ npm install @rubenpazch/button
 
 ## Button
 
-| Prop               | Tipo                                                                      | Req. | Por defecto | Descripción                               |
-| ------------------ | ------------------------------------------------------------------------- | ---- | ----------- | ----------------------------------------- |
-| `color`            | `"primary" \| "secondary" \| "success" \| "error" \| "warning" \| "info"` |      |             | Button color theme                        |
-| `component`        | `"button" \| "a"`                                                         |      |             |                                           |
-| `disabled`         | `boolean`                                                                 |      |             | Disabled state                            |
-| `disableElevation` | `boolean`                                                                 |      |             | Disable elevation/shadow effects          |
-| `endIcon`          | `ReactNode`                                                               |      |             | Icon to display after text                |
-| `fullWidth`        | `boolean`                                                                 |      |             | Whether the button should take full width |
-| `href`             | `string`                                                                  |      |             |                                           |
-| `loading`          | `boolean`                                                                 |      |             | Loading state with spinner                |
-| `size`             | `"small" \| "medium" \| "large"`                                          |      |             | Button size                               |
-| `startIcon`        | `ReactNode`                                                               |      |             | Icon to display before text               |
-| `variant`          | `"text" \| "contained" \| "outlined"`                                     |      |             | Button variant style                      |
+| Prop               | Tipo                                                                      | Req. | Por defecto | Descripción                                                      |
+| ------------------ | ------------------------------------------------------------------------- | ---- | ----------- | ---------------------------------------------------------------- |
+| `color`            | `"primary" \| "secondary" \| "success" \| "error" \| "warning" \| "info"` |      |             | Button color theme                                               |
+| `component`        | `"button" \| "a"`                                                         |      |             |                                                                  |
+| `disabled`         | `boolean`                                                                 |      |             | Disabled state                                                   |
+| `disableElevation` | `boolean`                                                                 |      |             | Disable elevation/shadow effects                                 |
+| `endIcon`          | `ReactNode`                                                               |      |             | Icon to display after text                                       |
+| `fullWidth`        | `boolean`                                                                 |      |             | Whether the button should take full width                        |
+| `href`             | `string`                                                                  |      |             |                                                                  |
+| `loading`          | `boolean`                                                                 |      |             | Loading state with spinner                                       |
+| `size`             | `"small" \| "medium" \| "large" \| "sm" \| "md" \| "lg"`                  |      |             | Tamaño: sm, md (por defecto) o lg; también small, medium, large. |
+| `startIcon`        | `ReactNode`                                                               |      |             | Icon to display before text                                      |
+| `variant`          | `"text" \| "contained" \| "outlined"`                                     |      |             | Button variant style                                             |
 
 <!-- catalogo:fin -->

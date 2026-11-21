@@ -279,7 +279,7 @@
 }
 
 .strengthSegmentStrong {
-  background: #84cc16;
+  background: var(--lb-color-emerald-accent);
 }
 
 .strengthSegmentVeryStrong {
@@ -315,7 +315,7 @@
 }
 
 .strengthValueStrong {
-  color: #65a30d;
+  color: var(--lb-color-emerald-strong);
 }
 
 .strengthValueVeryStrong {
@@ -361,4 +361,12 @@
 
 .requirementTextMet {
   color: var(--lb-color-neutral-700);
+}
+
+/* Advertencia (no bloquea el envío) */
+.warning {
+  font-size: var(--lb-font-size-xs);
+  line-height: var(--lb-line-height-normal);
+  color: var(--lb-color-amber-strong);
+  margin-top: var(--lb-space-1);
 }

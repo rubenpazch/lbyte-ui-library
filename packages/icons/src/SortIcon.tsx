@@ -21,11 +21,15 @@ const SortIcon: React.FC<SortIconProps> = ({ className = "", size = "md" }) => {
     md: "w-5 h-5",
     lg: "w-6 h-6",
   };
+  // Tamaño en px como atributo SVG: funciona sin Tailwind y cualquier clase CSS lo sobrescribe.
+  const sizePx: Record<string, number> = { sm: 16, md: 20, lg: 24 };
 
   const defaultClasses = `${sizeClasses[size]} ${className}`;
 
   return (
     <svg
+      width={sizePx[size]}
+      height={sizePx[size]}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
       fill="none"

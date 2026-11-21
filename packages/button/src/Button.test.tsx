@@ -245,3 +245,14 @@ describe("Button Component", () => {
     });
   });
 });
+
+describe("Button: tamaños", () => {
+  it("size sm/md/lg equivale a small/medium/large", () => {
+    const { rerender } = render(<Button size="sm">A</Button>);
+    const sm = screen.getByRole("button").className;
+    rerender(<Button size="small">A</Button>);
+    expect(screen.getByRole("button").className).toBe(sm);
+    rerender(<Button size="lg">A</Button>);
+    expect(screen.getByRole("button").className).not.toBe(sm);
+  });
+});

@@ -1,64 +1,64 @@
 import React from "react";
 import Button from "@rubenpazch/button";
-import styles from "./ConfirmationDialog.module.css";
+import Modal from "@rubenpazch/modal";
 
-const classNames = (...classes: Array<string | undefined | false>) =>
-  classes.filter(Boolean).join(" ");
-
-interface ConfirmationDialogProps {
+export interface ConfirmationDialogProps {
+  /** Si el diálogo está abierto. */
   isOpen: boolean;
+  /** Pregunta o título: "¿Eliminar la convocatoria?". */
   title: string;
-  message: string;
+  /** Explicación de la consecuencia. */
+  message: React.ReactNode;
+  /** Texto del botón de confirmar (por defecto "Confirmar"). */
   confirmText?: string;
+  /** Texto del botón de cancelar (por defecto "Cancelar"). */
   cancelText?: string;
+  /** Acción destructiva: botón rojo. */
   isDangerous?: boolean;
+  /** Muestra el botón de confirmar cargando y bloquea los botones. */
   isLoading?: boolean;
+  /** Al confirmar. */
   onConfirm: () => void;
+  /** Al cancelar, pulsar Escape o hacer clic fuera (si no está cargando). */
   onCancel: () => void;
+  /** Contenido extra bajo el mensaje (p. ej. un campo "motivo"). */
+  children?: React.ReactNode;
 }
 
-const ConfirmationDialog: React.FC<ConfirmationDialogProps> = ({
+/**
+ * Diálogo de confirmación (alertdialog) sobre Modal: foco retenido, Escape para cancelar y
+ * el foco inicial en "Cancelar", la opción segura.
+ */
+export default function ConfirmationDialog({
   isOpen,
   title,
   message,
-  confirmText = "Confirm",
-  cancelText = "Cancel",
+  confirmText = "Confirmar",
+  cancelText = "Cancelar",
   isDangerous = false,
   isLoading = false,
   onConfirm,
   onCancel,
-}) => {
-  if (!isOpen) return null;
-
+  children,
+}: ConfirmationDialogProps) {
+  const cancel = () => {
+    if (!isLoading) onCancel();
+  };
   return (
-    <div className={styles.overlay}>
-      <div className={classNames(styles.dialog, styles.animateIn)}>
-        {/* Header */}
-        <div
-          className={classNames(
-            styles.header,
-            isDangerous ? styles.headerDanger : styles.headerNormal,
-          )}
-        >
-          <h2
-            className={classNames(
-              styles.title,
-              isDangerous ? styles.titleDanger : styles.titleNormal,
-            )}
-          >
-            {title}
-          </h2>
-        </div>
-
-        {/* Body */}
-        <div className={styles.body}>
-          <p className={styles.message}>{message}</p>
-        </div>
-
-        {/* Footer */}
-        <div className={styles.footer}>
+    <Modal
+      open={isOpen}
+      onClose={cancel}
+      role="alertdialog"
+      size="sm"
+      title={title}
+      description={message}
+      showCloseButton={false}
+      closeOnOverlayClick={!isLoading}
+      closeOnEscape={!isLoading}
+      footer={
+        <>
           <Button
-            onClick={onCancel}
+            onClick={cancel}
             disabled={isLoading}
             variant="outlined"
             color="secondary"
@@ -73,10 +73,10 @@ const ConfirmationDialog: React.FC<ConfirmationDialogProps> = ({
           >
             {confirmText}
           </Button>
-        </div>
-      </div>
-    </div>
+        </>
+      }
+    >
+      {children}
+    </Modal>
   );
-};
-
-export default ConfirmationDialog;
+}

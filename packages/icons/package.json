@@ -25,6 +25,8 @@
   ],
   "scripts": {
     "build": "rollup -c",
+    "test": "jest --passWithNoTests",
+    "test:watch": "jest --watch",
     "lint": "eslint src",
     "clean": "rm -rf dist"
   },

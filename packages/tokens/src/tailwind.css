@@ -90,6 +90,10 @@
   --color-lb-orange-border: var(--lb-color-orange-border);
   --color-lb-orange-accent: var(--lb-color-orange-accent);
   --color-lb-orange-strong: var(--lb-color-orange-strong);
+  --color-lb-pink-subtle: var(--lb-color-pink-subtle);
+  --color-lb-pink-border: var(--lb-color-pink-border);
+  --color-lb-pink-accent: var(--lb-color-pink-accent);
+  --color-lb-pink-strong: var(--lb-color-pink-strong);
   --color-lb-background: var(--lb-color-background);
   --color-lb-foreground: var(--lb-color-foreground);
   --color-lb-muted: var(--lb-color-muted);
@@ -98,6 +102,7 @@
   --color-lb-ring: var(--lb-color-ring);
   --color-lb-link: var(--lb-color-link);
   --color-lb-link-hover: var(--lb-color-link-hover);
+  --color-lb-overlay: var(--lb-color-overlay);
   --spacing-lb-0: var(--lb-space-0);
   --spacing-lb-1: var(--lb-space-1);
   --spacing-lb-2: var(--lb-space-2);

@@ -1,9 +1,11 @@
 import React from "react";
+import { toLegacySize } from "@rubenpazch/shared";
 import PaginationItem from "./PaginationItem";
 import styles from "./Pagination.module.css";
 
 export type PaginationShape = "rounded" | "circular";
-export type PaginationSize = "small" | "medium" | "large";
+/** Tamaño: sm, md, lg (estándar) o small, medium, large. */
+export type PaginationSize = "small" | "medium" | "large" | "sm" | "md" | "lg";
 export type PaginationVariant = "text" | "outlined";
 
 export interface PaginationProps extends Omit<
@@ -16,8 +18,12 @@ export interface PaginationProps extends Omit<
   page?: number;
   /** Default page if uncontrolled */
   defaultPage?: number;
-  /** Callback when page changes */
+  /** Al cambiar de página (recibe solo el número). Preferido sobre onChange. */
+  onPageChange?: (page: number) => void;
+  /** Al cambiar de página, estilo MUI: (evento, página). Se mantiene por compatibilidad. */
   onChange?: (event: React.ChangeEvent<unknown>, page: number) => void;
+  /** Nombre accesible de la navegación (por defecto "Paginación"). */
+  "aria-label"?: string;
   /** If true, the component is disabled */
   disabled?: boolean;
   /** If true, hide the next-page button */
@@ -190,6 +196,8 @@ const Pagination = React.forwardRef<HTMLElement, PaginationProps>(
       page: controlledPage,
       defaultPage = 1,
       onChange,
+      onPageChange,
+      "aria-label": ariaLabel = "Paginación",
       disabled = false,
       hideNextButton = false,
       hidePrevButton = false,
@@ -198,7 +206,7 @@ const Pagination = React.forwardRef<HTMLElement, PaginationProps>(
       boundaryCount = 1,
       siblingCount = 1,
       shape = "rounded",
-      size = "medium",
+      size: sizeProp = "medium",
       variant = "text",
       renderItem,
       className,
@@ -206,6 +214,7 @@ const Pagination = React.forwardRef<HTMLElement, PaginationProps>(
     },
     ref,
   ) => {
+    const size = toLegacySize(sizeProp);
     const [page, setPage] = React.useState(defaultPage);
     const currentPage = controlledPage ?? page;
 
@@ -219,6 +228,7 @@ const Pagination = React.forwardRef<HTMLElement, PaginationProps>(
       if (onChange) {
         onChange(event as any, value);
       }
+      onPageChange?.(value);
     };
 
     const items = usePagination({
@@ -235,7 +245,7 @@ const Pagination = React.forwardRef<HTMLElement, PaginationProps>(
     const classes = classNames(styles.root, className);
 
     return (
-      <nav ref={ref} className={classes} {...props}>
+      <nav ref={ref} className={classes} aria-label={ariaLabel} {...props}>
         <ul className={styles.ul}>
           {items.map((item, index) => {
             const isDisabled = disabled || item.disabled;

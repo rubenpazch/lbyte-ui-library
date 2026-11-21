@@ -17,12 +17,12 @@ npm install @rubenpazch/toast
 
 ## ToastBanner
 
-| Prop             | Tipo                   | Req. | Por defecto          | Descripción |
-| ---------------- | ---------------------- | ---- | -------------------- | ----------- |
-| `onClose`        | `(id: string) => void` | sí   |                      |             |
-| `toasts`         | `ToastItem[]`          | sí   |                      |             |
-| `className`      | `string`               |      |                      |             |
-| `closeAriaLabel` | `string`               |      | `Close notification` |             |
+| Prop             | Tipo                   | Req. | Por defecto           | Descripción |
+| ---------------- | ---------------------- | ---- | --------------------- | ----------- |
+| `onClose`        | `(id: string) => void` | sí   |                       |             |
+| `toasts`         | `ToastItem[]`          | sí   |                       |             |
+| `className`      | `string`               |      |                       |             |
+| `closeAriaLabel` | `string`               |      | `Cerrar notificación` |             |
 
 Tipos: `ToastAction`, `ToastBannerProps`, `ToastItem`, `ToastType`.
 

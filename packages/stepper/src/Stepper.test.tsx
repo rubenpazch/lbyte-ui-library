@@ -227,3 +227,23 @@ describe("ProgressSteps", () => {
     expect(stepCircle.className).toContain(styles.circleMedium);
   });
 });
+
+describe("Stepper: accesibilidad", () => {
+  it("es una navegación con el paso actual marcado", () => {
+    render(
+      <ProgressSteps
+        steps={[
+          { number: 1, title: "Datos" },
+          { number: 2, title: "Pago" },
+        ]}
+        currentStep={2}
+      />,
+    );
+    expect(
+      screen.getByRole("navigation", { name: "Progreso" }),
+    ).toBeInTheDocument();
+    const items = screen.getAllByRole("listitem");
+    expect(items[1]).toHaveAttribute("aria-current", "step");
+    expect(items[0]).not.toHaveAttribute("aria-current");
+  });
+});

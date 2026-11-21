@@ -17,10 +17,31 @@ describe("CheckboxInput Component", () => {
       expect(checkbox).toHaveAttribute("id", "custom-id");
     });
 
-    it("generates unique id when not provided", () => {
-      const { container } = render(<CheckboxInput label="Auto ID" />);
-      const checkbox = container.querySelector('input[type="checkbox"]');
-      expect(checkbox?.id).toMatch(/^checkbox-/);
+    it("generates a unique, stable id when not provided", () => {
+      const { container, rerender } = render(
+        <>
+          <CheckboxInput label="Auto ID" />
+          <CheckboxInput label="Otro" />
+        </>,
+      );
+      const [a, b] = Array.from(
+        container.querySelectorAll('input[type="checkbox"]'),
+      );
+      expect(a.id).toBeTruthy();
+      expect(a.id).not.toBe(b.id);
+      const before = a.id;
+      rerender(
+        <>
+          <CheckboxInput label="Auto ID" checked />
+          <CheckboxInput label="Otro" />
+        </>,
+      );
+      expect(container.querySelector('input[type="checkbox"]')?.id).toBe(
+        before,
+      );
+      expect(screen.getByLabelText("Auto ID")).toBe(
+        container.querySelector('input[type="checkbox"]'),
+      );
     });
   });
 

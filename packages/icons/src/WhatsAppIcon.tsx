@@ -13,6 +13,8 @@ const sizeMap: Record<IconSize, string> = {
   lg: "w-6 h-6",
   xl: "w-8 h-8",
 };
+// Tamaño en px como atributo SVG: funciona sin Tailwind y cualquier clase CSS lo sobrescribe.
+const sizePx: Record<string, number> = { sm: 16, md: 20, lg: 24, xl: 32 };
 
 /**
  * WhatsAppIcon component
@@ -24,6 +26,8 @@ const WhatsAppIcon: React.FC<WhatsAppIconProps> = ({
 }) => {
   return (
     <svg
+      width={sizePx[size]}
+      height={sizePx[size]}
       className={`${sizeMap[size]} ${className}`}
       fill="currentColor"
       viewBox="0 0 256 256"
