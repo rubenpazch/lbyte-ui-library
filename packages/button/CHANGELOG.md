@@ -1,5 +1,12 @@
 # @rubenpazch/button
 
+## 6.2.2
+
+### Patch Changes
+
+- b1cb9e0: - `Button`: `type="button"` por defecto. Antes, un `Button` sin `type` dentro de un `<form>` lo enviaba (en HTML el tipo por defecto es `submit`). Para enviar, usa `type="submit"`.
+  - `Alert`: prop `role` para avisos fijos (`"note"`), que no se anuncian como urgentes.
+
 ## 6.2.1
 
 ### Patch Changes

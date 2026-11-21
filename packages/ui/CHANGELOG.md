@@ -1,5 +1,18 @@
 # @rubenpazch/ui
 
+## 0.5.1
+
+### Patch Changes
+
+- Updated dependencies [b1cb9e0]
+  - @rubenpazch/button@6.2.2
+  - @rubenpazch/alert@0.2.0
+  - @rubenpazch/checkbox-input@3.2.2
+  - @rubenpazch/confirmation-dialog@3.1.3
+  - @rubenpazch/date-input@3.1.4
+  - @rubenpazch/date-picker@3.1.4
+  - @rubenpazch/prescription-eye-card@3.0.5
+
 ## 0.5.0
 
 ### Minor Changes

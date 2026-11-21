@@ -1,5 +1,11 @@
 # @rubenpazch/prescription-eye-card
 
+## 3.0.5
+
+### Patch Changes
+
+- @rubenpazch/checkbox-input@3.2.2
+
 ## 3.0.4
 
 ### Patch Changes
