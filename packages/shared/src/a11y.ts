@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useId, useRef } from "react";
+import { useCallback, useEffect, useId, useRef, useState } from "react";
 import type { Ref, RefCallback, RefObject } from "react";
 
 /* ------------------------------------------------------------------ tamaños */
@@ -244,4 +244,34 @@ export function mergeRefs<T>(
       else if (ref) (ref as RefObject<T | null>).current = value;
     }
   };
+}
+
+/* ------------------------------------------------------------- pantallas */
+
+/** Pantallas donde los selectores (calendarios…) se abren a pantalla completa. */
+export const MOBILE_QUERY = "(max-width: 639px)";
+
+/**
+ * true mientras se cumpla la media query (se actualiza al girar o redimensionar).
+ * En el servidor o sin `matchMedia` (pruebas) devuelve `false`.
+ */
+export function useMediaQuery(query: string): boolean {
+  const [matches, setMatches] = useState(() =>
+    typeof window !== "undefined" && typeof window.matchMedia === "function"
+      ? window.matchMedia(query).matches
+      : false,
+  );
+  useEffect(() => {
+    if (
+      typeof window === "undefined" ||
+      typeof window.matchMedia !== "function"
+    )
+      return;
+    const mql = window.matchMedia(query);
+    const onChange = () => setMatches(mql.matches);
+    onChange();
+    mql.addEventListener?.("change", onChange);
+    return () => mql.removeEventListener?.("change", onChange);
+  }, [query]);
+  return matches;
 }

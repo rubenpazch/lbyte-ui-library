@@ -177,6 +177,9 @@ function GuardarUsuario() {
 
 ## Valores por defecto que conviene conocer
 
+- `DateInput` y `DatePicker` abren el calendario **a pantalla completa en celulares** (< 640 px):
+  sin teclado virtual, con botón "Cerrar", y al elegir la fecha vuelven al campo. En escritorio
+  siguen siendo un desplegable. Para desactivarlo: `mobileFullScreen={false}`.
 - `Button` es `variant="text"` (sin fondo) por defecto: el botón principal de una acción lleva
   `variant="contained"`, el secundario `variant="outlined"`. Su `type` por defecto es `"button"`:
   para enviar un formulario usa `type="submit"`.
