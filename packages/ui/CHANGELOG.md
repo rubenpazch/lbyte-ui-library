@@ -1,5 +1,16 @@
 # @rubenpazch/ui
 
+## 0.11.0
+
+### Minor Changes
+
+- 43f7b4a: `Tabs`: `value` para usarlo **controlado** (la pestaña vive en la URL o en el estado de la app; el componente avisa con `onChange` y no cambia solo). Sin `value` funciona como antes. Se exportan `TabsProps`, `Tab` y `TabOrientation`.
+
+### Patch Changes
+
+- Updated dependencies [43f7b4a]
+  - @rubenpazch/tabs@3.2.0
+
 ## 0.10.0
 
 ### Minor Changes
