@@ -18,7 +18,7 @@
 .sm { padding: 0.25rem 0.5rem; font-size: var(--lb-font-size-xs); }
 .md { padding: 0.375rem 0.625rem; font-size: var(--lb-font-size-sm); }
 
-.primary { --b-bg: var(--lb-color-blue-subtle); --b-fg: var(--lb-color-blue-strong); --b-bd: var(--lb-color-blue-border); --b-solid: var(--lb-color-primary); }
+.primary { --b-bg: var(--lb-color-primary-subtle); --b-fg: var(--lb-color-primary-strong); --b-bd: var(--lb-color-primary-border); --b-solid: var(--lb-color-primary); }
 .info { --b-bg: var(--lb-color-blue-subtle); --b-fg: var(--lb-color-blue-strong); --b-bd: var(--lb-color-blue-border); --b-solid: var(--lb-color-info); }
 .success { --b-bg: var(--lb-color-emerald-subtle); --b-fg: var(--lb-color-emerald-strong); --b-bd: var(--lb-color-emerald-border); --b-solid: var(--lb-color-success); }
 .warning { --b-bg: var(--lb-color-amber-subtle); --b-fg: var(--lb-color-amber-strong); --b-bd: var(--lb-color-amber-border); --b-solid: var(--lb-color-warning); }

@@ -20,9 +20,9 @@
 }
 
 .statusInProgress {
-  background: var(--lb-color-blue-subtle);
-  border-color: var(--lb-color-blue-border);
-  color: var(--lb-color-blue-strong);
+  background: var(--lb-color-primary-subtle);
+  border-color: var(--lb-color-primary-border);
+  color: var(--lb-color-primary-strong);
 }
 
 .statusOpticalInformationComplete {

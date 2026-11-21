@@ -209,13 +209,13 @@
 }
 
 .dayToday {
-  background: var(--lb-color-blue-subtle);
+  background: var(--lb-color-primary-subtle);
   color: var(--lb-color-primary);
-  border: 2px solid var(--lb-color-blue-border);
+  border: 2px solid var(--lb-color-primary-border);
 }
 
 .dayToday:hover {
-  background: var(--lb-color-blue-subtle);
+  background: var(--lb-color-primary-subtle);
 }
 
 .dayDisabled {

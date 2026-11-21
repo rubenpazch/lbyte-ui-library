@@ -62,16 +62,16 @@
 }
 
 .variantHighlighted {
-  background: var(--lb-color-blue-subtle);
-  border-color: var(--lb-color-blue-border);
+  background: var(--lb-color-primary-subtle);
+  border-color: var(--lb-color-primary-border);
 }
 
 .labelHighlighted {
-  color: var(--lb-color-blue-strong);
+  color: var(--lb-color-primary-strong);
 }
 
 .valueHighlighted {
-  color: var(--lb-color-blue-strong);
+  color: var(--lb-color-primary-strong);
 }
 
 .rangeHighlighted {

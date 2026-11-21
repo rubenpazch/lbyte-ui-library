@@ -52,13 +52,13 @@
 
 .subtitle {
   margin-top: 0.25rem;
-  color: var(--lb-color-blue-subtle);
+  color: var(--lb-color-primary-subtle);
 }
 
 .groupRow {
   margin-top: 0.5rem;
   font-size: 0.875rem;
-  color: var(--lb-color-blue-subtle);
+  color: var(--lb-color-primary-subtle);
 }
 
 .groupLabel {
@@ -74,8 +74,8 @@
 .groupBadge {
   padding: 0.125rem 0.5rem;
   border-radius: 999px;
-  background: var(--lb-color-blue-subtle);
-  color: var(--lb-color-blue-strong);
+  background: var(--lb-color-primary-subtle);
+  color: var(--lb-color-primary-strong);
   font-size: 0.75rem;
   font-weight: 600;
 }

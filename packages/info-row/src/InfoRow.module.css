@@ -67,8 +67,8 @@
 }
 
 .variantBlue {
-  background-color: var(--lb-color-blue-subtle);
-  border: 1px solid var(--lb-color-blue-border);
+  background-color: var(--lb-color-primary-subtle);
+  border: 1px solid var(--lb-color-primary-border);
 }
 
 .variantYellow {
@@ -117,7 +117,7 @@
 }
 
 .iconColorBlue {
-  color: var(--lb-color-blue-accent);
+  color: var(--lb-color-primary-accent);
 }
 
 .iconColorYellow {
@@ -192,7 +192,7 @@
 }
 
 .labelColorBlue {
-  color: var(--lb-color-blue-strong);
+  color: var(--lb-color-primary-strong);
 }
 
 .labelColorYellow {

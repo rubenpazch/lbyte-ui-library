@@ -62,7 +62,7 @@
 }
 
 .tabActiveHorizontal {
-  border-color: var(--lb-color-blue-accent);
+  border-color: var(--lb-color-primary-accent);
   color: var(--lb-color-primary);
 }
 
@@ -77,8 +77,8 @@
 }
 
 .tabActiveVertical {
-  border-color: var(--lb-color-blue-accent);
-  background: var(--lb-color-blue-subtle);
+  border-color: var(--lb-color-primary-accent);
+  background: var(--lb-color-primary-subtle);
   color: var(--lb-color-primary);
 }
 
@@ -125,7 +125,7 @@
   font-size: 0.75rem;
   font-weight: 600;
   border-radius: 9999px;
-  background: var(--lb-color-blue-subtle);
+  background: var(--lb-color-primary-subtle);
   color: var(--lb-color-primary);
 }
 

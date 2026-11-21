@@ -73,6 +73,14 @@ rutas internas (`dist/…`).
   - La lista completa está en `@rubenpazch/ui/tokens.css`.
 - Tema oscuro: `data-theme="dark"` en `<html>` (o en un contenedor). Los tokens y las utilidades
   `lb-*` cambian solos.
+- **Color de la marca** (p. ej. una app que se personaliza por organización): redefine solo
+  `--lb-color-primary` (y opcionalmente `--lb-color-primary-hover`) en `:root` o en un contenedor.
+  Los tonos `--lb-color-primary-subtle`, `-border`, `-accent` y `-strong` se derivan solos y todos
+  los componentes los usan (menú activo, foco, badges, chips, pestañas…). Para estados de
+  "información" usa `info`, que es azul siempre.
+  ```ts
+  document.documentElement.style.setProperty("--lb-color-primary", "#0f766e");
+  ```
 - Para ajustar un componente usa sus props (`variant`, `color`, `size`, `fullWidth`…) y, si hace
   falta, `className` para márgenes o posición. No sobrescribas sus clases internas.
 - Para Tailwind puro (layout, grid, flex) usa las utilidades normales; para color, tipografía,

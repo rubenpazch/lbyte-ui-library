@@ -63,19 +63,19 @@
 }
 
 .circleActiveSmall {
-  box-shadow: 0 0 0 2px var(--lb-color-blue-border);
+  box-shadow: 0 0 0 2px var(--lb-color-primary-border);
 }
 
 .circleActiveMedium {
-  box-shadow: 0 0 0 4px var(--lb-color-blue-border);
+  box-shadow: 0 0 0 4px var(--lb-color-primary-border);
 }
 
 .circleActiveLarge {
-  box-shadow: 0 0 0 8px var(--lb-color-blue-border);
+  box-shadow: 0 0 0 8px var(--lb-color-primary-border);
 }
 
 .circleCompleted {
-  background: var(--lb-color-blue-subtle);
+  background: var(--lb-color-primary-subtle);
   color: var(--lb-color-primary);
 }
 
@@ -120,7 +120,7 @@
 }
 
 .titleClickable:hover {
-  color: var(--lb-color-blue-strong);
+  color: var(--lb-color-primary-strong);
 }
 
 .titleCompleted {
