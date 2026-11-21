@@ -1,5 +1,14 @@
 # @rubenpazch/image-upload
 
+## 3.0.2
+
+### Patch Changes
+
+- Updated dependencies [d0f0768]
+  - @rubenpazch/tokens@0.4.0
+  - @rubenpazch/icons@6.2.0
+  - @rubenpazch/button@6.2.0
+
 ## 3.0.1
 
 ### Patch Changes

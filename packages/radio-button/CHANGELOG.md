@@ -1,5 +1,12 @@
 # @rubenpazch/radio-button
 
+## 4.1.2
+
+### Patch Changes
+
+- Updated dependencies [d0f0768]
+  - @rubenpazch/tokens@0.4.0
+
 ## 4.1.1
 
 ### Patch Changes

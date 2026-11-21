@@ -1,6 +1,6 @@
 {
   "name": "@rubenpazch/modal",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Ventana modal accesible (portal, foco retenido, Escape, bloqueo de scroll)",
   "repository": {
     "type": "git",
