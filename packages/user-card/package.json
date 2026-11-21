@@ -1,6 +1,6 @@
 {
   "name": "@rubenpazch/user-card",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Tarjeta de una persona: avatar, nombre, dato secundario, etiquetas y acciones",
   "repository": {
     "type": "git",
