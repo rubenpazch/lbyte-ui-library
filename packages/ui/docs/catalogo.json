@@ -69,6 +69,13 @@
               "descripcion": "Si se pasa, muestra el botón × y se llama al cerrarlo."
             },
             {
+              "nombre": "role",
+              "tipo": "\"alert\" | \"status\" | \"note\"",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Rol ARIA. Por defecto `alert` (warning/danger) o `status` (info/success), que se anuncian al\naparecer. Para un aviso fijo que ya está en la página al cargar, usa `\"note\"`."
+            },
+            {
               "nombre": "title",
               "tipo": "ReactNode",
               "requerido": false,

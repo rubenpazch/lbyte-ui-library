@@ -13,6 +13,8 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       published: ${{ steps.changesets.outputs.published }}
+      # Sin changesets pendientes, la acción corre `changeset publish` (modo publicar).
+      hasChangesets: ${{ steps.changesets.outputs.hasChangesets }}
     permissions:
       contents: write
       pull-requests: write
@@ -72,9 +74,11 @@ jobs:
           NPM_TOKEN: ${{ vars.NPM_TRUSTED_PUBLISHING != 'true' && secrets.NPM_TOKEN_UI_LIBRARY || '' }}
           NPM_CONFIG_PROVENANCE: true
 
-  # Solo cuando se publicó una versión nueva en npm: actualiza https://ui.lbyte.pe
+  # Actualiza https://ui.lbyte.pe cada vez que el release corre en modo publicar (al integrar
+  # "chore: version packages"). No se usa `published`: changeset v3 cambió su salida y
+  # changesets/action@v1 ya no detecta lo publicado, así que ese output nunca vale true.
   storybook:
     needs: release
-    if: needs.release.outputs.published == 'true'
+    if: needs.release.outputs.hasChangesets == 'false'
     uses: ./.github/workflows/storybook.yml
     secrets: inherit

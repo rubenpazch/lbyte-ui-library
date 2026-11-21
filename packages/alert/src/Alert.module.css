@@ -10,10 +10,26 @@
   line-height: var(--lb-line-height-normal);
 }
 
-.info { background: var(--lb-color-blue-subtle); border-color: var(--lb-color-blue-border); color: var(--lb-color-blue-strong); }
-.success { background: var(--lb-color-emerald-subtle); border-color: var(--lb-color-emerald-border); color: var(--lb-color-emerald-strong); }
-.warning { background: var(--lb-color-amber-subtle); border-color: var(--lb-color-amber-border); color: var(--lb-color-amber-strong); }
-.danger { background: var(--lb-color-red-subtle); border-color: var(--lb-color-red-border); color: var(--lb-color-red-strong); }
+.info {
+  background: var(--lb-color-blue-subtle);
+  border-color: var(--lb-color-blue-border);
+  color: var(--lb-color-blue-strong);
+}
+.success {
+  background: var(--lb-color-emerald-subtle);
+  border-color: var(--lb-color-emerald-border);
+  color: var(--lb-color-emerald-strong);
+}
+.warning {
+  background: var(--lb-color-amber-subtle);
+  border-color: var(--lb-color-amber-border);
+  color: var(--lb-color-amber-strong);
+}
+.danger {
+  background: var(--lb-color-red-subtle);
+  border-color: var(--lb-color-red-border);
+  color: var(--lb-color-red-strong);
+}
 
 .icon {
   display: inline-flex;
