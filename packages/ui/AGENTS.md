@@ -103,6 +103,11 @@ rutas internas (`dist/…`).
 | Aviso fijo en la página / mensaje del servidor            | `Alert` / `useToast()` (ver **Mensajes**)                                                                                               |
 | Confirmar / editar en ventana                             | `ConfirmationDialog` / `Modal`                                                                                                          |
 | Acciones de una fila                                      | `Menu` (⋮)                                                                                                                              |
+| Historial / seguimiento de algo en orden                  | `Timeline` (la app convierte sus estados en `items`); pasos que el usuario recorre ahora: `Stepper`                                     |
+| Resumen de datos de un registro (solo lectura)            | `DescriptionList` (etiqueta/valor en columnas)                                                                                          |
+| Adjuntar archivos                                         | `FileUpload` (varios, con validación); una sola imagen con vista previa: `ImageUpload`                                                  |
+| Personas en cuadrícula (usuarios, socios, clientes)       | `UserCard`                                                                                                                              |
+| Raíz de una app con sesión                                | `AuthGate` envolviendo `AppShell` (ver decisión 0006)                                                                                   |
 | Cargando                                                  | `Skeleton` (contenido), `LoadingSpinner` (botón), `OverlayLoader` (pantalla), `ProgressBar` (avance)                                    |
 
 ```tsx

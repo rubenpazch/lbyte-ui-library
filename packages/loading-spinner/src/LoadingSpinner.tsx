@@ -7,7 +7,11 @@ interface LoadingSpinnerProps {
   className?: string;
   variant?: "spinner" | "dots" | "pulse" | "ring";
   inline?: boolean;
-  color?: "blue" | "gray" | "white";
+  /**
+   * primary (por defecto): color de la marca (--lb-color-primary). gray: neutro. white: sobre fondos de color.
+   * "blue" es el nombre antiguo de "primary" (sigue funcionando).
+   */
+  color?: "primary" | "gray" | "white" | "blue";
 }
 
 function classNames(...classes: (string | boolean | undefined)[]): string {
@@ -20,7 +24,7 @@ function classNames(...classes: (string | boolean | undefined)[]): string {
  *
  * @param variant - 'spinner' (default circular spinner), 'dots' (three bouncing dots), 'pulse' (pulsing circle), 'ring' (rotating ring)
  * @param inline - If true, removes centering and margins for inline use (e.g., in buttons or inputs)
- * @param color - Color scheme: 'blue' (default), 'gray', 'white'
+ * @param color - 'primary' (por defecto, color de la marca), 'gray', 'white'; 'blue' = alias de 'primary'
  */
 const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({
   message,
@@ -28,8 +32,10 @@ const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({
   className = "",
   variant = "spinner",
   inline = false,
-  color = "blue",
+  color: colorProp = "primary",
 }) => {
+  // Las clases CSS se llaman "Blue" por historia, pero usan --lb-color-primary (siguen la marca).
+  const color = colorProp === "primary" ? "blue" : colorProp;
   const sizeClass =
     styles[`size${size.charAt(0).toUpperCase() + size.slice(1)}`];
   const colorClass =

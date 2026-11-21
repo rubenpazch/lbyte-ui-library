@@ -20,13 +20,13 @@ npm install @rubenpazch/loading-spinner
 LoadingSpinner component
 Displays a loading indicator with multiple style variants
 
-| Prop        | Tipo                                       | Req. | Por defecto | Descripción |
-| ----------- | ------------------------------------------ | ---- | ----------- | ----------- |
-| `className` | `string`                                   |      | ``          |             |
-| `color`     | `"blue" \| "gray" \| "white"`              |      | `blue`      |             |
-| `inline`    | `boolean`                                  |      | `false`     |             |
-| `message`   | `string`                                   |      |             |             |
-| `size`      | `"sm" \| "md" \| "lg"`                     |      | `md`        |             |
-| `variant`   | `"spinner" \| "dots" \| "pulse" \| "ring"` |      | `spinner`   |             |
+| Prop        | Tipo                                       | Req. | Por defecto | Descripción                                                                                                                                                              |
+| ----------- | ------------------------------------------ | ---- | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `className` | `string`                                   |      | ``          |                                                                                                                                                                          |
+| `color`     | `"primary" \| "gray" \| "white" \| "blue"` |      | `primary`   | primary (por defecto): color de la marca (--lb-color-primary). gray: neutro. white: sobre fondos de color. "blue" es el nombre antiguo de "primary" (sigue funcionando). |
+| `inline`    | `boolean`                                  |      | `false`     |                                                                                                                                                                          |
+| `message`   | `string`                                   |      |             |                                                                                                                                                                          |
+| `size`      | `"sm" \| "md" \| "lg"`                     |      | `md`        |                                                                                                                                                                          |
+| `variant`   | `"spinner" \| "dots" \| "pulse" \| "ring"` |      | `spinner`   |                                                                                                                                                                          |
 
 <!-- catalogo:fin -->
