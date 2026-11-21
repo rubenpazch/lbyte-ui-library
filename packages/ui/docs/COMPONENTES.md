@@ -1257,19 +1257,22 @@ Pestañas para alternar entre secciones de una misma vista.
 import { Tabs } from "@rubenpazch/ui";
 ```
 
-| Prop               | Tipo                                       | Req. | Por defecto  | Descripción                                                           |
-| ------------------ | ------------------------------------------ | ---- | ------------ | --------------------------------------------------------------------- |
-| `tabs`             | `Tab[]`                                    | sí   |              |                                                                       |
-| `ariaLabel`        | `string`                                   |      | `Pestañas`   | Nombre accesible del grupo de pestañas (por defecto "Pestañas").      |
-| `className`        | `string`                                   |      |              |                                                                       |
-| `defaultTab`       | `string`                                   |      |              |                                                                       |
-| `lazy`             | `boolean`                                  |      | `false`      | Lazy mode - only calls onLoad when tab is first visited               |
-| `loading`          | `boolean`                                  |      | `false`      | Loading state for the active tab content                              |
-| `loadingComponent` | `ReactNode`                                |      |              | Custom loading component                                              |
-| `onChange`         | `(tabId: string) => void`                  |      |              |                                                                       |
-| `onLoad`           | `(tabId: string) => void \| Promise<void>` |      |              | Called when a tab is activated. Use for lazy loading data             |
-| `orientation`      | `"horizontal" \| "vertical"`               |      | `horizontal` | Orientation of tabs - horizontal (default) or vertical (left-aligned) |
-| `renderContent`    | `(tabId: string) => ReactNode`             |      |              | Render function for tab content (alternative to content prop in Tab)  |
+| Prop               | Tipo                                       | Req. | Por defecto  | Descripción                                                                                                                                                                                |
+| ------------------ | ------------------------------------------ | ---- | ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `tabs`             | `Tab[]`                                    | sí   |              |                                                                                                                                                                                            |
+| `ariaLabel`        | `string`                                   |      | `Pestañas`   | Nombre accesible del grupo de pestañas (por defecto "Pestañas").                                                                                                                           |
+| `className`        | `string`                                   |      |              |                                                                                                                                                                                            |
+| `defaultTab`       | `string`                                   |      |              |                                                                                                                                                                                            |
+| `lazy`             | `boolean`                                  |      | `false`      | Lazy mode - only calls onLoad when tab is first visited                                                                                                                                    |
+| `loading`          | `boolean`                                  |      | `false`      | Loading state for the active tab content                                                                                                                                                   |
+| `loadingComponent` | `ReactNode`                                |      |              | Custom loading component                                                                                                                                                                   |
+| `onChange`         | `(tabId: string) => void`                  |      |              |                                                                                                                                                                                            |
+| `onLoad`           | `(tabId: string) => void \| Promise<void>` |      |              | Called when a tab is activated. Use for lazy loading data                                                                                                                                  |
+| `orientation`      | `"horizontal" \| "vertical"`               |      | `horizontal` | Orientation of tabs - horizontal (default) or vertical (left-aligned)                                                                                                                      |
+| `renderContent`    | `(tabId: string) => ReactNode`             |      |              | Render function for tab content (alternative to content prop in Tab)                                                                                                                       |
+| `value`            | `string`                                   |      |              | Pestaña activa (modo controlado). Úsalo cuando la pestaña vive en la URL o en el estado de la app: el componente no la cambia solo, avisa con `onChange`. Sin `value` funciona como antes. |
+
+Tipos: `Tab`, `TabOrientation`, `TabsProps`.
 
 ## Retroalimentación
 
