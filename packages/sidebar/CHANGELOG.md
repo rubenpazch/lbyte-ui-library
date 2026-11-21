@@ -1,5 +1,13 @@
 # @rubenpazch/sidebar
 
+## 0.1.2
+
+### Patch Changes
+
+- 1a4b995: Tema por marca: nuevos tokens `--lb-color-primary-subtle`, `-border`, `-accent` y `-strong`, derivados de `--lb-color-primary` con `color-mix` (también en modo oscuro). Los componentes los usan en lugar de `--lb-color-blue-*` para los tonos del color principal, así que basta con redefinir `--lb-color-primary` para cambiar la marca de toda la interfaz. Las variantes `info` siguen en azul.
+- Updated dependencies [1a4b995]
+  - @rubenpazch/tokens@0.5.0
+
 ## 0.1.1
 
 ### Patch Changes

@@ -1,5 +1,64 @@
 # @rubenpazch/ui
 
+## 0.5.0
+
+### Minor Changes
+
+- 1a4b995: Tema por marca: nuevos tokens `--lb-color-primary-subtle`, `-border`, `-accent` y `-strong`, derivados de `--lb-color-primary` con `color-mix` (también en modo oscuro). Los componentes los usan en lugar de `--lb-color-blue-*` para los tonos del color principal, así que basta con redefinir `--lb-color-primary` para cambiar la marca de toda la interfaz. Las variantes `info` siguen en azul.
+
+### Patch Changes
+
+- Updated dependencies [1a4b995]
+- Updated dependencies [7ce6522]
+  - @rubenpazch/tokens@0.5.0
+  - @rubenpazch/autocomplete@5.1.3
+  - @rubenpazch/badge@0.1.1
+  - @rubenpazch/chip@4.0.5
+  - @rubenpazch/data-table@0.1.1
+  - @rubenpazch/date-input@3.1.3
+  - @rubenpazch/date-picker@3.1.3
+  - @rubenpazch/icon-button@4.2.1
+  - @rubenpazch/image-upload@3.1.1
+  - @rubenpazch/info-row@3.0.4
+  - @rubenpazch/money-input@0.1.1
+  - @rubenpazch/numeric-picker@5.1.1
+  - @rubenpazch/overlay-loader@1.1.4
+  - @rubenpazch/patient-details@3.1.3
+  - @rubenpazch/patient-search@3.0.5
+  - @rubenpazch/prescription-card@3.0.5
+  - @rubenpazch/prescription-eye-card@3.0.4
+  - @rubenpazch/sidebar@0.1.2
+  - @rubenpazch/stepper@4.1.1
+  - @rubenpazch/tabs@3.1.1
+  - @rubenpazch/textarea@0.1.1
+  - @rubenpazch/text-input@6.3.0
+  - @rubenpazch/numeric-up-picker@6.1.3
+  - @rubenpazch/alert@0.1.1
+  - @rubenpazch/app-shell@0.1.2
+  - @rubenpazch/avatar@3.1.3
+  - @rubenpazch/button@6.2.1
+  - @rubenpazch/card@0.1.1
+  - @rubenpazch/checkbox-input@3.2.1
+  - @rubenpazch/confirmation-dialog@3.1.2
+  - @rubenpazch/draggable-list@3.0.3
+  - @rubenpazch/drawer@4.2.3
+  - @rubenpazch/empty-state@0.1.1
+  - @rubenpazch/form-field@0.1.1
+  - @rubenpazch/loading-spinner@4.0.3
+  - @rubenpazch/menu@0.1.1
+  - @rubenpazch/modal@0.1.2
+  - @rubenpazch/month-navigator@0.1.1
+  - @rubenpazch/page-header@0.1.1
+  - @rubenpazch/pagination@3.2.3
+  - @rubenpazch/progress-bar@0.1.1
+  - @rubenpazch/radio-button@4.2.1
+  - @rubenpazch/segmented-control@0.1.1
+  - @rubenpazch/select@1.2.1
+  - @rubenpazch/skeleton@0.1.1
+  - @rubenpazch/switch@0.1.1
+  - @rubenpazch/toast@4.0.5
+  - @rubenpazch/tooltip@0.1.1
+
 ## 0.4.0
 
 ### Minor Changes

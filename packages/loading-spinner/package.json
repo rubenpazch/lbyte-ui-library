@@ -1,6 +1,6 @@
 {
   "name": "@rubenpazch/loading-spinner",
-  "version": "4.0.2",
+  "version": "4.0.3",
   "description": "LoadingSpinner component",
   "private": false,
   "main": "dist/index.cjs.js",

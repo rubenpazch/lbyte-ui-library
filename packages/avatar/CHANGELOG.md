@@ -1,5 +1,12 @@
 # @rubenpazch/avatar
 
+## 3.1.3
+
+### Patch Changes
+
+- Updated dependencies [1a4b995]
+  - @rubenpazch/tokens@0.5.0
+
 ## 3.1.2
 
 ### Patch Changes
