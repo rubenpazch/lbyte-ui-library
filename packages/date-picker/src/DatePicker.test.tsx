@@ -265,14 +265,12 @@ describe("DatePicker Component", () => {
 
       await user.click(input);
 
-      await waitFor(async () => {
-        const days = screen
-          .getAllByRole("button")
-          .filter((btn) => btn.textContent === "15");
-        if (days.length > 0) {
-          await user.click(days[0]);
-        }
-      });
+      const days = screen
+        .getAllByRole("button")
+        .filter((btn) => btn.textContent === "15");
+      if (days.length > 0) {
+        await user.click(days[0]);
+      }
 
       if (mockFn.mock.calls.length > 0) {
         const calledWith = mockFn.mock.calls[0][0];
@@ -332,26 +330,22 @@ describe("DatePicker Component", () => {
       await user.click(input);
 
       // Click month name to go to month view
-      await waitFor(async () => {
-        const monthButton = screen
-          .getAllByRole("button")
-          .find((btn) =>
-            btn.textContent?.match(/^(November|December|January)$/i),
-          );
-        if (monthButton) {
-          await user.click(monthButton);
-        }
-      });
+      const monthButton = screen
+        .getAllByRole("button")
+        .find((btn) =>
+          btn.textContent?.match(/^(November|December|January)$/i),
+        );
+      if (monthButton) {
+        await user.click(monthButton);
+      }
 
       // Click a month
-      await waitFor(async () => {
-        const monthButtons = screen
-          .getAllByRole("button")
-          .filter((btn) => btn.textContent?.match(/^(Jan|Feb|Mar)$/i));
-        if (monthButtons.length > 0) {
-          await user.click(monthButtons[0]);
-        }
-      });
+      const monthButtons = screen
+        .getAllByRole("button")
+        .filter((btn) => btn.textContent?.match(/^(Jan|Feb|Mar)$/i));
+      if (monthButtons.length > 0) {
+        await user.click(monthButtons[0]);
+      }
 
       // Should be back to days view
       await waitFor(() => {
@@ -374,12 +368,10 @@ describe("DatePicker Component", () => {
 
       await user.click(input);
 
-      await waitFor(async () => {
-        const prevButton = screen.getByRole("button", {
-          name: /Previous month/i,
-        });
-        await user.click(prevButton);
+      const prevButton = await screen.findByRole("button", {
+        name: /Previous month/i,
       });
+      await user.click(prevButton);
 
       // Month should have changed
       await waitFor(() => {
@@ -396,10 +388,10 @@ describe("DatePicker Component", () => {
 
       await user.click(input);
 
-      await waitFor(async () => {
-        const nextButton = screen.getByRole("button", { name: /Next month/i });
-        await user.click(nextButton);
+      const nextButton = await screen.findByRole("button", {
+        name: /Next month/i,
       });
+      await user.click(nextButton);
 
       await waitFor(() => {
         expect(screen.queryByText(/December|October/i)).toBeInTheDocument();
@@ -417,10 +409,8 @@ describe("DatePicker Component", () => {
 
       await user.click(input);
 
-      await waitFor(async () => {
-        const todayButton = screen.getByRole("button", { name: /Today/i });
-        await user.click(todayButton);
-      });
+      const todayButton = await screen.findByRole("button", { name: /Today/i });
+      await user.click(todayButton);
 
       await waitFor(() => {
         expect(mockOnChange).toHaveBeenCalled();
@@ -439,10 +429,8 @@ describe("DatePicker Component", () => {
 
       await user.click(input);
 
-      await waitFor(async () => {
-        const clearButton = screen.getByRole("button", { name: /Clear/i });
-        await user.click(clearButton);
-      });
+      const clearButton = await screen.findByRole("button", { name: /Clear/i });
+      await user.click(clearButton);
 
       await waitFor(() => {
         expect(mockOnChange).toHaveBeenCalledWith("");
@@ -686,22 +674,18 @@ describe("DatePicker Component", () => {
       await user.click(input);
 
       // Click on month to go to months view
-      await waitFor(async () => {
-        const monthButton = screen
-          .getAllByRole("button")
-          .find((btn) => btn.textContent?.includes("November"));
-        if (monthButton) {
-          await user.click(monthButton);
-        }
-      });
+      const monthButton = screen
+        .getAllByRole("button")
+        .find((btn) => btn.textContent?.includes("November"));
+      if (monthButton) {
+        await user.click(monthButton);
+      }
 
       // Click previous button in months view
-      await waitFor(async () => {
-        const prevButton = screen.getByRole("button", {
-          name: /Previous year/i,
-        });
-        await user.click(prevButton);
+      const prevButton = await screen.findByRole("button", {
+        name: /Previous year/i,
       });
+      await user.click(prevButton);
 
       await waitFor(() => {
         expect(screen.getByText("2024")).toBeInTheDocument();
@@ -718,20 +702,18 @@ describe("DatePicker Component", () => {
       await user.click(input);
 
       // Click on month to go to months view
-      await waitFor(async () => {
-        const monthButton = screen
-          .getAllByRole("button")
-          .find((btn) => btn.textContent?.includes("November"));
-        if (monthButton) {
-          await user.click(monthButton);
-        }
-      });
+      const monthButton = screen
+        .getAllByRole("button")
+        .find((btn) => btn.textContent?.includes("November"));
+      if (monthButton) {
+        await user.click(monthButton);
+      }
 
       // Click next button in months view
-      await waitFor(async () => {
-        const nextButton = screen.getByRole("button", { name: /Next year/i });
-        await user.click(nextButton);
+      const nextButton = await screen.findByRole("button", {
+        name: /Next year/i,
       });
+      await user.click(nextButton);
 
       await waitFor(() => {
         expect(screen.getByText("2026")).toBeInTheDocument();
@@ -748,23 +730,19 @@ describe("DatePicker Component", () => {
       await user.click(input);
 
       // Click on year to go to years view
-      await waitFor(async () => {
-        const yearButton = screen
-          .getAllByRole("button")
-          .find((btn) => btn.textContent?.match(/^2025$/));
-        if (yearButton) {
-          await user.click(yearButton);
-          await user.click(yearButton);
-        }
-      });
+      const yearButton = screen
+        .getAllByRole("button")
+        .find((btn) => btn.textContent?.match(/^2025$/));
+      if (yearButton) {
+        await user.click(yearButton);
+        await user.click(yearButton);
+      }
 
       // Click previous button in years view
-      await waitFor(async () => {
-        const prevButton = screen.getByRole("button", {
-          name: /Previous decade/i,
-        });
-        await user.click(prevButton);
+      const prevButton = await screen.findByRole("button", {
+        name: /Previous decade/i,
       });
+      await user.click(prevButton);
 
       await waitFor(() => {
         const yearButtons = screen.getAllByRole("button");
@@ -785,21 +763,19 @@ describe("DatePicker Component", () => {
       await user.click(input);
 
       // Click on year to go to years view
-      await waitFor(async () => {
-        const yearButton = screen
-          .getAllByRole("button")
-          .find((btn) => btn.textContent?.match(/^2025$/));
-        if (yearButton) {
-          await user.click(yearButton);
-          await user.click(yearButton);
-        }
-      });
+      const yearButton = screen
+        .getAllByRole("button")
+        .find((btn) => btn.textContent?.match(/^2025$/));
+      if (yearButton) {
+        await user.click(yearButton);
+        await user.click(yearButton);
+      }
 
       // Click next button in years view
-      await waitFor(async () => {
-        const nextButton = screen.getByRole("button", { name: /Next decade/i });
-        await user.click(nextButton);
+      const nextButton = await screen.findByRole("button", {
+        name: /Next decade/i,
       });
+      await user.click(nextButton);
 
       await waitFor(() => {
         const yearButtons = screen.getAllByRole("button");
@@ -855,18 +831,16 @@ describe("DatePicker Component", () => {
       await user.click(input);
 
       // Click on month name button in the header to switch to months view
-      await waitFor(async () => {
-        const monthButtons = screen
-          .getAllByRole("button")
-          .filter((btn) =>
-            btn.textContent?.match(
-              /^(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)$/,
-            ),
-          );
-        if (monthButtons.length > 0) {
-          await user.click(monthButtons[0]);
-        }
-      });
+      const monthButtons = screen
+        .getAllByRole("button")
+        .filter((btn) =>
+          btn.textContent?.match(
+            /^(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)$/,
+          ),
+        );
+      if (monthButtons.length > 0) {
+        await user.click(monthButtons[0]);
+      }
 
       await waitFor(() => {
         const currentMonthIndex = today.getMonth();
@@ -908,14 +882,12 @@ describe("DatePicker Component", () => {
       await user.click(input);
 
       // Click on month name to go to months view
-      await waitFor(async () => {
-        const monthButton = screen
-          .getAllByRole("button")
-          .find((btn) => btn.textContent?.match(/^March$/i));
-        if (monthButton) {
-          await user.click(monthButton);
-        }
-      });
+      const monthButton = screen
+        .getAllByRole("button")
+        .find((btn) => btn.textContent?.match(/^March$/i));
+      if (monthButton) {
+        await user.click(monthButton);
+      }
 
       await waitFor(() => {
         const marButton = screen
@@ -938,14 +910,12 @@ describe("DatePicker Component", () => {
       await user.click(input);
 
       // Click on year to go to years view
-      await waitFor(async () => {
-        const yearButton = screen
-          .getAllByRole("button")
-          .find((btn) => btn.textContent?.match(/^\d{4}$/));
-        if (yearButton) {
-          await user.click(yearButton);
-        }
-      });
+      const yearButton = screen
+        .getAllByRole("button")
+        .find((btn) => btn.textContent?.match(/^\d{4}$/));
+      if (yearButton) {
+        await user.click(yearButton);
+      }
 
       await waitFor(() => {
         const currentYearButton = screen
@@ -967,30 +937,26 @@ describe("DatePicker Component", () => {
       await user.click(input);
 
       // Click on year twice to go to years view
-      await waitFor(async () => {
-        const yearButton = screen
-          .getAllByRole("button")
-          .find((btn) => btn.textContent?.match(/^2023$/));
-        if (yearButton) {
-          await user.click(yearButton);
-        }
-      });
+      const yearButton = screen
+        .getAllByRole("button")
+        .find((btn) => btn.textContent?.match(/^2023$/));
+      if (yearButton) {
+        await user.click(yearButton);
+      }
 
       await user.click(input);
 
       // Click on the year button in header to go to years view
-      await waitFor(async () => {
-        const yearButtonInHeader = screen
-          .getAllByRole("button")
-          .find(
-            (btn) =>
-              btn.textContent?.includes("2023") &&
-              btn.className.includes(styles.headerButton),
-          );
-        if (yearButtonInHeader) {
-          await user.click(yearButtonInHeader);
-        }
-      });
+      const yearButtonInHeader = screen
+        .getAllByRole("button")
+        .find(
+          (btn) =>
+            btn.textContent?.includes("2023") &&
+            btn.className.includes(styles.headerButton),
+        );
+      if (yearButtonInHeader) {
+        await user.click(yearButtonInHeader);
+      }
 
       await waitFor(() => {
         const year2023Button = screen
@@ -1012,24 +978,20 @@ describe("DatePicker Component", () => {
       await user.click(input);
 
       // Go to years view
-      await waitFor(async () => {
-        const yearButton = screen
-          .getAllByRole("button")
-          .find((btn) => btn.textContent?.match(/^\d{4}$/));
-        if (yearButton) {
-          await user.click(yearButton);
-        }
-      });
+      const yearButton = screen
+        .getAllByRole("button")
+        .find((btn) => btn.textContent?.match(/^\d{4}$/));
+      if (yearButton) {
+        await user.click(yearButton);
+      }
 
       // Select a year
-      await waitFor(async () => {
-        const year2023Button = screen
-          .getAllByRole("button")
-          .find((btn) => btn.textContent === "2023");
-        if (year2023Button) {
-          await user.click(year2023Button);
-        }
-      });
+      const year2023Button = screen
+        .getAllByRole("button")
+        .find((btn) => btn.textContent === "2023");
+      if (year2023Button) {
+        await user.click(year2023Button);
+      }
 
       // Should return to months view
       await waitFor(() => {
