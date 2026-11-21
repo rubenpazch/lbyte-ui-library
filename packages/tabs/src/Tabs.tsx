@@ -15,9 +15,14 @@ export interface Tab {
 
 export type TabOrientation = "horizontal" | "vertical";
 
-interface TabsProps {
+export interface TabsProps {
   tabs: Tab[];
   defaultTab?: string;
+  /**
+   * Pestaña activa (modo controlado). Úsalo cuando la pestaña vive en la URL o en el estado de la
+   * app: el componente no la cambia solo, avisa con `onChange`. Sin `value` funciona como antes.
+   */
+  value?: string;
   onChange?: (tabId: string) => void;
   /** Called when a tab is activated. Use for lazy loading data */
   onLoad?: (tabId: string) => void | Promise<void>;
@@ -39,6 +44,7 @@ interface TabsProps {
 const Tabs: React.FC<TabsProps> = ({
   tabs,
   defaultTab,
+  value,
   onChange,
   onLoad,
   loading = false,
@@ -53,7 +59,9 @@ const Tabs: React.FC<TabsProps> = ({
   const tabId = (id: string) => `${baseId}-tab-${id}`;
   const panelId = `${baseId}-panel`;
   const tabRefs = useRef<Record<string, HTMLButtonElement | null>>({});
-  const [activeTab, setActiveTab] = useState(defaultTab || tabs[0]?.id);
+  const [internalTab, setActiveTab] = useState(defaultTab || tabs[0]?.id);
+  const controlled = value !== undefined;
+  const activeTab = controlled ? value : internalTab;
   const [visitedTabs, setVisitedTabs] = useState<Set<string>>(
     new Set([defaultTab || tabs[0]?.id]),
   );
@@ -64,7 +72,7 @@ const Tabs: React.FC<TabsProps> = ({
 
     const isFirstVisit = lazy && !visitedTabs.has(tabId);
 
-    setActiveTab(tabId);
+    if (!controlled) setActiveTab(tabId);
 
     // Track visited tabs for lazy loading
     if (isFirstVisit) {

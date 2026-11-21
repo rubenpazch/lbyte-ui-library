@@ -8063,12 +8063,19 @@
               "requerido": false,
               "porDefecto": null,
               "descripcion": "Render function for tab content (alternative to content prop in Tab)"
+            },
+            {
+              "nombre": "value",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Pestaña activa (modo controlado). Úsalo cuando la pestaña vive en la URL o en el estado de la\napp: el componente no la cambia solo, avisa con `onChange`. Sin `value` funciona como antes."
             }
           ]
         }
       ],
       "otrosValores": [],
-      "tipos": []
+      "tipos": ["Tab", "TabOrientation", "TabsProps"]
     },
     {
       "paquete": "@rubenpazch/text-input",
