@@ -29,6 +29,7 @@ librería (ver AGENTS.md del repo lbyte-ui-library), no lo copies en la app.
 | [`@rubenpazch/data-table`](#rubenpazchdata-table)                       | Datos                      | DataTable                                                                                 | Tabla de datos accesible: columnas con render, orden (aria-sort) en el navegador o en el servidor, carga con Skeleton, estado vacío, filas clicables, encabezado fijo y scroll horizontal en móvil.                                                    |
 | [`@rubenpazch/date-input`](#rubenpazchdate-input)                       | Formularios                | DateInput                                                                                 | Campo de fecha con formato local, mínimo/máximo, ayuda y error.                                                                                                                                                                                        |
 | [`@rubenpazch/date-picker`](#rubenpazchdate-picker)                     | Formularios                | DatePicker                                                                                | Selector de fecha con calendario desplegable.                                                                                                                                                                                                          |
+| [`@rubenpazch/date-range-picker`](#rubenpazchdate-range-picker)         | Formularios                | DateRangePicker, DEFAULT_DATE_RANGE_LABELS, DEFAULT_DATE_RANGE_PRESETS, rangoValido       | Dos fechas (desde y hasta) con validación del orden y atajos (este mes, mes anterior, últimos 30 días…). Valores ISO AAAA-MM-DD.                                                                                                                       |
 | [`@rubenpazch/draggable-list`](#rubenpazchdraggable-list)               | Datos                      | DraggableList                                                                             | Lista reordenable arrastrando (también con teclado), basada en dnd-kit.                                                                                                                                                                                |
 | [`@rubenpazch/drawer`](#rubenpazchdrawer)                               | Navegación                 | Drawer                                                                                    | Panel lateral (izquierda/derecha/arriba/abajo) con animación y fondo.                                                                                                                                                                                  |
 | [`@rubenpazch/empty-state`](#rubenpazchempty-state)                     | Retroalimentación          | EmptyState                                                                                | Estado vacío con icono, título, descripción y acciones ("No hay convocatorias · Crear").                                                                                                                                                               |
@@ -67,6 +68,7 @@ librería (ver AGENTS.md del repo lbyte-ui-library), no lo copies en la app.
 | [`@rubenpazch/toast`](#rubenpazchtoast)                                 | Retroalimentación          | ToastBanner, ToastProvider, ToastRegion, useToast                                         | Notificaciones temporales (Toast) y avisos fijos (ToastBanner) con tipos y acciones.                                                                                                                                                                   |
 | [`@rubenpazch/tokens`](#rubenpazchtokens)                               | Base (tokens y utilidades) | cssVar, fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, …                    | Tokens de diseño (colores, tipografía, espacios, radios, sombras) como variables CSS --lb-*, estilos base y puente para Tailwind 4.                                                                                                                    |
 | [`@rubenpazch/tooltip`](#rubenpazchtooltip)                             | Presentación de datos      | Tooltip                                                                                   | Texto de ayuda breve al pasar el mouse o enfocar con teclado (role="tooltip", aria-describedby), se cierra con Escape.                                                                                                                                 |
+| [`@rubenpazch/turnstile`](#rubenpazchturnstile)                         | Formularios                | Turnstile, TURNSTILE_SCRIPT, cargarTurnstile                                              | Widget de Cloudflare Turnstile (anti-robots) para formularios públicos: carga el script una sola vez, entrega el token y se reinicia tras cada envío.                                                                                                  |
 | [`@rubenpazch/user-card`](#rubenpazchuser-card)                         | Presentación de datos      | UserCard, initials                                                                        | Tarjeta de una persona (usuario, socio, cliente): avatar, nombre, correo u otro dato, etiquetas y acciones; las secundarias van en un menú ⋮.                                                                                                          |
 
 ## Base (tokens y utilidades)
@@ -332,6 +334,61 @@ import { DatePicker } from "@rubenpazch/ui";
 | `placeholder`       | `string`                 |      |             |                                                                         |
 | `readOnly`          | `boolean`                |      | `false`     |                                                                         |
 | `required`          | `boolean`                |      | `false`     |                                                                         |
+
+### @rubenpazch/date-range-picker
+
+Dos fechas (desde y hasta) con validación del orden y atajos (este mes, mes anterior, últimos 30 días…). Valores ISO AAAA-MM-DD.
+
+- **Usar cuando:** Filtrar reportes, listados o libros por un periodo.
+- **Evitar cuando:** Una sola fecha: usa DateInput. Navegar mes a mes: usa MonthNavigator.
+
+#### DateRangePicker
+
+Periodo desde/hasta con dos `DateInput` y atajos. Valida que "hasta" no sea anterior a "desde"
+y limita cada calendario según la otra fecha.
+
+```tsx
+import { DateRangePicker } from "@rubenpazch/ui";
+```
+
+| Prop        | Tipo                             | Req. | Por defecto                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      | Descripción                                                                                |
+| ----------- | -------------------------------- | ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
+| `onChange`  | `(range: DateRange) => void`     | sí   |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |                                                                                            |
+| `value`     | `DateRange`                      | sí   |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |                                                                                            |
+| `className` | `string`                         |      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |                                                                                            |
+| `disabled`  | `boolean`                        |      | `false`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |                                                                                            |
+| `error`     | `string`                         |      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  | Error externo; si no hay, se muestra el de orden cuando corresponde.                       |
+| `hint`      | `string`                         |      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |                                                                                            |
+| `label`     | `string`                         |      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  | Título del grupo (se usa como `<legend>`).                                                 |
+| `labels`    | `Partial<DateRangePickerLabels>` |      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |                                                                                            |
+| `locale`    | `string`                         |      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |                                                                                            |
+| `maxDate`   | `string`                         |      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |                                                                                            |
+| `minDate`   | `string`                         |      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |                                                                                            |
+| `presets`   | `false \| DateRangePreset[]`     |      | `[   { label: "Hoy", range: (h) => rango(h, h) },   { label: "Últimos 7 días", range: (h) => rango(menos(h, 6), h) },   { label: "Últimos 30 días", range: (h) => rango(menos(h, 29), h) },   { label: "Este mes", range: (h) => rango(primerDia(h.getFullYear(), h.getMonth()), ultimoDia(h.getFullYear(), h.getMonth())) },   { label: "Mes anterior", range: (h) => rango(primerDia(h.getFullYear(), h.getMonth() - 1), ultimoDia(h.getFullYear(), h.getMonth() - 1)) },   { label: "Este año", range: (h) => rango(new Date(h.getFullYear(), 0, 1), new Date(h.getFullYear(), 11, 31)) }, ]` | Atajos; `false` los oculta. Por defecto: hoy, 7/30 días, este mes, mes anterior, este año. |
+| `required`  | `boolean`                        |      | `false`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |                                                                                            |
+| `today`     | `Date`                           |      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  | Para pruebas: fecha que se toma como "hoy" en los atajos.                                  |
+
+#### DEFAULT_DATE_RANGE_LABELS
+
+```tsx
+import { DEFAULT_DATE_RANGE_LABELS } from "@rubenpazch/ui";
+```
+
+_Sin props documentadas._
+
+#### DEFAULT_DATE_RANGE_PRESETS
+
+Atajos habituales (fechas locales, sin corrimiento de zona horaria).
+
+```tsx
+import { DEFAULT_DATE_RANGE_PRESETS } from "@rubenpazch/ui";
+```
+
+_Sin props documentadas._
+
+Otras exportaciones: `rangoValido`.
+
+Tipos: `DateRange`, `DateRangePickerLabels`, `DateRangePickerProps`, `DateRangePreset`.
 
 ### @rubenpazch/form-field
 
@@ -787,6 +844,46 @@ import { Textarea } from "@rubenpazch/ui";
 | `warning`    | `string`                  |      |             | Advertencia (no bloquea).                                                    |
 
 Tipos: `TextareaProps`.
+
+### @rubenpazch/turnstile
+
+Widget de Cloudflare Turnstile (anti-robots) para formularios públicos: carga el script una sola vez, entrega el token y se reinicia tras cada envío.
+
+- **Usar cuando:** Login, registro, recuperación o cualquier formulario público que la API protege con Turnstile.
+- **Evitar cuando:** Pantallas detrás de la sesión (el usuario ya está autenticado).
+
+#### Turnstile
+
+Verificación anti-robots de Cloudflare Turnstile para formularios públicos.
+Requiere que la CSP permita `https://challenges.cloudflare.com` en script-src y frame-src.
+
+```tsx
+import { Turnstile } from "@rubenpazch/ui";
+```
+
+| Prop        | Tipo                                  | Req. | Por defecto                                                                                                       | Descripción                                                                                                                                 |
+| ----------- | ------------------------------------- | ---- | ----------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| `onToken`   | `(token: string) => void`             | sí   |                                                                                                                   | Recibe el token, o "" cuando caduca o falla (deshabilita el envío mientras sea ""). El token se valida en el servidor y sirve una sola vez. |
+| `siteKey`   | `string`                              | sí   |                                                                                                                   | Clave pública del sitio (NEXT_PUBLIC_TURNSTILE_SITE_KEY o la que entregue la API).                                                          |
+| `action`    | `string`                              |      |                                                                                                                   | Acción del formulario ("login", "registro"…): el servidor puede exigir que coincida.                                                        |
+| `className` | `string`                              |      |                                                                                                                   |                                                                                                                                             |
+| `errorText` | `string`                              |      | `No se pudo cargar la verificación anti-robots. Revisa tu conexión o desactiva bloqueadores y recarga la página.` | Mensaje si el widget no carga (red, bloqueadores).                                                                                          |
+| `language`  | `string`                              |      | `es`                                                                                                              |                                                                                                                                             |
+| `resetKey`  | `number`                              |      | `0`                                                                                                               | Cambia este número después de cada envío para pedir un token nuevo.                                                                         |
+| `size`      | `"normal" \| "flexible" \| "compact"` |      | `flexible`                                                                                                        |                                                                                                                                             |
+| `theme`     | `"auto" \| "light" \| "dark"`         |      | `auto`                                                                                                            |                                                                                                                                             |
+
+#### TURNSTILE_SCRIPT
+
+```tsx
+import { TURNSTILE_SCRIPT } from "@rubenpazch/ui";
+```
+
+_Sin props documentadas._
+
+Otras exportaciones: `cargarTurnstile`.
+
+Tipos: `TurnstileProps`.
 
 ## Navegación
 

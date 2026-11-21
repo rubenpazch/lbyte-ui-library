@@ -96,6 +96,8 @@ rutas internas (`dist/…`).
 | Un formulario                                             | `FormRow` (columnas) + campos (`TextInput`, `Textarea`, `Select`, `Autocomplete`, `DateInput`, `MoneyInput`, `Switch`…) + `FormActions` |
 | Montos de dinero                                          | `MoneyInput` para editar, `formatMoney()` para mostrar                                                                                  |
 | Elegir el mes de trabajo                                  | `MonthNavigator`                                                                                                                        |
+| Filtrar por un periodo (desde/hasta)                      | `DateRangePicker` (con atajos); una sola fecha: `DateInput`                                                                             |
+| Anti-robots en un formulario público                      | `Turnstile` (cambia `resetKey` tras cada envío)                                                                                         |
 | Mostrar un estado                                         | `Badge`                                                                                                                                 |
 | Agrupar información                                       | `Card` + `CardHeader` / `CardBody` / `CardFooter`                                                                                       |
 | Aviso fijo en la página / mensaje del servidor            | `Alert` / `useToast()` (ver **Mensajes**)                                                                                               |

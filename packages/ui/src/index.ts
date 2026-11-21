@@ -44,6 +44,18 @@ export type {
 } from "@rubenpazch/data-table";
 export { default as DateInput } from "@rubenpazch/date-input";
 export { default as DatePicker } from "@rubenpazch/date-picker";
+export {
+  default as DateRangePicker,
+  DEFAULT_DATE_RANGE_LABELS,
+  DEFAULT_DATE_RANGE_PRESETS,
+  rangoValido,
+} from "@rubenpazch/date-range-picker";
+export type {
+  DateRange,
+  DateRangePickerLabels,
+  DateRangePickerProps,
+  DateRangePreset,
+} from "@rubenpazch/date-range-picker";
 export { default as DraggableList } from "@rubenpazch/draggable-list";
 export { default as Drawer } from "@rubenpazch/drawer";
 export { default as EmptyState } from "@rubenpazch/empty-state";
@@ -340,5 +352,11 @@ export {
 export type { Tokens } from "@rubenpazch/tokens";
 export { default as Tooltip } from "@rubenpazch/tooltip";
 export type { TooltipProps } from "@rubenpazch/tooltip";
+export {
+  default as Turnstile,
+  TURNSTILE_SCRIPT,
+  cargarTurnstile,
+} from "@rubenpazch/turnstile";
+export type { TurnstileProps } from "@rubenpazch/turnstile";
 export { default as UserCard, initials } from "@rubenpazch/user-card";
 export type { UserCardProps } from "@rubenpazch/user-card";

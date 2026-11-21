@@ -55,6 +55,7 @@
     "@rubenpazch/data-table": "workspace:^",
     "@rubenpazch/date-input": "workspace:^",
     "@rubenpazch/date-picker": "workspace:^",
+    "@rubenpazch/date-range-picker": "workspace:^",
     "@rubenpazch/draggable-list": "workspace:^",
     "@rubenpazch/drawer": "workspace:^",
     "@rubenpazch/empty-state": "workspace:^",
@@ -93,6 +94,7 @@
     "@rubenpazch/toast": "workspace:^",
     "@rubenpazch/tokens": "workspace:^",
     "@rubenpazch/tooltip": "workspace:^",
+    "@rubenpazch/turnstile": "workspace:^",
     "@rubenpazch/user-card": "workspace:^"
   },
   "devDependencies": {

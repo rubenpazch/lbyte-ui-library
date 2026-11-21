@@ -1,0 +1,12 @@
+.turnstile {
+  display: grid;
+  gap: var(--lb-space-2);
+  min-height: 65px; /* reserva el alto del widget: evita saltos al cargar */
+  font-family: var(--lb-font-sans);
+}
+
+.error {
+  margin: 0;
+  font-size: var(--lb-font-size-sm);
+  color: var(--lb-color-danger);
+}
