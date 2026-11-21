@@ -83,7 +83,7 @@ Utilidades (classList) y tipos comunes; la usan internamente los componentes.
 - **Usar cuando:** Solo si construyes un componente nuevo dentro de la librería.
 - **Evitar cuando:** En las apps: no hace falta importarla.
 
-Otras exportaciones: `classList`, `normalizeSize`, `toLegacySize`, `useFieldIds`, `useEscapeKey`, `useFocusTrap`, `useLockBodyScroll`, `useClickOutside`, `mergeRefs`, `parseISODate`, `toISODate`, `isDayFirst`, `datePlaceholder`, `parseLocalDate`, `formatLocalDate`, `formatMonthYear`, `isSameDay`.
+Otras exportaciones: `classList`, `normalizeSize`, `toLegacySize`, `useFieldIds`, `useEscapeKey`, `useFocusTrap`, `useLockBodyScroll`, `useClickOutside`, `mergeRefs`, `useMediaQuery`, `MOBILE_QUERY`, `parseISODate`, `toISODate`, `isDayFirst`, `datePlaceholder`, `parseLocalDate`, `formatLocalDate`, `formatMonthYear`, `isSameDay`.
 
 Tipos: `Size`, `Color`, `Variant`, `ComponentSize`, `LegacySize`, `SizeProp`, `FieldProps`, `FieldIds`.
 
@@ -286,23 +286,24 @@ Campo de fecha con calendario desplegable. Se escribe en el formato del idioma
 import { DateInput } from "@rubenpazch/ui";
 ```
 
-| Prop          | Tipo                       | Req. | Por defecto | Descripción                                                             |
-| ------------- | -------------------------- | ---- | ----------- | ----------------------------------------------------------------------- |
-| `onChange`    | `(date: string) => void`   | sí   |             | Recibe la fecha en ISO `AAAA-MM-DD` (o "" al limpiar).                  |
-| `value`       | `string`                   | sí   |             | Fecha en formato ISO `AAAA-MM-DD`, o cadena vacía.                      |
-| `className`   | `string`                   |      | ``          | Clase extra para el contenedor.                                         |
-| `disabled`    | `boolean`                  |      | `false`     | Campo deshabilitado.                                                    |
-| `error`       | `string`                   |      |             | Mensaje de error; marca el campo como inválido.                         |
-| `hint`        | `string`                   |      |             | Texto de ayuda.                                                         |
-| `id`          | `string`                   |      |             | id del input; si no se pasa se genera uno (la etiqueta se asocia sola). |
-| `label`       | `string`                   |      |             | Etiqueta visible.                                                       |
-| `labels`      | `Partial<DateInputLabels>` |      |             | Textos del calendario; por defecto en el idioma de `locale`.            |
-| `locale`      | `string`                   |      | `es`        | Idioma: `es` (por defecto, día/mes) o `en` (mes/día).                   |
-| `maxDate`     | `string`                   |      |             | Fecha máxima seleccionable (ISO).                                       |
-| `minDate`     | `string`                   |      |             | Fecha mínima seleccionable (ISO).                                       |
-| `name`        | `string`                   |      |             | name del input (formularios nativos, react-hook-form…).                 |
-| `placeholder` | `string`                   |      |             | Por defecto el formato del idioma: "DD/MM/AAAA" en español.             |
-| `required`    | `boolean`                  |      | `false`     | Campo obligatorio.                                                      |
+| Prop               | Tipo                       | Req. | Por defecto | Descripción                                                                                                                        |
+| ------------------ | -------------------------- | ---- | ----------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| `onChange`         | `(date: string) => void`   | sí   |             | Recibe la fecha en ISO `AAAA-MM-DD` (o "" al limpiar).                                                                             |
+| `value`            | `string`                   | sí   |             | Fecha en formato ISO `AAAA-MM-DD`, o cadena vacía.                                                                                 |
+| `className`        | `string`                   |      | ``          | Clase extra para el contenedor.                                                                                                    |
+| `disabled`         | `boolean`                  |      | `false`     | Campo deshabilitado.                                                                                                               |
+| `error`            | `string`                   |      |             | Mensaje de error; marca el campo como inválido.                                                                                    |
+| `hint`             | `string`                   |      |             | Texto de ayuda.                                                                                                                    |
+| `id`               | `string`                   |      |             | id del input; si no se pasa se genera uno (la etiqueta se asocia sola).                                                            |
+| `label`            | `string`                   |      |             | Etiqueta visible.                                                                                                                  |
+| `labels`           | `Partial<DateInputLabels>` |      |             | Textos del calendario; por defecto en el idioma de `locale`.                                                                       |
+| `locale`           | `string`                   |      | `es`        | Idioma: `es` (por defecto, día/mes) o `en` (mes/día).                                                                              |
+| `maxDate`          | `string`                   |      |             | Fecha máxima seleccionable (ISO).                                                                                                  |
+| `minDate`          | `string`                   |      |             | Fecha mínima seleccionable (ISO).                                                                                                  |
+| `mobileFullScreen` | `boolean`                  |      | `true`      | En pantallas pequeñas (< 640 px) el calendario se abre a pantalla completa y vuelve al campo al elegir la fecha. Por defecto true. |
+| `name`             | `string`                   |      |             | name del input (formularios nativos, react-hook-form…).                                                                            |
+| `placeholder`      | `string`                   |      |             | Por defecto el formato del idioma: "DD/MM/AAAA" en español.                                                                        |
+| `required`         | `boolean`                  |      | `false`     | Campo obligatorio.                                                                                                                 |
 
 ### @rubenpazch/date-picker
 
@@ -319,24 +320,25 @@ Selector de fecha con calendario (días, meses y años). Devuelve ISO `AAAA-MM-D
 import { DatePicker } from "@rubenpazch/ui";
 ```
 
-| Prop                | Tipo                     | Req. | Por defecto | Descripción                                                             |
-| ------------------- | ------------------------ | ---- | ----------- | ----------------------------------------------------------------------- |
-| `onChange`          | `(date: string) => void` | sí   |             |                                                                         |
-| `value`             | `string`                 | sí   |             |                                                                         |
-| `className`         | `string`                 |      | ``          |                                                                         |
-| `disabled`          | `boolean`                |      | `false`     |                                                                         |
-| `error`             | `string`                 |      |             |                                                                         |
-| `hint`              | `string`                 |      |             |                                                                         |
-| `id`                | `string`                 |      |             | id del input; si no se pasa se genera uno (la etiqueta se asocia sola). |
-| `label`             | `string`                 |      |             |                                                                         |
-| `locale`            | `string`                 |      | `es`        |                                                                         |
-| `maxDate`           | `string`                 |      |             |                                                                         |
-| `minDate`           | `string`                 |      |             |                                                                         |
-| `name`              | `string`                 |      |             | name del input.                                                         |
-| `openCalendarLabel` | `string`                 |      |             | Texto del botón que abre el calendario (accesibilidad).                 |
-| `placeholder`       | `string`                 |      |             |                                                                         |
-| `readOnly`          | `boolean`                |      | `false`     |                                                                         |
-| `required`          | `boolean`                |      | `false`     |                                                                         |
+| Prop                | Tipo                     | Req. | Por defecto | Descripción                                                                                                                        |
+| ------------------- | ------------------------ | ---- | ----------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| `onChange`          | `(date: string) => void` | sí   |             |                                                                                                                                    |
+| `value`             | `string`                 | sí   |             |                                                                                                                                    |
+| `className`         | `string`                 |      | ``          |                                                                                                                                    |
+| `disabled`          | `boolean`                |      | `false`     |                                                                                                                                    |
+| `error`             | `string`                 |      |             |                                                                                                                                    |
+| `hint`              | `string`                 |      |             |                                                                                                                                    |
+| `id`                | `string`                 |      |             | id del input; si no se pasa se genera uno (la etiqueta se asocia sola).                                                            |
+| `label`             | `string`                 |      |             |                                                                                                                                    |
+| `locale`            | `string`                 |      | `es`        |                                                                                                                                    |
+| `maxDate`           | `string`                 |      |             |                                                                                                                                    |
+| `minDate`           | `string`                 |      |             |                                                                                                                                    |
+| `mobileFullScreen`  | `boolean`                |      | `true`      | En pantallas pequeñas (< 640 px) el calendario se abre a pantalla completa y vuelve al campo al elegir la fecha. Por defecto true. |
+| `name`              | `string`                 |      |             | name del input.                                                                                                                    |
+| `openCalendarLabel` | `string`                 |      |             | Texto del botón que abre el calendario (accesibilidad).                                                                            |
+| `placeholder`       | `string`                 |      |             |                                                                                                                                    |
+| `readOnly`          | `boolean`                |      | `false`     |                                                                                                                                    |
+| `required`          | `boolean`                |      | `false`     |                                                                                                                                    |
 
 ### @rubenpazch/date-range-picker
 

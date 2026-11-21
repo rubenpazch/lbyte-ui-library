@@ -260,3 +260,87 @@
   font-size: 0.875rem;
   color: var(--lb-color-danger);
 }
+
+/* --------------------------------------------- móvil: pantalla completa */
+
+.fullScreen {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  min-width: 0;
+  max-width: none;
+  margin: 0;
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  overflow-y: auto;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  animation: lbCalendarIn 180ms ease-out;
+}
+
+.sheetBar {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--lb-space-3);
+  padding: calc(var(--lb-space-3) + env(safe-area-inset-top, 0px))
+    var(--lb-space-4) var(--lb-space-3);
+  border-bottom: 1px solid var(--lb-color-border);
+  background: var(--lb-color-background);
+}
+
+.sheetTitle {
+  min-width: 0;
+  overflow: hidden;
+  font-size: var(--lb-font-size-base);
+  font-weight: var(--lb-font-weight-semibold);
+  color: var(--lb-color-foreground);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Días más grandes: fáciles de tocar con el dedo. */
+.fullScreen .calendarGrid {
+  gap: var(--lb-space-1);
+  padding-inline: var(--lb-space-4);
+}
+
+.fullScreen .dayButton {
+  height: auto;
+  min-height: 2.75rem;
+  aspect-ratio: 1;
+  font-size: var(--lb-font-size-base);
+}
+
+.fullScreen .header,
+.fullScreen .dayNames {
+  padding-inline: var(--lb-space-4);
+}
+
+.fullScreen .quickActions {
+  margin-top: auto;
+  padding: var(--lb-space-4);
+}
+
+@keyframes lbCalendarIn {
+  from {
+    opacity: 0;
+    transform: translateY(1.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fullScreen {
+    animation: none;
+  }
+}

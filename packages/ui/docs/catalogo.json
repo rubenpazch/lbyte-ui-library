@@ -1524,6 +1524,13 @@
               "descripcion": "Fecha mínima seleccionable (ISO)."
             },
             {
+              "nombre": "mobileFullScreen",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "true",
+              "descripcion": "En pantallas pequeñas (< 640 px) el calendario se abre a pantalla completa y vuelve al\ncampo al elegir la fecha. Por defecto true."
+            },
+            {
               "nombre": "name",
               "tipo": "string",
               "requerido": false,
@@ -1639,6 +1646,13 @@
               "requerido": false,
               "porDefecto": null,
               "descripcion": ""
+            },
+            {
+              "nombre": "mobileFullScreen",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "true",
+              "descripcion": "En pantallas pequeñas (< 640 px) el calendario se abre a pantalla completa y vuelve al\ncampo al elegir la fecha. Por defecto true."
             },
             {
               "nombre": "name",
@@ -7574,6 +7588,8 @@
         "useLockBodyScroll",
         "useClickOutside",
         "mergeRefs",
+        "useMediaQuery",
+        "MOBILE_QUERY",
         "parseISODate",
         "toISODate",
         "isDayFirst",

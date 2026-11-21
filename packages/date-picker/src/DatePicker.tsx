@@ -2,7 +2,15 @@ import React, { useState, useRef, useEffect } from "react";
 import Button from "@rubenpazch/button";
 import IconButton from "@rubenpazch/icon-button";
 import { CalendarIcon, ChevronIcon, ErrorIcon } from "@rubenpazch/icons";
-import { mergeRefs, parseLocalDate, useFieldIds } from "@rubenpazch/shared";
+import {
+  MOBILE_QUERY,
+  mergeRefs,
+  parseLocalDate,
+  useFieldIds,
+  useFocusTrap,
+  useLockBodyScroll,
+  useMediaQuery,
+} from "@rubenpazch/shared";
 import styles from "./DatePicker.module.css";
 
 export interface DatePickerProps {
@@ -25,6 +33,11 @@ export interface DatePickerProps {
   hint?: string;
   readOnly?: boolean;
   locale?: string;
+  /**
+   * En pantallas pequeñas (< 640 px) el calendario se abre a pantalla completa y vuelve al
+   * campo al elegir la fecha. Por defecto true.
+   */
+  mobileFullScreen?: boolean;
 }
 
 type ViewMode = "days" | "months" | "years";
@@ -49,6 +62,7 @@ const DatePicker = React.forwardRef<HTMLInputElement, DatePickerProps>(
       hint,
       readOnly = false,
       locale = "es",
+      mobileFullScreen = true,
     },
     ref,
   ) {
@@ -68,6 +82,16 @@ const DatePicker = React.forwardRef<HTMLInputElement, DatePickerProps>(
     const [isFocused, setIsFocused] = useState(false);
     const containerRef = useRef<HTMLDivElement>(null);
     const inputRef = useRef<HTMLInputElement>(null);
+    const calendarRef = useRef<HTMLDivElement>(null);
+    const esMovil = useMediaQuery(MOBILE_QUERY);
+    const fullScreen = mobileFullScreen && esMovil;
+    const abiertoCompleto = isOpen && fullScreen && !disabled && !readOnly;
+    // Pantalla completa: sin scroll detrás, foco dentro y, al cerrar, de vuelta al campo.
+    useLockBodyScroll(abiertoCompleto);
+    useFocusTrap(calendarRef, abiertoCompleto);
+    const closeLabel = locale.startsWith("es") ? "Cerrar" : "Close";
+    const titleLabel =
+      label || (locale.startsWith("es") ? "Elegir fecha" : "Select date");
 
     const getLocaleLabels = () => {
       if (locale.startsWith("es")) {
@@ -510,6 +534,8 @@ const DatePicker = React.forwardRef<HTMLInputElement, DatePickerProps>(
               required={required}
               autoComplete="off"
               role="combobox"
+              // En móvil se elige en el calendario: sin teclado virtual encima.
+              inputMode={fullScreen ? "none" : undefined}
               aria-haspopup="dialog"
               aria-expanded={isOpen}
               type="text"
@@ -548,7 +574,33 @@ const DatePicker = React.forwardRef<HTMLInputElement, DatePickerProps>(
 
           {/* Calendar Picker */}
           {isOpen && !disabled && !readOnly && (
-            <div className={styles.calendar}>
+            <div
+              ref={calendarRef}
+              className={classNames(
+                styles.calendar,
+                fullScreen && styles.fullScreen,
+              )}
+              role="dialog"
+              aria-modal={fullScreen || undefined}
+              aria-label={titleLabel}
+            >
+              {fullScreen && (
+                <div className={styles.sheetBar}>
+                  <span className={styles.sheetTitle}>{titleLabel}</span>
+                  <Button
+                    type="button"
+                    variant="text"
+                    color="secondary"
+                    size="small"
+                    onClick={() => {
+                      setIsOpen(false);
+                      setViewMode("days");
+                    }}
+                  >
+                    {closeLabel}
+                  </Button>
+                </div>
+              )}
               {/* Header */}
               <div className={styles.header}>
                 <IconButton

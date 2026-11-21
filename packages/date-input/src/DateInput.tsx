@@ -10,9 +10,13 @@ import {
   parseISODate,
   parseLocalDate,
   toISODate,
+  MOBILE_QUERY,
   useClickOutside,
   useEscapeKey,
   useFieldIds,
+  useFocusTrap,
+  useLockBodyScroll,
+  useMediaQuery,
 } from "@rubenpazch/shared";
 import styles from "./DateInput.module.css";
 
@@ -24,6 +28,8 @@ export interface DateInputLabels {
   today: string;
   clear: string;
   calendar: string;
+  /** Cerrar el calendario a pantalla completa (móvil). */
+  close: string;
 }
 
 const LABELS_ES: DateInputLabels = {
@@ -33,6 +39,7 @@ const LABELS_ES: DateInputLabels = {
   today: "Hoy",
   clear: "Limpiar",
   calendar: "Calendario",
+  close: "Cerrar",
 };
 
 const LABELS_EN: DateInputLabels = {
@@ -42,6 +49,7 @@ const LABELS_EN: DateInputLabels = {
   today: "Today",
   clear: "Clear",
   calendar: "Calendar",
+  close: "Close",
 };
 
 const DAY_NAMES_ES = ["Dom", "Lun", "Mar", "Mié", "Jue", "Vie", "Sáb"];
@@ -78,6 +86,11 @@ export interface DateInputProps {
   locale?: string;
   /** Textos del calendario; por defecto en el idioma de `locale`. */
   labels?: Partial<DateInputLabels>;
+  /**
+   * En pantallas pequeñas (< 640 px) el calendario se abre a pantalla completa y vuelve al
+   * campo al elegir la fecha. Por defecto true.
+   */
+  mobileFullScreen?: boolean;
 }
 
 const classNames = (...classes: Array<string | undefined | false>) =>
@@ -105,6 +118,7 @@ const DateInput = React.forwardRef<HTMLInputElement, DateInputProps>(
       hint,
       locale = "es",
       labels,
+      mobileFullScreen = true,
     },
     ref,
   ) {
@@ -138,6 +152,24 @@ const DateInput = React.forwardRef<HTMLInputElement, DateInputProps>(
       skipOpenOnFocus.current = true;
       inputRef.current?.focus();
     }, isOpen);
+
+    // Móvil: calendario a pantalla completa, sin scroll detrás y con el foco dentro.
+    const calendarRef = useRef<HTMLDivElement>(null);
+    const esMovil = useMediaQuery(MOBILE_QUERY);
+    const fullScreen = mobileFullScreen && esMovil;
+    const abiertoCompleto = isOpen && fullScreen && !disabled;
+    useEffect(() => {
+      if (!abiertoCompleto) return;
+      // Al cerrar, el foco vuelve al campo (useFocusTrap): que eso no lo reabra.
+      return () => {
+        skipOpenOnFocus.current = true;
+        setTimeout(() => {
+          skipOpenOnFocus.current = false;
+        }, 0);
+      };
+    }, [abiertoCompleto]);
+    useLockBodyScroll(abiertoCompleto);
+    useFocusTrap(calendarRef, abiertoCompleto);
 
     // Sincroniza el texto con el valor (ISO) que llega por props.
     useEffect(() => {
@@ -250,7 +282,8 @@ const DateInput = React.forwardRef<HTMLInputElement, DateInputProps>(
               name={name}
               required={required}
               type="text"
-              inputMode="numeric"
+              // En móvil se elige en el calendario: sin teclado virtual encima.
+              inputMode={fullScreen ? "none" : "numeric"}
               autoComplete="off"
               value={inputValue}
               onChange={handleInputChange}
@@ -284,11 +317,32 @@ const DateInput = React.forwardRef<HTMLInputElement, DateInputProps>(
 
           {isOpen && !disabled && (
             <div
+              ref={calendarRef}
               id={calendarId}
-              className={styles.calendar}
+              className={classNames(
+                styles.calendar,
+                fullScreen && styles.fullScreen,
+              )}
               role="dialog"
-              aria-label={text.calendar}
+              aria-modal={fullScreen || undefined}
+              aria-label={fullScreen && label ? label : text.calendar}
             >
+              {fullScreen && (
+                <div className={styles.sheetBar}>
+                  <span className={styles.sheetTitle}>
+                    {label || text.calendar}
+                  </span>
+                  <Button
+                    type="button"
+                    variant="text"
+                    color="secondary"
+                    size="small"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    {text.close}
+                  </Button>
+                </div>
+              )}
               <div className={styles.header}>
                 <IconButton
                   icon={
