@@ -8128,6 +8128,13 @@
               "descripcion": ""
             },
             {
+              "nombre": "labelAction",
+              "tipo": "ReactNode",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Contenido junto a la etiqueta, a la derecha: un botón de ayuda (\"?\"), un enlace\n(\"¿Olvidaste tu contraseña?\")… No va dentro del `<label>`."
+            },
+            {
               "nombre": "max",
               "tipo": "number",
               "requerido": false,
@@ -8191,6 +8198,13 @@
               "descripcion": "Fires whenever the field's overall validity changes (respecting `required`,\n`validateEmail`, `minLength`, `maxLength`, `pattern` and `error`). Lets the\nparent gate a submit button on the component's own validation, without\nduplicating the rules."
             },
             {
+              "nombre": "passwordToggleLabels",
+              "tipo": "{ show: string; hide: string; }",
+              "requerido": false,
+              "porDefecto": "{\n        show: \"Mostrar contraseña\",\n        hide: \"Ocultar contraseña\",\n      }",
+              "descripcion": "Textos del botón de contraseña (accesibilidad)."
+            },
+            {
               "nombre": "pattern",
               "tipo": "string",
               "requerido": false,
@@ -8231,6 +8245,13 @@
               "requerido": false,
               "porDefecto": "false",
               "descripcion": ""
+            },
+            {
+              "nombre": "showPasswordToggle",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "true",
+              "descripcion": "Con `type=\"password\"`, botón para ver u ocultar lo escrito. Por defecto true."
             },
             {
               "nombre": "step",

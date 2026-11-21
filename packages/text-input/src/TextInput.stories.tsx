@@ -575,3 +575,35 @@ export const Interactive: Story = {
     onChange: fn(),
   },
 };
+
+// Ver / ocultar contraseña (activo por defecto con type="password")
+export const ContrasenaConBotonVer: Story = {
+  name: "Contraseña con botón para ver",
+  render: (args) => {
+    const [value, setValue] = React.useState("MiClave2026");
+    return <TextInput {...args} value={value} onChange={setValue} />;
+  },
+  args: {
+    label: "Contraseña",
+    type: "password",
+    hint: "El ojo muestra u oculta lo escrito; showPasswordToggle={false} lo quita.",
+  },
+};
+
+// Acción junto a la etiqueta (ayuda, enlace)
+export const ConAccionEnLaEtiqueta: Story = {
+  name: "Con acción junto a la etiqueta",
+  render: (args) => {
+    const [value, setValue] = React.useState("");
+    return <TextInput {...args} value={value} onChange={setValue} />;
+  },
+  args: {
+    label: "Remitente",
+    placeholder: "Nombre o razón social",
+    labelAction: (
+      <a href="#ayuda" style={{ fontSize: "0.8125rem" }}>
+        ¿Qué es el remitente?
+      </a>
+    ),
+  },
+};

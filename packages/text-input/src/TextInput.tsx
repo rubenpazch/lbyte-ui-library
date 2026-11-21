@@ -1,5 +1,11 @@
 import React, { useState, useMemo, useEffect } from "react";
-import { CheckIcon, ErrorIcon, InfoIcon } from "@rubenpazch/icons";
+import {
+  CheckIcon,
+  ErrorIcon,
+  EyeIcon,
+  EyeOffIcon,
+  InfoIcon,
+} from "@rubenpazch/icons";
 import { useFieldIds } from "@rubenpazch/shared";
 import styles from "./TextInput.module.css";
 
@@ -71,6 +77,17 @@ export interface TextInputProps extends TextInputNativeProps {
   strengthLabels?: Partial<Record<PasswordStrengthKey, string>>;
   strengthLabelPrefix?: string;
   requirementsLabels?: Partial<PasswordRequirementsLabels>;
+  /**
+   * Con `type="password"`, botón para ver u ocultar lo escrito. Por defecto true.
+   */
+  showPasswordToggle?: boolean;
+  /** Textos del botón de contraseña (accesibilidad). */
+  passwordToggleLabels?: { show: string; hide: string };
+  /**
+   * Contenido junto a la etiqueta, a la derecha: un botón de ayuda ("?"), un enlace
+   * ("¿Olvidaste tu contraseña?")… No va dentro del `<label>`.
+   */
+  labelAction?: React.ReactNode;
 }
 
 const classNames = (...classes: Array<string | undefined | false>) =>
@@ -175,11 +192,20 @@ const TextInput = React.forwardRef<HTMLInputElement, TextInputProps>(
       strengthLabels,
       strengthLabelPrefix,
       requirementsLabels,
+      showPasswordToggle = true,
+      passwordToggleLabels = {
+        show: "Mostrar contraseña",
+        hide: "Ocultar contraseña",
+      },
+      labelAction,
       ...nativeProps
     },
     ref,
   ) {
     const [isFocused, setIsFocused] = useState(false);
+    const [passwordVisible, setPasswordVisible] = useState(false);
+    const hasPasswordToggle =
+      type === "password" && showPasswordToggle && !validateEmail;
 
     // Email suggestion (check typos first, before validation)
     const emailSuggestion = useMemo(() => {
@@ -281,16 +307,27 @@ const TextInput = React.forwardRef<HTMLInputElement, TextInputProps>(
         data-testid="text-input"
       >
         {/* Label */}
-        {label && (
-          <label htmlFor={field.inputId} className={styles.label}>
-            {label}
-            {required && (
-              <span className={styles.required} aria-hidden="true">
-                *
-              </span>
-            )}
-          </label>
-        )}
+        {label &&
+          (() => {
+            const labelEl = (
+              <label htmlFor={field.inputId} className={styles.label}>
+                {label}
+                {required && (
+                  <span className={styles.required} aria-hidden="true">
+                    *
+                  </span>
+                )}
+              </label>
+            );
+            return labelAction ? (
+              <div className={styles.labelRow}>
+                {labelEl}
+                <span className={styles.labelAction}>{labelAction}</span>
+              </div>
+            ) : (
+              labelEl
+            );
+          })()}
 
         {/* Input Field */}
         <div className={styles.inputContainer}>
@@ -303,7 +340,13 @@ const TextInput = React.forwardRef<HTMLInputElement, TextInputProps>(
             {...field.controlProps}
             name={name}
             required={required}
-            type={validateEmail ? "text" : type}
+            type={
+              validateEmail
+                ? "text"
+                : hasPasswordToggle && passwordVisible
+                  ? "text"
+                  : type
+            }
             inputMode={validateEmail ? "email" : nativeProps.inputMode}
             value={value}
             onChange={(e) => onChange(e.target.value)}
@@ -319,6 +362,7 @@ const TextInput = React.forwardRef<HTMLInputElement, TextInputProps>(
               styles.input,
               icon ? styles.inputWithIcon : undefined,
               showCharCount ? styles.inputWithCharCount : undefined,
+              hasPasswordToggle ? styles.inputWithToggle : undefined,
               error || isEmailInvalid || isMinLengthInvalid
                 ? styles.inputError
                 : undefined,
@@ -329,6 +373,28 @@ const TextInput = React.forwardRef<HTMLInputElement, TextInputProps>(
             data-testid="input-field"
             data-error={!!error || !!isEmailInvalid || isMinLengthInvalid}
           />
+
+          {hasPasswordToggle && (
+            <button
+              type="button"
+              className={styles.passwordToggle}
+              onClick={() => setPasswordVisible((v) => !v)}
+              aria-label={
+                passwordVisible
+                  ? passwordToggleLabels.hide
+                  : passwordToggleLabels.show
+              }
+              aria-pressed={passwordVisible}
+              aria-controls={field.inputId}
+              disabled={disabled}
+            >
+              {passwordVisible ? (
+                <EyeOffIcon size="sm" />
+              ) : (
+                <EyeIcon size="sm" />
+              )}
+            </button>
+          )}
 
           {/* Character count */}
           {showCharCount && (
