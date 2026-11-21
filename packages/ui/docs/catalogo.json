@@ -3942,6 +3942,846 @@
               "descripcion": "Texto para lectores de pantalla. Sin él, el icono es decorativo (aria-hidden)."
             }
           ]
+        },
+        {
+          "nombre": "LockIcon",
+          "importar": "import { LockIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "Contenido protegido o campo bloqueado.",
+          "props": [
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": "sm 16px · md 20px · lg 24px."
+            },
+            {
+              "nombre": "title",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Texto para lectores de pantalla. Sin él, el icono es decorativo (aria-hidden)."
+            }
+          ]
+        },
+        {
+          "nombre": "LockOpenIcon",
+          "importar": "import { LockOpenIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "Desbloquear o acceso concedido.",
+          "props": [
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": "sm 16px · md 20px · lg 24px."
+            },
+            {
+              "nombre": "title",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Texto para lectores de pantalla. Sin él, el icono es decorativo (aria-hidden)."
+            }
+          ]
+        },
+        {
+          "nombre": "KeyIcon",
+          "importar": "import { KeyIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "Contraseñas y claves de acceso.",
+          "props": [
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": "sm 16px · md 20px · lg 24px."
+            },
+            {
+              "nombre": "title",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Texto para lectores de pantalla. Sin él, el icono es decorativo (aria-hidden)."
+            }
+          ]
+        },
+        {
+          "nombre": "LogInIcon",
+          "importar": "import { LogInIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "Botón de iniciar sesión.",
+          "props": [
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": "sm 16px · md 20px · lg 24px."
+            },
+            {
+              "nombre": "title",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Texto para lectores de pantalla. Sin él, el icono es decorativo (aria-hidden)."
+            }
+          ]
+        },
+        {
+          "nombre": "LogOutIcon",
+          "importar": "import { LogOutIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "Botón de cerrar sesión.",
+          "props": [
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": "sm 16px · md 20px · lg 24px."
+            },
+            {
+              "nombre": "title",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Texto para lectores de pantalla. Sin él, el icono es decorativo (aria-hidden)."
+            }
+          ]
+        },
+        {
+          "nombre": "ShieldCheckIcon",
+          "importar": "import { ShieldCheckIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "Seguridad o verificación en dos pasos.",
+          "props": [
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": "sm 16px · md 20px · lg 24px."
+            },
+            {
+              "nombre": "title",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Texto para lectores de pantalla. Sin él, el icono es decorativo (aria-hidden)."
+            }
+          ]
+        },
+        {
+          "nombre": "FingerprintIcon",
+          "importar": "import { FingerprintIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "Passkeys o acceso biométrico.",
+          "props": [
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": "sm 16px · md 20px · lg 24px."
+            },
+            {
+              "nombre": "title",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Texto para lectores de pantalla. Sin él, el icono es decorativo (aria-hidden)."
+            }
+          ]
+        },
+        {
+          "nombre": "EyeOffIcon",
+          "importar": "import { EyeOffIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "Ocultar contraseña o contenido.",
+          "props": [
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": "sm 16px · md 20px · lg 24px."
+            },
+            {
+              "nombre": "title",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Texto para lectores de pantalla. Sin él, el icono es decorativo (aria-hidden)."
+            }
+          ]
+        },
+        {
+          "nombre": "UserCogIcon",
+          "importar": "import { UserCogIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "Ajustes de la cuenta del usuario.",
+          "props": [
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": "sm 16px · md 20px · lg 24px."
+            },
+            {
+              "nombre": "title",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Texto para lectores de pantalla. Sin él, el icono es decorativo (aria-hidden)."
+            }
+          ]
+        },
+        {
+          "nombre": "BankIcon",
+          "importar": "import { BankIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "Cuentas o entidades bancarias.",
+          "props": [
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": "sm 16px · md 20px · lg 24px."
+            },
+            {
+              "nombre": "title",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Texto para lectores de pantalla. Sin él, el icono es decorativo (aria-hidden)."
+            }
+          ]
+        },
+        {
+          "nombre": "CreditCardIcon",
+          "importar": "import { CreditCardIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "Pagos con tarjeta.",
+          "props": [
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": "sm 16px · md 20px · lg 24px."
+            },
+            {
+              "nombre": "title",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Texto para lectores de pantalla. Sin él, el icono es decorativo (aria-hidden)."
+            }
+          ]
+        },
+        {
+          "nombre": "BanknoteIcon",
+          "importar": "import { BanknoteIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "Pagos en efectivo o montos.",
+          "props": [
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": "sm 16px · md 20px · lg 24px."
+            },
+            {
+              "nombre": "title",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Texto para lectores de pantalla. Sin él, el icono es decorativo (aria-hidden)."
+            }
+          ]
+        },
+        {
+          "nombre": "CalculatorIcon",
+          "importar": "import { CalculatorIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "Cálculos o simulaciones.",
+          "props": [
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": "sm 16px · md 20px · lg 24px."
+            },
+            {
+              "nombre": "title",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Texto para lectores de pantalla. Sin él, el icono es decorativo (aria-hidden)."
+            }
+          ]
+        },
+        {
+          "nombre": "PiggyBankIcon",
+          "importar": "import { PiggyBankIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "Ahorros o reservas.",
+          "props": [
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": "sm 16px · md 20px · lg 24px."
+            },
+            {
+              "nombre": "title",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Texto para lectores de pantalla. Sin él, el icono es decorativo (aria-hidden)."
+            }
+          ]
+        },
+        {
+          "nombre": "TrendingUpIcon",
+          "importar": "import { TrendingUpIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "Indicador que sube.",
+          "props": [
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": "sm 16px · md 20px · lg 24px."
+            },
+            {
+              "nombre": "title",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Texto para lectores de pantalla. Sin él, el icono es decorativo (aria-hidden)."
+            }
+          ]
+        },
+        {
+          "nombre": "TrendingDownIcon",
+          "importar": "import { TrendingDownIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "Indicador que baja.",
+          "props": [
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": "sm 16px · md 20px · lg 24px."
+            },
+            {
+              "nombre": "title",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Texto para lectores de pantalla. Sin él, el icono es decorativo (aria-hidden)."
+            }
+          ]
+        },
+        {
+          "nombre": "ChartBarIcon",
+          "importar": "import { ChartBarIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "Reportes con gráfico de barras.",
+          "props": [
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": "sm 16px · md 20px · lg 24px."
+            },
+            {
+              "nombre": "title",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Texto para lectores de pantalla. Sin él, el icono es decorativo (aria-hidden)."
+            }
+          ]
+        },
+        {
+          "nombre": "ChartPieIcon",
+          "importar": "import { ChartPieIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "Distribución o porcentajes.",
+          "props": [
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": "sm 16px · md 20px · lg 24px."
+            },
+            {
+              "nombre": "title",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Texto para lectores de pantalla. Sin él, el icono es decorativo (aria-hidden)."
+            }
+          ]
+        },
+        {
+          "nombre": "CircleXIcon",
+          "importar": "import { CircleXIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "Estado rechazado o anulado.",
+          "props": [
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": "sm 16px · md 20px · lg 24px."
+            },
+            {
+              "nombre": "title",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Texto para lectores de pantalla. Sin él, el icono es decorativo (aria-hidden)."
+            }
+          ]
+        },
+        {
+          "nombre": "HelpIcon",
+          "importar": "import { HelpIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "Ayuda o preguntas frecuentes.",
+          "props": [
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": "sm 16px · md 20px · lg 24px."
+            },
+            {
+              "nombre": "title",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Texto para lectores de pantalla. Sin él, el icono es decorativo (aria-hidden)."
+            }
+          ]
+        },
+        {
+          "nombre": "ExternalLinkIcon",
+          "importar": "import { ExternalLinkIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "Enlace que abre otra pestaña.",
+          "props": [
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": "sm 16px · md 20px · lg 24px."
+            },
+            {
+              "nombre": "title",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Texto para lectores de pantalla. Sin él, el icono es decorativo (aria-hidden)."
+            }
+          ]
+        },
+        {
+          "nombre": "BuildingIcon",
+          "importar": "import { BuildingIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "Empresas u organizaciones.",
+          "props": [
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": "sm 16px · md 20px · lg 24px."
+            },
+            {
+              "nombre": "title",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Texto para lectores de pantalla. Sin él, el icono es decorativo (aria-hidden)."
+            }
+          ]
+        },
+        {
+          "nombre": "BriefcaseIcon",
+          "importar": "import { BriefcaseIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "Cargos, empleos o negocios.",
+          "props": [
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": "sm 16px · md 20px · lg 24px."
+            },
+            {
+              "nombre": "title",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Texto para lectores de pantalla. Sin él, el icono es decorativo (aria-hidden)."
+            }
+          ]
+        },
+        {
+          "nombre": "TagIcon",
+          "importar": "import { TagIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "Etiquetas o categorías.",
+          "props": [
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": "sm 16px · md 20px · lg 24px."
+            },
+            {
+              "nombre": "title",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Texto para lectores de pantalla. Sin él, el icono es decorativo (aria-hidden)."
+            }
+          ]
+        },
+        {
+          "nombre": "ListIcon",
+          "importar": "import { ListIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "Vista de lista.",
+          "props": [
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": "sm 16px · md 20px · lg 24px."
+            },
+            {
+              "nombre": "title",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Texto para lectores de pantalla. Sin él, el icono es decorativo (aria-hidden)."
+            }
+          ]
+        },
+        {
+          "nombre": "DashboardIcon",
+          "importar": "import { DashboardIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "Panel o tablero principal.",
+          "props": [
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": "sm 16px · md 20px · lg 24px."
+            },
+            {
+              "nombre": "title",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Texto para lectores de pantalla. Sin él, el icono es decorativo (aria-hidden)."
+            }
+          ]
+        },
+        {
+          "nombre": "SendIcon",
+          "importar": "import { SendIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "Enviar un mensaje o documento.",
+          "props": [
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": "sm 16px · md 20px · lg 24px."
+            },
+            {
+              "nombre": "title",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Texto para lectores de pantalla. Sin él, el icono es decorativo (aria-hidden)."
+            }
+          ]
+        },
+        {
+          "nombre": "SaveIcon",
+          "importar": "import { SaveIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "Guardar cambios.",
+          "props": [
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": "sm 16px · md 20px · lg 24px."
+            },
+            {
+              "nombre": "title",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Texto para lectores de pantalla. Sin él, el icono es decorativo (aria-hidden)."
+            }
+          ]
+        },
+        {
+          "nombre": "StarIcon",
+          "importar": "import { StarIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "Favoritos o calificaciones.",
+          "props": [
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": "sm 16px · md 20px · lg 24px."
+            },
+            {
+              "nombre": "title",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Texto para lectores de pantalla. Sin él, el icono es decorativo (aria-hidden)."
+            }
+          ]
+        },
+        {
+          "nombre": "SunIcon",
+          "importar": "import { SunIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "Cambiar a tema claro.",
+          "props": [
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": "sm 16px · md 20px · lg 24px."
+            },
+            {
+              "nombre": "title",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Texto para lectores de pantalla. Sin él, el icono es decorativo (aria-hidden)."
+            }
+          ]
+        },
+        {
+          "nombre": "MoonIcon",
+          "importar": "import { MoonIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "Cambiar a tema oscuro.",
+          "props": [
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": "sm 16px · md 20px · lg 24px."
+            },
+            {
+              "nombre": "title",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Texto para lectores de pantalla. Sin él, el icono es decorativo (aria-hidden)."
+            }
+          ]
+        },
+        {
+          "nombre": "GlobeIcon",
+          "importar": "import { GlobeIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "Sitio web o idioma.",
+          "props": [
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": "sm 16px · md 20px · lg 24px."
+            },
+            {
+              "nombre": "title",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Texto para lectores de pantalla. Sin él, el icono es decorativo (aria-hidden)."
+            }
+          ]
+        },
+        {
+          "nombre": "QrCodeIcon",
+          "importar": "import { QrCodeIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "Códigos QR (pagos, MFA).",
+          "props": [
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": "sm 16px · md 20px · lg 24px."
+            },
+            {
+              "nombre": "title",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Texto para lectores de pantalla. Sin él, el icono es decorativo (aria-hidden)."
+            }
+          ]
+        },
+        {
+          "nombre": "SmartphoneIcon",
+          "importar": "import { SmartphoneIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "Dispositivo móvil o app autenticadora.",
+          "props": [
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": "sm 16px · md 20px · lg 24px."
+            },
+            {
+              "nombre": "title",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Texto para lectores de pantalla. Sin él, el icono es decorativo (aria-hidden)."
+            }
+          ]
+        },
+        {
+          "nombre": "ClipboardListIcon",
+          "importar": "import { ClipboardListIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "Listas de tareas o pendientes.",
+          "props": [
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": "sm 16px · md 20px · lg 24px."
+            },
+            {
+              "nombre": "title",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Texto para lectores de pantalla. Sin él, el icono es decorativo (aria-hidden)."
+            }
+          ]
+        },
+        {
+          "nombre": "FileTextIcon",
+          "importar": "import { FileTextIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "Documentos de texto.",
+          "props": [
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": "sm 16px · md 20px · lg 24px."
+            },
+            {
+              "nombre": "title",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Texto para lectores de pantalla. Sin él, el icono es decorativo (aria-hidden)."
+            }
+          ]
+        },
+        {
+          "nombre": "FileSpreadsheetIcon",
+          "importar": "import { FileSpreadsheetIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "Exportar a Excel o hojas de cálculo.",
+          "props": [
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": "sm 16px · md 20px · lg 24px."
+            },
+            {
+              "nombre": "title",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Texto para lectores de pantalla. Sin él, el icono es decorativo (aria-hidden)."
+            }
+          ]
+        },
+        {
+          "nombre": "HistoryIcon",
+          "importar": "import { HistoryIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "Historial o auditoría de cambios.",
+          "props": [
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": "sm 16px · md 20px · lg 24px."
+            },
+            {
+              "nombre": "title",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Texto para lectores de pantalla. Sin él, el icono es decorativo (aria-hidden)."
+            }
+          ]
+        },
+        {
+          "nombre": "PowerIcon",
+          "importar": "import { PowerIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "Activar o desactivar algo.",
+          "props": [
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": "sm 16px · md 20px · lg 24px."
+            },
+            {
+              "nombre": "title",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Texto para lectores de pantalla. Sin él, el icono es decorativo (aria-hidden)."
+            }
+          ]
+        },
+        {
+          "nombre": "PaletteIcon",
+          "importar": "import { PaletteIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "Personalizar colores o apariencia.",
+          "props": [
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": "sm 16px · md 20px · lg 24px."
+            },
+            {
+              "nombre": "title",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Texto para lectores de pantalla. Sin él, el icono es decorativo (aria-hidden)."
+            }
+          ]
         }
       ],
       "otrosValores": ["ICONOS"],
@@ -7664,6 +8504,246 @@
       "categoria": "dinero",
       "palabras": ["factura", "comprobante", "boleta", "recibo"],
       "usarPara": "Comprobantes de pago (boletas y facturas)."
+    },
+    {
+      "nombre": "LockIcon",
+      "categoria": "acciones",
+      "palabras": ["candado", "bloqueado", "seguro", "privado"],
+      "usarPara": "Contenido protegido o campo bloqueado."
+    },
+    {
+      "nombre": "LockOpenIcon",
+      "categoria": "acciones",
+      "palabras": ["desbloquear", "abierto", "acceso"],
+      "usarPara": "Desbloquear o acceso concedido."
+    },
+    {
+      "nombre": "KeyIcon",
+      "categoria": "personas",
+      "palabras": ["llave", "contraseña", "clave", "acceso"],
+      "usarPara": "Contraseñas y claves de acceso."
+    },
+    {
+      "nombre": "LogInIcon",
+      "categoria": "navegacion",
+      "palabras": ["iniciar sesión", "entrar", "ingresar", "login"],
+      "usarPara": "Botón de iniciar sesión."
+    },
+    {
+      "nombre": "LogOutIcon",
+      "categoria": "navegacion",
+      "palabras": ["cerrar sesión", "salir", "logout"],
+      "usarPara": "Botón de cerrar sesión."
+    },
+    {
+      "nombre": "ShieldCheckIcon",
+      "categoria": "estado",
+      "palabras": ["seguridad", "protegido", "verificado", "2fa", "mfa"],
+      "usarPara": "Seguridad o verificación en dos pasos."
+    },
+    {
+      "nombre": "FingerprintIcon",
+      "categoria": "personas",
+      "palabras": ["huella", "biometría", "passkey", "llave de acceso"],
+      "usarPara": "Passkeys o acceso biométrico."
+    },
+    {
+      "nombre": "EyeOffIcon",
+      "categoria": "acciones",
+      "palabras": ["ocultar", "no visible", "ojo tachado"],
+      "usarPara": "Ocultar contraseña o contenido."
+    },
+    {
+      "nombre": "UserCogIcon",
+      "categoria": "personas",
+      "palabras": ["perfil", "cuenta", "ajustes de usuario"],
+      "usarPara": "Ajustes de la cuenta del usuario."
+    },
+    {
+      "nombre": "BankIcon",
+      "categoria": "dinero",
+      "palabras": ["banco", "entidad financiera", "cuenta bancaria"],
+      "usarPara": "Cuentas o entidades bancarias."
+    },
+    {
+      "nombre": "CreditCardIcon",
+      "categoria": "dinero",
+      "palabras": ["tarjeta", "crédito", "débito", "pago con tarjeta"],
+      "usarPara": "Pagos con tarjeta."
+    },
+    {
+      "nombre": "BanknoteIcon",
+      "categoria": "dinero",
+      "palabras": ["billete", "efectivo", "dinero", "soles"],
+      "usarPara": "Pagos en efectivo o montos."
+    },
+    {
+      "nombre": "CalculatorIcon",
+      "categoria": "dinero",
+      "palabras": ["calculadora", "cálculo", "totales"],
+      "usarPara": "Cálculos o simulaciones."
+    },
+    {
+      "nombre": "PiggyBankIcon",
+      "categoria": "dinero",
+      "palabras": ["ahorro", "alcancía", "reserva"],
+      "usarPara": "Ahorros o reservas."
+    },
+    {
+      "nombre": "TrendingUpIcon",
+      "categoria": "estado",
+      "palabras": ["sube", "aumento", "crecimiento", "ganancia"],
+      "usarPara": "Indicador que sube."
+    },
+    {
+      "nombre": "TrendingDownIcon",
+      "categoria": "estado",
+      "palabras": ["baja", "disminución", "pérdida"],
+      "usarPara": "Indicador que baja."
+    },
+    {
+      "nombre": "ChartBarIcon",
+      "categoria": "archivos",
+      "palabras": ["gráfico de barras", "estadísticas", "reporte"],
+      "usarPara": "Reportes con gráfico de barras."
+    },
+    {
+      "nombre": "ChartPieIcon",
+      "categoria": "archivos",
+      "palabras": ["gráfico circular", "distribución", "porcentaje"],
+      "usarPara": "Distribución o porcentajes."
+    },
+    {
+      "nombre": "CircleXIcon",
+      "categoria": "estado",
+      "palabras": ["rechazado", "anulado", "cancelado", "x"],
+      "usarPara": "Estado rechazado o anulado."
+    },
+    {
+      "nombre": "HelpIcon",
+      "categoria": "estado",
+      "palabras": ["ayuda", "pregunta", "duda", "soporte"],
+      "usarPara": "Ayuda o preguntas frecuentes."
+    },
+    {
+      "nombre": "ExternalLinkIcon",
+      "categoria": "navegacion",
+      "palabras": ["abrir en otra pestaña", "enlace externo"],
+      "usarPara": "Enlace que abre otra pestaña."
+    },
+    {
+      "nombre": "BuildingIcon",
+      "categoria": "lugares",
+      "palabras": ["empresa", "organización", "edificio", "oficina"],
+      "usarPara": "Empresas u organizaciones."
+    },
+    {
+      "nombre": "BriefcaseIcon",
+      "categoria": "personas",
+      "palabras": ["trabajo", "cargo", "empleo", "negocio"],
+      "usarPara": "Cargos, empleos o negocios."
+    },
+    {
+      "nombre": "TagIcon",
+      "categoria": "otros",
+      "palabras": ["etiqueta", "categoría", "precio"],
+      "usarPara": "Etiquetas o categorías."
+    },
+    {
+      "nombre": "ListIcon",
+      "categoria": "otros",
+      "palabras": ["lista", "elementos", "viñetas"],
+      "usarPara": "Vista de lista."
+    },
+    {
+      "nombre": "DashboardIcon",
+      "categoria": "navegacion",
+      "palabras": ["panel", "tablero", "inicio", "resumen"],
+      "usarPara": "Panel o tablero principal."
+    },
+    {
+      "nombre": "SendIcon",
+      "categoria": "comunicacion",
+      "palabras": ["enviar", "mandar", "avión de papel"],
+      "usarPara": "Enviar un mensaje o documento."
+    },
+    {
+      "nombre": "SaveIcon",
+      "categoria": "acciones",
+      "palabras": ["guardar", "disquete", "grabar"],
+      "usarPara": "Guardar cambios."
+    },
+    {
+      "nombre": "StarIcon",
+      "categoria": "otros",
+      "palabras": ["favorito", "destacado", "estrella", "calificación"],
+      "usarPara": "Favoritos o calificaciones."
+    },
+    {
+      "nombre": "SunIcon",
+      "categoria": "otros",
+      "palabras": ["claro", "día", "tema claro", "sol"],
+      "usarPara": "Cambiar a tema claro."
+    },
+    {
+      "nombre": "MoonIcon",
+      "categoria": "otros",
+      "palabras": ["oscuro", "noche", "tema oscuro", "luna"],
+      "usarPara": "Cambiar a tema oscuro."
+    },
+    {
+      "nombre": "GlobeIcon",
+      "categoria": "lugares",
+      "palabras": ["web", "idioma", "internet", "mundo"],
+      "usarPara": "Sitio web o idioma."
+    },
+    {
+      "nombre": "QrCodeIcon",
+      "categoria": "acciones",
+      "palabras": ["código qr", "escanear", "qr"],
+      "usarPara": "Códigos QR (pagos, MFA)."
+    },
+    {
+      "nombre": "SmartphoneIcon",
+      "categoria": "comunicacion",
+      "palabras": ["celular", "móvil", "dispositivo", "app"],
+      "usarPara": "Dispositivo móvil o app autenticadora."
+    },
+    {
+      "nombre": "ClipboardListIcon",
+      "categoria": "archivos",
+      "palabras": ["tareas", "pendientes", "checklist"],
+      "usarPara": "Listas de tareas o pendientes."
+    },
+    {
+      "nombre": "FileTextIcon",
+      "categoria": "archivos",
+      "palabras": ["archivo de texto", "documento", "contrato"],
+      "usarPara": "Documentos de texto."
+    },
+    {
+      "nombre": "FileSpreadsheetIcon",
+      "categoria": "archivos",
+      "palabras": ["excel", "hoja de cálculo", "exportar"],
+      "usarPara": "Exportar a Excel o hojas de cálculo."
+    },
+    {
+      "nombre": "HistoryIcon",
+      "categoria": "estado",
+      "palabras": ["historial", "auditoría", "antes", "cambios"],
+      "usarPara": "Historial o auditoría de cambios."
+    },
+    {
+      "nombre": "PowerIcon",
+      "categoria": "acciones",
+      "palabras": ["apagar", "encender", "activar", "desactivar"],
+      "usarPara": "Activar o desactivar algo."
+    },
+    {
+      "nombre": "PaletteIcon",
+      "categoria": "otros",
+      "palabras": ["colores", "tema", "apariencia", "marca"],
+      "usarPara": "Personalizar colores o apariencia."
     }
   ]
 }

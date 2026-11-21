@@ -44,6 +44,10 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
 
+      # Trusted Publishing (OIDC) requiere npm >= 11.5.1. Ver docs/PUBLICAR.md.
+      - name: Update npm
+        run: npm install -g npm@11 && npm --version
+
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
@@ -63,7 +67,9 @@ jobs:
           title: "chore: version packages"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN_UI_LIBRARY }}
+          # Con la variable NPM_TRUSTED_PUBLISHING=true se publica por OIDC, sin token.
+          # Sin ella (o para volver atrás) se usa el token. Ver docs/PUBLICAR.md.
+          NPM_TOKEN: ${{ vars.NPM_TRUSTED_PUBLISHING != 'true' && secrets.NPM_TOKEN_UI_LIBRARY || '' }}
           NPM_CONFIG_PROVENANCE: true
 
   # Solo cuando se publicó una versión nueva en npm: actualiza https://ui.lbyte.pe

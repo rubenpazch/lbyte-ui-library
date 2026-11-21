@@ -4,6 +4,7 @@
  *
  *   pnpm icono:nuevo <Nombre> <archivo.svg> <categoria> "<palabras, separadas, por coma>" "<Usar para…>"
  *   pnpm icono:nuevo Factura ./factura.svg dinero "factura, comprobante, boleta" "Comprobantes de pago."
+ *   pnpm icono:nuevo Banco lucide:landmark dinero "banco, entidad, cuenta" "Cuentas o entidades bancarias."
  *
  * - Genera packages/icons/src/<Nombre>Icon.tsx (tamaños sm/md/lg, currentColor,
  *   decorativo por defecto: aria-hidden, o con `title` si transmite información).
@@ -47,7 +48,21 @@ const nombre = base.endsWith("Icon") ? base : `${base}Icon`;
 const destino = path.join(SRC, `${nombre}.tsx`);
 if (fs.existsSync(destino)) fallar(`${nombre} ya existe.`);
 
-const svg = fs.readFileSync(path.resolve(archivo), "utf8");
+// "lucide:<nombre>" toma el SVG del paquete lucide-static (ISC), p. ej. lucide:receipt
+const rutaSvg = archivo.startsWith("lucide:")
+  ? path.join(
+      RAIZ,
+      "node_modules",
+      "lucide-static",
+      "icons",
+      `${archivo.slice(7)}.svg`,
+    )
+  : path.resolve(archivo);
+if (!fs.existsSync(rutaSvg))
+  fallar(
+    `No existe ${rutaSvg}${archivo.startsWith("lucide:") ? " (busca el nombre en https://lucide.dev/icons)" : ""}`,
+  );
+const svg = fs.readFileSync(rutaSvg, "utf8");
 const viewBox = svg.match(/viewBox="([^"]+)"/)?.[1] ?? "0 0 24 24";
 const raiz = svg.match(/<svg\b([^>]*)>/)?.[1] ?? "";
 const atributo = (n) => raiz.match(new RegExp(`\\b${n}="([^"]+)"`))?.[1];

@@ -28,10 +28,10 @@
     "pre-commit": "lint-staged",
     "pre-push": "pnpm test && pnpm build",
     "format:prettier": "prettier . --write --ignore-path .prettierignore",
-    "chromatic": "chromatic --exit-zero-on-changes",
     "catalogo": "node ./scripts/catalogo.mjs",
     "catalogo:check": "node ./scripts/catalogo.mjs --check",
-    "icono:nuevo": "node scripts/nuevo-icono.mjs"
+    "icono:nuevo": "node scripts/nuevo-icono.mjs",
+    "trusted-publishing": "node scripts/trusted-publishing.mjs"
   },
   "lint-staged": {
     "*.{ts,tsx}": [
@@ -82,7 +82,6 @@
     "@typescript-eslint/eslint-plugin": "^8.68.0",
     "@typescript-eslint/parser": "^8.68.0",
     "babel-jest": "^30.5.0",
-    "chromatic": "^18.7.1",
     "eslint-plugin-storybook": "^10.5.10",
     "husky": "^9.1.7",
     "jest": "^30.5.0",
@@ -90,6 +89,7 @@
     "jest-environment-jsdom": "^30.5.0",
     "lint-staged": "^17.4.1",
     "lodash": "4.18.1",
+    "lucide-static": "^0.577.0",
     "react-docgen-typescript": "^2.4.0",
     "turbo": "^2.10.12",
     "typescript-eslint": "^8.68.0"
