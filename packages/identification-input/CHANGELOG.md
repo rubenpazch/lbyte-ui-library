@@ -1,5 +1,20 @@
 # @rubenpazch/identification-input
 
+## 2.1.0
+
+### Minor Changes
+
+- 4a35192: - `Select`, `RadioGroup`/`RadioButton`, `IdentificationInput` e `ImageUpload` exponen `ref` y aceptan las props comunes de campo (`label`, `hint`, `error`, `required`, `id`, `name`), con `aria-describedby`/`aria-invalid`.
+  - `IdentificationInput` e `ImageUpload`: `labels` pasa a ser opcional, con textos en español por defecto (`DEFAULT_IDENTIFICATION_LABELS`, `DEFAULT_IMAGE_UPLOAD_LABELS`).
+  - `RadioGroup`: textos por defecto en español ("Seleccionado:", "Ninguno").
+  - `DateInput`/`DatePicker`: el campo usa `role="combobox"`, que es lo que permite `aria-expanded` (lo detectó axe).
+  - Pruebas automáticas de accesibilidad con jest-axe en 42 componentes.
+
+### Patch Changes
+
+- @rubenpazch/autocomplete@5.1.1
+  - @rubenpazch/text-input@6.2.1
+
 ## 2.0.3
 
 ### Patch Changes

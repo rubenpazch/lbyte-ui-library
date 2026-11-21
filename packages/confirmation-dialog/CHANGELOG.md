@@ -1,5 +1,12 @@
 # @rubenpazch/confirmation-dialog
 
+## 3.1.1
+
+### Patch Changes
+
+- Updated dependencies [4a35192]
+  - @rubenpazch/modal@0.1.1
+
 ## 3.1.0
 
 ### Minor Changes

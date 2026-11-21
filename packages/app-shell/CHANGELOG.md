@@ -1,5 +1,12 @@
 # @rubenpazch/app-shell
 
+## 0.1.1
+
+### Patch Changes
+
+- Updated dependencies [4a35192]
+  - @rubenpazch/sidebar@0.1.1
+
 ## 0.1.0
 
 ### Minor Changes
