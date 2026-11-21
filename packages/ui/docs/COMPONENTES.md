@@ -63,7 +63,7 @@ librería (ver AGENTS.md del repo lbyte-ui-library), no lo copies en la app.
 | [`@rubenpazch/tabs`](#rubenpazchtabs)                                   | Navegación                 | Tabs                                                                                      | Pestañas para alternar entre secciones de una misma vista.                                                                                                                                                                                             |
 | [`@rubenpazch/text-input`](#rubenpazchtext-input)                       | Formularios                | TextInput                                                                                 | Campo de texto con etiqueta, ayuda, advertencia, error, iconos y variantes.                                                                                                                                                                            |
 | [`@rubenpazch/textarea`](#rubenpazchtextarea)                           | Formularios                | Textarea                                                                                  | Área de texto con etiqueta, ayuda, advertencia, error, contador de caracteres y crecimiento automático.                                                                                                                                                |
-| [`@rubenpazch/toast`](#rubenpazchtoast)                                 | Retroalimentación          | ToastBanner, ToastProvider, useToast                                                      | Notificaciones temporales (Toast) y avisos fijos (ToastBanner) con tipos y acciones.                                                                                                                                                                   |
+| [`@rubenpazch/toast`](#rubenpazchtoast)                                 | Retroalimentación          | ToastBanner, ToastProvider, ToastRegion, useToast                                         | Notificaciones temporales (Toast) y avisos fijos (ToastBanner) con tipos y acciones.                                                                                                                                                                   |
 | [`@rubenpazch/tokens`](#rubenpazchtokens)                               | Base (tokens y utilidades) | cssVar, fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, …                    | Tokens de diseño (colores, tipografía, espacios, radios, sombras) como variables CSS --lb-*, estilos base y puente para Tailwind 4.                                                                                                                    |
 | [`@rubenpazch/tooltip`](#rubenpazchtooltip)                             | Presentación de datos      | Tooltip                                                                                   | Texto de ayuda breve al pasar el mouse o enfocar con teclado (role="tooltip", aria-describedby), se cierra con Escape.                                                                                                                                 |
 
@@ -1321,8 +1321,8 @@ import { ToastBanner } from "@rubenpazch/ui";
 
 #### ToastProvider
 
-Mensajes del servidor dentro de la app (usuario con sesión): toasts arriba a la derecha,
-bajo la cabecera. `AppShell` ya lo incluye; úsalo directamente solo en un layout propio.
+Mensajes del servidor dentro de la app (usuario con sesión). `AppShell` ya lo incluye y los
+muestra bajo su cabecera; úsalo directamente solo en un layout propio.
 
 En pantallas públicas (login, registro, recuperación) NO se usa: ahí el mensaje va junto al
 formulario. Por eso `useToast()` falla fuera de un proveedor.
@@ -1331,10 +1331,23 @@ formulario. Por eso `useToast()` falla fuera de un proveedor.
 import { ToastProvider } from "@rubenpazch/ui";
 ```
 
-| Prop             | Tipo     | Req. | Por defecto      | Descripción                                                              |
-| ---------------- | -------- | ---- | ---------------- | ------------------------------------------------------------------------ |
-| `closeAriaLabel` | `string` |      | `Cerrar mensaje` | Texto accesible del botón ×.                                             |
-| `offsetTop`      | `string` |      |                  | Distancia desde arriba (por defecto deja libre la cabecera de AppShell). |
+| Prop             | Tipo                     | Req. | Por defecto      | Descripción                                                                                                                                                                                             |
+| ---------------- | ------------------------ | ---- | ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `closeAriaLabel` | `string`                 |      | `Cerrar mensaje` | Texto accesible del botón ×.                                                                                                                                                                            |
+| `offsetTop`      | `string`                 |      |                  | Distancia desde arriba en modo `floating`.                                                                                                                                                              |
+| `placement`      | `"floating" \| "inline"` |      | `floating`       | `floating` (por defecto): flotan arriba a la derecha. `inline`: no se pintan aquí; el layout pone `<ToastRegion />` en su sitio (AppShell lo hace bajo su cabecera, sin tapar el menú ni el contenido). |
+
+#### ToastRegion
+
+Pinta los toasts de un `ToastProvider placement="inline"` en el lugar del layout donde se ponga.
+
+```tsx
+import { ToastRegion } from "@rubenpazch/ui";
+```
+
+| Prop        | Tipo     | Req. | Por defecto | Descripción |
+| ----------- | -------- | ---- | ----------- | ----------- |
+| `className` | `string` |      |             |             |
 
 Otras exportaciones: `useToast`.
 

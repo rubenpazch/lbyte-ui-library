@@ -8008,7 +8008,7 @@
         {
           "nombre": "ToastProvider",
           "importar": "import { ToastProvider } from \"@rubenpazch/ui\";",
-          "descripcion": "Mensajes del servidor dentro de la app (usuario con sesión): toasts arriba a la derecha,\nbajo la cabecera. `AppShell` ya lo incluye; úsalo directamente solo en un layout propio.\n\nEn pantallas públicas (login, registro, recuperación) NO se usa: ahí el mensaje va junto al\nformulario. Por eso `useToast()` falla fuera de un proveedor.",
+          "descripcion": "Mensajes del servidor dentro de la app (usuario con sesión). `AppShell` ya lo incluye y los\nmuestra bajo su cabecera; úsalo directamente solo en un layout propio.\n\nEn pantallas públicas (login, registro, recuperación) NO se usa: ahí el mensaje va junto al\nformulario. Por eso `useToast()` falla fuera de un proveedor.",
           "props": [
             {
               "nombre": "closeAriaLabel",
@@ -8022,7 +8022,28 @@
               "tipo": "string",
               "requerido": false,
               "porDefecto": null,
-              "descripcion": "Distancia desde arriba (por defecto deja libre la cabecera de AppShell)."
+              "descripcion": "Distancia desde arriba en modo `floating`."
+            },
+            {
+              "nombre": "placement",
+              "tipo": "\"floating\" | \"inline\"",
+              "requerido": false,
+              "porDefecto": "floating",
+              "descripcion": "`floating` (por defecto): flotan arriba a la derecha.\n`inline`: no se pintan aquí; el layout pone `<ToastRegion />` en su sitio\n(AppShell lo hace bajo su cabecera, sin tapar el menú ni el contenido)."
+            }
+          ]
+        },
+        {
+          "nombre": "ToastRegion",
+          "importar": "import { ToastRegion } from \"@rubenpazch/ui\";",
+          "descripcion": "Pinta los toasts de un `ToastProvider placement=\"inline\"` en el lugar del layout donde se ponga.",
+          "props": [
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": ""
             }
           ]
         }

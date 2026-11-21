@@ -1,7 +1,7 @@
 import React, { useId, useState } from "react";
 import Sidebar from "@rubenpazch/sidebar";
 import type { SidebarProps } from "@rubenpazch/sidebar";
-import { ToastProvider } from "@rubenpazch/toast";
+import { ToastProvider, ToastRegion } from "@rubenpazch/toast";
 import styles from "./AppShell.module.css";
 
 export interface AppShellProps extends Pick<
@@ -88,33 +88,38 @@ export default function AppShell({
         onMobileOpenChange={setMobileOpen}
       />
       <div className={styles.column}>
-        <header className={styles.header}>
-          <button
-            type="button"
-            className={styles.menuButton}
-            onClick={() => setMobileOpen(true)}
-            aria-label={text.openMenu}
-            aria-expanded={mobileOpen}
-          >
-            <svg
-              viewBox="0 0 20 20"
-              fill="currentColor"
-              width="20"
-              height="20"
-              aria-hidden="true"
+        {/* Bloque fijo: cabecera + mensajes. Ocupa solo la columna del contenido: no tapa el menú
+            y empuja el contenido en vez de superponerse. */}
+        <div className={styles.top}>
+          <header className={styles.header}>
+            <button
+              type="button"
+              className={styles.menuButton}
+              onClick={() => setMobileOpen(true)}
+              aria-label={text.openMenu}
+              aria-expanded={mobileOpen}
             >
-              <path
-                fillRule="evenodd"
-                d="M2 4.75A.75.75 0 0 1 2.75 4h14.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 4.75Zm0 5.25a.75.75 0 0 1 .75-.75h14.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 10Zm0 5.25a.75.75 0 0 1 .75-.75h14.5a.75.75 0 0 1 0 1.5H2.75a.75.75 0 0 1-.75-.75Z"
-                clipRule="evenodd"
-              />
-            </svg>
-          </button>
-          {title && <div className={styles.title}>{title}</div>}
-          {headerActions && (
-            <div className={styles.actions}>{headerActions}</div>
-          )}
-        </header>
+              <svg
+                viewBox="0 0 20 20"
+                fill="currentColor"
+                width="20"
+                height="20"
+                aria-hidden="true"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M2 4.75A.75.75 0 0 1 2.75 4h14.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 4.75Zm0 5.25a.75.75 0 0 1 .75-.75h14.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 10Zm0 5.25a.75.75 0 0 1 .75-.75h14.5a.75.75 0 0 1 0 1.5H2.75a.75.75 0 0 1-.75-.75Z"
+                  clipRule="evenodd"
+                />
+              </svg>
+            </button>
+            {title && <div className={styles.title}>{title}</div>}
+            {headerActions && (
+              <div className={styles.actions}>{headerActions}</div>
+            )}
+          </header>
+          {toasts && <ToastRegion className={styles.toasts} />}
+        </div>
         <main id={mainId} tabIndex={-1} className={styles.main}>
           <div className={cx(styles.content, styles[`max-${maxWidth}`])}>
             {children}
@@ -123,5 +128,9 @@ export default function AppShell({
       </div>
     </div>
   );
-  return toasts ? <ToastProvider>{shell}</ToastProvider> : shell;
+  return toasts ? (
+    <ToastProvider placement="inline">{shell}</ToastProvider>
+  ) : (
+    shell
+  );
 }

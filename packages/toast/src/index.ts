@@ -5,7 +5,7 @@ export type {
   ToastItem,
   ToastType,
 } from "./Toast";
-export { ToastProvider, useToast } from "./ToastProvider";
+export { ToastProvider, ToastRegion, useToast } from "./ToastProvider";
 export type {
   ToastApi,
   ToastOptions,

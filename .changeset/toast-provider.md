@@ -8,3 +8,4 @@
 - `AppShell` incluye `ToastProvider` (prop `toasts={false}` para desactivarlo).
 - Toast: `role="status"` para éxito/info y `role="alert"` para error/aviso (antes todos `alert`).
 - AGENTS.md: regla de **Mensajes** para todas las apps y valores por defecto de `Button` y `TextInput`.
+- `ToastRegion` y `placement="inline"`: `AppShell` muestra los toasts en su bloque fijo bajo la cabecera, solo en la columna del contenido (no tapan el menú ni el contenido; lo empujan).

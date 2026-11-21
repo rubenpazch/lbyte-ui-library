@@ -159,3 +159,12 @@
   pointer-events: auto;
   box-shadow: var(--lb-shadow-md);
 }
+
+/* ToastRegion (placement="inline"): en el flujo del layout, sin superponerse a nada. */
+.inline {
+  padding: var(--lb-space-2) var(--lb-space-6) var(--lb-space-3);
+}
+
+.inline .toast {
+  box-shadow: none;
+}

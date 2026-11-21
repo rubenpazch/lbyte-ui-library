@@ -73,3 +73,27 @@ describe("AppShell + toasts", () => {
     expect(screen.getByRole("status")).toHaveTextContent("Cambios guardados");
   });
 });
+
+it("pinta los toasts bajo la cabecera, dentro de la columna del contenido (no flotan sobre el menú)", () => {
+  function Guardar() {
+    const toast = useToast();
+    return (
+      <button onClick={() => toast.error("No se pudo guardar")}>Guardar</button>
+    );
+  }
+  const { container } = render(
+    <AppShell
+      title="Panel"
+      sections={[{ items: [{ label: "Inicio", href: "/" }] }]}
+    >
+      <Guardar />
+    </AppShell>,
+  );
+  fireEvent.click(screen.getByRole("button", { name: "Guardar" }));
+  const alerta = screen.getByRole("alert");
+  const cabecera = container.querySelector("header")!;
+  // El toast comparte el bloque fijo de la cabecera y está fuera de <main> y del menú.
+  expect(cabecera.parentElement!.contains(alerta)).toBe(true);
+  expect(container.querySelector("main")!.contains(alerta)).toBe(false);
+  expect(container.querySelector("nav")?.contains(alerta) ?? false).toBe(false);
+});

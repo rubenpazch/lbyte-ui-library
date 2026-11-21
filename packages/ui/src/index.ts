@@ -307,7 +307,12 @@ export type {
 } from "@rubenpazch/text-input";
 export { default as Textarea } from "@rubenpazch/textarea";
 export type { TextareaProps } from "@rubenpazch/textarea";
-export { ToastBanner, ToastProvider, useToast } from "@rubenpazch/toast";
+export {
+  ToastBanner,
+  ToastProvider,
+  ToastRegion,
+  useToast,
+} from "@rubenpazch/toast";
 export type {
   ToastAction,
   ToastBannerProps,
