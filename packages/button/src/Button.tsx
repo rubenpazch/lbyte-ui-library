@@ -126,7 +126,15 @@ const Button = React.forwardRef<
     className,
   );
 
-  const buttonProps = Component === "button" ? { disabled: isDisabled } : {};
+  // type="button" por defecto: sin él, un botón dentro de un <form> lo envía (HTML usa "submit").
+  // Para enviar, pasa type="submit".
+  const buttonProps =
+    Component === "button"
+      ? {
+          disabled: isDisabled,
+          type: ("type" in props && props.type) || "button",
+        }
+      : {};
   const linkProps =
     Component === "a" ? { href, "aria-disabled": isDisabled } : {};
 
