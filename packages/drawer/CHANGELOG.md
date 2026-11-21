@@ -1,5 +1,12 @@
 # @rubenpazch/drawer
 
+## 4.2.1
+
+### Patch Changes
+
+- Updated dependencies [0d27db1]
+  - @rubenpazch/icons@6.3.0
+
 ## 4.2.0
 
 ### Minor Changes

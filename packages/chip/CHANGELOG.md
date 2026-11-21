@@ -1,5 +1,12 @@
 # @rubenpazch/chip
 
+## 4.0.3
+
+### Patch Changes
+
+- Updated dependencies [0d27db1]
+  - @rubenpazch/icons@6.3.0
+
 ## 4.0.2
 
 ### Patch Changes

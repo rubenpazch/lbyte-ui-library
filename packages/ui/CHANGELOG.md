@@ -1,5 +1,46 @@
 # @rubenpazch/ui
 
+## 0.3.0
+
+### Minor Changes
+
+- 4a35192: - `Select`, `RadioGroup`/`RadioButton`, `IdentificationInput` e `ImageUpload` exponen `ref` y aceptan las props comunes de campo (`label`, `hint`, `error`, `required`, `id`, `name`), con `aria-describedby`/`aria-invalid`.
+  - `IdentificationInput` e `ImageUpload`: `labels` pasa a ser opcional, con textos en español por defecto (`DEFAULT_IDENTIFICATION_LABELS`, `DEFAULT_IMAGE_UPLOAD_LABELS`).
+  - `RadioGroup`: textos por defecto en español ("Seleccionado:", "Ninguno").
+  - `DateInput`/`DatePicker`: el campo usa `role="combobox"`, que es lo que permite `aria-expanded` (lo detectó axe).
+  - Pruebas automáticas de accesibilidad con jest-axe en 42 componentes.
+- 0d27db1: - Iconos: metadatos para la IA (`ICONOS`, `docs/ICONOS.md`), galería única en Storybook y nuevo `ReceiptIcon`.
+  - Iconos: se publican como un archivo por icono (`preserveModules`, `sideEffects: false`); importar uno pasa de ~22 KB a ~1,3 KB.
+  - Iconos decorativos por defecto (`aria-hidden`): se quitan los `aria-label` fijos en inglés que se sumaban al nombre de los botones.
+  - `pnpm icono:nuevo` crea un icono desde un `.svg`.
+  - Historias de `Select` y `OverlayLoader`; títulos de Storybook unificados por categoría en español.
+
+### Patch Changes
+
+- Updated dependencies [4a35192]
+- Updated dependencies [0d27db1]
+  - @rubenpazch/select@1.2.0
+  - @rubenpazch/radio-button@4.2.0
+  - @rubenpazch/identification-input@2.1.0
+  - @rubenpazch/image-upload@3.1.0
+  - @rubenpazch/date-input@3.1.1
+  - @rubenpazch/date-picker@3.1.1
+  - @rubenpazch/modal@0.1.1
+  - @rubenpazch/sidebar@0.1.1
+  - @rubenpazch/icons@6.3.0
+  - @rubenpazch/prescription-card@3.0.4
+  - @rubenpazch/overlay-loader@1.1.3
+  - @rubenpazch/confirmation-dialog@3.1.1
+  - @rubenpazch/app-shell@0.1.1
+  - @rubenpazch/numeric-up-picker@6.1.1
+  - @rubenpazch/autocomplete@5.1.1
+  - @rubenpazch/chip@4.0.3
+  - @rubenpazch/drawer@4.2.1
+  - @rubenpazch/pagination@3.2.1
+  - @rubenpazch/patient-search@3.0.3
+  - @rubenpazch/text-input@6.2.1
+  - @rubenpazch/toast@4.0.3
+
 ## 0.2.0
 
 ### Minor Changes
