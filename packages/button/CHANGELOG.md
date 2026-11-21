@@ -1,5 +1,12 @@
 # @rubenpazch/button
 
+## 6.2.4
+
+### Patch Changes
+
+- c735699: - `Select` y `Autocomplete`: `labelAction`, contenido junto a la etiqueta (botón de ayuda, enlace), igual que en `TextInput`.
+  - Los paquetes que no exportaban sus tipos ahora los exportan (`ButtonProps`, `DateInputProps`, `AutocompleteOption`, `DrawerProps`…), y `@rubenpazch/ui` los reexporta.
+
 ## 6.2.3
 
 ### Patch Changes

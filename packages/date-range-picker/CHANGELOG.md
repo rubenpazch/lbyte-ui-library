@@ -1,5 +1,12 @@
 # @rubenpazch/date-range-picker
 
+## 0.1.1
+
+### Patch Changes
+
+- Updated dependencies [c735699]
+  - @rubenpazch/date-input@3.2.1
+
 ## 0.1.0
 
 ### Minor Changes
