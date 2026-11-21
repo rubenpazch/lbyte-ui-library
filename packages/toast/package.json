@@ -1,6 +1,6 @@
 {
   "name": "@rubenpazch/toast",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "description": "Toast component",
   "private": false,
   "main": "dist/index.cjs.js",
