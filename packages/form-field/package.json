@@ -1,6 +1,6 @@
 {
   "name": "@rubenpazch/form-field",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Envoltorio de campo, filas y pie de formulario",
   "repository": {
     "type": "git",

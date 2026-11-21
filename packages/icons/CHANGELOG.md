@@ -1,5 +1,12 @@
 # @rubenpazch/icons
 
+## 6.4.1
+
+### Patch Changes
+
+- Updated dependencies [f747c04]
+  - @rubenpazch/shared@5.3.0
+
 ## 6.4.0
 
 ### Minor Changes

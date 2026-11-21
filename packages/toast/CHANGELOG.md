@@ -1,5 +1,11 @@
 # @rubenpazch/toast
 
+## 4.1.1
+
+### Patch Changes
+
+- @rubenpazch/icons@6.4.1
+
 ## 4.1.0
 
 ### Minor Changes

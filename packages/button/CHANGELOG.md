@@ -1,5 +1,12 @@
 # @rubenpazch/button
 
+## 6.2.3
+
+### Patch Changes
+
+- Updated dependencies [f747c04]
+  - @rubenpazch/shared@5.3.0
+
 ## 6.2.2
 
 ### Patch Changes

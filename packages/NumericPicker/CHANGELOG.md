@@ -1,5 +1,12 @@
 # @rubenpazch/numeric-picker
 
+## 5.1.2
+
+### Patch Changes
+
+- Updated dependencies [f747c04]
+  - @rubenpazch/shared@5.3.0
+
 ## 5.1.1
 
 ### Patch Changes

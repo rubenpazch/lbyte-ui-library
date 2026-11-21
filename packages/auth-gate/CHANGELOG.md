@@ -1,5 +1,12 @@
 # @rubenpazch/auth-gate
 
+## 0.1.1
+
+### Patch Changes
+
+- Updated dependencies [f747c04]
+  - @rubenpazch/shared@5.3.0
+
 ## 0.1.0
 
 ### Minor Changes

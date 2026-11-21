@@ -1,5 +1,14 @@
 # @rubenpazch/data-table
 
+## 0.1.2
+
+### Patch Changes
+
+- Updated dependencies [f747c04]
+  - @rubenpazch/shared@5.3.0
+  - @rubenpazch/empty-state@0.1.2
+  - @rubenpazch/skeleton@0.1.2
+
 ## 0.1.1
 
 ### Patch Changes

@@ -1,5 +1,77 @@
 # @rubenpazch/ui
 
+## 0.8.0
+
+### Minor Changes
+
+- f747c04: Calendario a pantalla completa en celulares (< 640 px) en `DateInput` y `DatePicker`: barra con el nombre del campo y "Cerrar", días más grandes para el dedo, sin teclado virtual (`inputMode="none"`), sin scroll detrás y con el foco dentro; al elegir la fecha se cierra y vuelve al campo. En escritorio no cambia. Se desactiva con `mobileFullScreen={false}`. `shared` suma `useMediaQuery` y `MOBILE_QUERY`.
+- 3a87d2e: - `DateRangePicker`: periodo desde/hasta (ISO) con dos `DateInput`, validación del orden y atajos (hoy, últimos 7/30 días, este mes, mes anterior, este año) o propios.
+  - `Turnstile`: verificación anti-robots de Cloudflare para formularios públicos; carga el script una sola vez, entrega el token y se reinicia con `resetKey` (sale del `Captcha` de auth-ui).
+- 7e356fa: Componentes genéricos para la migración de hal-docs (criterio 0010 de lbyte-contexto):
+
+  - `Timeline`: historial en orden con estado, fecha (`<time>`) y descripción; resalta el evento actual.
+  - `DescriptionList`: pares etiqueta/valor (`<dl>`) en 1–3 columnas, con valor por defecto para vacíos.
+  - `FileUpload`: uno o varios archivos con arrastrar y soltar, validación de tipo, tamaño, cantidad y duplicados, y lista para quitarlos (`ImageUpload` sigue para una sola imagen).
+  - `LoadingSpinner`: `color="primary"` (por defecto) con el nombre correcto; `"blue"` sigue como alias (ya usaba el color de la marca).
+
+- 64222a4: `TextInput`:
+
+  - Con `type="password"` muestra un botón para **ver u ocultar** lo escrito (`aria-pressed`, textos en `passwordToggleLabels`). Activo por defecto; `showPasswordToggle={false}` lo quita.
+  - `labelAction`: contenido junto a la etiqueta, a la derecha (botón de ayuda, "¿Olvidaste tu contraseña?"…), fuera del `<label>`.
+
+### Patch Changes
+
+- Updated dependencies [f747c04]
+- Updated dependencies [3a87d2e]
+- Updated dependencies [7e356fa]
+- Updated dependencies [64222a4]
+  - @rubenpazch/date-input@3.2.0
+  - @rubenpazch/date-picker@3.2.0
+  - @rubenpazch/shared@5.3.0
+  - @rubenpazch/date-range-picker@0.1.0
+  - @rubenpazch/turnstile@0.1.0
+  - @rubenpazch/timeline@0.1.0
+  - @rubenpazch/description-list@0.1.0
+  - @rubenpazch/file-upload@0.1.0
+  - @rubenpazch/loading-spinner@4.1.0
+  - @rubenpazch/text-input@6.4.0
+  - @rubenpazch/numeric-picker@5.1.2
+  - @rubenpazch/numeric-up-picker@6.1.4
+  - @rubenpazch/alert@0.2.1
+  - @rubenpazch/app-shell@0.3.1
+  - @rubenpazch/auth-gate@0.1.1
+  - @rubenpazch/autocomplete@5.1.4
+  - @rubenpazch/badge@0.1.2
+  - @rubenpazch/button@6.2.3
+  - @rubenpazch/card@0.1.2
+  - @rubenpazch/checkbox-input@3.2.3
+  - @rubenpazch/chip@4.0.6
+  - @rubenpazch/data-table@0.1.2
+  - @rubenpazch/empty-state@0.1.2
+  - @rubenpazch/form-field@0.1.2
+  - @rubenpazch/icon-button@4.2.2
+  - @rubenpazch/icons@6.4.1
+  - @rubenpazch/menu@0.1.2
+  - @rubenpazch/modal@0.1.3
+  - @rubenpazch/money-input@0.1.2
+  - @rubenpazch/month-navigator@0.1.2
+  - @rubenpazch/page-header@0.1.2
+  - @rubenpazch/pagination@3.2.4
+  - @rubenpazch/progress-bar@0.1.2
+  - @rubenpazch/segmented-control@0.1.2
+  - @rubenpazch/sidebar@0.1.3
+  - @rubenpazch/skeleton@0.1.2
+  - @rubenpazch/stepper@4.1.2
+  - @rubenpazch/switch@0.1.2
+  - @rubenpazch/textarea@0.1.2
+  - @rubenpazch/tooltip@0.1.2
+  - @rubenpazch/user-card@0.1.1
+  - @rubenpazch/confirmation-dialog@3.1.4
+  - @rubenpazch/prescription-eye-card@3.0.6
+  - @rubenpazch/drawer@4.2.4
+  - @rubenpazch/patient-search@3.0.6
+  - @rubenpazch/toast@4.1.1
+
 ## 0.7.0
 
 ### Minor Changes
