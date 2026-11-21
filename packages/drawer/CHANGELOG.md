@@ -1,5 +1,12 @@
 # @rubenpazch/drawer
 
+## 4.2.5
+
+### Patch Changes
+
+- c735699: - `Select` y `Autocomplete`: `labelAction`, contenido junto a la etiqueta (botón de ayuda, enlace), igual que en `TextInput`.
+  - Los paquetes que no exportaban sus tipos ahora los exportan (`ButtonProps`, `DateInputProps`, `AutocompleteOption`, `DrawerProps`…), y `@rubenpazch/ui` los reexporta.
+
 ## 4.2.4
 
 ### Patch Changes

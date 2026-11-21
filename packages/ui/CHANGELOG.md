@@ -1,5 +1,29 @@
 # @rubenpazch/ui
 
+## 0.9.0
+
+### Minor Changes
+
+- c735699: - `Select` y `Autocomplete`: `labelAction`, contenido junto a la etiqueta (botón de ayuda, enlace), igual que en `TextInput`.
+  - Los paquetes que no exportaban sus tipos ahora los exportan (`ButtonProps`, `DateInputProps`, `AutocompleteOption`, `DrawerProps`…), y `@rubenpazch/ui` los reexporta.
+
+### Patch Changes
+
+- Updated dependencies [c735699]
+  - @rubenpazch/select@1.3.0
+  - @rubenpazch/autocomplete@5.2.0
+  - @rubenpazch/button@6.2.4
+  - @rubenpazch/checkbox-input@3.2.4
+  - @rubenpazch/chip@4.0.7
+  - @rubenpazch/confirmation-dialog@3.1.5
+  - @rubenpazch/date-input@3.2.1
+  - @rubenpazch/date-picker@3.2.1
+  - @rubenpazch/draggable-list@3.0.4
+  - @rubenpazch/drawer@4.2.5
+  - @rubenpazch/numeric-picker@5.1.3
+  - @rubenpazch/prescription-eye-card@3.0.7
+  - @rubenpazch/date-range-picker@0.1.1
+
 ## 0.8.0
 
 ### Minor Changes

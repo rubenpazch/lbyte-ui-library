@@ -1,5 +1,14 @@
 # @rubenpazch/prescription-eye-card
 
+## 3.0.7
+
+### Patch Changes
+
+- c735699: - `Select` y `Autocomplete`: `labelAction`, contenido junto a la etiqueta (botón de ayuda, enlace), igual que en `TextInput`.
+  - Los paquetes que no exportaban sus tipos ahora los exportan (`ButtonProps`, `DateInputProps`, `AutocompleteOption`, `DrawerProps`…), y `@rubenpazch/ui` los reexporta.
+- Updated dependencies [c735699]
+  - @rubenpazch/checkbox-input@3.2.4
+
 ## 3.0.6
 
 ### Patch Changes
