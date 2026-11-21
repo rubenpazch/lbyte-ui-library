@@ -1,5 +1,12 @@
 # @rubenpazch/autocomplete
 
+## 5.1.2
+
+### Patch Changes
+
+- Updated dependencies [0eeab3b]
+  - @rubenpazch/icons@6.4.0
+
 ## 5.1.1
 
 ### Patch Changes

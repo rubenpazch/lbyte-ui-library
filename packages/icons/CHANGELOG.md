@@ -1,5 +1,11 @@
 # @rubenpazch/icons
 
+## 6.4.0
+
+### Minor Changes
+
+- 0eeab3b: 41 iconos nuevos (Lucide, ISC): candado, llave, iniciar/cerrar sesión, escudo, huella/passkey, banco, tarjeta, billete, gráficos, empresa, panel, guardar, enviar, QR, celular, Excel, historial, tema claro/oscuro, paleta y más. `pnpm icono:nuevo <Nombre> lucide:<icono>` los toma de lucide-static.
+
 ## 6.3.0
 
 ### Minor Changes
