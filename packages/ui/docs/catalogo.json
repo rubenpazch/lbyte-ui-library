@@ -3921,10 +3921,31 @@
               "descripcion": "Weight 100-700"
             }
           ]
+        },
+        {
+          "nombre": "ReceiptIcon",
+          "importar": "import { ReceiptIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "Comprobantes de pago (boletas y facturas).",
+          "props": [
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": "sm 16px · md 20px · lg 24px."
+            },
+            {
+              "nombre": "title",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Texto para lectores de pantalla. Sin él, el icono es decorativo (aria-hidden)."
+            }
+          ]
         }
       ],
-      "otrosValores": [],
-      "tipos": []
+      "otrosValores": ["ICONOS"],
+      "tipos": ["IconoInfo", "CategoriaIcono"]
     },
     {
       "paquete": "@rubenpazch/identification-input",
@@ -7203,6 +7224,446 @@
       ],
       "otrosValores": [],
       "tipos": ["TooltipProps"]
+    }
+  ],
+  "iconos": [
+    {
+      "nombre": "PlusIcon",
+      "categoria": "acciones",
+      "palabras": ["agregar", "nuevo", "crear", "sumar", "más"],
+      "usarPara": "Botón de crear o agregar un registro."
+    },
+    {
+      "nombre": "MinusIcon",
+      "categoria": "acciones",
+      "palabras": ["quitar", "restar", "menos", "reducir"],
+      "usarPara": "Restar una cantidad o contraer."
+    },
+    {
+      "nombre": "EditIcon",
+      "categoria": "acciones",
+      "palabras": ["editar", "lápiz", "modificar", "cambiar"],
+      "usarPara": "Acción de editar un registro."
+    },
+    {
+      "nombre": "TrashIcon",
+      "categoria": "acciones",
+      "palabras": ["eliminar", "borrar", "basura", "papelera"],
+      "usarPara": "Acción destructiva de eliminar (con confirmación)."
+    },
+    {
+      "nombre": "CopyIcon",
+      "categoria": "acciones",
+      "palabras": ["copiar", "duplicar", "portapapeles"],
+      "usarPara": "Copiar un valor al portapapeles o duplicar."
+    },
+    {
+      "nombre": "DownloadIcon",
+      "categoria": "acciones",
+      "palabras": ["descargar", "bajar", "exportar"],
+      "usarPara": "Descargar o exportar un archivo."
+    },
+    {
+      "nombre": "UploadIcon",
+      "categoria": "acciones",
+      "palabras": ["subir", "cargar", "importar"],
+      "usarPara": "Subir o importar un archivo."
+    },
+    {
+      "nombre": "PrintIcon",
+      "categoria": "acciones",
+      "palabras": ["imprimir", "impresora"],
+      "usarPara": "Imprimir un documento o comprobante."
+    },
+    {
+      "nombre": "RefreshIcon",
+      "categoria": "acciones",
+      "palabras": ["actualizar", "recargar", "sincronizar", "reintentar"],
+      "usarPara": "Recargar datos o reintentar."
+    },
+    {
+      "nombre": "SearchIcon",
+      "categoria": "acciones",
+      "palabras": ["buscar", "lupa", "encontrar"],
+      "usarPara": "Campo o botón de búsqueda."
+    },
+    {
+      "nombre": "FilterIcon",
+      "categoria": "acciones",
+      "palabras": ["filtrar", "embudo", "filtros"],
+      "usarPara": "Abrir o aplicar filtros de una lista."
+    },
+    {
+      "nombre": "SortIcon",
+      "categoria": "acciones",
+      "palabras": ["ordenar", "orden", "ascendente", "descendente"],
+      "usarPara": "Ordenar columnas o listas."
+    },
+    {
+      "nombre": "ZoomInIcon",
+      "categoria": "acciones",
+      "palabras": ["acercar", "ampliar", "zoom"],
+      "usarPara": "Ampliar una imagen o vista."
+    },
+    {
+      "nombre": "ZoomOutIcon",
+      "categoria": "acciones",
+      "palabras": ["alejar", "reducir", "zoom"],
+      "usarPara": "Reducir una imagen o vista."
+    },
+    {
+      "nombre": "SettingsIcon",
+      "categoria": "acciones",
+      "palabras": ["configuración", "ajustes", "engranaje", "preferencias"],
+      "usarPara": "Ir a configuración o ajustes."
+    },
+    {
+      "nombre": "LinkIcon",
+      "categoria": "acciones",
+      "palabras": ["enlace", "vínculo", "url", "compartir"],
+      "usarPara": "Enlace externo o copiar enlace."
+    },
+    {
+      "nombre": "DragHandleIcon",
+      "categoria": "acciones",
+      "palabras": ["arrastrar", "mover", "reordenar", "asa"],
+      "usarPara": "Asa para reordenar arrastrando."
+    },
+    {
+      "nombre": "CheckOutIcon",
+      "categoria": "acciones",
+      "palabras": ["salida", "cerrar sesión", "salir", "checkout"],
+      "usarPara": "Registrar una salida o cerrar sesión."
+    },
+    {
+      "nombre": "EyeIcon",
+      "categoria": "acciones",
+      "palabras": ["ver", "mostrar", "visible", "ojo"],
+      "usarPara": "Ver detalle o mostrar contraseña."
+    },
+    {
+      "nombre": "EyeCheckIcon",
+      "categoria": "acciones",
+      "palabras": ["revisado", "visto", "verificado", "ojo"],
+      "usarPara": "Marcar como revisado o visto."
+    },
+    {
+      "nombre": "ArrowLeftIcon",
+      "categoria": "navegacion",
+      "palabras": ["atrás", "volver", "izquierda", "anterior"],
+      "usarPara": "Volver o ir al elemento anterior."
+    },
+    {
+      "nombre": "ArrowRightIcon",
+      "categoria": "navegacion",
+      "palabras": ["siguiente", "adelante", "derecha", "continuar"],
+      "usarPara": "Ir al siguiente paso o elemento."
+    },
+    {
+      "nombre": "ArrowDetailsIcon",
+      "categoria": "navegacion",
+      "palabras": ["detalle", "ver más", "flecha"],
+      "usarPara": "Abrir el detalle de una fila o tarjeta."
+    },
+    {
+      "nombre": "ChevronIcon",
+      "categoria": "navegacion",
+      "palabras": ["desplegar", "chevron", "expandir", "flecha"],
+      "usarPara": "Indicador de desplegable o acordeón."
+    },
+    {
+      "nombre": "ChevronBarIcon",
+      "categoria": "navegacion",
+      "palabras": ["primero", "último", "extremo", "chevron"],
+      "usarPara": "Ir al inicio o al final (paginación)."
+    },
+    {
+      "nombre": "CloseIcon",
+      "categoria": "navegacion",
+      "palabras": ["cerrar", "x", "cancelar", "salir"],
+      "usarPara": "Cerrar un modal, panel o aviso."
+    },
+    {
+      "nombre": "HomeIcon",
+      "categoria": "navegacion",
+      "palabras": ["inicio", "casa", "principal", "dashboard"],
+      "usarPara": "Enlace a la página de inicio."
+    },
+    {
+      "nombre": "MenuIcon",
+      "categoria": "navegacion",
+      "palabras": ["menú", "hamburguesa", "navegación"],
+      "usarPara": "Abrir el menú lateral en móvil."
+    },
+    {
+      "nombre": "MenuGridIcon",
+      "categoria": "navegacion",
+      "palabras": ["aplicaciones", "cuadrícula", "módulos", "apps"],
+      "usarPara": "Lanzador de aplicaciones o módulos."
+    },
+    {
+      "nombre": "MoreIcon",
+      "categoria": "navegacion",
+      "palabras": ["más opciones", "puntos", "kebab", "menú contextual"],
+      "usarPara": "Botón ⋮ de más opciones."
+    },
+    {
+      "nombre": "CheckIcon",
+      "categoria": "estado",
+      "palabras": ["correcto", "éxito", "listo", "círculo check"],
+      "usarPara": "Estado de éxito o completado."
+    },
+    {
+      "nombre": "CheckmarkIcon",
+      "categoria": "estado",
+      "palabras": ["marca", "check", "aceptado", "seleccionado"],
+      "usarPara": "Marca simple de seleccionado o hecho."
+    },
+    {
+      "nombre": "ChecksIcon",
+      "categoria": "estado",
+      "palabras": ["doble check", "leído", "varios", "confirmados"],
+      "usarPara": "Varios elementos confirmados o leído."
+    },
+    {
+      "nombre": "ErrorIcon",
+      "categoria": "estado",
+      "palabras": ["error", "fallo", "incorrecto"],
+      "usarPara": "Mensaje o estado de error."
+    },
+    {
+      "nombre": "ExclamationTriangleIcon",
+      "categoria": "estado",
+      "palabras": ["advertencia", "alerta", "peligro", "atención"],
+      "usarPara": "Advertencia que requiere atención."
+    },
+    {
+      "nombre": "InfoIcon",
+      "categoria": "estado",
+      "palabras": ["información", "ayuda", "detalle", "i"],
+      "usarPara": "Mensaje informativo o ayuda."
+    },
+    {
+      "nombre": "NotificationIcon",
+      "categoria": "estado",
+      "palabras": ["notificación", "campana", "aviso", "alerta"],
+      "usarPara": "Acceso a notificaciones."
+    },
+    {
+      "nombre": "SpinnerIcon",
+      "categoria": "estado",
+      "palabras": ["cargando", "espera", "progreso", "spinner"],
+      "usarPara": "Indicador de carga en línea (en botones)."
+    },
+    {
+      "nombre": "ClockIcon",
+      "categoria": "estado",
+      "palabras": ["hora", "tiempo", "pendiente", "reloj"],
+      "usarPara": "Hora, duración o estado pendiente."
+    },
+    {
+      "nombre": "CalendarIcon",
+      "categoria": "estado",
+      "palabras": ["fecha", "calendario", "día", "agenda"],
+      "usarPara": "Campos de fecha o citas."
+    },
+    {
+      "nombre": "TargetIcon",
+      "categoria": "estado",
+      "palabras": ["objetivo", "meta", "diana", "enfoque"],
+      "usarPara": "Metas u objetivos."
+    },
+    {
+      "nombre": "DocumentIcon",
+      "categoria": "archivos",
+      "palabras": ["documento", "archivo", "pdf", "hoja"],
+      "usarPara": "Documentos o comprobantes."
+    },
+    {
+      "nombre": "FoldersIcon",
+      "categoria": "archivos",
+      "palabras": ["carpetas", "archivos", "categorías"],
+      "usarPara": "Agrupar documentos o categorías."
+    },
+    {
+      "nombre": "ArchiveIcon",
+      "categoria": "archivos",
+      "palabras": ["archivar", "caja", "histórico"],
+      "usarPara": "Archivar registros o ver el histórico."
+    },
+    {
+      "nombre": "GalleryPhotoIcon",
+      "categoria": "archivos",
+      "palabras": ["imagen", "foto", "galería"],
+      "usarPara": "Imágenes o galería de fotos."
+    },
+    {
+      "nombre": "PresentationChartIcon",
+      "categoria": "archivos",
+      "palabras": ["reporte", "gráfico", "estadísticas", "presentación"],
+      "usarPara": "Reportes y estadísticas."
+    },
+    {
+      "nombre": "MaterialIcon",
+      "categoria": "archivos",
+      "palabras": ["material", "recurso", "insumo"],
+      "usarPara": "Materiales o recursos."
+    },
+    {
+      "nombre": "EmailIcon",
+      "categoria": "comunicacion",
+      "palabras": ["correo", "email", "mensaje", "sobre"],
+      "usarPara": "Correo electrónico."
+    },
+    {
+      "nombre": "PhoneIcon",
+      "categoria": "comunicacion",
+      "palabras": ["teléfono", "llamar", "celular"],
+      "usarPara": "Número de teléfono o llamar."
+    },
+    {
+      "nombre": "WhatsAppIcon",
+      "categoria": "comunicacion",
+      "palabras": ["whatsapp", "chat", "mensaje"],
+      "usarPara": "Contacto por WhatsApp."
+    },
+    {
+      "nombre": "RobotIcon",
+      "categoria": "comunicacion",
+      "palabras": ["robot", "ia", "asistente", "bot", "automático"],
+      "usarPara": "Asistente de IA o proceso automático."
+    },
+    {
+      "nombre": "RobotOffIcon",
+      "categoria": "comunicacion",
+      "palabras": ["robot apagado", "ia desactivada", "sin bot"],
+      "usarPara": "IA o automatización desactivada."
+    },
+    {
+      "nombre": "UsersIcon",
+      "categoria": "personas",
+      "palabras": ["usuarios", "personas", "grupo", "equipo"],
+      "usarPara": "Lista o gestión de usuarios."
+    },
+    {
+      "nombre": "UserPlusIcon",
+      "categoria": "personas",
+      "palabras": ["agregar usuario", "invitar", "nuevo usuario"],
+      "usarPara": "Invitar o crear un usuario."
+    },
+    {
+      "nombre": "UserSelectIcon",
+      "categoria": "personas",
+      "palabras": ["seleccionar usuario", "asignar", "persona"],
+      "usarPara": "Asignar o elegir una persona."
+    },
+    {
+      "nombre": "UserManagementIcon",
+      "categoria": "personas",
+      "palabras": ["administrar usuarios", "roles", "permisos"],
+      "usarPara": "Administración de usuarios y roles."
+    },
+    {
+      "nombre": "ManualIdentifierIcon",
+      "categoria": "personas",
+      "palabras": ["identificador manual", "documento", "dni"],
+      "usarPara": "Identificación ingresada a mano."
+    },
+    {
+      "nombre": "SystemIdentifierIcon",
+      "categoria": "personas",
+      "palabras": ["identificador del sistema", "código", "id"],
+      "usarPara": "Identificador generado por el sistema."
+    },
+    {
+      "nombre": "BrandingIcon",
+      "categoria": "personas",
+      "palabras": ["marca", "logo", "identidad", "empresa"],
+      "usarPara": "Configuración de marca o logo."
+    },
+    {
+      "nombre": "WalletOpenIcon",
+      "categoria": "dinero",
+      "palabras": ["billetera", "cartera", "saldo", "caja"],
+      "usarPara": "Saldos, caja o billetera."
+    },
+    {
+      "nombre": "CoinsHandIcon",
+      "categoria": "dinero",
+      "palabras": ["pago", "cobro", "monedas", "dinero"],
+      "usarPara": "Pagos o cobros."
+    },
+    {
+      "nombre": "CoinsAcceptedIcon",
+      "categoria": "dinero",
+      "palabras": ["pago aceptado", "cobrado", "pagado"],
+      "usarPara": "Pago confirmado o cobrado."
+    },
+    {
+      "nombre": "BusinessPlanIcon",
+      "categoria": "dinero",
+      "palabras": ["plan", "negocio", "finanzas", "presupuesto"],
+      "usarPara": "Planes, presupuestos o finanzas."
+    },
+    {
+      "nombre": "PatientIcon",
+      "categoria": "salud",
+      "palabras": ["paciente", "persona", "historia clínica"],
+      "usarPara": "Un paciente."
+    },
+    {
+      "nombre": "PatientsIcon",
+      "categoria": "salud",
+      "palabras": ["pacientes", "varios", "atención"],
+      "usarPara": "Varios pacientes."
+    },
+    {
+      "nombre": "PatientListIcon",
+      "categoria": "salud",
+      "palabras": ["lista de pacientes", "padrón", "registro"],
+      "usarPara": "Listado de pacientes."
+    },
+    {
+      "nombre": "ClinicalNotesIcon",
+      "categoria": "salud",
+      "palabras": ["notas clínicas", "historia", "evolución"],
+      "usarPara": "Notas o historia clínica."
+    },
+    {
+      "nombre": "PrescriptionIcon",
+      "categoria": "salud",
+      "palabras": ["receta", "prescripción", "medicamento"],
+      "usarPara": "Recetas médicas."
+    },
+    {
+      "nombre": "GlassesIcon",
+      "categoria": "salud",
+      "palabras": ["lentes", "anteojos", "oftalmología", "vista"],
+      "usarPara": "Recetas de lentes u oftalmología."
+    },
+    {
+      "nombre": "LocationIcon",
+      "categoria": "lugares",
+      "palabras": ["ubicación", "dirección", "pin", "lugar"],
+      "usarPara": "Una dirección o ubicación."
+    },
+    {
+      "nombre": "MapIcon",
+      "categoria": "lugares",
+      "palabras": ["mapa", "ruta", "zona"],
+      "usarPara": "Ver en mapa o zonas."
+    },
+    {
+      "nombre": "CityIcon",
+      "categoria": "lugares",
+      "palabras": ["ciudad", "edificios", "sede", "distrito"],
+      "usarPara": "Ciudad, sede o distrito."
+    },
+    {
+      "nombre": "ReceiptIcon",
+      "categoria": "dinero",
+      "palabras": ["factura", "comprobante", "boleta", "recibo"],
+      "usarPara": "Comprobantes de pago (boletas y facturas)."
     }
   ]
 }

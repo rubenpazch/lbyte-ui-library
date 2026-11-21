@@ -30,7 +30,8 @@
     "format:prettier": "prettier . --write --ignore-path .prettierignore",
     "chromatic": "chromatic --exit-zero-on-changes",
     "catalogo": "node ./scripts/catalogo.mjs",
-    "catalogo:check": "node ./scripts/catalogo.mjs --check"
+    "catalogo:check": "node ./scripts/catalogo.mjs --check",
+    "icono:nuevo": "node scripts/nuevo-icono.mjs"
   },
   "lint-staged": {
     "*.{ts,tsx}": [

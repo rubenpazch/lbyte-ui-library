@@ -36,7 +36,7 @@ const ErrorIcon: React.FC<ErrorIconProps> = ({
       className={defaultClasses}
       viewBox="0 0 20 20"
       fill="currentColor"
-      aria-label="Error"
+      aria-hidden="true"
     >
       <path
         fillRule="evenodd"

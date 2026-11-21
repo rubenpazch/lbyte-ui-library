@@ -705,7 +705,7 @@ describe("PrescriptionCard Component", () => {
       renderComponent({ canEdit: true });
 
       const printButton = screen.getByRole("button", {
-        name: `Print ${labels.clinicalHistory}`,
+        name: labels.clinicalHistory,
       });
 
       printButton.click();
@@ -720,7 +720,7 @@ describe("PrescriptionCard Component", () => {
       renderComponent({ prescription, canEdit: true });
 
       const printButton = screen.getByRole("button", {
-        name: `Print ${labels.clinicalHistory}`,
+        name: labels.clinicalHistory,
       });
 
       printButton.click();
@@ -731,7 +731,7 @@ describe("PrescriptionCard Component", () => {
       renderComponent({ patientId: undefined as any, canEdit: true });
 
       const printButton = screen.getByRole("button", {
-        name: `Print ${labels.clinicalHistory}`,
+        name: labels.clinicalHistory,
       });
 
       printButton.click();
@@ -743,7 +743,7 @@ describe("PrescriptionCard Component", () => {
       renderComponent({ prescription, canEdit: true });
 
       const printButton = screen.getByRole("button", {
-        name: `Print ${labels.clinicalHistory}`,
+        name: labels.clinicalHistory,
       });
 
       printButton.click();
@@ -754,7 +754,7 @@ describe("PrescriptionCard Component", () => {
       renderComponent({ patientId: "invalid", canEdit: true });
 
       const printButton = screen.getByRole("button", {
-        name: `Print ${labels.clinicalHistory}`,
+        name: labels.clinicalHistory,
       });
 
       printButton.click();
@@ -770,7 +770,7 @@ describe("PrescriptionCard Component", () => {
       renderComponent({ prescription: completedPrescription, canEdit: true });
 
       const orderButton = screen.getByRole("button", {
-        name: `Print ${labels.orderNote}`,
+        name: labels.orderNote,
       });
 
       orderButton.click();
@@ -785,7 +785,7 @@ describe("PrescriptionCard Component", () => {
       renderComponent({ onPrintFormat, canEdit: true });
 
       const printButton = screen.getByRole("button", {
-        name: `Print ${labels.clinicalHistory}`,
+        name: labels.clinicalHistory,
       });
 
       printButton.click();
@@ -806,7 +806,7 @@ describe("PrescriptionCard Component", () => {
       });
 
       const orderButton = screen.getByRole("button", {
-        name: `Print ${labels.orderNote}`,
+        name: labels.orderNote,
       });
       orderButton.click();
       expect(onOrderFormat).toHaveBeenCalledTimes(1);
@@ -826,7 +826,7 @@ describe("PrescriptionCard Component", () => {
       });
 
       const workOrderButton = screen.getByRole("button", {
-        name: `Print ${labels.workOrder}`,
+        name: labels.workOrder,
       });
       workOrderButton.click();
       expect(onWorkOrder).toHaveBeenCalledTimes(1);
@@ -842,7 +842,7 @@ describe("PrescriptionCard Component", () => {
       renderComponent({ prescription: completedPrescription, canEdit: true });
 
       const orderButton = screen.getByRole("button", {
-        name: `Print ${labels.orderNote}`,
+        name: labels.orderNote,
       });
 
       orderButton.click();
@@ -858,7 +858,7 @@ describe("PrescriptionCard Component", () => {
       renderComponent({ prescription: completedPrescription, canEdit: true });
 
       const orderButton = screen.getByRole("button", {
-        name: `Print ${labels.orderNote}`,
+        name: labels.orderNote,
       });
 
       orderButton.click();

@@ -26,7 +26,7 @@ const LinkIcon: React.FC<LinkIconProps> = ({
       className={`${sizeClasses[size]} ${className}`}
       fill={color}
       viewBox="0 0 20 20"
-      aria-label="Link"
+      aria-hidden="true"
     >
       <path
         fillRule="evenodd"

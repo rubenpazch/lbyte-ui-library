@@ -37,7 +37,7 @@ const ManualIdentifierIcon: React.FC<ManualIdentifierIconProps> = ({
       fill="currentColor"
       viewBox="0 0 21 21"
       xmlns="http://www.w3.org/2000/svg"
-      aria-label="Manual Identifier"
+      aria-hidden="true"
     >
       {/* Edit text bar icon - represents manual text entry */}
       <path

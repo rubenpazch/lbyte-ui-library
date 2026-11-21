@@ -28,7 +28,7 @@ const SecondaryButton = ({
 );
 
 const meta: Meta<typeof Drawer> = {
-  title: "Components/Drawer",
+  title: "Navegación/Drawer",
   component: Drawer,
   parameters: {
     layout: "fullscreen",

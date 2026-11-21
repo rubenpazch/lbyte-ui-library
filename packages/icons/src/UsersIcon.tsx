@@ -37,7 +37,7 @@ const UsersIcon: React.FC<UsersIconProps> = ({
       viewBox="0 0 24 24"
       fill="currentColor"
       className={defaultClasses}
-      aria-label="Users"
+      aria-hidden="true"
     >
       {/* First user (left) */}
       <circle cx="6" cy="7" r="2.5" />

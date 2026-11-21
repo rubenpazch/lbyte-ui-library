@@ -21,8 +21,12 @@ export default [
         sourcemap: true,
       },
       {
-        file: packageJson.module,
+        // Un archivo por icono: el bundler de la app solo incluye los que se importan.
+        dir: "dist/esm",
         format: "esm",
+        preserveModules: true,
+        preserveModulesRoot: "src",
+        entryFileNames: "[name].js",
         sourcemap: true,
       },
     ],
@@ -37,7 +41,7 @@ export default [
         modules: true,
         plugins: [],
       }),
-      terser(),
+      terser({ module: true, compress: { module: true } }),
     ],
   },
   {

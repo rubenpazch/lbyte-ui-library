@@ -66,7 +66,7 @@ const formatDateLong = (dateIso: string) => {
 };
 
 const meta = {
-  title: "Components/PrescriptionCard",
+  title: "Salud/PrescriptionCard",
   component: PrescriptionCard,
   parameters: {
     layout: "centered",

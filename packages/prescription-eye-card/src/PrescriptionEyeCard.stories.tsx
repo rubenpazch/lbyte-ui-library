@@ -33,7 +33,7 @@ const prismBaseLookup = {
 };
 
 const meta: Meta<PrescriptionEyeCardProps> = {
-  title: "Components/PrescriptionEyeCard",
+  title: "Salud/PrescriptionEyeCard",
   component: PrescriptionEyeCard as any,
   parameters: {
     layout: "centered",

@@ -71,3 +71,8 @@ export { default as ZoomOutIcon } from "./ZoomOutIcon";
 export { RobotIcon } from "./RobotIcon";
 export { default as TargetIcon } from "./TargetIcon";
 export { default as MaterialIcon } from "./MaterialIcon";
+export { default as ReceiptIcon } from "./ReceiptIcon";
+
+// Metadatos para la galería, el catálogo y la IA
+export { ICONOS } from "./iconos";
+export type { IconoInfo, CategoriaIcono } from "./iconos";

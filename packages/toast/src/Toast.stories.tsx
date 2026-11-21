@@ -3,7 +3,7 @@ import React from "react";
 import ToastBanner, { type ToastBannerProps } from "./Toast";
 
 const meta: Meta<ToastBannerProps> = {
-  title: "Components/Toast",
+  title: "Retroalimentación/Toast",
   component: ToastBanner,
   parameters: {
     layout: "fullscreen",

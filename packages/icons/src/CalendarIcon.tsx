@@ -37,7 +37,7 @@ const CalendarIcon: React.FC<CalendarIconProps> = ({
       viewBox="0 0 20 20"
       fill="currentColor"
       className={defaultClasses}
-      aria-label="Calendar"
+      aria-hidden="true"
     >
       <path
         fillRule="evenodd"

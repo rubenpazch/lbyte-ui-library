@@ -6,7 +6,7 @@ type TaskItem = { id: string; label: string };
 type StatusItem = { id: string; label: string; count: number };
 
 const meta: Meta<typeof DraggableList> = {
-  title: "Components/DraggableList",
+  title: "Datos/DraggableList",
   component: DraggableList as any,
   parameters: {
     layout: "centered",

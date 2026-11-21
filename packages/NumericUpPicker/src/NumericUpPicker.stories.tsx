@@ -15,7 +15,7 @@ import {
 
 const meta: Meta<NumericUpPickerProps> = {
   component: NumericUpPicker,
-  title: "Components/NumericUpPicker",
+  title: "Formularios/NumericUpPicker",
   parameters: {
     layout: "padded",
     docs: {

@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import DateInput, { type DateInputProps } from "./DateInput";
 
 const meta: Meta<DateInputProps> = {
-  title: "Components/DateInput",
+  title: "Formularios/DateInput",
   component: DateInput as any,
   parameters: {
     layout: "centered",

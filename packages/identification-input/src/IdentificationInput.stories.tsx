@@ -6,7 +6,7 @@ import IdentificationInput, {
 import type { PeruIdentificationType } from "./peruvianIdentification";
 
 const meta: Meta<IdentificationInputProps> = {
-  title: "Components/IdentificationInput",
+  title: "Salud/IdentificationInput",
   component: IdentificationInput as any,
   parameters: {
     layout: "centered",

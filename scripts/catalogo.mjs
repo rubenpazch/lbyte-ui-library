@@ -253,8 +253,36 @@ for (const p of paquetes) deps[p.pkg.name] = "workspace:^";
 uiPkg.dependencies = Object.fromEntries(Object.entries(deps).sort(([a], [b]) => a.localeCompare(b)));
 salidas.set(uiPkgFile, JSON.stringify(uiPkg, null, 2) + "\n");
 
+// ---------------------------------------------------------------- iconos (packages/icons/src/iconos.ts)
+// Formato fijo: i("Nombre", "categoria", "palabra, palabra", "Uso."). El test de icons valida que estén todos.
+const iconos = [
+  ...fs
+    .readFileSync(path.join(RAIZ, "packages", "icons", "src", "iconos.ts"), "utf8")
+    .matchAll(/\bi\(\s*"(\w+)",\s*"(\w+)",\s*"([^"]+)",\s*"([^"]+)",?\s*\)/g),
+].map(([, nombre, categoria, palabras, usarPara]) => ({
+  nombre,
+  categoria,
+  palabras: palabras.split(", "),
+  usarPara,
+}));
+if (iconos.length === 0) errores.push("No se pudieron leer los iconos de packages/icons/src/iconos.ts");
+
+let mdIconos =
+  `<!-- GENERADO por scripts/catalogo.mjs desde packages/icons/src/iconos.ts. No editar a mano. -->\n\n` +
+  `# Iconos de @rubenpazch/ui\n\n` +
+  `${iconos.length} iconos SVG. Se importan por nombre y solo los que uses entran en el bundle:\n\n` +
+  "```tsx\nimport { TrashIcon, PlusIcon } from \"@rubenpazch/ui\";\n\n<TrashIcon size=\"sm\" /> // sm 16px · md 20px · lg 24px; color = currentColor\n```\n\n" +
+  `Reglas: usa el color del texto (\`currentColor\`); un botón solo con icono necesita \`aria-label\` (usa \`IconButton\`). ` +
+  `Si no hay un icono adecuado, no lo dibujes en la app: agrégalo a \`packages/icons\` (ver su README).\n`;
+const porCategoria = Object.groupBy(iconos, (ic) => ic.categoria);
+for (const [cat, lista] of Object.entries(porCategoria)) {
+  mdIconos += `\n## ${cat}\n\n| Icono | Usar para | Palabras clave |\n|---|---|---|\n`;
+  for (const ic of lista) mdIconos += `| \`${ic.nombre}\` | ${ic.usarPara} | ${ic.palabras.join(", ")} |\n`;
+}
+salidas.set(path.join(UI, "docs", "ICONOS.md"), mdIconos);
+
 // ---------------------------------------------------------------- catálogo JSON
-const catalogoJson = { paquete: "@rubenpazch/ui", generadoPor: "scripts/catalogo.mjs", categorias: CATEGORIAS, paquetes: catalogo };
+const catalogoJson = { paquete: "@rubenpazch/ui", generadoPor: "scripts/catalogo.mjs", categorias: CATEGORIAS, paquetes: catalogo, iconos };
 salidas.set(path.join(UI, "docs", "catalogo.json"), JSON.stringify(catalogoJson, null, 2) + "\n");
 
 // ---------------------------------------------------------------- COMPONENTES.md

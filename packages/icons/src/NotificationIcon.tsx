@@ -39,7 +39,7 @@ const NotificationIcon: React.FC<NotificationIconProps> = ({
       strokeWidth={1.5}
       stroke="currentColor"
       className={defaultClasses}
-      aria-label="Notifications"
+      aria-hidden="true"
     >
       <path
         strokeLinecap="round"

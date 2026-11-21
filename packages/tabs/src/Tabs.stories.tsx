@@ -10,7 +10,7 @@ import {
 } from "@rubenpazch/icons";
 
 const meta = {
-  title: "Components/Tabs",
+  title: "Navegación/Tabs",
   component: Tabs,
   parameters: {
     layout: "padded",

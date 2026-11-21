@@ -39,7 +39,7 @@ export default function PlusIcon({
       strokeLinecap="round"
       strokeLinejoin="round"
       className={defaultClasses}
-      aria-label="Plus"
+      aria-hidden="true"
     >
       <path d="M12 4v16m8-8H4" />
     </svg>

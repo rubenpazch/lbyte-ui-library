@@ -4,7 +4,7 @@ import Button from "@rubenpazch/button";
 import CheckboxInput from "./CheckboxInput";
 
 const meta: Meta<typeof CheckboxInput> = {
-  title: "Components/Forms/CheckboxInput",
+  title: "Formularios/CheckboxInput",
   component: CheckboxInput,
   parameters: {
     layout: "centered",

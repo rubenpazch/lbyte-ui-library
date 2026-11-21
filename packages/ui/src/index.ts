@@ -142,7 +142,10 @@ export {
   RobotIcon,
   TargetIcon,
   MaterialIcon,
+  ReceiptIcon,
+  ICONOS,
 } from "@rubenpazch/icons";
+export type { IconoInfo, CategoriaIcono } from "@rubenpazch/icons";
 export {
   default as IdentificationInput,
   DEFAULT_IDENTIFICATION_LABELS,

@@ -35,7 +35,7 @@ export default function CheckIcon({
       viewBox="0 0 20 20"
       fill="currentColor"
       className={defaultClasses}
-      aria-label="Check"
+      aria-hidden="true"
     >
       <path
         fillRule="evenodd"

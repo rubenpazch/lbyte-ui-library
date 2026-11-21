@@ -7,7 +7,7 @@ import TextInput, { type TextInputProps } from "./TextInput";
 const fn = () => () => {};
 
 const meta: Meta<TextInputProps> = {
-  title: "Components/TextInput",
+  title: "Formularios/TextInput",
   component: TextInput as any,
   parameters: {
     layout: "padded",

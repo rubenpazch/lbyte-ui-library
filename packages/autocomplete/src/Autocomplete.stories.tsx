@@ -4,7 +4,7 @@ import Autocomplete, { AutocompleteOption } from "./Autocomplete";
 import { UsersIcon } from "@rubenpazch/icons";
 
 const meta = {
-  title: "Components/Autocomplete",
+  title: "Formularios/Autocomplete",
   component: Autocomplete,
   parameters: {
     layout: "centered",
