@@ -144,6 +144,8 @@ const Button = React.forwardRef<
       className={classes}
       {...buttonProps}
       {...linkProps}
+      // Mientras carga, la acción está en curso: los lectores de pantalla y las pruebas lo ven.
+      aria-busy={loading || undefined}
       {...rest}
     >
       {loading && (
