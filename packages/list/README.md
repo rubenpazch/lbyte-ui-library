@@ -29,19 +29,19 @@ Cada fila es un `ListItem`.
 
 Fila de una `List`: icono, título y detalle a la izquierda; estado o acciones a la derecha.
 
-| Prop            | Tipo                                        | Req. | Por defecto | Descripción                                                                             |
-| --------------- | ------------------------------------------- | ---- | ----------- | --------------------------------------------------------------------------------------- |
-| `title`         | `ReactNode`                                 | sí   |             | Texto principal de la fila.                                                             |
-| `aria-label`    | `string`                                    |      |             | Nombre accesible si el título no basta.                                                 |
-| `children`      | `ReactNode`                                 |      |             | Contenido extra bajo el detalle (chips, barra de avance).                               |
-| `className`     | `string`                                    |      |             | Clase extra.                                                                            |
-| `description`   | `ReactNode`                                 |      |             | Detalle bajo el título (fecha, correo, resumen).                                        |
-| `href`          | `string`                                    |      |             | Hace la fila un enlace.                                                                 |
-| `leading`       | `ReactNode`                                 |      |             | Icono, avatar o imagen a la izquierda.                                                  |
-| `linkComponent` | `ElementType<any, keyof IntrinsicElements>` |      | `a`         | Componente de enlace (p. ej. Link de Next.js). Por defecto <a>.                         |
-| `muted`         | `boolean`                                   |      | `false`     | Atenúa la fila (registro inactivo u oculto).                                            |
-| `onClick`       | `() => void`                                |      |             | Hace la fila clicable (botón). Si hay acciones en `trailing`, usa `href` o no lo pases. |
-| `trailing`      | `ReactNode`                                 |      |             | Contenido a la derecha: estado (Badge), monto, acciones.                                |
+| Prop            | Tipo                                        | Req. | Por defecto | Descripción                                                                                                                   |
+| --------------- | ------------------------------------------- | ---- | ----------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| `title`         | `ReactNode`                                 | sí   |             | Texto principal de la fila.                                                                                                   |
+| `aria-label`    | `string`                                    |      |             | Nombre accesible si el título no basta.                                                                                       |
+| `children`      | `ReactNode`                                 |      |             | Contenido extra bajo el detalle (chips, barra de avance).                                                                     |
+| `className`     | `string`                                    |      |             | Clase extra.                                                                                                                  |
+| `description`   | `ReactNode`                                 |      |             | Detalle bajo el título (fecha, correo, resumen).                                                                              |
+| `href`          | `string`                                    |      |             | Hace la fila un enlace.                                                                                                       |
+| `leading`       | `ReactNode`                                 |      |             | Icono, avatar o imagen a la izquierda.                                                                                        |
+| `linkComponent` | `ElementType<any, keyof IntrinsicElements>` |      | `a`         | Componente de enlace (p. ej. Link de Next.js). Por defecto <a>.                                                               |
+| `muted`         | `boolean`                                   |      | `false`     | Atenúa la fila (registro inactivo u oculto).                                                                                  |
+| `onClick`       | `() => void`                                |      |             | Hace la fila clicable (botón). Si la fila lleva botones propios, no la hagas clicable: pon un `<li>` propio dentro de `List`. |
+| `trailing`      | `ReactNode`                                 |      |             | Contenido a la derecha: estado (Badge), monto, acciones.                                                                      |
 
 Tipos: `ListProps`, `ListItemProps`.
 

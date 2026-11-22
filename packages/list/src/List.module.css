@@ -13,7 +13,8 @@
   box-shadow: var(--lb-shadow-sm);
 }
 
-.item + .item {
+/* Separador entre filas: también para <li> propios (filas con acciones o contenido libre). */
+.list > li + li {
   border-top: 1px solid var(--lb-color-neutral-100);
 }
 

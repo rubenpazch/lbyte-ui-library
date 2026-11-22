@@ -185,7 +185,21 @@ export default function AppShell({
                 </svg>
               ),
               onClick: () => setMobileOpen(true),
-              active: mobileOpen || undefined,
+              // "Más" se marca si el menú está abierto o si la página actual no está en la barra.
+              active:
+                mobileOpen ||
+                !bottomNav.items.some((i) =>
+                  i.active !== undefined
+                    ? i.active
+                    : Boolean(
+                        currentPath &&
+                        i.href &&
+                        (currentPath === i.href ||
+                          currentPath.startsWith(
+                            `${i.href.replace(/\/$/, "")}/`,
+                          )),
+                      ),
+                ),
             },
           ]}
         />

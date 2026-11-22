@@ -46,7 +46,7 @@ export interface ListItemProps {
   trailing?: React.ReactNode;
   /** Contenido extra bajo el detalle (chips, barra de avance). */
   children?: React.ReactNode;
-  /** Hace la fila clicable (botón). Si hay acciones en `trailing`, usa `href` o no lo pases. */
+  /** Hace la fila clicable (botón). Si la fila lleva botones propios, no la hagas clicable: pon un `<li>` propio dentro de `List`. */
   onClick?: () => void;
   /** Hace la fila un enlace. */
   href?: string;

@@ -139,3 +139,21 @@ it('bottomNav agrega la barra inferior con "Más", que abre el menú lateral', (
   fireEvent.click(mas);
   expect(mas).toHaveAttribute("aria-current", "page");
 });
+
+it('"Más" queda activo cuando la página actual no está en la barra inferior', () => {
+  render(
+    <AppShell
+      sections={sections}
+      currentPath="/reportes"
+      bottomNav={{
+        items: [{ label: "Cobros", href: "/cobros", icon: <svg /> }],
+      }}
+    >
+      <p>contenido</p>
+    </AppShell>,
+  );
+  expect(screen.getByRole("button", { name: "Más" })).toHaveAttribute(
+    "aria-current",
+    "page",
+  );
+});

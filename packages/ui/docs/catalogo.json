@@ -6130,7 +6130,7 @@
               "tipo": "() => void",
               "requerido": false,
               "porDefecto": null,
-              "descripcion": "Hace la fila clicable (botón). Si hay acciones en `trailing`, usa `href` o no lo pases."
+              "descripcion": "Hace la fila clicable (botón). Si la fila lleva botones propios, no la hagas clicable: pon un `<li>` propio dentro de `List`."
             },
             {
               "nombre": "trailing",
