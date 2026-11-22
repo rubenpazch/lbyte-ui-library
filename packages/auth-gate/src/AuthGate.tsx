@@ -45,23 +45,44 @@ const LABELS: AuthGateLabels = {
 };
 
 /** Pantalla neutra a pantalla completa: sin datos ni estructura de la app. */
+export interface AuthScreenProps {
+  brand?: React.ReactNode;
+  /** Texto principal: "Verificando sesión…", "Cerraste sesión". */
+  label: string;
+  /** Detalle bajo el texto (motivo de un error, indicación). */
+  description?: React.ReactNode;
+  /** Acción bajo el texto: "Volver a entrar", "Volver a intentar". */
+  action?: React.ReactNode;
+  /** Muestra el indicador de carga (por defecto true). false para pantallas con mensaje. */
+  busy?: boolean;
+  /** error: el lector de pantalla lo anuncia de inmediato (role="alert"). */
+  tone?: "neutral" | "error";
+}
+
+/**
+ * Pantalla completa y neutra de la sesión: espera ("Verificando sesión…") o mensaje con acción
+ * ("Cerraste sesión", un error del login único). Decisiones 0006 y 0011 de lbyte-contexto.
+ */
 export function AuthScreen({
   brand,
   label,
-}: {
-  brand?: React.ReactNode;
-  label: string;
-}) {
+  description,
+  action,
+  busy = true,
+  tone = "neutral",
+}: AuthScreenProps) {
   return (
     <div
       className={styles.screen}
-      role="status"
-      aria-live="polite"
-      aria-busy="true"
+      role={tone === "error" ? "alert" : "status"}
+      aria-live={tone === "error" ? "assertive" : "polite"}
+      aria-busy={busy || undefined}
     >
       {brand && <div className={styles.brand}>{brand}</div>}
-      <span className={styles.spinner} aria-hidden="true" />
+      {busy && <span className={styles.spinner} aria-hidden="true" />}
       <p className={styles.label}>{label}</p>
+      {description && <div className={styles.description}>{description}</div>}
+      {action && <div className={styles.action}>{action}</div>}
     </div>
   );
 }

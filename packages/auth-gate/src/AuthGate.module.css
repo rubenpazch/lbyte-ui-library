@@ -43,3 +43,19 @@
     animation-duration: 2.4s;
   }
 }
+
+.description {
+  max-width: 28rem;
+  margin: 0;
+  font-size: var(--lb-font-size-sm);
+  line-height: 1.5;
+  color: var(--lb-color-muted-foreground);
+  text-align: center;
+}
+
+.action {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--lb-space-2);
+}
