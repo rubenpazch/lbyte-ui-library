@@ -42,3 +42,34 @@ export const SesionConfirmada: StoryObj = {
     </AuthGate>
   ),
 };
+
+export const CerrasteSesion: StoryObj<typeof AuthScreen> = {
+  name: "Cerraste sesión (con acción)",
+  args: {
+    brand: <strong>Trámite documentario</strong>,
+    label: "Cerraste sesión",
+    description: "Para volver a entrar usa tu cuenta del portal.",
+    action: (
+      <button type="button" style={{ padding: "8px 16px" }}>
+        Volver a entrar
+      </button>
+    ),
+    busy: false,
+  },
+};
+
+export const ErrorDelLoginUnico: StoryObj<typeof AuthScreen> = {
+  name: "Error del login único",
+  args: {
+    brand: <strong>Trámite documentario</strong>,
+    label: "No pudimos iniciar sesión",
+    description: "Tu usuario está desactivado. Pide ayuda al administrador.",
+    action: (
+      <button type="button" style={{ padding: "8px 16px" }}>
+        Volver a intentar
+      </button>
+    ),
+    busy: false,
+    tone: "error",
+  },
+};

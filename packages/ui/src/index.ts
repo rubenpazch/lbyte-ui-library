@@ -6,7 +6,11 @@ export type { AlertProps, AlertVariant } from "@rubenpazch/alert";
 export { default as AppShell } from "@rubenpazch/app-shell";
 export type { AppShellProps } from "@rubenpazch/app-shell";
 export { default as AuthGate, AuthScreen } from "@rubenpazch/auth-gate";
-export type { AuthGateProps, AuthGateLabels } from "@rubenpazch/auth-gate";
+export type {
+  AuthGateLabels,
+  AuthGateProps,
+  AuthScreenProps,
+} from "@rubenpazch/auth-gate";
 export { default as Autocomplete } from "@rubenpazch/autocomplete";
 export type {
   AutocompleteOption,

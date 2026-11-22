@@ -108,6 +108,7 @@ rutas internas (`dist/…`).
 | Adjuntar archivos                                         | `FileUpload` (varios, con validación); una sola imagen con vista previa: `ImageUpload`                                                  |
 | Personas en cuadrícula (usuarios, socios, clientes)       | `UserCard`                                                                                                                              |
 | Raíz de una app con sesión                                | `AuthGate` envolviendo `AppShell` (ver decisión 0006)                                                                                   |
+| Login único: espera, "Cerraste sesión", error al volver   | `AuthScreen` (`busy={false}`, `description`, `action`, `tone="error"`); sin pantalla de login propia (decisión 0011)                    |
 | Cargando                                                  | `Skeleton` (contenido), `LoadingSpinner` (botón), `OverlayLoader` (pantalla), `ProgressBar` (avance)                                    |
 
 ```tsx

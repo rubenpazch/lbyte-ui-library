@@ -307,14 +307,21 @@
         {
           "nombre": "AuthScreen",
           "importar": "import { AuthScreen } from \"@rubenpazch/ui\";",
-          "descripcion": "Pantalla neutra a pantalla completa: sin datos ni estructura de la app.",
+          "descripcion": "Pantalla completa y neutra de la sesión: espera (\"Verificando sesión…\") o mensaje con acción\n(\"Cerraste sesión\", un error del login único). Decisiones 0006 y 0011 de lbyte-contexto.",
           "props": [
             {
               "nombre": "label",
               "tipo": "string",
               "requerido": true,
               "porDefecto": null,
-              "descripcion": ""
+              "descripcion": "Texto principal: \"Verificando sesión…\", \"Cerraste sesión\"."
+            },
+            {
+              "nombre": "action",
+              "tipo": "ReactNode",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Acción bajo el texto: \"Volver a entrar\", \"Volver a intentar\"."
             },
             {
               "nombre": "brand",
@@ -322,12 +329,33 @@
               "requerido": false,
               "porDefecto": null,
               "descripcion": ""
+            },
+            {
+              "nombre": "busy",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "true",
+              "descripcion": "Muestra el indicador de carga (por defecto true). false para pantallas con mensaje."
+            },
+            {
+              "nombre": "description",
+              "tipo": "ReactNode",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Detalle bajo el texto (motivo de un error, indicación)."
+            },
+            {
+              "nombre": "tone",
+              "tipo": "\"neutral\" | \"error\"",
+              "requerido": false,
+              "porDefecto": "neutral",
+              "descripcion": "error: el lector de pantalla lo anuncia de inmediato (role=\"alert\")."
             }
           ]
         }
       ],
       "otrosValores": [],
-      "tipos": ["AuthGateProps", "AuthGateLabels"]
+      "tipos": ["AuthGateLabels", "AuthGateProps", "AuthScreenProps"]
     },
     {
       "paquete": "@rubenpazch/autocomplete",

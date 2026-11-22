@@ -36,13 +36,18 @@ Es experiencia de usuario, no seguridad: la API sigue respondiendo 401.
 
 ## AuthScreen
 
-Pantalla neutra a pantalla completa: sin datos ni estructura de la app.
+Pantalla completa y neutra de la sesión: espera ("Verificando sesión…") o mensaje con acción
+("Cerraste sesión", un error del login único). Decisiones 0006 y 0011 de lbyte-contexto.
 
-| Prop    | Tipo        | Req. | Por defecto | Descripción |
-| ------- | ----------- | ---- | ----------- | ----------- |
-| `label` | `string`    | sí   |             |             |
-| `brand` | `ReactNode` |      |             |             |
+| Prop          | Tipo                   | Req. | Por defecto | Descripción                                                                         |
+| ------------- | ---------------------- | ---- | ----------- | ----------------------------------------------------------------------------------- |
+| `label`       | `string`               | sí   |             | Texto principal: "Verificando sesión…", "Cerraste sesión".                          |
+| `action`      | `ReactNode`            |      |             | Acción bajo el texto: "Volver a entrar", "Volver a intentar".                       |
+| `brand`       | `ReactNode`            |      |             |                                                                                     |
+| `busy`        | `boolean`              |      | `true`      | Muestra el indicador de carga (por defecto true). false para pantallas con mensaje. |
+| `description` | `ReactNode`            |      |             | Detalle bajo el texto (motivo de un error, indicación).                             |
+| `tone`        | `"neutral" \| "error"` |      | `neutral`   | error: el lector de pantalla lo anuncia de inmediato (role="alert").                |
 
-Tipos: `AuthGateProps`, `AuthGateLabels`.
+Tipos: `AuthGateLabels`, `AuthGateProps`, `AuthScreenProps`.
 
 <!-- catalogo:fin -->
