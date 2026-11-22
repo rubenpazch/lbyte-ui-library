@@ -254,6 +254,36 @@ export type {
   ImageUploadLabels,
 } from "@rubenpazch/image-upload";
 export { default as InfoRow } from "@rubenpazch/info-row";
+export {
+  default as Flex,
+  Stack,
+  Inline,
+  Spacer,
+  Grid,
+  GridItem,
+  Center,
+  Container,
+} from "@rubenpazch/layout";
+export type {
+  FlexProps,
+  StackProps,
+  InlineProps,
+  SpacerProps,
+  GridProps,
+  GridItemProps,
+  GridColumns,
+  CenterProps,
+  ContainerProps,
+  ContainerSize,
+  Responsive,
+  LayoutBreakpoint,
+  Space,
+  Align,
+  Justify,
+  Direction,
+  LayoutElement,
+  PaddingProps,
+} from "@rubenpazch/layout";
 export { default as LoadingSpinner } from "@rubenpazch/loading-spinner";
 export { default as Menu } from "@rubenpazch/menu";
 export type { MenuProps, MenuItem } from "@rubenpazch/menu";

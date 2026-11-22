@@ -67,6 +67,7 @@
     "@rubenpazch/identification-input": "workspace:^",
     "@rubenpazch/image-upload": "workspace:^",
     "@rubenpazch/info-row": "workspace:^",
+    "@rubenpazch/layout": "workspace:^",
     "@rubenpazch/loading-spinner": "workspace:^",
     "@rubenpazch/menu": "workspace:^",
     "@rubenpazch/modal": "workspace:^",

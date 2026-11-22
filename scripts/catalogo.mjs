@@ -34,6 +34,7 @@ const INICIO =
 const FIN = "<!-- catalogo:fin -->";
 const CATEGORIAS = {
   base: "Base (tokens y utilidades)",
+  maquetacion: "Maquetación (layout)",
   acciones: "Acciones",
   formularios: "Formularios",
   navegacion: "Navegación",

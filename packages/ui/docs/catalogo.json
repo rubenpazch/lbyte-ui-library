@@ -3,6 +3,7 @@
   "generadoPor": "scripts/catalogo.mjs",
   "categorias": {
     "base": "Base (tokens y utilidades)",
+    "maquetacion": "Maquetación (layout)",
     "acciones": "Acciones",
     "formularios": "Formularios",
     "navegacion": "Navegación",
@@ -5639,6 +5640,597 @@
       ],
       "otrosValores": [],
       "tipos": []
+    },
+    {
+      "paquete": "@rubenpazch/layout",
+      "carpeta": "packages/layout",
+      "categoria": "maquetacion",
+      "resumen": "Maquetación solo con props (sin escribir CSS): Flex (fila o columna con gap, align y justify), Stack (vertical), Inline (horizontal que se ajusta), Center (centrar en uno o ambos ejes), Grid/GridItem (columnas fijas o automáticas), Container (ancho máximo de página) y Spacer. Todas las props aceptan valores por punto de quiebre: { base, sm, md, lg, xl }.",
+      "usarCuando": "Ubicar y alinear bloques de una pantalla: apilar secciones (Stack), barras de botones o filtros (Inline + Spacer), centrar un login (Center minHeight=\"screen\"), tableros y listas de tarjetas (Grid), el ancho de la página (Container).",
+      "evitarCuando": "Para filas de campos de formulario usa FormRow y para el pie de botones FormActions; para la estructura con menú lateral y encabezado usa AppShell.",
+      "componentes": [
+        {
+          "nombre": "Flex",
+          "importar": "import { Flex } from \"@rubenpazch/ui\";",
+          "descripcion": "Contenedor flexible: alinea y distribuye a sus hijos en fila o en columna solo con props\n(sin escribir CSS). Base de Stack (vertical) e Inline (horizontal).",
+          "props": [
+            {
+              "nombre": "align",
+              "tipo": "\"center\" | \"start\" | \"end\" | \"stretch\" | \"baseline\" | Partial<Record<LayoutBreakpoint, Align>>",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Alineación en el eje cruzado: en una fila es la vertical, en una columna la horizontal."
+            },
+            {
+              "nombre": "as",
+              "tipo": "keyof IntrinsicElements",
+              "requerido": false,
+              "porDefecto": "div",
+              "descripcion": "Etiqueta HTML que se renderiza: `div` (por defecto), `section`, `ul`, `nav`, `header`…"
+            },
+            {
+              "nombre": "direction",
+              "tipo": "\"row\" | \"column\" | \"row-reverse\" | \"column-reverse\" | Partial<Record<LayoutBreakpoint, Direction>>",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Dirección de los hijos: `row` (horizontal) o `column` (vertical). Acepta valores por punto de quiebre: `{ base: \"column\", md: \"row\" }`."
+            },
+            {
+              "nombre": "gap",
+              "tipo": "0 | 1 | 2 | 3 | 4 | 5 | 6 | 8 | 10 | 12 | 16 | Partial<Record<LayoutBreakpoint, Space>>",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Espacio entre hijos (escala `--lb-space-*`: 0, 1, 2, 3, 4, 5, 6, 8, 10, 12, 16)."
+            },
+            {
+              "nombre": "grow",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "false",
+              "descripcion": "Ocupa el espacio libre cuando está dentro de otro Flex/Stack/Inline."
+            },
+            {
+              "nombre": "hide",
+              "tipo": "boolean | Partial<Record<LayoutBreakpoint, boolean>>",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Oculta el contenedor (útil por punto de quiebre: `hide={{ base: true, md: false }}`)."
+            },
+            {
+              "nombre": "inline",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "false",
+              "descripcion": "Se comporta como elemento en línea (`inline-flex`)."
+            },
+            {
+              "nombre": "justify",
+              "tipo": "\"center\" | \"start\" | \"end\" | \"between\" | \"around\" | \"evenly\" | Partial<Record<LayoutBreakpoint, Justify>>",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Distribución en el eje principal: `start`, `center`, `end`, `between`, `around`, `evenly`."
+            },
+            {
+              "nombre": "padding",
+              "tipo": "0 | 1 | 2 | 3 | 4 | 5 | 6 | 8 | 10 | 12 | 16 | Partial<Record<LayoutBreakpoint, Space>>",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Espacio interno en los cuatro lados (escala `--lb-space-*`)."
+            },
+            {
+              "nombre": "paddingX",
+              "tipo": "0 | 1 | 2 | 3 | 4 | 5 | 6 | 8 | 10 | 12 | 16 | Partial<Record<LayoutBreakpoint, Space>>",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Espacio interno a izquierda y derecha."
+            },
+            {
+              "nombre": "paddingY",
+              "tipo": "0 | 1 | 2 | 3 | 4 | 5 | 6 | 8 | 10 | 12 | 16 | Partial<Record<LayoutBreakpoint, Space>>",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Espacio interno arriba y abajo."
+            },
+            {
+              "nombre": "ref",
+              "tipo": "null | (instance: HTMLElement | null) => void | (() => VoidOrUndefinedOnly) | RefObject<HTMLElement | null>",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Referencia al elemento del DOM."
+            },
+            {
+              "nombre": "wrap",
+              "tipo": "boolean | \"wrap\" | \"nowrap\" | \"wrap-reverse\" | Partial<Record<LayoutBreakpoint, Wrap>>",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Permite que los hijos pasen a la siguiente línea. `true` = `wrap`."
+            }
+          ]
+        },
+        {
+          "nombre": "Stack",
+          "importar": "import { Stack } from \"@rubenpazch/ui\";",
+          "descripcion": "Apila a los hijos en vertical con un espacio uniforme (columna). Por defecto `gap={4}`.\n`align=\"center\"` los centra horizontalmente.",
+          "props": [
+            {
+              "nombre": "align",
+              "tipo": "\"center\" | \"start\" | \"end\" | \"stretch\" | \"baseline\" | Partial<Record<LayoutBreakpoint, Align>>",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Alineación en el eje cruzado: en una fila es la vertical, en una columna la horizontal."
+            },
+            {
+              "nombre": "as",
+              "tipo": "keyof IntrinsicElements",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Etiqueta HTML que se renderiza: `div` (por defecto), `section`, `ul`, `nav`, `header`…"
+            },
+            {
+              "nombre": "gap",
+              "tipo": "0 | 1 | 2 | 3 | 4 | 5 | 6 | 8 | 10 | 12 | 16 | Partial<Record<LayoutBreakpoint, Space>>",
+              "requerido": false,
+              "porDefecto": "4",
+              "descripcion": "Espacio entre hijos (escala `--lb-space-*`: 0, 1, 2, 3, 4, 5, 6, 8, 10, 12, 16)."
+            },
+            {
+              "nombre": "grow",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Ocupa el espacio libre cuando está dentro de otro Flex/Stack/Inline."
+            },
+            {
+              "nombre": "hide",
+              "tipo": "boolean | Partial<Record<LayoutBreakpoint, boolean>>",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Oculta el contenedor (útil por punto de quiebre: `hide={{ base: true, md: false }}`)."
+            },
+            {
+              "nombre": "inline",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Se comporta como elemento en línea (`inline-flex`)."
+            },
+            {
+              "nombre": "justify",
+              "tipo": "\"center\" | \"start\" | \"end\" | \"between\" | \"around\" | \"evenly\" | Partial<Record<LayoutBreakpoint, Justify>>",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Distribución en el eje principal: `start`, `center`, `end`, `between`, `around`, `evenly`."
+            },
+            {
+              "nombre": "padding",
+              "tipo": "0 | 1 | 2 | 3 | 4 | 5 | 6 | 8 | 10 | 12 | 16 | Partial<Record<LayoutBreakpoint, Space>>",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Espacio interno en los cuatro lados (escala `--lb-space-*`)."
+            },
+            {
+              "nombre": "paddingX",
+              "tipo": "0 | 1 | 2 | 3 | 4 | 5 | 6 | 8 | 10 | 12 | 16 | Partial<Record<LayoutBreakpoint, Space>>",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Espacio interno a izquierda y derecha."
+            },
+            {
+              "nombre": "paddingY",
+              "tipo": "0 | 1 | 2 | 3 | 4 | 5 | 6 | 8 | 10 | 12 | 16 | Partial<Record<LayoutBreakpoint, Space>>",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Espacio interno arriba y abajo."
+            },
+            {
+              "nombre": "ref",
+              "tipo": "null | (instance: HTMLElement | null) => void | (() => VoidOrUndefinedOnly) | RefObject<HTMLElement | null>",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Referencia al elemento del DOM."
+            },
+            {
+              "nombre": "wrap",
+              "tipo": "boolean | \"wrap\" | \"nowrap\" | \"wrap-reverse\" | Partial<Record<LayoutBreakpoint, Wrap>>",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Permite que los hijos pasen a la siguiente línea. `true` = `wrap`."
+            }
+          ]
+        },
+        {
+          "nombre": "Inline",
+          "importar": "import { Inline } from \"@rubenpazch/ui\";",
+          "descripcion": "Pone a los hijos en fila (botones, chips, etiquetas) y los pasa a la siguiente línea si no\ncaben. Por defecto `gap={2}`, `align=\"center\"` y `wrap`.",
+          "props": [
+            {
+              "nombre": "align",
+              "tipo": "\"center\" | \"start\" | \"end\" | \"stretch\" | \"baseline\" | Partial<Record<LayoutBreakpoint, Align>>",
+              "requerido": false,
+              "porDefecto": "center",
+              "descripcion": "Alineación en el eje cruzado: en una fila es la vertical, en una columna la horizontal."
+            },
+            {
+              "nombre": "as",
+              "tipo": "keyof IntrinsicElements",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Etiqueta HTML que se renderiza: `div` (por defecto), `section`, `ul`, `nav`, `header`…"
+            },
+            {
+              "nombre": "gap",
+              "tipo": "0 | 1 | 2 | 3 | 4 | 5 | 6 | 8 | 10 | 12 | 16 | Partial<Record<LayoutBreakpoint, Space>>",
+              "requerido": false,
+              "porDefecto": "2",
+              "descripcion": "Espacio entre hijos (escala `--lb-space-*`: 0, 1, 2, 3, 4, 5, 6, 8, 10, 12, 16)."
+            },
+            {
+              "nombre": "grow",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Ocupa el espacio libre cuando está dentro de otro Flex/Stack/Inline."
+            },
+            {
+              "nombre": "hide",
+              "tipo": "boolean | Partial<Record<LayoutBreakpoint, boolean>>",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Oculta el contenedor (útil por punto de quiebre: `hide={{ base: true, md: false }}`)."
+            },
+            {
+              "nombre": "inline",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Se comporta como elemento en línea (`inline-flex`)."
+            },
+            {
+              "nombre": "justify",
+              "tipo": "\"center\" | \"start\" | \"end\" | \"between\" | \"around\" | \"evenly\" | Partial<Record<LayoutBreakpoint, Justify>>",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Distribución en el eje principal: `start`, `center`, `end`, `between`, `around`, `evenly`."
+            },
+            {
+              "nombre": "padding",
+              "tipo": "0 | 1 | 2 | 3 | 4 | 5 | 6 | 8 | 10 | 12 | 16 | Partial<Record<LayoutBreakpoint, Space>>",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Espacio interno en los cuatro lados (escala `--lb-space-*`)."
+            },
+            {
+              "nombre": "paddingX",
+              "tipo": "0 | 1 | 2 | 3 | 4 | 5 | 6 | 8 | 10 | 12 | 16 | Partial<Record<LayoutBreakpoint, Space>>",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Espacio interno a izquierda y derecha."
+            },
+            {
+              "nombre": "paddingY",
+              "tipo": "0 | 1 | 2 | 3 | 4 | 5 | 6 | 8 | 10 | 12 | 16 | Partial<Record<LayoutBreakpoint, Space>>",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Espacio interno arriba y abajo."
+            },
+            {
+              "nombre": "ref",
+              "tipo": "null | (instance: HTMLElement | null) => void | (() => VoidOrUndefinedOnly) | RefObject<HTMLElement | null>",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Referencia al elemento del DOM."
+            },
+            {
+              "nombre": "reverse",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "false",
+              "descripcion": "Invierte el orden visual (`row-reverse`)."
+            },
+            {
+              "nombre": "wrap",
+              "tipo": "boolean | \"wrap\" | \"nowrap\" | \"wrap-reverse\" | Partial<Record<LayoutBreakpoint, Wrap>>",
+              "requerido": false,
+              "porDefecto": "true",
+              "descripcion": "Permite que los hijos pasen a la siguiente línea. `true` = `wrap`."
+            }
+          ]
+        },
+        {
+          "nombre": "Spacer",
+          "importar": "import { Spacer } from \"@rubenpazch/ui\";",
+          "descripcion": "Espacio elástico dentro de un Flex/Inline: empuja a los hijos siguientes al otro extremo\n(p. ej. logo a la izquierda y botones a la derecha).",
+          "props": [
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Clase extra."
+            }
+          ]
+        },
+        {
+          "nombre": "Grid",
+          "importar": "import { Grid } from \"@rubenpazch/ui\";",
+          "descripcion": "Grilla de columnas: fija (`columns`) o automática (`minItemWidth`). Para tableros, listas de\ntarjetas y formularios de varias columnas.",
+          "props": [
+            {
+              "nombre": "align",
+              "tipo": "\"center\" | \"start\" | \"end\" | \"stretch\" | \"baseline\" | Partial<Record<LayoutBreakpoint, Align>>",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Alineación vertical del contenido de cada celda."
+            },
+            {
+              "nombre": "as",
+              "tipo": "keyof IntrinsicElements",
+              "requerido": false,
+              "porDefecto": "div",
+              "descripcion": "Etiqueta HTML que se renderiza (`div` por defecto; `ul` para listas de tarjetas)."
+            },
+            {
+              "nombre": "autoMode",
+              "tipo": "\"fill\" | \"fit\"",
+              "requerido": false,
+              "porDefecto": "fill",
+              "descripcion": "Con `minItemWidth`: `fill` deja huecos vacíos al final; `fit` estira las celdas para llenar la fila."
+            },
+            {
+              "nombre": "columns",
+              "tipo": "1 | 2 | 3 | 4 | 5 | 6 | 8 | 10 | 12 | 7 | 9 | 11 | Partial<Record<LayoutBreakpoint, GridColumns>>",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Número de columnas iguales (1 a 12). Por punto de quiebre: `{ base: 1, md: 2, lg: 4 }`."
+            },
+            {
+              "nombre": "gap",
+              "tipo": "0 | 1 | 2 | 3 | 4 | 5 | 6 | 8 | 10 | 12 | 16 | Partial<Record<LayoutBreakpoint, Space>>",
+              "requerido": false,
+              "porDefecto": "4",
+              "descripcion": "Espacio entre celdas. Por defecto 4."
+            },
+            {
+              "nombre": "hide",
+              "tipo": "boolean | Partial<Record<LayoutBreakpoint, boolean>>",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Oculta la grilla (útil por punto de quiebre)."
+            },
+            {
+              "nombre": "justifyItems",
+              "tipo": "\"center\" | \"start\" | \"end\" | \"stretch\" | Partial<Record<LayoutBreakpoint, \"center\" | \"start\" | \"end\" | \"stretch\">>",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Alineación horizontal del contenido de cada celda."
+            },
+            {
+              "nombre": "minItemWidth",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Ancho mínimo de cada celda (`\"16rem\"`, `\"240px\"`): crea tantas columnas como quepan, sin\npuntos de quiebre. Si se usa, `columns` se ignora."
+            },
+            {
+              "nombre": "padding",
+              "tipo": "0 | 1 | 2 | 3 | 4 | 5 | 6 | 8 | 10 | 12 | 16 | Partial<Record<LayoutBreakpoint, Space>>",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Espacio interno en los cuatro lados (escala `--lb-space-*`)."
+            },
+            {
+              "nombre": "paddingX",
+              "tipo": "0 | 1 | 2 | 3 | 4 | 5 | 6 | 8 | 10 | 12 | 16 | Partial<Record<LayoutBreakpoint, Space>>",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Espacio interno a izquierda y derecha."
+            },
+            {
+              "nombre": "paddingY",
+              "tipo": "0 | 1 | 2 | 3 | 4 | 5 | 6 | 8 | 10 | 12 | 16 | Partial<Record<LayoutBreakpoint, Space>>",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Espacio interno arriba y abajo."
+            },
+            {
+              "nombre": "ref",
+              "tipo": "null | (instance: HTMLElement | null) => void | (() => VoidOrUndefinedOnly) | RefObject<HTMLElement | null>",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Referencia al elemento del DOM."
+            }
+          ]
+        },
+        {
+          "nombre": "GridItem",
+          "importar": "import { GridItem } from \"@rubenpazch/ui\";",
+          "descripcion": "Celda de un Grid que ocupa varias columnas.",
+          "props": [
+            {
+              "nombre": "as",
+              "tipo": "keyof IntrinsicElements",
+              "requerido": false,
+              "porDefecto": "div",
+              "descripcion": "Etiqueta HTML que se renderiza (`div` por defecto; `li` dentro de un Grid `ul`)."
+            },
+            {
+              "nombre": "hide",
+              "tipo": "boolean | Partial<Record<LayoutBreakpoint, boolean>>",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Oculta la celda (útil por punto de quiebre)."
+            },
+            {
+              "nombre": "ref",
+              "tipo": "null | (instance: HTMLElement | null) => void | (() => VoidOrUndefinedOnly) | RefObject<HTMLElement | null>",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Referencia al elemento del DOM."
+            },
+            {
+              "nombre": "span",
+              "tipo": "1 | 2 | 3 | 4 | 5 | 6 | 8 | 10 | 12 | 7 | 9 | 11 | \"full\" | Partial<Record<LayoutBreakpoint, GridColumns | \"full\">>",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Columnas que ocupa (1 a 12) o `full` (toda la fila). Por punto de quiebre: `{ base: \"full\", md: 2 }`."
+            }
+          ]
+        },
+        {
+          "nombre": "Center",
+          "importar": "import { Center } from \"@rubenpazch/ui\";",
+          "descripcion": "Centra a sus hijos en horizontal, en vertical o en ambos ejes (p. ej. una tarjeta de login en\nmedio de la pantalla). Los hijos se apilan en columna.",
+          "props": [
+            {
+              "nombre": "as",
+              "tipo": "keyof IntrinsicElements",
+              "requerido": false,
+              "porDefecto": "div",
+              "descripcion": "Etiqueta HTML que se renderiza (`div` por defecto; `main` para una pantalla completa)."
+            },
+            {
+              "nombre": "axis",
+              "tipo": "\"both\" | \"horizontal\" | \"vertical\"",
+              "requerido": false,
+              "porDefecto": "both",
+              "descripcion": "En qué eje centra: `both` (por defecto), `horizontal` o `vertical`."
+            },
+            {
+              "nombre": "centerText",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "false",
+              "descripcion": "Centra también el texto."
+            },
+            {
+              "nombre": "gap",
+              "tipo": "0 | 1 | 2 | 3 | 4 | 5 | 6 | 8 | 10 | 12 | 16 | Partial<Record<LayoutBreakpoint, Space>>",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Espacio entre hijos (se apilan en vertical)."
+            },
+            {
+              "nombre": "minHeight",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Alto mínimo, para que el centrado vertical tenga espacio: `screen` (alto de la ventana),\n`full` (alto del padre) o un valor CSS (`\"20rem\"`)."
+            },
+            {
+              "nombre": "padding",
+              "tipo": "0 | 1 | 2 | 3 | 4 | 5 | 6 | 8 | 10 | 12 | 16 | Partial<Record<LayoutBreakpoint, Space>>",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Espacio interno en los cuatro lados (escala `--lb-space-*`)."
+            },
+            {
+              "nombre": "paddingX",
+              "tipo": "0 | 1 | 2 | 3 | 4 | 5 | 6 | 8 | 10 | 12 | 16 | Partial<Record<LayoutBreakpoint, Space>>",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Espacio interno a izquierda y derecha."
+            },
+            {
+              "nombre": "paddingY",
+              "tipo": "0 | 1 | 2 | 3 | 4 | 5 | 6 | 8 | 10 | 12 | 16 | Partial<Record<LayoutBreakpoint, Space>>",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Espacio interno arriba y abajo."
+            },
+            {
+              "nombre": "ref",
+              "tipo": "null | (instance: HTMLElement | null) => void | (() => VoidOrUndefinedOnly) | RefObject<HTMLElement | null>",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Referencia al elemento del DOM."
+            }
+          ]
+        },
+        {
+          "nombre": "Container",
+          "importar": "import { Container } from \"@rubenpazch/ui\";",
+          "descripcion": "Contenido de página centrado con ancho máximo y márgenes laterales que se ajustan al tamaño\nde la pantalla.",
+          "props": [
+            {
+              "nombre": "as",
+              "tipo": "keyof IntrinsicElements",
+              "requerido": false,
+              "porDefecto": "div",
+              "descripcion": "Etiqueta HTML que se renderiza (`div` por defecto; `main`, `section`…)."
+            },
+            {
+              "nombre": "hide",
+              "tipo": "boolean | Partial<Record<LayoutBreakpoint, boolean>>",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Oculta el contenedor (útil por punto de quiebre)."
+            },
+            {
+              "nombre": "maxWidth",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Ancho máximo libre (`\"72rem\"`); reemplaza a `size`."
+            },
+            {
+              "nombre": "padding",
+              "tipo": "0 | 1 | 2 | 3 | 4 | 5 | 6 | 8 | 10 | 12 | 16 | Partial<Record<LayoutBreakpoint, Space>>",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Espacio interno en los cuatro lados (escala `--lb-space-*`)."
+            },
+            {
+              "nombre": "paddingX",
+              "tipo": "0 | 1 | 2 | 3 | 4 | 5 | 6 | 8 | 10 | 12 | 16 | Partial<Record<LayoutBreakpoint, 0 | 1 | 2 | 3 | 4 | 5 | 6 | 8 | 10 | 12 | 16>>",
+              "requerido": false,
+              "porDefecto": "{ base: 4, md: 6 }",
+              "descripcion": "Espacio a los lados. Por defecto `{ base: 4, md: 6 }`."
+            },
+            {
+              "nombre": "paddingY",
+              "tipo": "0 | 1 | 2 | 3 | 4 | 5 | 6 | 8 | 10 | 12 | 16 | Partial<Record<LayoutBreakpoint, Space>>",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Espacio interno arriba y abajo."
+            },
+            {
+              "nombre": "ref",
+              "tipo": "null | (instance: HTMLElement | null) => void | (() => VoidOrUndefinedOnly) | RefObject<HTMLElement | null>",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Referencia al elemento del DOM."
+            },
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\" | \"xl\" | \"full\" | \"2xl\"",
+              "requerido": false,
+              "porDefecto": "lg",
+              "descripcion": "Ancho máximo: sm 640px, md 768px, lg 1024px (por defecto), xl 1280px, 2xl 1536px o full."
+            }
+          ]
+        }
+      ],
+      "otrosValores": [],
+      "tipos": [
+        "FlexProps",
+        "StackProps",
+        "InlineProps",
+        "SpacerProps",
+        "GridProps",
+        "GridItemProps",
+        "GridColumns",
+        "CenterProps",
+        "ContainerProps",
+        "ContainerSize",
+        "Responsive",
+        "LayoutBreakpoint",
+        "Space",
+        "Align",
+        "Justify",
+        "Direction",
+        "LayoutElement",
+        "PaddingProps"
+      ]
     },
     {
       "paquete": "@rubenpazch/loading-spinner",

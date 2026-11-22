@@ -83,8 +83,48 @@ rutas internas (`dist/…`).
   ```
 - Para ajustar un componente usa sus props (`variant`, `color`, `size`, `fullWidth`…) y, si hace
   falta, `className` para márgenes o posición. No sobrescribas sus clases internas.
-- Para Tailwind puro (layout, grid, flex) usa las utilidades normales; para color, tipografía,
+- Para **ubicar y alinear** bloques usa los componentes de maquetación (ver **Maquetación**) en
+  vez de escribir `display: flex` o clases `flex`/`grid` de Tailwind; para color, tipografía,
   radios, sombras y espacios del sistema, las `lb-*`.
+
+## Maquetación (sin escribir CSS)
+
+`Flex`, `Stack`, `Inline`, `Center`, `Grid`/`GridItem`, `Container` y `Spacer` se configuran solo
+con props. Los espacios (`gap`, `padding`, `paddingX`, `paddingY`) usan la escala `--lb-space-*`
+(0, 1, 2, 3, 4, 5, 6, 8, 10, 12, 16) y **todas las props aceptan valores por punto de quiebre**
+(mobile first): `{ base, sm: 640px, md: 768px, lg: 1024px, xl: 1280px }`.
+
+| Necesito…                                   | Usa                                                                           |
+| ------------------------------------------- | ----------------------------------------------------------------------------- |
+| Apilar en vertical con espacio uniforme     | `<Stack gap={6}>`                                                             |
+| Una fila de botones/chips que se ajusta     | `<Inline gap={2}>`; a la derecha: `<Inline justify="end">`                    |
+| Logo a la izquierda y acciones a la derecha | `<Inline><Logo /><Spacer /><Button /></Inline>` o `justify="between"`         |
+| Centrar vertical y horizontalmente (login)  | `<Center minHeight="screen">`                                                 |
+| Columna en móvil, fila en escritorio        | `<Flex direction={{ base: "column", md: "row" }} gap={4}>`                    |
+| Tarjetas en grilla que se acomodan solas    | `<Grid minItemWidth="16rem">`; columnas fijas: `columns={{ base: 1, md: 3 }}` |
+| Una celda que ocupa varias columnas         | `<GridItem span={2}>` (o `"full"`)                                            |
+| El ancho máximo de la página                | `<Container size="lg">`                                                       |
+| Ocultar algo en móvil                       | `hide={{ base: true, md: false }}`                                            |
+
+```tsx
+<Container as="main" paddingY={8}>
+  <Stack gap={6}>
+    <Inline justify="between">
+      <h1>Clientes</h1>
+      <Button variant="contained">Nuevo</Button>
+    </Inline>
+    <Grid columns={{ base: 1, md: 2, lg: 4 }}>
+      <Card>…</Card>
+      <GridItem span={{ base: "full", lg: 2 }}>
+        <Card>…</Card>
+      </GridItem>
+    </Grid>
+  </Stack>
+</Container>
+```
+
+Todos aceptan `as` (`section`, `ul`, `nav`, `main`…) para usar la etiqueta HTML correcta, y
+`className` solo para casos puntuales.
 
 ## Qué usar para cada cosa
 
@@ -93,6 +133,7 @@ rutas internas (`dist/…`).
 | El layout de un panel (menú lateral, cabecera, contenido) | `AppShell` (o solo `Sidebar`) en `app/(panel)/layout.tsx`, con `currentPath={usePathname()}` y `linkComponent={Link}`                   |
 | La cabecera de cada página                                | `PageHeader` (migas, título h1, acciones)                                                                                               |
 | Un listado de registros                                   | `DataTable` + `Pagination` (`onPageChange`) + `EmptyState`                                                                              |
+| Alinear, centrar o distribuir bloques de una pantalla     | `Stack`, `Inline`, `Center`, `Grid`, `Container` (ver **Maquetación**)                                                                  |
 | Un formulario                                             | `FormRow` (columnas) + campos (`TextInput`, `Textarea`, `Select`, `Autocomplete`, `DateInput`, `MoneyInput`, `Switch`…) + `FormActions` |
 | Montos de dinero                                          | `MoneyInput` para editar, `formatMoney()` para mostrar                                                                                  |
 | Elegir el mes de trabajo                                  | `MonthNavigator`                                                                                                                        |

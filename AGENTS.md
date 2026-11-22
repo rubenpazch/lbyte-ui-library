@@ -39,7 +39,7 @@ Luego, en `packages/<nombre>/`:
    `var(--lb-radius-*)`…). Nada de hex, px sueltos ni clases de Tailwind.
 3. Historias de cada variante y estado; pruebas de comportamiento y accesibilidad.
 4. `package.json` → bloque `lbyte`:
-   - `categoria`: `acciones`, `formularios`, `navegacion`, `retroalimentacion`, `presentacion`,
+   - `categoria`: `maquetacion`, `acciones`, `formularios`, `navegacion`, `retroalimentacion`, `presentacion`,
      `datos`, `iconos`, `salud` o `base`.
    - `resumen`, `usarCuando`, `evitarCuando` (en español; en `evitarCuando` nombra la alternativa).
 5. `pnpm catalogo` — lo agrega a `@rubenpazch/ui`, a `packages/ui/docs/` y a su README.
