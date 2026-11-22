@@ -1,5 +1,19 @@
 # @rubenpazch/ui
 
+## 0.12.1
+
+### Patch Changes
+
+- 8655e6c: `Button`: con `loading` marca `aria-busy="true"` (la acción está en curso; lo anuncian los lectores de pantalla y lo ven las pruebas de transiciones de la decisión 0011).
+- Updated dependencies [8655e6c]
+  - @rubenpazch/button@6.2.5
+  - @rubenpazch/checkbox-input@3.2.5
+  - @rubenpazch/confirmation-dialog@3.1.6
+  - @rubenpazch/date-input@3.2.2
+  - @rubenpazch/date-picker@3.2.2
+  - @rubenpazch/date-range-picker@0.1.2
+  - @rubenpazch/prescription-eye-card@3.0.8
+
 ## 0.12.0
 
 ### Minor Changes
