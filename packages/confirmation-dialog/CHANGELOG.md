@@ -1,5 +1,12 @@
 # @rubenpazch/confirmation-dialog
 
+## 3.1.6
+
+### Patch Changes
+
+- Updated dependencies [8655e6c]
+  - @rubenpazch/button@6.2.5
+
 ## 3.1.5
 
 ### Patch Changes

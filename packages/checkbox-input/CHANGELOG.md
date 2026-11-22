@@ -1,5 +1,12 @@
 # @rubenpazch/checkbox-input
 
+## 3.2.5
+
+### Patch Changes
+
+- Updated dependencies [8655e6c]
+  - @rubenpazch/button@6.2.5
+
 ## 3.2.4
 
 ### Patch Changes

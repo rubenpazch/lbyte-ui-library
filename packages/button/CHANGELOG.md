@@ -1,5 +1,11 @@
 # @rubenpazch/button
 
+## 6.2.5
+
+### Patch Changes
+
+- 8655e6c: `Button`: con `loading` marca `aria-busy="true"` (la acción está en curso; lo anuncian los lectores de pantalla y lo ven las pruebas de transiciones de la decisión 0011).
+
 ## 6.2.4
 
 ### Patch Changes

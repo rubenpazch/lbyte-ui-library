@@ -1,5 +1,12 @@
 # @rubenpazch/date-picker
 
+## 3.2.2
+
+### Patch Changes
+
+- Updated dependencies [8655e6c]
+  - @rubenpazch/button@6.2.5
+
 ## 3.2.1
 
 ### Patch Changes

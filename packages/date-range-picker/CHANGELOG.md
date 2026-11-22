@@ -1,5 +1,11 @@
 # @rubenpazch/date-range-picker
 
+## 0.1.2
+
+### Patch Changes
+
+- @rubenpazch/date-input@3.2.2
+
 ## 0.1.1
 
 ### Patch Changes
