@@ -174,3 +174,13 @@
     animation-duration: 2.4s;
   }
 }
+
+/* Con barra inferior (celular): sin ☰ en la cabecera y espacio abajo para que la barra no tape. */
+@media (max-width: 767px) {
+  .withBottomNav .menuButton {
+    display: none;
+  }
+  .withBottomNav .main {
+    padding-bottom: calc(4rem + env(safe-area-inset-bottom));
+  }
+}

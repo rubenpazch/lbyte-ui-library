@@ -117,3 +117,25 @@ it("loading muestra la carga solo en el contenido: el menú y la cabecera siguen
   expect(screen.getByRole("link", { name: "Inicio" })).toBeInTheDocument();
   expect(container.querySelector("header")).toHaveTextContent("Panel");
 });
+
+it('bottomNav agrega la barra inferior con "Más", que abre el menú lateral', () => {
+  render(
+    <AppShell
+      sections={sections}
+      currentPath="/cobros"
+      bottomNav={{
+        items: [{ label: "Cobros", href: "/cobros", icon: <svg /> }],
+      }}
+    >
+      <p>contenido</p>
+    </AppShell>,
+  );
+  const barra = screen.getByRole("navigation", {
+    name: "Secciones principales",
+  });
+  expect(barra).toBeInTheDocument();
+  const mas = screen.getByRole("button", { name: "Más" });
+  expect(mas).not.toHaveAttribute("aria-current");
+  fireEvent.click(mas);
+  expect(mas).toHaveAttribute("aria-current", "page");
+});

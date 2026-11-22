@@ -372,6 +372,9 @@ importers:
 
   packages/app-shell:
     dependencies:
+      '@rubenpazch/bottom-navigation':
+        specifier: workspace:*
+        version: link:../bottom-navigation
       '@rubenpazch/shared':
         specifier: workspace:*
         version: link:../shared
@@ -653,6 +656,31 @@ importers:
         specifier: 6.0.3
         version: 6.0.3
 
+  packages/bottom-navigation:
+    dependencies:
+      '@rubenpazch/shared':
+        specifier: workspace:*
+        version: link:../shared
+      '@rubenpazch/tokens':
+        specifier: workspace:*
+        version: link:../tokens
+      react:
+        specifier: 19.2.8
+        version: 19.2.8
+      react-dom:
+        specifier: 19.2.8
+        version: 19.2.8(react@19.2.8)
+    devDependencies:
+      '@rubenpazch/eslint-config':
+        specifier: workspace:*
+        version: link:../../tooling/eslint-config
+      '@rubenpazch/icons':
+        specifier: workspace:*
+        version: link:../icons
+      '@rubenpazch/typescript-config':
+        specifier: workspace:*
+        version: link:../../tooling/typescript-config
+
   packages/button:
     dependencies:
       '@rubenpazch/shared':
@@ -920,6 +948,28 @@ importers:
       typescript:
         specifier: 6.0.3
         version: 6.0.3
+
+  packages/collapsible:
+    dependencies:
+      '@rubenpazch/shared':
+        specifier: workspace:*
+        version: link:../shared
+      '@rubenpazch/tokens':
+        specifier: workspace:*
+        version: link:../tokens
+      react:
+        specifier: 19.2.8
+        version: 19.2.8
+      react-dom:
+        specifier: 19.2.8
+        version: 19.2.8(react@19.2.8)
+    devDependencies:
+      '@rubenpazch/eslint-config':
+        specifier: workspace:*
+        version: link:../../tooling/eslint-config
+      '@rubenpazch/typescript-config':
+        specifier: workspace:*
+        version: link:../../tooling/typescript-config
 
   packages/confirmation-dialog:
     dependencies:
@@ -1725,6 +1775,31 @@ importers:
         specifier: 19.2.8
         version: 19.2.8(react@19.2.8)
     devDependencies:
+      '@rubenpazch/typescript-config':
+        specifier: workspace:*
+        version: link:../../tooling/typescript-config
+
+  packages/list:
+    dependencies:
+      '@rubenpazch/shared':
+        specifier: workspace:*
+        version: link:../shared
+      '@rubenpazch/tokens':
+        specifier: workspace:*
+        version: link:../tokens
+      react:
+        specifier: 19.2.8
+        version: 19.2.8
+      react-dom:
+        specifier: 19.2.8
+        version: 19.2.8(react@19.2.8)
+    devDependencies:
+      '@rubenpazch/badge':
+        specifier: workspace:*
+        version: link:../badge
+      '@rubenpazch/eslint-config':
+        specifier: workspace:*
+        version: link:../../tooling/eslint-config
       '@rubenpazch/typescript-config':
         specifier: workspace:*
         version: link:../../tooling/typescript-config

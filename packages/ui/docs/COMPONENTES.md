@@ -21,10 +21,12 @@ librería (ver AGENTS.md del repo lbyte-ui-library), no lo copies en la app.
 | [`@rubenpazch/autocomplete`](#rubenpazchautocomplete)                   | Formularios                | Autocomplete                                                                              | Selector con búsqueda sobre una lista de opciones (con descripción, carga y opción de limpiar).                                                                                                                                                        |
 | [`@rubenpazch/avatar`](#rubenpazchavatar)                               | Presentación de datos      | Avatar, AvatarGroup                                                                       | Avatar de persona (imagen, iniciales o icono) y AvatarGroup para varios.                                                                                                                                                                               |
 | [`@rubenpazch/badge`](#rubenpazchbadge)                                 | Presentación de datos      | Badge                                                                                     | Insignia de estado o categoría (Pagado, Vencido, Borrador) con colores semánticos, variantes soft/solid/outline y punto.                                                                                                                               |
+| [`@rubenpazch/bottom-navigation`](#rubenpazchbottom-navigation)         | Navegación                 | BottomNavigation                                                                          | Barra fija abajo en el celular con 3 a 5 secciones principales (icono y texto); se oculta en pantallas anchas.                                                                                                                                         |
 | [`@rubenpazch/button`](#rubenpazchbutton)                               | Acciones                   | Button                                                                                    | Botón con variantes text/contained/outlined, colores, tamaños, estado de carga e iconos; puede renderizar un enlace (href).                                                                                                                            |
 | [`@rubenpazch/card`](#rubenpazchcard)                                   | Presentación de datos      | Card, CardHeader, CardBody, CardFooter                                                    | Tarjeta (outlined o elevated) con CardHeader (título, subtítulo, acciones), CardBody y CardFooter; puede ser clicable.                                                                                                                                 |
 | [`@rubenpazch/checkbox-input`](#rubenpazchcheckbox-input)               | Formularios                | CheckboxInput                                                                             | Casilla de verificación con etiqueta, ayuda y error.                                                                                                                                                                                                   |
 | [`@rubenpazch/chip`](#rubenpazchchip)                                   | Presentación de datos      | Chip                                                                                      | Chip/etiqueta con variantes, icono y acción de borrar.                                                                                                                                                                                                 |
+| [`@rubenpazch/collapsible`](#rubenpazchcollapsible)                     | Presentación de datos      | Collapsible                                                                               | Sección plegable con título: deja lo opcional oculto para acortar formularios y páginas.                                                                                                                                                               |
 | [`@rubenpazch/confirmation-dialog`](#rubenpazchconfirmation-dialog)     | Retroalimentación          | ConfirmationDialog                                                                        | Diálogo modal de confirmación (aceptar/cancelar).                                                                                                                                                                                                      |
 | [`@rubenpazch/data-table`](#rubenpazchdata-table)                       | Datos                      | DataTable                                                                                 | Tabla de datos accesible: columnas con render, orden (aria-sort) en el navegador o en el servidor, carga con Skeleton, estado vacío, filas clicables, encabezado fijo y scroll horizontal en móvil.                                                    |
 | [`@rubenpazch/date-input`](#rubenpazchdate-input)                       | Formularios                | DateInput                                                                                 | Campo de fecha con formato local, mínimo/máximo, ayuda y error.                                                                                                                                                                                        |
@@ -41,6 +43,7 @@ librería (ver AGENTS.md del repo lbyte-ui-library), no lo copies en la app.
 | [`@rubenpazch/identification-input`](#rubenpazchidentification-input)   | Salud (pacientes y óptica) | IdentificationInput, DEFAULT_IDENTIFICATION_LABELS                                        | Tipo y número de documento peruano (DNI, CE, pasaporte) con validación de longitud y formato.                                                                                                                                                          |
 | [`@rubenpazch/image-upload`](#rubenpazchimage-upload)                   | Formularios                | ImageUpload, DEFAULT_IMAGE_UPLOAD_LABELS                                                  | Subida de imagen o PDF con vista previa, arrastrar y soltar, validación de tipo y tamaño.                                                                                                                                                              |
 | [`@rubenpazch/info-row`](#rubenpazchinfo-row)                           | Presentación de datos      | InfoRow                                                                                   | Fila de dato con icono, etiqueta y valor (variantes de color, tamaños, acción opcional).                                                                                                                                                               |
+| [`@rubenpazch/list`](#rubenpazchlist)                                   | Presentación de datos      | List, ListItem                                                                            | Lista vertical de filas (icono, título, detalle y estado a la derecha), clicables o enlaces.                                                                                                                                                           |
 | [`@rubenpazch/loading-spinner`](#rubenpazchloading-spinner)             | Retroalimentación          | LoadingSpinner                                                                            | Indicador de carga circular con tamaños y colores.                                                                                                                                                                                                     |
 | [`@rubenpazch/menu`](#rubenpazchmenu)                                   | Acciones                   | Menu                                                                                      | Menú de acciones (role="menu") con botón ⋮ por defecto, opciones con icono, peligrosas o deshabilitadas, teclado completo.                                                                                                                             |
 | [`@rubenpazch/modal`](#rubenpazchmodal)                                 | Retroalimentación          | Modal                                                                                     | Ventana modal accesible: portal, foco retenido, Escape y clic fuera para cerrar, bloqueo del scroll, título y descripción anunciados.                                                                                                                  |
@@ -974,26 +977,27 @@ Es la base de todas las pantallas de administración.
 import { AppShell } from "@rubenpazch/ui";
 ```
 
-| Prop                | Tipo                                                    | Req. | Por defecto | Descripción                                                                                                                                                                                |
-| ------------------- | ------------------------------------------------------- | ---- | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `children`          | `ReactNode`                                             | sí   |             | Contenido de la página.                                                                                                                                                                    |
-| `sections`          | `SidebarSection[]`                                      | sí   |             | Secciones del menú.                                                                                                                                                                        |
-| `brand`             | `ReactNode`                                             |      |             | Logo o nombre de la app arriba.                                                                                                                                                            |
-| `brandCollapsed`    | `ReactNode`                                             |      |             | Versión compacta del logo para el modo colapsado (por defecto se oculta `brand`).                                                                                                          |
-| `collapsed`         | `boolean`                                               |      |             | Colapsado (controlado).                                                                                                                                                                    |
-| `currentPath`       | `string`                                                |      |             | Ruta actual (p. ej. usePathname() de Next) para marcar la opción activa.                                                                                                                   |
-| `defaultCollapsed`  | `boolean`                                               |      |             | Colapsado inicial (no controlado).                                                                                                                                                         |
-| `headerActions`     | `ReactNode`                                             |      |             | Acciones a la derecha de la cabecera: notificaciones, usuario.                                                                                                                             |
-| `labels`            | `Partial<{ openMenu: string; skipToContent: string; }>` |      |             | Textos accesibles.                                                                                                                                                                         |
-| `linkComponent`     | `ElementType<any, keyof IntrinsicElements>`             |      |             | Componente de enlace (Link de Next.js). Por defecto <a>.                                                                                                                                   |
-| `loading`           | `boolean`                                               |      | `false`     | Carga del contenido al cambiar de pantalla: solo el área de contenido muestra el indicador (el menú y la cabecera no cambian). Los hijos siguen montados, atenuados y sin interacción.     |
-| `loadingLabel`      | `string`                                                |      | `Cargando…` | Texto accesible de la carga.                                                                                                                                                               |
-| `maxWidth`          | `"none" \| "md" \| "lg"`                                |      | `lg`        | Ancho máximo del contenido: none, lg (72rem, por defecto) o md (56rem).                                                                                                                    |
-| `onCollapsedChange` | `(collapsed: boolean) => void`                          |      |             | Al colapsar o expandir.                                                                                                                                                                    |
-| `sidebarFooter`     | `ReactNode`                                             |      |             | Contenido al pie de la barra lateral (usuario, "Cerrar sesión").                                                                                                                           |
-| `storageKey`        | `string`                                                |      |             | Clave de localStorage para recordar si estaba colapsado.                                                                                                                                   |
-| `title`             | `ReactNode`                                             |      |             | Título en la cabecera (en móvil se ve junto al botón ☰).                                                                                                                                  |
-| `toasts`            | `boolean`                                               |      | `true`      | Incluye `ToastProvider`: dentro del panel, `useToast()` muestra los mensajes del servidor como toast bajo la cabecera. Pon `false` solo si la app ya tiene su propio proveedor más arriba. |
+| Prop                | Tipo                                                                       | Req. | Por defecto | Descripción                                                                                                                                                                                |
+| ------------------- | -------------------------------------------------------------------------- | ---- | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `children`          | `ReactNode`                                                                | sí   |             | Contenido de la página.                                                                                                                                                                    |
+| `sections`          | `SidebarSection[]`                                                         | sí   |             | Secciones del menú.                                                                                                                                                                        |
+| `bottomNav`         | `{ items: BottomNavigationItem[]; moreLabel?: string \| undefined; }`      |      |             | Barra inferior en el celular con las secciones principales (3 o 4). AppShell agrega al final "Más", que abre el menú lateral con todas las opciones; con ella la cabecera no muestra ☰.   |
+| `brand`             | `ReactNode`                                                                |      |             | Logo o nombre de la app arriba.                                                                                                                                                            |
+| `brandCollapsed`    | `ReactNode`                                                                |      |             | Versión compacta del logo para el modo colapsado (por defecto se oculta `brand`).                                                                                                          |
+| `collapsed`         | `boolean`                                                                  |      |             | Colapsado (controlado).                                                                                                                                                                    |
+| `currentPath`       | `string`                                                                   |      |             | Ruta actual (p. ej. usePathname() de Next) para marcar la opción activa.                                                                                                                   |
+| `defaultCollapsed`  | `boolean`                                                                  |      |             | Colapsado inicial (no controlado).                                                                                                                                                         |
+| `headerActions`     | `ReactNode`                                                                |      |             | Acciones a la derecha de la cabecera: notificaciones, usuario.                                                                                                                             |
+| `labels`            | `Partial<{ openMenu: string; skipToContent: string; bottomNav: string; }>` |      |             | Textos accesibles.                                                                                                                                                                         |
+| `linkComponent`     | `ElementType<any, keyof IntrinsicElements>`                                |      |             | Componente de enlace (Link de Next.js). Por defecto <a>.                                                                                                                                   |
+| `loading`           | `boolean`                                                                  |      | `false`     | Carga del contenido al cambiar de pantalla: solo el área de contenido muestra el indicador (el menú y la cabecera no cambian). Los hijos siguen montados, atenuados y sin interacción.     |
+| `loadingLabel`      | `string`                                                                   |      | `Cargando…` | Texto accesible de la carga.                                                                                                                                                               |
+| `maxWidth`          | `"none" \| "md" \| "lg"`                                                   |      | `lg`        | Ancho máximo del contenido: none, lg (72rem, por defecto) o md (56rem).                                                                                                                    |
+| `onCollapsedChange` | `(collapsed: boolean) => void`                                             |      |             | Al colapsar o expandir.                                                                                                                                                                    |
+| `sidebarFooter`     | `ReactNode`                                                                |      |             | Contenido al pie de la barra lateral (usuario, "Cerrar sesión").                                                                                                                           |
+| `storageKey`        | `string`                                                                   |      |             | Clave de localStorage para recordar si estaba colapsado.                                                                                                                                   |
+| `title`             | `ReactNode`                                                                |      |             | Título en la cabecera (en móvil se ve junto al botón ☰).                                                                                                                                  |
+| `toasts`            | `boolean`                                                                  |      | `true`      | Incluye `ToastProvider`: dentro del panel, `useToast()` muestra los mensajes del servidor como toast bajo la cabecera. Pon `false` solo si la app ya tiene su propio proveedor más arriba. |
 
 Tipos: `AppShellProps`.
 
@@ -1048,6 +1052,33 @@ import { AuthScreen } from "@rubenpazch/ui";
 | `tone`        | `"neutral" \| "error"` |      | `neutral`   | error: el lector de pantalla lo anuncia de inmediato (role="alert").                |
 
 Tipos: `AuthGateLabels`, `AuthGateProps`, `AuthScreenProps`.
+
+### @rubenpazch/bottom-navigation
+
+Barra fija abajo en el celular con 3 a 5 secciones principales (icono y texto); se oculta en pantallas anchas.
+
+- **Usar cuando:** Paneles que se usan sobre todo en el celular y con una mano: las secciones principales al alcance del pulgar. En un panel, pásala a AppShell con bottomNav.
+- **Evitar cuando:** Más de 5 secciones o apps de escritorio: usa AppShell/Sidebar. Pestañas dentro de una página: usa Tabs.
+
+#### BottomNavigation
+
+Barra de navegación fija abajo para el celular: 3 a 5 secciones principales con icono y texto,
+al alcance del pulgar. En pantallas anchas se oculta (la navegación va en el menú lateral).
+
+```tsx
+import { BottomNavigation } from "@rubenpazch/ui";
+```
+
+| Prop            | Tipo                                        | Req. | Por defecto            | Descripción                                                                                  |
+| --------------- | ------------------------------------------- | ---- | ---------------------- | -------------------------------------------------------------------------------------------- |
+| `items`         | `BottomNavigationItem[]`                    | sí   |                        | Opciones (3 a 5).                                                                            |
+| `aria-label`    | `string`                                    |      | `Navegación principal` | Nombre accesible de la navegación.                                                           |
+| `className`     | `string`                                    |      |                        | Clase extra.                                                                                 |
+| `currentPath`   | `string`                                    |      |                        | Ruta actual, para marcar la opción activa.                                                   |
+| `hideFrom`      | `"md" \| "lg" \| "never"`                   |      | `md`                   | Desde qué ancho se oculta: md (768 px, por defecto), lg (1024 px) o never (siempre visible). |
+| `linkComponent` | `ElementType<any, keyof IntrinsicElements>` |      | `a`                    | Componente de enlace (p. ej. Link de Next.js). Por defecto <a>.                              |
+
+Tipos: `BottomNavigationItem`, `BottomNavigationProps`.
 
 ### @rubenpazch/drawer
 
@@ -1745,6 +1776,32 @@ import { Chip } from "@rubenpazch/ui";
 
 Tipos: `ChipVariant`, `ChipColor`, `ChipSize`, `ChipProps`.
 
+### @rubenpazch/collapsible
+
+Sección plegable con título: deja lo opcional oculto para acortar formularios y páginas.
+
+- **Usar cuando:** Campos opcionales o avanzados de un formulario ("Más opciones"), detalles que no todos necesitan ver.
+- **Evitar cuando:** Secciones del mismo nivel entre las que se elige una: usa Tabs. Información que no debe ocultarse: muéstrala directamente.
+
+#### Collapsible
+
+Sección plegable (`<details>`): deja lo opcional oculto para que un formulario o una página
+sean cortos en el celular. Funciona sin JavaScript y con teclado.
+
+```tsx
+import { Collapsible } from "@rubenpazch/ui";
+```
+
+| Prop           | Tipo                      | Req. | Por defecto | Descripción                                                         |
+| -------------- | ------------------------- | ---- | ----------- | ------------------------------------------------------------------- |
+| `children`     | `ReactNode`               | sí   |             | Contenido plegable.                                                 |
+| `title`        | `ReactNode`               | sí   |             | Texto del encabezado que abre y cierra la sección ("Más opciones"). |
+| `className`    | `string`                  |      |             | Clase extra para márgenes o posición.                               |
+| `defaultOpen`  | `boolean`                 |      | `false`     | Abierta al montar (por defecto cerrada).                            |
+| `onOpenChange` | `(open: boolean) => void` |      |             | Se llama al abrir o cerrar.                                         |
+
+Tipos: `CollapsibleProps`.
+
 ### @rubenpazch/description-list
 
 Pares etiqueta/valor en columnas: resumen de un registro (datos de un trámite, de un cliente, de un pago).
@@ -1801,6 +1858,53 @@ import { InfoRow } from "@rubenpazch/ui";
 | `layout`    | `"vertical" \| "horizontal" \| "inline" \| "compact"`                                   |      | `vertical`  |             |
 | `size`      | `"xs" \| "sm" \| "md" \| "lg"`                                                          |      | `md`        |             |
 | `variant`   | `"default" \| "blue" \| "yellow" \| "purple" \| "green" \| "red" \| "indigo" \| "gray"` |      | `default`   |             |
+
+### @rubenpazch/list
+
+Lista vertical de filas (icono, título, detalle y estado a la derecha), clicables o enlaces.
+
+- **Usar cuando:** Listados cortos o en el celular: partidos, socios, registros de un catálogo, resultados de una búsqueda.
+- **Evitar cuando:** Datos con varias columnas para comparar u ordenar: usa DataTable. Pares etiqueta/valor de un registro: usa DescriptionList.
+
+#### List
+
+Lista vertical de filas con separadores (`<ul>`): partidos, socios, registros de un catálogo.
+Cada fila es un `ListItem`.
+
+```tsx
+import { List } from "@rubenpazch/ui";
+```
+
+| Prop         | Tipo                    | Req. | Por defecto | Descripción                                                                            |
+| ------------ | ----------------------- | ---- | ----------- | -------------------------------------------------------------------------------------- |
+| `children`   | `ReactNode`             | sí   |             | Filas: componentes `ListItem`.                                                         |
+| `aria-label` | `string`                |      |             | Nombre accesible de la lista ("Próximos partidos").                                    |
+| `className`  | `string`                |      |             | Clase extra para márgenes o posición.                                                  |
+| `variant`    | `"outlined" \| "plain"` |      | `outlined`  | outlined (tarjeta con borde, por defecto) o plain (sin borde, dentro de otra tarjeta). |
+
+#### ListItem
+
+Fila de una `List`: icono, título y detalle a la izquierda; estado o acciones a la derecha.
+
+```tsx
+import { ListItem } from "@rubenpazch/ui";
+```
+
+| Prop            | Tipo                                        | Req. | Por defecto | Descripción                                                                             |
+| --------------- | ------------------------------------------- | ---- | ----------- | --------------------------------------------------------------------------------------- |
+| `title`         | `ReactNode`                                 | sí   |             | Texto principal de la fila.                                                             |
+| `aria-label`    | `string`                                    |      |             | Nombre accesible si el título no basta.                                                 |
+| `children`      | `ReactNode`                                 |      |             | Contenido extra bajo el detalle (chips, barra de avance).                               |
+| `className`     | `string`                                    |      |             | Clase extra.                                                                            |
+| `description`   | `ReactNode`                                 |      |             | Detalle bajo el título (fecha, correo, resumen).                                        |
+| `href`          | `string`                                    |      |             | Hace la fila un enlace.                                                                 |
+| `leading`       | `ReactNode`                                 |      |             | Icono, avatar o imagen a la izquierda.                                                  |
+| `linkComponent` | `ElementType<any, keyof IntrinsicElements>` |      | `a`         | Componente de enlace (p. ej. Link de Next.js). Por defecto <a>.                         |
+| `muted`         | `boolean`                                   |      | `false`     | Atenúa la fila (registro inactivo u oculto).                                            |
+| `onClick`       | `() => void`                                |      |             | Hace la fila clicable (botón). Si hay acciones en `trailing`, usa `href` o no lo pases. |
+| `trailing`      | `ReactNode`                                 |      |             | Contenido a la derecha: estado (Badge), monto, acciones.                                |
+
+Tipos: `ListProps`, `ListItemProps`.
 
 ### @rubenpazch/timeline
 
@@ -1965,7 +2069,7 @@ Más de 60 iconos SVG como componentes React (y MaterialIcon para Material Icons
 - **Usar cuando:** Cualquier icono de la interfaz; combínalos con Button, IconButton, Chip o InfoRow.
 - **Evitar cuando:** Ilustraciones grandes o logos de marca.
 
-Iconos disponibles (113): `ArrowDetailsIcon`, `ArchiveIcon`, `BrandingIcon`, `BusinessPlanIcon`, `CalendarIcon`, `CheckIcon`, `CheckOutIcon`, `CheckmarkIcon`, `ChecksIcon`, `ChevronBarIcon`, `ChevronIcon`, `ClinicalNotesIcon`, `CityIcon`, `ClockIcon`, `CloseIcon`, `CopyIcon`, `CoinsHandIcon`, `CoinsAcceptedIcon`, `MenuGridIcon`, `DocumentIcon`, `DownloadIcon`, `DragHandleIcon`, `EditIcon`, `EmailIcon`, `ErrorIcon`, `ExclamationTriangleIcon`, `EyeIcon`, `EyeCheckIcon`, `FilterIcon`, `FoldersIcon`, `GalleryPhotoIcon`, `GlassesIcon`, `HomeIcon`, `InfoIcon`, `LinkIcon`, `LocationIcon`, `ManualIdentifierIcon`, `MapIcon`, `MenuIcon`, `MinusIcon`, `MoreIcon`, `NotificationIcon`, `PatientIcon`, `PatientListIcon`, `PatientsIcon`, `PhoneIcon`, `WhatsAppIcon`, `PlusIcon`, `PrescriptionIcon`, `PresentationChartIcon`, `PrintIcon`, `RefreshIcon`, `SearchIcon`, `SettingsIcon`, `SortIcon`, `SpinnerIcon`, `SystemIdentifierIcon`, `TrashIcon`, `ArrowLeftIcon`, `ArrowRightIcon`, `RobotOffIcon`, `UploadIcon`, `UserManagementIcon`, `UserPlusIcon`, `UserSelectIcon`, `UsersIcon`, `WalletOpenIcon`, `ZoomInIcon`, `ZoomOutIcon`, `RobotIcon`, `TargetIcon`, `MaterialIcon`, `ReceiptIcon`, `LockIcon`, `LockOpenIcon`, `KeyIcon`, `LogInIcon`, `LogOutIcon`, `ShieldCheckIcon`, `FingerprintIcon`, `EyeOffIcon`, `UserCogIcon`, `BankIcon`, `CreditCardIcon`, `BanknoteIcon`, `CalculatorIcon`, `PiggyBankIcon`, `TrendingUpIcon`, `TrendingDownIcon`, `ChartBarIcon`, `ChartPieIcon`, `CircleXIcon`, `HelpIcon`, `ExternalLinkIcon`, `BuildingIcon`, `BriefcaseIcon`, `TagIcon`, `ListIcon`, `DashboardIcon`, `SendIcon`, `SaveIcon`, `StarIcon`, `SunIcon`, `MoonIcon`, `GlobeIcon`, `QrCodeIcon`, `SmartphoneIcon`, `ClipboardListIcon`, `FileTextIcon`, `FileSpreadsheetIcon`, `HistoryIcon`, `PowerIcon`, `PaletteIcon`.
+Iconos disponibles (125): `ArrowDetailsIcon`, `ArchiveIcon`, `BrandingIcon`, `BusinessPlanIcon`, `CalendarIcon`, `CheckIcon`, `CheckOutIcon`, `CheckmarkIcon`, `ChecksIcon`, `ChevronBarIcon`, `ChevronIcon`, `ClinicalNotesIcon`, `CityIcon`, `ClockIcon`, `CloseIcon`, `CopyIcon`, `CoinsHandIcon`, `CoinsAcceptedIcon`, `MenuGridIcon`, `DocumentIcon`, `DownloadIcon`, `DragHandleIcon`, `EditIcon`, `EmailIcon`, `ErrorIcon`, `ExclamationTriangleIcon`, `EyeIcon`, `EyeCheckIcon`, `FilterIcon`, `FoldersIcon`, `GalleryPhotoIcon`, `GlassesIcon`, `HomeIcon`, `InfoIcon`, `LinkIcon`, `LocationIcon`, `ManualIdentifierIcon`, `MapIcon`, `MenuIcon`, `MinusIcon`, `MoreIcon`, `NotificationIcon`, `PatientIcon`, `PatientListIcon`, `PatientsIcon`, `PhoneIcon`, `WhatsAppIcon`, `PlusIcon`, `PrescriptionIcon`, `PresentationChartIcon`, `PrintIcon`, `RefreshIcon`, `SearchIcon`, `SettingsIcon`, `SortIcon`, `SpinnerIcon`, `SystemIdentifierIcon`, `TrashIcon`, `ArrowLeftIcon`, `ArrowRightIcon`, `RobotOffIcon`, `UploadIcon`, `UserManagementIcon`, `UserPlusIcon`, `UserSelectIcon`, `UsersIcon`, `WalletOpenIcon`, `ZoomInIcon`, `ZoomOutIcon`, `RobotIcon`, `TargetIcon`, `MaterialIcon`, `ReceiptIcon`, `LockIcon`, `LockOpenIcon`, `KeyIcon`, `LogInIcon`, `LogOutIcon`, `ShieldCheckIcon`, `FingerprintIcon`, `EyeOffIcon`, `UserCogIcon`, `BankIcon`, `CreditCardIcon`, `BanknoteIcon`, `CalculatorIcon`, `PiggyBankIcon`, `TrendingUpIcon`, `TrendingDownIcon`, `ChartBarIcon`, `ChartPieIcon`, `CircleXIcon`, `HelpIcon`, `ExternalLinkIcon`, `BuildingIcon`, `BriefcaseIcon`, `TagIcon`, `ListIcon`, `DashboardIcon`, `SendIcon`, `SaveIcon`, `StarIcon`, `SunIcon`, `MoonIcon`, `GlobeIcon`, `QrCodeIcon`, `SmartphoneIcon`, `ClipboardListIcon`, `FileTextIcon`, `FileSpreadsheetIcon`, `HistoryIcon`, `PowerIcon`, `PaletteIcon`, `TrophyIcon`, `NewspaperIcon`, `VideoIcon`, `RadioIcon`, `UndoIcon`, `ArrowLeftRightIcon`, `IdCardIcon`, `ArrowUpIcon`, `ArrowDownIcon`, `FootballIcon`, `UserIcon`, `RectangleVerticalIcon`.
 
 Props habituales: `size`, `className` (y en algunos `color`, `width`, `height`). Ver el tipo de cada icono en su archivo.
 

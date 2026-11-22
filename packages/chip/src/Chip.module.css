@@ -92,8 +92,13 @@
 
 .selected {
   box-shadow: 0 0 0 2px var(--chip-selected-border);
-  background: var(--chip-selected-bg);
   border-color: var(--chip-selected-border);
+}
+
+/* El fondo suave de "seleccionado" solo en soft/outlined: en filled el texto es claro y
+   quedaría ilegible sobre el fondo suave (se mantiene el relleno y se marca con el anillo). */
+.selected:not([data-variant="filled"]) {
+  background: var(--chip-selected-bg);
 }
 
 .disabled {

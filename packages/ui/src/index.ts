@@ -26,6 +26,11 @@ export type {
 } from "@rubenpazch/avatar";
 export { default as Badge } from "@rubenpazch/badge";
 export type { BadgeProps, BadgeColor, BadgeVariant } from "@rubenpazch/badge";
+export { default as BottomNavigation } from "@rubenpazch/bottom-navigation";
+export type {
+  BottomNavigationItem,
+  BottomNavigationProps,
+} from "@rubenpazch/bottom-navigation";
 export { default as Button } from "@rubenpazch/button";
 export type {
   ButtonVariant,
@@ -50,6 +55,8 @@ export type {
   ChipSize,
   ChipProps,
 } from "@rubenpazch/chip";
+export { default as Collapsible } from "@rubenpazch/collapsible";
+export type { CollapsibleProps } from "@rubenpazch/collapsible";
 export { default as ConfirmationDialog } from "@rubenpazch/confirmation-dialog";
 export type { ConfirmationDialogProps } from "@rubenpazch/confirmation-dialog";
 export { default as DataTable } from "@rubenpazch/data-table";
@@ -238,6 +245,18 @@ export {
   HistoryIcon,
   PowerIcon,
   PaletteIcon,
+  TrophyIcon,
+  NewspaperIcon,
+  VideoIcon,
+  RadioIcon,
+  UndoIcon,
+  ArrowLeftRightIcon,
+  IdCardIcon,
+  ArrowUpIcon,
+  ArrowDownIcon,
+  FootballIcon,
+  UserIcon,
+  RectangleVerticalIcon,
   ICONOS,
 } from "@rubenpazch/icons";
 export type { IconoInfo, CategoriaIcono } from "@rubenpazch/icons";
@@ -254,6 +273,8 @@ export type {
   ImageUploadLabels,
 } from "@rubenpazch/image-upload";
 export { default as InfoRow } from "@rubenpazch/info-row";
+export { default as List, ListItem } from "@rubenpazch/list";
+export type { ListProps, ListItemProps } from "@rubenpazch/list";
 export { default as LoadingSpinner } from "@rubenpazch/loading-spinner";
 export { default as Menu } from "@rubenpazch/menu";
 export type { MenuProps, MenuItem } from "@rubenpazch/menu";

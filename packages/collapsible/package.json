@@ -1,0 +1,57 @@
+{
+  "name": "@rubenpazch/collapsible",
+  "version": "0.0.0",
+  "description": "Sección plegable (details/summary)",
+  "private": false,
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rubenpazch/lbyte-ui-library.git",
+    "directory": "packages/collapsible"
+  },
+  "author": "Ruben Paz Chuspe <rubenpazchuspe@outlook.com>",
+  "license": "MIT",
+  "files": [
+    "dist"
+  ],
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "exports": {
+    ".": {
+      "import": "./dist/index.esm.js",
+      "require": "./dist/index.cjs.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "rollup -c",
+    "test": "jest --passWithNoTests",
+    "test:watch": "jest --watch",
+    "lint": "eslint src",
+    "clean": "rm -rf dist"
+  },
+  "peerDependencies": {
+    "@rubenpazch/tokens": "workspace:*",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3"
+  },
+  "dependencies": {
+    "@rubenpazch/shared": "workspace:*"
+  },
+  "devDependencies": {
+    "@rubenpazch/eslint-config": "workspace:*",
+    "@rubenpazch/typescript-config": "workspace:*"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "lbyte": {
+    "categoria": "presentacion",
+    "resumen": "Sección plegable con título: deja lo opcional oculto para acortar formularios y páginas.",
+    "usarCuando": "Campos opcionales o avanzados de un formulario (\"Más opciones\"), detalles que no todos necesitan ver.",
+    "evitarCuando": "Secciones del mismo nivel entre las que se elige una: usa Tabs. Información que no debe ocultarse: muéstrala directamente."
+  }
+}

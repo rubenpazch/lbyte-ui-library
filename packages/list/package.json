@@ -1,0 +1,58 @@
+{
+  "name": "@rubenpazch/list",
+  "version": "0.0.0",
+  "description": "Lista de filas con icono, título, detalle y contenido a la derecha",
+  "private": false,
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rubenpazch/lbyte-ui-library.git",
+    "directory": "packages/list"
+  },
+  "author": "Ruben Paz Chuspe <rubenpazchuspe@outlook.com>",
+  "license": "MIT",
+  "files": [
+    "dist"
+  ],
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "exports": {
+    ".": {
+      "import": "./dist/index.esm.js",
+      "require": "./dist/index.cjs.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "rollup -c",
+    "test": "jest --passWithNoTests",
+    "test:watch": "jest --watch",
+    "lint": "eslint src",
+    "clean": "rm -rf dist"
+  },
+  "peerDependencies": {
+    "@rubenpazch/tokens": "workspace:*",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3"
+  },
+  "dependencies": {
+    "@rubenpazch/shared": "workspace:*"
+  },
+  "devDependencies": {
+    "@rubenpazch/eslint-config": "workspace:*",
+    "@rubenpazch/typescript-config": "workspace:*",
+    "@rubenpazch/badge": "workspace:*"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "lbyte": {
+    "categoria": "presentacion",
+    "resumen": "Lista vertical de filas (icono, título, detalle y estado a la derecha), clicables o enlaces.",
+    "usarCuando": "Listados cortos o en el celular: partidos, socios, registros de un catálogo, resultados de una búsqueda.",
+    "evitarCuando": "Datos con varias columnas para comparar u ordenar: usa DataTable. Pares etiqueta/valor de un registro: usa DescriptionList."
+  }
+}

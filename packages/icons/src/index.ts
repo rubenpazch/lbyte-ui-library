@@ -113,6 +113,18 @@ export { default as FileSpreadsheetIcon } from "./FileSpreadsheetIcon";
 export { default as HistoryIcon } from "./HistoryIcon";
 export { default as PowerIcon } from "./PowerIcon";
 export { default as PaletteIcon } from "./PaletteIcon";
+export { default as TrophyIcon } from "./TrophyIcon";
+export { default as NewspaperIcon } from "./NewspaperIcon";
+export { default as VideoIcon } from "./VideoIcon";
+export { default as RadioIcon } from "./RadioIcon";
+export { default as UndoIcon } from "./UndoIcon";
+export { default as ArrowLeftRightIcon } from "./ArrowLeftRightIcon";
+export { default as IdCardIcon } from "./IdCardIcon";
+export { default as ArrowUpIcon } from "./ArrowUpIcon";
+export { default as ArrowDownIcon } from "./ArrowDownIcon";
+export { default as FootballIcon } from "./FootballIcon";
+export { default as UserIcon } from "./UserIcon";
+export { default as RectangleVerticalIcon } from "./RectangleVerticalIcon";
 
 // Metadatos para la galería, el catálogo y la IA
 export { ICONOS } from "./iconos";
