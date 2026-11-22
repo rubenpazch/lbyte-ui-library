@@ -1,5 +1,16 @@
 # @rubenpazch/ui
 
+## 0.12.0
+
+### Minor Changes
+
+- 3552ede: `AuthScreen`: además de la espera, pantallas con mensaje y acción para la sesión (decisión 0011): `description`, `action`, `busy={false}` (sin indicador) y `tone="error"` (se anuncia con `role="alert"`). Sin cambios para el uso actual. Se exportan `AuthGateProps`, `AuthGateLabels` y `AuthScreenProps`.
+
+### Patch Changes
+
+- Updated dependencies [3552ede]
+  - @rubenpazch/auth-gate@0.2.0
+
 ## 0.11.0
 
 ### Minor Changes
