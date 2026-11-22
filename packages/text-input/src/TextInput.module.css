@@ -421,3 +421,88 @@
   cursor: not-allowed;
   opacity: 0.5;
 }
+
+/* Bloques pegados al campo (startAddon / endAddon) */
+.groupless {
+  display: contents;
+}
+
+.group {
+  display: flex;
+  align-items: stretch;
+}
+
+.group > .inputContainer {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.addon {
+  display: flex;
+  flex: none;
+  align-items: center;
+  padding: 0 var(--lb-space-3);
+  border: 2px solid var(--lb-color-neutral-300);
+  background: var(--lb-color-muted);
+  color: var(--lb-color-muted-foreground);
+  font-family: var(--lb-font-sans);
+  font-size: var(--lb-font-size-sm);
+  font-weight: var(--lb-font-weight-medium);
+  white-space: nowrap;
+  transition: border-color 150ms ease;
+}
+
+/* Un botón dentro del bloque lo ocupa entero. */
+.addon:has(> button) {
+  padding: 0;
+  background: transparent;
+}
+
+.addon > button {
+  align-self: stretch;
+  height: auto;
+  border-radius: 0;
+}
+
+.addonStart {
+  border-right: 0;
+  border-radius: var(--lb-radius-md) 0 0 var(--lb-radius-md);
+}
+
+.addonEnd {
+  border-left: 0;
+  border-radius: 0 var(--lb-radius-md) var(--lb-radius-md) 0;
+}
+
+.addonStart > button {
+  border-radius: calc(var(--lb-radius-md) - 2px) 0 0
+    calc(var(--lb-radius-md) - 2px);
+}
+
+.addonEnd > button {
+  border-radius: 0 calc(var(--lb-radius-md) - 2px)
+    calc(var(--lb-radius-md) - 2px) 0;
+}
+
+.inputAfterAddon {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.inputBeforeAddon {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.group:focus-within .addon {
+  border-color: var(--lb-color-primary);
+}
+
+.groupError .addon,
+.groupError:focus-within .addon {
+  border-color: var(--lb-color-danger);
+}
+
+.groupDisabled .addon {
+  opacity: 0.7;
+}

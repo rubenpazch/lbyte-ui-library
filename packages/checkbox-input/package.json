@@ -47,8 +47,8 @@
   },
   "lbyte": {
     "categoria": "formularios",
-    "resumen": "Casilla de verificación con etiqueta, ayuda y error.",
-    "usarCuando": "Opciones sí/no o selección múltiple independiente.",
-    "evitarCuando": "Elegir una sola opción entre varias: usa RadioGroup."
+    "resumen": "Casilla de verificación con etiqueta, ayuda y error (CheckboxInput) y grupo de casillas con título, \"Seleccionar todos\" y máximo (CheckboxGroup).",
+    "usarCuando": "Opciones sí/no (CheckboxInput) o elegir varias opciones de una lista corta: permisos, días, especialidades (CheckboxGroup).",
+    "evitarCuando": "Elegir una sola opción entre varias: usa RadioGroup. Listas largas o con búsqueda: usa Autocomplete. Activar/desactivar algo al instante: usa Switch."
   }
 }

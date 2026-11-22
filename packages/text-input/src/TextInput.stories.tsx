@@ -607,3 +607,59 @@ export const ConAccionEnLaEtiqueta: Story = {
     ),
   },
 };
+
+// Bloques pegados al campo (input group)
+export const ConBloquesPegados: Story = {
+  name: "Con bloques pegados (startAddon / endAddon)",
+  render: () => {
+    const [monto, setMonto] = React.useState("150.00");
+    const [dominio, setDominio] = React.useState("miempresa");
+    const [ruc, setRuc] = React.useState("");
+    return (
+      <div style={{ display: "grid", gap: 16, maxWidth: 420 }}>
+        <TextInput
+          label="Monto"
+          value={monto}
+          onChange={setMonto}
+          startAddon="S/"
+          inputMode="decimal"
+        />
+        <TextInput
+          label="Dominio"
+          value={dominio}
+          onChange={setDominio}
+          startAddon="https://"
+          endAddon=".pe"
+        />
+        <TextInput
+          label="RUC"
+          value={ruc}
+          onChange={setRuc}
+          placeholder="11 dígitos"
+          endAddon={
+            <button
+              type="button"
+              style={{
+                padding: "0 var(--lb-space-4)",
+                border: 0,
+                background: "var(--lb-color-primary)",
+                color: "var(--lb-color-primary-foreground)",
+                fontWeight: 600,
+                cursor: "pointer",
+              }}
+            >
+              Buscar
+            </button>
+          }
+        />
+        <TextInput
+          label="Peso"
+          value="72"
+          onChange={() => {}}
+          endAddon="kg"
+          error="Fuera de rango"
+        />
+      </div>
+    );
+  },
+};

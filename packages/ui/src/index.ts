@@ -41,8 +41,15 @@ export {
   CardFooter,
 } from "@rubenpazch/card";
 export type { CardProps, CardHeaderProps } from "@rubenpazch/card";
-export { default as CheckboxInput } from "@rubenpazch/checkbox-input";
-export type { CheckboxInputProps } from "@rubenpazch/checkbox-input";
+export {
+  default as CheckboxInput,
+  CheckboxGroup,
+} from "@rubenpazch/checkbox-input";
+export type {
+  CheckboxInputProps,
+  CheckboxGroupProps,
+  CheckboxOption,
+} from "@rubenpazch/checkbox-input";
 export { default as Chip } from "@rubenpazch/chip";
 export type {
   ChipVariant,
@@ -324,6 +331,8 @@ export type {
 } from "@rubenpazch/pagination";
 export { default as PatientDetails } from "@rubenpazch/patient-details";
 export { default as PatientSearch } from "@rubenpazch/patient-search";
+export { default as PinInput } from "@rubenpazch/pin-input";
+export type { PinInputProps } from "@rubenpazch/pin-input";
 export { default as PrescriptionCard } from "@rubenpazch/prescription-card";
 export { default as PrescriptionEyeCard } from "@rubenpazch/prescription-eye-card";
 export type {

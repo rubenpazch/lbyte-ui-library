@@ -80,6 +80,7 @@
     "@rubenpazch/pagination": "workspace:^",
     "@rubenpazch/patient-details": "workspace:^",
     "@rubenpazch/patient-search": "workspace:^",
+    "@rubenpazch/pin-input": "workspace:^",
     "@rubenpazch/prescription-card": "workspace:^",
     "@rubenpazch/prescription-eye-card": "workspace:^",
     "@rubenpazch/progress-bar": "workspace:^",

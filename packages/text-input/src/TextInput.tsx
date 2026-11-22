@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect } from "react";
+import React, { useState, useMemo, useEffect, useId } from "react";
 import {
   CheckIcon,
   ErrorIcon,
@@ -88,6 +88,13 @@ export interface TextInputProps extends TextInputNativeProps {
    * ("¿Olvidaste tu contraseña?")… No va dentro del `<label>`.
    */
   labelAction?: React.ReactNode;
+  /**
+   * Bloque pegado a la izquierda del campo: un texto ("S/", "https://"), un icono o un botón.
+   * Si es texto, los lectores de pantalla lo leen como parte de la descripción del campo.
+   */
+  startAddon?: React.ReactNode;
+  /** Bloque pegado a la derecha del campo: un texto (".pe", "kg") o un botón ("Buscar"). */
+  endAddon?: React.ReactNode;
 }
 
 const classNames = (...classes: Array<string | undefined | false>) =>
@@ -198,6 +205,8 @@ const TextInput = React.forwardRef<HTMLInputElement, TextInputProps>(
         hide: "Ocultar contraseña",
       },
       labelAction,
+      startAddon,
+      endAddon,
       ...nativeProps
     },
     ref,
@@ -301,6 +310,24 @@ const TextInput = React.forwardRef<HTMLInputElement, TextInputProps>(
       hint: showHint ? hint : undefined,
     });
 
+    const addonId = useId();
+    const hasAddon = Boolean(startAddon || endAddon);
+    const textAddonIds = [
+      typeof startAddon === "string" || typeof startAddon === "number"
+        ? `${addonId}-start`
+        : null,
+      typeof endAddon === "string" || typeof endAddon === "number"
+        ? `${addonId}-end`
+        : null,
+    ].filter(Boolean);
+    const describedBy =
+      [field.controlProps["aria-describedby"], ...textAddonIds]
+        .filter(Boolean)
+        .join(" ") || undefined;
+    const hasErrorState = Boolean(
+      error || isEmailInvalid || isMinLengthInvalid,
+    );
+
     return (
       <div
         className={classNames(styles.container, className)}
@@ -329,92 +356,125 @@ const TextInput = React.forwardRef<HTMLInputElement, TextInputProps>(
             );
           })()}
 
-        {/* Input Field */}
-        <div className={styles.inputContainer}>
-          {/* Icon before input */}
-          {icon && !isFocused && <div className={styles.icon}>{icon}</div>}
-
-          <input
-            {...nativeProps}
-            ref={ref}
-            {...field.controlProps}
-            name={name}
-            required={required}
-            type={
-              validateEmail
-                ? "text"
-                : hasPasswordToggle && passwordVisible
-                  ? "text"
-                  : type
-            }
-            inputMode={validateEmail ? "email" : nativeProps.inputMode}
-            value={value}
-            onChange={(e) => onChange(e.target.value)}
-            onFocus={handleFocus}
-            onBlur={handleBlur}
-            placeholder={placeholder}
-            disabled={disabled}
-            maxLength={maxLength}
-            minLength={minLength}
-            pattern={pattern}
-            autoComplete={autoComplete}
-            className={classNames(
-              styles.input,
-              icon ? styles.inputWithIcon : undefined,
-              showCharCount ? styles.inputWithCharCount : undefined,
-              hasPasswordToggle ? styles.inputWithToggle : undefined,
-              error || isEmailInvalid || isMinLengthInvalid
-                ? styles.inputError
-                : undefined,
-              !disabled && !error && !emailError && showSuccess
-                ? styles.inputSuccess
-                : undefined,
-            )}
-            data-testid="input-field"
-            data-error={!!error || !!isEmailInvalid || isMinLengthInvalid}
-          />
-
-          {hasPasswordToggle && (
-            <button
-              type="button"
-              className={styles.passwordToggle}
-              onClick={() => setPasswordVisible((v) => !v)}
-              aria-label={
-                passwordVisible
-                  ? passwordToggleLabels.hide
-                  : passwordToggleLabels.show
-              }
-              aria-pressed={passwordVisible}
-              aria-controls={field.inputId}
-              disabled={disabled}
-            >
-              {passwordVisible ? (
-                <EyeOffIcon size="sm" />
-              ) : (
-                <EyeIcon size="sm" />
-              )}
-            </button>
-          )}
-
-          {/* Character count */}
-          {showCharCount && (
+        {/* Input Field (con bloques pegados opcionales) */}
+        <div
+          className={
+            hasAddon
+              ? classNames(
+                  styles.group,
+                  hasErrorState ? styles.groupError : undefined,
+                  disabled ? styles.groupDisabled : undefined,
+                )
+              : styles.groupless
+          }
+        >
+          {startAddon && (
             <div
-              className={classNames(
-                styles.charCount,
-                isAtLimit
-                  ? styles.charCountLimit
-                  : isNearLimit
-                    ? styles.charCountNear
-                    : styles.charCountNormal,
-              )}
-              data-testid="char-count"
+              id={`${addonId}-start`}
+              className={classNames(styles.addon, styles.addonStart)}
+              data-testid="start-addon"
             >
-              <div>
-                {charCount}/{maxLength}
-              </div>
-              {isAtLimit && (
-                <ErrorIcon className={styles.charCountIcon} size="sm" />
+              {startAddon}
+            </div>
+          )}
+          <div className={styles.inputContainer}>
+            {/* Icon before input */}
+            {icon && !isFocused && <div className={styles.icon}>{icon}</div>}
+
+            <input
+              {...nativeProps}
+              ref={ref}
+              {...field.controlProps}
+              aria-describedby={describedBy}
+              name={name}
+              required={required}
+              type={
+                validateEmail
+                  ? "text"
+                  : hasPasswordToggle && passwordVisible
+                    ? "text"
+                    : type
+              }
+              inputMode={validateEmail ? "email" : nativeProps.inputMode}
+              value={value}
+              onChange={(e) => onChange(e.target.value)}
+              onFocus={handleFocus}
+              onBlur={handleBlur}
+              placeholder={placeholder}
+              disabled={disabled}
+              maxLength={maxLength}
+              minLength={minLength}
+              pattern={pattern}
+              autoComplete={autoComplete}
+              className={classNames(
+                styles.input,
+                icon ? styles.inputWithIcon : undefined,
+                startAddon ? styles.inputAfterAddon : undefined,
+                endAddon ? styles.inputBeforeAddon : undefined,
+                showCharCount ? styles.inputWithCharCount : undefined,
+                hasPasswordToggle ? styles.inputWithToggle : undefined,
+                error || isEmailInvalid || isMinLengthInvalid
+                  ? styles.inputError
+                  : undefined,
+                !disabled && !error && !emailError && showSuccess
+                  ? styles.inputSuccess
+                  : undefined,
               )}
+              data-testid="input-field"
+              data-error={!!error || !!isEmailInvalid || isMinLengthInvalid}
+            />
+
+            {hasPasswordToggle && (
+              <button
+                type="button"
+                className={styles.passwordToggle}
+                onClick={() => setPasswordVisible((v) => !v)}
+                aria-label={
+                  passwordVisible
+                    ? passwordToggleLabels.hide
+                    : passwordToggleLabels.show
+                }
+                aria-pressed={passwordVisible}
+                aria-controls={field.inputId}
+                disabled={disabled}
+              >
+                {passwordVisible ? (
+                  <EyeOffIcon size="sm" />
+                ) : (
+                  <EyeIcon size="sm" />
+                )}
+              </button>
+            )}
+
+            {/* Character count */}
+            {showCharCount && (
+              <div
+                className={classNames(
+                  styles.charCount,
+                  isAtLimit
+                    ? styles.charCountLimit
+                    : isNearLimit
+                      ? styles.charCountNear
+                      : styles.charCountNormal,
+                )}
+                data-testid="char-count"
+              >
+                <div>
+                  {charCount}/{maxLength}
+                </div>
+                {isAtLimit && (
+                  <ErrorIcon className={styles.charCountIcon} size="sm" />
+                )}
+              </div>
+            )}
+          </div>
+          {endAddon && (
+            <div
+              id={`${addonId}-end`}
+              className={classNames(styles.addon, styles.addonEnd)}
+              data-testid="end-addon"
+            >
+              {endAddon}
             </div>
           )}
         </div>
