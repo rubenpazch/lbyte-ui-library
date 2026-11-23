@@ -3640,6 +3640,9 @@ importers:
       '@rubenpazch/badge':
         specifier: workspace:^
         version: link:../badge
+      '@rubenpazch/bottom-navigation':
+        specifier: workspace:^
+        version: link:../bottom-navigation
       '@rubenpazch/button':
         specifier: workspace:^
         version: link:../button
@@ -3652,6 +3655,9 @@ importers:
       '@rubenpazch/chip':
         specifier: workspace:^
         version: link:../chip
+      '@rubenpazch/collapsible':
+        specifier: workspace:^
+        version: link:../collapsible
       '@rubenpazch/confirmation-dialog':
         specifier: workspace:^
         version: link:../confirmation-dialog
@@ -3700,6 +3706,9 @@ importers:
       '@rubenpazch/info-row':
         specifier: workspace:^
         version: link:../info-row
+      '@rubenpazch/list':
+        specifier: workspace:^
+        version: link:../list
       '@rubenpazch/loading-spinner':
         specifier: workspace:^
         version: link:../loading-spinner
