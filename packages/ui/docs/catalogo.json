@@ -123,6 +123,13 @@
               "descripcion": "Secciones del menú."
             },
             {
+              "nombre": "bottomNav",
+              "tipo": "{ items: BottomNavigationItem[]; moreLabel?: string | undefined; }",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Barra inferior en el celular con las secciones principales (3 o 4). AppShell agrega al final\n\"Más\", que abre el menú lateral con todas las opciones; con ella la cabecera no muestra ☰."
+            },
+            {
               "nombre": "brand",
               "tipo": "ReactNode",
               "requerido": false,
@@ -166,7 +173,7 @@
             },
             {
               "nombre": "labels",
-              "tipo": "Partial<{ openMenu: string; skipToContent: string; }>",
+              "tipo": "Partial<{ openMenu: string; skipToContent: string; bottomNav: string; }>",
               "requerido": false,
               "porDefecto": null,
               "descripcion": "Textos accesibles."
@@ -834,6 +841,67 @@
       "tipos": ["BadgeProps", "BadgeColor", "BadgeVariant"]
     },
     {
+      "paquete": "@rubenpazch/bottom-navigation",
+      "carpeta": "packages/bottom-navigation",
+      "categoria": "navegacion",
+      "resumen": "Barra fija abajo en el celular con 3 a 5 secciones principales (icono y texto); se oculta en pantallas anchas.",
+      "usarCuando": "Paneles que se usan sobre todo en el celular y con una mano: las secciones principales al alcance del pulgar. En un panel, pásala a AppShell con bottomNav.",
+      "evitarCuando": "Más de 5 secciones o apps de escritorio: usa AppShell/Sidebar. Pestañas dentro de una página: usa Tabs.",
+      "componentes": [
+        {
+          "nombre": "BottomNavigation",
+          "importar": "import { BottomNavigation } from \"@rubenpazch/ui\";",
+          "descripcion": "Barra de navegación fija abajo para el celular: 3 a 5 secciones principales con icono y texto,\nal alcance del pulgar. En pantallas anchas se oculta (la navegación va en el menú lateral).",
+          "props": [
+            {
+              "nombre": "items",
+              "tipo": "BottomNavigationItem[]",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": "Opciones (3 a 5)."
+            },
+            {
+              "nombre": "aria-label",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": "Navegación principal",
+              "descripcion": "Nombre accesible de la navegación."
+            },
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Clase extra."
+            },
+            {
+              "nombre": "currentPath",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Ruta actual, para marcar la opción activa."
+            },
+            {
+              "nombre": "hideFrom",
+              "tipo": "\"md\" | \"lg\" | \"never\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": "Desde qué ancho se oculta: md (768 px, por defecto), lg (1024 px) o never (siempre visible)."
+            },
+            {
+              "nombre": "linkComponent",
+              "tipo": "ElementType<any, keyof IntrinsicElements>",
+              "requerido": false,
+              "porDefecto": "a",
+              "descripcion": "Componente de enlace (p. ej. Link de Next.js). Por defecto <a>."
+            }
+          ]
+        }
+      ],
+      "otrosValores": [],
+      "tipos": ["BottomNavigationItem", "BottomNavigationProps"]
+    },
+    {
       "paquete": "@rubenpazch/button",
       "carpeta": "packages/button",
       "categoria": "acciones",
@@ -1248,6 +1316,60 @@
       ],
       "otrosValores": [],
       "tipos": ["ChipVariant", "ChipColor", "ChipSize", "ChipProps"]
+    },
+    {
+      "paquete": "@rubenpazch/collapsible",
+      "carpeta": "packages/collapsible",
+      "categoria": "presentacion",
+      "resumen": "Sección plegable con título: deja lo opcional oculto para acortar formularios y páginas.",
+      "usarCuando": "Campos opcionales o avanzados de un formulario (\"Más opciones\"), detalles que no todos necesitan ver.",
+      "evitarCuando": "Secciones del mismo nivel entre las que se elige una: usa Tabs. Información que no debe ocultarse: muéstrala directamente.",
+      "componentes": [
+        {
+          "nombre": "Collapsible",
+          "importar": "import { Collapsible } from \"@rubenpazch/ui\";",
+          "descripcion": "Sección plegable (`<details>`): deja lo opcional oculto para que un formulario o una página\nsean cortos en el celular. Funciona sin JavaScript y con teclado.",
+          "props": [
+            {
+              "nombre": "children",
+              "tipo": "ReactNode",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": "Contenido plegable."
+            },
+            {
+              "nombre": "title",
+              "tipo": "ReactNode",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": "Texto del encabezado que abre y cierra la sección (\"Más opciones\")."
+            },
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Clase extra para márgenes o posición."
+            },
+            {
+              "nombre": "defaultOpen",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "false",
+              "descripcion": "Abierta al montar (por defecto cerrada)."
+            },
+            {
+              "nombre": "onOpenChange",
+              "tipo": "(open: boolean) => void",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Se llama al abrir o cerrar."
+            }
+          ]
+        }
+      ],
+      "otrosValores": [],
+      "tipos": ["CollapsibleProps"]
     },
     {
       "paquete": "@rubenpazch/confirmation-dialog",
@@ -5300,6 +5422,258 @@
               "descripcion": "Texto para lectores de pantalla. Sin él, el icono es decorativo (aria-hidden)."
             }
           ]
+        },
+        {
+          "nombre": "TrophyIcon",
+          "importar": "import { TrophyIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "Títulos, palmarés, competiciones y premios.",
+          "props": [
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": "sm 16px · md 20px · lg 24px."
+            },
+            {
+              "nombre": "title",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Texto para lectores de pantalla. Sin él, el icono es decorativo (aria-hidden)."
+            }
+          ]
+        },
+        {
+          "nombre": "NewspaperIcon",
+          "importar": "import { NewspaperIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "Prensa, noticias y acreditaciones de medios.",
+          "props": [
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": "sm 16px · md 20px · lg 24px."
+            },
+            {
+              "nombre": "title",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Texto para lectores de pantalla. Sin él, el icono es decorativo (aria-hidden)."
+            }
+          ]
+        },
+        {
+          "nombre": "VideoIcon",
+          "importar": "import { VideoIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "Videos, transmisiones y canales.",
+          "props": [
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": "sm 16px · md 20px · lg 24px."
+            },
+            {
+              "nombre": "title",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Texto para lectores de pantalla. Sin él, el icono es decorativo (aria-hidden)."
+            }
+          ]
+        },
+        {
+          "nombre": "RadioIcon",
+          "importar": "import { RadioIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "Algo que ocurre en vivo o se transmite en directo.",
+          "props": [
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": "sm 16px · md 20px · lg 24px."
+            },
+            {
+              "nombre": "title",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Texto para lectores de pantalla. Sin él, el icono es decorativo (aria-hidden)."
+            }
+          ]
+        },
+        {
+          "nombre": "UndoIcon",
+          "importar": "import { UndoIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "Deshacer la última acción.",
+          "props": [
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": "sm 16px · md 20px · lg 24px."
+            },
+            {
+              "nombre": "title",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Texto para lectores de pantalla. Sin él, el icono es decorativo (aria-hidden)."
+            }
+          ]
+        },
+        {
+          "nombre": "ArrowLeftRightIcon",
+          "importar": "import { ArrowLeftRightIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "Cambios, intercambios o sustituciones (p. ej. un cambio de jugador).",
+          "props": [
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": "sm 16px · md 20px · lg 24px."
+            },
+            {
+              "nombre": "title",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Texto para lectores de pantalla. Sin él, el icono es decorativo (aria-hidden)."
+            }
+          ]
+        },
+        {
+          "nombre": "IdCardIcon",
+          "importar": "import { IdCardIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "Carnets, credenciales y membresías.",
+          "props": [
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": "sm 16px · md 20px · lg 24px."
+            },
+            {
+              "nombre": "title",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Texto para lectores de pantalla. Sin él, el icono es decorativo (aria-hidden)."
+            }
+          ]
+        },
+        {
+          "nombre": "ArrowUpIcon",
+          "importar": "import { ArrowUpIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "Mover un elemento hacia arriba.",
+          "props": [
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": "sm 16px · md 20px · lg 24px."
+            },
+            {
+              "nombre": "title",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Texto para lectores de pantalla. Sin él, el icono es decorativo (aria-hidden)."
+            }
+          ]
+        },
+        {
+          "nombre": "ArrowDownIcon",
+          "importar": "import { ArrowDownIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "Mover un elemento hacia abajo.",
+          "props": [
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": "sm 16px · md 20px · lg 24px."
+            },
+            {
+              "nombre": "title",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Texto para lectores de pantalla. Sin él, el icono es decorativo (aria-hidden)."
+            }
+          ]
+        },
+        {
+          "nombre": "FootballIcon",
+          "importar": "import { FootballIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "Partidos y deportes con balón.",
+          "props": [
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": "sm 16px · md 20px · lg 24px."
+            },
+            {
+              "nombre": "title",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Texto para lectores de pantalla. Sin él, el icono es decorativo (aria-hidden)."
+            }
+          ]
+        },
+        {
+          "nombre": "UserIcon",
+          "importar": "import { UserIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "Una persona o la cuenta del usuario.",
+          "props": [
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": "sm 16px · md 20px · lg 24px."
+            },
+            {
+              "nombre": "title",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Texto para lectores de pantalla. Sin él, el icono es decorativo (aria-hidden)."
+            }
+          ]
+        },
+        {
+          "nombre": "RectangleVerticalIcon",
+          "importar": "import { RectangleVerticalIcon } from \"@rubenpazch/ui\";",
+          "descripcion": "Una tarjeta (p. ej. amarilla o roja en un partido).",
+          "props": [
+            {
+              "nombre": "size",
+              "tipo": "\"sm\" | \"md\" | \"lg\"",
+              "requerido": false,
+              "porDefecto": "md",
+              "descripcion": "sm 16px · md 20px · lg 24px."
+            },
+            {
+              "nombre": "title",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Texto para lectores de pantalla. Sin él, el icono es decorativo (aria-hidden)."
+            }
+          ]
         }
       ],
       "otrosValores": ["ICONOS"],
@@ -5639,6 +6013,137 @@
       ],
       "otrosValores": [],
       "tipos": []
+    },
+    {
+      "paquete": "@rubenpazch/list",
+      "carpeta": "packages/list",
+      "categoria": "presentacion",
+      "resumen": "Lista vertical de filas (icono, título, detalle y estado a la derecha), clicables o enlaces.",
+      "usarCuando": "Listados cortos o en el celular: partidos, socios, registros de un catálogo, resultados de una búsqueda.",
+      "evitarCuando": "Datos con varias columnas para comparar u ordenar: usa DataTable. Pares etiqueta/valor de un registro: usa DescriptionList.",
+      "componentes": [
+        {
+          "nombre": "List",
+          "importar": "import { List } from \"@rubenpazch/ui\";",
+          "descripcion": "Lista vertical de filas con separadores (`<ul>`): partidos, socios, registros de un catálogo.\nCada fila es un `ListItem`.",
+          "props": [
+            {
+              "nombre": "children",
+              "tipo": "ReactNode",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": "Filas: componentes `ListItem`."
+            },
+            {
+              "nombre": "aria-label",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Nombre accesible de la lista (\"Próximos partidos\")."
+            },
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Clase extra para márgenes o posición."
+            },
+            {
+              "nombre": "variant",
+              "tipo": "\"outlined\" | \"plain\"",
+              "requerido": false,
+              "porDefecto": "outlined",
+              "descripcion": "outlined (tarjeta con borde, por defecto) o plain (sin borde, dentro de otra tarjeta)."
+            }
+          ]
+        },
+        {
+          "nombre": "ListItem",
+          "importar": "import { ListItem } from \"@rubenpazch/ui\";",
+          "descripcion": "Fila de una `List`: icono, título y detalle a la izquierda; estado o acciones a la derecha.",
+          "props": [
+            {
+              "nombre": "title",
+              "tipo": "ReactNode",
+              "requerido": true,
+              "porDefecto": null,
+              "descripcion": "Texto principal de la fila."
+            },
+            {
+              "nombre": "aria-label",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Nombre accesible si el título no basta."
+            },
+            {
+              "nombre": "children",
+              "tipo": "ReactNode",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Contenido extra bajo el detalle (chips, barra de avance)."
+            },
+            {
+              "nombre": "className",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Clase extra."
+            },
+            {
+              "nombre": "description",
+              "tipo": "ReactNode",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Detalle bajo el título (fecha, correo, resumen)."
+            },
+            {
+              "nombre": "href",
+              "tipo": "string",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Hace la fila un enlace."
+            },
+            {
+              "nombre": "leading",
+              "tipo": "ReactNode",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Icono, avatar o imagen a la izquierda."
+            },
+            {
+              "nombre": "linkComponent",
+              "tipo": "ElementType<any, keyof IntrinsicElements>",
+              "requerido": false,
+              "porDefecto": "a",
+              "descripcion": "Componente de enlace (p. ej. Link de Next.js). Por defecto <a>."
+            },
+            {
+              "nombre": "muted",
+              "tipo": "boolean",
+              "requerido": false,
+              "porDefecto": "false",
+              "descripcion": "Atenúa la fila (registro inactivo u oculto)."
+            },
+            {
+              "nombre": "onClick",
+              "tipo": "() => void",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Hace la fila clicable (botón). Si la fila lleva botones propios, no la hagas clicable: pon un `<li>` propio dentro de `List`."
+            },
+            {
+              "nombre": "trailing",
+              "tipo": "ReactNode",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Contenido a la derecha: estado (Badge), monto, acciones."
+            }
+          ]
+        }
+      ],
+      "otrosValores": [],
+      "tipos": ["ListProps", "ListItemProps"]
     },
     {
       "paquete": "@rubenpazch/loading-spinner",
@@ -9598,6 +10103,90 @@
       "categoria": "otros",
       "palabras": ["colores", "tema", "apariencia", "marca"],
       "usarPara": "Personalizar colores o apariencia."
+    },
+    {
+      "nombre": "TrophyIcon",
+      "categoria": "otros",
+      "palabras": ["trofeo", "copa", "campeonato", "palmarés", "premio"],
+      "usarPara": "Títulos, palmarés, competiciones y premios."
+    },
+    {
+      "nombre": "NewspaperIcon",
+      "categoria": "comunicacion",
+      "palabras": ["prensa", "periódico", "noticias", "medios", "diario"],
+      "usarPara": "Prensa, noticias y acreditaciones de medios."
+    },
+    {
+      "nombre": "VideoIcon",
+      "categoria": "archivos",
+      "palabras": ["video", "cámara", "grabación", "transmisión", "canal"],
+      "usarPara": "Videos, transmisiones y canales."
+    },
+    {
+      "nombre": "RadioIcon",
+      "categoria": "estado",
+      "palabras": ["en vivo", "transmisión", "señal", "directo", "emisión"],
+      "usarPara": "Algo que ocurre en vivo o se transmite en directo."
+    },
+    {
+      "nombre": "UndoIcon",
+      "categoria": "acciones",
+      "palabras": ["deshacer", "revertir", "volver atrás", "anular"],
+      "usarPara": "Deshacer la última acción."
+    },
+    {
+      "nombre": "ArrowLeftRightIcon",
+      "categoria": "acciones",
+      "palabras": [
+        "cambio",
+        "intercambiar",
+        "sustitución",
+        "transferir",
+        "reemplazo"
+      ],
+      "usarPara": "Cambios, intercambios o sustituciones (p. ej. un cambio de jugador)."
+    },
+    {
+      "nombre": "IdCardIcon",
+      "categoria": "personas",
+      "palabras": [
+        "carnet",
+        "credencial",
+        "socio",
+        "identificación",
+        "membresía"
+      ],
+      "usarPara": "Carnets, credenciales y membresías."
+    },
+    {
+      "nombre": "ArrowUpIcon",
+      "categoria": "navegacion",
+      "palabras": ["subir", "arriba", "mover arriba", "ordenar"],
+      "usarPara": "Mover un elemento hacia arriba."
+    },
+    {
+      "nombre": "ArrowDownIcon",
+      "categoria": "navegacion",
+      "palabras": ["bajar", "abajo", "mover abajo", "ordenar"],
+      "usarPara": "Mover un elemento hacia abajo."
+    },
+    {
+      "nombre": "FootballIcon",
+      "categoria": "otros",
+      "palabras": ["balón", "pelota", "fútbol", "partido", "deporte"],
+      "usarPara": "Partidos y deportes con balón."
+    },
+    {
+      "nombre": "UserIcon",
+      "categoria": "personas",
+      "palabras": ["usuario", "persona", "cuenta", "perfil", "mi cuenta"],
+      "usarPara": "Una persona o la cuenta del usuario."
+    },
+    {
+      "nombre": "RectangleVerticalIcon",
+      "categoria": "otros",
+      "palabras": ["tarjeta", "rectángulo", "amonestación", "carta"],
+      "usarPara": "Una tarjeta (p. ej. amarilla o roja en un partido)."
     }
   ]
 }
