@@ -1,6 +1,6 @@
 {
   "name": "@rubenpazch/list",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Lista de filas con icono, título, detalle y contenido a la derecha",
   "private": false,
   "main": "dist/index.cjs.js",

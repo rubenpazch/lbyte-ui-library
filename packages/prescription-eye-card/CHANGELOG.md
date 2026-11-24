@@ -1,5 +1,12 @@
 # @rubenpazch/prescription-eye-card
 
+## 3.0.9
+
+### Patch Changes
+
+- Updated dependencies [0564acb]
+  - @rubenpazch/checkbox-input@3.3.0
+
 ## 3.0.8
 
 ### Patch Changes

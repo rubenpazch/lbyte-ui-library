@@ -1,6 +1,6 @@
 {
   "name": "@rubenpazch/app-shell",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "description": "Estructura de panel: barra lateral, cabecera y contenido",
   "repository": {
     "type": "git",

@@ -1,5 +1,12 @@
 # @rubenpazch/pagination
 
+## 3.2.5
+
+### Patch Changes
+
+- Updated dependencies [01f5b31]
+  - @rubenpazch/icons@6.5.0
+
 ## 3.2.4
 
 ### Patch Changes

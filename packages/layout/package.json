@@ -1,6 +1,6 @@
 {
   "name": "@rubenpazch/layout",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Maquetación sin CSS: Flex, Stack, Inline, Center, Grid, Container y Spacer",
   "repository": {
     "type": "git",

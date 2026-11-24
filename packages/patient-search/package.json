@@ -1,6 +1,6 @@
 {
   "name": "@rubenpazch/patient-search",
-  "version": "3.0.6",
+  "version": "3.0.7",
   "description": "PatientSearch component",
   "private": false,
   "main": "dist/index.cjs.js",

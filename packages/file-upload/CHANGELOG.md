@@ -1,5 +1,12 @@
 # @rubenpazch/file-upload
 
+## 0.1.1
+
+### Patch Changes
+
+- Updated dependencies [01f5b31]
+  - @rubenpazch/icons@6.5.0
+
 ## 0.1.0
 
 ### Minor Changes

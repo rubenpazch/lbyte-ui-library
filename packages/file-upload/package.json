@@ -1,6 +1,6 @@
 {
   "name": "@rubenpazch/file-upload",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Carga de varios archivos con arrastrar y soltar",
   "repository": {
     "type": "git",

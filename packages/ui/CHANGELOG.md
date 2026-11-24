@@ -1,5 +1,62 @@
 # @rubenpazch/ui
 
+## 0.13.0
+
+### Minor Changes
+
+- 01f5b31: Componentes para la migración de club-ui:
+
+  - `List` + `ListItem`: lista de filas con icono, título, detalle y contenido a la derecha (botón o enlace).
+  - `Collapsible`: sección plegable ("Más opciones") sobre `<details>`.
+  - `BottomNavigation`: barra inferior del celular con 3 a 5 secciones.
+  - `AppShell` acepta `bottomNav`: muestra la barra en el celular y agrega "Más", que abre el menú lateral.
+  - Iconos nuevos: `TrophyIcon`, `NewspaperIcon`, `VideoIcon`, `RadioIcon`, `UndoIcon`, `ArrowLeftRightIcon`,
+    `IdCardIcon`, `FootballIcon`, `ArrowUpIcon`, `ArrowDownIcon`, `UserIcon`, `RectangleVerticalIcon`.
+  - `Chip`: con `selected` y `variant="filled"` el texto ya no queda ilegible (se conserva el relleno).
+
+- 0564acb: Formularios:
+
+  - `TextInput`: `startAddon` y `endAddon`, bloques pegados al campo (texto como "S/" o ".pe", o un
+    botón). Un texto pegado se agrega a la descripción accesible del campo.
+  - `CheckboxGroup` (en `@rubenpazch/checkbox-input`): grupo de casillas con `fieldset`/`legend`,
+    ayuda, error, "Seleccionar todos" (indeterminado), `maxSelected`, `columns` y `name` para
+    formularios nativos.
+  - Nuevo paquete `@rubenpazch/pin-input`: `PinInput` para códigos OTP o PIN, con avance automático,
+    borrar hacia atrás, flechas, pegar el código completo, `autocomplete="one-time-code"`,
+    `onComplete`, `mask`, `groupSize` y modo alfanumérico.
+
+- 828856b: Nuevo paquete de maquetación sin CSS: `Flex`, `Stack`, `Inline`, `Center`, `Grid`/`GridItem`,
+  `Container` y `Spacer`. Se configuran solo con props (`direction`, `gap`, `align`, `justify`,
+  `wrap`, `columns`, `span`, `padding`, `hide`…) y todas aceptan valores por punto de quiebre
+  (`{ base, sm, md, lg, xl }`). Nueva categoría del catálogo: `maquetacion`.
+
+### Patch Changes
+
+- Updated dependencies [01f5b31]
+- Updated dependencies [0564acb]
+- Updated dependencies [828856b]
+  - @rubenpazch/list@0.1.0
+  - @rubenpazch/collapsible@0.1.0
+  - @rubenpazch/bottom-navigation@0.1.0
+  - @rubenpazch/app-shell@0.4.0
+  - @rubenpazch/icons@6.5.0
+  - @rubenpazch/chip@4.0.8
+  - @rubenpazch/text-input@6.5.0
+  - @rubenpazch/checkbox-input@3.3.0
+  - @rubenpazch/pin-input@0.1.0
+  - @rubenpazch/layout@0.1.0
+  - @rubenpazch/numeric-up-picker@6.1.5
+  - @rubenpazch/autocomplete@5.3.1
+  - @rubenpazch/date-input@3.2.3
+  - @rubenpazch/date-picker@3.2.3
+  - @rubenpazch/drawer@4.2.6
+  - @rubenpazch/file-upload@0.1.1
+  - @rubenpazch/pagination@3.2.5
+  - @rubenpazch/patient-search@3.0.7
+  - @rubenpazch/toast@4.1.2
+  - @rubenpazch/prescription-eye-card@3.0.9
+  - @rubenpazch/date-range-picker@0.1.3
+
 ## 0.12.1
 
 ### Patch Changes
