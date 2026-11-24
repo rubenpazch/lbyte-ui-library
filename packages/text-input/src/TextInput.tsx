@@ -78,6 +78,15 @@ export interface TextInputProps extends TextInputNativeProps {
   strengthLabelPrefix?: string;
   requirementsLabels?: Partial<PasswordRequirementsLabels>;
   /**
+   * Con `type="password"`, las reglas de tu backend para una contraseña nueva. Se muestran
+   * como lista bajo el campo desde el inicio, cada una se marca al cumplirse y todas cuentan
+   * para `onValidityChange`. Si las pasas, reemplazan al medidor por composición
+   * (`showPasswordStrength` y `requirementsLabels` se ignoran).
+   */
+  passwordRules?: PasswordRule[];
+  /** Textos de la lista de reglas: título y estado de cada regla para lectores de pantalla. */
+  passwordRulesLabels?: Partial<PasswordRulesLabels>;
+  /**
    * Con `type="password"`, botón para ver u ocultar lo escrito. Por defecto true.
    */
   showPasswordToggle?: boolean;
@@ -141,6 +150,32 @@ type PasswordRequirementsLabels = {
   minLength: string;
 };
 
+/** Una regla de contraseña: el texto que se ve y la prueba que dice si se cumple. */
+export interface PasswordRule {
+  /** Identificador estable (no se muestra). */
+  id: string;
+  /** Texto de la regla, p. ej. "12 caracteres o más". */
+  label: string;
+  /** true si el valor cumple la regla. */
+  test: (value: string) => boolean;
+}
+
+/** Textos de la lista de reglas de contraseña. */
+export interface PasswordRulesLabels {
+  /** Título de la lista. */
+  title: string;
+  /** Estado de una regla cumplida (solo lectores de pantalla). */
+  met: string;
+  /** Estado de una regla pendiente (solo lectores de pantalla). */
+  unmet: string;
+}
+
+const PASSWORD_RULES_LABELS: PasswordRulesLabels = {
+  title: "La contraseña debe tener:",
+  met: "cumplido",
+  unmet: "pendiente",
+};
+
 // Password strength checker
 const checkPasswordStrength = (password: string) => {
   if (!password) return { score: 0, strength: "none" as PasswordStrengthKey };
@@ -199,6 +234,8 @@ const TextInput = React.forwardRef<HTMLInputElement, TextInputProps>(
       strengthLabels,
       strengthLabelPrefix,
       requirementsLabels,
+      passwordRules,
+      passwordRulesLabels,
       showPasswordToggle = true,
       passwordToggleLabels = {
         show: "Mostrar contraseña",
@@ -244,6 +281,14 @@ const TextInput = React.forwardRef<HTMLInputElement, TextInputProps>(
     const meetsMaxLength = maxLength ? value.length <= maxLength : true;
     const matchesPattern = pattern ? new RegExp(pattern).test(value) : true;
 
+    // Reglas propias de la contraseña (las del backend): reemplazan al medidor por composición.
+    const ruleResults = useMemo(() => {
+      if (type !== "password" || !passwordRules?.length) return null;
+      return passwordRules.map((rule) => ({ ...rule, met: rule.test(value) }));
+    }, [type, passwordRules, value]);
+    const meetsRules = ruleResults ? ruleResults.every((r) => r.met) : true;
+    const rulesLabels = { ...PASSWORD_RULES_LABELS, ...passwordRulesLabels };
+
     const showSuccess = Boolean(
       value &&
       !error &&
@@ -253,14 +298,16 @@ const TextInput = React.forwardRef<HTMLInputElement, TextInputProps>(
       (!validateEmail || isValidEmail) &&
       meetsMinLength &&
       meetsMaxLength &&
-      matchesPattern,
+      matchesPattern &&
+      meetsRules,
     );
 
     // Password strength
     const passwordStrength = useMemo(() => {
-      if (type !== "password" || !showPasswordStrength) return null;
+      if (type !== "password" || !showPasswordStrength || ruleResults)
+        return null;
       return checkPasswordStrength(value);
-    }, [type, value, showPasswordStrength]);
+    }, [type, value, showPasswordStrength, ruleResults]);
 
     // Overall field validity, exposed to the parent so it can gate a submit
     // button on the component's own rules (no need to re-implement them).
@@ -271,7 +318,8 @@ const TextInput = React.forwardRef<HTMLInputElement, TextInputProps>(
       (!validateEmail || isValidEmail) &&
       meetsMinLength &&
       meetsMaxLength &&
-      matchesPattern,
+      matchesPattern &&
+      meetsRules,
     );
 
     useEffect(() => {
@@ -320,8 +368,13 @@ const TextInput = React.forwardRef<HTMLInputElement, TextInputProps>(
         ? `${addonId}-end`
         : null,
     ].filter(Boolean);
+    const rulesId = `${addonId}-rules`;
     const describedBy =
-      [field.controlProps["aria-describedby"], ...textAddonIds]
+      [
+        field.controlProps["aria-describedby"],
+        ...textAddonIds,
+        ruleResults ? rulesId : null,
+      ]
         .filter(Boolean)
         .join(" ") || undefined;
     const hasErrorState = Boolean(
@@ -544,6 +597,48 @@ const TextInput = React.forwardRef<HTMLInputElement, TextInputProps>(
                 {emailSuggestion}
               </button>
             </p>
+          </div>
+        )}
+
+        {/* Reglas propias de la contraseña */}
+        {ruleResults && (
+          <div
+            id={rulesId}
+            className={styles.requirements}
+            data-testid="password-rules"
+          >
+            <p className={styles.rulesTitle}>{rulesLabels.title}</p>
+            <ul className={styles.rulesList}>
+              {ruleResults.map((rule) => (
+                <li
+                  key={rule.id}
+                  className={styles.requirement}
+                  data-met={rule.met}
+                >
+                  <CheckIcon
+                    aria-hidden="true"
+                    className={classNames(
+                      styles.requirementIcon,
+                      rule.met
+                        ? styles.requirementIconMet
+                        : styles.requirementIconUnmet,
+                    )}
+                    size="sm"
+                  />
+                  <span
+                    className={classNames(
+                      styles.requirementText,
+                      rule.met && styles.requirementTextMet,
+                    )}
+                  >
+                    {rule.label}
+                  </span>
+                  <span className={styles.srOnly}>
+                    {` (${rule.met ? rulesLabels.met : rulesLabels.unmet})`}
+                  </span>
+                </li>
+              ))}
+            </ul>
           </div>
         )}
 
