@@ -428,6 +428,8 @@ export { default as TextInput } from "@rubenpazch/text-input";
 export type {
   TextInputProps,
   TextInputNativeProps,
+  PasswordRule,
+  PasswordRulesLabels,
 } from "@rubenpazch/text-input";
 export { default as Textarea } from "@rubenpazch/textarea";
 export type { TextareaProps } from "@rubenpazch/textarea";

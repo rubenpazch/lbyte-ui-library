@@ -9662,6 +9662,20 @@
               "descripcion": "Fires whenever the field's overall validity changes (respecting `required`,\n`validateEmail`, `minLength`, `maxLength`, `pattern` and `error`). Lets the\nparent gate a submit button on the component's own validation, without\nduplicating the rules."
             },
             {
+              "nombre": "passwordRules",
+              "tipo": "PasswordRule[]",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Con `type=\"password\"`, las reglas de tu backend para una contraseña nueva. Se muestran\ncomo lista bajo el campo desde el inicio, cada una se marca al cumplirse y todas cuentan\npara `onValidityChange`. Si las pasas, reemplazan al medidor por composición\n(`showPasswordStrength` y `requirementsLabels` se ignoran)."
+            },
+            {
+              "nombre": "passwordRulesLabels",
+              "tipo": "Partial<PasswordRulesLabels>",
+              "requerido": false,
+              "porDefecto": null,
+              "descripcion": "Textos de la lista de reglas: título y estado de cada regla para lectores de pantalla."
+            },
+            {
               "nombre": "passwordToggleLabels",
               "tipo": "{ show: string; hide: string; }",
               "requerido": false,
@@ -9770,7 +9784,12 @@
         }
       ],
       "otrosValores": [],
-      "tipos": ["TextInputProps", "TextInputNativeProps"]
+      "tipos": [
+        "TextInputProps",
+        "TextInputNativeProps",
+        "PasswordRule",
+        "PasswordRulesLabels"
+      ]
     },
     {
       "paquete": "@rubenpazch/textarea",

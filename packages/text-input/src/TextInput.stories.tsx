@@ -91,6 +91,11 @@ TextInput is a versatile input component with built-in validation, character cou
       control: "boolean",
       description: "Shows password strength indicator",
     },
+    passwordRules: {
+      control: false,
+      description:
+        "Reglas propias de la contraseña ({ id, label, test }); reemplazan al medidor por composición",
+    },
     maxLength: {
       control: "number",
       description: "Maximum character length",
@@ -252,6 +257,61 @@ export const ValidEmail: Story = {
     onChange: fn(),
     type: "email",
     validateEmail: true,
+  },
+};
+
+// Contraseña con las reglas del backend (passwordRules)
+export const PasswordRules: Story = {
+  render: (args) => {
+    const [password, setPassword] = useState("");
+    const [valida, setValida] = useState(false);
+
+    return (
+      <div className="space-y-4">
+        <TextInput
+          {...args}
+          value={password}
+          onChange={setPassword}
+          onValidityChange={setValida}
+          label="Contraseña nueva"
+          type="password"
+          autoComplete="new-password"
+          required
+          passwordRules={[
+            {
+              id: "largo",
+              label: "12 caracteres o más",
+              test: (v) => v.length >= 12,
+            },
+            {
+              id: "bordes",
+              label: "Sin espacios al inicio ni al final",
+              test: (v) => v.length > 0 && v === v.trim(),
+            },
+            {
+              id: "app",
+              label: "Que no contenga el nombre de la app",
+              test: (v) => v.length > 0 && !/cienciano/i.test(v),
+            },
+          ]}
+        />
+        <p className="text-sm">
+          {valida ? "Lista para guardar." : "Aún no cumple todas las reglas."}
+        </p>
+      </div>
+    );
+  },
+  args: {
+    value: "",
+    onChange: fn(),
+  },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Las reglas vienen de la app (por ejemplo, de la política del backend). Se ven desde el inicio, se marcan al cumplirse y `onValidityChange` solo da true cuando se cumplen todas. Reemplazan al medidor por composición: una frase larga como «mi perro come mango» es válida sin mayúsculas ni símbolos.",
+      },
+    },
   },
 };
 
