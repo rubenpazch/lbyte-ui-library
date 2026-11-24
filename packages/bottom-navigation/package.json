@@ -1,0 +1,58 @@
+{
+  "name": "@rubenpazch/bottom-navigation",
+  "version": "0.0.0",
+  "description": "Barra de navegación inferior para el celular",
+  "private": false,
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rubenpazch/lbyte-ui-library.git",
+    "directory": "packages/bottom-navigation"
+  },
+  "author": "Ruben Paz Chuspe <rubenpazchuspe@outlook.com>",
+  "license": "MIT",
+  "files": [
+    "dist"
+  ],
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "exports": {
+    ".": {
+      "import": "./dist/index.esm.js",
+      "require": "./dist/index.cjs.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "rollup -c",
+    "test": "jest --passWithNoTests",
+    "test:watch": "jest --watch",
+    "lint": "eslint src",
+    "clean": "rm -rf dist"
+  },
+  "peerDependencies": {
+    "@rubenpazch/tokens": "workspace:*",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3"
+  },
+  "dependencies": {
+    "@rubenpazch/shared": "workspace:*"
+  },
+  "devDependencies": {
+    "@rubenpazch/eslint-config": "workspace:*",
+    "@rubenpazch/typescript-config": "workspace:*",
+    "@rubenpazch/icons": "workspace:*"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "lbyte": {
+    "categoria": "navegacion",
+    "resumen": "Barra fija abajo en el celular con 3 a 5 secciones principales (icono y texto); se oculta en pantallas anchas.",
+    "usarCuando": "Paneles que se usan sobre todo en el celular y con una mano: las secciones principales al alcance del pulgar. En un panel, pásala a AppShell con bottomNav.",
+    "evitarCuando": "Más de 5 secciones o apps de escritorio: usa AppShell/Sidebar. Pestañas dentro de una página: usa Tabs."
+  }
+}

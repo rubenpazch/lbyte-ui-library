@@ -39,7 +39,8 @@
   "dependencies": {
     "@rubenpazch/shared": "workspace:*",
     "@rubenpazch/sidebar": "workspace:*",
-    "@rubenpazch/toast": "workspace:*"
+    "@rubenpazch/toast": "workspace:*",
+    "@rubenpazch/bottom-navigation": "workspace:*"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^29.0.3",
