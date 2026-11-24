@@ -1,0 +1,79 @@
+{
+  "name": "@rubenpazch/layout",
+  "version": "0.0.0",
+  "description": "Maquetación sin CSS: Flex, Stack, Inline, Center, Grid, Container y Spacer",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rubenpazch/lbyte-ui-library.git",
+    "directory": "packages/layout"
+  },
+  "license": "MIT",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.esm.js",
+      "require": "./dist/index.cjs.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "scripts": {
+    "build": "rollup -c",
+    "test": "jest --passWithNoTests",
+    "test:watch": "jest --watch",
+    "lint": "eslint src",
+    "clean": "rm -rf dist",
+    "css": "node scripts/generar-css.mjs"
+  },
+  "peerDependencies": {
+    "@rubenpazch/tokens": "workspace:*",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3"
+  },
+  "dependencies": {
+    "@rubenpazch/shared": "workspace:*"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^29.0.3",
+    "@rollup/plugin-node-resolve": "^16.0.3",
+    "@rollup/plugin-terser": "^1.0.0",
+    "@rollup/plugin-typescript": "^12.3.0",
+    "@rubenpazch/eslint-config": "workspace:*",
+    "@rubenpazch/typescript-config": "workspace:*",
+    "@testing-library/react": "^16.3.3",
+    "@types/jest": "^30.0.0",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.5",
+    "autoprefixer": "^10.5.4",
+    "eslint": "^9.39.5",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^30.5.0",
+    "jest-environment-jsdom": "^30.5.0",
+    "postcss": "^8.5.26",
+    "prettier": "^3.9.6",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "rollup": "^4.63.1",
+    "rollup-plugin-dts": "^6.5.1",
+    "rollup-plugin-postcss": "^4.0.2",
+    "rollup-plugin-typescript2": "^0.37.0",
+    "tslib": "^2.8.1",
+    "typescript": "^6.0.3"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "lbyte": {
+    "categoria": "maquetacion",
+    "resumen": "Maquetación solo con props (sin escribir CSS): Flex (fila o columna con gap, align y justify), Stack (vertical), Inline (horizontal que se ajusta), Center (centrar en uno o ambos ejes), Grid/GridItem (columnas fijas o automáticas), Container (ancho máximo de página) y Spacer. Todas las props aceptan valores por punto de quiebre: { base, sm, md, lg, xl }.",
+    "usarCuando": "Ubicar y alinear bloques de una pantalla: apilar secciones (Stack), barras de botones o filtros (Inline + Spacer), centrar un login (Center minHeight=\"screen\"), tableros y listas de tarjetas (Grid), el ancho de la página (Container).",
+    "evitarCuando": "Para filas de campos de formulario usa FormRow y para el pie de botones FormActions; para la estructura con menú lateral y encabezado usa AppShell."
+  }
+}

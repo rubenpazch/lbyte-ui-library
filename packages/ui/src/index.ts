@@ -46,8 +46,15 @@ export {
   CardFooter,
 } from "@rubenpazch/card";
 export type { CardProps, CardHeaderProps } from "@rubenpazch/card";
-export { default as CheckboxInput } from "@rubenpazch/checkbox-input";
-export type { CheckboxInputProps } from "@rubenpazch/checkbox-input";
+export {
+  default as CheckboxInput,
+  CheckboxGroup,
+} from "@rubenpazch/checkbox-input";
+export type {
+  CheckboxInputProps,
+  CheckboxGroupProps,
+  CheckboxOption,
+} from "@rubenpazch/checkbox-input";
 export { default as Chip } from "@rubenpazch/chip";
 export type {
   ChipVariant,
@@ -273,6 +280,36 @@ export type {
   ImageUploadLabels,
 } from "@rubenpazch/image-upload";
 export { default as InfoRow } from "@rubenpazch/info-row";
+export {
+  default as Flex,
+  Stack,
+  Inline,
+  Spacer,
+  Grid,
+  GridItem,
+  Center,
+  Container,
+} from "@rubenpazch/layout";
+export type {
+  FlexProps,
+  StackProps,
+  InlineProps,
+  SpacerProps,
+  GridProps,
+  GridItemProps,
+  GridColumns,
+  CenterProps,
+  ContainerProps,
+  ContainerSize,
+  Responsive,
+  LayoutBreakpoint,
+  Space,
+  Align,
+  Justify,
+  Direction,
+  LayoutElement,
+  PaddingProps,
+} from "@rubenpazch/layout";
 export { default as List, ListItem } from "@rubenpazch/list";
 export type { ListProps, ListItemProps } from "@rubenpazch/list";
 export { default as LoadingSpinner } from "@rubenpazch/loading-spinner";
@@ -315,6 +352,8 @@ export type {
 } from "@rubenpazch/pagination";
 export { default as PatientDetails } from "@rubenpazch/patient-details";
 export { default as PatientSearch } from "@rubenpazch/patient-search";
+export { default as PinInput } from "@rubenpazch/pin-input";
+export type { PinInputProps } from "@rubenpazch/pin-input";
 export { default as PrescriptionCard } from "@rubenpazch/prescription-card";
 export { default as PrescriptionEyeCard } from "@rubenpazch/prescription-eye-card";
 export type {

@@ -83,33 +83,77 @@ rutas internas (`dist/…`).
   ```
 - Para ajustar un componente usa sus props (`variant`, `color`, `size`, `fullWidth`…) y, si hace
   falta, `className` para márgenes o posición. No sobrescribas sus clases internas.
-- Para Tailwind puro (layout, grid, flex) usa las utilidades normales; para color, tipografía,
+- Para **ubicar y alinear** bloques usa los componentes de maquetación (ver **Maquetación**) en
+  vez de escribir `display: flex` o clases `flex`/`grid` de Tailwind; para color, tipografía,
   radios, sombras y espacios del sistema, las `lb-*`.
+
+## Maquetación (sin escribir CSS)
+
+`Flex`, `Stack`, `Inline`, `Center`, `Grid`/`GridItem`, `Container` y `Spacer` se configuran solo
+con props. Los espacios (`gap`, `padding`, `paddingX`, `paddingY`) usan la escala `--lb-space-*`
+(0, 1, 2, 3, 4, 5, 6, 8, 10, 12, 16) y **todas las props aceptan valores por punto de quiebre**
+(mobile first): `{ base, sm: 640px, md: 768px, lg: 1024px, xl: 1280px }`.
+
+| Necesito…                                   | Usa                                                                           |
+| ------------------------------------------- | ----------------------------------------------------------------------------- |
+| Apilar en vertical con espacio uniforme     | `<Stack gap={6}>`                                                             |
+| Una fila de botones/chips que se ajusta     | `<Inline gap={2}>`; a la derecha: `<Inline justify="end">`                    |
+| Logo a la izquierda y acciones a la derecha | `<Inline><Logo /><Spacer /><Button /></Inline>` o `justify="between"`         |
+| Centrar vertical y horizontalmente (login)  | `<Center minHeight="screen">`                                                 |
+| Columna en móvil, fila en escritorio        | `<Flex direction={{ base: "column", md: "row" }} gap={4}>`                    |
+| Tarjetas en grilla que se acomodan solas    | `<Grid minItemWidth="16rem">`; columnas fijas: `columns={{ base: 1, md: 3 }}` |
+| Una celda que ocupa varias columnas         | `<GridItem span={2}>` (o `"full"`)                                            |
+| El ancho máximo de la página                | `<Container size="lg">`                                                       |
+| Ocultar algo en móvil                       | `hide={{ base: true, md: false }}`                                            |
+
+```tsx
+<Container as="main" paddingY={8}>
+  <Stack gap={6}>
+    <Inline justify="between">
+      <h1>Clientes</h1>
+      <Button variant="contained">Nuevo</Button>
+    </Inline>
+    <Grid columns={{ base: 1, md: 2, lg: 4 }}>
+      <Card>…</Card>
+      <GridItem span={{ base: "full", lg: 2 }}>
+        <Card>…</Card>
+      </GridItem>
+    </Grid>
+  </Stack>
+</Container>
+```
+
+Todos aceptan `as` (`section`, `ul`, `nav`, `main`…) para usar la etiqueta HTML correcta, y
+`className` solo para casos puntuales.
 
 ## Qué usar para cada cosa
 
-| Necesito…                                                 | Usa                                                                                                                                     |
-| --------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
-| El layout de un panel (menú lateral, cabecera, contenido) | `AppShell` (o solo `Sidebar`) en `app/(panel)/layout.tsx`, con `currentPath={usePathname()}` y `linkComponent={Link}`                   |
-| La cabecera de cada página                                | `PageHeader` (migas, título h1, acciones)                                                                                               |
-| Un listado de registros                                   | `DataTable` + `Pagination` (`onPageChange`) + `EmptyState`                                                                              |
-| Un formulario                                             | `FormRow` (columnas) + campos (`TextInput`, `Textarea`, `Select`, `Autocomplete`, `DateInput`, `MoneyInput`, `Switch`…) + `FormActions` |
-| Montos de dinero                                          | `MoneyInput` para editar, `formatMoney()` para mostrar                                                                                  |
-| Elegir el mes de trabajo                                  | `MonthNavigator`                                                                                                                        |
-| Filtrar por un periodo (desde/hasta)                      | `DateRangePicker` (con atajos); una sola fecha: `DateInput`                                                                             |
-| Anti-robots en un formulario público                      | `Turnstile` (cambia `resetKey` tras cada envío)                                                                                         |
-| Mostrar un estado                                         | `Badge`                                                                                                                                 |
-| Agrupar información                                       | `Card` + `CardHeader` / `CardBody` / `CardFooter`                                                                                       |
-| Aviso fijo en la página / mensaje del servidor            | `Alert` / `useToast()` (ver **Mensajes**)                                                                                               |
-| Confirmar / editar en ventana                             | `ConfirmationDialog` / `Modal`                                                                                                          |
-| Acciones de una fila                                      | `Menu` (⋮)                                                                                                                              |
-| Historial / seguimiento de algo en orden                  | `Timeline` (la app convierte sus estados en `items`); pasos que el usuario recorre ahora: `Stepper`                                     |
-| Resumen de datos de un registro (solo lectura)            | `DescriptionList` (etiqueta/valor en columnas)                                                                                          |
-| Adjuntar archivos                                         | `FileUpload` (varios, con validación); una sola imagen con vista previa: `ImageUpload`                                                  |
-| Personas en cuadrícula (usuarios, socios, clientes)       | `UserCard`                                                                                                                              |
-| Raíz de una app con sesión                                | `AuthGate` envolviendo `AppShell` (ver decisión 0006)                                                                                   |
-| Login único: espera, "Cerraste sesión", error al volver   | `AuthScreen` (`busy={false}`, `description`, `action`, `tone="error"`); sin pantalla de login propia (decisión 0011)                    |
-| Cargando                                                  | `Skeleton` (contenido), `LoadingSpinner` (botón), `OverlayLoader` (pantalla), `ProgressBar` (avance)                                    |
+| Necesito…                                                          | Usa                                                                                                                                     |
+| ------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------- |
+| El layout de un panel (menú lateral, cabecera, contenido)          | `AppShell` (o solo `Sidebar`) en `app/(panel)/layout.tsx`, con `currentPath={usePathname()}` y `linkComponent={Link}`                   |
+| La cabecera de cada página                                         | `PageHeader` (migas, título h1, acciones)                                                                                               |
+| Un listado de registros                                            | `DataTable` + `Pagination` (`onPageChange`) + `EmptyState`                                                                              |
+| Alinear, centrar o distribuir bloques de una pantalla              | `Stack`, `Inline`, `Center`, `Grid`, `Container` (ver **Maquetación**)                                                                  |
+| Un formulario                                                      | `FormRow` (columnas) + campos (`TextInput`, `Textarea`, `Select`, `Autocomplete`, `DateInput`, `MoneyInput`, `Switch`…) + `FormActions` |
+| Prefijo o sufijo pegado al campo ("S/", ".pe", "kg", botón Buscar) | `TextInput` con `startAddon` / `endAddon`                                                                                               |
+| Elegir varias opciones de una lista corta (permisos, días)         | `CheckboxGroup` (`selectAll`, `maxSelected`, `columns`)                                                                                 |
+| Código de verificación (OTP) o PIN                                 | `PinInput` (`onComplete` para enviar; pegar el código funciona solo)                                                                    |
+| Montos de dinero                                                   | `MoneyInput` para editar, `formatMoney()` para mostrar                                                                                  |
+| Elegir el mes de trabajo                                           | `MonthNavigator`                                                                                                                        |
+| Filtrar por un periodo (desde/hasta)                               | `DateRangePicker` (con atajos); una sola fecha: `DateInput`                                                                             |
+| Anti-robots en un formulario público                               | `Turnstile` (cambia `resetKey` tras cada envío)                                                                                         |
+| Mostrar un estado                                                  | `Badge`                                                                                                                                 |
+| Agrupar información                                                | `Card` + `CardHeader` / `CardBody` / `CardFooter`                                                                                       |
+| Aviso fijo en la página / mensaje del servidor                     | `Alert` / `useToast()` (ver **Mensajes**)                                                                                               |
+| Confirmar / editar en ventana                                      | `ConfirmationDialog` / `Modal`                                                                                                          |
+| Acciones de una fila                                               | `Menu` (⋮)                                                                                                                              |
+| Historial / seguimiento de algo en orden                           | `Timeline` (la app convierte sus estados en `items`); pasos que el usuario recorre ahora: `Stepper`                                     |
+| Resumen de datos de un registro (solo lectura)                     | `DescriptionList` (etiqueta/valor en columnas)                                                                                          |
+| Adjuntar archivos                                                  | `FileUpload` (varios, con validación); una sola imagen con vista previa: `ImageUpload`                                                  |
+| Personas en cuadrícula (usuarios, socios, clientes)                | `UserCard`                                                                                                                              |
+| Raíz de una app con sesión                                         | `AuthGate` envolviendo `AppShell` (ver decisión 0006)                                                                                   |
+| Login único: espera, "Cerraste sesión", error al volver            | `AuthScreen` (`busy={false}`, `description`, `action`, `tone="error"`); sin pantalla de login propia (decisión 0011)                    |
+| Cargando                                                           | `Skeleton` (contenido), `LoadingSpinner` (botón), `OverlayLoader` (pantalla), `ProgressBar` (avance)                                    |
 
 ```tsx
 // app/(panel)/layout.tsx

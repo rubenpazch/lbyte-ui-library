@@ -1779,6 +1779,91 @@ importers:
         specifier: workspace:*
         version: link:../../tooling/typescript-config
 
+  packages/layout:
+    dependencies:
+      '@rubenpazch/shared':
+        specifier: workspace:*
+        version: link:../shared
+      '@rubenpazch/tokens':
+        specifier: workspace:*
+        version: link:../tokens
+    devDependencies:
+      '@rollup/plugin-commonjs':
+        specifier: ^29.0.3
+        version: 29.0.3(rollup@4.63.1)
+      '@rollup/plugin-node-resolve':
+        specifier: ^16.0.3
+        version: 16.0.3(rollup@4.63.1)
+      '@rollup/plugin-terser':
+        specifier: ^1.0.0
+        version: 1.0.0(rollup@4.63.1)
+      '@rollup/plugin-typescript':
+        specifier: ^12.3.0
+        version: 12.3.0(rollup@4.63.1)(tslib@2.8.1)(typescript@6.0.3)
+      '@rubenpazch/eslint-config':
+        specifier: workspace:*
+        version: link:../../tooling/eslint-config
+      '@rubenpazch/typescript-config':
+        specifier: workspace:*
+        version: link:../../tooling/typescript-config
+      '@testing-library/react':
+        specifier: ^16.3.3
+        version: 16.3.3(@testing-library/dom@10.4.1)(@types/react-dom@19.2.5(@types/react@19.2.18))(@types/react@19.2.18)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
+      '@types/jest':
+        specifier: ^30.0.0
+        version: 30.0.0
+      '@types/react':
+        specifier: ^19.2.18
+        version: 19.2.18
+      '@types/react-dom':
+        specifier: ^19.2.5
+        version: 19.2.5(@types/react@19.2.18)
+      autoprefixer:
+        specifier: ^10.5.4
+        version: 10.5.4(postcss@8.5.26)
+      eslint:
+        specifier: 9.39.5
+        version: 9.39.5(jiti@2.7.0)
+      identity-obj-proxy:
+        specifier: ^3.0.0
+        version: 3.0.0
+      jest:
+        specifier: ^30.5.0
+        version: 30.5.0(@types/node@26.4.0)
+      jest-environment-jsdom:
+        specifier: ^30.5.0
+        version: 30.5.0
+      postcss:
+        specifier: ^8.5.26
+        version: 8.5.26
+      prettier:
+        specifier: ^3.9.6
+        version: 3.9.6
+      react:
+        specifier: 19.2.8
+        version: 19.2.8
+      react-dom:
+        specifier: 19.2.8
+        version: 19.2.8(react@19.2.8)
+      rollup:
+        specifier: ^4.63.1
+        version: 4.63.1
+      rollup-plugin-dts:
+        specifier: ^6.5.1
+        version: 6.5.1(rollup@4.63.1)(typescript@6.0.3)
+      rollup-plugin-postcss:
+        specifier: ^4.0.2
+        version: 4.0.2(postcss@8.5.26)
+      rollup-plugin-typescript2:
+        specifier: ^0.37.0
+        version: 0.37.0(rollup@4.63.1)(typescript@6.0.3)
+      tslib:
+        specifier: ^2.8.1
+        version: 2.8.1
+      typescript:
+        specifier: 6.0.3
+        version: 6.0.3
+
   packages/list:
     dependencies:
       '@rubenpazch/shared':
@@ -2443,6 +2528,91 @@ importers:
       '@rubenpazch/typescript-config':
         specifier: workspace:*
         version: link:../../tooling/typescript-config
+
+  packages/pin-input:
+    dependencies:
+      '@rubenpazch/shared':
+        specifier: workspace:*
+        version: link:../shared
+      '@rubenpazch/tokens':
+        specifier: workspace:*
+        version: link:../tokens
+    devDependencies:
+      '@rollup/plugin-commonjs':
+        specifier: ^29.0.3
+        version: 29.0.3(rollup@4.63.1)
+      '@rollup/plugin-node-resolve':
+        specifier: ^16.0.3
+        version: 16.0.3(rollup@4.63.1)
+      '@rollup/plugin-terser':
+        specifier: ^1.0.0
+        version: 1.0.0(rollup@4.63.1)
+      '@rollup/plugin-typescript':
+        specifier: ^12.3.0
+        version: 12.3.0(rollup@4.63.1)(tslib@2.8.1)(typescript@6.0.3)
+      '@rubenpazch/eslint-config':
+        specifier: workspace:*
+        version: link:../../tooling/eslint-config
+      '@rubenpazch/typescript-config':
+        specifier: workspace:*
+        version: link:../../tooling/typescript-config
+      '@testing-library/react':
+        specifier: ^16.3.3
+        version: 16.3.3(@testing-library/dom@10.4.1)(@types/react-dom@19.2.5(@types/react@19.2.18))(@types/react@19.2.18)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
+      '@types/jest':
+        specifier: ^30.0.0
+        version: 30.0.0
+      '@types/react':
+        specifier: ^19.2.18
+        version: 19.2.18
+      '@types/react-dom':
+        specifier: ^19.2.5
+        version: 19.2.5(@types/react@19.2.18)
+      autoprefixer:
+        specifier: ^10.5.4
+        version: 10.5.4(postcss@8.5.26)
+      eslint:
+        specifier: 9.39.5
+        version: 9.39.5(jiti@2.7.0)
+      identity-obj-proxy:
+        specifier: ^3.0.0
+        version: 3.0.0
+      jest:
+        specifier: ^30.5.0
+        version: 30.5.0(@types/node@26.4.0)
+      jest-environment-jsdom:
+        specifier: ^30.5.0
+        version: 30.5.0
+      postcss:
+        specifier: ^8.5.26
+        version: 8.5.26
+      prettier:
+        specifier: ^3.9.6
+        version: 3.9.6
+      react:
+        specifier: 19.2.8
+        version: 19.2.8
+      react-dom:
+        specifier: 19.2.8
+        version: 19.2.8(react@19.2.8)
+      rollup:
+        specifier: ^4.63.1
+        version: 4.63.1
+      rollup-plugin-dts:
+        specifier: ^6.5.1
+        version: 6.5.1(rollup@4.63.1)(typescript@6.0.3)
+      rollup-plugin-postcss:
+        specifier: ^4.0.2
+        version: 4.0.2(postcss@8.5.26)
+      rollup-plugin-typescript2:
+        specifier: ^0.37.0
+        version: 0.37.0(rollup@4.63.1)(typescript@6.0.3)
+      tslib:
+        specifier: ^2.8.1
+        version: 2.8.1
+      typescript:
+        specifier: 6.0.3
+        version: 6.0.3
 
   packages/prescription-card:
     dependencies:
@@ -3706,6 +3876,9 @@ importers:
       '@rubenpazch/info-row':
         specifier: workspace:^
         version: link:../info-row
+      '@rubenpazch/layout':
+        specifier: workspace:^
+        version: link:../layout
       '@rubenpazch/list':
         specifier: workspace:^
         version: link:../list
@@ -3745,6 +3918,9 @@ importers:
       '@rubenpazch/patient-search':
         specifier: workspace:^
         version: link:../patient-search
+      '@rubenpazch/pin-input':
+        specifier: workspace:^
+        version: link:../pin-input
       '@rubenpazch/prescription-card':
         specifier: workspace:^
         version: link:../prescription-card

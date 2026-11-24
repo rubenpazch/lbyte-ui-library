@@ -1,0 +1,115 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--lb-space-2);
+  font-family: var(--lb-font-sans);
+}
+
+.label {
+  font-size: var(--lb-font-size-sm);
+  font-weight: var(--lb-font-weight-medium);
+  color: var(--lb-color-foreground);
+}
+
+.required {
+  color: var(--lb-color-danger);
+}
+
+.boxes {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: var(--lb-space-2);
+}
+
+.box {
+  box-sizing: border-box;
+  flex: 0 1 auto;
+  min-width: 0;
+  padding: 0;
+  border: 2px solid var(--lb-color-neutral-300);
+  border-radius: var(--lb-radius-md);
+  background: var(--lb-color-background);
+  color: var(--lb-color-foreground);
+  font-family: var(--lb-font-mono);
+  font-weight: var(--lb-font-weight-semibold);
+  text-align: center;
+  caret-color: var(--lb-color-primary);
+  outline: none;
+  transition:
+    border-color 150ms ease,
+    box-shadow 150ms ease;
+}
+
+.sm {
+  width: 2.25rem;
+  height: 2.5rem;
+  font-size: var(--lb-font-size-md);
+}
+
+.md {
+  width: 2.75rem;
+  height: 3rem;
+  font-size: var(--lb-font-size-lg);
+}
+
+.lg {
+  width: 3.25rem;
+  height: 3.75rem;
+  font-size: var(--lb-font-size-2xl);
+}
+
+.box:hover:not(:disabled) {
+  border-color: var(--lb-color-neutral-400);
+}
+
+.boxFilled {
+  border-color: var(--lb-color-neutral-400);
+}
+
+.box:focus {
+  border-color: var(--lb-color-primary);
+  box-shadow: 0 0 0 2px
+    color-mix(in srgb, var(--lb-color-ring) 25%, transparent);
+}
+
+.boxError,
+.boxError:focus {
+  border-color: var(--lb-color-danger);
+}
+
+.boxError:focus {
+  box-shadow: 0 0 0 2px
+    color-mix(in srgb, var(--lb-color-danger) 25%, transparent);
+}
+
+.box:disabled {
+  background: var(--lb-color-muted);
+  color: var(--lb-color-muted-foreground);
+  cursor: not-allowed;
+}
+
+.separator {
+  color: var(--lb-color-muted-foreground);
+  font-weight: var(--lb-font-weight-semibold);
+}
+
+.hint,
+.error {
+  margin: 0;
+  font-size: var(--lb-font-size-xs);
+}
+
+.hint {
+  color: var(--lb-color-muted-foreground);
+}
+
+.error {
+  color: var(--lb-color-danger);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .box {
+    transition: none;
+  }
+}
