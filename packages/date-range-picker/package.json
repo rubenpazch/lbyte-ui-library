@@ -1,6 +1,6 @@
 {
   "name": "@rubenpazch/date-range-picker",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Rango de fechas (desde/hasta) con atajos",
   "repository": {
     "type": "git",

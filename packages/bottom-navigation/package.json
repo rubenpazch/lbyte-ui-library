@@ -1,6 +1,6 @@
 {
   "name": "@rubenpazch/bottom-navigation",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Barra de navegación inferior para el celular",
   "private": false,
   "main": "dist/index.cjs.js",

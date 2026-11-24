@@ -1,5 +1,12 @@
 # @rubenpazch/toast
 
+## 4.1.2
+
+### Patch Changes
+
+- Updated dependencies [01f5b31]
+  - @rubenpazch/icons@6.5.0
+
 ## 4.1.1
 
 ### Patch Changes

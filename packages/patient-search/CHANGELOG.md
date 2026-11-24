@@ -1,5 +1,12 @@
 # @rubenpazch/patient-search
 
+## 3.0.7
+
+### Patch Changes
+
+- Updated dependencies [01f5b31]
+  - @rubenpazch/icons@6.5.0
+
 ## 3.0.6
 
 ### Patch Changes

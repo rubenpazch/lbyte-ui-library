@@ -1,5 +1,12 @@
 # @rubenpazch/date-input
 
+## 3.2.3
+
+### Patch Changes
+
+- Updated dependencies [01f5b31]
+  - @rubenpazch/icons@6.5.0
+
 ## 3.2.2
 
 ### Patch Changes

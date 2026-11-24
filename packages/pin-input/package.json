@@ -1,6 +1,6 @@
 {
   "name": "@rubenpazch/pin-input",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Campo de código de verificación (OTP / PIN) en casillas",
   "repository": {
     "type": "git",
